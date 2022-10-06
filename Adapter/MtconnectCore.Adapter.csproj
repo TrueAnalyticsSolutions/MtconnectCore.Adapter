@@ -1,0 +1,47 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+	<PropertyGroup>
+		<TargetFrameworks>netcoreapp2.1;netstandard2.1;net40;</TargetFrameworks>
+		<Copyright>True Analytics Manufacturing Solutions, LLC</Copyright>
+		<PackageIcon>icon.jpg</PackageIcon>
+		<PackageIconUrl />
+		<PackageTags>Mtconnect;Adapter;TAMS;</PackageTags>
+		<PackageLicenseFile></PackageLicenseFile>
+		<PackageProjectUrl>https://mtconnectcore.dev</PackageProjectUrl>
+		<PackageRequireLicenseAcceptance>false</PackageRequireLicenseAcceptance>
+		<GeneratePackageOnBuild>True</GeneratePackageOnBuild>
+		<Company>True Analytics Manufacturing Solutions, LLC</Company>
+		<Product>Revolution DIY</Product>
+		<Authors>John Murphy; Trais McAllister;</Authors>
+		<Description>A library to provide helper methods and services to produce a software adapter compatible with a MTConnect Agent.</Description>
+		<RepositoryUrl>https://github.com/TrueAnalyticsSolutions/MtconnectCore.Adapter</RepositoryUrl>
+		<RepositoryType>git</RepositoryType>
+		<PackageReleaseNotes>Initial Release</PackageReleaseNotes>
+		<AssemblyVersion>1.0.0.0</AssemblyVersion>
+		<FileVersion>1.0.0.0</FileVersion>
+		<Version>0.1.0.0</Version>
+	</PropertyGroup>
+    <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">
+	    <DocumentationFile>MtconnectCore.Adapter.xml</DocumentationFile>
+    </PropertyGroup>
+  <PropertyGroup>
+    <ApplicationIcon>icon.ico</ApplicationIcon>
+    <Title>$(AssemblyName)</Title>
+    <PackageReadmeFile>Readme.md</PackageReadmeFile>
+    <IncludeSymbols>False</IncludeSymbols>
+    <BaseOutputPath>bin\</BaseOutputPath>
+    <NeutralLanguage>en-US</NeutralLanguage>
+  </PropertyGroup>
+  <ItemGroup>
+    <Content Include="icon.ico" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="..\icon.jpg">
+      <Pack>True</Pack>
+      <PackagePath>\</PackagePath>
+    </None>
+    <None Include="..\Readme.md">
+      <Pack>True</Pack>
+      <PackagePath>\</PackagePath>
+    </None>
+  </ItemGroup>
+</Project>

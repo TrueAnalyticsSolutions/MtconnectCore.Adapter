@@ -1,0 +1,651 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>MtconnectCore.Adapter</name>
+    </assembly>
+    <members>
+        <member name="T:MtconnectCore.Adapter.Assets.CuttingTool">
+            <summary>
+            An abstraction around an XML Generator for a cutting tool asset
+            </summary>
+        </member>
+        <member name="T:MtconnectCore.Adapter.Assets.CuttingTool.CutterStatus">
+            <summary>
+            A property representing the cutter status
+            </summary>
+        </member>
+        <member name="M:MtconnectCore.Adapter.Assets.CuttingTool.CutterStatus.Add(System.String)">
+            <summary>
+            Add a status
+            </summary>
+            <param name="s">The status to add</param>
+        </member>
+        <member name="M:MtconnectCore.Adapter.Assets.CuttingTool.CutterStatus.Remove(System.String)">
+            <summary>
+            Remove a status
+            </summary>
+            <param name="s">The status to remove</param>
+        </member>
+        <member name="M:MtconnectCore.Adapter.Assets.CuttingTool.CutterStatus.ToXml(System.Xml.XmlWriter)">
+            <summary>
+            Generate the xml for the status
+            </summary>
+            <param name="writer">The generator</param>
+            <returns>The writer</returns>
+        </member>
+        <member name="T:MtconnectCore.Adapter.Assets.CuttingTool.CuttingItem">
+            <summary>
+            A cutting item
+            </summary>
+        </member>
+        <member name="M:MtconnectCore.Adapter.Assets.CuttingTool.CuttingItem.#ctor(System.String,System.String,System.String,System.String)">
+            <summary>
+            Create a cutting item with identity info
+            </summary>
+            <param name="indices">The index range</param>
+            <param name="id">The id (if indices are not used)</param>
+            <param name="grade">The cutting item material grade</param>
+            <param name="manufacturers">The manufacturers of this item</param>
+        </member>
+        <member name="M:MtconnectCore.Adapter.Assets.CuttingTool.CuttingItem.AddProperty(System.String,System.String[],System.String)">
+            <summary>
+            Add a property to the cutting tool
+            </summary>
+            <param name="name">Name of the property</param>
+            <param name="arguments">Attributes</param>
+            <param name="value">The CData value</param>
+            <returns></returns>
+        </member>
+        <member name="M:MtconnectCore.Adapter.Assets.CuttingTool.CuttingItem.AddProperty(System.String,System.String)">
+            <summary>
+            Add a simple property to the item
+            </summary>
+            <param name="name">The name of the property</param>
+            <param name="value">The value</param>
+            <returns></returns>
+        </member>
+        <member name="M:MtconnectCore.Adapter.Assets.CuttingTool.CuttingItem.AddMeasurement(System.String,System.String,System.Double,System.Double,System.Double,System.Double,System.String,System.String)">
+            <summary>
+            Add a measurement to the cutting item
+            </summary>
+            <param name="name">The name of the measurement</param>
+            <param name="code">The ISO 13399 code</param>
+            <param name="value">The value for the measurement</param>
+            <param name="nominal">The nominal value</param>
+            <param name="min">The minimum constraint</param>
+            <param name="max">The maximum constraint</param>
+            <param name="native">The native units</param>
+            <param name="units">Must be the standard units</param>
+            <returns>The measurement</returns>
+        </member>
+        <member name="T:MtconnectCore.Adapter.Assets.CuttingTool.Direction">
+            <summary>
+            The cutting tool direction.
+            </summary>
+        </member>
+        <member name="T:MtconnectCore.Adapter.Assets.CuttingTool.LifeType">
+            <summary>
+            The cutting tool or cutting item life
+            </summary>
+        </member>
+        <member name="T:MtconnectCore.Adapter.Assets.CuttingTool.Measurement">
+            <summary>
+            A cutting tool or cutting item measurement
+            </summary>
+        </member>
+        <member name="T:MtconnectCore.Adapter.Assets.CuttingTool.Property">
+            <summary>
+            A cutting tool or cutting item property.
+            </summary>
+        </member>
+        <member name="M:MtconnectCore.Adapter.Assets.CuttingTool.Property.AddAttribute(MtconnectCore.Adapter.Assets.CuttingTool.Property.Attribute)">
+            <summary>
+            Add a argument to this property
+            </summary>
+            <param name="argument">The argumnet</param>
+        </member>
+        <member name="M:MtconnectCore.Adapter.Assets.CuttingTool.#ctor(System.String,System.String,System.String)">
+            <summary>
+            Creates a new cutting tool asset
+            </summary>
+            <param name="assetId">The asset id</param>
+            <param name="toolId">The tool id</param>
+            <param name="serialNumber">The serial number of the tool</param>
+        </member>
+        <member name="M:MtconnectCore.Adapter.Assets.CuttingTool.GetMTCType">
+            <summary>
+            The MTConnect Asset Type.
+            </summary>
+            <returns>CuttingTool</returns>
+        </member>
+        <member name="M:MtconnectCore.Adapter.Assets.CuttingTool.CreateAttribute(System.String,System.String)">
+            <summary>
+            Create a simple attribute
+            </summary>
+            <param name="name">Name</param>
+            <param name="value">Value</param>
+            <returns></returns>
+        </member>
+        <member name="M:MtconnectCore.Adapter.Assets.CuttingTool.AddProperty(MtconnectCore.Adapter.Assets.CuttingTool.Property)">
+            <summary>
+            Add a property to the cutting tool
+            </summary>
+            <param name="property">The property</param>
+        </member>
+        <member name="M:MtconnectCore.Adapter.Assets.CuttingTool.AddProperty(System.String,System.String[],System.String)">
+            <summary>
+            Add a property to the cutting tool
+            </summary>
+            <param name="name">Name of the property</param>
+            <param name="arguments">Attributes</param>
+            <param name="value">The CData value</param>
+            <returns></returns>
+        </member>
+        <member name="M:MtconnectCore.Adapter.Assets.CuttingTool.AddStatus(System.String[])">
+            <summary>
+            Add the list of current status to the cutting tool
+            </summary>
+            <param name="status">A string array of status</param>
+            <returns></returns>
+        </member>
+        <member name="M:MtconnectCore.Adapter.Assets.CuttingTool.AddMeasurement(System.String,System.String,System.Double,System.Double,System.Double,System.Double,System.String,System.String)">
+            <summary>
+            Add a measurement to the cutting item
+            </summary>
+            <param name="name">The name of the measurement</param>
+            <param name="code">The ISO 13399 code</param>
+            <param name="value">The value for the measurement</param>
+            <param name="nominal">The nominal value</param>
+            <param name="min">The minimum constraint</param>
+            <param name="max">The maximum constraint</param>
+            <param name="native">The native units</param>
+            <param name="units">Must be the standard units</param>
+            <returns>The measurement</returns>
+        </member>
+        <member name="M:MtconnectCore.Adapter.Assets.CuttingTool.AddLife(MtconnectCore.Adapter.Assets.CuttingTool.LifeType,MtconnectCore.Adapter.Assets.CuttingTool.Direction,System.String,System.String,System.String,System.String)">
+            <summary>
+            Add the tool life
+            </summary>
+            <param name="type">MINUTES, PART_COUNT, or WEAR</param>
+            <param name="direction">UP or DOWN</param>
+            <param name="value">The current value</param>
+            <param name="initial">The initial value for the range</param>
+            <param name="limit">The limit</param>
+            <param name="warning">A point where there will be a warning</param>
+            <returns>The life property</returns>
+        </member>
+        <member name="M:MtconnectCore.Adapter.Assets.CuttingTool.AddItem(MtconnectCore.Adapter.Assets.CuttingTool.CuttingItem)">
+            <summary>
+            Adds a cutting item
+            </summary>
+            <param name="item">The cutting item</param>
+        </member>
+        <member name="M:MtconnectCore.Adapter.Assets.CuttingTool.ToXml(System.Xml.XmlWriter)">
+            <summary>
+            Generate XML
+            </summary>
+            <param name="writer">The XML writer used to generate</param>
+            <returns>The writer</returns>
+        </member>
+        <member name="T:MtconnectCore.Adapter.Assets.Asset">
+            <summary>
+            Abstract Asset class.
+            </summary>
+        </member>
+        <member name="T:MtconnectCore.Adapter.DataItems.Condition">
+            <summary>
+            A condition handles the fact that a single condition can have multiple 
+            activations and needs to check when the are present and are cleared.
+            </summary>
+        </member>
+        <member name="T:MtconnectCore.Adapter.DataItems.Condition.Active">
+            <summary>
+            The Activation is itself a data item. This is so it can be cleared 
+            and treated like other data items when generating text.
+            </summary>
+        </member>
+        <member name="F:MtconnectCore.Adapter.DataItems.Condition.Active.mMarked">
+            <summary>
+            The marked flag tells if this alarm has been reasserted.
+            </summary>
+        </member>
+        <member name="F:MtconnectCore.Adapter.DataItems.Condition.Active.mPlaceholder">
+            <summary>
+            A placeholder activation is just a normal or unavailable.
+            </summary>
+        </member>
+        <member name="M:MtconnectCore.Adapter.DataItems.Condition.Active.#ctor(System.String,MtconnectCore.Adapter.DataItems.Condition.Level,System.String,System.String,System.String,System.String)">
+            <summary>
+            Create a new activation
+            </summary>
+            <param name="name">The name of the condition, passed from the parent</param>
+            <param name="level">The condition level</param>
+            <param name="text">The descriptive text for the condition</param>
+            <param name="code">The native code of the alarm or warning</param>
+            <param name="qualifier">A high/low qualifier</param>
+            <param name="severity">The native severity of the condition</param>
+        </member>
+        <member name="M:MtconnectCore.Adapter.DataItems.Condition.Active.Set(MtconnectCore.Adapter.DataItems.Condition.Level,System.String,System.String,System.String)">
+            <summary>
+            Update the values of the activation. Also marks this activation.
+            </summary>
+            <param name="level">The condition level</param>
+            <param name="text">The descriptive text for the condition</param>
+            <param name="qualifier">A high/low qualifier</param>
+            <param name="severity">The native severity of the condition</param>
+            <returns>true if the condition has changed</returns>
+        </member>
+        <member name="M:MtconnectCore.Adapter.DataItems.Condition.Active.Clear">
+            <summary>
+            Resets the marked flag.
+            </summary>
+        </member>
+        <member name="F:MtconnectCore.Adapter.DataItems.Condition.mBegun">
+            <summary>
+            A flag to indicate that the mark and sweep has begun.
+            </summary>
+        </member>
+        <member name="F:MtconnectCore.Adapter.DataItems.Condition.mPrepared">
+            <summary>
+            A flag indicating the second phase of the mark and sweep has completed.
+            </summary>
+        </member>
+        <member name="F:MtconnectCore.Adapter.DataItems.Condition.mSimple">
+            <summary>
+            true means this is a simple condition and does not require
+            mark and sweep processing.
+            </summary>
+        </member>
+        <member name="M:MtconnectCore.Adapter.DataItems.Condition.#ctor(System.String,System.Boolean)">
+            <summary>
+            Create a new condition
+            </summary>
+            <param name="name">The name of the data item</param>
+            <param name="simple">If this is a simple condition or if it uses
+            mark and sweep</param>
+        </member>
+        <member name="M:MtconnectCore.Adapter.DataItems.Condition.Unavailable">
+            <summary>
+            Make this condition unavailable
+            </summary>
+        </member>
+        <member name="M:MtconnectCore.Adapter.DataItems.Condition.Begin">
+            <summary>
+            This clears all the marks and begins so we can tell which 
+            conditions were not added during this pass. This is not
+            required for simple conditions.
+            </summary>
+        </member>
+        <member name="M:MtconnectCore.Adapter.DataItems.Condition.Prepare">
+            <summary>
+            This is called before we send the actual changed data. It
+            does the diff from the previous state and finds all the 
+            activations that need to be removed. This also check to see
+            if all the activations have been removed because we only 
+            need to do a single normal with no native code to clear all. 
+            
+            This is not required for simple conditions.
+            </summary>
+        </member>
+        <member name="M:MtconnectCore.Adapter.DataItems.Condition.Cleanup">
+            <summary>
+            This is the sweep phase where we removed the changed flags 
+            and remove all the stale activations.
+            </summary>
+        </member>
+        <member name="M:MtconnectCore.Adapter.DataItems.Condition.Add(MtconnectCore.Adapter.DataItems.Condition.Active)">
+            <summary>
+            Add a new activation.
+            </summary>
+            <param name="active"></param>
+        </member>
+        <member name="M:MtconnectCore.Adapter.DataItems.Condition.Add(MtconnectCore.Adapter.DataItems.Condition.Level,System.String,System.String,System.String,System.String)">
+            <summary>
+            Adds a new activation to the condition or if normal or unavailable, removes the 
+            activation.
+            </summary>
+            <param name="level">The level</param>
+            <param name="text">The descriptive text for the condition</param>
+            <param name="code">The native code</param>
+            <param name="qualifier">The qualifier</param>
+            <param name="severity">The native severity</param>
+            <returns>true if the activation is modified</returns>
+        </member>
+        <member name="M:MtconnectCore.Adapter.DataItems.Condition.Clear(System.String)">
+            <summary>
+            Clear a condition from the active list - Used only for simple Conditions.
+            </summary>
+            <param name="code">The native code</param>
+            <returns>true if the activation is found</returns>
+        </member>
+        <member name="M:MtconnectCore.Adapter.DataItems.Condition.ItemList(System.Boolean)">
+            <summary>
+            Used to get a list of the active conditions for writing out to
+            the clients.
+            </summary>
+            <param name="all">This flag is used to get all activations, regardless 
+            of their changed state. This is used to deliver initial state to the client</param>
+            <returns>A list of activations (also DataItems)</returns>
+        </member>
+        <member name="T:MtconnectCore.Adapter.DataItems.Condition.Level">
+            <summary>
+            The four values for the condition.
+            </summary> 
+        </member>
+        <member name="T:MtconnectCore.Adapter.DataItems.Event">
+            <summary>
+            Event is just an alias for DataItem
+            </summary>
+        </member>
+        <member name="T:MtconnectCore.Adapter.DataItems.Message">
+            <summary>
+            A message is an event with an additional native code. The 
+            text of the message is the value.
+            </summary>
+        </member>
+        <member name="M:MtconnectCore.Adapter.DataItems.Message.#ctor(System.String)">
+            <summary>
+            Create a new message, set NewLine to true so this comes out 
+            on a separate line.
+            </summary>
+            <param name="name">The name of the data item</param>
+        </member>
+        <member name="P:MtconnectCore.Adapter.DataItems.Message.Code">
+            <summary>
+            Code property.
+            </summary>
+        </member>
+        <member name="M:MtconnectCore.Adapter.DataItems.Message.ToString">
+            <summary>
+            The text representation of the code.
+            </summary>
+            <returns>A text representation</returns>
+        </member>
+        <member name="F:MtconnectCore.Adapter.DataItems.DataItem._name">
+            <summary>
+            The name of the data item.
+            </summary>
+        </member>
+        <member name="F:MtconnectCore.Adapter.DataItems.DataItem.DevicePrefix">
+            <summary>
+            Optional device prefix.
+            </summary>
+        </member>
+        <member name="F:MtconnectCore.Adapter.DataItems.DataItem._value">
+            <summary>
+            The value of the data item, can be any type.
+            </summary>
+        </member>
+        <member name="P:MtconnectCore.Adapter.DataItems.DataItem.Value">
+            <summary>
+            Get and set the Value property. This will check if the value has changed
+            and set the changed flag appropriately. Automatically boxes types so will
+            work for any data.
+            </summary>
+        </member>
+        <member name="P:MtconnectCore.Adapter.DataItems.DataItem.Changed">
+            <summary>
+            A flag to indicate if the data item's value has changed since it 
+            has last been set.
+            </summary>
+        </member>
+        <member name="P:MtconnectCore.Adapter.DataItems.DataItem.NewLine">
+            <summary>
+            An indicator that this data item must be sent on a separate line.
+            This is done for all data items that are more complex than simple 
+            Key|Value pairs.
+            </summary>
+        </member>
+        <member name="M:MtconnectCore.Adapter.DataItems.DataItem.#ctor(System.String)">
+            <summary>
+            Create a new data item
+            </summary>
+            <param name="name">The name of the data item</param>
+        </member>
+        <member name="M:MtconnectCore.Adapter.DataItems.DataItem.Unavailable">
+            <summary>
+            Make this data item unavailable.
+            </summary>
+        </member>
+        <member name="M:MtconnectCore.Adapter.DataItems.DataItem.IsUnavailable">
+            <summary>
+            Checks if the data item is unavailable.
+            </summary>
+            <returns>true if Unavailable</returns>
+        </member>
+        <member name="M:MtconnectCore.Adapter.DataItems.DataItem.ToString">
+            <summary>
+            Simple string representation with pipe delim.
+            </summary>
+            <returns>A text representation</returns>
+        </member>
+        <member name="M:MtconnectCore.Adapter.DataItems.DataItem.Begin">
+            <summary>
+            These methods are mainly for conditions. They allow for
+            mark and sweep of the condition activations.
+            </summary>
+        </member>
+        <member name="M:MtconnectCore.Adapter.DataItems.DataItem.Cleanup">
+            <summary>
+            Reset the Changed flag.
+            </summary>
+        </member>
+        <member name="M:MtconnectCore.Adapter.DataItems.DataItem.ItemList(System.Boolean)">
+            <summary>
+            Get a list of all the changed data items. Since this is a 
+            single value, just return a list with one item if it has 
+            changed
+            </summary>
+            <param name="onlyChanged">true means to return this data item regardless of the 
+            changed flag. This is used to send initial data back to a new client.</param>
+            <returns>The changed data item</returns>
+        </member>
+        <member name="T:MtconnectCore.Adapter.DataItems.Sample">
+            <summary>
+            A sample is a data item with a floating point value
+            </summary>
+        </member>
+        <member name="M:MtconnectCore.Adapter.DataItems.TimeSeries.ToString">
+            <summary>
+            Simple string representation with pipe delim.
+            </summary>
+            <returns>A text representation</returns>
+        </member>
+        <member name="T:MtconnectCore.Adapter.Adapter">
+            <summary>
+            An MTConnect adapter
+            </summary>
+        </member>
+        <member name="F:MtconnectCore.Adapter.Adapter.mListenThread">
+            <summary>
+            The listening thread for new connections
+            </summary>
+        </member>
+        <member name="F:MtconnectCore.Adapter.Adapter.mClients">
+            <summary>
+            A list of all the client connections.
+            </summary>
+        </member>
+        <member name="F:MtconnectCore.Adapter.Adapter.mActiveClients">
+            <summary>
+            A count of client threads.
+            </summary>
+        </member>
+        <member name="F:MtconnectCore.Adapter.Adapter.mRunning">
+            <summary>
+            A flag to indicate the adapter is still running.
+            </summary>
+        </member>
+        <member name="F:MtconnectCore.Adapter.Adapter.mListener">
+            <summary>
+            The server socket.
+            </summary>
+        </member>
+        <member name="F:MtconnectCore.Adapter.Adapter.PONG">
+            <summary>
+            The * PONG ... text
+            </summary>
+        </member>
+        <member name="F:MtconnectCore.Adapter.Adapter.mDataItems">
+            <summary>
+            All the data items we're tracking.
+            </summary>
+        </member>
+        <member name="F:MtconnectCore.Adapter.Adapter.mHeartbeat">
+            <summary>
+            The heartbeat interval.
+            </summary>
+        </member>
+        <member name="F:MtconnectCore.Adapter.Adapter.mBegun">
+            <summary>
+            The send changed has begun and we are tracking conditions.
+            </summary>
+        </member>
+        <member name="F:MtconnectCore.Adapter.Adapter.mEncoder">
+            <summary>
+            The ascii encoder for creating the messages.
+            </summary>
+        </member>
+        <member name="P:MtconnectCore.Adapter.Adapter.Heartbeat">
+            <summary>
+            This is a method to set the heartbeat interval given in milliseconds.
+            </summary>
+        </member>
+        <member name="P:MtconnectCore.Adapter.Adapter.Port">
+            <summary>
+            The Port property to set and get the mPort. This will only 
+            take affect when the adapter is stopped.
+            </summary>
+        </member>
+        <member name="P:MtconnectCore.Adapter.Adapter.Running">
+            <summary>
+            Indicates if the adapter is currently running.
+            </summary>
+        </member>
+        <member name="P:MtconnectCore.Adapter.Adapter.ServerPort">
+            <summary>
+            Get the current local bound server port. Used for testing when port 
+            # is 0.
+            </summary>
+        </member>
+        <member name="M:MtconnectCore.Adapter.Adapter.#ctor(System.Int32,System.Boolean)">
+            <summary>
+            Create an adapter. Defaults the heartbeat to 10 seconds and the 
+            port to 7878
+            </summary>
+            <param name="aPort">The optional port number (default: 7878)</param>
+        </member>
+        <member name="M:MtconnectCore.Adapter.Adapter.addClientStream(System.IO.Stream)">
+            <summary>
+            For testing, add a io stream to the adapter.
+            </summary>
+            <param name="aStream">A IO Stream</param>
+        </member>
+        <member name="M:MtconnectCore.Adapter.Adapter.AddDataItem(MtconnectCore.Adapter.DataItems.DataItem)">
+            <summary>
+            Add a data item to the adapter.
+            </summary>
+            <param name="aDI">The data item.</param>
+        </member>
+        <member name="M:MtconnectCore.Adapter.Adapter.RemoveAllDataItems">
+            <summary>
+            Remove all data items.
+            </summary>
+        </member>
+        <member name="M:MtconnectCore.Adapter.Adapter.RemoveDataItem(MtconnectCore.Adapter.DataItems.DataItem)">
+            <summary>
+            Remove a data item from the adapter.
+            </summary>
+            <param name="aItem"></param>
+        </member>
+        <member name="M:MtconnectCore.Adapter.Adapter.Unavailable">
+            <summary>
+            Make all data items unavailable
+            </summary>
+        </member>
+        <member name="M:MtconnectCore.Adapter.Adapter.Begin">
+            <summary>
+            The asks all data items to begin themselves for collection. Only 
+            required for conditions and should not be called if you are not 
+            planning on adding all the conditions before you send. If you skip this
+            the adapter will not perform the mark and sweep.
+            </summary>
+        </member>
+        <member name="M:MtconnectCore.Adapter.Adapter.SendChanged(System.String)">
+            <summary>
+            Send only the objects that need have changed to the clients.
+            </summary>
+            <param name="markAndSweek"></param>
+        </member>
+        <member name="M:MtconnectCore.Adapter.Adapter.AddAsset(MtconnectCore.Adapter.Assets.Asset)">
+            <summary>
+            Send a new asset to the Agent
+            </summary>
+            <param name="asset">The asset</param>
+        </member>
+        <member name="M:MtconnectCore.Adapter.Adapter.FlushAll">
+            <summary>
+            Flush all the communications to all the clients
+            TODO: Exception handling.
+            </summary>
+        </member>
+        <member name="M:MtconnectCore.Adapter.Adapter.SendAllTo(System.IO.Stream)">
+            <summary>
+            Send all the data items, regardless if they have changed to one
+            client. Used for the initial data dump.
+            TODO: DRY out with SendChanged.
+            </summary>
+            <param name="aClient">The network stream of the client</param>
+        </member>
+        <member name="M:MtconnectCore.Adapter.Adapter.SendToAll(System.String)">
+            <summary>
+            Send a string of text to all clients.
+            </summary>
+            <param name="line">A line of text</param>
+        </member>
+        <member name="M:MtconnectCore.Adapter.Adapter.Receive(System.IO.Stream,System.String)">
+            <summary>
+            Receive data from a client and implement heartbeat ping/pong protocol.
+            </summary>
+            <param name="aClient">The client who sent the text</param>
+            <param name="aLine">The line of text</param>
+        </member>
+        <member name="M:MtconnectCore.Adapter.Adapter.WriteToClient(System.IO.Stream,System.Byte[])">
+            <summary>
+            Send text to a client as a byte array. Handles execptions and 
+            remove the client from the list of clients if the write fails. 
+            Also makes sure the client connection is closed when it fails.
+            </summary>
+            <param name="aClient">The client to send the message to</param>
+            <param name="aMessage">The message</param>
+        </member>
+        <member name="M:MtconnectCore.Adapter.Adapter.HeartbeatClient(System.Object)">
+            <summary>
+            The heartbeat thread for a client. This thread receives data from a client, 
+            closes the socket when it fails, and handles communication timeouts when 
+            the client does not send a heartbeat within 2x the heartbeat frequency. 
+            
+            When the heartbeat is not received, the client is assumed to be unresponsive
+            and the connection is closed. Waits for one ping to be received before
+            enforcing the timeout. 
+            </summary>
+            <param name="client">The client we are communicating with.</param>
+        </member>
+        <member name="M:MtconnectCore.Adapter.Adapter.ListenForClients">
+            <summary>
+            The is the socket server listening thread. Creats a new client and 
+            starts a heartbeat client thread to implement the ping/pong protocol.
+            </summary>
+        </member>
+        <member name="M:MtconnectCore.Adapter.Adapter.Start">
+            <summary>
+            Start the listener thread.
+            </summary>
+        </member>
+        <member name="M:MtconnectCore.Adapter.Adapter.Stop">
+            <summary>
+            Stop the listener thread and shutdown all client connections.
+            </summary>
+        </member>
+    </members>
+</doc>
