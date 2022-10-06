@@ -18,10 +18,10 @@ jobs:
       with:
         dotnet-version: '3.1'
     - name: Build with dotnet
-      run: dotnet build MtconnectCore.Adapter --configuration Release
+      run: dotnet build "Adapter/MtconnectCore.Adapter.csproj" --configuration Release
       
     - name: Pack
-      run: dotnet pack MtconnectCore.Adapter --configuration Release -o finalpackage --no-build
+      run: dotnet pack "Adapter/MtconnectCore.Adapter.csproj" --configuration Release -o finalpackage --no-build
     
     - name: Publish Artifact
       uses: actions/upload-artifact@master
