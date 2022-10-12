@@ -17,8 +17,11 @@ jobs:
       uses: actions/setup-dotnet@main
       with:
         dotnet-version: '3.1'
-    - name: Build with dotnet
-      run: dotnet build TAMSAdapter --configuration Release
+    - name: Build Mtconnect.Adapter with dotnet
+      run: dotnet build "AdapterInterface\AdapterInterface.csproj" --configuration Release
+      
+    - name: Build Mtconnect.TcpAdapter with dotnet
+      run: dotnet build "MtconnectCore.TcpAdapter\MtconnectCore.TcpAdapter.csproj" --configuration Release
       
     - name: Pack Mtconnect.Adapter
       run: dotnet pack AdapterInterface --configuration Release -o finalpackage --no-build
