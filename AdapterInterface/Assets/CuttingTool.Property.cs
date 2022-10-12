@@ -2,7 +2,7 @@
 using System.Collections;
 
 
-namespace MtconnectCore.Adapter.Assets
+namespace MtconnectCore.AdapterInterface.Assets
 {
 
     public partial class CuttingTool

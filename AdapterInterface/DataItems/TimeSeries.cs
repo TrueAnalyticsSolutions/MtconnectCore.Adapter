@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Linq;
 
-namespace MtconnectCore.Adapter.DataItems
+namespace MtconnectCore.AdapterInterface.DataItems
 {
     public class TimeSeries : DataItem
     {
@@ -12,7 +12,7 @@ namespace MtconnectCore.Adapter.DataItems
             set
             {
                 _values = value;
-                Changed = true;
+                HasChanged = true;
             }
             get { return _values; } 
         }
@@ -20,7 +20,7 @@ namespace MtconnectCore.Adapter.DataItems
         public TimeSeries(string name, double rate = 0.0)
             : base(name)
         {
-            NewLine = true;
+            HasNewLine = true;
             Rate = rate;
         }
 
@@ -40,7 +40,7 @@ namespace MtconnectCore.Adapter.DataItems
                 count = Values.Length;
             }
 
-            return $"{_name}|{count}|{rate}|{v}";
+            return $"{Name}|{count}|{rate}|{v}";
         }
     }
 }

@@ -1,14 +1,13 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
-	  <TargetFrameworks>netcoreapp2.1;netstandard2.1;net40;</TargetFrameworks>
+	  <TargetFrameworks>netcoreapp3.1;netstandard2.1;net461;</TargetFrameworks>
     <BaseOutputPath>bin\</BaseOutputPath>
     <GenerateDocumentationFile>True</GenerateDocumentationFile>
     <NeutralLanguage>en-US</NeutralLanguage>
-    <ApplicationIcon>icon.ico</ApplicationIcon>
-    <RootNamespace>Mtconnect.Adapter.Interface</RootNamespace>
+    <RootNamespace>Mtconnect.AdapterInterface</RootNamespace>
     <GeneratePackageOnBuild>True</GeneratePackageOnBuild>
-    <PackageId>Mtconnect.Adapter.Interface</PackageId>
+    <PackageId>Mtconnect.AdapterInterface</PackageId>
     <Title>MTConnect Adapter Interface</Title>
     <Authors>tbm0115</Authors>
     <Company>True Analytics Manufacturing Solutions</Company>
@@ -19,17 +18,45 @@
     <RepositoryType>git</RepositoryType>
     <PackageTags>MTConnect;Adapter;Interface</PackageTags>
     <PackageReleaseNotes>Initial publish of the MTConnect Adapter Interface.</PackageReleaseNotes>
+    <ApplicationIcon>icon.ico</ApplicationIcon>
+    <PackageProjectUrl>https://github.com/TrueAnalyticsSolutions/MtconnectCore.Adapter</PackageProjectUrl>
+    <PackageReadmeFile>Readme.md</PackageReadmeFile>
+    <RepositoryUrl>$(ProjectUrl)</RepositoryUrl>
   </PropertyGroup>
 
   <ItemGroup>
-    <Content Include="..\icon.ico" Link="icon.ico" />
-    <Content Include="..\icon.jpg" Link="icon.jpg" />
-    <Content Include="..\logo_v2.0.jpg" Link="logo_v2.0.jpg" />
-    <Content Include="icon.ico" />
+    <None Remove="icon.jpg" />
+    <None Remove="logo_v2.0.jpg" />
   </ItemGroup>
 
   <ItemGroup>
-    <None Include="icon.jpg">
+    <Compile Include="..\Constants.cs" Link="Constants.cs" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Content Include="icon.ico" Link="icon.ico">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="icon.jpg">
+      <Pack>True</Pack>
+      <PackagePath>\</PackagePath>
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="logo_v2.0.jpg">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+	  <None Include="README.md">
+		  <Pack>True</Pack>
+		  <PackagePath>\</PackagePath>
+	  </None>
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Microsoft.Extensions.Logging.Abstractions" Version="6.0.2" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Update="Readme.md">
       <Pack>True</Pack>
       <PackagePath>\</PackagePath>
     </None>

@@ -4,7 +4,7 @@ using System.Collections;
 using System.Collections.Generic;
 
 
-namespace MtconnectCore.Adapter.Assets
+namespace MtconnectCore.AdapterInterface.Assets
 {
 
     /// <summary>

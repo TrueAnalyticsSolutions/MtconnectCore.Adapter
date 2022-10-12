@@ -1,4 +1,4 @@
-﻿namespace MtconnectCore.Adapter.DataItems
+﻿namespace MtconnectCore.AdapterInterface.DataItems
 {
     /// <summary>
     /// Event is just an alias for DataItem

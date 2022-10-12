@@ -8,11 +8,18 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <Content Include="..\icon.ico" Link="icon.ico">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+  </ItemGroup>
+
+  <ItemGroup>
     <PackageReference Include="Consoul" Version="1.5.14" />
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\Adapter\MtconnectCore.Adapter.csproj" />
+    <ProjectReference Include="..\AdapterInterface\AdapterInterface.csproj" />
+    <ProjectReference Include="..\MtconnectCore.TcpAdapter\MtconnectCore.TcpAdapter.csproj" />
   </ItemGroup>
 
 </Project>

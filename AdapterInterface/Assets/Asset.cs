@@ -1,12 +1,12 @@
 ﻿using System;
 using System.Xml;
 
-namespace MtconnectCore.Adapter.Assets
+namespace MtconnectCore.AdapterInterface.Assets
 {
     /// <summary>
     /// Abstract Asset class.
     /// </summary>
-    abstract public class Asset
+    public abstract class Asset
     {
         public string AssetId { set; get; }
 
@@ -21,6 +21,6 @@ namespace MtconnectCore.Adapter.Assets
             return writer;
         }
 
-        abstract public string GetMTCType();
+        public abstract string GetMTCType();
     }
 }

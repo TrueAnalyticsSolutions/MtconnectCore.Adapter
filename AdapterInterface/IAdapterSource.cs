@@ -1,5 +1,5 @@
 ﻿
-namespace AdapterInterface
+namespace MtconnectCore
 {
     /// <summary>
     /// Handler for ingesting data from a MTConnect Adapter source.

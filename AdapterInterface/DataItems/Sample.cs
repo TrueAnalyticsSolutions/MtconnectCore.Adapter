@@ -1,4 +1,4 @@
-﻿namespace MtconnectCore.Adapter.DataItems
+﻿namespace MtconnectCore.AdapterInterface.DataItems
 {
     /// <summary>
     /// A sample is a data item with a floating point value

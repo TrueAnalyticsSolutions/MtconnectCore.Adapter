@@ -1,8 +1,5 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
-
-namespace MtconnectCore.Adapter.Contracts
+﻿
+namespace MtconnectCore.AdapterInterface.Contracts
 {
     /// <summary>
     /// Represents the various states of the MTConnect Adapter.

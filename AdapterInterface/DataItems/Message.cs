@@ -1,4 +1,4 @@
-﻿namespace MtconnectCore.Adapter.DataItems
+﻿namespace MtconnectCore.AdapterInterface.DataItems
 {
     /// <summary>
     /// A message is an event with an additional native code. The 
@@ -15,7 +15,7 @@
         /// <param name="name">The name of the data item</param>
         public Message(string name) : base(name)
         {
-            NewLine = true;
+            HasNewLine = true;
         }
 
         /// <summary>
@@ -27,7 +27,7 @@
             {
                 if (mCode != value)
                 {
-                    Changed = true;
+                    HasChanged = true;
                     mCode = value;
                 }
             }
@@ -40,7 +40,7 @@
         /// <returns>A text representation</returns>
         public override string ToString()
         {
-            return $"{_name}|{mCode}|{_value}";
+            return $"{Name}|{mCode}|{_value}";
         }
     }
 }

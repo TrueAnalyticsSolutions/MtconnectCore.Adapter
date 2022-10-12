@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 
 
-namespace MtconnectCore.Adapter.Assets
+namespace MtconnectCore.AdapterInterface.Assets
 {
 
     public partial class CuttingTool
@@ -14,8 +14,7 @@ namespace MtconnectCore.Adapter.Assets
         {
             public HashSet<string> mStatus;
 
-            public CutterStatus(string[] status)
-                : base("CutterStatus")
+            public CutterStatus(string[] status) : base("CutterStatus")
             {
                 mStatus = new HashSet<string>();
                 foreach (string s in status)

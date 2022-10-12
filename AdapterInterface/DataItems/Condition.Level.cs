@@ -1,4 +1,4 @@
-﻿namespace MtconnectCore.Adapter.DataItems
+﻿namespace MtconnectCore.AdapterInterface.DataItems
 {
     public partial class Condition
     {

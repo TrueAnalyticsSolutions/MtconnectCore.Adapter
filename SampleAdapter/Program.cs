@@ -1,10 +1,9 @@
 ﻿// See https://aka.ms/new-console-template for more information
 using ConsoulLibrary;
-using MtconnectCore.Adapter;
-using MtconnectCore.Adapter.DataItems;
+using MtconnectCore.AdapterInterface.DataItems;
+using MtconnectCore.TcpAdapter;
 using SampleAdapter.PC;
 using System.Drawing;
-using System.Threading;
 
 namespace SampleAdapter
 {
@@ -15,33 +14,46 @@ namespace SampleAdapter
         private const string Y_POSITION = "ypos";
         private const string PROGRAM = "prog";
 
-        public static Dictionary<string, DataItem> DataItems { get; set; } = new Dictionary<string, DataItem>();
+        private const string PUTTY_EXE = "C:\\Program Files\\PuTTY\\putty.exe";
+        private const string CMD_EXE = "C:\\windows\\system32\\cmd.exe";
 
         public static System.Timers.Timer Timer { get; set; } = new System.Timers.Timer();
 
-        public static Adapter Adapter { get; set; } = new Adapter();
+        public static TcpAdapter Adapter { get; set; } = new TcpAdapter();
 
         public static void Main(string[] args)
         {
-            Timer.Interval = 1000;
+            Timer.Interval = 50;
             Timer.Elapsed += Timer_Elapsed;
 
-            DataItems.Add(AVAILABILITY, new Event(AVAILABILITY));
-            DataItems.Add(X_POSITION, new Event(X_POSITION));
-            DataItems.Add(Y_POSITION, new Event(Y_POSITION));
-            DataItems.Add(PROGRAM,  new Event(PROGRAM));
-
-            foreach (var item in DataItems)
-            {
-                Adapter.AddDataItem(item.Value);
-            }
+            Adapter.AddDataItem(new Event(AVAILABILITY));
+            Adapter.AddDataItem(new Sample(X_POSITION));
+            Adapter.AddDataItem(new Sample(Y_POSITION));
+            Adapter.AddDataItem(new Event(PROGRAM));
 
             Timer.Start();
+
             Adapter.Start();
-            Adapter.Begin();
 
             Consoul.Write("Reporting: AVAILABILITY, Mouse X-Position, Mouse Y-Position, Active Window Title");
             Consoul.Write($"Adapter running @ http://*:{Adapter.Port}");
+
+            if (File.Exists(PUTTY_EXE) && Consoul.Ask("Would you like to run PuTTY?"))
+            {
+                using (var cmd = new System.Diagnostics.Process())
+                {
+                    cmd.StartInfo.FileName = CMD_EXE;
+                    cmd.StartInfo.UseShellExecute = false;
+                    cmd.StartInfo.RedirectStandardInput = true;
+                    cmd.StartInfo.RedirectStandardOutput = true;
+                    cmd.StartInfo.CreateNoWindow = true;
+
+                    cmd.Start();
+
+                    cmd.StandardInput.WriteLine($"\"{PUTTY_EXE}\" -raw -P {Adapter.Port} localhost");
+                }
+            }
+
             Consoul.Wait();
 
             Timer.Stop();
@@ -50,17 +62,17 @@ namespace SampleAdapter
 
         private static void Timer_Elapsed(object? sender, System.Timers.ElapsedEventArgs e)
         {
-            DataItems[AVAILABILITY].Value = "AVAILABLE";
+            Adapter[AVAILABILITY].Value = "AVAILABLE";
 
             Point lpPoint;
             if (WindowHandles.GetCursorPos(out lpPoint))
             {
-                DataItems[X_POSITION].Value = lpPoint.X;
-                DataItems[Y_POSITION].Value = lpPoint.Y;
+                Adapter[X_POSITION].Value = lpPoint.X;
+                Adapter[Y_POSITION].Value = lpPoint.Y;
             } else
             {
-                DataItems[X_POSITION].Unavailable();
-                DataItems[Y_POSITION].Unavailable();
+                Adapter[X_POSITION].Unavailable();
+                Adapter[Y_POSITION].Unavailable();
             }
 
             try
@@ -68,17 +80,17 @@ namespace SampleAdapter
                 string activeWindowTitle = WindowHandles.GetActiveWindowTitle();
                 if (!string.IsNullOrEmpty(activeWindowTitle))
                 {
-                    DataItems[PROGRAM].Value = activeWindowTitle;
+                    Adapter[PROGRAM].Value = activeWindowTitle;
                 } else {
-                    DataItems[PROGRAM].Unavailable();
+                    Adapter[PROGRAM].Unavailable();
                 }
             }
             catch (Exception ex)
             {
-                DataItems[PROGRAM].Unavailable();
+                Adapter[PROGRAM].Unavailable();
             }
 
-            Adapter.SendChanged();
+            Adapter.Send(MtconnectCore.AdapterInterface.Contracts.DataItemSendTypes.Changed);
         }
     }
 }
