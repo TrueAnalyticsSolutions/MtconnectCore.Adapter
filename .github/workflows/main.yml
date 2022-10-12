@@ -18,10 +18,13 @@ jobs:
       with:
         dotnet-version: '3.1'
     - name: Build with dotnet
-      run: dotnet build "Adapter/MtconnectCore.Adapter.csproj" --configuration Release
+      run: dotnet build TAMSAdapter --configuration Release
       
-    - name: Pack
-      run: dotnet pack "Adapter/MtconnectCore.Adapter.csproj" --configuration Release -o finalpackage --no-build
+    - name: Pack Mtconnect.Adapter
+      run: dotnet pack AdapterInterface --configuration Release -o finalpackage --no-build
+      
+    - name: Pack Mtconnect.TcpAdapter
+      run: dotnet pack MtconnectCore.TcpAdapter --configuration Release -o finalpackage --no-build
     
     - name: Publish Artifact
       uses: actions/upload-artifact@master
@@ -51,5 +54,8 @@ jobs:
           nuget-api-key: ${{ secrets.NUGETORG_API_KEY }}
           nuget-version: latest
           
-      - name: Push to NuGet
-        run: dotnet nuget push nupkg\*.nupkg -k ${{ secrets.NUGETORG_API_KEY }} -s https://nuget.org --skip-duplicate
+      - name: Push Mtconnect.AdapterInterface to NuGet
+        run: dotnet nuget push nupkg\Mtconnect.AdapterInterface*.nupkg -k ${{ secrets.NUGETORG_API_KEY }} -s https://nuget.org --skip-duplicate
+        
+      - name: Push Mtconnect.TcpAdapter to NuGet
+        run: dotnet nuget push nupkg\Mtconnect.TcpAdapter*.nupkg -k ${{ secrets.NUGETORG_API_KEY }} -s https://nuget.org --skip-duplicate
