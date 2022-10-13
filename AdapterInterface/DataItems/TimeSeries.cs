@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Linq;
 
-namespace MtconnectCore.AdapterInterface.DataItems
+namespace Mtconnect.AdapterInterface.DataItems
 {
     public class TimeSeries : DataItem
     {

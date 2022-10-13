@@ -1,4 +1,4 @@
-﻿namespace MtconnectCore.AdapterInterface.DataItems
+﻿namespace Mtconnect.AdapterInterface.DataItems
 {
     /// <summary>
     /// A message is an event with an additional native code. The 

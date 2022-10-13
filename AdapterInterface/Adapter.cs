@@ -1,23 +1,17 @@
 ﻿using System;
-using System.IO;
 using System.Text;
-using System.Threading;
-using System.Net;
-using System.Net.Sockets;
-using System.Collections;
 using System.Collections.Generic;
 using System.Xml;
 using System.Linq;
 using Microsoft.Extensions.Logging;
-using MtconnectCore.AdapterInterface.DataItems;
-using MtconnectCore.AdapterInterface.Contracts;
-using MtconnectCore.AdapterInterface;
-using MtconnectCore.AdapterInterface.Assets;
+using Mtconnect.AdapterInterface.DataItems;
+using Mtconnect.AdapterInterface.Contracts;
+using Mtconnect.AdapterInterface;
+using Mtconnect.AdapterInterface.Assets;
 using System.Data;
 using System.Collections.Concurrent;
-using System.Globalization;
 
-namespace MtconnectCore
+namespace Mtconnect
 {
 
     /// <summary>
@@ -58,7 +52,8 @@ namespace MtconnectCore
         public DataItem this[string name]
         {
             get { return _dataItems[name]; }
-            set {
+            set
+            {
                 _dataItems[name] = value;
             }
         }
@@ -80,12 +75,14 @@ namespace MtconnectCore
         /// <summary>
         /// This is a method to set the heartbeat interval given in milliseconds.
         /// </summary>
-        public virtual double Heartbeat { 
-            get { return _heartbeat; } 
-            set { 
+        public virtual double Heartbeat
+        {
+            get { return _heartbeat; }
+            set
+            {
                 _heartbeat = value;
                 PONG = Encoder.GetBytes($"* PONG {_heartbeat}\n");
-            } 
+            }
         }
 
         /// <summary>
@@ -237,7 +234,7 @@ namespace MtconnectCore
                 {
                     string contents = string.Join("|", grouping.Select(o => o.ToString()));
                     string timestamp = grouping.Key.ToString(Constants.DATE_TIME_FORMAT);
-                    Write( $"{timestamp}|{contents}\n", clientId);
+                    Write($"{timestamp}|{contents}\n", clientId);
                 }
             }
         }
@@ -249,7 +246,7 @@ namespace MtconnectCore
         public virtual void AddAsset(Asset asset)
         {
             StringBuilder sb = new StringBuilder();
-            
+
             DateTime now = DateTime.UtcNow;
             sb.Append(now.ToString(Constants.DATE_TIME_FORMAT));
             sb.Append("|@ASSET@|");

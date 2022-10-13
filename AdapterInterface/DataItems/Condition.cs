@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 
-namespace MtconnectCore.AdapterInterface.DataItems
+namespace Mtconnect.AdapterInterface.DataItems
 {
     /// <summary>
     /// A condition handles the fact that a single condition can have multiple 

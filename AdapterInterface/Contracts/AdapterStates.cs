@@ -1,5 +1,5 @@
 ﻿
-namespace MtconnectCore.AdapterInterface.Contracts
+namespace Mtconnect.AdapterInterface.Contracts
 {
     /// <summary>
     /// Represents the various states of the MTConnect Adapter.

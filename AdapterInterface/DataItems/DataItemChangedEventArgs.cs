@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace MtconnectCore.AdapterInterface.DataItems
+namespace Mtconnect.AdapterInterface.DataItems
 {
     /// <summary>
     /// Contains information on when a <see cref="DataItem"/> was changed.

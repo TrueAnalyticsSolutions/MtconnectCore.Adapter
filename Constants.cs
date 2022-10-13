@@ -1,7 +1,7 @@
 ﻿
 using System;
 
-namespace MtconnectCore.AdapterInterface
+namespace Mtconnect.AdapterInterface
 {
     internal static class Constants
     {

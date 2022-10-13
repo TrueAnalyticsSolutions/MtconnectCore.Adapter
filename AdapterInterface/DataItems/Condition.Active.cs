@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace MtconnectCore.AdapterInterface.DataItems
+namespace Mtconnect.AdapterInterface.DataItems
 {
     public partial class Condition
     {

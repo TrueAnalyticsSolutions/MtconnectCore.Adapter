@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 
-namespace MtconnectCore.AdapterInterface.DataItems
+namespace Mtconnect.AdapterInterface.DataItems
 {
     /// <summary>
     /// Triggered when the value of a DataItem has changed.

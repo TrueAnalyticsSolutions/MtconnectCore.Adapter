@@ -1,5 +1,5 @@
 ﻿
-namespace MtconnectCore.AdapterInterface.Contracts
+namespace Mtconnect.AdapterInterface.Contracts
 {
     /// <summary>
     /// Represents methods for sending <see cref="DataItem"/>s.

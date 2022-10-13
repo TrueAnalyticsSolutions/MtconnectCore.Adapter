@@ -1,7 +1,7 @@
 ﻿// See https://aka.ms/new-console-template for more information
 using ConsoulLibrary;
-using MtconnectCore.AdapterInterface.DataItems;
-using MtconnectCore.TcpAdapter;
+using Mtconnect;
+using Mtconnect.AdapterInterface.DataItems;
 using SampleAdapter.PC;
 using System.Drawing;
 
@@ -90,7 +90,7 @@ namespace SampleAdapter
                 Adapter[PROGRAM].Unavailable();
             }
 
-            Adapter.Send(MtconnectCore.AdapterInterface.Contracts.DataItemSendTypes.Changed);
+            Adapter.Send(Mtconnect.AdapterInterface.Contracts.DataItemSendTypes.Changed);
         }
     }
 }

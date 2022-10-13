@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Xml;
 
-namespace MtconnectCore.AdapterInterface.Assets
+namespace Mtconnect.AdapterInterface.Assets
 {
     /// <summary>
     /// Abstract Asset class.

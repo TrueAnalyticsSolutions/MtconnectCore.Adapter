@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace MtconnectCore.AdapterInterface
+namespace Mtconnect.AdapterInterface
 {
     /// <summary>
     /// A DTO for serialized MTConnect Adapter configuration options.

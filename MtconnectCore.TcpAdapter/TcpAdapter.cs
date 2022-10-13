@@ -6,12 +6,11 @@ using System.Net;
 using System.Net.Sockets;
 using System.Threading;
 using Microsoft.Extensions.Logging;
-using MtconnectCore;
-using MtconnectCore.AdapterInterface;
-using MtconnectCore.AdapterInterface.Contracts;
-using MtconnectCore.AdapterInterface.DataItems;
+using Mtconnect.AdapterInterface;
+using Mtconnect.AdapterInterface.Contracts;
+using Mtconnect.AdapterInterface.DataItems;
 
-namespace MtconnectCore.TcpAdapter
+namespace Mtconnect
 {
     public sealed class TcpAdapter : Adapter
     {
