@@ -1,4 +1,4 @@
-<Project Sdk="Microsoft.NET.Sdk">
+﻿<Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
 	  <TargetFrameworks>netcoreapp3.1;netstandard2.1;net461;</TargetFrameworks>
@@ -15,7 +15,6 @@
 	  <Copyright>True Analytics Manufacturing Solutions, LLC 2022</Copyright>
 	  <PackageProjectUrl>https://github.com/TrueAnalyticsSolutions/MtconnectCore.Adapter</PackageProjectUrl>
 	  <PackageIcon>icon.jpg</PackageIcon>
-	  <PackageReadmeFile>Readme.md</PackageReadmeFile>
 	  <RepositoryUrl>https://github.com/TrueAnalyticsSolutions/MtconnectCore.Adapter</RepositoryUrl>
 	  <RepositoryType>git</RepositoryType>
 	  <PackageTags>Mtconnect;Adapter;TCP;TAMS;</PackageTags>

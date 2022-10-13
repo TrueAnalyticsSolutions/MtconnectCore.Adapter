@@ -20,7 +20,6 @@
     <PackageReleaseNotes>Initial publish of the MTConnect Adapter Interface.</PackageReleaseNotes>
     <ApplicationIcon>icon.ico</ApplicationIcon>
     <PackageProjectUrl>https://github.com/TrueAnalyticsSolutions/MtconnectCore.Adapter</PackageProjectUrl>
-    <PackageReadmeFile>Readme.md</PackageReadmeFile>
     <RepositoryUrl>$(ProjectUrl)</RepositoryUrl>
   </PropertyGroup>
 
