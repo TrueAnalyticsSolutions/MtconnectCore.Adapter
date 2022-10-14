@@ -9,22 +9,16 @@ namespace SampleAdapter
 {
     public static class Program
     {
-        private const string AVAILABILITY = "avail";
-        private const string X_POSITION = "xpos";
-        private const string Y_POSITION = "ypos";
-        private const string PROGRAM = "prog";
-
         private const string PUTTY_EXE = "C:\\Program Files\\PuTTY\\putty.exe";
         private const string CMD_EXE = "C:\\windows\\system32\\cmd.exe";
 
-        public static System.Timers.Timer Timer { get; set; } = new System.Timers.Timer();
 
         public static TcpAdapter Adapter { get; set; } = new TcpAdapter();
 
+        public static PCModel Model { get; set; } = new PCModel();
+
         public static void Main(string[] args)
         {
-            Timer.Interval = 50;
-            Timer.Elapsed += Timer_Elapsed;
 
             Adapter.AddDataItem(new Event(AVAILABILITY));
             Adapter.AddDataItem(new Sample(X_POSITION));
@@ -56,41 +50,7 @@ namespace SampleAdapter
 
             Consoul.Wait();
 
-            Timer.Stop();
             Adapter.Stop();
-        }
-
-        private static void Timer_Elapsed(object? sender, System.Timers.ElapsedEventArgs e)
-        {
-            Adapter[AVAILABILITY].Value = "AVAILABLE";
-
-            Point lpPoint;
-            if (WindowHandles.GetCursorPos(out lpPoint))
-            {
-                Adapter[X_POSITION].Value = lpPoint.X;
-                Adapter[Y_POSITION].Value = lpPoint.Y;
-            } else
-            {
-                Adapter[X_POSITION].Unavailable();
-                Adapter[Y_POSITION].Unavailable();
-            }
-
-            try
-            {
-                string activeWindowTitle = WindowHandles.GetActiveWindowTitle();
-                if (!string.IsNullOrEmpty(activeWindowTitle))
-                {
-                    Adapter[PROGRAM].Value = activeWindowTitle;
-                } else {
-                    Adapter[PROGRAM].Unavailable();
-                }
-            }
-            catch (Exception ex)
-            {
-                Adapter[PROGRAM].Unavailable();
-            }
-
-            Adapter.Send(Mtconnect.AdapterInterface.Contracts.DataItemSendTypes.Changed);
         }
     }
 }

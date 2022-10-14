@@ -91,6 +91,11 @@ namespace Mtconnect
         public AdapterStates State { get; protected set; } = AdapterStates.NotStarted;
 
         /// <summary>
+        /// An optional reference to an Adapter source. If the Adapter is started with a reference to a source, this is where the reference is maintained.
+        /// </summary>
+        private IAdapterSource _source { get; set; }
+
+        /// <summary>
         /// Create an adapter. Defaults the heartbeat to 10 seconds and the 
         /// port to 7878
         /// </summary>
@@ -265,6 +270,7 @@ namespace Mtconnect
 
             Write(sb.ToString());
         }
+        
         /// <summary>
         /// The heartbeat thread for a client. This thread receives data from a client, closes the socket when it fails, and handles communication timeouts when the client does not send a heartbeat within 2x the heartbeat frequency. When the heartbeat is not received, the client is assumed to be unresponsive and the connection is closed. Waits for one ping to be received before enforcing the timeout. 
         /// </summary>
@@ -276,6 +282,27 @@ namespace Mtconnect
         /// </summary>
         /// <param name="begin">Flag for whether or not to also call <see cref="Begin"/>.</param>
         public abstract void Start(bool begin = true);
+
+        /// <summary>
+        /// Starts the listener thread and the provided <see cref="IAdapterSource"/>.
+        /// </summary>
+        /// <param name="source">Reference to the source of the Adapter.</param>
+        /// <param name="begin">Flag for whether or not to also call <see cref="Begin"/>.</param>
+        public void Start(IAdapterSource source, bool begin = true)
+        {
+            Start(begin);
+
+            _source = source;
+            _source.OnDataReceived += _source_OnDataReceived;
+            // TODO: Fill DataItems from DataItemAttribute
+            _source.Start();
+        }
+
+        private void _source_OnDataReceived(object sender, DataReceivedEventArgs e)
+        {
+            // TODO: Fill DataItems from DataItemAttribute
+            throw new NotImplementedException();
+        }
 
         /// <summary>
         /// Stop the listener thread and shutdown all client connections.

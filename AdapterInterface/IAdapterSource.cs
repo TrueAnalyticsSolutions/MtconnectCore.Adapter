@@ -11,7 +11,7 @@ namespace Mtconnect
     /// <summary>
     /// A generic interface for instantiating a source for a MTConnect Adapter.
     /// </summary>
-    internal interface IAdapterSource
+    public interface IAdapterSource
     {
         /// <summary>
         /// Handles the event when an Adapter source has finished receiving and processing data.
