@@ -24,10 +24,10 @@ jobs:
       run: dotnet build "MtconnectCore.TcpAdapter\TcpAdapter.csproj" --configuration Release
       
     - name: Pack Mtconnect.Adapter
-      run: dotnet pack AdapterInterface --configuration Release -o finalpackage --no-build
+      run: dotnet pack "AdapterInterface\AdapterInterface.csproj" --configuration Release -o finalpackage --no-build
       
     - name: Pack Mtconnect.TcpAdapter
-      run: dotnet pack TcpAdapter --configuration Release -o finalpackage --no-build
+      run: dotnet pack "MtconnectCore.TcpAdapter\TcpAdapter.csproj" --configuration Release -o finalpackage --no-build
     
     - name: Publish Artifact
       uses: actions/upload-artifact@master
