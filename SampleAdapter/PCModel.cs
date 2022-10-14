@@ -6,9 +6,15 @@ using System.Drawing;
 
 namespace SampleAdapter
 {
-    public class PCModel : IAdapterSource
+    /// <summary>
+    /// Contains an internal timer that periodically gets the current mouse position and active window title then publishes the values to an Adapter.
+    /// </summary>
+    public class PCStatusMonitor : IAdapterSource
     {
-        public event DataReceivedHandler OnDataReceived;
+        /// <summary>
+        /// Fires when the <see cref="IAdapterSource"/> changes any of its properties.
+        /// </summary>
+        public event DataReceivedHandler? OnDataReceived;
 
         [Event("avail")]
         public string? Availability { get; set; }
@@ -28,7 +34,7 @@ namespace SampleAdapter
         /// Constructs a new instance of the PC monitor.
         /// </summary>
         /// <param name="sampleRate">The frequency for which the current states of the PC are collected (in milliseconds).</param>
-        public PCModel(int sampleRate = 50)
+        public PCStatusMonitor(int sampleRate = 50)
         {
             Timer.Interval = sampleRate;
             Timer.Elapsed += Timer_Elapsed; ;

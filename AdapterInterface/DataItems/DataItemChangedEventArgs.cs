@@ -27,6 +27,13 @@ namespace Mtconnect.AdapterInterface.DataItems
         /// </summary>
         public DateTime ChangeTime { get; }
 
+        /// <summary>
+        /// Constructs a new reference EventArgs for the DataItemChanged event.
+        /// </summary>
+        /// <param name="previousValue">The <see cref="DataItem"/>s value before the change.</param>
+        /// <param name="newValue">The <see cref="DataItem"/>s value after the change.</param>
+        /// <param name="previousChangeTime">Reference to the <see cref="DateTime"/> the <see cref="DataItem"/>s value previously changed.</param>
+        /// <param name="changeTime">Reference tot he <see cref="DateTime"/> the <see cref="DataItem"/>s value currently changed.</param>
         public DataItemChangedEventArgs(object previousValue, object newValue, DateTime? previousChangeTime, DateTime changeTime)
         {
             PreviousValue = previousValue;

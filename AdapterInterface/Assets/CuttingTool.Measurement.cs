@@ -10,7 +10,18 @@ namespace Mtconnect.AdapterInterface.Assets
         /// A cutting tool or cutting item measurement
         /// </summary>
         public class Measurement : Property
-        {           
+        {
+            /// <summary>
+            /// Constructs a new Cutting Item Measurement property.
+            /// </summary>
+            /// <param name="name"></param>
+            /// <param name="code"></param>
+            /// <param name="value"></param>
+            /// <param name="nominal"></param>
+            /// <param name="min"></param>
+            /// <param name="max"></param>
+            /// <param name="native"></param>
+            /// <param name="units"></param>
             public Measurement(string name, string code, double value = CT_NULL, double nominal = CT_NULL,
                 double min = CT_NULL, double max = CT_NULL, string native = null, string units = null)
                 : base(name)

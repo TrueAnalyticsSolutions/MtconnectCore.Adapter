@@ -12,25 +12,50 @@ namespace Mtconnect.AdapterInterface.Assets
     /// </summary>
     public partial class CuttingTool : Asset
     {
-        public const double CT_NULL = Double.NaN;
+        internal const double CT_NULL = Double.NaN;
 
+        /// <summary>
+        /// Unique identifier of the instance of this tool.
+        /// </summary>
         public string SerialNumber { set; get; }
+
+        /// <summary>
+        /// Identifier for a class of Cutting Tools.
+        /// </summary>
         public string ToolId { set; get; }
+
+        /// <summary>
+        /// This can contain configuration information and manufacturer specific details.
+        /// </summary>
         public string Description { set; get; }
+
+        /// <summary>
+        /// Referring to the manufacturer(s) of this Cutting Tool.
+        /// </summary>
         public string Manufacturers { set; get; }
 
-        protected HashSet<Property> mProperties = new HashSet<Property>();
-        protected HashSet<Measurement> mMeasurements = new HashSet<Measurement>();
-        protected ArrayList mItems = new ArrayList();
+        /// <summary>
+        /// Collection of generic properties for the Cutting Tool.
+        /// </summary>
+        protected HashSet<Property> Properties = new HashSet<Property>();
+
+        /// <summary>
+        /// Collection of measurement values for the Cutting Tool.
+        /// </summary>
+        protected HashSet<Measurement> Measurements = new HashSet<Measurement>();
+
+        /// <summary>
+        /// Collection of Cutting Items that make up the Cutting Tool.
+        /// </summary>
+        protected ArrayList Items = new ArrayList();
 
         /// <summary>
         /// Creates a new cutting tool asset
         /// </summary>
-        /// <param name="assetId">The asset id</param>
-        /// <param name="toolId">The tool id</param>
-        /// <param name="serialNumber">The serial number of the tool</param>
-        public CuttingTool(string assetId, string toolId, string serialNumber)
-            : base(assetId)
+        /// <param name="assetId"><inheritdoc cref="Asset.AssetId" path="/summary"/></param>
+        /// <param name="toolId"><inheritdoc cref="ToolId" path="/summary"/></param>
+        /// <param name="serialNumber"><inheritdoc cref="SerialNumber" path="/summary"/></param>
+        public CuttingTool(string assetId, string toolId, string serialNumber) : base(assetId)
         {
             ToolId = toolId;
             SerialNumber = serialNumber;
@@ -62,7 +87,7 @@ namespace Mtconnect.AdapterInterface.Assets
         /// <param name="property">The property</param>
         public void AddProperty(Property property)
         {
-            mProperties.Add(property);
+            Properties.Add(property);
         }
 
         /// <summary>
@@ -75,7 +100,7 @@ namespace Mtconnect.AdapterInterface.Assets
         public Property AddProperty(string name, string[] arguments, string value = null)
         {
             Property property = new Property(name, arguments, value);
-            mProperties.Add(property);
+            Properties.Add(property);
             return property;
         }
 
@@ -87,7 +112,7 @@ namespace Mtconnect.AdapterInterface.Assets
         public CutterStatus AddStatus(string[] status)
         {
             CutterStatus cs = new CutterStatus(status);
-            mProperties.Add(cs);
+            Properties.Add(cs);
             return cs;
         }
 
@@ -109,7 +134,7 @@ namespace Mtconnect.AdapterInterface.Assets
                 string native = null, string units = null)
         {
             Measurement meas = new Measurement(name, code, value, nominal, min, max, native, units);
-            mMeasurements.Add(meas);
+            Measurements.Add(meas);
             return meas;
         }
 
@@ -137,7 +162,7 @@ namespace Mtconnect.AdapterInterface.Assets
                 life.AddAttribute(new Property.Attribute("limit", limit));
             if (warning != null)
                 life.AddAttribute(new Property.Attribute("warning", warning));
-            mProperties.Add(life);
+            Properties.Add(life);
             return life;
         }
 
@@ -147,7 +172,7 @@ namespace Mtconnect.AdapterInterface.Assets
         /// <param name="item">The cutting item</param>
         public void AddItem(CuttingItem item)
         {
-            mItems.Add(item);
+            Items.Add(item);
         }
 
         /// <summary>
@@ -167,20 +192,20 @@ namespace Mtconnect.AdapterInterface.Assets
                 writer.WriteElementString("Description", Description);
 
                 writer.WriteStartElement("CuttingToolLifeCycle");
-                    foreach (Property prop in mProperties)
+                    foreach (Property prop in Properties)
                         prop.ToXml(writer);
-                    if (mMeasurements.Count > 0)
+                    if (Measurements.Count > 0)
                     {
                         writer.WriteStartElement("Measurements");
-                            foreach (Measurement meas in mMeasurements)
+                            foreach (Measurement meas in Measurements)
                                 meas.ToXml(writer);
                         writer.WriteEndElement();
                     }
 
-                    if (mItems.Count > 0)
+                    if (Items.Count > 0)
                     {
                         writer.WriteStartElement("CuttingItems");
-                            foreach (CuttingItem item in mItems)
+                            foreach (CuttingItem item in Items)
                                 item.ToXml(writer);
                         writer.WriteEndElement();
                     }

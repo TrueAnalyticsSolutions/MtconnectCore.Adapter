@@ -12,13 +12,20 @@ namespace Mtconnect.AdapterInterface.Assets
         /// </summary>
         public class CutterStatus : Property
         {
-            public HashSet<string> mStatus;
+            /// <summary>
+            /// The status of the Cutting Tool.
+            /// </summary>
+            public HashSet<string> Status;
 
+            /// <summary>
+            /// Constructs a new CutterStatus reference.
+            /// </summary>
+            /// <param name="status"><inheritdoc cref="Status" path="/summary"/></param>
             public CutterStatus(string[] status) : base("CutterStatus")
             {
-                mStatus = new HashSet<string>();
+                Status = new HashSet<string>();
                 foreach (string s in status)
-                    mStatus.Add(s);
+                    Status.Add(s);
             }
 
             /// <summary>
@@ -27,7 +34,7 @@ namespace Mtconnect.AdapterInterface.Assets
             /// <param name="s">The status to add</param>
             public void Add(string s)
             {
-                mStatus.Add(s);
+                Status.Add(s);
             }
 
             /// <summary>
@@ -36,7 +43,7 @@ namespace Mtconnect.AdapterInterface.Assets
             /// <param name="s">The status to remove</param>
             public void Remove(string s)
             {
-                mStatus.Remove(s);
+                Status.Remove(s);
             }
 
             /// <summary>
@@ -48,7 +55,7 @@ namespace Mtconnect.AdapterInterface.Assets
             {
                 writer.WriteStartElement(Name);
 
-                foreach (string s in mStatus)
+                foreach (string s in Status)
                     writer.WriteElementString("Status", s);
 
                 writer.WriteEndElement();

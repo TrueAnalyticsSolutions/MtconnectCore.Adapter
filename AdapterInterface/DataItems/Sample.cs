@@ -5,6 +5,7 @@
     /// </summary>
     public class Sample : DataItem
     {
+        /// <inheritdoc />
         public Sample(string name) : base(name) { }
     }
 }

@@ -12,24 +12,49 @@ namespace Mtconnect.AdapterInterface.Assets
         /// </summary>
         public class CuttingItem
         {
-            protected HashSet<Property> mProperties = new HashSet<Property>();
-            protected HashSet<Measurement> mMeasurements = new HashSet<Measurement>();
+            /// <summary>
+            /// Collection of generic properties for the Cutting Item.
+            /// </summary>
+            protected HashSet<Property> Properties = new HashSet<Property>();
 
+            /// <summary>
+            /// Collection of measurement values for the Cutting Item.
+            /// </summary>
+            protected HashSet<Measurement> Measurements = new HashSet<Measurement>();
+
+            /// <summary>
+            /// The number(s) representing the individual Cutting Item(s) on the tool.
+            /// </summary>
             public string Indices { set; get; }
+
+            /// <summary>
+            /// The manufacturer identifier of this Cutting Item.
+            /// </summary>
             public string ItemId { set; get; }
+
+            /// <summary>
+            /// The material composition for this Cutting Item.
+            /// </summary>
             public string Grade { set; get; }
+
+            /// <summary>
+            /// The manufacturer(s) of the Cutting Item or Tool.
+            /// </summary>
             public string Manufacturers { set; get; }
+
+            /// <summary>
+            /// A free-form description of the Cutting Item.
+            /// </summary>
             public string Description { set; get; }
-            
+
             /// <summary>
             /// Create a cutting item with identity info
             /// </summary>
-            /// <param name="indices">The index range</param>
-            /// <param name="id">The id (if indices are not used)</param>
-            /// <param name="grade">The cutting item material grade</param>
-            /// <param name="manufacturers">The manufacturers of this item</param>
-            public CuttingItem(string indices, string id = null, string grade = null,
-                string manufacturers = null)
+            /// <param name="indices"><inheritdoc cref="Indices" path="/summary"/></param>
+            /// <param name="id"><inheritdoc cref="ItemId" path="/summary"/></param>
+            /// <param name="grade"><inheritdoc cref="Grade" path="/summary"/></param>
+            /// <param name="manufacturers"><inheritdoc cref="Manufacturers" path="/summary"/></param>
+            public CuttingItem(string indices, string id = null, string grade = null, string manufacturers = null)
             {
                 Indices = indices;
                 ItemId = id;
@@ -47,7 +72,7 @@ namespace Mtconnect.AdapterInterface.Assets
             public Property AddProperty(string name, string[] arguments, string value = null)
             {
                 Property property = new Property(name, arguments, value);
-                mProperties.Add(property);
+                Properties.Add(property);
                 return property;
             }
 
@@ -60,7 +85,7 @@ namespace Mtconnect.AdapterInterface.Assets
             public Property AddProperty(string name, string value)
             {
                 Property property = new Property(name,  value);
-                mProperties.Add(property);
+                Properties.Add(property);
                 return property;
             }
 
@@ -76,19 +101,38 @@ namespace Mtconnect.AdapterInterface.Assets
             /// <param name="native">The native units</param>
             /// <param name="units">Must be the standard units</param>
             /// <returns>The measurement</returns>
-            public Measurement AddMeasurement(string name, string code,
-                    double value = CT_NULL, double nominal = CT_NULL,
-                    double min = CT_NULL, double max = CT_NULL,
-                    string native = null, string units = null)
+            public Measurement AddMeasurement(
+                string name,
+                string code,
+                double value = CT_NULL,
+                double nominal = CT_NULL,
+                double min = CT_NULL,
+                double max = CT_NULL,
+                string native = null,
+                string units = null)
             {
                 Measurement meas = new Measurement(name, code, value, nominal, min, max, native, units);
-                mMeasurements.Add(meas);
+                Measurements.Add(meas);
                 return meas;
             }
 
-            public Property AddLife(LifeType type, Direction direction, string value = null,
-                                    string initial = null,
-                                    string limit = null, string warning = null)
+            /// <summary>
+            /// Add a life of the Cutting Item.
+            /// </summary>
+            /// <param name="type"><inheritdoc cref="LifeType" path="/summary"/></param>
+            /// <param name="direction">Indicates if the tool life counts from zero to maximum or maximum to zero.</param>
+            /// <param name="value">Current value for tool life</param>
+            /// <param name="initial">The initial life of the tool when it is new.</param>
+            /// <param name="limit">The end of life limit for this tool.</param>
+            /// <param name="warning">The point at which a tool life warning will be raised.</param>
+            /// <returns></returns>
+            public Property AddLife(
+                LifeType type,
+                Direction direction,
+                string value = null,
+                string initial = null,
+                string limit = null,
+                string warning = null)
             {
                 Property life = new Property("ItemLife");
                 life.Value = value;
@@ -100,10 +144,11 @@ namespace Mtconnect.AdapterInterface.Assets
                     life.AddAttribute(new Property.Attribute("limit", limit));
                 if (warning != null)
                     life.AddAttribute(new Property.Attribute("warning", warning));
-                mProperties.Add(life);
+                Properties.Add(life);
                 return life;
             }
 
+            /// <inheritdoc cref="Asset.ToXml(XmlWriter)"/>
             public XmlWriter ToXml(XmlWriter writer)
             {
                 writer.WriteStartElement("CuttingItem");
@@ -118,13 +163,13 @@ namespace Mtconnect.AdapterInterface.Assets
                     if (Description != null)
                         writer.WriteElementString("Description", Description);
 
-                    foreach (Property prop in mProperties)
+                    foreach (Property prop in Properties)
                         prop.ToXml(writer);
 
-                    if (mMeasurements.Count > 0)
+                    if (Measurements.Count > 0)
                     {
                         writer.WriteStartElement("Measurements");
-                            foreach (Measurement meas in mMeasurements)
+                            foreach (Measurement meas in Measurements)
                                 meas.ToXml(writer);
                         writer.WriteEndElement();
                     }

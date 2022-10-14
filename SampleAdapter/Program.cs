@@ -15,19 +15,11 @@ namespace SampleAdapter
 
         public static TcpAdapter Adapter { get; set; } = new TcpAdapter();
 
-        public static PCModel Model { get; set; } = new PCModel();
+        public static PCStatusMonitor Model { get; set; } = new PCStatusMonitor();
 
         public static void Main(string[] args)
         {
-
-            Adapter.AddDataItem(new Event(AVAILABILITY));
-            Adapter.AddDataItem(new Sample(X_POSITION));
-            Adapter.AddDataItem(new Sample(Y_POSITION));
-            Adapter.AddDataItem(new Event(PROGRAM));
-
-            Timer.Start();
-
-            Adapter.Start();
+            Adapter.Start(Model);
 
             Consoul.Write("Reporting: AVAILABILITY, Mouse X-Position, Mouse Y-Position, Active Window Title");
             Consoul.Write($"Adapter running @ http://*:{Adapter.Port}");

@@ -1,4 +1,6 @@
 ﻿
+using Mtconnect.AdapterInterface.DataItems;
+
 namespace Mtconnect.AdapterInterface.Contracts
 {
     /// <summary>

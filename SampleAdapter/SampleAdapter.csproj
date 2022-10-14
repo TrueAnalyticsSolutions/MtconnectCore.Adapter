@@ -19,7 +19,7 @@
 
   <ItemGroup>
     <ProjectReference Include="..\AdapterInterface\AdapterInterface.csproj" />
-    <ProjectReference Include="..\MtconnectCore.TcpAdapter\MtconnectCore.TcpAdapter.csproj" />
+    <ProjectReference Include="..\MtconnectCore.TcpAdapter\TcpAdapter.csproj" />
   </ItemGroup>
 
 </Project>

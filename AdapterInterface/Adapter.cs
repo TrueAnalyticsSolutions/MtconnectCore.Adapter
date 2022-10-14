@@ -10,6 +10,10 @@ using Mtconnect.AdapterInterface;
 using Mtconnect.AdapterInterface.Assets;
 using System.Data;
 using System.Collections.Concurrent;
+using System.Reflection;
+using Mtconnect.AdapterInterface.Contracts.Attributes;
+using System.Diagnostics.Tracing;
+using EventAttribute = Mtconnect.AdapterInterface.Contracts.Attributes.EventAttribute;
 
 namespace Mtconnect
 {
@@ -63,6 +67,25 @@ namespace Mtconnect
         /// </summary>
         public bool HasBegun { get; protected set; } = false;
 
+        private bool _canEnqueueDataItems = false;
+        /// <summary>
+        /// Flags whether or not the Adapter can store reported DataItem value from its source. The internal queue can ensure that all values reported from the data source are pushed thru the implemented stream.
+        /// <br/><br/>
+        /// Setting this to false will automatically send the entire queue thru the stream.
+        /// </summary>
+        public bool CanEnqueueDataItems
+        {
+            get { return _canEnqueueDataItems; }
+            set
+            {
+                _canEnqueueDataItems = value;
+                if (!_canEnqueueDataItems && _values.Count > 0)
+                {
+                    Send(DataItemSendTypes.Queued);
+                }
+            }
+        }
+
         /// <summary>
         /// The ascii encoder for creating the messages.
         /// </summary>
@@ -105,11 +128,15 @@ namespace Mtconnect
             Heartbeat = heartbeat;
         }
 
-        public Adapter(Options options)
+        /// <summary>
+        /// Generic constructor of a new Adapter instance with basic AdapterOptions.
+        /// </summary>
+        /// <param name="options"><inheritdoc cref="AdapterOptions" path="/summary"/></param>
+        public Adapter(AdapterOptions options)
         {
             Heartbeat = options.Heartbeat;
+            CanEnqueueDataItems = options.CanEnqueueDataItems;
         }
-
 
         /// <summary>
         /// Add a data item to the adapter.
@@ -288,25 +315,83 @@ namespace Mtconnect
         /// </summary>
         /// <param name="source">Reference to the source of the Adapter.</param>
         /// <param name="begin">Flag for whether or not to also call <see cref="Begin"/>.</param>
-        public void Start(IAdapterSource source, bool begin = true)
+        public void Start<T>(T source, bool begin = true) where T : class, IAdapterSource
         {
             Start(begin);
 
             _source = source;
             _source.OnDataReceived += _source_OnDataReceived;
-            // TODO: Fill DataItems from DataItemAttribute
+
+            // TODO: Cache the property map
+            Type sourceType = typeof(T);
+            var dataItemProperties = sourceType.GetProperties().Where(o => o.GetCustomAttribute(typeof(DataItemAttribute)) != null);
+            foreach (var property in dataItemProperties)
+            {
+                var dataItemAttribute = property.GetCustomAttribute(typeof(DataItemAttribute));
+                switch (dataItemAttribute)
+                {
+                    case EventAttribute eventAttribute:
+                        AddDataItem(new Event(eventAttribute.Name));
+                        break;
+                    case SampleAttribute sampleAttribute:
+                        AddDataItem(new Sample(sampleAttribute.Name));
+                        break;
+                    case ConditionAttribute conditionAttribute:
+                        AddDataItem(new Condition(conditionAttribute.Name));
+                        break;
+                    case TimeSeriesAttribute timeSeriesAttribute:
+                        AddDataItem(new TimeSeries(timeSeriesAttribute.Name));
+                        break;
+                    case MessageAttribute messageAttribute:
+                        AddDataItem(new Message(messageAttribute.Name));
+                        break;
+                    default:
+                        break;
+                }
+            }
+
             _source.Start();
         }
 
         private void _source_OnDataReceived(object sender, DataReceivedEventArgs e)
         {
-            // TODO: Fill DataItems from DataItemAttribute
-            throw new NotImplementedException();
+            // TODO: Cache the property map
+            Type sourceType = sender.GetType();
+            var dataItemProperties = sourceType.GetProperties().Where(o => o.GetCustomAttribute(typeof(DataItemAttribute)) != null);
+            foreach (var property in dataItemProperties)
+            {
+                var dataItemAttribute = property.GetCustomAttribute(typeof(DataItemAttribute));
+                switch (dataItemAttribute)
+                {
+                    case EventAttribute eventAttribute:
+                        this[eventAttribute.Name].Value = property.GetValue(sender);
+                        break;
+                    case SampleAttribute sampleAttribute:
+                        this[sampleAttribute.Name].Value = property.GetValue(sender);
+                        break;
+                    case ConditionAttribute conditionAttribute:
+                        this[conditionAttribute.Name].Value = property.GetValue(sender);
+                        break;
+                    case TimeSeriesAttribute timeSeriesAttribute:
+                        this[timeSeriesAttribute.Name].Value = property.GetValue(sender);
+                        break;
+                    case MessageAttribute messageAttribute:
+                        this[messageAttribute.Name].Value = property.GetValue(sender);
+                        break;
+                    default:
+                        break;
+                }
+            }
+
+            Send(DataItemSendTypes.Changed);
         }
 
         /// <summary>
-        /// Stop the listener thread and shutdown all client connections.
+        /// Stop the listener thread and shutdown all client connections. Make sure to call this base method when overriding to ensure any internal properties are properly stopped.
         /// </summary>
-        public abstract void Stop();
+        public virtual void Stop()
+        {
+            _source?.Stop();
+        }
     }
 }

@@ -12,6 +12,9 @@ using Mtconnect.AdapterInterface.DataItems;
 
 namespace Mtconnect
 {
+    /// <summary>
+    /// An implementation of a MTConnect Adapter that publishes data thru a TCP stream.
+    /// </summary>
     public sealed class TcpAdapter : Adapter
     {
         /// <summary>
@@ -39,13 +42,20 @@ namespace Mtconnect
         /// </summary>
         private TcpListener _listener;
 
-
+        /// <summary>
+        /// Constructs a new TCP Adapter
+        /// </summary>
+        /// <param name="port"></param>
         public TcpAdapter(int port = 7878) : base(port)
         {
             Port = port;
         }
 
-        public TcpAdapter(Options options) : base(options)
+        /// <summary>
+        /// Constructs a new <see cref="TcpAdapter"/>.
+        /// </summary>
+        /// <param name="options"><inheritdoc cref="TcpAdapterOptions" path="/summary"/></param>
+        public TcpAdapter(TcpAdapterOptions options) : base(options)
         {
             Port = options.Port;
         }
@@ -71,6 +81,8 @@ namespace Mtconnect
         /// <inheritdoc />
         public override void Stop()
         {
+            base.Stop();
+
             if (State > AdapterStates.NotStarted)
             {
                 State = AdapterStates.Stopping;
@@ -112,6 +124,7 @@ namespace Mtconnect
         /// <summary>
         /// For testing, add a io stream to the adapter.
         /// </summary>
+        /// <param name="clientId">The client who sent the text</param>
         /// <param name="aStream">A IO Stream</param>
         public void addClientStream(string clientId, Stream aStream)
         {
@@ -157,7 +170,7 @@ namespace Mtconnect
         /// <summary>
         /// Receive data from a client and implement heartbeat ping/pong protocol.
         /// </summary>
-        /// <param name="clientStream">The client who sent the text</param>
+        /// <param name="clientId">The client who sent the text</param>
         /// <param name="line">The line of text</param>
         private bool Receive(string clientId, string line)
         {
@@ -191,7 +204,7 @@ namespace Mtconnect
         /// <summary>
         /// Send text to a client as a byte array. Handles execptions and remove the client from the list of clients if the write fails. Also makes sure the client connection is closed when it fails.
         /// </summary>
-        /// <param name="clientStream">The client to send the message to</param>
+        /// <param name="clientId">The client to send the message to</param>
         /// <param name="message">The message</param>
         private void WriteToClient(string clientId, byte[] message)
         {

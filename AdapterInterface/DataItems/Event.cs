@@ -5,6 +5,7 @@
     /// </summary>
     public class Event : DataItem 
     {
+        /// <inheritdoc />
         public Event(string name) : base(name) { }
     }
 }
