@@ -15,9 +15,9 @@ namespace Mtconnect
         /// <summary>
         /// Constructs the most basic options for configuring a MTConnect Adapter.
         /// </summary>
-        /// <param name="heartbeat"><inheritdoc cref="AdapterOptions.AdapterOptions(double)" path="/param[@name='heartbeat']"/></param>
+        /// <param name="heartbeat"><inheritdoc cref="AdapterOptions.AdapterOptions" path="/param[@name='heartbeat']"/></param>
         /// <param name="port"><inheritdoc cref="TcpAdapterOptions.Port" path="/summary"/></param>
-        public TcpAdapterOptions(double heartbeat, int port = 7878) : base(heartbeat)
+        public TcpAdapterOptions(double heartbeat = 10_000, int port = 7878) : base(heartbeat)
         {
             Port = port;
         }

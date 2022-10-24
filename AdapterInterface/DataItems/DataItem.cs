@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Linq.Expressions;
 
 namespace Mtconnect.AdapterInterface.DataItems
 {
@@ -22,7 +23,7 @@ namespace Mtconnect.AdapterInterface.DataItems
         /// <summary>
         /// The name of the data item.
         /// </summary>
-        public string Name { get; }
+        public string Name { get; internal set; }
 
         /// <summary>
         /// Optional device prefix.
@@ -40,12 +41,15 @@ namespace Mtconnect.AdapterInterface.DataItems
         {
             set
             {
-                if (!_value.Equals(value))
+                var updatedValue = value;
+                if (FormatValue != null) updatedValue = FormatValue(updatedValue);
+
+                if (_value?.Equals(updatedValue) == false)
                 {
                     var now = DateTime.UtcNow;
-                    var e = new DataItemChangedEventArgs(_value, value, LastChanged, now);
+                    var e = new DataItemChangedEventArgs(_value, updatedValue, LastChanged, now);
 
-                    _value = value;
+                    _value = updatedValue;
                     LastChanged = now;
 
                     HasChanged = true;
@@ -78,6 +82,11 @@ namespace Mtconnect.AdapterInterface.DataItems
         public bool HasNewLine { get; protected set; }
 
         /// <summary>
+        /// An expression that can be used to apply additional formatting or transformations to the DataItem value.
+        /// </summary>
+        public Func<object, object> FormatValue { get; set; }
+
+        /// <summary>
         /// Create a new data item
         /// </summary>
         /// <param name="name">The name of the data item</param>
@@ -95,7 +104,7 @@ namespace Mtconnect.AdapterInterface.DataItems
         /// Checks if the data item is unavailable.
         /// </summary>
         /// <returns>true if Unavailable</returns>
-        public bool IsUnavailable() => _value.Equals(Constants.UNAVAILABLE);
+        public bool IsUnavailable() => _value?.Equals(Constants.UNAVAILABLE) == true;
 
         /// <summary>
         /// Forces this <see cref="DataItem"/> to indicate that the <see cref="Value"/> has changed.
@@ -112,9 +121,9 @@ namespace Mtconnect.AdapterInterface.DataItems
         public override string ToString()
         {
             if (DevicePrefix == null)
-                return $"{Name}|{_value}";
+                return $"{Name}|{Value}";
             else
-                return $"{DevicePrefix}:{Name}|{_value}";
+                return $"{DevicePrefix}:{Name}|{Value}";
         }
 
         /// <summary>

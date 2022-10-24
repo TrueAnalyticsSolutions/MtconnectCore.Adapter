@@ -43,15 +43,6 @@ namespace Mtconnect
         private TcpListener _listener;
 
         /// <summary>
-        /// Constructs a new TCP Adapter
-        /// </summary>
-        /// <param name="port"></param>
-        public TcpAdapter(int port = 7878) : base(port)
-        {
-            Port = port;
-        }
-
-        /// <summary>
         /// Constructs a new <see cref="TcpAdapter"/>.
         /// </summary>
         /// <param name="options"><inheritdoc cref="TcpAdapterOptions" path="/summary"/></param>

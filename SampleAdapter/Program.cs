@@ -13,12 +13,16 @@ namespace SampleAdapter
         private const string CMD_EXE = "C:\\windows\\system32\\cmd.exe";
 
 
-        public static TcpAdapter Adapter { get; set; } = new TcpAdapter();
+        public static TcpAdapter Adapter { get; set; }
 
         public static PCStatusMonitor Model { get; set; } = new PCStatusMonitor();
 
         public static void Main(string[] args)
         {
+            var options = new TcpAdapterOptions();
+            options.UpdateFromConfig();
+
+            Adapter = new TcpAdapter(options);
             Adapter.Start(Model);
 
             Consoul.Write("Reporting: AVAILABILITY, Mouse X-Position, Mouse Y-Position, Active Window Title");

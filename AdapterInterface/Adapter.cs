@@ -116,17 +116,9 @@ namespace Mtconnect
         /// <summary>
         /// An optional reference to an Adapter source. If the Adapter is started with a reference to a source, this is where the reference is maintained.
         /// </summary>
-        private IAdapterSource _source { get; set; }
+        private List<IAdapterSource> _sources { get; set; } = new List<IAdapterSource>();
 
-        /// <summary>
-        /// Create an adapter. Defaults the heartbeat to 10 seconds and the 
-        /// port to 7878
-        /// </summary>
-        /// <param name="heartbeat">The optional heartbeat (default: 10,000)</param>
-        public Adapter(int heartbeat = 10_000)
-        {
-            Heartbeat = heartbeat;
-        }
+        private AdapterOptions _options { get; set; }
 
         /// <summary>
         /// Generic constructor of a new Adapter instance with basic AdapterOptions.
@@ -134,6 +126,7 @@ namespace Mtconnect
         /// <param name="options"><inheritdoc cref="AdapterOptions" path="/summary"/></param>
         public Adapter(AdapterOptions options)
         {
+            _options = options;
             Heartbeat = options.Heartbeat;
             CanEnqueueDataItems = options.CanEnqueueDataItems;
         }
@@ -145,24 +138,40 @@ namespace Mtconnect
         /// <exception cref="DuplicateNameException"></exception>
         public void AddDataItem(DataItem dataItem)
         {
-            if (_dataItems.ContainsKey(dataItem.Name))
+            string internalName = dataItem.Name;
+            DataItemOptions options = _options[internalName];
+            if (options != null)
+            {
+                internalName = options?.InternalName;
+            }
+
+            if (_dataItems.ContainsKey(internalName))
             {
                 throw new DuplicateNameException("Adapter cannot handle DataItems with the same name");
             }
 
-            _dataItems.Add(dataItem.Name, dataItem);
-            _dataItems[dataItem.Name].OnDataItemChanged += Adapter_OnDataItemChanged; ;
+            _dataItems.Add(internalName, dataItem);
+            _dataItems[internalName].OnDataItemChanged += Adapter_OnDataItemChanged;
+
+            _dataItems[internalName].FormatValue = options?.Formatter;
+            if (!string.IsNullOrEmpty(options?.DataItemName) && options?.DataItemName != internalName)
+                _dataItems[internalName].Name = options?.DataItemName;
         }
 
-        private void Adapter_OnDataItemChanged(DataItem sender, DataItemChangedEventArgs e) => _values.Enqueue(new ReportedValue(sender));
+        private void Adapter_OnDataItemChanged(DataItem sender, DataItemChangedEventArgs e)
+        {
+            if (CanEnqueueDataItems) _values.Enqueue(new ReportedValue(sender));
+        }
 
         /// <summary>
         /// Remove all data items.
         /// </summary>
         public void RemoveAllDataItems()
         {
-            _dataItems.Clear();
-            // TODO: Clear appropriate ReportedValues from the Queue
+            foreach (var item in _dataItems)
+            {
+                RemoveDataItem(item.Value);
+            }
         }
 
         /// <summary>
@@ -177,7 +186,19 @@ namespace Mtconnect
             }
 
             _dataItems.Remove(dataItem.Name);
-            // TODO: Clear appropriate ReportedValues from Queue
+
+            var queue = new List<ReportedValue>();
+            ReportedValue value = null;
+            while (_values.TryDequeue(out value))
+            {
+                if (!string.Equals(value.DataItemName, dataItem.Name, StringComparison.OrdinalIgnoreCase))
+                    queue.Add(value);
+            }
+
+            foreach (var item in queue)
+            {
+                _values.Enqueue(item);
+            }
         }
 
         /// <summary>
@@ -316,41 +337,56 @@ namespace Mtconnect
         /// <param name="source">Reference to the source of the Adapter.</param>
         /// <param name="begin">Flag for whether or not to also call <see cref="Begin"/>.</param>
         public void Start<T>(T source, bool begin = true) where T : class, IAdapterSource
+            => Start(new IAdapterSource[] { source }, begin);
+
+        /// <summary>
+        /// Starts the listener thread and the provided <see cref="IAdapterSource"/>s.
+        /// </summary>
+        /// <param name="sources">Reference to the sources of the Adapter.</param>
+        /// <param name="begin"><inheritdoc cref="Start{T}(T, bool)" path="/param[@name='begin']"/></param>
+        public void Start(IEnumerable<IAdapterSource> sources, bool begin = true)
         {
             Start(begin);
 
-            _source = source;
-            _source.OnDataReceived += _source_OnDataReceived;
+            foreach (var source in sources)
+            {
+                AddSource(source);
+                source.Start();
+            }
+        }
+
+        private void AddSource<T>(T source) where T : class, IAdapterSource
+        {
+            _sources.Add(source);
+            source.OnDataReceived += _source_OnDataReceived;
 
             // TODO: Cache the property map
             Type sourceType = typeof(T);
             var dataItemProperties = sourceType.GetProperties().Where(o => o.GetCustomAttribute(typeof(DataItemAttribute)) != null);
             foreach (var property in dataItemProperties)
             {
-                var dataItemAttribute = property.GetCustomAttribute(typeof(DataItemAttribute));
+                var dataItemAttribute = property.GetCustomAttribute<DataItemAttribute>();
                 switch (dataItemAttribute)
                 {
-                    case EventAttribute eventAttribute:
-                        AddDataItem(new Event(eventAttribute.Name));
+                    case EventAttribute _:
+                        AddDataItem(new Event(dataItemAttribute.Name));
                         break;
-                    case SampleAttribute sampleAttribute:
-                        AddDataItem(new Sample(sampleAttribute.Name));
+                    case SampleAttribute _:
+                        AddDataItem(new Sample(dataItemAttribute.Name));
                         break;
-                    case ConditionAttribute conditionAttribute:
-                        AddDataItem(new Condition(conditionAttribute.Name));
+                    case ConditionAttribute _:
+                        AddDataItem(new Condition(dataItemAttribute.Name));
                         break;
-                    case TimeSeriesAttribute timeSeriesAttribute:
-                        AddDataItem(new TimeSeries(timeSeriesAttribute.Name));
+                    case TimeSeriesAttribute _:
+                        AddDataItem(new TimeSeries(dataItemAttribute.Name));
                         break;
-                    case MessageAttribute messageAttribute:
-                        AddDataItem(new Message(messageAttribute.Name));
+                    case MessageAttribute _:
+                        AddDataItem(new Message(dataItemAttribute.Name));
                         break;
                     default:
                         break;
                 }
             }
-
-            _source.Start();
         }
 
         private void _source_OnDataReceived(object sender, DataReceivedEventArgs e)
@@ -360,23 +396,15 @@ namespace Mtconnect
             var dataItemProperties = sourceType.GetProperties().Where(o => o.GetCustomAttribute(typeof(DataItemAttribute)) != null);
             foreach (var property in dataItemProperties)
             {
-                var dataItemAttribute = property.GetCustomAttribute(typeof(DataItemAttribute));
+                var dataItemAttribute = property.GetCustomAttribute<DataItemAttribute>();
                 switch (dataItemAttribute)
                 {
-                    case EventAttribute eventAttribute:
-                        this[eventAttribute.Name].Value = property.GetValue(sender);
-                        break;
-                    case SampleAttribute sampleAttribute:
-                        this[sampleAttribute.Name].Value = property.GetValue(sender);
-                        break;
-                    case ConditionAttribute conditionAttribute:
-                        this[conditionAttribute.Name].Value = property.GetValue(sender);
-                        break;
-                    case TimeSeriesAttribute timeSeriesAttribute:
-                        this[timeSeriesAttribute.Name].Value = property.GetValue(sender);
-                        break;
-                    case MessageAttribute messageAttribute:
-                        this[messageAttribute.Name].Value = property.GetValue(sender);
+                    case EventAttribute _:
+                    case SampleAttribute _:
+                    case ConditionAttribute _:
+                    case TimeSeriesAttribute _:
+                    case MessageAttribute _:
+                        this[dataItemAttribute.Name].Value = property.GetValue(sender);
                         break;
                     default:
                         break;
@@ -391,7 +419,10 @@ namespace Mtconnect
         /// </summary>
         public virtual void Stop()
         {
-            _source?.Stop();
+            foreach (var source in _sources)
+            {
+                source.Stop();
+            }
         }
     }
 }
