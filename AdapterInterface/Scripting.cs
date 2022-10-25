@@ -1,156 +1,222 @@
 ﻿using Microsoft.CodeAnalysis.CSharp.Scripting;
 using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.IO;
 using System.Linq;
+using System.Runtime.Serialization.Formatters.Binary;
 using System.Security.Cryptography;
 using System.Security.Cryptography.X509Certificates;
 using System.Text;
 
 namespace Mtconnect.AdapterInterface
 {
+    using System;
+    using System.Diagnostics;
+    using System.IO;
+    using System.Runtime.Serialization.Formatters.Binary;
+    using System.Security.Cryptography;
+    using System.Security.Cryptography.X509Certificates;
+
     /// <summary>
     /// Helper class for handling scripting of the Adapter.
     /// </summary>
+    [Obsolete("Encryption of the configuration scripting is not fully functional")]
     public static class Scripting
     {
-        private const int KeySize = 256;
-        private const int DerivationIterations = 1_000;
-        private const int ByteSize = 8;
-        private const int takeSize = KeySize / ByteSize;
-        private const string CertificateName = "MtconnectAdapterScript";
 
-        /// <summary>
-        /// Encrypts raw scripts using a specific passcode.
-        /// </summary>
-        /// <param name="rawScript">Raw C# script for a <c>Func&lt;object, object&gt;</c>.</param>
-        /// <param name="passcode">The passcode for encrypting the script.</param>
-        /// <returns>Encrypted C# script.</returns>
-        public static string EncryptScript(string rawScript, string passcode)
+    /*
+     * Please see ConfigurationEncrypter for a summary of how encryption works
+     */
+    public class ConfigurationDecrypter
+    {
+        public static string Decrypt(string ciphertext)
         {
-            // Salt and IV is randomly generated each time, but is preprended to encrypted cipher text
-            // so that the same Salt and IV values can be used when decrypting.  
-            byte[] saltBytes = Generate256BitsOfRandomEntropy();
-            byte[] ivBytes = Generate256BitsOfRandomEntropy();
-            byte[] textBytes = Encoding.UTF8.GetBytes(rawScript);
-            using (var password = new Rfc2898DeriveBytes(passcode, saltBytes, DerivationIterations))
+            // Convert the Base64 string into an encryption result
+            EncryptionResult encryptionResult = DeserializeFromBase64String(ciphertext);
+
+            // Access the certificate store
+            X509Certificate2 cert = LocateCertificate(encryptionResult.CertificateThumbprint);
+
+            // Create an RSA cryptography provider class using the certificate provided
+            var rsaCryptoProvider = (RSACryptoServiceProvider)cert.PrivateKey;
+            Trace.WriteLine("PrivateKey retrieved");
+
+            // Create a Rijndael encryption class with the same details as the encryption
+            var rjndl = new RijndaelManaged { KeySize = 256, BlockSize = 256, Mode = CipherMode.CBC };
+
+            // Decrypt the Rijndael key using the certificate
+            var keyDecrypted = rsaCryptoProvider.Decrypt(encryptionResult.Key, false);
+
+            // Create the Rijndael decryption transformer using the decrypted Rijndael key
+            var transform = rjndl.CreateDecryptor(keyDecrypted, encryptionResult.InitializationVector);
+            Trace.WriteLine("Decryptor created");
+
+            // Decrypt the string and return
+            return DecryptString(encryptionResult.Value, transform);
+        }
+
+        private static X509Certificate2 LocateCertificate(string certificateThumbprint)
+        {
+            try
             {
-                byte[] keyBytes = password.GetBytes(ByteSize);
-                using (var symmetricKey = new RijndaelManaged())
+                return OpenCertificateStore(StoreName.My, StoreLocation.CurrentUser, certificateThumbprint);
+            }
+            catch (Exception)
+            {
+                Trace.WriteLine("No access to My : CurrentUser");
+            }
+
+            try
+            {
+                return OpenCertificateStore(StoreName.My, StoreLocation.LocalMachine, certificateThumbprint);
+            }
+            catch (Exception)
+            {
+                Trace.WriteLine("No access to My : LocalMachine");
+            }
+
+            throw new Exception("Could not locate certificate");
+        }
+
+        private static X509Certificate2 OpenCertificateStore(StoreName storeName, StoreLocation storeLocation, string certificateThumbprint)
+        {
+            var store = new X509Store(storeName, storeLocation);
+            store.Open(OpenFlags.ReadOnly | OpenFlags.OpenExistingOnly);
+            Trace.WriteLine("Store Opened");
+
+            // Locate the private key in the store, using the unique thumbprint of the certificate
+            // It is not possible to do a "single" search on the store, even with a unique ID
+            var matches = store.Certificates.Find(X509FindType.FindByThumbprint, certificateThumbprint, false); // You should use a thumbprint instead of name here
+
+            if (matches.Count == 0)
+            {
+                throw new Exception("Certificate not found");
+            }
+
+            if (matches.Count > 1)
+            {
+                throw new Exception("Multiple certificates found");
+            }
+
+            store.Close();
+
+            return matches[0];
+        }
+
+        private static string DecryptString(byte[] cipherText, ICryptoTransform decryptor)
+        {
+            // We return the plaintext as a string to allow easy use
+            string plaintext;
+
+            // The CryptoStream needs to do it's transformations into a stream
+            using (var plaintextStream = new MemoryStream(cipherText))
+            {
+                // Cryptostream actually does the decryption, turning the ciphertext into plaintext
+                using (var decryptionTransformationStream = new CryptoStream(plaintextStream, decryptor, CryptoStreamMode.Read))
                 {
-                    symmetricKey.BlockSize = KeySize;
-                    symmetricKey.Mode = CipherMode.CBC;
-                    symmetricKey.Padding = PaddingMode.PKCS7;
-                    using (ICryptoTransform encryptor = symmetricKey.CreateEncryptor(keyBytes, ivBytes))
-                    using (var memoryStream = new MemoryStream())
-                    using (var cryptoStream = new CryptoStream(memoryStream, encryptor, CryptoStreamMode.Write))
+                    // We need to read the decryptionTransformationStream to get the plaintext
+                    using (var decryptionTransformationStreamReader = new StreamReader(decryptionTransformationStream))
                     {
-                        cryptoStream.Write(textBytes, 0, textBytes.Length);
-                        cryptoStream.FlushFinalBlock();
-                        // Create the final bytes as a concatenation of the random salt bytes, the random iv bytes and the cipher bytes.
-                        byte[] cipherBytes = saltBytes;
-                        cipherBytes = cipherBytes.Concat(ivBytes).ToArray();
-                        cipherBytes = cipherBytes.Concat(memoryStream.ToArray()).ToArray();
-                        memoryStream.Close();
-                        cryptoStream.Close();
-                        return Convert.ToBase64String(cipherBytes);
+                        // Read the decryptionTransformationStream to get the plaintext
+                        plaintext = decryptionTransformationStreamReader.ReadToEnd();
                     }
                 }
             }
+
+            // return the plaintext
+            return plaintext;
         }
 
-        /// <inheritdoc cref="EncryptScript(string, string)" path="/summary"/>
-        /// <param name="rawScript"><inheritdoc cref="EncryptScript(string, string)" path="/param[@name='rawScript']"/></param>
-        /// <returns><inheritdoc cref="EncryptScript(string, string)" path="/returns"/></returns>
-        public static string EncryptScript(string rawScript)
+        private static EncryptionResult DeserializeFromBase64String(string base64String)
         {
-            var certificate = getCertificate(CertificateName);
+            // Convert the Base64 string into an EncryptionResult
+            EncryptionResult result;
 
-            return EncryptScript(rawScript, certificate.PublicKey.ToString());
-        }
-
-        /// <summary>
-        /// Decrypts an encrypted C# script.
-        /// </summary>
-        /// <param name="encryptedScript">Encrypted C# script for a <c>Func&lt;object, object&gt;</c>.</param>
-        /// <param name="passcode">The passcode for decrypting the script.</param>
-        /// <returns>Decrypted C# script.</returns>
-        public static Func<object, object> DeserializeScript(string encryptedScript, string passcode)
-        {
-            string decryptedScript = decryptString(encryptedScript, passcode);
-
-            Func<object, object> func = CSharpScript.EvaluateAsync<Func<object, object>>(decryptedScript).Result;
-
-            return func;
-        }
-
-        /// <inheritdoc cref="DeserializeScript(string, string)" path="/summary"/>
-        /// <param name="encryptedScript"><inheritdoc cref="DeserializeScript(string, string)" path="/param[@name='encryptedScript']"/></param>
-        /// <returns><inheritdoc cref="DeserializeScript(string, string)" path="/returns"/></returns>
-        public static Func<object, object> DeserializeScript(string encryptedScript)
-        {
-            var certificate = getCertificate(CertificateName);
-
-            return DeserializeScript(encryptedScript, certificate.PublicKey.ToString());
-        }
-
-        private static string decryptString(string source, string passcode)
-        {
-            int skipSize = 0;
-
-            var saltedScript = Convert.FromBase64String(source);
-            var saltedBytes = saltedScript.Take(takeSize).ToArray();
-            skipSize = takeSize;
-
-            var ivBytes = saltedScript.Skip(skipSize).Take(takeSize).ToArray();
-            skipSize += takeSize;
-
-            var textBytes = saltedScript.Skip(skipSize).Take(saltedScript.Length - skipSize).ToArray();
-
-            using (var password = new Rfc2898DeriveBytes(passcode, saltedBytes, DerivationIterations))
+            using (var ms = new MemoryStream(Convert.FromBase64String(base64String)))
             {
-                var keyBytes = password.GetBytes(takeSize);
-                using (var symmetricKey = new RijndaelManaged())
+                ms.Seek(0, SeekOrigin.Begin);
+                result = (EncryptionResult)new BinaryFormatter().Deserialize(ms);
+            }
+
+            return result;
+        }
+    }
+    
+    /*         
+     * A QUICK OVERVIEW OF ENCRYPTION
+     * 
+     * RSA can only encrypt strings up to a certain length "Messages must not be longer than the N of the public key."
+     * To get around this, we instead use two step encryption. Rijndael is a symmetric encryption method that can encrypt
+     * a string of any length. We will use Rijndael to encrypt the input string. We then encrypt the single use Rijndael key with RSA.
+     * We store this key, Rijndael Initialization Vector, the certificate we used to encrypt with's thumbprint and the Rijndael
+     * encrypted data in a Base64 string. This string can then be used in the place of the original data.
+     * 
+     * Using this method, we can encrypt a string of any length asymmetrically.
+     */
+    public class ConfigurationEncrypter
+    {
+        public static string Encrypt(string certificateLocation, string plaintext)
+        {
+            // Create a Rijndael encryption class with a fixed keysize so that it can be encrypted with RSA
+            var rjndl = new RijndaelManaged { KeySize = 256, BlockSize = 256, Mode = CipherMode.CBC };
+            var transform = rjndl.CreateEncryptor();
+
+            // Create an RSA cryptography provider class using the certificate provided
+            var cert = new X509Certificate2(certificateLocation);
+            var rsaEncryptor = (RSACryptoServiceProvider)cert.PublicKey.Key;
+
+            // Take the Rijndael key and encrypt it with RSA
+            var keyEncrypted = rsaEncryptor.Encrypt(rjndl.Key, false);
+            if (keyEncrypted == null)
+            {
+                // If we've been given an invalid certificate we should throw an error
+                throw new Exception("Encrypted key was null. Invalid certificate?");
+            }
+
+            // Encrypt the string
+            var inputEncrypted = EncryptString(plaintext, transform);
+
+            // Serialize and save the Encryption result which contains all our required information
+            return SerializeToBase64String(new EncryptionResult { Key = keyEncrypted, InitializationVector = rjndl.IV, Value = inputEncrypted, CertificateThumbprint = cert.Thumbprint });
+        }
+
+        private static byte[] EncryptString(string plaintext, ICryptoTransform transform)
+        {
+            // We'll store the ciphertext (encrypted string) in a byte array to avoid lots of swapping from string to byte array
+            byte[] ciphertext;
+
+            // The CryptoStream needs to do it's transformations into a stream
+            using (var ciphertextStream = new MemoryStream())
+            {
+                // Cryptostream actually does the encryption, turning the plaintext into ciphertext
+                using (var encryptionTransformationStream = new CryptoStream(ciphertextStream, transform, CryptoStreamMode.Write))
                 {
-                    symmetricKey.BlockSize = KeySize;
-                    symmetricKey.Mode = CipherMode.CBC;
-                    symmetricKey.Padding = PaddingMode.PKCS7;
-                    using (var decryptor = symmetricKey.CreateDecryptor(keyBytes, ivBytes))
-                    using (var memoryStream = new MemoryStream(textBytes))
-                    using (var cryptoStream = new CryptoStream(memoryStream, decryptor, CryptoStreamMode.Read))
-                    using (var streamReader = new StreamReader(cryptoStream, Encoding.UTF8))
+                    // We need to write the plaintext into the encryptionTransformationStream
+                    using (var encryptionTransformationStreamWriter = new StreamWriter(encryptionTransformationStream))
                     {
-                        return streamReader.ReadToEnd();
+                        // Write the plaintext to the encryptionTransformationStream which outputs ciphertext into the ciphertextStream
+                        encryptionTransformationStreamWriter.Write(plaintext);
                     }
+
+                    // Store the ciphertext into the byte array
+                    ciphertext = ciphertextStream.ToArray();
                 }
             }
+
+            // Return the ciphertext
+            return ciphertext;
         }
 
-        private static byte[] Generate256BitsOfRandomEntropy()
+        private static string SerializeToBase64String(EncryptionResult encryptionResult)
         {
-            var randomBytes = new byte[32]; // 32 Bytes will give us 256 bits.
-            using (var rngCsp = new RNGCryptoServiceProvider())
+            // Convert the EncryptionResult object into a base64 string
+            using (var ms = new MemoryStream())
             {
-                // Fill the array with cryptographically secure random bytes.
-                rngCsp.GetBytes(randomBytes);
-            }
-            return randomBytes;
-        }
-
-        private static X509Certificate2 getCertificate(string name)
-        {
-            X509Store store = new X509Store(StoreName.My, StoreLocation.LocalMachine);
-            store.Open(OpenFlags.ReadOnly);
-            X509Certificate2Collection certificates = store.Certificates.Find(X509FindType.FindBySubjectName, name, false);
-            if (certificates.Count == 1)
-            {
-                return certificates[0];
-            } else if (certificates.Count > 1)
-            {
-                throw new Exception($"More than one certificate with name '{name}' found in store LocalMachine/My.");
-            } else
-            {
-                throw new Exception($"Certificate '{name}' not found in store LocalMachine/My.");
+                new BinaryFormatter().Serialize(ms, encryptionResult);
+                ms.Seek(0, SeekOrigin.Begin);
+                var base64String = Convert.ToBase64String(ms.ToArray());
+                return base64String;
             }
         }
     }
