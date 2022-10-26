@@ -361,8 +361,12 @@ namespace Mtconnect
             source.OnDataReceived += _source_OnDataReceived;
 
             // TODO: Cache the property map
-            Type sourceType = typeof(T);
-            var dataItemProperties = sourceType.GetProperties().Where(o => o.GetCustomAttribute(typeof(DataItemAttribute)) != null);
+            Type sourceType = source.GetType();
+            var properties = sourceType.GetProperties(BindingFlags.Instance | BindingFlags.Public)
+                .ToArray();
+            var dataItemProperties = properties
+                .Where(o => o.GetCustomAttribute(typeof(DataItemAttribute)) != null)
+                .ToArray();
             foreach (var property in dataItemProperties)
             {
                 var dataItemAttribute = property.GetCustomAttribute<DataItemAttribute>();

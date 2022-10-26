@@ -21,11 +21,7 @@ namespace Mtconnect.AdapterInterface
         public static async Task<string> EncryptScript(string certLocation, string rawScript)
         {
             var options = ScriptOptions.Default;
-            var assemblies = AppDomain.CurrentDomain.GetAssemblies();
-            foreach (var assembly in assemblies)
-            {
-                options = options.AddReferences(assembly);
-            }
+            options = options.AddReferences(AppDomain.CurrentDomain.GetAssemblies());
             options.AddImports("System");
             Func<object, object> func = await CSharpScript.EvaluateAsync<Func<object, object>>(rawScript, options);
             if (func == null) throw new Exception("Cannot evaluate script into Func<object, object>");
@@ -38,11 +34,7 @@ namespace Mtconnect.AdapterInterface
         public static async Task<Func<object, object>> DecryptScript(string encryptedScript)
         {
             var options = ScriptOptions.Default;
-            var assemblies = AppDomain.CurrentDomain.GetAssemblies();
-            foreach (var assembly in assemblies)
-            {
-                options = options.AddReferences(assembly);
-            }
+            //options = options.AddReferences(AppDomain.CurrentDomain.GetAssemblies());
             options.AddImports("System");
             string decryptedScript = Cryptography.ConfigurationDecrypter.Decrypt(encryptedScript);
 

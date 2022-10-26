@@ -26,14 +26,15 @@ namespace Mtconnect.AdapterInterface.Cryptography
             X509Certificate2 cert = LocateCertificate(encryptionResult.CertificateThumbprint);
 
             // Create an RSA cryptography provider class using the certificate provided
-            var rsaCryptoProvider = (RSACryptoServiceProvider)cert.PrivateKey;
+            var rsaCryptoProvider = (RSA)cert.PrivateKey;
             Trace.WriteLine("PrivateKey retrieved");
 
             // Create a Rijndael encryption class with the same details as the encryption
-            var rjndl = new RijndaelManaged { KeySize = 256, BlockSize = 256, Mode = CipherMode.CBC };
+            var rjndl = new RijndaelManaged { KeySize = 256, BlockSize = 128, Mode = CipherMode.CBC };
 
             // Decrypt the Rijndael key using the certificate
-            var keyDecrypted = rsaCryptoProvider.Decrypt(encryptionResult.Key, false);
+
+            var keyDecrypted = rsaCryptoProvider.Decrypt(encryptionResult.Key, RSAEncryptionPadding.OaepSHA512);
 
             // Create the Rijndael decryption transformer using the decrypted Rijndael key
             var transform = rjndl.CreateDecryptor(keyDecrypted, encryptionResult.InitializationVector);
@@ -146,15 +147,16 @@ namespace Mtconnect.AdapterInterface.Cryptography
         public static string Encrypt(string certificateLocation, string plaintext)
         {
             // Create a Rijndael encryption class with a fixed keysize so that it can be encrypted with RSA
-            var rjndl = new RijndaelManaged { KeySize = 256, BlockSize = 256, Mode = CipherMode.CBC };
+            var rjndl = new RijndaelManaged { KeySize = 256, BlockSize = 128, Mode = CipherMode.CBC };
             var transform = rjndl.CreateEncryptor();
 
             // Create an RSA cryptography provider class using the certificate provided
             var cert = new X509Certificate2(certificateLocation);
-            var rsaEncryptor = (RSACryptoServiceProvider)cert.PublicKey.Key;
+
+            var rsaEncryptor = (RSA)cert.PublicKey.Key;
 
             // Take the Rijndael key and encrypt it with RSA
-            var keyEncrypted = rsaEncryptor.Encrypt(rjndl.Key, false);
+            var keyEncrypted = rsaEncryptor.Encrypt(rjndl.Key, RSAEncryptionPadding.OaepSHA512);
             if (keyEncrypted == null)
             {
                 // If we've been given an invalid certificate we should throw an error
@@ -208,6 +210,7 @@ namespace Mtconnect.AdapterInterface.Cryptography
         }
     }
 
+    [Serializable]
     internal class EncryptionResult
     {
         internal byte[] Key { get; set; }
