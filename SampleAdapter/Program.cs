@@ -19,6 +19,9 @@ namespace SampleAdapter
 
         public static void Main(string[] args)
         {
+            // https://stackoverflow.com/a/67967110/4585104
+            string encryptedData = Mtconnect.AdapterInterface.Scripting.EncryptScript(@"C:\temp\cert.pfx", "Func<object, object> o => &quot;TEST&quot;").Result;
+
             var options = new TcpAdapterOptions();
             options.UpdateFromConfig();
 
