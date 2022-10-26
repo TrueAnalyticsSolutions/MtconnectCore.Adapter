@@ -71,7 +71,7 @@ namespace Mtconnect.AdapterInterface
                         dataItems[internalName].DataItemName = Convert.ToString(kvp.Value);
                     } else if (kvp.Key.Contains(":format"))
                     {
-                        var func = Scripting.DeserializeScript(Convert.ToString(kvp.Value), "");
+                        var func = Scripting.DecryptScript(Convert.ToString(kvp.Value));
 
                         if (func != null)
                         {
