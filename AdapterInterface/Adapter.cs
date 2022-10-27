@@ -360,8 +360,18 @@ namespace Mtconnect
             _sources.Add(source);
             source.OnDataReceived += _source_OnDataReceived;
 
-            // TODO: Cache the property map
             Type sourceType = source.GetType();
+            AddDataItemsFromSource(sourceType);
+        }
+
+        /// <summary>
+        /// Adds Data Items from properties in the <paramref name="sourceType"/> that are decorated with the <see cref="DataItemAttribute"/>.
+        /// </summary>
+        /// <param name="sourceType">Reference to the type to perform reflection on.</param>
+        /// <param name="dataItemPrefix">A recursive prefix for the Data Item names.</param>
+        private void AddDataItemsFromSource(Type sourceType, string dataItemPrefix = "")
+        {
+            // TODO: Cache the property map
             var properties = sourceType.GetProperties(BindingFlags.Instance | BindingFlags.Public)
                 .ToArray();
             var dataItemProperties = properties
@@ -370,22 +380,27 @@ namespace Mtconnect
             foreach (var property in dataItemProperties)
             {
                 var dataItemAttribute = property.GetCustomAttribute<DataItemAttribute>();
+                string dataItemName = dataItemPrefix + dataItemAttribute.Name;
+
                 switch (dataItemAttribute)
                 {
+                    case DataItemPartialAttribute _:
+                        AddDataItemsFromSource(property.PropertyType, dataItemName);
+                        break;
                     case EventAttribute _:
-                        AddDataItem(new Event(dataItemAttribute.Name));
+                        AddDataItem(new Event(dataItemName));
                         break;
                     case SampleAttribute _:
-                        AddDataItem(new Sample(dataItemAttribute.Name));
+                        AddDataItem(new Sample(dataItemName));
                         break;
                     case ConditionAttribute _:
-                        AddDataItem(new Condition(dataItemAttribute.Name));
+                        AddDataItem(new Condition(dataItemName));
                         break;
                     case TimeSeriesAttribute _:
-                        AddDataItem(new TimeSeries(dataItemAttribute.Name));
+                        AddDataItem(new TimeSeries(dataItemName));
                         break;
                     case MessageAttribute _:
-                        AddDataItem(new Message(dataItemAttribute.Name));
+                        AddDataItem(new Message(dataItemName));
                         break;
                     default:
                         break;
@@ -395,27 +410,41 @@ namespace Mtconnect
 
         private void _source_OnDataReceived(object sender, DataReceivedEventArgs e)
         {
+            updateValuesFromSource(sender);
+
+            Send(DataItemSendTypes.Changed);
+        }
+
+        /// <summary>
+        /// A recursive method for reflecting on the properties of the <paramref name="source"/>.
+        /// </summary>
+        /// <param name="source">Reference to the source object. This value will change throughout the recursion.</param>
+        /// <param name="dataItemPrefix">As the Data Item Prefix</param>
+        private void updateValuesFromSource(object source, string dataItemPrefix = "")
+        {
             // TODO: Cache the property map
-            Type sourceType = sender.GetType();
+            Type sourceType = source.GetType();
             var dataItemProperties = sourceType.GetProperties().Where(o => o.GetCustomAttribute(typeof(DataItemAttribute)) != null);
             foreach (var property in dataItemProperties)
             {
                 var dataItemAttribute = property.GetCustomAttribute<DataItemAttribute>();
+                string dataItemName = dataItemPrefix + dataItemAttribute.Name;
                 switch (dataItemAttribute)
                 {
+                    case DataItemPartialAttribute _:
+                        updateValuesFromSource(property.GetValue(source), dataItemName);
+                        break;
                     case EventAttribute _:
                     case SampleAttribute _:
                     case ConditionAttribute _:
                     case TimeSeriesAttribute _:
                     case MessageAttribute _:
-                        this[dataItemAttribute.Name].Value = property.GetValue(sender);
+                        this[dataItemName].Value = property.GetValue(source);
                         break;
                     default:
                         break;
                 }
             }
-
-            Send(DataItemSendTypes.Changed);
         }
 
         /// <summary>
