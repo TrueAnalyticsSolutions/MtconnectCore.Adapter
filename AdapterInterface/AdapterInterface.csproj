@@ -27,6 +27,8 @@
   <ItemGroup>
     <None Remove="icon.jpg" />
     <None Remove="logo_v2.0.jpg" />
+    <None Remove="Sandbox\Readme.md" />
+    <None Remove="Sandbox\Sandbox.ps1" />
   </ItemGroup>
 
   <ItemGroup>
@@ -44,6 +46,12 @@
     </Content>
     <Content Include="logo_v2.0.jpg">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Sandbox\Readme.md">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Sandbox\Sandbox.ps1">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
 	  <None Include="README.md">
 		  <Pack>True</Pack>
