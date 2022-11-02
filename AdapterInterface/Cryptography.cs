@@ -34,7 +34,7 @@ namespace Mtconnect.AdapterInterface.Cryptography
 
             // Decrypt the Rijndael key using the certificate
 
-            var keyDecrypted = rsaCryptoProvider.Decrypt(encryptionResult.Key, RSAEncryptionPadding.OaepSHA512);
+            var keyDecrypted = rsaCryptoProvider.Decrypt(encryptionResult.Key, RSAEncryptionPadding.OaepSHA256);
 
             // Create the Rijndael decryption transformer using the decrypted Rijndael key
             var transform = rjndl.CreateDecryptor(keyDecrypted, encryptionResult.InitializationVector);
@@ -52,7 +52,7 @@ namespace Mtconnect.AdapterInterface.Cryptography
             }
             catch (Exception)
             {
-                Trace.WriteLine("No access to My : CurrentUser");
+                Trace.WriteLine("No access to My : CurrentUser, trying My : LocalMachine instead");
             }
 
             try
@@ -156,7 +156,7 @@ namespace Mtconnect.AdapterInterface.Cryptography
             var rsaEncryptor = (RSA)cert.PublicKey.Key;
 
             // Take the Rijndael key and encrypt it with RSA
-            var keyEncrypted = rsaEncryptor.Encrypt(rjndl.Key, RSAEncryptionPadding.OaepSHA512);
+            var keyEncrypted = rsaEncryptor.Encrypt(rjndl.Key, RSAEncryptionPadding.OaepSHA256);
             if (keyEncrypted == null)
             {
                 // If we've been given an invalid certificate we should throw an error
