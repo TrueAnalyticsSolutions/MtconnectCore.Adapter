@@ -1,4 +1,6 @@
 ﻿using Mtconnect.AdapterInterface;
+using System;
+using System.Collections.Generic;
 
 namespace Mtconnect
 {
@@ -10,7 +12,7 @@ namespace Mtconnect
         /// <summary>
         /// The port for which the Adapter should stream data thru.
         /// </summary>
-        public int Port { get; }
+        public int Port { get; private set; }
 
         /// <summary>
         /// Constructs the most basic options for configuring a MTConnect Adapter.
@@ -20,6 +22,18 @@ namespace Mtconnect
         public TcpAdapterOptions(double heartbeat = 10_000, int port = 7878) : base(heartbeat)
         {
             Port = port;
+        }
+
+        public override Dictionary<string, object> UpdateFromConfig()
+        {
+            var adapterSettings = base.UpdateFromConfig();
+
+            if (adapterSettings.ContainsKey("port") && Int32.TryParse(adapterSettings["port"].ToString(), out int port))
+            {
+                Port = port;
+            }
+
+            return adapterSettings;
         }
     }
 }

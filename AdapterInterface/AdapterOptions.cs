@@ -47,12 +47,15 @@ namespace Mtconnect.AdapterInterface
             CanEnqueueDataItems = canQueue;
         }
 
-        public void UpdateFromConfig()
+        /// <summary>
+        /// Updates the properties of the <see cref="AdapterOptions"/> from the <see cref="ConfigurationManager"/> section 'adapter'.
+        /// </summary>
+        public virtual Dictionary<string, object> UpdateFromConfig()
         {
             var adapterSettings = (ConfigurationManager.GetSection("adapter") as Hashtable)
                 .Cast<System.Collections.DictionaryEntry>()
                 .ToDictionary(o => o.Key.ToString(), o => o.Value); ;
-            if (adapterSettings == null) return;
+            if (adapterSettings == null) return null;
 
             foreach (var kvp in adapterSettings)
             {
@@ -94,7 +97,8 @@ namespace Mtconnect.AdapterInterface
                 }
                 // TODO: Reflect on the properties and automatically assign values.
             }
-            
+
+            return adapterSettings;
         }
     }
 }
