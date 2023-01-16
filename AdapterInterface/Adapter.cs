@@ -124,11 +124,14 @@ namespace Mtconnect
         /// Generic constructor of a new Adapter instance with basic AdapterOptions.
         /// </summary>
         /// <param name="options"><inheritdoc cref="AdapterOptions" path="/summary"/></param>
-        public Adapter(AdapterOptions options)
+        /// <param name="loggerFactory">Reference to the logger factory to handle logging.</param>
+        public Adapter(AdapterOptions options, ILogger<Adapter> logger = null)
         {
             _options = options;
             Heartbeat = options.Heartbeat;
             CanEnqueueDataItems = options.CanEnqueueDataItems;
+
+            _logger = logger;
         }
 
         /// <summary>
@@ -319,11 +322,11 @@ namespace Mtconnect
             Write(sb.ToString());
         }
         
-        /// <summary>
-        /// The heartbeat thread for a client. This thread receives data from a client, closes the socket when it fails, and handles communication timeouts when the client does not send a heartbeat within 2x the heartbeat frequency. When the heartbeat is not received, the client is assumed to be unresponsive and the connection is closed. Waits for one ping to be received before enforcing the timeout. 
-        /// </summary>
-        /// <param name="client">The client we are communicating with.</param>
-        protected abstract void HeartbeatClient(object client);
+        ///// <summary>
+        ///// The heartbeat thread for a client. This thread receives data from a client, closes the socket when it fails, and handles communication timeouts when the client does not send a heartbeat within 2x the heartbeat frequency. When the heartbeat is not received, the client is assumed to be unresponsive and the connection is closed. Waits for one ping to be received before enforcing the timeout. 
+        ///// </summary>
+        ///// <param name="client">The client we are communicating with.</param>
+        //protected abstract void HeartbeatClient(object client);
 
         /// <summary>
         /// Start the listener thread.
