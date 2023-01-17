@@ -24,7 +24,7 @@ namespace Mtconnect
         /// </summary>
         /// <param name="heartbeat"><inheritdoc cref="AdapterOptions.AdapterOptions" path="/param[@name='heartbeat']"/></param>
         /// <param name="port"><inheritdoc cref="TcpAdapterOptions.Port" path="/summary"/></param>
-        public TcpAdapterOptions(double heartbeat = 10_000, int port = 7878, int maxConnections = 1) : base(heartbeat)
+        public TcpAdapterOptions(double heartbeat = 10_000, int port = 7878, int maxConnections = 2) : base(heartbeat)
         {
             Port = port;
             MaxConcurrentConnections = maxConnections;

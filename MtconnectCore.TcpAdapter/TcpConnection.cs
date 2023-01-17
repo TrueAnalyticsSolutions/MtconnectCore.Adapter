@@ -61,7 +61,8 @@ namespace Mtconnect
         {
             _client = client;
             Heartbeat = heartbeat;
-            ClientId = ((IPEndPoint)_client.Client.RemoteEndPoint).Address.ToString();
+            IPEndPoint clientIp = (IPEndPoint)_client.Client.RemoteEndPoint;
+            ClientId = $"{clientIp.Address}:{clientIp.Port}";
         }
 
         /// <summary>

@@ -64,6 +64,7 @@ namespace Mtconnect
         {
             if (State <= AdapterStates.NotStarted)
             {
+                _logger?.LogInformation("Starting Adapter");
                 State = AdapterStates.Starting;
 
                 _listener = new TcpListener(IPAddress.Any, Port);
@@ -84,6 +85,7 @@ namespace Mtconnect
 
             if (State > AdapterStates.NotStarted)
             {
+                _logger?.LogInformation("Stopping Adapter");
                 State = AdapterStates.Stopping;
 
                 // Wait 2 seconds for the thread to exit.

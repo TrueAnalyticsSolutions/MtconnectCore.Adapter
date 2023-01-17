@@ -274,6 +274,8 @@ namespace Mtconnect
         /// <param name="values">Collection of <see cref="ReportedValue"/>s to send values.</param>
         protected void Send(IEnumerable<ReportedValue> values, string clientId = null)
         {
+            _logger?.LogTrace($"Sending {values.Count()} values");
+
             var orderedValues = values.OrderBy(o => o.Timestamp).ToList();
             var individualValues = values.Where(o => o.HasNewLine).ToList();
             var multiplicityValues = orderedValues.Except(individualValues).ToList();
