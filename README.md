@@ -1,26 +1,21 @@
-Dot Net SDK
-===========
+Based on the [Dot Net SDK](https://github.com/mtconnect/dot_net_sdk)
 
-An assembly for the Microsoft .NET framework, based on the MC2 class.
 
-Videos
----------
+MTConnect&reg; Adapter by TAMS
+==========
 
-There are two instructional video available on YouTube that were filmed at the MC2 conference. This toolkit is the same used in the tutorial.
+This repo contains two important libraries for implementing a MTConnect&reg; Adapter each providing tools for rapid Adapter development.
 
-Overview:
+## `AdapterInterface`
+An assembly for implementing custom software adapters formatted for connecting with the reference [MTConnect&reg; Agent](https://github.com/mtconnect/cppagent).
 
-http://youtu.be/BgcRw9KZaBk
+See the [AdapterInterface](/AdapterInterface/Readme.md) project readme for more information.
 
-Hands-on Tutorial:
+## `TcpAdapter`
+An implementation of the abstract `Adapter` class within the `AdapterInterface` that communicates with the reference [MTConnect&reg; Agent](https://github.com/mtconnect/cppagent) via TCP/IP.
 
-http://youtu.be/pvz2d3WrsS8
+See the [MtconnectCore.TcpAdapter](/MtconnectCore.TcpAdapter/Readme.md) project readme for more information.
 
-The presetation slides are also included in this repo in Docs subdirectory. The source for the completed AdapterLab is included in the Sample subdirectory.
 
-Unit Tests
-----------
-
-This project is provided with unit tests. For more informaiton on NUnit and licensing: http://sourceforge.net/projects/nunit/files/NUnit%20Version%202/
-
-Download and install NUnit 2.6.2 to run the tests.
+## Examples
+See the [Wiki](/wiki) for examples on implementing an Adapter.
