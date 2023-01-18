@@ -1,3 +1,5 @@
+[![Publish to Package Registries](https://github.com/TrueAnalyticsSolutions/Mtconnect.Adapter/actions/workflows/main.yml/badge.svg?branch=tbm0115%2FConfigOptionEncryption)](https://github.com/TrueAnalyticsSolutions/Mtconnect.Adapter/actions/workflows/main.yml)
+
 Based on the [Dot Net SDK](https://github.com/mtconnect/dot_net_sdk)
 
 
