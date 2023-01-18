@@ -14,6 +14,7 @@ using System.Reflection;
 using Mtconnect.AdapterInterface.Contracts.Attributes;
 using System.Diagnostics.Tracing;
 using EventAttribute = Mtconnect.AdapterInterface.Contracts.Attributes.EventAttribute;
+using System.Threading;
 
 namespace Mtconnect
 {
@@ -124,11 +125,23 @@ namespace Mtconnect
         /// Generic constructor of a new Adapter instance with basic AdapterOptions.
         /// </summary>
         /// <param name="options"><inheritdoc cref="AdapterOptions" path="/summary"/></param>
-        public Adapter(AdapterOptions options)
+        /// <param name="loggerFactory">Reference to the logger factory to handle logging.</param>
+        public Adapter(AdapterOptions options, ILogger<Adapter> logger = null)
         {
             _options = options;
             Heartbeat = options.Heartbeat;
             CanEnqueueDataItems = options.CanEnqueueDataItems;
+
+            _logger = logger;
+        }
+
+        public bool Contains(string dataItemName)
+        {
+            return _dataItems.ContainsKey(dataItemName);
+        }
+        public bool Contains(DataItem dataItem)
+        {
+            return Contains(dataItem.Name);
         }
 
         /// <summary>
@@ -156,6 +169,8 @@ namespace Mtconnect
             _dataItems[internalName].FormatValue = options?.Formatter;
             if (!string.IsNullOrEmpty(options?.DataItemName) && options?.DataItemName != internalName)
                 _dataItems[internalName].Name = options?.DataItemName;
+
+            _logger?.LogTrace("Added DataItem {DataItemName}", _dataItems[internalName].Name);
         }
 
         private void Adapter_OnDataItemChanged(DataItem sender, DataItemChangedEventArgs e)
@@ -206,6 +221,7 @@ namespace Mtconnect
         /// </summary>
         public void Unavailable()
         {
+            _logger?.LogTrace("Setting all DataItem values to UNAVAILABLE");
             foreach (var kvp in _dataItems)
                 kvp.Value.Unavailable();
         }
@@ -236,6 +252,8 @@ namespace Mtconnect
         /// <param name="sendType">Flag for identifying which <see cref="ReportedValue"/>s to send.</param>
         public virtual void Send(DataItemSendTypes sendType = DataItemSendTypes.Changed, string clientId = null)
         {
+            _logger?.LogTrace("Sending {DataItemSendType} values", sendType.ToString());
+
             var values = new List<ReportedValue>();
             switch (sendType)
             {
@@ -271,6 +289,8 @@ namespace Mtconnect
         /// <param name="values">Collection of <see cref="ReportedValue"/>s to send values.</param>
         protected void Send(IEnumerable<ReportedValue> values, string clientId = null)
         {
+            _logger?.LogTrace($"Sending {values.Count()} values");
+
             var orderedValues = values.OrderBy(o => o.Timestamp).ToList();
             var individualValues = values.Where(o => o.HasNewLine).ToList();
             var multiplicityValues = orderedValues.Except(individualValues).ToList();
@@ -319,17 +339,17 @@ namespace Mtconnect
             Write(sb.ToString());
         }
         
-        /// <summary>
-        /// The heartbeat thread for a client. This thread receives data from a client, closes the socket when it fails, and handles communication timeouts when the client does not send a heartbeat within 2x the heartbeat frequency. When the heartbeat is not received, the client is assumed to be unresponsive and the connection is closed. Waits for one ping to be received before enforcing the timeout. 
-        /// </summary>
-        /// <param name="client">The client we are communicating with.</param>
-        protected abstract void HeartbeatClient(object client);
+        ///// <summary>
+        ///// The heartbeat thread for a client. This thread receives data from a client, closes the socket when it fails, and handles communication timeouts when the client does not send a heartbeat within 2x the heartbeat frequency. When the heartbeat is not received, the client is assumed to be unresponsive and the connection is closed. Waits for one ping to be received before enforcing the timeout. 
+        ///// </summary>
+        ///// <param name="client">The client we are communicating with.</param>
+        //protected abstract void HeartbeatClient(object client);
 
         /// <summary>
         /// Start the listener thread.
         /// </summary>
         /// <param name="begin">Flag for whether or not to also call <see cref="Begin"/>.</param>
-        public abstract void Start(bool begin = true);
+        public abstract void Start(bool begin = true, CancellationToken token = default);
 
         /// <summary>
         /// Starts the listener thread and the provided <see cref="IAdapterSource"/>.
@@ -350,100 +370,17 @@ namespace Mtconnect
 
             foreach (var source in sources)
             {
-                AddSource(source);
+                _sources.Add(source);
+                source.OnDataReceived += _source_OnDataReceived;
                 source.Start();
             }
         }
 
-        private void AddSource<T>(T source) where T : class, IAdapterSource
+        private void _source_OnDataReceived(IAdapterDataModel data, DataReceivedEventArgs e)
         {
-            _sources.Add(source);
-            source.OnDataReceived += _source_OnDataReceived;
-
-            Type sourceType = source.GetType();
-            AddDataItemsFromSource(sourceType);
-        }
-
-        /// <summary>
-        /// Adds Data Items from properties in the <paramref name="sourceType"/> that are decorated with the <see cref="DataItemAttribute"/>.
-        /// </summary>
-        /// <param name="sourceType">Reference to the type to perform reflection on.</param>
-        /// <param name="dataItemPrefix">A recursive prefix for the Data Item names.</param>
-        private void AddDataItemsFromSource(Type sourceType, string dataItemPrefix = "")
-        {
-            // TODO: Cache the property map
-            var properties = sourceType.GetProperties(BindingFlags.Instance | BindingFlags.Public)
-                .ToArray();
-            var dataItemProperties = properties
-                .Where(o => o.GetCustomAttribute(typeof(DataItemAttribute)) != null)
-                .ToArray();
-            foreach (var property in dataItemProperties)
+            if (this.TryAddDataItems(data) && this.TryUpdateValues(data))
             {
-                var dataItemAttribute = property.GetCustomAttribute<DataItemAttribute>();
-                string dataItemName = dataItemPrefix + dataItemAttribute.Name;
-
-                switch (dataItemAttribute)
-                {
-                    case DataItemPartialAttribute _:
-                        AddDataItemsFromSource(property.PropertyType, dataItemName);
-                        break;
-                    case EventAttribute _:
-                        AddDataItem(new Event(dataItemName));
-                        break;
-                    case SampleAttribute _:
-                        AddDataItem(new Sample(dataItemName));
-                        break;
-                    case ConditionAttribute _:
-                        AddDataItem(new Condition(dataItemName));
-                        break;
-                    case TimeSeriesAttribute _:
-                        AddDataItem(new TimeSeries(dataItemName));
-                        break;
-                    case MessageAttribute _:
-                        AddDataItem(new Message(dataItemName));
-                        break;
-                    default:
-                        break;
-                }
-            }
-        }
-
-        private void _source_OnDataReceived(object sender, DataReceivedEventArgs e)
-        {
-            updateValuesFromSource(sender);
-
-            Send(DataItemSendTypes.Changed);
-        }
-
-        /// <summary>
-        /// A recursive method for reflecting on the properties of the <paramref name="source"/>.
-        /// </summary>
-        /// <param name="source">Reference to the source object. This value will change throughout the recursion.</param>
-        /// <param name="dataItemPrefix">As the Data Item Prefix</param>
-        private void updateValuesFromSource(object source, string dataItemPrefix = "")
-        {
-            // TODO: Cache the property map
-            Type sourceType = source.GetType();
-            var dataItemProperties = sourceType.GetProperties().Where(o => o.GetCustomAttribute(typeof(DataItemAttribute)) != null);
-            foreach (var property in dataItemProperties)
-            {
-                var dataItemAttribute = property.GetCustomAttribute<DataItemAttribute>();
-                string dataItemName = dataItemPrefix + dataItemAttribute.Name;
-                switch (dataItemAttribute)
-                {
-                    case DataItemPartialAttribute _:
-                        updateValuesFromSource(property.GetValue(source), dataItemName);
-                        break;
-                    case EventAttribute _:
-                    case SampleAttribute _:
-                    case ConditionAttribute _:
-                    case TimeSeriesAttribute _:
-                    case MessageAttribute _:
-                        this[dataItemName].Value = property.GetValue(source);
-                        break;
-                    default:
-                        break;
-                }
+                Send(DataItemSendTypes.Changed);
             }
         }
 
@@ -455,6 +392,7 @@ namespace Mtconnect
             foreach (var source in _sources)
             {
                 source.Stop();
+                source.OnDataReceived -= _source_OnDataReceived;
             }
         }
     }

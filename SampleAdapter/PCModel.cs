@@ -16,17 +16,7 @@ namespace SampleAdapter
         /// </summary>
         public event DataReceivedHandler? OnDataReceived;
 
-        [Event("avail")]
-        public string? Availability { get; set; }
-
-        [Sample("xPos")]
-        public int? XPosition { get; set; }
-
-        [Sample("yPos")]
-        public int? YPosition { get; set; }
-
-        [Event("prog")]
-        public string? WindowTitle { get; set; }
+        public PCStatus Model { get; private set; } = new PCStatus();
 
         private System.Timers.Timer Timer = new System.Timers.Timer();
 
@@ -42,18 +32,18 @@ namespace SampleAdapter
 
         private void Timer_Elapsed(object? sender, System.Timers.ElapsedEventArgs e)
         {
-            Availability = "AVAILABLE";
+            Model.Availability = "AVAILABLE";
 
             Point lpPoint;
             if (WindowHandles.GetCursorPos(out lpPoint))
             {
-                XPosition = lpPoint.X;
-                YPosition = lpPoint.Y;
+                Model.XPosition = lpPoint.X;
+                Model.YPosition = lpPoint.Y;
             }
             else
             {
-                XPosition = null;
-                YPosition = null;
+                Model.XPosition = null;
+                Model.YPosition = null;
             }
 
             try
@@ -61,25 +51,25 @@ namespace SampleAdapter
                 string activeWindowTitle = WindowHandles.GetActiveWindowTitle();
                 if (!string.IsNullOrEmpty(activeWindowTitle))
                 {
-                    WindowTitle = activeWindowTitle;
+                    Model.WindowTitle = activeWindowTitle;
                 }
                 else
                 {
-                    WindowTitle = null;
+                    Model.WindowTitle = null;
                 }
             }
             catch (Exception ex)
             {
-                WindowTitle = null;
+                Model.WindowTitle = null;
             }
 
             if (OnDataReceived != null)
             {
-                OnDataReceived(this, new DataReceivedEventArgs());
+                OnDataReceived(Model, new DataReceivedEventArgs());
             }
         }
 
-        public void Start()
+        public void Start(CancellationToken token = default)
         {
             Timer.Start();
         }
@@ -88,5 +78,19 @@ namespace SampleAdapter
         {
             Timer.Stop();
         }
+    }
+    public class PCStatus : IAdapterDataModel
+    {
+        [Event("avail")]
+        public string? Availability { get; set; }
+
+        [Sample("xPos")]
+        public int? XPosition { get; set; }
+
+        [Sample("yPos")]
+        public int? YPosition { get; set; }
+
+        [Event("prog")]
+        public string? WindowTitle { get; set; }
     }
 }
