@@ -18,4 +18,4 @@ See the [MtconnectCore.TcpAdapter](/MtconnectCore.TcpAdapter/Readme.md) project 
 
 
 ## Examples
-See the [Wiki](/wiki) for examples on implementing an Adapter.
+See the [Wiki](https://github.com/TrueAnalyticsSolutions/Mtconnect.Adapter/wiki) for examples on implementing an Adapter.
