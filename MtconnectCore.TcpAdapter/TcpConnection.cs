@@ -9,7 +9,7 @@ using System.Threading.Tasks;
 namespace Mtconnect
 {
     public delegate void TcpConnectionConnected(TcpConnection connection);
-    public delegate void TcpConnectionDisconnected(TcpConnection connection);
+    public delegate void TcpConnectionDisconnected(TcpConnection connection, Exception ex = null);
     public delegate bool TcpConnectionDataReceived(TcpConnection connection, string message);
     public class TcpConnection : IDisposable
     {
@@ -70,6 +70,7 @@ namespace Mtconnect
         /// </summary>
         public void Connect()
         {
+            // Disconnect before attempting to connect again to ensure resources are disposed of
             if (_stream != null) Disconnect();
 
             _stream = _client.GetStream();
@@ -81,14 +82,15 @@ namespace Mtconnect
         /// <summary>
         /// Disconnects the underlying client stream and disposes of it. Note that this leaves the connection to the TCP client alone.
         /// </summary>
-        public void Disconnect()
+        public void Disconnect(Exception ex = null)
         {
             if (_stream == null) return;
+
             _stream?.Close();
             _stream?.Dispose();
             _stream = null;
 
-            if (!_disposing && OnDisconnected != null) OnDisconnected(this);
+            if (!_disposing && OnDisconnected != null) OnDisconnected(this, ex);
         }
 
         /// <summary>
@@ -125,6 +127,7 @@ namespace Mtconnect
         /// </summary>
         private void receive()
         {
+            Exception ex = null;
             bool heartbeatActive = false;
 
             byte[] message = new byte[BUFFER_SIZE];
@@ -144,7 +147,7 @@ namespace Mtconnect
                     Socket.Select(readList, null, null, (int)(Heartbeat * 2000));
                 if (readList.Count == 0 && heartbeatActive)
                 {
-                    //_logger?.LogWarning("Heartbeat timed out, closing connection");
+                    ex = new TimeoutException("Heartbeat timed out, closing connection");
                     break;
                 }
                 bytesRead = _stream.Read(message, length, BUFFER_SIZE - length);
@@ -177,7 +180,7 @@ namespace Mtconnect
                 }
             }
 
-            Disconnect();
+            Disconnect(ex);
         }
 
         public void Dispose()

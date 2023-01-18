@@ -22,7 +22,7 @@ namespace SampleAdapter
         {
             ConsoulLibrary.RenderOptions.WriteMode = RenderOptions.WriteModes.SuppressBlacklist;
             ConsoulLibrary.RenderOptions.BlacklistColors.Add( ConsoleColor.Gray);
-            var loggerFactory = LoggerFactory.Create(o => { o.AddConsoulLogger();o.SetMinimumLevel(LogLevel.Trace); });
+            var loggerFactory = LoggerFactory.Create(o => { o.AddConsoulLogger();o.SetMinimumLevel(LogLevel.Debug); });
             var logger = loggerFactory.CreateLogger<Adapter>();
 
             var options = new TcpAdapterOptions();

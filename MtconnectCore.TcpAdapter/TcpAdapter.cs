@@ -7,6 +7,7 @@ using System.Linq;
 using System.Net;
 using System.Net.Sockets;
 using System.Threading;
+using System.Threading.Tasks;
 using Microsoft.Extensions.Logging;
 using Mtconnect.AdapterInterface;
 using Mtconnect.AdapterInterface.Contracts;
@@ -19,6 +20,13 @@ namespace Mtconnect
     /// </summary>
     public sealed class TcpAdapter : Adapter, IDisposable
     {
+        private bool _disposing = false;
+
+        /// <summary>
+        /// Event that fires when a message is received from a <see cref="TcpConnection"/>.
+        /// </summary>
+        public event TcpConnectionDataReceived ClientDataReceived;
+
         /// <summary>
         /// The Port property to set and get the mPort. This will only take affect when the adapter is stopped.
         /// </summary>
@@ -27,12 +35,13 @@ namespace Mtconnect
         /// <summary>
         /// The maximum number of kvp connections allowed to exist at any given point.
         /// </summary>
-        public int MaxConnections { get; private set; } = 1;
+        public int MaxConnections { get; private set; } = 2;
 
+        private CancellationTokenSource _listerCancellationSource = new CancellationTokenSource();
         /// <summary>
         /// The listening thread for new connections
         /// </summary>
-        private Thread _listenerThread;
+        private Task _listenerThread;
 
         /// <summary>
         /// A list of all the kvp connections.
@@ -40,7 +49,7 @@ namespace Mtconnect
         private ConcurrentDictionary<string, TcpConnection> _clients { get; set; } = new ConcurrentDictionary<string, TcpConnection>();
 
         /// <summary>
-        /// A count of kvp threads.
+        /// A count of tracked <see cref="TcpConnection"/>s.
         /// </summary>
         private CountdownEvent _activeClients { get; set; } = new CountdownEvent(1);
 
@@ -60,19 +69,29 @@ namespace Mtconnect
         }
 
         /// <inheritdoc />
-        public override void Start(bool begin = true)
+        public override void Start(bool begin = true, CancellationToken token = default)
         {
             if (State <= AdapterStates.NotStarted)
             {
                 _logger?.LogInformation("Starting Adapter");
                 State = AdapterStates.Starting;
 
+                // Start TcpListener
                 _listener = new TcpListener(IPAddress.Any, Port);
                 _listener.Start();
-                _listenerThread = new Thread(new ThreadStart(ListenForClients));
-                _listenerThread.Start();
 
+                // Start before the _listenerThread because it relies on state being Busy
                 State = AdapterStates.Started;
+
+                // Setup task that listens for new clients
+                _listerCancellationSource.Token.Register(Stop);
+                _listenerThread = Task.Factory.StartNew(
+                    ListenForClients,
+                    _listerCancellationSource.Token,
+                    TaskCreationOptions.LongRunning,
+                    TaskScheduler.Default
+                );
+
             }
 
             if (begin) Begin();
@@ -88,9 +107,10 @@ namespace Mtconnect
                 _logger?.LogInformation("Stopping Adapter");
                 State = AdapterStates.Stopping;
 
-                // Wait 2 seconds for the thread to exit.
-                _listenerThread.Join((int)(2 * Heartbeat));
+                // Queue the _listerThread to cancel
+                _listerCancellationSource?.Cancel();
 
+                // Dispose of all tracked clients and clear connections from memory.
                 foreach (var kvp in _clients)
                 {
                     kvp.Value.Dispose();
@@ -232,22 +252,33 @@ namespace Mtconnect
                 }
             }
 
+            if (ClientDataReceived != null) ClientDataReceived(connection, message);
+
             return heartbeat;
         }
 
-        private void Client_OnConnectionDisconnected(TcpConnection connection)
+        private void Client_OnConnectionDisconnected(TcpConnection connection, Exception ex = null)
         {
-            if (_clients.ContainsKey(connection.ClientId))
+            if (!_clients.ContainsKey(connection.ClientId))
             {
-                lock(_clients)
+                _logger?.LogWarning("Client '{ClientId}' is not tracked", connection.ClientId);
+                return;
+            }
+
+            lock (_clients)
+            {
+                if (ex == null)
                 {
                     _logger?.LogInformation("Client disconnected '{ClientId}'", connection.ClientId);
-                    if (_clients.TryRemove(connection.ClientId, out TcpConnection client))
+                } else
+                {
+                    _logger?.LogError("Client '{ClientId}' disconnected due to error: \r\n\t{Error}", connection.ClientId, ex);
+                }
+                if (_clients.TryRemove(connection.ClientId, out TcpConnection client))
+                {
+                    if (_activeClients.Signal())
                     {
-                        if (_activeClients.Signal())
-                        {
-                            _logger?.LogInformation("No clients connected");
-                        }
+                        _logger?.LogInformation("No clients connected");
                     }
                 }
             }
@@ -255,14 +286,22 @@ namespace Mtconnect
 
         public void Dispose()
         {
+            if (_disposing) return;
+            _disposing = true;
+
+            // Stop the TcpListener
+            _listener?.Stop();
+
+            // Dispose of all tracked clients and clear connections from memory.
             foreach (var kvp in _clients)
             {
                 kvp.Value.Dispose();
             }
             _clients.Clear();
 
-            _listener.Stop();
-
+            // Dispose of the _listenerThread
+            _listenerThread?.Dispose();
+            _listerCancellationSource?.Dispose();
         }
     }
 }
