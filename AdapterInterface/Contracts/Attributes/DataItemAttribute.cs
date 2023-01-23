@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Mtconnect.AdapterInterface.DataItems;
+using System;
 using System.Collections.Generic;
 using System.Text;
 
@@ -11,17 +12,24 @@ namespace Mtconnect.AdapterInterface.Contracts.Attributes
     public abstract class DataItemAttribute : Attribute
     {
         /// <summary>
-        /// The key for the MTConnect DataItem.
+        /// <inheritdoc cref="DataItem.Name" path="/summary"/>
         /// </summary>
         public string Name { get; }
 
         /// <summary>
+        /// <inheritdoc cref="DataItem.Description" path="/summary"/>
+        /// </summary>
+        public string Description { get; }
+
+        /// <summary>
         /// Constructs a new DataItem attribute.
         /// </summary>
-        /// <param name="name">Key for the MTConnect DataItem.</param>
-        public DataItemAttribute(string name)
+        /// <param name="name"><inheritdoc cref="DataItemAttribute.Name" path="/summary"/></param>
+        /// <param name="description"><inheritdoc cref="DataItemAttribute.Description" path="/summary"/></param>
+        public DataItemAttribute(string name, string description = null)
         {
             Name = name;
+            Description = description;
         }
     }
 }

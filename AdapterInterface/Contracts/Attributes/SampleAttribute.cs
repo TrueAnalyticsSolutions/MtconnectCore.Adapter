@@ -6,6 +6,6 @@
     public class SampleAttribute : DataItemAttribute
     {
         /// <inheritdoc />
-        public SampleAttribute(string name) : base(name) { }
+        public SampleAttribute(string name, string description = null) : base(name, description) { }
     }
 }

@@ -26,6 +26,11 @@ namespace Mtconnect.AdapterInterface.DataItems
         public string Name { get; internal set; }
 
         /// <summary>
+        /// A description of the DataItem such as a trace of its source or the methodology for a composite data type.
+        /// </summary>
+        public string Description { get; internal set; }
+
+        /// <summary>
         /// Optional device prefix.
         /// </summary>
         public string DevicePrefix = null;
@@ -89,10 +94,12 @@ namespace Mtconnect.AdapterInterface.DataItems
         /// <summary>
         /// Create a new data item
         /// </summary>
-        /// <param name="name">The name of the data item</param>
-        public DataItem(string name)
+        /// <param name="name"><inheritdoc cref="DataItem.Name" path="/summary"/></param>
+        /// <param name="description"><inheritdoc cref="DataItem.Description" path="/summary"/></param>
+        public DataItem(string name, string description = null)
         {
-            this.Name = name;
+            Name = name;
+            Description = description;
         }
 
         /// <summary>

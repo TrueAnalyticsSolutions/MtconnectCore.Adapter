@@ -49,11 +49,12 @@ namespace Mtconnect.AdapterInterface.DataItems
             /// </summary>
             /// <param name="name">The name of the condition, passed from the parent</param>
             /// <param name="level">The condition level</param>
+            /// <param name="description"><inheritdoc cref="DataItem.DataItem(string, string)" path="/param[@name='description']"/></param>
             /// <param name="text">The descriptive text for the condition</param>
             /// <param name="code">The native code of the alarm or warning</param>
             /// <param name="qualifier">A high/low qualifier</param>
             /// <param name="severity">The native severity of the condition</param>
-            public Active(string name, Level level, string text = "", string code = "", string qualifier = "", string severity = "") : base(name)
+            public Active(string name, Level level, string description = null, string text = "", string code = "", string qualifier = "", string severity = "") : base(name, description)
             {
                 Level = level;
                 Text = text;

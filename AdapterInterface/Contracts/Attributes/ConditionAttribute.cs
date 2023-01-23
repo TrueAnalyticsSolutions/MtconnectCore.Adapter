@@ -6,6 +6,6 @@
     public class ConditionAttribute : DataItemAttribute
     {
         /// <inheritdoc />
-        public ConditionAttribute(string name) : base(name) { }
+        public ConditionAttribute(string name, string description = null) : base(name, description) { }
     }
 }

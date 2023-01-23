@@ -84,13 +84,13 @@ namespace SampleAdapter
         [Event("avail")]
         public string? Availability { get; set; }
 
-        [Sample("xPos")]
+        [Sample("xPos", "user32.dll#GetCursorPos().X")]
         public int? XPosition { get; set; }
 
-        [Sample("yPos")]
+        [Sample("yPos", "user32.dll#GetCursorPos().Y")]
         public int? YPosition { get; set; }
 
-        [Event("prog")]
+        [Event("prog", "user32.dll#GetWindowText(user32.dll#GetForegroundWindow(), StringBuilder(256), 256)")]
         public string? WindowTitle { get; set; }
     }
 }

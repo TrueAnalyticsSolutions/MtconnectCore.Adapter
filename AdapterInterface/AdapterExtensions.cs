@@ -41,7 +41,7 @@ namespace Mtconnect
                 .ToArray();
         }
         private static Dictionary<Type, PropertyInfo[]> _dataItemProperties = new Dictionary<Type, PropertyInfo[]>();
-        private static bool TryAddDataItems(this Adapter adapter, Type dataModelType, string dataItemNamePrefix = "")
+        private static bool TryAddDataItems(this Adapter adapter, Type dataModelType, string dataItemNamePrefix = "", string dataItemDescriptionPrefix = "")
         {
             if (_dataItemProperties.TryGetValue(dataModelType, out PropertyInfo[] dataItemProperties)) return true;
 
@@ -55,26 +55,27 @@ namespace Mtconnect
                 bool dataItemAdded = false;
                 var dataItemAttribute = property.GetCustomAttribute<DataItemAttribute>();
                 string dataItemName = dataItemNamePrefix + dataItemAttribute.Name;
+                string dataItemDescription = dataItemDescriptionPrefix + dataItemAttribute.Description;
 
                 switch (dataItemAttribute)
                 {
                     case DataItemPartialAttribute _:
-                        dataItemAdded = adapter.TryAddDataItems(property.PropertyType, dataItemName);
+                        dataItemAdded = adapter.TryAddDataItems(property.PropertyType, dataItemName, dataItemDescription);
                         break;
                     case EventAttribute _:
-                        dataItemAdded = adapter.TryAddDataItem(new Event(dataItemName));
+                        dataItemAdded = adapter.TryAddDataItem(new Event(dataItemName, dataItemDescription));
                         break;
                     case SampleAttribute _:
-                        dataItemAdded = adapter.TryAddDataItem(new Sample(dataItemName));
+                        dataItemAdded = adapter.TryAddDataItem(new Sample(dataItemName, dataItemDescription));
                         break;
                     case ConditionAttribute _:
-                        dataItemAdded = adapter.TryAddDataItem(new Condition(dataItemName));
+                        dataItemAdded = adapter.TryAddDataItem(new Condition(dataItemName, dataItemDescription));
                         break;
                     case TimeSeriesAttribute _:
-                        dataItemAdded = adapter.TryAddDataItem(new TimeSeries(dataItemName));
+                        dataItemAdded = adapter.TryAddDataItem(new TimeSeries(dataItemName, dataItemDescription));
                         break;
                     case MessageAttribute _:
-                        dataItemAdded = adapter.TryAddDataItem(new Message(dataItemName));
+                        dataItemAdded = adapter.TryAddDataItem(new Message(dataItemName, dataItemDescription));
                         break;
                     default:
                         dataItemAdded = false;

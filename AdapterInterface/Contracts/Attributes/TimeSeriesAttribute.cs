@@ -6,6 +6,6 @@
     public class TimeSeriesAttribute : DataItemAttribute
     {
         /// <inheritdoc />
-        public TimeSeriesAttribute(string name) : base(name) { }
+        public TimeSeriesAttribute(string name, string description = null) : base(name, description) { }
     }
 }

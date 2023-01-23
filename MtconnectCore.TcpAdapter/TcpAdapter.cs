@@ -235,11 +235,14 @@ namespace Mtconnect
         }
 
         private const string PING = "* PING";
+        private const string GET_DATAITEMS = "* DATAITEMS";
+        private const string GET_DATAITEM_DESCRIPTION = "* DATAITEM_DESCRIPTION";
         /// <summary>
         /// ReceiveClient data from a kvp and implement heartbeat ping/pong protocol.
         /// </summary>
         private bool Client_OnReceivedData(TcpConnection connection, string message)
         {
+            message = message?.Trim();
             bool heartbeat = false;
             if (message.StartsWith(PING) && Heartbeat > 0)
             {
@@ -249,6 +252,36 @@ namespace Mtconnect
                     _logger?.LogInformation("Received PING from client {ClientId}, sending PONG", connection.ClientId);
                     connection.Write(PONG);
                     connection.Flush();
+                }
+            } else if (message.Equals(GET_DATAITEMS))
+            {
+                lock (connection)
+                {
+                    _logger?.LogInformation("Received GET DATAITEMS from client {ClientId}, sending list of supported DataItems", connection.ClientId);
+                    var keys = DataItems?.Select(o => o.Name)?.DefaultIfEmpty().ToArray();
+                    connection.Write(string.Join("|", keys));
+                    connection.Flush();
+                }
+            } else if (message.StartsWith(GET_DATAITEM_DESCRIPTION))
+            {
+                string dataItemName = message.Remove(0, message.LastIndexOf(' ') + 1);
+                if (Contains(dataItemName))
+                {
+                    if (!string.IsNullOrEmpty(this[dataItemName].Description))
+                    {
+                        lock (connection)
+                        {
+                            _logger?.LogInformation("Received GET DATAITEM_DESCRIPTION from client {ClientId} for {DataItemName}, sending the description (if any)", connection.ClientId, dataItemName);
+                            connection.Write(this[dataItemName].Description);
+                            connection.Flush();
+                        }
+                    } else
+                    {
+                        _logger?.LogWarning("Received GET DATAITEM_DESCRIPTION from client {ClientId} for {DataItemName}, but there is no description available", connection.ClientId, dataItemName);
+                    }
+                } else
+                {
+                    _logger?.LogWarning("Received GET DATAITEM_DESCRIPTION from client {ClientId} for {DataItemName}, but there is no such DataItem available", connection.ClientId, dataItemName);
                 }
             }
 
