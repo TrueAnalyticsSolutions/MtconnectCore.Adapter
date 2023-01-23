@@ -7,13 +7,14 @@
     public class Message : DataItem
     {
         string mCode;
-        
+
         /// <summary>
         /// Create a new message, set NewLine to true so this comes out 
         /// on a separate line.
         /// </summary>
-        /// <param name="name">The name of the data item</param>
-        public Message(string name) : base(name)
+        /// <param name="name"><inheritdoc cref="DataItem.DataItem(string, string)" path="/param[@name='name']"/></param>
+        /// <param name="description"><inheritdoc cref="DataItem.DataItem(string, string)" path="/param[@name='description']"/></param>
+        public Message(string name, string description = null) : base(name, description)
         {
             HasNewLine = true;
         }

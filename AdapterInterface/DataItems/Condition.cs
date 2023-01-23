@@ -31,9 +31,10 @@ namespace Mtconnect.AdapterInterface.DataItems
         /// <summary>
         /// Create a new condition
         /// </summary>
-        /// <param name="name">The name of the data item</param>
+        /// <param name="name"><inheritdoc cref="DataItem.DataItem(string, string)" path="/param[@name='name']"/></param>
+        /// <param name="description"><inheritdoc cref="DataItem.DataItem(string, string)" path="/param[@name='description']"/></param>
         /// <param name="simple">If this is a simple condition or if it uses mark and sweep</param>
-        public Condition(string name, bool simple = false) : base(name)
+        public Condition(string name, string description = null, bool simple = false) : base(name, description)
         {
             HasNewLine = true;
             IsSimple = simple;

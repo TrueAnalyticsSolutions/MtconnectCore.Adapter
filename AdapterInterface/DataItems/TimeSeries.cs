@@ -29,9 +29,10 @@ namespace Mtconnect.AdapterInterface.DataItems
         /// <summary>
         /// Constructs a new Time Series dataset.
         /// </summary>
-        /// <param name="name"><inheritdoc cref="DataItem.Name" path="/summary"/></param>
+        /// <param name="name"><inheritdoc cref="DataItem.DataItem(string, string)" path="/param[@name='name']"/></param>
+        /// <param name="description"><inheritdoc cref="DataItem.DataItem(string, string)" path="/param[@name='description']"/></param>
         /// <param name="rate"><inheritdoc cref="Rate" path="/summary"/></param>
-        public TimeSeries(string name, double rate = 0.0) : base(name)
+        public TimeSeries(string name, string description = null, double rate = 0.0) : base(name, description)
         {
             HasNewLine = true;
             Rate = rate;

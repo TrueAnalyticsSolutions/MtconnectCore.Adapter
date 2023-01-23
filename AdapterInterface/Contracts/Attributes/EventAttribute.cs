@@ -6,6 +6,6 @@
     public class EventAttribute : DataItemAttribute
     {
         /// <inheritdoc />
-        public EventAttribute(string name) : base(name) { }
+        public EventAttribute(string name, string description = null) : base(name, description) { }
     }
 }
