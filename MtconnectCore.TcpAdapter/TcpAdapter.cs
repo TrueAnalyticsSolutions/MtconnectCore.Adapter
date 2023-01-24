@@ -49,11 +49,6 @@ namespace Mtconnect
         private ConcurrentDictionary<string, TcpConnection> _clients { get; set; } = new ConcurrentDictionary<string, TcpConnection>();
 
         /// <summary>
-        /// A count of tracked <see cref="TcpConnection"/>s.
-        /// </summary>
-        private CountdownEvent _activeClients { get; set; } = new CountdownEvent(1);
-
-        /// <summary>
         /// The server socket.
         /// </summary>
         private TcpListener _listener { get; set; }
@@ -116,9 +111,6 @@ namespace Mtconnect
                     kvp.Value.Dispose();
                 }
                 _clients.Clear();
-
-                // Wait for all kvp threads to exit.
-                _activeClients.Wait(2000);
 
                 State = AdapterStates.Stopped;
             }
@@ -191,18 +183,18 @@ namespace Mtconnect
 
                     //blocks until a kvp has connected to the server
                     var client = new TcpConnection(_listener.AcceptTcpClient(), (int)Heartbeat);
-                    if (_activeClients.CurrentCount >= MaxConnections)
+                    if (_clients.Count >= MaxConnections)
                     {
                         _logger?.LogWarning(
                             "Denied connection to '{ClientId}', too many concurrent connections ({ActiveConnections}/{MaxConnections})",
                             client.ClientId,
-                            _activeClients.CurrentCount,
+                            _clients.Count,
                             MaxConnections
                         );
                         continue;
                     }
 
-                    if (!_clients.ContainsKey(client.ClientId) && _activeClients.TryAddCount())
+                    if (!_clients.ContainsKey(client.ClientId))
                     {
                         _logger?.LogInformation("New client connection '{ClientId}'", client.ClientId);
                         if (_clients.TryAdd(client.ClientId, client))
@@ -214,7 +206,6 @@ namespace Mtconnect
                             Send(DataItemSendTypes.All, client.ClientId);
                         } else
                         {
-                            _activeClients.Signal(); // Undo try add
                             _logger?.LogError("Failed to add client '{ClientId}'", client.ClientId);
                         }
                     } else
@@ -309,7 +300,7 @@ namespace Mtconnect
                 }
                 if (_clients.TryRemove(connection.ClientId, out TcpConnection client))
                 {
-                    if (_activeClients.Signal())
+                    if (_clients.Count == 0)
                     {
                         _logger?.LogInformation("No clients connected");
                     }
