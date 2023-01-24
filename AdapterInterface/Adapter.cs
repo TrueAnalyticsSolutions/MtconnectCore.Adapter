@@ -10,10 +10,6 @@ using Mtconnect.AdapterInterface;
 using Mtconnect.AdapterInterface.Assets;
 using System.Data;
 using System.Collections.Concurrent;
-using System.Reflection;
-using Mtconnect.AdapterInterface.Contracts.Attributes;
-using System.Diagnostics.Tracing;
-using EventAttribute = Mtconnect.AdapterInterface.Contracts.Attributes.EventAttribute;
 using System.Threading;
 
 namespace Mtconnect
@@ -356,23 +352,23 @@ namespace Mtconnect
         /// </summary>
         /// <param name="source">Reference to the source of the Adapter.</param>
         /// <param name="begin">Flag for whether or not to also call <see cref="Begin"/>.</param>
-        public void Start<T>(T source, bool begin = true) where T : class, IAdapterSource
-            => Start(new IAdapterSource[] { source }, begin);
+        public void Start<T>(T source, bool begin = true, CancellationToken token = default) where T : class, IAdapterSource
+            => Start(new IAdapterSource[] { source }, begin, token);
 
         /// <summary>
         /// Starts the listener thread and the provided <see cref="IAdapterSource"/>s.
         /// </summary>
         /// <param name="sources">Reference to the sources of the Adapter.</param>
         /// <param name="begin"><inheritdoc cref="Start{T}(T, bool)" path="/param[@name='begin']"/></param>
-        public void Start(IEnumerable<IAdapterSource> sources, bool begin = true)
+        public void Start(IEnumerable<IAdapterSource> sources, bool begin = true, CancellationToken token = default)
         {
-            Start(begin);
+            Start(begin, token);
 
             foreach (var source in sources)
             {
                 _sources.Add(source);
                 source.OnDataReceived += _source_OnDataReceived;
-                source.Start();
+                source.Start(token);
             }
         }
 

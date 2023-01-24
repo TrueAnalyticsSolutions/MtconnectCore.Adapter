@@ -17,6 +17,8 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "AdapterInterface", "Adapter
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "TcpAdapter", "MtconnectCore.TcpAdapter\TcpAdapter.csproj", "{78B76C63-5060-48E6-95B5-53C8E226C1F2}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Service", "Service\Service.csproj", "{C29B2264-84F9-4DF0-9E29-36F2F6A5E96D}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -35,6 +37,10 @@ Global
 		{78B76C63-5060-48E6-95B5-53C8E226C1F2}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{78B76C63-5060-48E6-95B5-53C8E226C1F2}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{78B76C63-5060-48E6-95B5-53C8E226C1F2}.Release|Any CPU.Build.0 = Release|Any CPU
+		{C29B2264-84F9-4DF0-9E29-36F2F6A5E96D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{C29B2264-84F9-4DF0-9E29-36F2F6A5E96D}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{C29B2264-84F9-4DF0-9E29-36F2F6A5E96D}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{C29B2264-84F9-4DF0-9E29-36F2F6A5E96D}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
