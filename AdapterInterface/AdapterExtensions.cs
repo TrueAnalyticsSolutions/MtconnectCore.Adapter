@@ -43,10 +43,12 @@ namespace Mtconnect
         private static Dictionary<Type, PropertyInfo[]> _dataItemProperties = new Dictionary<Type, PropertyInfo[]>();
         private static bool TryAddDataItems(this Adapter adapter, Type dataModelType, string dataItemNamePrefix = "", string dataItemDescriptionPrefix = "")
         {
-            if (_dataItemProperties.TryGetValue(dataModelType, out PropertyInfo[] dataItemProperties)) return true;
+            if (!_dataItemProperties.TryGetValue(dataModelType, out PropertyInfo[] dataItemProperties))
+            {
+                dataItemProperties = GetDataItemProperties(dataModelType);
+                _dataItemProperties.Add(dataModelType, dataItemProperties);
+            }
 
-            dataItemProperties = GetDataItemProperties(dataModelType);
-            _dataItemProperties.Add(dataModelType, dataItemProperties);
             bool allDataItemsAdded = true;
 
 
@@ -56,6 +58,8 @@ namespace Mtconnect
                 var dataItemAttribute = property.GetCustomAttribute<DataItemAttribute>();
                 string dataItemName = dataItemNamePrefix + dataItemAttribute.Name;
                 string dataItemDescription = dataItemDescriptionPrefix + dataItemAttribute.Description;
+
+                if (adapter.Contains(dataItemName)) continue;
 
                 switch (dataItemAttribute)
                 {
