@@ -19,7 +19,7 @@
 	  <RepositoryType>git</RepositoryType>
 	  <PackageTags>Mtconnect;Adapter;TCP;TAMS;</PackageTags>
 	  <PackageReleaseNotes>Added extra logging and refined TcpConnections.</PackageReleaseNotes>
-	  <Version>1.0.10-alpha</Version>
+	  <Version>1.0.11-alpha</Version>
   </PropertyGroup>
 
   <ItemGroup>
