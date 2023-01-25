@@ -20,6 +20,8 @@ namespace SampleAdapter
 
         private System.Timers.Timer Timer = new System.Timers.Timer();
 
+        private long _loopCount { get; set; } = 0;
+
         /// <summary>
         /// Constructs a new instance of the PC monitor.
         /// </summary>
@@ -63,10 +65,17 @@ namespace SampleAdapter
                 Model.WindowTitle = null;
             }
 
+            // Comment out for testing * DATAITEM_VALUE foobar
+            if (_loopCount > 5000 / Timer.Interval)
+            {
+                Model.FooBar = "foobar";
+            }
+
             if (OnDataReceived != null)
             {
                 OnDataReceived(Model, new DataReceivedEventArgs());
             }
+            _loopCount++;
         }
 
         public void Start(CancellationToken token = default)
@@ -92,5 +101,8 @@ namespace SampleAdapter
 
         [Event("prog", "user32.dll#GetWindowText(user32.dll#GetForegroundWindow(), StringBuilder(256), 256)")]
         public string? WindowTitle { get; set; }
+
+        [Event("foobar")]
+        public string? FooBar { get; set; } = null;
     }
 }

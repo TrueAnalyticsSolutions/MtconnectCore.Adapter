@@ -49,7 +49,10 @@ namespace Mtconnect.AdapterInterface.DataItems
                 var updatedValue = value;
                 if (FormatValue != null) updatedValue = FormatValue(updatedValue);
 
-                if (_value?.Equals(updatedValue) == false)
+                if (_isReadyToUpdate(updatedValue)
+                    && ((_value == null && updatedValue != null)
+                    || (_value != null && updatedValue == null)
+                    || _value?.Equals(updatedValue) == false))
                 {
                     var now = DateTime.UtcNow;
                     var e = new DataItemChangedEventArgs(_value, updatedValue, LastChanged, now);
@@ -67,6 +70,11 @@ namespace Mtconnect.AdapterInterface.DataItems
             }
             get { return _value; }
         }
+
+        private bool _isReadyToUpdate(object value)
+            => _value?.Equals(Constants.UNAVAILABLE) == true
+            ? (value is string ? !string.IsNullOrEmpty(value as string) : value != null)
+            : value != null;
 
         /// <summary>
         /// Timestamp of when the <see cref="Value"/> was last Changed.

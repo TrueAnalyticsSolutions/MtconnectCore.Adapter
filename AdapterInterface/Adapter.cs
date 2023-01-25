@@ -21,6 +21,11 @@ namespace Mtconnect
     public abstract class Adapter
     {
         /// <summary>
+        /// Reference to the expected format for DateTime strings
+        /// </summary>
+        protected string DATE_TIME_FORMAT => Constants.DATE_TIME_FORMAT;
+
+        /// <summary>
         /// Reference to a logging service.
         /// </summary>
         protected readonly ILogger<Adapter> _logger;
@@ -171,6 +176,7 @@ namespace Mtconnect
 
         private void Adapter_OnDataItemChanged(DataItem sender, DataItemChangedEventArgs e)
         {
+            _logger?.LogTrace("DataItem '{DataItemName}' changed from '{PreviousValue}' to '{CurrentValue}' at {LastChangedTime}", sender.Name, e.PreviousValue, e.NewValue, e.ChangeTime);
             if (CanEnqueueDataItems) _values.Enqueue(new ReportedValue(sender));
         }
 
@@ -285,16 +291,16 @@ namespace Mtconnect
         /// <param name="values">Collection of <see cref="ReportedValue"/>s to send values.</param>
         protected void Send(IEnumerable<ReportedValue> values, string clientId = null)
         {
-            _logger?.LogTrace($"Sending {values.Count()} values");
 
             var orderedValues = values.OrderBy(o => o.Timestamp).ToList();
             var individualValues = values.Where(o => o.HasNewLine).ToList();
             var multiplicityValues = orderedValues.Except(individualValues).ToList();
 
-            foreach (var item in individualValues)
-            {
-                Write($"{item.Timestamp}|{item}\n", clientId);
-            }
+            _logger?.LogDebug("Sending {AllValueCount}; Individual Values: {IndividualValueCount}; Multiplicity Values: {MultiplicityValueCount};", orderedValues.Count, individualValues.Count, multiplicityValues.Count);
+
+            List<string> messages = new List<string>();
+
+            foreach (var item in individualValues) messages.Add($"{item.Timestamp.ToString(DATE_TIME_FORMAT)}|{item}\n");
 
             if (multiplicityValues.Any())
             {
@@ -302,10 +308,13 @@ namespace Mtconnect
                 foreach (var grouping in timestampGroups)
                 {
                     string contents = string.Join("|", grouping.Select(o => o.ToString()));
-                    string timestamp = grouping.Key.ToString(Constants.DATE_TIME_FORMAT);
-                    Write($"{timestamp}|{contents}\n", clientId);
+                    string timestamp = grouping.Key.ToString(DATE_TIME_FORMAT);
+                    messages.Add($"{timestamp}|{contents}\n");
                 }
             }
+
+            _logger?.LogTrace("Writing the following messages:\r\n\t{Messages}", string.Join("\r\n\t", messages.ToArray()));
+            foreach (string message in messages) Write(message, clientId);
         }
 
         /// <summary>
@@ -317,7 +326,7 @@ namespace Mtconnect
             StringBuilder sb = new StringBuilder();
 
             DateTime now = DateTime.UtcNow;
-            sb.Append(now.ToString(Constants.DATE_TIME_FORMAT));
+            sb.Append(now.ToString(DATE_TIME_FORMAT));
             sb.Append("|@ASSET@|");
             sb.Append(asset.AssetId);
             sb.Append('|');

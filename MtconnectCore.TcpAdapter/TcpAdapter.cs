@@ -9,6 +9,7 @@ using System.Net.Sockets;
 using System.Threading;
 using System.Threading.Tasks;
 using Microsoft.Extensions.Logging;
+using Microsoft.VisualBasic;
 using Mtconnect.AdapterInterface;
 using Mtconnect.AdapterInterface.Contracts;
 using Mtconnect.AdapterInterface.DataItems;
@@ -23,7 +24,7 @@ namespace Mtconnect
         private bool _disposing = false;
 
         /// <summary>
-        /// Event that fires when a message is received from a <see cref="TcpConnection"/>.
+        /// Event that fires when a response is received from a <see cref="TcpConnection"/>.
         /// </summary>
         public event TcpConnectionDataReceived ClientDataReceived;
 
@@ -228,6 +229,7 @@ namespace Mtconnect
         private const string PING = "* PING";
         private const string GET_DATAITEMS = "* DATAITEMS";
         private const string GET_DATAITEM_DESCRIPTION = "* DATAITEM_DESCRIPTION";
+        private const string GET_DATAITEM_VALUE = "* DATAITEM_VALUE";
         /// <summary>
         /// ReceiveClient data from a kvp and implement heartbeat ping/pong protocol.
         /// </summary>
@@ -273,6 +275,26 @@ namespace Mtconnect
                 } else
                 {
                     _logger?.LogWarning("Received GET DATAITEM_DESCRIPTION from client {ClientId} for {DataItemName}, but there is no such DataItem available", connection.ClientId, dataItemName);
+                }
+            } else if (message.StartsWith(GET_DATAITEM_VALUE))
+            {
+                string dataItemName = message.Remove(0, message.LastIndexOf(' ') + 1);
+                if (Contains(dataItemName))
+                {
+                    lock (connection)
+                    {
+                        _logger?.LogInformation("Received GET DATAITEM_VALUE from client {ClientId} for {DataItemName}, sending the current value (if any)", connection.ClientId, dataItemName);
+                        string response = this[dataItemName].LastChanged.HasValue
+                            ? this[dataItemName].LastChanged.Value.ToString(DATE_TIME_FORMAT)
+                            : "never";
+                        response += $"|{dataItemName}|{this[dataItemName].Value}";
+                        connection.Write(response);
+                        connection.Flush();
+                    }
+                }
+                else
+                {
+                    _logger?.LogWarning("Received GET DATAITEM_VALUE from client {ClientId} for {DataItemName}, but there is no such DataItem available", connection.ClientId, dataItemName);
                 }
             }
 
