@@ -1,4 +1,5 @@
-﻿using Mtconnect.AdapterInterface;
+﻿using Microsoft.Extensions.Logging;
+using Mtconnect.AdapterInterface;
 using System;
 using System.Collections.Generic;
 
@@ -30,18 +31,20 @@ namespace Mtconnect
             MaxConcurrentConnections = maxConnections;
         }
 
-        public override Dictionary<string, object> UpdateFromConfig()
+        public override Dictionary<string, object> UpdateFromConfig(ILogger<Adapter> logger = null)
         {
-            var adapterSettings = base.UpdateFromConfig();
+            var adapterSettings = base.UpdateFromConfig(logger);
 
             if (adapterSettings.ContainsKey("port") && Int32.TryParse(adapterSettings["port"].ToString(), out int port))
             {
                 Port = port;
+                logger?.LogDebug("Recognizing adapter option for overwriting the TCP port");
             }
 
             if (adapterSettings.ContainsKey("maxConnections") && Int32.TryParse(adapterSettings["maxConnections"].ToString(), out int maxConnections))
             {
                 MaxConcurrentConnections = maxConnections;
+                logger?.LogDebug("Recognizing adapter option for overwriting the maximum client connections");
             }
 
             return adapterSettings;

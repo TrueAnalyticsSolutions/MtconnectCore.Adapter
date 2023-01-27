@@ -20,13 +20,13 @@ namespace SampleAdapter
 
         public static void Main(string[] args)
         {
-            ConsoulLibrary.RenderOptions.WriteMode = RenderOptions.WriteModes.SuppressBlacklist;
-            ConsoulLibrary.RenderOptions.BlacklistColors.Add( ConsoleColor.Gray);
+            //ConsoulLibrary.RenderOptions.WriteMode = RenderOptions.WriteModes.SuppressBlacklist;
+            //ConsoulLibrary.RenderOptions.BlacklistColors.Add( ConsoleColor.Gray);
             var loggerFactory = LoggerFactory.Create(o => { o.AddConsoulLogger();o.SetMinimumLevel(LogLevel.Debug); });
             var logger = loggerFactory.CreateLogger<Adapter>();
 
             var options = new TcpAdapterOptions();
-            options.UpdateFromConfig();
+            options.UpdateFromConfig(logger);
 
             Adapter = new TcpAdapter(options, logger);
             Adapter.Start(Model);
