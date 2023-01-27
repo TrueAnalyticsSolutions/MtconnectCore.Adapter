@@ -16,19 +16,11 @@ namespace SampleAdapter
         /// </summary>
         public event DataReceivedHandler? OnDataReceived;
 
-        [Event("avail")]
-        public string? Availability { get; set; }
-
-        [Sample("xPos")]
-        public int? XPosition { get; set; }
-
-        [Sample("yPos")]
-        public int? YPosition { get; set; }
-
-        [Event("prog")]
-        public string? WindowTitle { get; set; }
+        public PCStatus Model { get; private set; } = new PCStatus();
 
         private System.Timers.Timer Timer = new System.Timers.Timer();
+
+        private long _loopCount { get; set; } = 0;
 
         /// <summary>
         /// Constructs a new instance of the PC monitor.
@@ -42,18 +34,18 @@ namespace SampleAdapter
 
         private void Timer_Elapsed(object? sender, System.Timers.ElapsedEventArgs e)
         {
-            Availability = "AVAILABLE";
+            Model.Availability = "AVAILABLE";
 
             Point lpPoint;
             if (WindowHandles.GetCursorPos(out lpPoint))
             {
-                XPosition = lpPoint.X;
-                YPosition = lpPoint.Y;
+                Model.XPosition = lpPoint.X;
+                Model.YPosition = lpPoint.Y;
             }
             else
             {
-                XPosition = null;
-                YPosition = null;
+                Model.XPosition = null;
+                Model.YPosition = null;
             }
 
             try
@@ -61,25 +53,32 @@ namespace SampleAdapter
                 string activeWindowTitle = WindowHandles.GetActiveWindowTitle();
                 if (!string.IsNullOrEmpty(activeWindowTitle))
                 {
-                    WindowTitle = activeWindowTitle;
+                    Model.WindowTitle = activeWindowTitle;
                 }
                 else
                 {
-                    WindowTitle = null;
+                    Model.WindowTitle = null;
                 }
             }
             catch (Exception ex)
             {
-                WindowTitle = null;
+                Model.WindowTitle = null;
+            }
+
+            // Comment out for testing * DATAITEM_VALUE foobar
+            if (_loopCount > 5000 / Timer.Interval)
+            {
+                Model.FooBar = "foobar";
             }
 
             if (OnDataReceived != null)
             {
-                OnDataReceived(this, new DataReceivedEventArgs());
+                OnDataReceived(Model, new DataReceivedEventArgs());
             }
+            _loopCount++;
         }
 
-        public void Start()
+        public void Start(CancellationToken token = default)
         {
             Timer.Start();
         }
@@ -88,5 +87,22 @@ namespace SampleAdapter
         {
             Timer.Stop();
         }
+    }
+    public class PCStatus : IAdapterDataModel
+    {
+        [Event("avail")]
+        public string? Availability { get; set; }
+
+        [Sample("xPos", "user32.dll#GetCursorPos().X")]
+        public int? XPosition { get; set; }
+
+        [Sample("yPos", "user32.dll#GetCursorPos().Y")]
+        public int? YPosition { get; set; }
+
+        [Event("prog", "user32.dll#GetWindowText(user32.dll#GetForegroundWindow(), StringBuilder(256), 256)")]
+        public string? WindowTitle { get; set; }
+
+        [Event("foobar")]
+        public string? FooBar { get; set; } = null;
     }
 }

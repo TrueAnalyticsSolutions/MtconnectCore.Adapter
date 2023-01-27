@@ -17,16 +17,18 @@
     <PackageIcon>icon.jpg</PackageIcon>
     <RepositoryType>git</RepositoryType>
     <PackageTags>MTConnect;Adapter;Interface</PackageTags>
-    <PackageReleaseNotes>Initial publish of the MTConnect Adapter Interface.</PackageReleaseNotes>
+    <PackageReleaseNotes>Added extra logging and refactored DataItem modeling.</PackageReleaseNotes>
     <ApplicationIcon>icon.ico</ApplicationIcon>
     <PackageProjectUrl>https://github.com/TrueAnalyticsSolutions/MtconnectCore.Adapter</PackageProjectUrl>
     <RepositoryUrl>$(ProjectUrl)</RepositoryUrl>
-    <Version>1.0.2</Version>
+    <Version>1.0.12</Version>
   </PropertyGroup>
 
   <ItemGroup>
     <None Remove="icon.jpg" />
     <None Remove="logo_v2.0.jpg" />
+    <None Remove="Sandbox\Readme.md" />
+    <None Remove="Sandbox\Sandbox.ps1" />
   </ItemGroup>
 
   <ItemGroup>
@@ -45,6 +47,12 @@
     <Content Include="logo_v2.0.jpg">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
+    <Content Include="Sandbox\Readme.md">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Sandbox\Sandbox.ps1">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
 	  <None Include="README.md">
 		  <Pack>True</Pack>
 		  <PackagePath>\</PackagePath>
@@ -52,7 +60,9 @@
   </ItemGroup>
 
   <ItemGroup>
+    <PackageReference Include="Microsoft.CodeAnalysis.CSharp.Scripting" Version="4.3.1" />
     <PackageReference Include="Microsoft.Extensions.Logging.Abstractions" Version="6.0.2" />
+    <PackageReference Include="System.Configuration.ConfigurationManager" Version="6.0.1" />
   </ItemGroup>
 
   <ItemGroup>

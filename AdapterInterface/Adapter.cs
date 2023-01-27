@@ -10,10 +10,7 @@ using Mtconnect.AdapterInterface;
 using Mtconnect.AdapterInterface.Assets;
 using System.Data;
 using System.Collections.Concurrent;
-using System.Reflection;
-using Mtconnect.AdapterInterface.Contracts.Attributes;
-using System.Diagnostics.Tracing;
-using EventAttribute = Mtconnect.AdapterInterface.Contracts.Attributes.EventAttribute;
+using System.Threading;
 
 namespace Mtconnect
 {
@@ -23,6 +20,11 @@ namespace Mtconnect
     /// </summary>
     public abstract class Adapter
     {
+        /// <summary>
+        /// Reference to the expected format for DateTime strings
+        /// </summary>
+        protected string DATE_TIME_FORMAT => Constants.DATE_TIME_FORMAT;
+
         /// <summary>
         /// Reference to a logging service.
         /// </summary>
@@ -116,26 +118,31 @@ namespace Mtconnect
         /// <summary>
         /// An optional reference to an Adapter source. If the Adapter is started with a reference to a source, this is where the reference is maintained.
         /// </summary>
-        private IAdapterSource _source { get; set; }
+        private List<IAdapterSource> _sources { get; set; } = new List<IAdapterSource>();
 
-        /// <summary>
-        /// Create an adapter. Defaults the heartbeat to 10 seconds and the 
-        /// port to 7878
-        /// </summary>
-        /// <param name="heartbeat">The optional heartbeat (default: 10,000)</param>
-        public Adapter(int heartbeat = 10_000)
-        {
-            Heartbeat = heartbeat;
-        }
+        private AdapterOptions _options { get; set; }
 
         /// <summary>
         /// Generic constructor of a new Adapter instance with basic AdapterOptions.
         /// </summary>
         /// <param name="options"><inheritdoc cref="AdapterOptions" path="/summary"/></param>
-        public Adapter(AdapterOptions options)
+        /// <param name="loggerFactory">Reference to the logger factory to handle logging.</param>
+        public Adapter(AdapterOptions options, ILogger<Adapter> logger = null)
         {
+            _options = options;
             Heartbeat = options.Heartbeat;
             CanEnqueueDataItems = options.CanEnqueueDataItems;
+
+            _logger = logger;
+        }
+
+        public bool Contains(string dataItemName)
+        {
+            return _dataItems.ContainsKey(dataItemName);
+        }
+        public bool Contains(DataItem dataItem)
+        {
+            return Contains(dataItem.Name);
         }
 
         /// <summary>
@@ -145,24 +152,48 @@ namespace Mtconnect
         /// <exception cref="DuplicateNameException"></exception>
         public void AddDataItem(DataItem dataItem)
         {
-            if (_dataItems.ContainsKey(dataItem.Name))
+            string internalName = dataItem.Name;
+            DataItemOptions options = _options[internalName];
+            if (options != null)
+            {
+                internalName = options?.InternalName;
+            }
+
+            if (_dataItems.ContainsKey(internalName))
             {
                 throw new DuplicateNameException("Adapter cannot handle DataItems with the same name");
             }
 
-            _dataItems.Add(dataItem.Name, dataItem);
-            _dataItems[dataItem.Name].OnDataItemChanged += Adapter_OnDataItemChanged; ;
+            _dataItems.Add(internalName, dataItem);
+            _dataItems[internalName].OnDataItemChanged += Adapter_OnDataItemChanged;
+
+            if (options?.Formatter != null)
+            {
+                _dataItems[internalName].FormatValue = options?.Formatter;
+                _logger?.LogDebug("Applying custom formatter to {DataItemName}", options?.DataItemName);
+            }
+
+            if (!string.IsNullOrEmpty(options?.DataItemName) && options?.DataItemName != internalName)
+                _dataItems[internalName].Name = options?.DataItemName;
+
+            _logger?.LogTrace("Added DataItem {DataItemName}", _dataItems[internalName].Name);
         }
 
-        private void Adapter_OnDataItemChanged(DataItem sender, DataItemChangedEventArgs e) => _values.Enqueue(new ReportedValue(sender));
+        private void Adapter_OnDataItemChanged(DataItem sender, DataItemChangedEventArgs e)
+        {
+            _logger?.LogTrace("DataItem '{DataItemName}' changed from '{PreviousValue}' to '{CurrentValue}' at {LastChangedTime}", sender.Name, e.PreviousValue, e.NewValue, e.ChangeTime);
+            if (CanEnqueueDataItems) _values.Enqueue(new ReportedValue(sender));
+        }
 
         /// <summary>
         /// Remove all data items.
         /// </summary>
         public void RemoveAllDataItems()
         {
-            _dataItems.Clear();
-            // TODO: Clear appropriate ReportedValues from the Queue
+            foreach (var item in _dataItems)
+            {
+                RemoveDataItem(item.Value);
+            }
         }
 
         /// <summary>
@@ -177,7 +208,19 @@ namespace Mtconnect
             }
 
             _dataItems.Remove(dataItem.Name);
-            // TODO: Clear appropriate ReportedValues from Queue
+
+            var queue = new List<ReportedValue>();
+            ReportedValue value = null;
+            while (_values.TryDequeue(out value))
+            {
+                if (!string.Equals(value.DataItemName, dataItem.Name, StringComparison.OrdinalIgnoreCase))
+                    queue.Add(value);
+            }
+
+            foreach (var item in queue)
+            {
+                _values.Enqueue(item);
+            }
         }
 
         /// <summary>
@@ -185,6 +228,7 @@ namespace Mtconnect
         /// </summary>
         public void Unavailable()
         {
+            _logger?.LogTrace("Setting all DataItem values to UNAVAILABLE");
             foreach (var kvp in _dataItems)
                 kvp.Value.Unavailable();
         }
@@ -215,6 +259,8 @@ namespace Mtconnect
         /// <param name="sendType">Flag for identifying which <see cref="ReportedValue"/>s to send.</param>
         public virtual void Send(DataItemSendTypes sendType = DataItemSendTypes.Changed, string clientId = null)
         {
+            _logger?.LogTrace("Sending {DataItemSendType} values", sendType.ToString());
+
             var values = new List<ReportedValue>();
             switch (sendType)
             {
@@ -250,14 +296,16 @@ namespace Mtconnect
         /// <param name="values">Collection of <see cref="ReportedValue"/>s to send values.</param>
         protected void Send(IEnumerable<ReportedValue> values, string clientId = null)
         {
+
             var orderedValues = values.OrderBy(o => o.Timestamp).ToList();
             var individualValues = values.Where(o => o.HasNewLine).ToList();
             var multiplicityValues = orderedValues.Except(individualValues).ToList();
 
-            foreach (var item in individualValues)
-            {
-                Write($"{item.Timestamp}|{item}\n", clientId);
-            }
+            _logger?.LogDebug("Sending {AllValueCount}; Individual Values: {IndividualValueCount}; Multiplicity Values: {MultiplicityValueCount};", orderedValues.Count, individualValues.Count, multiplicityValues.Count);
+
+            List<string> messages = new List<string>();
+
+            foreach (var item in individualValues) messages.Add($"{item.Timestamp.ToString(DATE_TIME_FORMAT)}|{item}\n");
 
             if (multiplicityValues.Any())
             {
@@ -265,10 +313,13 @@ namespace Mtconnect
                 foreach (var grouping in timestampGroups)
                 {
                     string contents = string.Join("|", grouping.Select(o => o.ToString()));
-                    string timestamp = grouping.Key.ToString(Constants.DATE_TIME_FORMAT);
-                    Write($"{timestamp}|{contents}\n", clientId);
+                    string timestamp = grouping.Key.ToString(DATE_TIME_FORMAT);
+                    messages.Add($"{timestamp}|{contents}\n");
                 }
             }
+
+            _logger?.LogTrace("Writing the following messages:\r\n\t{Messages}", string.Join("\r\n\t", messages.ToArray()));
+            foreach (string message in messages) Write(message, clientId);
         }
 
         /// <summary>
@@ -280,7 +331,7 @@ namespace Mtconnect
             StringBuilder sb = new StringBuilder();
 
             DateTime now = DateTime.UtcNow;
-            sb.Append(now.ToString(Constants.DATE_TIME_FORMAT));
+            sb.Append(now.ToString(DATE_TIME_FORMAT));
             sb.Append("|@ASSET@|");
             sb.Append(asset.AssetId);
             sb.Append('|');
@@ -298,92 +349,49 @@ namespace Mtconnect
             Write(sb.ToString());
         }
         
-        /// <summary>
-        /// The heartbeat thread for a client. This thread receives data from a client, closes the socket when it fails, and handles communication timeouts when the client does not send a heartbeat within 2x the heartbeat frequency. When the heartbeat is not received, the client is assumed to be unresponsive and the connection is closed. Waits for one ping to be received before enforcing the timeout. 
-        /// </summary>
-        /// <param name="client">The client we are communicating with.</param>
-        protected abstract void HeartbeatClient(object client);
+        ///// <summary>
+        ///// The heartbeat thread for a client. This thread receives data from a client, closes the socket when it fails, and handles communication timeouts when the client does not send a heartbeat within 2x the heartbeat frequency. When the heartbeat is not received, the client is assumed to be unresponsive and the connection is closed. Waits for one ping to be received before enforcing the timeout. 
+        ///// </summary>
+        ///// <param name="client">The client we are communicating with.</param>
+        //protected abstract void HeartbeatClient(object client);
 
         /// <summary>
         /// Start the listener thread.
         /// </summary>
         /// <param name="begin">Flag for whether or not to also call <see cref="Begin"/>.</param>
-        public abstract void Start(bool begin = true);
+        public abstract void Start(bool begin = true, CancellationToken token = default);
 
         /// <summary>
         /// Starts the listener thread and the provided <see cref="IAdapterSource"/>.
         /// </summary>
         /// <param name="source">Reference to the source of the Adapter.</param>
         /// <param name="begin">Flag for whether or not to also call <see cref="Begin"/>.</param>
-        public void Start<T>(T source, bool begin = true) where T : class, IAdapterSource
+        public void Start<T>(T source, bool begin = true, CancellationToken token = default) where T : class, IAdapterSource
+            => Start(new IAdapterSource[] { source }, begin, token);
+
+        /// <summary>
+        /// Starts the listener thread and the provided <see cref="IAdapterSource"/>s.
+        /// </summary>
+        /// <param name="sources">Reference to the sources of the Adapter.</param>
+        /// <param name="begin"><inheritdoc cref="Start{T}(T, bool)" path="/param[@name='begin']"/></param>
+        public void Start(IEnumerable<IAdapterSource> sources, bool begin = true, CancellationToken token = default)
         {
-            Start(begin);
+            Start(begin, token);
 
-            _source = source;
-            _source.OnDataReceived += _source_OnDataReceived;
-
-            // TODO: Cache the property map
-            Type sourceType = typeof(T);
-            var dataItemProperties = sourceType.GetProperties().Where(o => o.GetCustomAttribute(typeof(DataItemAttribute)) != null);
-            foreach (var property in dataItemProperties)
+            foreach (var source in sources)
             {
-                var dataItemAttribute = property.GetCustomAttribute(typeof(DataItemAttribute));
-                switch (dataItemAttribute)
-                {
-                    case EventAttribute eventAttribute:
-                        AddDataItem(new Event(eventAttribute.Name));
-                        break;
-                    case SampleAttribute sampleAttribute:
-                        AddDataItem(new Sample(sampleAttribute.Name));
-                        break;
-                    case ConditionAttribute conditionAttribute:
-                        AddDataItem(new Condition(conditionAttribute.Name));
-                        break;
-                    case TimeSeriesAttribute timeSeriesAttribute:
-                        AddDataItem(new TimeSeries(timeSeriesAttribute.Name));
-                        break;
-                    case MessageAttribute messageAttribute:
-                        AddDataItem(new Message(messageAttribute.Name));
-                        break;
-                    default:
-                        break;
-                }
+                _sources.Add(source);
+                source.OnDataReceived += _source_OnDataReceived;
+                source.Start(token);
             }
-
-            _source.Start();
         }
 
-        private void _source_OnDataReceived(object sender, DataReceivedEventArgs e)
+        private void _source_OnDataReceived(IAdapterDataModel data, DataReceivedEventArgs e)
         {
-            // TODO: Cache the property map
-            Type sourceType = sender.GetType();
-            var dataItemProperties = sourceType.GetProperties().Where(o => o.GetCustomAttribute(typeof(DataItemAttribute)) != null);
-            foreach (var property in dataItemProperties)
+            if (this.TryAddDataItems(data) && this.TryUpdateValues(data))
             {
-                var dataItemAttribute = property.GetCustomAttribute(typeof(DataItemAttribute));
-                switch (dataItemAttribute)
-                {
-                    case EventAttribute eventAttribute:
-                        this[eventAttribute.Name].Value = property.GetValue(sender);
-                        break;
-                    case SampleAttribute sampleAttribute:
-                        this[sampleAttribute.Name].Value = property.GetValue(sender);
-                        break;
-                    case ConditionAttribute conditionAttribute:
-                        this[conditionAttribute.Name].Value = property.GetValue(sender);
-                        break;
-                    case TimeSeriesAttribute timeSeriesAttribute:
-                        this[timeSeriesAttribute.Name].Value = property.GetValue(sender);
-                        break;
-                    case MessageAttribute messageAttribute:
-                        this[messageAttribute.Name].Value = property.GetValue(sender);
-                        break;
-                    default:
-                        break;
-                }
+                Send(DataItemSendTypes.Changed);
             }
-
-            Send(DataItemSendTypes.Changed);
         }
 
         /// <summary>
@@ -391,7 +399,11 @@ namespace Mtconnect
         /// </summary>
         public virtual void Stop()
         {
-            _source?.Stop();
+            foreach (var source in _sources)
+            {
+                source.Stop();
+                source.OnDataReceived -= _source_OnDataReceived;
+            }
         }
     }
 }

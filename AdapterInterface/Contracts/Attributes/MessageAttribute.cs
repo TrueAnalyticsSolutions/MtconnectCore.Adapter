@@ -6,6 +6,6 @@
     public class MessageAttribute : DataItemAttribute
     {
         /// <inheritdoc />
-        public MessageAttribute(string name) : base(name) { }
+        public MessageAttribute(string name, string description = null) : base(name, description) { }
     }
 }

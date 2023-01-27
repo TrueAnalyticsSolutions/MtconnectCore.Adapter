@@ -18,8 +18,8 @@
 	  <RepositoryUrl>https://github.com/TrueAnalyticsSolutions/MtconnectCore.Adapter</RepositoryUrl>
 	  <RepositoryType>git</RepositoryType>
 	  <PackageTags>Mtconnect;Adapter;TCP;TAMS;</PackageTags>
-	  <PackageReleaseNotes>An implementation of the generic MTConnect&amp;reg; Adapter library that listens for TCP clients and publishes data in a pipe-delimitted stream.</PackageReleaseNotes>
-	  <Version>1.0.2</Version>
+	  <PackageReleaseNotes>Added extra logging and refined TcpConnections.</PackageReleaseNotes>
+	  <Version>1.0.11</Version>
   </PropertyGroup>
 
   <ItemGroup>

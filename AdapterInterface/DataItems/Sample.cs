@@ -6,6 +6,6 @@
     public class Sample : DataItem
     {
         /// <inheritdoc />
-        public Sample(string name) : base(name) { }
+        public Sample(string name, string description = null) : base(name, description) { }
     }
 }
