@@ -1,5 +1,6 @@
 ﻿using Microsoft.CodeAnalysis.CSharp.Scripting;
 using Microsoft.CodeAnalysis.Scripting;
+using Microsoft.Extensions.Logging;
 using System;
 using System.Collections;
 using System.Collections.Generic;
@@ -50,12 +51,17 @@ namespace Mtconnect.AdapterInterface
         /// <summary>
         /// Updates the properties of the <see cref="AdapterOptions"/> from the <see cref="ConfigurationManager"/> section 'adapter'.
         /// </summary>
-        public virtual Dictionary<string, object> UpdateFromConfig()
+        public virtual Dictionary<string, object> UpdateFromConfig(ILogger<Adapter> logger = null)
         {
             var adapterSettings = (ConfigurationManager.GetSection("adapter") as Hashtable)
                 .Cast<System.Collections.DictionaryEntry>()
                 .ToDictionary(o => o.Key.ToString(), o => o.Value); ;
-            if (adapterSettings == null) return null;
+            if (adapterSettings == null)
+            {
+                var ex = new Exception("Failed to load configuration");
+                logger?.LogError(ex, ex.Message);
+                return null;
+            }
 
             foreach (var kvp in adapterSettings)
             {
@@ -72,28 +78,42 @@ namespace Mtconnect.AdapterInterface
                     if (kvp.Key.Contains(":name"))
                     {
                         dataItems[internalName].DataItemName = Convert.ToString(kvp.Value);
+                        logger?.LogDebug("Recognizing DataItem option for overwriting the name");
                     } else if (kvp.Key.Contains(":format"))
                     {
-                        var func = Scripting.DecryptScript(Convert.ToString(kvp.Value)).Result;
+                        try
+                        {
+                            var func = Scripting.DecryptScript(Convert.ToString(kvp.Value)).Result;
 
-                        if (func != null)
+                            if (func != null)
+                            {
+                                dataItems[internalName].Formatter = func;
+                                logger?.LogDebug("Recognizing DataItem option for overwriting the value format");
+                            }
+                            else
+                            {
+                                // TODO: Log error
+                                var ex = new Exception("Failed to decrypt the DataItem value format function");
+                                logger?.LogError(ex, ex.Message + " for DataItem {DataItemName}", internalName);
+                            }
+                        }
+                        catch (Exception ex)
                         {
-                            dataItems[internalName].Formatter = func;
-                        } else
-                        {
-                            // TODO: Log error
+                            logger?.LogError(ex, ex.Message);
                         }
                     } else
                     {
-                        // TODO: Log unrecognized setting
+                        logger?.LogWarning("Unrecognized DataItem configuration option '{DataItemOptionKey}'", kvp.Key);
                     }
 
                 } else if (kvp.Key.StartsWith("heartbeat", StringComparison.OrdinalIgnoreCase))
                 {
                     Heartbeat = Convert.ToDouble(kvp.Value);
+                    logger?.LogDebug("Recognizing adapter option for overwriting the heartbeat");
                 } else if (kvp.Key.StartsWith("enqueue", StringComparison.OrdinalIgnoreCase))
                 {
                     CanEnqueueDataItems = Convert.ToBoolean(kvp.Value);
+                    logger?.LogDebug("Recognizing adapter option for queuing all values into the buffer");
                 }
                 // TODO: Reflect on the properties and automatically assign values.
             }

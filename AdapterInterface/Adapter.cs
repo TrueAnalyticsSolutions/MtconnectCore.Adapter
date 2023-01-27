@@ -167,7 +167,12 @@ namespace Mtconnect
             _dataItems.Add(internalName, dataItem);
             _dataItems[internalName].OnDataItemChanged += Adapter_OnDataItemChanged;
 
-            _dataItems[internalName].FormatValue = options?.Formatter;
+            if (options?.Formatter != null)
+            {
+                _dataItems[internalName].FormatValue = options?.Formatter;
+                _logger?.LogDebug("Applying custom formatter to {DataItemName}", options?.DataItemName);
+            }
+
             if (!string.IsNullOrEmpty(options?.DataItemName) && options?.DataItemName != internalName)
                 _dataItems[internalName].Name = options?.DataItemName;
 
