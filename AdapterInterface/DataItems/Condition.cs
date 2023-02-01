@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Drawing;
 using System.Linq;
 
 namespace Mtconnect.AdapterInterface.DataItems
@@ -26,7 +27,8 @@ namespace Mtconnect.AdapterInterface.DataItems
         /// </summary>
         public bool IsSimple { get; private set; }
 
-        private List<Active> _activeList { get; set; } = new List<Active>();
+        private Dictionary<string, Active> _activeList { get; set; } = new Dictionary<string, Active>();
+        //private List<Active> _activeList { get; set; } = new List<Active>();
 
         /// <summary>
         /// Create a new condition
@@ -38,7 +40,7 @@ namespace Mtconnect.AdapterInterface.DataItems
         {
             HasNewLine = true;
             IsSimple = simple;
-            Add(new Active(base.Name, Level.UNAVAILABLE));
+            Add(Level.UNAVAILABLE);
         }
 
         /// <inheritdoc />
@@ -52,8 +54,10 @@ namespace Mtconnect.AdapterInterface.DataItems
         {
             if (!IsSimple)
             {
-                foreach (Active active in _activeList)
-                    active.Clear();
+                foreach (var kvp in _activeList)
+                {
+                    kvp.Value.Clear();
+                }
                 HasBegun = true;
             }
 
@@ -63,38 +67,28 @@ namespace Mtconnect.AdapterInterface.DataItems
         /// <inheritdoc />
         public override void Prepare()
         {
-            if (HasBegun)
+            if (!HasBegun) return;
+
+            // Check to see if we have any active marked conditions
+            bool marked = _activeList.Any(o => o.Value.mPlaceholder || o.Value.mMarked);
+
+            // If they've all been cleared, then go back to normal.
+            if (!marked) Normal();
+
+            // Sweep the old conditions and if they are not marked
+            // set them to normal.
+            foreach (var kvp in _activeList)
             {
-                bool marked = false;
-
-                // Check to see if we have any active marked conditions
-                foreach (Active active in _activeList)
+                if (!kvp.Value.mPlaceholder && !kvp.Value.mMarked)
                 {
-                    if (active.mPlaceholder || active.mMarked)
-                    {
-                        marked = true;
-                        break;
-                    }
+                    kvp.Value.Set(Level.NORMAL, string.Empty);
+                    kvp.Value.mMarked = false;
                 }
-
-                // If they've all been cleared, then go back to normal.
-                if (!marked) Normal();
-
-                // Sweep the old conditions and if they are not marked
-                // set them to normal.
-                foreach (Active active in _activeList)
-                {
-                    if (!active.mPlaceholder && !active.mMarked)
-                    {
-                        active.Set(Level.NORMAL, string.Empty);
-                        active.mMarked = false;
-                    }
-                    if (active.HasChanged)
-                        HasChanged = true;
-                }
-
-                HasPrepared = true;
+                if (kvp.Value.HasChanged)
+                    HasChanged = true;
             }
+
+            HasPrepared = true;
         }
 
         /// <summary>
@@ -105,14 +99,14 @@ namespace Mtconnect.AdapterInterface.DataItems
             base.Cleanup();
 
             HasBegun = HasPrepared = false;
-            foreach (Active active in _activeList.ToList())
+            foreach (var kvp in _activeList)
             {
                 // It is assumed that if the activations are no longer needed, they will
                 // be removed here after they are returned.
-                if (!active.mPlaceholder && !active.mMarked)
-                    _activeList.Remove(active);
+                if (!kvp.Value.mPlaceholder && !kvp.Value.mMarked)
+                    _activeList.Remove(kvp.Key);
 
-                active.Cleanup();
+                kvp.Value.Cleanup();
             }
 
             // Remvoe stale items from the active list that are not marked                      
@@ -122,7 +116,7 @@ namespace Mtconnect.AdapterInterface.DataItems
         /// Add a new activation.
         /// </summary>
         /// <param name="active"></param>
-        private void Add(Active active) => _activeList.Add(active);
+        private void Add(Active active) => _activeList.Add(active.NativeCode, active);
 
         /// <summary>
         /// Adds a new activation to the condition or if <c>NORMAL</c> or <c>UNAVAILABLE</c>, removes the activation.
@@ -138,49 +132,43 @@ namespace Mtconnect.AdapterInterface.DataItems
             bool result = false;
 
             // Get the first activation
-            Active first = null;
-            if (_activeList.Count > 0)
-                first = _activeList.First();
-
-            // Check for a reset of all conditions for a normal or an unavailable
-            if ((level == Level.NORMAL || level == Level.UNAVAILABLE) && code.Length == 0)
+            Active activation = null;
+            Func<Level, bool> isFirstActivation = (o) => o == Level.NORMAL || o == Level.UNAVAILABLE;
+            if (string.IsNullOrEmpty(code) && isFirstActivation(level))
             {
-                // If we haven't changed.
-                if (_activeList.Count == 1 && first.Level == level)
-                    first.mMarked = true;
-                else
+                _activeList.Clear();
+                activation = new Active(Name, level, Description, text, code, qualifier, severity);
+                _activeList.Add(string.Empty, activation);
+                result = HasChanged = true;
+            } else if (!_activeList.TryGetValue(code, out activation))
+            {
+                if (_activeList.Count == 1 && isFirstActivation(_activeList.Values.FirstOrDefault().Level))
                 {
-                    // Create a new placeholder activation. We don't need to remember the
-                    // old activations because the global normal will reset everything.
                     _activeList.Clear();
-                    Add(new Active(Name, level));
-                    result = HasChanged = true;
                 }
+
+                activation = new Active(Name, level, Description, text, code, qualifier, severity);
+                _activeList.Add(code, activation);
+
+                result = HasChanged = true;
             }
-            else
+
+            if (_activeList.ContainsKey(code))
             {
-                // If the first entry is a normal or unavailable and we are entering
-                // into a warning or fault, remove the normal or unavailable
-                if (_activeList.Count() == 1 && first.mPlaceholder)
+                if (activation != null)
                 {
-                    _activeList.Clear();
-                }
-
-                // See if we can find the activation with the same native code.
-                Active found = _activeList.FirstOrDefault(o => o.NativeCode == code);
-
-                if (found != null)
+                    if (!result)
+                    {
+                        result = activation.Set(level, text, qualifier, severity);
+                        if (result)
+                        {
+                            _activeList[code] = activation;
+                        }
+                        HasChanged = HasChanged || result;
+                    }
+                } else
                 {
-                    // If we found it, update all the properties and see if it has changed.
-                    // This will mark this activation
-                    result = found.Set(level, text, qualifier, severity);
-                    HasChanged = HasChanged || result;
-                }
-                else
-                {
-                    // Otherwise, we have a new activation and we should create a new one.
-                    Add(new Active(Name, level, text, code, qualifier, severity));
-                    result = HasChanged = true;
+                    _activeList.Remove(code);
                 }
             }
 
@@ -194,10 +182,9 @@ namespace Mtconnect.AdapterInterface.DataItems
         /// <returns><c>true</c> if the activation is found</returns>
         public bool Clear(string code)
         {
+            Active found = null;
             // Find the activation.
-            Active found = _activeList.FirstOrDefault(o => o.NativeCode == code);
-
-            if (found == null) return false;
+            if (_activeList?.TryGetValue(code, out found) == false || found == null) return false;
 
             // If we've removed the last activation, go back to normal.
             if (_activeList.Count() == 1)
@@ -231,35 +218,14 @@ namespace Mtconnect.AdapterInterface.DataItems
         /// <returns>A list of activations (also DataItems)</returns>
         public override List<DataItem> ItemList(bool all = false)
         {
-            List<DataItem> list = new List<DataItem>();
-            if (all) 
-            {
-                // Just grab all the activations.
-                foreach (Active active in _activeList)
-                    list.Add(active);
-            }
-            else if (IsSimple)
+            // Just grab all the activations.
+            List<DataItem> list = _activeList.Values.ToList<DataItem>();// new List<DataItem>();
+            if (IsSimple || (HasBegun && HasPrepared && HasChanged))
             {
                 // For a simple condition, we are only looking for the changed set.
                 // Since we don't care about the mark and sweep, this is similar to 
                 // all other data items.
-                foreach (Active active in _activeList)
-                {
-                    if (active.HasChanged)
-                        list.Add(active);
-                }
-            }
-            else if (HasBegun && HasPrepared)
-            {
-                if (HasChanged)
-                {
-                    // Find all the changed activations and add them to the list                    
-                    foreach (Active active in _activeList)
-                    {
-                        if (active.HasChanged)
-                            list.Add(active);
-                    }
-                }
+                list = list.Where(o => o.HasChanged).ToList();
             }
 
             return list;

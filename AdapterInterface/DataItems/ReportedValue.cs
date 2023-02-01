@@ -23,6 +23,8 @@ namespace Mtconnect.AdapterInterface.DataItems
         /// <inheritdoc cref="DataItem.HasNewLine"/>
         public bool HasNewLine { get; }
 
+        private string _output { get; }
+
         /// <summary>
         /// Constructs a new instance of a reported <see cref="DataItem"/> value.
         /// </summary>
@@ -34,11 +36,14 @@ namespace Mtconnect.AdapterInterface.DataItems
             Value = dataItem.Value;
             Timestamp = dataItem.LastChanged.GetValueOrDefault();
             HasNewLine = dataItem.HasNewLine;
+
+            _output = dataItem.ToString();
         }
 
         /// <inheritdoc />
         public override string ToString()
         {
+            return _output;
             string result = string.Empty;
 
             if (DevicePrefix != null) result += $"{DevicePrefix}:";

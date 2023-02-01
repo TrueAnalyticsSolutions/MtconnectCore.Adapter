@@ -1,6 +1,7 @@
 ﻿// See https://aka.ms/new-console-template for more information
 using Mtconnect;
 using Mtconnect.AdapterInterface.Contracts.Attributes;
+using Mtconnect.AdapterInterface.DataItems;
 using SampleAdapter.PC;
 using System.Drawing;
 
@@ -39,7 +40,7 @@ namespace SampleAdapter
             Point lpPoint;
             if (WindowHandles.GetCursorPos(out lpPoint))
             {
-                Model.XPosition = lpPoint.X;
+                Model.XPosition.Value = lpPoint.X;
                 Model.YPosition = lpPoint.Y;
             }
             else
@@ -63,6 +64,37 @@ namespace SampleAdapter
             catch (Exception ex)
             {
                 Model.WindowTitle = null;
+            }
+
+            try
+            {
+                WindowHandles.SystemPower.SystemPowerStatus sps = new WindowHandles.SystemPower.SystemPowerStatus();
+                WindowHandles.SystemPower.GetSystemPowerStatus(out sps);
+                if (sps.flgBattery == WindowHandles.SystemPower.BatteryFlag.Unknown || sps.flgBattery == WindowHandles.SystemPower.BatteryFlag.NoSystemBattery)
+                {
+                    Model.BatteryCondition.Add(Condition.Level.WARNING, sps.flgBattery.ToString(), ((int)sps.flgBattery).ToString(), string.Empty, string.Empty);
+                    Model.BatteryRemaining = null;
+                } else
+                {
+                    Model.BatteryCondition.Normal();
+                    Model.BatteryRemaining = (int)sps.BatteryLifePercent;
+                }
+
+
+                if (sps.LineStatus == WindowHandles.SystemPower.ACLineStatus.Unknown)
+                {
+                    Model.ACCondition.Add(Condition.Level.WARNING, sps.LineStatus.ToString(), ((int)sps.LineStatus).ToString(), string.Empty, string.Empty);
+                    Model.ACConnected = null;
+                } else
+                {
+                    Model.ACCondition.Normal();
+                    Model.ACConnected = sps.LineStatus == WindowHandles.SystemPower.ACLineStatus.Online;
+                }
+            }
+            catch (Exception ex)
+            {
+                Model.BatteryCondition.Add(Condition.Level.FAULT, ex.Message, ex.TargetSite.Name, string.Empty, string.Empty);
+                Model.ACCondition.Add(Condition.Level.FAULT, ex.Message, ex.TargetSite.Name, string.Empty, string.Empty);
             }
 
             // Comment out for testing * DATAITEM_VALUE foobar
@@ -94,7 +126,7 @@ namespace SampleAdapter
         public string? Availability { get; set; }
 
         [Sample("xPos", "user32.dll#GetCursorPos().X")]
-        public int? XPosition { get; set; }
+        public Sample? XPosition { get; set; } = new Sample("xPos");
 
         [Sample("yPos", "user32.dll#GetCursorPos().Y")]
         public int? YPosition { get; set; }
@@ -104,5 +136,15 @@ namespace SampleAdapter
 
         [Event("foobar")]
         public string? FooBar { get; set; } = null;
+
+        [Event("ac")]
+        public bool? ACConnected { get; set; } = null;
+        [Condition("acState")]
+        public Condition ACCondition { get; set; } = new Condition("acState");
+
+        [Sample("battery")]
+        public int? BatteryRemaining { get; set; } = null;
+        [Condition("batteryState")]
+        public Condition BatteryCondition { get; set; } = new Condition("batteryState");
     }
 }

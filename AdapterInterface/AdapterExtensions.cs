@@ -1,6 +1,7 @@
 ﻿using Mtconnect.AdapterInterface.Contracts.Attributes;
 using Mtconnect.AdapterInterface.DataItems;
 using System;
+using System.Collections.Concurrent;
 using System.Collections.Generic;
 using System.Linq;
 using System.Reflection;
@@ -32,58 +33,94 @@ namespace Mtconnect
         /// <returns>Flag for whether or not all decorated <see cref="DataItemAttribute"/>s were added to the adapter.</returns>
         public static bool TryAddDataItems(this Adapter adapter, IAdapterDataModel model)
         {
-            return adapter.TryAddDataItems(model.GetType());
+            return adapter.TryAddDataItems(model, string.Empty, string.Empty);
         }
         private static PropertyInfo[] GetDataItemProperties(Type type)
         {
             return type.GetProperties(BindingFlags.Instance | BindingFlags.Public)
-                .Where(o => o.GetCustomAttribute(typeof(DataItemAttribute)) != null)
+                .Where(o =>
+                    _dataItemTypes.Contains(o.PropertyType)
+                    || o.GetCustomAttribute(typeof(DataItemAttribute)) != null
+                )
                 .ToArray();
         }
-        private static Dictionary<Type, PropertyInfo[]> _dataItemProperties = new Dictionary<Type, PropertyInfo[]>();
-        private static bool TryAddDataItems(this Adapter adapter, Type dataModelType, string dataItemNamePrefix = "", string dataItemDescriptionPrefix = "")
+        private static ConcurrentDictionary<Type, PropertyInfo[]> _dataItemProperties = new ConcurrentDictionary<Type, PropertyInfo[]>();
+        private static HashSet<Type> _dataItemTypes = new HashSet<Type>
         {
+                typeof(Sample),
+                typeof(Event),
+                typeof(Condition),
+                typeof(Message),
+                typeof(TimeSeries)
+        };
+        private static bool TryAddDataItems(this Adapter adapter, object model, string dataItemNamePrefix = "", string dataItemDescriptionPrefix = "")
+        {
+            Type dataModelType = model.GetType();
             if (!_dataItemProperties.TryGetValue(dataModelType, out PropertyInfo[] dataItemProperties))
             {
                 dataItemProperties = GetDataItemProperties(dataModelType);
-                _dataItemProperties.Add(dataModelType, dataItemProperties);
+                _dataItemProperties.TryAdd(dataModelType, dataItemProperties);
             }
 
             bool allDataItemsAdded = true;
 
-
             foreach (var property in dataItemProperties)
             {
                 bool dataItemAdded = false;
+                string dataItemName = string.Empty;
+                string dataItemDescription = string.Empty;
+
+
                 var dataItemAttribute = property.GetCustomAttribute<DataItemAttribute>();
-                string dataItemName = dataItemNamePrefix + dataItemAttribute.Name;
-                string dataItemDescription = dataItemDescriptionPrefix + dataItemAttribute.Description;
 
-                if (adapter.Contains(dataItemName)) continue;
-
-                switch (dataItemAttribute)
+                if (dataItemAttribute != null)
                 {
-                    case DataItemPartialAttribute _:
-                        dataItemAdded = adapter.TryAddDataItems(property.PropertyType, dataItemName, dataItemDescription);
-                        break;
-                    case EventAttribute _:
-                        dataItemAdded = adapter.TryAddDataItem(new Event(dataItemName, dataItemDescription));
-                        break;
-                    case SampleAttribute _:
-                        dataItemAdded = adapter.TryAddDataItem(new Sample(dataItemName, dataItemDescription));
-                        break;
-                    case ConditionAttribute _:
-                        dataItemAdded = adapter.TryAddDataItem(new Condition(dataItemName, dataItemDescription));
-                        break;
-                    case TimeSeriesAttribute _:
-                        dataItemAdded = adapter.TryAddDataItem(new TimeSeries(dataItemName, dataItemDescription));
-                        break;
-                    case MessageAttribute _:
-                        dataItemAdded = adapter.TryAddDataItem(new Message(dataItemName, dataItemDescription));
-                        break;
-                    default:
-                        dataItemAdded = false;
-                        break;
+                    dataItemName = dataItemNamePrefix + dataItemAttribute.Name;
+                    dataItemDescription = dataItemDescriptionPrefix + dataItemAttribute.Description;
+                }
+
+                // Check if the property is already of type DataItem
+                if (_dataItemTypes.Contains(property.PropertyType))
+                {
+                    // Since the property is "DataItem" type already, just add it directly as a reference without creating a new DataItem instance
+                    var dataItemProperty = Convert.ChangeType(property.GetValue(model), property.PropertyType);
+                    if (dataItemAttribute != null)
+                    {
+                        // Update the name/description of the DataItem based on the decorating attribute.
+                        (dataItemProperty as DataItem).Name = dataItemName;
+                        (dataItemProperty as DataItem).Description = dataItemDescription;
+
+                        // TODO: Check for Type mismatch
+                    }
+                    if (adapter.Contains((dataItemProperty as DataItem).Name)) continue;
+                    dataItemAdded = adapter.TryAddDataItem(dataItemProperty as DataItem);
+                } else if (dataItemAttribute != null)
+                {
+                    if (adapter.Contains(dataItemName)) continue;
+                    switch (dataItemAttribute)
+                    {
+                        case DataItemPartialAttribute _:
+                            dataItemAdded = adapter.TryAddDataItems(property.PropertyType, dataItemName, dataItemDescription);
+                            break;
+                        case EventAttribute _:
+                            dataItemAdded = adapter.TryAddDataItem(new Event(dataItemName, dataItemDescription));
+                            break;
+                        case SampleAttribute _:
+                            dataItemAdded = adapter.TryAddDataItem(new Sample(dataItemName, dataItemDescription));
+                            break;
+                        case ConditionAttribute _:
+                            dataItemAdded = adapter.TryAddDataItem(new Condition(dataItemName, dataItemDescription));
+                            break;
+                        case TimeSeriesAttribute _:
+                            dataItemAdded = adapter.TryAddDataItem(new TimeSeries(dataItemName, dataItemDescription));
+                            break;
+                        case MessageAttribute _:
+                            dataItemAdded = adapter.TryAddDataItem(new Message(dataItemName, dataItemDescription));
+                            break;
+                        default:
+                            dataItemAdded = false;
+                            break;
+                    }
                 }
 
                 if (!dataItemAdded) allDataItemsAdded = false;
@@ -114,6 +151,7 @@ namespace Mtconnect
             }
             foreach (var property in dataItemProperties)
             {
+                if (_dataItemTypes.Contains(property.PropertyType)) continue; // No need to update DataItem properties since the reference is already there
                 bool dataItemUpdated = true;
 
                 var dataItemAttribute = property.GetCustomAttribute<DataItemAttribute>();

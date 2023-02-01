@@ -284,11 +284,11 @@ namespace Mtconnect
                     lock (connection)
                     {
                         _logger?.LogInformation("Received GET DATAITEM_VALUE from client {ClientId} for {DataItemName}, sending the current value (if any)", connection.ClientId, dataItemName);
-                        string response = this[dataItemName].LastChanged.HasValue
-                            ? this[dataItemName].LastChanged.Value.ToString(DATE_TIME_FORMAT)
-                            : "never";
-                        response += $"|{dataItemName}|{this[dataItemName].Value}";
-                        connection.Write(response);
+                        //string response = this[dataItemName].LastChanged.HasValue
+                        //    ? this[dataItemName].LastChanged.Value.ToString(DATE_TIME_FORMAT)
+                        //    : "never";
+                        //response += $"|{dataItemName}|{this[dataItemName].Value}";
+                        connection.Write(this[dataItemName].ToString());
                         connection.Flush();
                     }
                 }

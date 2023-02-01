@@ -79,7 +79,7 @@ namespace Mtconnect.AdapterInterface.DataItems
         /// <summary>
         /// Timestamp of when the <see cref="Value"/> was last Changed.
         /// </summary>
-        public DateTime? LastChanged { get; private set; }
+        public DateTime? LastChanged { get; protected set; }
 
         /// <summary>
         /// A flag to indicate if the data item's value has changed since it 

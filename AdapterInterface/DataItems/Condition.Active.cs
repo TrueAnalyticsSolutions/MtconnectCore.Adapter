@@ -87,6 +87,7 @@ namespace Mtconnect.AdapterInterface.DataItems
                     Qualifier = qualifier;
                     Text = text;
                     NativeSeverity = severity;
+                    LastChanged = DateTime.UtcNow;
                 }
 
                 mMarked = true;
