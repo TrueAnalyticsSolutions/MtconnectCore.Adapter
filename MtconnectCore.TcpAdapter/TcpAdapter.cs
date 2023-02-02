@@ -28,6 +28,8 @@ namespace Mtconnect
         /// </summary>
         public event TcpConnectionDataReceived ClientDataReceived;
 
+        public string Address { get; private set; } = IPAddress.Any.ToString();
+
         /// <summary>
         /// The Port property to set and get the mPort. This will only take affect when the adapter is stopped.
         /// </summary>
@@ -73,7 +75,7 @@ namespace Mtconnect
                 State = AdapterStates.Starting;
 
                 // Start TcpListener
-                _listener = new TcpListener(IPAddress.Any, Port);
+                _listener = new TcpListener(IPAddress.Parse(Address), Port);
                 _listener.Start();
 
                 // Start before the _listenerThread because it relies on state being Busy

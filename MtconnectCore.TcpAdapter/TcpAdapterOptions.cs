@@ -2,6 +2,7 @@
 using Mtconnect.AdapterInterface;
 using System;
 using System.Collections.Generic;
+using System.Net;
 
 namespace Mtconnect
 {
@@ -10,6 +11,8 @@ namespace Mtconnect
     /// </summary>
     public sealed class TcpAdapterOptions : AdapterOptions
     {
+        public string Address { get; private set; } = IPAddress.Any.ToString();
+
         /// <summary>
         /// The port for which the Adapter should stream data thru.
         /// </summary>
@@ -25,8 +28,12 @@ namespace Mtconnect
         /// </summary>
         /// <param name="heartbeat"><inheritdoc cref="AdapterOptions.AdapterOptions" path="/param[@name='heartbeat']"/></param>
         /// <param name="port"><inheritdoc cref="TcpAdapterOptions.Port" path="/summary"/></param>
-        public TcpAdapterOptions(double heartbeat = 10_000, int port = 7878, int maxConnections = 2) : base(heartbeat)
+        public TcpAdapterOptions(double heartbeat = 10_000, string address = null, int port = 7878, int maxConnections = 2) : base(heartbeat)
         {
+            if (!string.IsNullOrWhiteSpace(address))
+            {
+                Address = address;
+            }
             Port = port;
             MaxConcurrentConnections = maxConnections;
         }
@@ -34,6 +41,12 @@ namespace Mtconnect
         public override Dictionary<string, object> UpdateFromConfig(ILogger<Adapter> logger = null)
         {
             var adapterSettings = base.UpdateFromConfig(logger);
+
+            if (adapterSettings.ContainsKey("address"))
+            {
+                Address = adapterSettings["address"].ToString();
+                logger?.LogDebug("Recognizing adapter option for overwriting the TCP Address");
+            }
 
             if (adapterSettings.ContainsKey("port") && Int32.TryParse(adapterSettings["port"].ToString(), out int port))
             {
