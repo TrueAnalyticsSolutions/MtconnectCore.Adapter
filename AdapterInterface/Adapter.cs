@@ -11,6 +11,7 @@ using Mtconnect.AdapterInterface.Assets;
 using System.Data;
 using System.Collections.Concurrent;
 using System.Threading;
+using System.Net.NetworkInformation;
 
 namespace Mtconnect
 {
@@ -404,6 +405,26 @@ namespace Mtconnect
                 source.Stop();
                 source.OnDataReceived -= _source_OnDataReceived;
             }
+        }
+
+        public string[] GetDataItemNames() => DataItems?.Select(o => o.Name)?.DefaultIfEmpty().ToArray();
+
+        /// <summary>
+        /// Handle an incoming command from a client.
+        /// </summary>
+        /// <param name="command">Reference to the incoming message command.</param>
+        /// <param name="clientId">Reference to the client that sent the command</param>
+        /// <returns></returns>
+        public virtual bool HandleCommand(string command, string clientId = null)
+        {
+            var response = AdapterCommands.GetResponse(this, command);
+            if (!string.IsNullOrEmpty(response))
+            {
+                Write($"{response}\n", clientId);
+                return true;
+            }
+
+            return false;
         }
     }
 }
