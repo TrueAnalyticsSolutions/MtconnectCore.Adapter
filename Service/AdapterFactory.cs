@@ -63,6 +63,7 @@ namespace Service
 
             foreach (var adapter in _adapters)
             {
+                _logger?.LogInformation("Attaching {SourceType} to Adapter {AdapterType}", source.GetType().FullName, adapterType.FullName);
                 adapter.Sources.Add(source);
             }
         }
@@ -139,8 +140,15 @@ namespace Service
                     .Where(o => o != null)
                     .FirstOrDefault();
 
+                if (adapterType == null)
+                {
+                    logger?.LogError("Could not find Adapter type {AdapterType} from imported DLL(s)", adapterConfig.Adapter);
+                    continue;
+                }
+
                 //AdapterOptions result, ILogger<Adapter> workerLogger = null
                 var adapterCtors = adapterType.GetConstructors();
+                bool constructedAdapter = false;
                 foreach (var adapterCtor in adapterCtors)
                 {
                     var optionsParam = adapterCtor.GetParameters().FirstOrDefault(o => o.ParameterType.IsSubclassOf(typeof(AdapterOptions)));
@@ -153,7 +161,17 @@ namespace Service
                         continue;
                     }
 
+                    constructedAdapter = true;
                     factory.Add(adapter);
+                }
+
+                if (constructedAdapter)
+                {
+                    logger?.LogInformation("Constructed Adapter {AdapterType}", adapterConfig.Adapter);
+                } else
+                {
+                    var ctorException = new MissingMethodException("Adapter missing constructor with AdapterOptions parameter");
+                    logger?.LogError(ctorException, "Adapter {AdapterType} missing constructor with AdapterOptions parameter and therefore could not be constructed", adapterConfig.Adapter);
                 }
             }
 

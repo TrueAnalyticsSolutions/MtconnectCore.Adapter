@@ -1,4 +1,5 @@
-﻿using Mtconnect.AdapterInterface.Contracts.Attributes;
+﻿using Microsoft.Extensions.Logging;
+using Mtconnect.AdapterInterface.Contracts.Attributes;
 using Mtconnect.AdapterInterface.DataItems;
 using System;
 using System.Collections.Concurrent;
@@ -16,9 +17,13 @@ namespace Mtconnect
         /// <param name="adapter">Reference to the adapter to add the data item onto.</param>
         /// <param name="dataItem">Reference to the data item to be added.</param>
         /// <returns>Flag for whether or not the data item has been added. Returns true if the data item has already been added.</returns>
-        public static bool TryAddDataItem(this Adapter adapter, DataItem dataItem)
+        public static bool TryAddDataItem(this Adapter adapter, DataItem dataItem, bool logDuplicationMessage = true)
         {
-            if (adapter.Contains(dataItem)) return true;
+            if (adapter.Contains(dataItem))
+            {
+                if (logDuplicationMessage) adapter._logger?.LogDebug("DataItem {DataItemType} already exists in the context of the Adapter {AdapterType}", dataItem.Name, adapter.GetType().FullName);
+                return true;
+            }
 
             adapter.AddDataItem(dataItem);
 
@@ -55,77 +60,107 @@ namespace Mtconnect
         };
         private static bool TryAddDataItems(this Adapter adapter, object model, string dataItemNamePrefix = "", string dataItemDescriptionPrefix = "")
         {
-            Type dataModelType = model.GetType();
-            if (!_dataItemProperties.TryGetValue(dataModelType, out PropertyInfo[] dataItemProperties))
-            {
-                dataItemProperties = GetDataItemProperties(dataModelType);
-                _dataItemProperties.TryAdd(dataModelType, dataItemProperties);
-            }
-
+            bool isCached = true;
             bool allDataItemsAdded = true;
-
-            foreach (var property in dataItemProperties)
+            lock (_dataItemProperties)
             {
-                bool dataItemAdded = false;
-                string dataItemName = string.Empty;
-                string dataItemDescription = string.Empty;
-
-
-                var dataItemAttribute = property.GetCustomAttribute<DataItemAttribute>();
-
-                if (dataItemAttribute != null)
+                Type dataModelType = model.GetType();
+                if (!_dataItemProperties.TryGetValue(dataModelType, out PropertyInfo[] dataItemProperties))
                 {
-                    dataItemName = dataItemNamePrefix + dataItemAttribute.Name;
-                    dataItemDescription = dataItemDescriptionPrefix + dataItemAttribute.Description;
+                    dataItemProperties = GetDataItemProperties(dataModelType);
+                    adapter._logger?.LogDebug("Found {DataItemPropertyCount} DataItems from data model {DataModelType}: {@DataItemTypes}", dataItemProperties.Length, dataModelType.FullName, dataItemProperties);
+                    _dataItemProperties.TryAdd(dataModelType, dataItemProperties);
+                    isCached = false;
                 }
 
-                // Check if the property is already of type DataItem
-                if (_dataItemTypes.Contains(property.PropertyType))
+                foreach (var property in dataItemProperties)
                 {
-                    // Since the property is "DataItem" type already, just add it directly as a reference without creating a new DataItem instance
-                    var dataItemProperty = Convert.ChangeType(property.GetValue(model), property.PropertyType);
-                    if (dataItemAttribute != null)
+                    bool dataItemAdded = false;
+                    try
                     {
-                        // Update the name/description of the DataItem based on the decorating attribute.
-                        (dataItemProperty as DataItem).Name = dataItemName;
-                        (dataItemProperty as DataItem).Description = dataItemDescription;
+                        string dataItemName = string.Empty;
+                        string dataItemDescription = string.Empty;
 
-                        // TODO: Check for Type mismatch
+                        var dataItemAttribute = property.GetCustomAttribute<DataItemAttribute>();
+
+                        if (dataItemAttribute != null)
+                        {
+                            dataItemName = dataItemNamePrefix + dataItemAttribute.Name;
+                            dataItemDescription = dataItemDescriptionPrefix + dataItemAttribute.Description;
+                        }
+
+                        // Check if the property is already of type DataItem
+                        if (_dataItemTypes.Contains(property.PropertyType))
+                        {
+                            // Since the property is "DataItem" type already, just add it directly as a reference without creating a new DataItem instance
+                            var dataItemProperty = property.GetValue(model);
+                            if (dataItemProperty == null)
+                            {
+                                adapter._logger?.LogError("Data model property {PropertyName} is null and cannot be added until instantiated", property.Name, property.PropertyType);
+                                continue;
+                            } else if ((dataItemProperty as DataItem) == null)
+                            {
+                                var castException = new InvalidCastException("Could not cast data model property to DataItem");
+                                adapter._logger?.LogError(castException, "Could not cast data model property {PropertyName} to DataItem", property.Name);
+                                continue;
+                            }
+
+                            if (dataItemAttribute != null)
+                            {
+                                // Update the name/description of the DataItem based on the decorating attribute.
+                                (dataItemProperty as DataItem).Name = dataItemName;
+                                (dataItemProperty as DataItem).Description = dataItemDescription;
+
+                                // TODO: Check for Type mismatch
+                            }
+                            dataItemAdded = adapter.TryAddDataItem(dataItemProperty as DataItem, !isCached);
+                        }
+                        else if (dataItemAttribute != null)
+                        {
+                            switch (dataItemAttribute)
+                            {
+                                case DataItemPartialAttribute _:
+                                    dataItemAdded = adapter.TryAddDataItems(property.PropertyType, dataItemName, dataItemDescription);
+                                    break;
+                                case EventAttribute _:
+                                    dataItemAdded = adapter.TryAddDataItem(new Event(dataItemName, dataItemDescription), !isCached);
+                                    break;
+                                case SampleAttribute _:
+                                    dataItemAdded = adapter.TryAddDataItem(new Sample(dataItemName, dataItemDescription), !isCached);
+                                    break;
+                                case ConditionAttribute _:
+                                    dataItemAdded = adapter.TryAddDataItem(new Condition(dataItemName, dataItemDescription), !isCached);
+                                    break;
+                                case TimeSeriesAttribute _:
+                                    dataItemAdded = adapter.TryAddDataItem(new TimeSeries(dataItemName, dataItemDescription), !isCached);
+                                    break;
+                                case MessageAttribute _:
+                                    dataItemAdded = adapter.TryAddDataItem(new Message(dataItemName, dataItemDescription), !isCached);
+                                    break;
+                                default:
+                                    dataItemAdded = false;
+                                    break;
+                            }
+                        }
+                        else
+                        {
+                            adapter._logger?.LogDebug("DataItem {DataItemName} not handled", dataItemName);
+                        }
+
                     }
-                    if (adapter.Contains((dataItemProperty as DataItem).Name)) continue;
-                    dataItemAdded = adapter.TryAddDataItem(dataItemProperty as DataItem);
-                } else if (dataItemAttribute != null)
-                {
-                    if (adapter.Contains(dataItemName)) continue;
-                    switch (dataItemAttribute)
+                    catch (Exception ex)
                     {
-                        case DataItemPartialAttribute _:
-                            dataItemAdded = adapter.TryAddDataItems(property.PropertyType, dataItemName, dataItemDescription);
-                            break;
-                        case EventAttribute _:
-                            dataItemAdded = adapter.TryAddDataItem(new Event(dataItemName, dataItemDescription));
-                            break;
-                        case SampleAttribute _:
-                            dataItemAdded = adapter.TryAddDataItem(new Sample(dataItemName, dataItemDescription));
-                            break;
-                        case ConditionAttribute _:
-                            dataItemAdded = adapter.TryAddDataItem(new Condition(dataItemName, dataItemDescription));
-                            break;
-                        case TimeSeriesAttribute _:
-                            dataItemAdded = adapter.TryAddDataItem(new TimeSeries(dataItemName, dataItemDescription));
-                            break;
-                        case MessageAttribute _:
-                            dataItemAdded = adapter.TryAddDataItem(new Message(dataItemName, dataItemDescription));
-                            break;
-                        default:
-                            dataItemAdded = false;
-                            break;
+                        adapter._logger?.LogError(ex, "Error while attempting to add DataItem from property {PropertyName}", property.Name);
+                    }
+
+                    if (!dataItemAdded)
+                    {
+                        allDataItemsAdded = false;
+                        adapter._logger?.LogWarning("Failed to add DataItem from data model property {PropertyName}", property.Name);
                     }
                 }
 
-                if (!dataItemAdded) allDataItemsAdded = false;
             }
-
             return allDataItemsAdded;
         }
 

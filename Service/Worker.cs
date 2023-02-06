@@ -13,7 +13,7 @@ namespace Service
         private List<Assembly> _dlls = new List<Assembly>();
         private AdapterFactory _factory { get; set; }
 
-        public Worker(ILogger<Worker> workerLogger,ILogger<Adapter> adapterLogger, ServiceConfiguration config)
+        public Worker(ILogger<Worker> workerLogger, ILogger<Adapter> adapterLogger, ServiceConfiguration config)
         {
             _workerLogger = workerLogger;
             _adapterLogger = adapterLogger;
@@ -47,7 +47,8 @@ namespace Service
                     _workerLogger?.LogError(new FileLoadException("Failed to load Adapter DLL", dllFilename), "Failed to load Adapter DLL { AdapterFilename }", dllFilename);
                     continue;
                 }
-                
+
+                _workerLogger?.LogInformation("Loaded assembly from file. {DllFilename}", dllFilename);
                 _dlls.Add(dll);
             }
         }

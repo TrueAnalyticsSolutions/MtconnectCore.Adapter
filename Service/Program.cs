@@ -15,10 +15,14 @@ IHost host = Host.CreateDefaultBuilder(args)
         .ReadFrom.Configuration(configuration)
         .CreateLogger();
 
+        services.AddLogging((o) =>
+        {
+            o.AddSerilog(dispose: true);
+        });
+
         ServiceConfiguration? config = configuration.GetSection("Service").Get<ServiceConfiguration>();
 
         services.AddSingleton(config);
-
         services.AddHostedService<Worker>();
     })
     .Build();
