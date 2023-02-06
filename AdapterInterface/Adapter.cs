@@ -29,7 +29,7 @@ namespace Mtconnect
         /// <summary>
         /// Reference to a logging service.
         /// </summary>
-        protected readonly ILogger<Adapter> _logger;
+        public readonly ILogger<Adapter> _logger;
 
         /// <summary>
         /// The * PONG ... text
@@ -389,9 +389,18 @@ namespace Mtconnect
 
         private void _source_OnDataReceived(IAdapterDataModel data, DataReceivedEventArgs e)
         {
-            if (this.TryAddDataItems(data) && this.TryUpdateValues(data))
+            _logger?.LogTrace("Adapter received data model update from {DataModelType}", data.GetType().FullName);
+            bool dataItemsAdded = this.TryAddDataItems(data);
+            bool dataItemsUpdated = false;
+            if (dataItemsAdded && (dataItemsUpdated = this.TryUpdateValues(data)))
             {
                 Send(DataItemSendTypes.Changed);
+            } else if (dataItemsAdded)
+            {
+                _logger?.LogWarning("Failed to add DataItems from data model {DataModelType}", data.GetType().FullName);
+            } else
+            {
+                _logger?.LogWarning("Failed to update DataItem values from data model {DataModelType}", data.GetType().FullName);
             }
         }
 

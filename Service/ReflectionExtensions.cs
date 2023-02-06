@@ -57,6 +57,9 @@ namespace Service
             {
                 logger?.LogError("Could not construct {AdapterOptionsType}", targetType.FullName);
                 return null;
+            } else
+            {
+                logger?.LogTrace("Constructed {TypeName}", targetType.FullName);
             }
 
             Dictionary<string, object?>? configProperties = null;
