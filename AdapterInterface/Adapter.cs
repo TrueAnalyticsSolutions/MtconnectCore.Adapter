@@ -11,7 +11,6 @@ using Mtconnect.AdapterInterface.Assets;
 using System.Data;
 using System.Collections.Concurrent;
 using System.Threading;
-using System.Net.NetworkInformation;
 
 namespace Mtconnect
 {
@@ -32,14 +31,9 @@ namespace Mtconnect
         public readonly ILogger<Adapter> _logger;
 
         /// <summary>
-        /// The * PONG ... text
-        /// </summary>
-        protected byte[] PONG { get; set; }
-
-        /// <summary>
         /// Internal collection of <see cref="DataItem"/>s being tracked.
         /// </summary>
-        private Dictionary<string, DataItem> _dataItems = new Dictionary<string, DataItem>();
+        protected Dictionary<string, DataItem> _dataItems = new Dictionary<string, DataItem>();
 
         /// <summary>
         /// Reference to the collection of <see cref="DataItem"/>s being tracked.
@@ -90,26 +84,9 @@ namespace Mtconnect
         }
 
         /// <summary>
-        /// The ascii encoder for creating the messages.
+        /// The heartbeat interval (in milliseconds).
         /// </summary>
-        protected ASCIIEncoding Encoder { get; } = new ASCIIEncoding();
-
-        /// <summary>
-        /// The heartbeat interval.
-        /// </summary>
-        private double _heartbeat;
-        /// <summary>
-        /// This is a method to set the heartbeat interval given in milliseconds.
-        /// </summary>
-        public virtual double Heartbeat
-        {
-            get { return _heartbeat; }
-            set
-            {
-                _heartbeat = value;
-                PONG = Encoder.GetBytes($"* PONG {_heartbeat}\n");
-            }
-        }
+        public virtual double Heartbeat { get; protected set; }
 
         /// <summary>
         /// Indicates what state the MTConnect Adapter is currently in.
@@ -119,9 +96,9 @@ namespace Mtconnect
         /// <summary>
         /// An optional reference to an Adapter source. If the Adapter is started with a reference to a source, this is where the reference is maintained.
         /// </summary>
-        private List<IAdapterSource> _sources { get; set; } = new List<IAdapterSource>();
+        protected List<IAdapterSource> _sources { get; set; } = new List<IAdapterSource>();
 
-        private AdapterOptions _options { get; set; }
+        protected AdapterOptions _options { get; set; }
 
         /// <summary>
         /// Generic constructor of a new Adapter instance with basic AdapterOptions.
@@ -349,12 +326,6 @@ namespace Mtconnect
 
             Write(sb.ToString());
         }
-        
-        ///// <summary>
-        ///// The heartbeat thread for a client. This thread receives data from a client, closes the socket when it fails, and handles communication timeouts when the client does not send a heartbeat within 2x the heartbeat frequency. When the heartbeat is not received, the client is assumed to be unresponsive and the connection is closed. Waits for one ping to be received before enforcing the timeout. 
-        ///// </summary>
-        ///// <param name="client">The client we are communicating with.</param>
-        //protected abstract void HeartbeatClient(object client);
 
         /// <summary>
         /// Start the listener thread.
@@ -416,6 +387,10 @@ namespace Mtconnect
             }
         }
 
+        /// <summary>
+        /// Gets a list of the <see cref="DataItem.Name"/>s.
+        /// </summary>
+        /// <returns>Array of <see cref="DataItem.Name"/>s that are registered in this <see cref="Adapter"/>.</returns>
         public string[] GetDataItemNames() => DataItems?.Select(o => o.Name)?.DefaultIfEmpty().ToArray();
 
         /// <summary>
@@ -423,7 +398,7 @@ namespace Mtconnect
         /// </summary>
         /// <param name="command">Reference to the incoming message command.</param>
         /// <param name="clientId">Reference to the client that sent the command</param>
-        /// <returns></returns>
+        /// <returns>Flag for whether or not the command was handled with a response</returns>
         public virtual bool HandleCommand(string command, string clientId = null)
         {
             var response = AdapterCommands.GetResponse(this, command);

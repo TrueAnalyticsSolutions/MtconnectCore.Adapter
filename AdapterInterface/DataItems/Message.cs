@@ -6,11 +6,25 @@
     /// </summary>
     public class Message : DataItem
     {
-        string mCode;
+        private string _code;
+        /// <summary>
+        /// Native Code property.
+        /// </summary>
+        public string Code
+        {
+            set 
+            {
+                if (_code != value)
+                {
+                    HasChanged = true;
+                    _code = value;
+                }
+            }
+            get { return _code; }
+        }
 
         /// <summary>
-        /// Create a new message, set NewLine to true so this comes out 
-        /// on a separate line.
+        /// Create a new message, set NewLine to true so this comes out on a separate line.
         /// </summary>
         /// <param name="name"><inheritdoc cref="DataItem.DataItem(string, string)" path="/param[@name='name']"/></param>
         /// <param name="description"><inheritdoc cref="DataItem.DataItem(string, string)" path="/param[@name='description']"/></param>
@@ -19,21 +33,6 @@
             HasNewLine = true;
         }
 
-        /// <summary>
-        /// Code property.
-        /// </summary>
-        public string Code
-        {
-            set 
-            {
-                if (mCode != value)
-                {
-                    HasChanged = true;
-                    mCode = value;
-                }
-            }
-            get { return mCode; }
-        }
 
         /// <summary>
         /// The text representation of the code.
@@ -41,7 +40,7 @@
         /// <returns>A text representation</returns>
         public override string ToString()
         {
-            return $"{Name}|{mCode}|{_value}";
+            return $"{Name}|{_code}|{_value}";
         }
     }
 }

@@ -54,7 +54,11 @@ namespace Mtconnect.AdapterInterface.DataItems
                     || (_value != null && updatedValue == null)
                     || _value?.Equals(updatedValue) == false))
                 {
+                    // Default the value to UNAVAILABLE to avoid crashing the Agent
+                    if (updatedValue == null || (updatedValue is string && string.IsNullOrEmpty(updatedValue as string))) updatedValue = Constants.UNAVAILABLE;
+
                     var now = TimeHelper.GetNow();
+                    // TODO: Figure out a way to ensure that both now and LastChanged respect TimestampAttribute implementations
                     var e = new DataItemChangedEventArgs(_value, updatedValue, LastChanged, now);
 
                     _value = updatedValue;
