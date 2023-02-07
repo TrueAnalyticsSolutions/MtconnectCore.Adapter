@@ -1,5 +1,4 @@
-﻿using Microsoft.CodeAnalysis.CSharp.Syntax;
-using System;
+﻿using System;
 using System.Linq;
 
 namespace Mtconnect.AdapterInterface.DataItems
@@ -12,7 +11,7 @@ namespace Mtconnect.AdapterInterface.DataItems
         /// <summary>
         /// Collection rate for a time series data source.
         /// </summary>
-        public double Rate { set; get; }
+        public double Rate { get; }
 
         private double[] _values;
         /// <summary>
@@ -85,6 +84,7 @@ namespace Mtconnect.AdapterInterface.DataItems
         {
             string rate = Rate == 0.0 ? "" : Rate.ToString();
 
+            // _value is a string join set in the setter of Values, thru the setter of base.Value
             return $"{Name}|{Values?.Length ?? 0}|{rate}|{_value}";
         }
     }
