@@ -1,7 +1,5 @@
 ﻿using Mtconnect.AdapterInterface.DataItems;
 using System;
-using System.Collections.Generic;
-using System.Text;
 
 namespace Mtconnect.AdapterInterface.Contracts.Attributes
 {

@@ -40,6 +40,11 @@ namespace Mtconnect
         {
             return adapter.TryAddDataItems(model, string.Empty, string.Empty);
         }
+        /// <summary>
+        /// Gets a list of <see cref="PropertyInfo"/> that is either decorated with the <see cref="DataItemAttribute"/> or an implementation of the type <see cref="DataItem"/>.
+        /// </summary>
+        /// <param name="type">Reference to the model type to reflect upon.</param>
+        /// <returns>Collection of properties that represent <see cref="DataItem"/>s</returns>
         private static PropertyInfo[] GetDataItemProperties(Type type)
         {
             return type.GetProperties(BindingFlags.Instance | BindingFlags.Public)
@@ -49,6 +54,18 @@ namespace Mtconnect
                 )
                 .ToArray();
         }
+        /// <summary>
+        /// Gets a list of <see cref="PropertyInfo"/> that is decorated with the <see cref="TimestampAttribute"/>.
+        /// </summary>
+        /// <param name="type">Reference to the model type to reflect upon.</param>
+        /// <returns>Collection of properties that represent the value for <see cref="DataItem.LastChanged"/></returns>
+        private static PropertyInfo[] GetDataItemTimestampProperties(Type type)
+        {
+            return type.GetProperties(BindingFlags.Instance | BindingFlags.Public)
+                .Where(o => o.GetCustomAttribute(typeof(TimestampAttribute)) != null)
+                .ToArray();
+        }
+        private static ConcurrentDictionary<Type, Dictionary<string, PropertyInfo>> _dataItemTimestampProperties = new ConcurrentDictionary<Type, Dictionary<string, PropertyInfo>>();
         private static ConcurrentDictionary<Type, PropertyInfo[]> _dataItemProperties = new ConcurrentDictionary<Type, PropertyInfo[]>();
         private static HashSet<Type> _dataItemTypes = new HashSet<Type>
         {
@@ -65,11 +82,33 @@ namespace Mtconnect
             lock (_dataItemProperties)
             {
                 Type dataModelType = model.GetType();
+
+                Dictionary<string, PropertyInfo> timestampPropertyLookup;
+                _dataItemTimestampProperties.TryGetValue(dataModelType, out timestampPropertyLookup);
+
+                // Try to get the PropertyInfo[] from the static cache
                 if (!_dataItemProperties.TryGetValue(dataModelType, out PropertyInfo[] dataItemProperties))
                 {
+                    // Reflect and fill the static cache
                     dataItemProperties = GetDataItemProperties(dataModelType);
                     adapter._logger?.LogDebug("Found {DataItemPropertyCount} DataItems from data model {DataModelType}: {@DataItemTypes}", dataItemProperties.Length, dataModelType.FullName, dataItemProperties);
                     _dataItemProperties.TryAdd(dataModelType, dataItemProperties);
+
+                    // Reflect and fill static cache of Timestamp properties
+                    _dataItemTimestampProperties.TryAdd(dataModelType, new Dictionary<string, PropertyInfo>());
+
+                    var timestampProperties = GetDataItemTimestampProperties(dataModelType);
+                    foreach (var timestampProperty in timestampProperties)
+                    {
+                        TimestampAttribute attr = timestampProperty.GetCustomAttribute<TimestampAttribute>();
+                        if (attr != null && !_dataItemTimestampProperties[dataModelType].ContainsKey(attr.DataItemName))
+                        {
+                            adapter._logger?.LogInformation("Registering Timestamp override for DataItem {DataItemName} from property {PropertyName}", attr.DataItemName, timestampProperty.Name);
+                            _dataItemTimestampProperties[dataModelType].Add(attr.DataItemName, timestampProperty);
+                        }
+                    }
+                    timestampPropertyLookup = _dataItemTimestampProperties[dataModelType];
+
                     isCached = false;
                 }
 
@@ -89,6 +128,11 @@ namespace Mtconnect
                             dataItemDescription = dataItemDescriptionPrefix + dataItemAttribute.Description;
                         }
 
+                        PropertyInfo timestampProperty = null;
+                        timestampPropertyLookup.TryGetValue(dataItemName, out timestampProperty);
+
+                        DataItem dataItem = null;
+
                         // Check if the property is already of type DataItem
                         if (_dataItemTypes.Contains(property.PropertyType))
                         {
@@ -105,15 +149,16 @@ namespace Mtconnect
                                 continue;
                             }
 
+                            dataItem = dataItemProperty as DataItem;
+
                             if (dataItemAttribute != null)
                             {
                                 // Update the name/description of the DataItem based on the decorating attribute.
-                                (dataItemProperty as DataItem).Name = dataItemName;
-                                (dataItemProperty as DataItem).Description = dataItemDescription;
+                                dataItem.Name = dataItemName;
+                                dataItem.Description = dataItemDescription;
 
                                 // TODO: Check for Type mismatch
                             }
-                            dataItemAdded = adapter.TryAddDataItem(dataItemProperty as DataItem, !isCached);
                         }
                         else if (dataItemAttribute != null)
                         {
@@ -123,19 +168,19 @@ namespace Mtconnect
                                     dataItemAdded = adapter.TryAddDataItems(property.PropertyType, dataItemName, dataItemDescription);
                                     break;
                                 case EventAttribute _:
-                                    dataItemAdded = adapter.TryAddDataItem(new Event(dataItemName, dataItemDescription), !isCached);
+                                    dataItem = new Event(dataItemName, dataItemDescription);
                                     break;
                                 case SampleAttribute _:
-                                    dataItemAdded = adapter.TryAddDataItem(new Sample(dataItemName, dataItemDescription), !isCached);
+                                    dataItem = new Sample(dataItemName, dataItemDescription);
                                     break;
                                 case ConditionAttribute _:
-                                    dataItemAdded = adapter.TryAddDataItem(new Condition(dataItemName, dataItemDescription), !isCached);
+                                    dataItem = new Condition(dataItemName, dataItemDescription);
                                     break;
                                 case TimeSeriesAttribute _:
-                                    dataItemAdded = adapter.TryAddDataItem(new TimeSeries(dataItemName, dataItemDescription), !isCached);
+                                    dataItem = new TimeSeries(dataItemName, dataItemDescription);
                                     break;
                                 case MessageAttribute _:
-                                    dataItemAdded = adapter.TryAddDataItem(new Message(dataItemName, dataItemDescription), !isCached);
+                                    dataItem = new Message(dataItemName, dataItemDescription);
                                     break;
                                 default:
                                     dataItemAdded = false;
@@ -145,6 +190,16 @@ namespace Mtconnect
                         else
                         {
                             adapter._logger?.LogDebug("DataItem {DataItemName} not handled", dataItemName);
+                        }
+
+                        // Now add the DataItem if it was constructed
+                        if (dataItem != null)
+                        {
+                            if (timestampProperty != null)
+                            {
+                                dataItem.HasTimestampOverride = true;
+                            }
+                            dataItemAdded = adapter.TryAddDataItem(dataItem, !isCached);
                         }
 
                     }
@@ -209,6 +264,28 @@ namespace Mtconnect
                 }
 
                 if (!dataItemUpdated) allDataItemsUpdated = false;
+            }
+
+            if (_dataItemTimestampProperties.TryGetValue(sourceType, out Dictionary<string, PropertyInfo> timestampProperties))
+            {
+                foreach (var kvp in timestampProperties)
+                {
+                    var property = kvp.Value;
+                    var rawTimestamp = property.GetValue(model);
+                    if (rawTimestamp != null)
+                    {
+                        var formattedTimestamp = rawTimestamp as DateTime?;
+                        if (formattedTimestamp != null)
+                        {
+                            adapter[kvp.Key].LastChanged = formattedTimestamp;
+                        }
+                        else
+                        {
+                            var castException = new InvalidCastException("Could not cast to DateTime");
+                            adapter._logger?.LogError(castException, "Failed to cast Timestamp property {PropertyName} to proper DateTime", property.Name);
+                        }
+                    }
+                }
             }
 
             return allDataItemsUpdated;

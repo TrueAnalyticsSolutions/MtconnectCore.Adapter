@@ -11,7 +11,6 @@ namespace Mtconnect.AdapterInterface.DataItems
     /// </summary>
     public partial class Condition : DataItem
     {
-
         /// <summary>
         /// A flag to indicate that the mark and sweep has begun.
         /// </summary>
@@ -40,7 +39,7 @@ namespace Mtconnect.AdapterInterface.DataItems
         {
             HasNewLine = true;
             IsSimple = simple;
-            Add(Level.UNAVAILABLE);
+            Unavailable();
         }
 
         /// <inheritdoc />
@@ -132,37 +131,39 @@ namespace Mtconnect.AdapterInterface.DataItems
             bool result = false;
 
             // Get the first activation
-            Active activation = null;
+            Active previousActivation = null;
+            Active newActivation = null;
             Func<Level, bool> isFirstActivation = (o) => o == Level.NORMAL || o == Level.UNAVAILABLE;
             if (string.IsNullOrEmpty(code) && isFirstActivation(level))
             {
                 _activeList.Clear();
-                activation = new Active(Name, level, Description, text, code, qualifier, severity);
-                _activeList.Add(string.Empty, activation);
+                newActivation = new Active(Name, level, Description, text, code, qualifier, severity);
+                _activeList.Add(string.Empty, newActivation);
                 result = HasChanged = true;
-            } else if (!_activeList.TryGetValue(code, out activation))
+            } else if (!_activeList.TryGetValue(code, out newActivation))
             {
                 if (_activeList.Count == 1 && isFirstActivation(_activeList.Values.FirstOrDefault().Level))
                 {
                     _activeList.Clear();
                 }
 
-                activation = new Active(Name, level, Description, text, code, qualifier, severity);
-                _activeList.Add(code, activation);
+                newActivation = new Active(Name, level, Description, text, code, qualifier, severity);
+                _activeList.Add(code, newActivation);
 
                 result = HasChanged = true;
             }
 
             if (_activeList.ContainsKey(code))
             {
-                if (activation != null)
+                if (newActivation != null)
                 {
+                    previousActivation = newActivation; // Before we set the values for a potentially old Activation
                     if (!result)
                     {
-                        result = activation.Set(level, text, qualifier, severity);
+                        result = newActivation.Set(level, text, qualifier, severity);
                         if (result)
                         {
-                            _activeList[code] = activation;
+                            _activeList[code] = newActivation;
                         }
                         HasChanged = HasChanged || result;
                     }
@@ -170,6 +171,19 @@ namespace Mtconnect.AdapterInterface.DataItems
                 {
                     _activeList.Remove(code);
                 }
+            }
+
+            if (result
+                && isReadyToUpdate(newActivation.Value)
+                && ((previousActivation?.Value == null && newActivation.Value != null)
+                || (previousActivation?.Value != null && newActivation.Value == null)
+                || (previousActivation?.Value.Equals(newActivation.Value) == false)))
+            {
+                var e = new DataItemChangedEventArgs(previousActivation?.Value, newActivation.Value, LastChanged, TimeHelper.GetNow());
+
+                LastChanged = newActivation.LastChanged;
+
+                TriggerDataChangedEvent(e);
             }
 
             return result;
@@ -189,7 +203,7 @@ namespace Mtconnect.AdapterInterface.DataItems
             // If we've removed the last activation, go back to normal.
             if (_activeList.Count() == 1)
             {
-                Add(Level.NORMAL);
+                Normal();
             }
             else
             {
@@ -197,8 +211,8 @@ namespace Mtconnect.AdapterInterface.DataItems
                 found.Set(Level.NORMAL);
                 // Clear makes the activation be removed next sweep.
                 found.Clear();
+                LastChanged = found.LastChanged;
             }
-
             HasChanged = true;
             return true;
         }

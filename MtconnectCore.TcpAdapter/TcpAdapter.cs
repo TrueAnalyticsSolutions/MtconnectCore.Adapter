@@ -205,6 +205,37 @@ namespace Mtconnect
                             client.OnDisconnected += Client_OnConnectionDisconnected;
                             client.OnDataReceived += Client_OnReceivedData;
                             client.Connect();
+
+                            // Send all commands that do not result in errors
+                            Func<string>[] agentCommands = new Func<string>[]
+                            {
+                                AgentCommands.AdapterVersion,
+                                AgentCommands.Calibration,
+                                AgentCommands.ConversionRequired,
+                                AgentCommands.Device,
+                                AgentCommands.Description,
+                                AgentCommands.Manufacturer,
+                                AgentCommands.MtconnectVersion,
+                                AgentCommands.NativeName,
+                                AgentCommands.RealTime,
+                                AgentCommands.RelativeTime,
+                                AgentCommands.SerialNumber,
+                                AgentCommands.ShdrVersion,
+                                AgentCommands.Station
+                            };
+                            foreach (var agentCommand in agentCommands)
+                            {
+                                try
+                                {
+                                    string command = agentCommand();
+                                    Write($"{command}\n", client.ClientId);
+                                }
+                                catch (Exception ex)
+                                {
+                                    Write($"{AgentCommands.Error("Unsupported command '" + agentCommand.Method.Name + "'")}\n", client.ClientId);
+                                }
+                            }
+
                             // Issue command for underlying Adapter to send all DataItem current values to the newly added kvp
                             Send(DataItemSendTypes.All, client.ClientId);
                         } else
@@ -228,81 +259,16 @@ namespace Mtconnect
             }
         }
 
-        private const string PING = "* PING";
-        private const string GET_DATAITEMS = "* DATAITEMS";
-        private const string GET_DATAITEM_DESCRIPTION = "* DATAITEM_DESCRIPTION";
-        private const string GET_DATAITEM_VALUE = "* DATAITEM_VALUE";
         /// <summary>
         /// ReceiveClient data from a kvp and implement heartbeat ping/pong protocol.
         /// </summary>
         private bool Client_OnReceivedData(TcpConnection connection, string message)
         {
-            message = message?.Trim();
-            bool heartbeat = false;
-            if (message.StartsWith(PING) && Heartbeat > 0)
-            {
-                heartbeat = true;
-                lock (connection)
-                {
-                    _logger?.LogInformation("Received PING from client {ClientId}, sending PONG", connection.ClientId);
-                    connection.Write(PONG);
-                    connection.Flush();
-                }
-            } else if (message.Equals(GET_DATAITEMS))
-            {
-                lock (connection)
-                {
-                    _logger?.LogInformation("Received GET DATAITEMS from client {ClientId}, sending list of supported DataItems", connection.ClientId);
-                    var keys = DataItems?.Select(o => o.Name)?.DefaultIfEmpty().ToArray();
-                    connection.Write(string.Join("|", keys));
-                    connection.Flush();
-                }
-            } else if (message.StartsWith(GET_DATAITEM_DESCRIPTION))
-            {
-                string dataItemName = message.Remove(0, message.LastIndexOf(' ') + 1);
-                if (Contains(dataItemName))
-                {
-                    if (!string.IsNullOrEmpty(this[dataItemName].Description))
-                    {
-                        lock (connection)
-                        {
-                            _logger?.LogInformation("Received GET DATAITEM_DESCRIPTION from client {ClientId} for {DataItemName}, sending the description (if any)", connection.ClientId, dataItemName);
-                            connection.Write(this[dataItemName].Description);
-                            connection.Flush();
-                        }
-                    } else
-                    {
-                        _logger?.LogWarning("Received GET DATAITEM_DESCRIPTION from client {ClientId} for {DataItemName}, but there is no description available", connection.ClientId, dataItemName);
-                    }
-                } else
-                {
-                    _logger?.LogWarning("Received GET DATAITEM_DESCRIPTION from client {ClientId} for {DataItemName}, but there is no such DataItem available", connection.ClientId, dataItemName);
-                }
-            } else if (message.StartsWith(GET_DATAITEM_VALUE))
-            {
-                string dataItemName = message.Remove(0, message.LastIndexOf(' ') + 1);
-                if (Contains(dataItemName))
-                {
-                    lock (connection)
-                    {
-                        _logger?.LogInformation("Received GET DATAITEM_VALUE from client {ClientId} for {DataItemName}, sending the current value (if any)", connection.ClientId, dataItemName);
-                        //string response = this[dataItemName].LastChanged.HasValue
-                        //    ? this[dataItemName].LastChanged.Value.ToString(DATE_TIME_FORMAT)
-                        //    : "never";
-                        //response += $"|{dataItemName}|{this[dataItemName].Value}";
-                        connection.Write(this[dataItemName].ToString());
-                        connection.Flush();
-                    }
-                }
-                else
-                {
-                    _logger?.LogWarning("Received GET DATAITEM_VALUE from client {ClientId} for {DataItemName}, but there is no such DataItem available", connection.ClientId, dataItemName);
-                }
-            }
+            bool handled = HandleCommand(message, connection.ClientId);
 
             if (ClientDataReceived != null) ClientDataReceived(connection, message);
 
-            return heartbeat;
+            return handled;
         }
 
         private void Client_OnConnectionDisconnected(TcpConnection connection, Exception ex = null)

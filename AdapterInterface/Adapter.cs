@@ -11,6 +11,7 @@ using Mtconnect.AdapterInterface.Assets;
 using System.Data;
 using System.Collections.Concurrent;
 using System.Threading;
+using System.Net.NetworkInformation;
 
 namespace Mtconnect
 {
@@ -270,7 +271,7 @@ namespace Mtconnect
                     break;
                 case DataItemSendTypes.Changed:
                     var changedDataItems = DataItems
-                        .SelectMany(o => o.ItemList(sendType == DataItemSendTypes.All))
+                        .SelectMany(o => o.ItemList(sendType == DataItemSendTypes.Changed))
                         .Where(o => o.HasChanged);
                     values = changedDataItems.Select(o => new ReportedValue(o)).ToList();
                     // TODO: Clear ConcurrentQueue of matching DataItems.
@@ -330,7 +331,7 @@ namespace Mtconnect
         {
             StringBuilder sb = new StringBuilder();
 
-            DateTime now = DateTime.UtcNow;
+            DateTime now = TimeHelper.GetNow();
             sb.Append(now.ToString(DATE_TIME_FORMAT));
             sb.Append("|@ASSET@|");
             sb.Append(asset.AssetId);
@@ -413,6 +414,26 @@ namespace Mtconnect
                 source.Stop();
                 source.OnDataReceived -= _source_OnDataReceived;
             }
+        }
+
+        public string[] GetDataItemNames() => DataItems?.Select(o => o.Name)?.DefaultIfEmpty().ToArray();
+
+        /// <summary>
+        /// Handle an incoming command from a client.
+        /// </summary>
+        /// <param name="command">Reference to the incoming message command.</param>
+        /// <param name="clientId">Reference to the client that sent the command</param>
+        /// <returns></returns>
+        public virtual bool HandleCommand(string command, string clientId = null)
+        {
+            var response = AdapterCommands.GetResponse(this, command);
+            if (!string.IsNullOrEmpty(response))
+            {
+                Write($"{response}\n", clientId);
+                return true;
+            }
+
+            return false;
         }
     }
 }

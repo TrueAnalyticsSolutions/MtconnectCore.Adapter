@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Microsoft.CodeAnalysis.CSharp.Syntax;
+using System;
 using System.Linq;
 
 namespace Mtconnect.AdapterInterface.DataItems
@@ -20,8 +21,20 @@ namespace Mtconnect.AdapterInterface.DataItems
         public double[] Values {
             set
             {
+                var updatedValue = value;
+                if (FormatValue != null)
+                {
+                    var formattedValue = FormatValue(updatedValue);
+                    if (formattedValue != null && (formattedValue as double[]) == null)
+                    {
+                        throw new InvalidCastException("Cannot cast object to double[]");
+                    }
+                    updatedValue = formattedValue as double[];
+                }
+
                 _values = value;
-                HasChanged = true;
+
+                Value = String.Join(" ", Values.Select(p => p.ToString()).ToArray());
             }
             get { return _values; } 
         }
@@ -38,6 +51,32 @@ namespace Mtconnect.AdapterInterface.DataItems
             Rate = rate;
         }
 
+        public override bool Equals(object obj)
+        {
+            double[] doubles = null;
+            if (obj is double[])
+            {
+                doubles = obj as double[];
+            } else if (obj is TimeSeries)
+            {
+                doubles = (obj as TimeSeries).Values;
+            } else if (obj is string)
+            {
+                return obj.Equals(_value);
+            } else {
+                return false;
+            }
+
+            if (doubles.Length != Values.Length) return false;
+
+            for (int i = 0; i < doubles.Length; i++)
+            {
+                if (doubles[i] != Values[i]) return false;
+            }
+
+            return true;
+        }
+
         /// <summary>
         /// Simple string representation with pipe delim.
         /// </summary>
@@ -45,16 +84,8 @@ namespace Mtconnect.AdapterInterface.DataItems
         public override string ToString()
         {
             string rate = Rate == 0.0 ? "" : Rate.ToString();
-            string v = string.Empty;
-            int count = 0;
 
-            if (_values != null)
-            {
-                v = String.Join(" ", Values.Select(p => p.ToString()).ToArray());
-                count = Values.Length;
-            }
-
-            return $"{Name}|{count}|{rate}|{v}";
+            return $"{Name}|{Values?.Length ?? 0}|{rate}|{_value}";
         }
     }
 }
