@@ -43,11 +43,13 @@ namespace SampleAdapter
                 if (WindowHandles.GetCursorPos(out lpPoint))
                 {
                     Model.XPosition.Value = lpPoint.X;
+                    Model.XPosition_Time = new DateTime(2002, 01, 01); // Birthdate of C#
                     Model.YPosition = lpPoint.Y;
                 }
                 else
                 {
                     Model.XPosition = null;
+                    Model.XPosition_Time = null;
                     Model.YPosition = null;
                 }
 
@@ -138,6 +140,8 @@ namespace SampleAdapter
 
         [Sample("xPos", "user32.dll#GetCursorPos().X")]
         public Sample? XPosition { get; set; } = new Sample("xPos");
+        [Timestamp("xPos")]
+        public DateTime? XPosition_Time { get; set; }
 
         [Sample("yPos", "user32.dll#GetCursorPos().Y")]
         public int? YPosition { get; set; }

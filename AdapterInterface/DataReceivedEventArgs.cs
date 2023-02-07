@@ -10,6 +10,6 @@ namespace Mtconnect
         /// <summary>
         /// Reference to the the data was received.
         /// </summary>
-        public DateTime Timestamp { get; set; } = DateTime.UtcNow;
+        public DateTime Timestamp { get; set; } = TimeHelper.GetNow();
     }
 }

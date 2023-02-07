@@ -13,7 +13,7 @@ namespace Mtconnect.AdapterInterface.DataItems
     /// <summary>
     /// Simple base data item class. Has an abstract value and a name. It keeps track if it has changed since the last time it was reset.
     /// </summary>
-    public class DataItem
+    public abstract class DataItem
     {
         /// <summary>
         /// Occurrs when the value of a DataItem has changed.
@@ -49,29 +49,26 @@ namespace Mtconnect.AdapterInterface.DataItems
                 var updatedValue = value;
                 if (FormatValue != null) updatedValue = FormatValue(updatedValue);
 
-                if (_isReadyToUpdate(updatedValue)
+                if (isReadyToUpdate(updatedValue)
                     && ((_value == null && updatedValue != null)
                     || (_value != null && updatedValue == null)
                     || _value?.Equals(updatedValue) == false))
                 {
-                    var now = DateTime.UtcNow;
+                    var now = TimeHelper.GetNow();
                     var e = new DataItemChangedEventArgs(_value, updatedValue, LastChanged, now);
 
                     _value = updatedValue;
-                    LastChanged = now;
+                    if (!HasTimestampOverride) LastChanged = now;
 
                     HasChanged = true;
 
-                    if (OnDataItemChanged != null)
-                    {
-                        OnDataItemChanged(this, e);
-                    }
+                    TriggerDataChangedEvent(e);
                 }
             }
             get { return _value; }
         }
 
-        private bool _isReadyToUpdate(object value)
+        protected virtual bool isReadyToUpdate(object value)
             => _value?.Equals(Constants.UNAVAILABLE) == true
             ? (value is string ? !string.IsNullOrEmpty(value as string) : value != null)
             : value != null;
@@ -79,7 +76,7 @@ namespace Mtconnect.AdapterInterface.DataItems
         /// <summary>
         /// Timestamp of when the <see cref="Value"/> was last Changed.
         /// </summary>
-        public DateTime? LastChanged { get; protected set; }
+        public DateTime? LastChanged { get; set; }
 
         /// <summary>
         /// A flag to indicate if the data item's value has changed since it 
@@ -93,6 +90,8 @@ namespace Mtconnect.AdapterInterface.DataItems
         /// Key|Value pairs.
         /// </summary>
         public bool HasNewLine { get; protected set; }
+
+        public bool HasTimestampOverride { get; internal set; }
 
         /// <summary>
         /// An expression that can be used to apply additional formatting or transformations to the DataItem value.
@@ -119,7 +118,7 @@ namespace Mtconnect.AdapterInterface.DataItems
         /// Checks if the data item is unavailable.
         /// </summary>
         /// <returns>true if Unavailable</returns>
-        public bool IsUnavailable() => _value?.Equals(Constants.UNAVAILABLE) == true;
+        public bool IsUnavailable() => Value?.Equals(Constants.UNAVAILABLE) == true;
 
         /// <summary>
         /// Forces this <see cref="DataItem"/> to indicate that the <see cref="Value"/> has changed.
@@ -127,6 +126,21 @@ namespace Mtconnect.AdapterInterface.DataItems
         public void ForceChanged()
         {
             HasChanged = true;
+            if (!HasTimestampOverride) LastChanged = TimeHelper.GetNow();
+        }
+
+        public override bool Equals(object obj)
+        {
+            if (obj is DataItem)
+            {
+                return (obj as DataItem).Value?.Equals(Value) == true;
+            } else if (obj is string)
+            {
+                if (!(Value is string)) return false;
+                return obj?.Equals(Value) == true;
+            }
+
+            return base.Equals(obj);
         }
 
         /// <summary>
@@ -171,6 +185,11 @@ namespace Mtconnect.AdapterInterface.DataItems
             if (all || HasChanged)
                 list.Add(this);
             return list;
+        }
+    
+        protected void TriggerDataChangedEvent(DataItemChangedEventArgs e)
+        {
+            OnDataItemChanged?.Invoke(this, e);
         }
     }
 }

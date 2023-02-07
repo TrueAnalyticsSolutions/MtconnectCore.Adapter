@@ -1,4 +1,6 @@
 ﻿
+using static System.Net.WebRequestMethods;
+
 namespace Mtconnect.AdapterInterface.Contracts
 {
     /// <summary>

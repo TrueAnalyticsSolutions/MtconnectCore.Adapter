@@ -271,7 +271,7 @@ namespace Mtconnect
                     break;
                 case DataItemSendTypes.Changed:
                     var changedDataItems = DataItems
-                        .SelectMany(o => o.ItemList(sendType == DataItemSendTypes.All))
+                        .SelectMany(o => o.ItemList(sendType == DataItemSendTypes.Changed))
                         .Where(o => o.HasChanged);
                     values = changedDataItems.Select(o => new ReportedValue(o)).ToList();
                     // TODO: Clear ConcurrentQueue of matching DataItems.
@@ -331,7 +331,7 @@ namespace Mtconnect
         {
             StringBuilder sb = new StringBuilder();
 
-            DateTime now = DateTime.UtcNow;
+            DateTime now = TimeHelper.GetNow();
             sb.Append(now.ToString(DATE_TIME_FORMAT));
             sb.Append("|@ASSET@|");
             sb.Append(asset.AssetId);

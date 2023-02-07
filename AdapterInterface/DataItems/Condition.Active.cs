@@ -62,6 +62,7 @@ namespace Mtconnect.AdapterInterface.DataItems
                 Qualifier = qualifier;
                 NativeSeverity = severity;
                 HasNewLine = true;
+                LastChanged = TimeHelper.GetNow();
 
                 if (NativeCode.Length == 0 && (Level == Level.NORMAL || Level == Level.UNAVAILABLE))
                     mPlaceholder = true;
@@ -87,7 +88,7 @@ namespace Mtconnect.AdapterInterface.DataItems
                     Qualifier = qualifier;
                     Text = text;
                     NativeSeverity = severity;
-                    LastChanged = DateTime.UtcNow;
+                    LastChanged = TimeHelper.GetNow();
                 }
 
                 mMarked = true;
