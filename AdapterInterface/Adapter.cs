@@ -366,11 +366,17 @@ namespace Mtconnect
             foreach (var source in sources)
             {
                 _sources.Add(source);
+                source.OnAdapterSourceStarted += Source_OnAdapterSourceStarted;
                 source.OnAdapterSourceStopped += Source_OnAdapterSourceStopped;
                 source.OnDataReceived += _source_OnDataReceived;
                 source.Start(token);
             }
             TriggerOnStartedEvent();
+        }
+
+        private void Source_OnAdapterSourceStarted(IAdapterSource sender, AdapterSourceStartedEventArgs e)
+        {
+            _logger?.LogInformation("Adapter's Source {AdapterSourceType} has started", sender.GetType().FullName);
         }
 
         private void Source_OnAdapterSourceStopped(IAdapterSource sender, AdapterSourceStoppedEventArgs e)
@@ -417,6 +423,7 @@ namespace Mtconnect
             foreach (var source in _sources)
             {
                 source.Stop();
+                source.OnAdapterSourceStarted -= Source_OnAdapterSourceStarted;
                 source.OnAdapterSourceStopped -= Source_OnAdapterSourceStopped;
                 source.OnDataReceived -= _source_OnDataReceived;
             }

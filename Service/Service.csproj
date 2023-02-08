@@ -8,8 +8,6 @@
 	<OutputType>exe</OutputType>
 	<PublishSingleFile Condition="'$(Configuration)' == 'Release'">true</PublishSingleFile>
 	<PublishReadyToRun Condition="'$(Configuration)' == 'Release'">true</PublishReadyToRun>
-	<RuntimeIdentifier>win-x86</RuntimeIdentifier>
-	<PlatformTarget>x86</PlatformTarget>
 	<Version>1.0.0.1</Version>
   </PropertyGroup>
 
