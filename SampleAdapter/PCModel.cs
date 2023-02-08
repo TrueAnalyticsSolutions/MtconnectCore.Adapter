@@ -12,10 +12,12 @@ namespace SampleAdapter
     /// </summary>
     public class PCStatusMonitor : IAdapterSource
     {
-        /// <summary>
-        /// Fires when the <see cref="IAdapterSource"/> changes any of its properties.
-        /// </summary>
+        /// <inheritdoc />
         public event DataReceivedHandler? OnDataReceived;
+        /// <inheritdoc />
+        public event AdapterSourceStartedHandler? OnAdapterSourceStarted;
+        /// <inheritdoc />
+        public event AdapterSourceStoppedHandler? OnAdapterSourceStopped;
 
         public PCStatus Model { get; private set; } = new PCStatus();
 
@@ -123,14 +125,20 @@ namespace SampleAdapter
             _loopCount++;
         }
 
+        /// <inheritdoc />
         public void Start(CancellationToken token = default)
         {
             Timer.Start();
+
+            OnAdapterSourceStarted?.Invoke(this, new AdapterSourceStartedEventArgs());
         }
 
-        public void Stop()
+        /// <inheritdoc />
+        public void Stop(Exception ex = null)
         {
             Timer.Stop();
+
+            OnAdapterSourceStopped?.Invoke(this, new AdapterSourceStoppedEventArgs(ex));
         }
     }
     public class PCStatus : IAdapterDataModel

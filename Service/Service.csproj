@@ -1,7 +1,7 @@
 <Project Sdk="Microsoft.NET.Sdk.Worker">
 
   <PropertyGroup>
-    <TargetFramework>net7.0</TargetFramework>
+    <TargetFramework>net7.0-windows</TargetFramework>
     <Nullable>enable</Nullable>
     <ImplicitUsings>enable</ImplicitUsings>
     <UserSecretsId>dotnet-Service-61541f77-58dd-4dc3-87ce-1d191923733d</UserSecretsId>
@@ -9,7 +9,7 @@
 	<PublishSingleFile Condition="'$(Configuration)' == 'Release'">true</PublishSingleFile>
 	<PublishReadyToRun Condition="'$(Configuration)' == 'Release'">true</PublishReadyToRun>
 	<RuntimeIdentifier>win-x86</RuntimeIdentifier>
-	<PlatformTarget>x86</PlatformTarget>
+	<PlatformTarget>AnyCPU</PlatformTarget>
 	<Version>1.0.0.1</Version>
   </PropertyGroup>
 
