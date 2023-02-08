@@ -2,6 +2,7 @@ using Mtconnect;
 using Service.Configuration;
 using System.Collections.Generic;
 using System.Reflection;
+using System.Runtime.Loader;
 
 namespace Service
 {
@@ -37,14 +38,14 @@ namespace Service
                 var dllFilename = Path.Combine(Directory.GetParent(Environment.ProcessPath).FullName, importDll);
                 if (!File.Exists(dllFilename))
                 {
-                    _workerLogger?.LogError(new DllNotFoundException("Could not find Adapter DLL"), "Could not find Adapter DLL { AdapterFilename }", dllFilename);
+                    _workerLogger?.LogError(new DllNotFoundException("Could not find Adapter DLL"), "Could not find Adapter DLL {AdapterFilename}", dllFilename);
                     continue;
                 }
 
-                var dll = Assembly.LoadFrom(dllFilename);
+                var dll = Assembly.Load(File.ReadAllBytes(dllFilename));
                 if (dll == null)
                 {
-                    _workerLogger?.LogError(new FileLoadException("Failed to load Adapter DLL", dllFilename), "Failed to load Adapter DLL { AdapterFilename }", dllFilename);
+                    _workerLogger?.LogError(new FileLoadException("Failed to load Adapter DLL", dllFilename), "Failed to load Adapter DLL {AdapterFilename}", dllFilename);
                     continue;
                 }
 

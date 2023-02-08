@@ -48,7 +48,14 @@ namespace Service
                 }
                 if (resultParams.Count == ctorParams.Length)
                 {
-                    result = ctor.Invoke(resultParams.ToArray());
+                    try
+                    {
+                        result = ctor.Invoke(resultParams.ToArray());
+                    }
+                    catch (Exception ex)
+                    {
+                        logger?.LogError(ex, "Failed to construct {AdapterOptionsType} due to error", targetType.FullName);
+                    }
                     if (result != null) break;
                 }
             }

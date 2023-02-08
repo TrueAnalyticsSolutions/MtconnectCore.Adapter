@@ -21,6 +21,16 @@ namespace Mtconnect
     public abstract class Adapter
     {
         /// <summary>
+        /// Occurs when the Adapter starts.
+        /// </summary>
+        public event AdapterStartedHandler OnStarted;
+
+        /// <summary>
+        /// Occurs when the Adapter stops.
+        /// </summary>
+        public event AdapterStoppedHandler OnStopped;
+
+        /// <summary>
         /// Reference to the expected format for DateTime strings
         /// </summary>
         protected string DATE_TIME_FORMAT => Constants.DATE_TIME_FORMAT;
@@ -331,13 +341,15 @@ namespace Mtconnect
         /// Start the listener thread.
         /// </summary>
         /// <param name="begin">Flag for whether or not to also call <see cref="Begin"/>.</param>
-        public abstract void Start(bool begin = true, CancellationToken token = default);
+        /// <param name="token">Reference to a cancellation token that is capable of cancelling the Adapter operation</param>
+        protected abstract void Start(bool begin = true, CancellationToken token = default);
 
         /// <summary>
         /// Starts the listener thread and the provided <see cref="IAdapterSource"/>.
         /// </summary>
         /// <param name="source">Reference to the source of the Adapter.</param>
         /// <param name="begin">Flag for whether or not to also call <see cref="Begin"/>.</param>
+        /// <param name="token">Reference to a cancellation token that is capable of cancelling the Adapter operation</param>
         public void Start<T>(T source, bool begin = true, CancellationToken token = default) where T : class, IAdapterSource
             => Start(new IAdapterSource[] { source }, begin, token);
 
@@ -346,6 +358,7 @@ namespace Mtconnect
         /// </summary>
         /// <param name="sources">Reference to the sources of the Adapter.</param>
         /// <param name="begin"><inheritdoc cref="Start{T}(T, bool)" path="/param[@name='begin']"/></param>
+        /// <param name="token">Reference to a cancellation token that is capable of cancelling the Adapter operation</param>
         public void Start(IEnumerable<IAdapterSource> sources, bool begin = true, CancellationToken token = default)
         {
             Start(begin, token);
@@ -353,8 +366,29 @@ namespace Mtconnect
             foreach (var source in sources)
             {
                 _sources.Add(source);
+                source.OnAdapterSourceStopped += Source_OnAdapterSourceStopped;
                 source.OnDataReceived += _source_OnDataReceived;
                 source.Start(token);
+            }
+            TriggerOnStartedEvent();
+        }
+
+        private void Source_OnAdapterSourceStopped(IAdapterSource sender, AdapterSourceStoppedEventArgs e)
+        {
+            bool removedSource = false;
+            if (e.Exception != null)
+            {
+                var source = _sources.FirstOrDefault(o => o == sender);
+                if (source != null)
+                {
+                    removedSource = _sources.Remove(source);
+                }
+            }
+
+            // Stop the adapter if the last source was removed.
+            if (removedSource && _sources.Count == 0)
+            {
+                Stop(e.Exception);
             }
         }
 
@@ -378,13 +412,15 @@ namespace Mtconnect
         /// <summary>
         /// Stop the listener thread and shutdown all client connections. Make sure to call this base method when overriding to ensure any internal properties are properly stopped.
         /// </summary>
-        public virtual void Stop()
+        public virtual void Stop(Exception ex = null)
         {
             foreach (var source in _sources)
             {
                 source.Stop();
+                source.OnAdapterSourceStopped -= Source_OnAdapterSourceStopped;
                 source.OnDataReceived -= _source_OnDataReceived;
             }
+            TriggerOnStoppedEvent(ex);
         }
 
         /// <summary>
@@ -409,6 +445,23 @@ namespace Mtconnect
             }
 
             return false;
+        }
+    
+        /// <summary>
+        /// Triggers the <see cref="OnStarted"/> event.
+        /// </summary>
+        protected void TriggerOnStartedEvent()
+        {
+            OnStarted?.Invoke(this, new AdapterStartedEventArgs() { DataItemCount = _dataItems.Count });
+        }
+        /// <summary>
+        /// Triggers the <see cref="OnStopped"/> event.
+        /// </summary>
+        /// <param name="ex">Reference to an exception that may have caused the Adapter to be stopped.</param>
+        /// <param name="wasCancelled">Reference to whether or not a <see cref="CancellationToken"/> was the source of the Adapter stopping.</param>
+        protected void TriggerOnStoppedEvent(Exception ex = null, bool wasCancelled = false)
+        {
+            OnStopped?.Invoke(this, new AdapterStoppedEventArgs(ex, wasCancelled));
         }
     }
 }

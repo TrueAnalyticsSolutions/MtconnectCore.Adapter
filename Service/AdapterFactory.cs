@@ -157,7 +157,7 @@ namespace Service
                     var adapter = adapterCtor.Invoke(new object?[] { options, adapterLogger }) as Adapter;
                     if (adapter == null)
                     {
-                        logger?.LogError(new InvalidCastException("Failed to construct Adapter"), "Failed to construct Adapter { AdapterType }", adapterType.FullName);
+                        logger?.LogError(new InvalidCastException("Failed to construct Adapter"), "Failed to construct Adapter {AdapterType}", adapterType.FullName);
                         continue;
                     }
 
@@ -199,7 +199,7 @@ namespace Service
                     IAdapterSource? source = ReflectionExtensions.ConstructFromConfig(sourceConfig?.Options, sourceType, logger) as IAdapterSource;
                     if (source == null)
                     {
-                        logger?.LogError(new InvalidCastException("Failed to construct IAdapterSource"), "Failed to construct IAdapterSource { SourceType }", sourceType.FullName);
+                        logger?.LogError(new InvalidCastException("Failed to construct IAdapterSource"), "Failed to construct IAdapterSource {SourceType}", sourceType.FullName);
                         continue;
                     }
 

@@ -1,16 +1,11 @@
 ﻿using System;
-using System.Collections;
 using System.Collections.Concurrent;
-using System.Collections.Generic;
-using System.IO;
 using System.Linq;
 using System.Net;
 using System.Net.Sockets;
 using System.Threading;
 using System.Threading.Tasks;
 using Microsoft.Extensions.Logging;
-using Microsoft.VisualBasic;
-using Mtconnect.AdapterInterface;
 using Mtconnect.AdapterInterface.Contracts;
 using Mtconnect.AdapterInterface.DataItems;
 
@@ -67,7 +62,7 @@ namespace Mtconnect
         }
 
         /// <inheritdoc />
-        public override void Start(bool begin = true, CancellationToken token = default)
+        protected override void Start(bool begin = true, CancellationToken token = default)
         {
             if (State <= AdapterStates.NotStarted)
             {
@@ -82,7 +77,7 @@ namespace Mtconnect
                 State = AdapterStates.Started;
 
                 // Setup task that listens for new clients
-                _listerCancellationSource.Token.Register(Stop);
+                _listerCancellationSource.Token.Register(() => Stop());
                 _listenerThread = Task.Factory.StartNew(
                     ListenForClients,
                     _listerCancellationSource.Token,
@@ -96,7 +91,7 @@ namespace Mtconnect
         }
 
         /// <inheritdoc />
-        public override void Stop()
+        public override void Stop(Exception ex = null)
         {
             base.Stop();
 
