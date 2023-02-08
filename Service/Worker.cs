@@ -42,7 +42,7 @@ namespace Service
                     continue;
                 }
 
-                var dll = Assembly.Load(File.ReadAllBytes(dllFilename));
+                var dll = Assembly.UnsafeLoadFrom(dllFilename);
                 if (dll == null)
                 {
                     _workerLogger?.LogError(new FileLoadException("Failed to load Adapter DLL", dllFilename), "Failed to load Adapter DLL {AdapterFilename}", dllFilename);

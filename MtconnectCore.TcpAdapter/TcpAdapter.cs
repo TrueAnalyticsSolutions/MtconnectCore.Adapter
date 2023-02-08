@@ -93,11 +93,11 @@ namespace Mtconnect
         /// <inheritdoc />
         public override void Stop(Exception ex = null)
         {
-            base.Stop();
+            base.Stop(ex);
 
             if (State > AdapterStates.NotStarted)
             {
-                _logger?.LogInformation("Stopping Adapter");
+                _logger?.LogInformation("Stopping TcpAdapter");
                 State = AdapterStates.Stopping;
 
                 // Queue the _listerThread to cancel

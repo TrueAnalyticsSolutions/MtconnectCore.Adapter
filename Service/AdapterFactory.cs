@@ -90,8 +90,23 @@ namespace Service
                     _logger?.LogWarning(ex, ex.Message + " in Adapter type '{AdapterType}'", adapterType.FullName);
                     continue;
                 }
+                adapterInstance.Instance.OnStopped += Instance_OnStopped;
                 adapterInstance.Instance.Start(adapterInstance.Sources, token: token);
                 _logger?.LogInformation("Started Adapter {AdapterType}", adapterType.FullName);
+            }
+        }
+
+        private void Instance_OnStopped(Adapter sender, AdapterStoppedEventArgs e)
+        {
+            if (e.Exception != null)
+            {
+                _logger?.LogError(e.Exception, "Adapter Instance stopped due to error");
+            } else if (e.WasCancelled)
+            {
+                _logger?.LogWarning("Adapter Instance was cancelled");
+            } else
+            {
+                _logger?.LogInformation("Adapter Instance stopped");
             }
         }
 
@@ -118,6 +133,7 @@ namespace Service
                 }
 
                 adapterInstance.Instance.Stop();
+                adapterInstance.Instance.OnStopped -= Instance_OnStopped;
             }
         }
 
