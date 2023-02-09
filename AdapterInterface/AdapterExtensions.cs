@@ -134,7 +134,33 @@ namespace Mtconnect
                         DataItem dataItem = null;
 
                         // Check if the property is already of type DataItem
-                        if (_dataItemTypes.Contains(property.PropertyType))
+                        if (dataItemAttribute != null)
+                        {
+                            switch (dataItemAttribute)
+                            {
+                                case DataItemPartialAttribute _:
+                                    dataItemAdded = adapter.TryAddDataItems(property.GetValue(model), dataItemName, dataItemDescription);
+                                    break;
+                                case EventAttribute _:
+                                    dataItem = new Event(dataItemName, dataItemDescription);
+                                    break;
+                                case SampleAttribute _:
+                                    dataItem = new Sample(dataItemName, dataItemDescription);
+                                    break;
+                                case ConditionAttribute _:
+                                    dataItem = new Condition(dataItemName, dataItemDescription);
+                                    break;
+                                case TimeSeriesAttribute _:
+                                    dataItem = new TimeSeries(dataItemName, dataItemDescription);
+                                    break;
+                                case MessageAttribute _:
+                                    dataItem = new Message(dataItemName, dataItemDescription);
+                                    break;
+                                default:
+                                    dataItemAdded = false;
+                                    break;
+                            }
+                        } else if (_dataItemTypes.Contains(property.PropertyType))
                         {
                             // Since the property is "DataItem" type already, just add it directly as a reference without creating a new DataItem instance
                             var dataItemProperty = property.GetValue(model);
@@ -158,33 +184,6 @@ namespace Mtconnect
                                 dataItem.Description = dataItemDescription;
 
                                 // TODO: Check for Type mismatch
-                            }
-                        }
-                        else if (dataItemAttribute != null)
-                        {
-                            switch (dataItemAttribute)
-                            {
-                                case DataItemPartialAttribute _:
-                                    dataItemAdded = adapter.TryAddDataItems(property.PropertyType, dataItemName, dataItemDescription);
-                                    break;
-                                case EventAttribute _:
-                                    dataItem = new Event(dataItemName, dataItemDescription);
-                                    break;
-                                case SampleAttribute _:
-                                    dataItem = new Sample(dataItemName, dataItemDescription);
-                                    break;
-                                case ConditionAttribute _:
-                                    dataItem = new Condition(dataItemName, dataItemDescription);
-                                    break;
-                                case TimeSeriesAttribute _:
-                                    dataItem = new TimeSeries(dataItemName, dataItemDescription);
-                                    break;
-                                case MessageAttribute _:
-                                    dataItem = new Message(dataItemName, dataItemDescription);
-                                    break;
-                                default:
-                                    dataItemAdded = false;
-                                    break;
                             }
                         }
                         else

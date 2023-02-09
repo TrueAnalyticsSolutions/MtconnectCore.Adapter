@@ -1,30 +1,39 @@
+using Microsoft.Extensions.Configuration;
+using Microsoft.Extensions.DependencyInjection;
+using Microsoft.Extensions.Hosting;
 using Serilog;
 using Service;
 using Service.Configuration;
 
-IHost host = Host.CreateDefaultBuilder(args)
-    .UseWindowsService(options =>
+internal class Program
+{
+    private static void Main(string[] args)
     {
-        options.ServiceName = "MTConnect Adapter";
-    })
-    .ConfigureServices((hostContext, services) =>
-    {
-        IConfiguration configuration = hostContext.Configuration;
-
-        Serilog.Log.Logger = new LoggerConfiguration()
-        .ReadFrom.Configuration(configuration)
-        .CreateLogger();
-
-        services.AddLogging((o) =>
+        IHost host = Host.CreateDefaultBuilder(args)
+        .UseWindowsService(options =>
         {
-            o.AddSerilog(dispose: true);
-        });
+            options.ServiceName = "MTConnect Adapter";
+        })
+        .ConfigureServices((hostContext, services) =>
+        {
+            IConfiguration configuration = hostContext.Configuration;
 
-        ServiceConfiguration? config = configuration.GetSection("Service").Get<ServiceConfiguration>();
+            Log.Logger = new LoggerConfiguration()
+            .ReadFrom.Configuration(configuration)
+            .CreateLogger();
 
-        services.AddSingleton(config);
-        services.AddHostedService<Worker>();
-    })
-    .Build();
+            services.AddLogging((o) =>
+            {
+                o.AddSerilog(dispose: true);
+            });
 
-host.Run();
+            ServiceConfiguration config = configuration.GetSection("Service").Get<ServiceConfiguration>();
+
+            services.AddSingleton(config);
+            services.AddHostedService<Worker>();
+        })
+        .Build();
+
+        host.Run();
+    }
+}

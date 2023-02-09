@@ -1,8 +1,14 @@
+using Microsoft.Extensions.Hosting;
+using Microsoft.Extensions.Logging;
 using Mtconnect;
 using Service.Configuration;
+using System;
 using System.Collections.Generic;
+using System.IO;
+using System.Linq;
 using System.Reflection;
-using System.Runtime.Loader;
+using System.Threading;
+using System.Threading.Tasks;
 
 namespace Service
 {
@@ -35,7 +41,7 @@ namespace Service
         {
             foreach (var importDll in _config.Imports)
             {
-                var dllFilename = Path.Combine(Directory.GetParent(Environment.ProcessPath).FullName, importDll);
+                var dllFilename = Path.Combine(Directory.GetParent(Assembly.GetEntryAssembly().Location).FullName, importDll);
                 if (!File.Exists(dllFilename))
                 {
                     _workerLogger?.LogError(new DllNotFoundException("Could not find Adapter DLL"), "Could not find Adapter DLL {AdapterFilename}", dllFilename);

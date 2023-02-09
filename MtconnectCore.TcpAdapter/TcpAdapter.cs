@@ -205,18 +205,18 @@ namespace Mtconnect
                             Func<string>[] agentCommands = new Func<string>[]
                             {
                                 AgentCommands.AdapterVersion,
-                                AgentCommands.Calibration,
-                                AgentCommands.ConversionRequired,
-                                AgentCommands.Device,
-                                AgentCommands.Description,
-                                AgentCommands.Manufacturer,
-                                AgentCommands.MtconnectVersion,
-                                AgentCommands.NativeName,
-                                AgentCommands.RealTime,
-                                AgentCommands.RelativeTime,
-                                AgentCommands.SerialNumber,
-                                AgentCommands.ShdrVersion,
-                                AgentCommands.Station
+                                //AgentCommands.Calibration,
+                                //AgentCommands.ConversionRequired,
+                                //AgentCommands.Device,
+                                //AgentCommands.Description,
+                                //AgentCommands.Manufacturer,
+                                //AgentCommands.MtconnectVersion,
+                                //AgentCommands.NativeName,
+                                //AgentCommands.RealTime,
+                                //AgentCommands.RelativeTime,
+                                //AgentCommands.SerialNumber,
+                                //AgentCommands.ShdrVersion,
+                                //AgentCommands.Station
                             };
                             foreach (var agentCommand in agentCommands)
                             {

@@ -1,9 +1,7 @@
 <Project Sdk="Microsoft.NET.Sdk.Worker">
 
   <PropertyGroup>
-    <TargetFramework>net7.0</TargetFramework>
-    <Nullable>enable</Nullable>
-    <ImplicitUsings>enable</ImplicitUsings>
+	<TargetFramework>net7.0</TargetFramework>
     <UserSecretsId>dotnet-Service-61541f77-58dd-4dc3-87ce-1d191923733d</UserSecretsId>
 	<OutputType>exe</OutputType>
 	<PublishSingleFile Condition="'$(Configuration)' == 'Release'">true</PublishSingleFile>
