@@ -1,5 +1,4 @@
-﻿
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 
 namespace Service.Configuration
 {
@@ -22,5 +21,10 @@ namespace Service.Configuration
         /// ServiceConfiguration options for the referenced <see cref="Mtconnect.Adapter"/>.
         /// </summary>
         public Dictionary<string, object>? Options { get; set; }
+
+        /// <summary>
+        /// Indicates whether or not a broadcasting service should be used to make this adapter discoverable.
+        /// </summary>
+        public BroadcasterConfiguration Broadcaster { get; set; }
     }
 }

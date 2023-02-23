@@ -3,12 +3,13 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
+using System.Reflection;
 
 namespace Service
 {
     internal static class ReflectionExtensions
     {
-        internal static object? ConstructFromConfig(object? config, Type targetType, ILogger<Worker>? logger = null)
+        internal static object? ConstructFromConfig(object? config, Type targetType, ILogger logger = default)
         {
             Type? configType = config?.GetType();
             bool isDictionary = config is IDictionary<string, object?>;
@@ -41,7 +42,10 @@ namespace Service
 
                     if (value != null)
                     {
-                        value = Convert.ChangeType(value, ctorParam.ParameterType);
+                        if (!ctorParam.ParameterType.IsInstanceOfType(value))
+                        {
+                            value = Convert.ChangeType(value, ctorParam.ParameterType);
+                        }
 
                         resultParams.Add(value);
                     }

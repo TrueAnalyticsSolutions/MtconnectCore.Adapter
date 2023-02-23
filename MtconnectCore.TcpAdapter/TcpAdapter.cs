@@ -47,6 +47,11 @@ namespace Mtconnect
         private ConcurrentDictionary<string, TcpConnection> _clients { get; set; } = new ConcurrentDictionary<string, TcpConnection>();
 
         /// <summary>
+        /// A count of how many clients are currently connected to the TCP listener.
+        /// </summary>
+        public int CurrentConnections => _clients.Count;
+
+        /// <summary>
         /// The server socket.
         /// </summary>
         private TcpListener _listener { get; set; }
@@ -55,7 +60,7 @@ namespace Mtconnect
         /// Constructs a new <see cref="TcpAdapter"/>.
         /// </summary>
         /// <param name="options"><inheritdoc cref="TcpAdapterOptions" path="/summary"/></param>
-        public TcpAdapter(TcpAdapterOptions options, ILogger<Adapter> logger = null) : base(options, logger)
+        public TcpAdapter(TcpAdapterOptions options, ILoggerFactory logFactory = default) : base(options, logFactory)
         {
             Port = options.Port;
             MaxConnections = options.MaxConcurrentConnections;

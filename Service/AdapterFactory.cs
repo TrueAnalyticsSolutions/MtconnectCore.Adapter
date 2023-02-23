@@ -1,6 +1,7 @@
 ﻿using Microsoft.Extensions.Logging;
 using Mtconnect;
 using Mtconnect.AdapterInterface;
+using Mtconnect.AdapterInterface.Contracts;
 using Service.Configuration;
 using System;
 using System.Collections;
@@ -17,27 +18,30 @@ namespace Service
     public class AdapterFactory
     {
         private List<AdapterInstance> _adapters { get; set; } = new List<AdapterInstance>();
-        private ILogger<Worker>? _logger { get; set; }
+        internal ILogger<AdapterFactory> _logger { get; set; }
 
-        public AdapterFactory(ILogger<Worker>? logger = null)
+        public AdapterFactory(ILoggerFactory logFactory = default)
         {
-            _logger = logger;
+            _logger = logFactory?.CreateLogger<AdapterFactory>();
         }
 
         /// <summary>
         /// Adds a <see cref="AdapterInstance"/> for the given <paramref name="adapter"/>.
         /// </summary>
         /// <param name="adapter">Instance of an <see cref="Adapter"/> to create and add an <see cref="AdapterInstance"/>.</param>
-        public void Add(Adapter adapter)
+        public AdapterInstance Add(Adapter adapter)
         {
             if (adapter == null)
             {
                 var nullEx = new ArgumentNullException(nameof(adapter));
                 _logger?.LogError(nullEx, nullEx.Message);
-                return;
+                return null;
             }
 
-            _adapters.Add(new AdapterInstance(adapter));
+            var result = new AdapterInstance(adapter);
+            _adapters.Add(result);
+
+            return result;
         }
 
         /// <summary>
@@ -98,6 +102,9 @@ namespace Service
                 }
                 adapterInstance.Instance.OnStopped += Instance_OnStopped;
                 adapterInstance.Instance.Start(adapterInstance.Sources, token: token);
+
+                if (adapterInstance.Broadcaster != null) adapterInstance.Broadcaster.Start(token);
+
                 _logger?.LogInformation("Started Adapter {AdapterType}", adapterType.FullName);
             }
         }
@@ -140,6 +147,8 @@ namespace Service
 
                 adapterInstance.Instance.Stop();
                 adapterInstance.Instance.OnStopped -= Instance_OnStopped;
+
+                if (adapterInstance.Broadcaster != null) adapterInstance.Broadcaster.Stop();
             }
         }
 
@@ -151,9 +160,9 @@ namespace Service
         /// <param name="logger">Reference to the injected logger for the service.</param>
         /// <param name="adapterLogger">Reference to the injected logger for all Adapters.</param>
         /// <returns></returns>
-        public static AdapterFactory CreateFromTypes(IEnumerable<Assembly> dlls, ServiceConfiguration config, ILogger<Worker>? logger = null, ILogger<Adapter>? adapterLogger = null)
+        public static AdapterFactory CreateFromTypes(IEnumerable<Assembly> dlls, ServiceConfiguration config, ILoggerFactory logFactory = default)
         {
-            var factory = new AdapterFactory(logger);
+            var factory = new AdapterFactory(logFactory);
 
             foreach (var adapterConfig in config.Adapters)
             {
@@ -164,7 +173,7 @@ namespace Service
 
                 if (adapterType == null)
                 {
-                    logger?.LogError("Could not find Adapter type {AdapterType} from imported DLL(s)", adapterConfig.Adapter);
+                    factory._logger?.LogError("Could not find Adapter type {AdapterType} from imported DLL(s)", adapterConfig.Adapter);
                     continue;
                 }
 
@@ -174,30 +183,52 @@ namespace Service
                 foreach (var adapterCtor in adapterCtors)
                 {
                     var optionsParam = adapterCtor.GetParameters().FirstOrDefault(o => o.ParameterType.IsSubclassOf(typeof(AdapterOptions)));
-                    object? options = ReflectionExtensions.ConstructFromConfig(adapterConfig.Options, optionsParam?.ParameterType, logger);
+                    object? options = ReflectionExtensions.ConstructFromConfig(adapterConfig.Options, optionsParam?.ParameterType, factory._logger);
 
-                    var adapter = adapterCtor.Invoke(new object?[] { options, adapterLogger }) as Adapter;
+                    var adapter = adapterCtor.Invoke(new object?[] { options, logFactory }) as Adapter;
                     if (adapter == null)
                     {
-                        logger?.LogError(new InvalidCastException("Failed to construct Adapter"), "Failed to construct Adapter {AdapterType}", adapterType.FullName);
+                        factory._logger?.LogError(new InvalidCastException("Failed to construct Adapter"), "Failed to construct Adapter {AdapterType}", adapterType.FullName);
                         continue;
                     }
 
                     constructedAdapter = true;
-                    factory.Add(adapter);
+                    var instance = factory.Add(adapter);
+
+                    // If configuration indicates to broadcast
+                    if (adapterConfig.Broadcaster != null)
+                    {
+                        // TODO: Find appropriate Broadcaster type
+                        var broadcastType = dlls
+                            .Select(o => o.GetType(adapterConfig.Broadcaster.Type))
+                            .Where(o => o != null)
+                            .FirstOrDefault();
+                        if (broadcastType != null)
+                        {
+                            // Inject a reference to the Adapter and ILoggerFactory
+                            if (!adapterConfig.Broadcaster.Options.ContainsKey("adapter")) adapterConfig.Broadcaster.Options.Add("adapter", instance.Instance);
+                            if (!adapterConfig.Broadcaster.Options.ContainsKey("logFactory")) adapterConfig.Broadcaster.Options.Add("logFactory", logFactory);
+
+                            var broadcaster = ReflectionExtensions.ConstructFromConfig(adapterConfig.Broadcaster.Options, broadcastType, factory._logger);
+                            if (broadcaster != null)
+                            {
+                                instance.Broadcaster = broadcaster as IBroadcaster;
+                            }
+                        }
+                    }
                 }
 
                 if (constructedAdapter)
                 {
-                    logger?.LogInformation("Constructed Adapter {AdapterType}", adapterConfig.Adapter);
+                    factory._logger?.LogInformation("Constructed Adapter {AdapterType}", adapterConfig.Adapter);
                 } else
                 {
                     var ctorException = new MissingMethodException("Adapter missing constructor with AdapterOptions parameter");
-                    logger?.LogError(ctorException, "Adapter {AdapterType} missing constructor with AdapterOptions parameter and therefore could not be constructed", adapterConfig.Adapter);
+                    factory._logger?.LogError(ctorException, "Adapter {AdapterType} missing constructor with AdapterOptions parameter and therefore could not be constructed", adapterConfig.Adapter);
                 }
             }
 
-            _addSources(factory, dlls, config, logger);
+            _addSources(factory, dlls, config);
 
             return factory;
         }
@@ -209,7 +240,7 @@ namespace Service
         /// <param name="dlls">Reference to the list of imported assemblies.</param>
         /// <param name="config">Reference to the loaded <see cref="ServiceConfiguration"/>.</param>
         /// <param name="logger">Reference to the injected logger for the service.</param>
-        private static void _addSources(AdapterFactory factory, IEnumerable<Assembly> dlls, ServiceConfiguration config, ILogger<Worker>? logger = null)
+        private static void _addSources(AdapterFactory factory, IEnumerable<Assembly> dlls, ServiceConfiguration config)
         {
             foreach (var dll in dlls)
             {
@@ -218,10 +249,10 @@ namespace Service
                 foreach (var sourceType in sourceTypes)
                 {
                     var sourceConfig = config.Sources?.FirstOrDefault(o => o.Source == sourceType.Name || o.Source == sourceType.FullName);
-                    IAdapterSource? source = ReflectionExtensions.ConstructFromConfig(sourceConfig?.Options, sourceType, logger) as IAdapterSource;
+                    IAdapterSource? source = ReflectionExtensions.ConstructFromConfig(sourceConfig?.Options, sourceType, factory._logger) as IAdapterSource;
                     if (source == null)
                     {
-                        logger?.LogError(new InvalidCastException("Failed to construct IAdapterSource"), "Failed to construct IAdapterSource {SourceType}", sourceType.FullName);
+                        factory._logger?.LogError(new InvalidCastException("Failed to construct IAdapterSource"), "Failed to construct IAdapterSource {SourceType}", sourceType.FullName);
                         continue;
                     }
 

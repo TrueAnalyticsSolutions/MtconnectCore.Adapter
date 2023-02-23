@@ -38,7 +38,7 @@ namespace Mtconnect
             MaxConcurrentConnections = maxConnections;
         }
 
-        public override Dictionary<string, object> UpdateFromConfig(ILogger<Adapter> logger = null)
+        public override Dictionary<string, object> UpdateFromConfig(ILogger logger = default)
         {
             var adapterSettings = base.UpdateFromConfig(logger);
 

@@ -115,13 +115,13 @@ namespace Mtconnect
         /// </summary>
         /// <param name="options"><inheritdoc cref="AdapterOptions" path="/summary"/></param>
         /// <param name="loggerFactory">Reference to the logger factory to handle logging.</param>
-        public Adapter(AdapterOptions options, ILogger<Adapter> logger = null)
+        public Adapter(AdapterOptions options, ILoggerFactory logFactory = default)
         {
             _options = options;
             Heartbeat = options.Heartbeat;
             CanEnqueueDataItems = options.CanEnqueueDataItems;
 
-            _logger = logger;
+            _logger = logFactory?.CreateLogger<Adapter>();
         }
 
         public bool Contains(string dataItemName)

@@ -23,12 +23,11 @@ namespace SampleAdapter
             //ConsoulLibrary.RenderOptions.WriteMode = RenderOptions.WriteModes.SuppressBlacklist;
             //ConsoulLibrary.RenderOptions.BlacklistColors.Add( ConsoleColor.Gray);
             var loggerFactory = LoggerFactory.Create(o => { o.AddConsoulLogger();o.SetMinimumLevel(LogLevel.Debug); });
-            var logger = loggerFactory.CreateLogger<Adapter>();
 
             var options = new TcpAdapterOptions();
-            options.UpdateFromConfig(logger);
+            options.UpdateFromConfig();
 
-            Adapter = new TcpAdapter(options, logger);
+            Adapter = new TcpAdapter(options, loggerFactory);
             Adapter.Start(Model);
 
             Consoul.Write("Reporting: AVAILABILITY, Mouse X-Position, Mouse Y-Position, Active Window Title");

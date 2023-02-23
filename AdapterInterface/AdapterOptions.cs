@@ -51,7 +51,7 @@ namespace Mtconnect.AdapterInterface
         /// <summary>
         /// Updates the properties of the <see cref="AdapterOptions"/> from the <see cref="ConfigurationManager"/> section 'adapter'.
         /// </summary>
-        public virtual Dictionary<string, object> UpdateFromConfig(ILogger<Adapter> logger = null)
+        public virtual Dictionary<string, object> UpdateFromConfig(ILogger logger = default)
         {
             var adapterSettings = (ConfigurationManager.GetSection("adapter") as Hashtable)
                 .Cast<System.Collections.DictionaryEntry>()
