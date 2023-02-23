@@ -28,7 +28,7 @@ namespace Mtconnect
         /// </summary>
         /// <param name="heartbeat"><inheritdoc cref="AdapterOptions.AdapterOptions" path="/param[@name='heartbeat']"/></param>
         /// <param name="port"><inheritdoc cref="TcpAdapterOptions.Port" path="/summary"/></param>
-        public TcpAdapterOptions(double heartbeat = 10_000, string address = null, int port = 7878, int maxConnections = 2) : base(heartbeat)
+        public TcpAdapterOptions(double heartbeat = 10_000, string address = null, int port = 7878, int maxConnections = 3) : base(heartbeat)
         {
             if (!string.IsNullOrWhiteSpace(address))
             {

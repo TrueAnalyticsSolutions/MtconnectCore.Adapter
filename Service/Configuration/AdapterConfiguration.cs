@@ -25,6 +25,6 @@ namespace Service.Configuration
         /// <summary>
         /// Indicates whether or not a broadcasting service should be used to make this adapter discoverable.
         /// </summary>
-        public BroadcasterConfiguration Broadcaster { get; set; }
+        public UPnPConfiguration UPnP { get; set; }
     }
 }

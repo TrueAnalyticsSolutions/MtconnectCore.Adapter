@@ -1,7 +1,7 @@
 ﻿using Microsoft.Extensions.Logging;
 using Mtconnect;
 using Mtconnect.AdapterInterface;
-using Mtconnect.AdapterInterface.Contracts;
+using Mtconnect.UPnP;
 using Service.Configuration;
 using System;
 using System.Collections;
@@ -196,23 +196,23 @@ namespace Service
                     var instance = factory.Add(adapter);
 
                     // If configuration indicates to broadcast
-                    if (adapterConfig.Broadcaster != null)
+                    if (adapterConfig.UPnP != null)
                     {
                         // TODO: Find appropriate Broadcaster type
                         var broadcastType = dlls
-                            .Select(o => o.GetType(adapterConfig.Broadcaster.Type))
+                            .Select(o => o.GetType(adapterConfig.UPnP.Type))
                             .Where(o => o != null)
                             .FirstOrDefault();
                         if (broadcastType != null)
                         {
                             // Inject a reference to the Adapter and ILoggerFactory
-                            if (!adapterConfig.Broadcaster.Options.ContainsKey("adapter")) adapterConfig.Broadcaster.Options.Add("adapter", instance.Instance);
-                            if (!adapterConfig.Broadcaster.Options.ContainsKey("logFactory")) adapterConfig.Broadcaster.Options.Add("logFactory", logFactory);
+                            if (!adapterConfig.UPnP.Options.ContainsKey("adapter")) adapterConfig.UPnP.Options.Add("adapter", instance.Instance);
+                            if (!adapterConfig.UPnP.Options.ContainsKey("logFactory")) adapterConfig.UPnP.Options.Add("logFactory", logFactory);
 
-                            var broadcaster = ReflectionExtensions.ConstructFromConfig(adapterConfig.Broadcaster.Options, broadcastType, factory._logger);
+                            var broadcaster = ReflectionExtensions.ConstructFromConfig(adapterConfig.UPnP.Options, broadcastType, factory._logger);
                             if (broadcaster != null)
                             {
-                                instance.Broadcaster = broadcaster as IBroadcaster;
+                                instance.Broadcaster = broadcaster as IUPnPService;
                             }
                         }
                     }

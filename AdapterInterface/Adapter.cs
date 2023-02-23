@@ -41,6 +41,11 @@ namespace Mtconnect
         public readonly ILogger<Adapter> _logger;
 
         /// <summary>
+        /// A unique identifier for the device this Adapter is monitoring. **NOTE**: The same uuid can be referenced in multiple Adapter instances.
+        /// </summary>
+        public string DeviceUUID { get; set; }
+
+        /// <summary>
         /// Internal collection of <see cref="DataItem"/>s being tracked.
         /// </summary>
         protected Dictionary<string, DataItem> _dataItems = new Dictionary<string, DataItem>();
@@ -118,6 +123,7 @@ namespace Mtconnect
         public Adapter(AdapterOptions options, ILoggerFactory logFactory = default)
         {
             _options = options;
+            DeviceUUID = options.DeviceUUID;
             Heartbeat = options.Heartbeat;
             CanEnqueueDataItems = options.CanEnqueueDataItems;
 

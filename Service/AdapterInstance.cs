@@ -1,5 +1,5 @@
 ﻿using Mtconnect;
-using Mtconnect.AdapterInterface.Contracts;
+using Mtconnect.UPnP;
 using System.Collections.Generic;
 
 namespace Service
@@ -22,7 +22,7 @@ namespace Service
         /// <summary>
         /// A reference to an optional broadcaster.
         /// </summary>
-        public IBroadcaster Broadcaster { get; set; }
+        public IUPnPService Broadcaster { get; set; }
 
         /// <summary>
         /// Constructs a new <see cref="AdapterInstance"/> from a constructed <see cref="Adapter"/>.

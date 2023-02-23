@@ -24,6 +24,7 @@ namespace Mtconnect
         public event TcpConnectionDataReceived ClientDataReceived;
 
         public string Address { get; private set; } = IPAddress.Any.ToString();
+        public EndPoint LocalEndpoint => _listener?.LocalEndpoint;
 
         /// <summary>
         /// The Port property to set and get the mPort. This will only take affect when the adapter is stopped.
@@ -64,6 +65,7 @@ namespace Mtconnect
         {
             Port = options.Port;
             MaxConnections = options.MaxConcurrentConnections;
+            _listener = new TcpListener(IPAddress.Parse(Address), Port);
         }
 
         /// <inheritdoc />
@@ -75,7 +77,6 @@ namespace Mtconnect
                 State = AdapterStates.Starting;
 
                 // Start TcpListener
-                _listener = new TcpListener(IPAddress.Parse(Address), Port);
                 _listener.Start();
 
                 // Start before the _listenerThread because it relies on state being Busy
