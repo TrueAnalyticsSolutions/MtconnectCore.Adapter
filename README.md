@@ -41,6 +41,14 @@ When communicating with clients via TCP, here are some options for setting up th
  - `port` allows you to explicitly specify the port number you wish to host the Adapter on.
  - `maxConnections` allows you to adjust how many concurrent client connections you wish the Adapter to handle at any given point.
  
+#### UPnP Options
+Adapters can optionally make themselves discoverable using UPnP by adding the `UPnP` property to the Adapter configuration section of the appsettings. Here are some of the settings for configuring the UPnP host:
+ - `Type` specifies the `System.Type` of the `UPnPService` implementation.
+ - `Options` is a dictionary of constructor parameters for the `UPnPService` implementations:
+   - `broadcastRate` is the rate (in milliseconds) at which the service will publish a (`ssdp:update`) notification on the network. The default is essentially 24hrs.
+   - `address` is the intended IP Address to host the HTTP server. The default is `localhost`
+   - `port` is the intended port number to host the HTTP servre. The default is `7879`. This value must be unique on the machine
+ 
 ### API
 In order to stay compliant with the reference MTConnect C++ Agent, there are some commands that must be issued to the Agent. This Adapter library expands on this concept by allowing the TCP clients to issue commands to retrieve this information on-demand.
 
