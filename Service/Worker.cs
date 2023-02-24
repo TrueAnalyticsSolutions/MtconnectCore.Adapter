@@ -14,27 +14,25 @@ namespace Service
 {
     public class Worker : BackgroundService
     {
-        private readonly ILogger<Worker> _workerLogger;
-        private readonly ILogger<Adapter> _adapterLogger;
+        private readonly ILogger<Worker> _logger;
         private ServiceConfiguration _config;
         private List<Assembly> _dlls = new List<Assembly>();
         private AdapterFactory _factory { get; set; }
 
-        public Worker(ILogger<Worker> workerLogger, ILogger<Adapter> adapterLogger, ServiceConfiguration config)
+        public Worker(ILoggerFactory logFactory, ServiceConfiguration config)
         {
-            _workerLogger = workerLogger;
-            _adapterLogger = adapterLogger;
+            _logger = logFactory.CreateLogger<Worker>();
             _config = config;
 
-            _initialize();
+            _initialize(logFactory);
         }
-        private void _initialize()
+        private void _initialize(ILoggerFactory logFactory)
         {
             _factory = null;
 
             _importDlls();
 
-            _factory = AdapterFactory.CreateFromTypes(_dlls, _config, _workerLogger, _adapterLogger);
+            _factory = AdapterFactory.CreateFromTypes(_dlls, _config, logFactory);
         }
         
         private void _importDlls()
@@ -44,36 +42,36 @@ namespace Service
                 var dllFilename = Path.Combine(Directory.GetParent(Assembly.GetEntryAssembly().Location).FullName, importDll);
                 if (!File.Exists(dllFilename))
                 {
-                    _workerLogger?.LogError(new DllNotFoundException("Could not find Adapter DLL"), "Could not find Adapter DLL {AdapterFilename}", dllFilename);
+                    _logger?.LogError(new DllNotFoundException("Could not find Adapter DLL"), "Could not find Adapter DLL {AdapterFilename}", dllFilename);
                     continue;
                 }
 
                 var dll = Assembly.UnsafeLoadFrom(dllFilename);
                 if (dll == null)
                 {
-                    _workerLogger?.LogError(new FileLoadException("Failed to load Adapter DLL", dllFilename), "Failed to load Adapter DLL {AdapterFilename}", dllFilename);
+                    _logger?.LogError(new FileLoadException("Failed to load Adapter DLL", dllFilename), "Failed to load Adapter DLL {AdapterFilename}", dllFilename);
                     continue;
                 }
 
-                _workerLogger?.LogInformation("Loaded assembly from file. {DllFilename}", dllFilename);
+                _logger?.LogInformation("Loaded assembly from file. {DllFilename}", dllFilename);
                 _dlls.Add(dll);
             }
         }
 
         protected override async Task ExecuteAsync(CancellationToken stoppingToken)
         {
-            _workerLogger.LogInformation("Worker running at: {time}", DateTimeOffset.Now);
+            _logger?.LogInformation("Worker running at: {time}", DateTimeOffset.Now);
 
             if (!_dlls.Any())
             {
-                _workerLogger?.LogError("Missing Imports in configuration", _config);
+                _logger?.LogError("Missing Imports in configuration", _config);
                 return;
             }
 
             if (_factory == null)
             {
                 var ex = new InvalidOperationException("AdapterFactory has not been initialized");
-                _workerLogger?.LogError(ex, ex.Message);
+                _logger?.LogError(ex, ex.Message);
                 return;
             }
 

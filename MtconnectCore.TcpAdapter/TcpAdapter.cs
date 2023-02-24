@@ -24,6 +24,7 @@ namespace Mtconnect
         public event TcpConnectionDataReceived ClientDataReceived;
 
         public string Address { get; private set; } = IPAddress.Any.ToString();
+        public EndPoint LocalEndpoint => _listener?.LocalEndpoint;
 
         /// <summary>
         /// The Port property to set and get the mPort. This will only take affect when the adapter is stopped.
@@ -47,6 +48,11 @@ namespace Mtconnect
         private ConcurrentDictionary<string, TcpConnection> _clients { get; set; } = new ConcurrentDictionary<string, TcpConnection>();
 
         /// <summary>
+        /// A count of how many clients are currently connected to the TCP listener.
+        /// </summary>
+        public int CurrentConnections => _clients.Count;
+
+        /// <summary>
         /// The server socket.
         /// </summary>
         private TcpListener _listener { get; set; }
@@ -55,10 +61,11 @@ namespace Mtconnect
         /// Constructs a new <see cref="TcpAdapter"/>.
         /// </summary>
         /// <param name="options"><inheritdoc cref="TcpAdapterOptions" path="/summary"/></param>
-        public TcpAdapter(TcpAdapterOptions options, ILogger<Adapter> logger = null) : base(options, logger)
+        public TcpAdapter(TcpAdapterOptions options, ILoggerFactory logFactory = default) : base(options, logFactory)
         {
             Port = options.Port;
             MaxConnections = options.MaxConcurrentConnections;
+            _listener = new TcpListener(IPAddress.Parse(Address), Port);
         }
 
         /// <inheritdoc />
@@ -70,7 +77,6 @@ namespace Mtconnect
                 State = AdapterStates.Starting;
 
                 // Start TcpListener
-                _listener = new TcpListener(IPAddress.Parse(Address), Port);
                 _listener.Start();
 
                 // Start before the _listenerThread because it relies on state being Busy

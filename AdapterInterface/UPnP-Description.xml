@@ -1,0 +1,103 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<root xmlns="urn:schemas-upnp-org:device-1-0">
+	<specVersion>
+		<major>1</major>
+		<minor>0</minor>
+	</specVersion>
+	<device>
+		<deviceType>urn:mtconnect-org:service:{ServiceType}:1</deviceType>
+		<friendlyName>MTConnect {ServiceType} Service</friendlyName>
+		<manufacturer>MTConnect</manufacturer>
+		<manufacturerURL>https://mtconnect.org/</manufacturerURL>
+		<modelName>MTConnect {ServiceType}</modelName>
+		<modelDescription>MTConnect {ServiceType} Service</modelDescription>
+		<UDN>uuid:{DeviceUUID}</UDN>
+		<iconList>
+			<icon>
+				<mimetype>image/png</mimetype>
+				<width>100</width>
+				<height>100</height>
+				<depth>8</depth>
+				<url>http://{UPnPEndpoint}/upnp/favicon.png</url>
+			</icon>
+		</iconList>
+		<serviceList>
+			<service>
+				<serviceType>urn:mtconnect-org:service:{ServiceType}:{ServiceVersion}</serviceType>
+				<serviceId>urn:mtconnect-org:serviceId:{ServiceType}</serviceId>
+				<controlURL>{AdapterEndpoint}</controlURL>
+				<eventSubURL>{AdapterEndpoint}</eventSubURL>
+				<SCPDURL></SCPDURL><!-- Omit SCPDURL for custom commands -->
+				<actionList>
+					<!-- TODO: Consider automating this list based on what's defined in AdapterCommands.cs -->
+					<action>
+						<name>PING</name>
+						<argumentList>
+							<argument>
+								<name>heartbeat</name>
+								<direction>out</direction>
+								<relatedStateVariable>MyCustomStateVariable</relatedStateVariable>
+								<retval />
+							</argument>
+						</argumentList>
+					</action>
+					<action>
+						<name>dataItems</name>
+						<argumentList>
+							<argument>
+								<name>dataItem1</name>
+								<direction>out</direction>
+								<relatedStateVariable>MyCustomStateVariable</relatedStateVariable>
+								<retval />
+							</argument>
+							<argument>
+								<name>dataItem2</name>
+								<direction>out</direction>
+								<relatedStateVariable>MyCustomStateVariable</relatedStateVariable>
+								<retval />
+							</argument>
+							<argument>
+								<name>dataItemn</name>
+								<direction>out</direction>
+								<relatedStateVariable>MyCustomStateVariable</relatedStateVariable>
+								<retval />
+							</argument>
+						</argumentList>
+					</action>
+					<action>
+						<name>dataItem</name>
+						<argumentList>
+							<argument>
+								<name>dataItemName</name>
+								<direction>in</direction>
+								<relatedStateVariable>MyCustomStateVariable</relatedStateVariable>
+							</argument>
+							<argument>
+								<name>value</name>
+								<direction>out</direction>
+								<relatedStateVariable>MyCustomStateVariable</relatedStateVariable>
+								<retval />
+							</argument>
+						</argumentList>
+					</action>
+					<action>
+						<name>dataItemDescription</name>
+						<argumentList>
+							<argument>
+								<name>dataItemName</name>
+								<direction>in</direction>
+								<relatedStateVariable>MyCustomStateVariable</relatedStateVariable>
+							</argument>
+							<argument>
+								<name>description</name>
+								<direction>out</direction>
+								<relatedStateVariable>MyCustomStateVariable</relatedStateVariable>
+								<retval />
+							</argument>
+						</argumentList>
+					</action>
+				</actionList>
+			</service>
+		</serviceList>
+	</device>
+</root>

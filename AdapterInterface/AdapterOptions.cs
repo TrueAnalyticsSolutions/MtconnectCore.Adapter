@@ -1,6 +1,4 @@
-﻿using Microsoft.CodeAnalysis.CSharp.Scripting;
-using Microsoft.CodeAnalysis.Scripting;
-using Microsoft.Extensions.Logging;
+﻿using Microsoft.Extensions.Logging;
 using System;
 using System.Collections;
 using System.Collections.Generic;
@@ -15,6 +13,9 @@ namespace Mtconnect.AdapterInterface
     [Serializable]
     public partial class AdapterOptions
     {
+        /// <inheritdoc cref="Adapter.DeviceUUID"/>
+        public string DeviceUUID { get; protected set; } = Guid.NewGuid().ToString();
+
         /// <inheritdoc cref="Adapter.Heartbeat"/>
         public double Heartbeat { get; protected set; }
 
@@ -51,7 +52,7 @@ namespace Mtconnect.AdapterInterface
         /// <summary>
         /// Updates the properties of the <see cref="AdapterOptions"/> from the <see cref="ConfigurationManager"/> section 'adapter'.
         /// </summary>
-        public virtual Dictionary<string, object> UpdateFromConfig(ILogger<Adapter> logger = null)
+        public virtual Dictionary<string, object> UpdateFromConfig(ILogger logger = default)
         {
             var adapterSettings = (ConfigurationManager.GetSection("adapter") as Hashtable)
                 .Cast<System.Collections.DictionaryEntry>()
@@ -114,6 +115,10 @@ namespace Mtconnect.AdapterInterface
                 {
                     CanEnqueueDataItems = Convert.ToBoolean(kvp.Value);
                     logger?.LogDebug("Recognizing adapter option for queuing all values into the buffer");
+                } else if (kvp.Key.StartsWith("deviceUuid", StringComparison.OrdinalIgnoreCase))
+                {
+                    DeviceUUID= Convert.ToString(kvp.Value);
+                    logger?.LogDebug("Recognizing adapter option for the device UUID");
                 }
                 // TODO: Reflect on the properties and automatically assign values.
             }

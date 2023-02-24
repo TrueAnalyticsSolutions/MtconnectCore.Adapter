@@ -1,4 +1,5 @@
 ﻿using Mtconnect;
+using Mtconnect.UPnP;
 using System.Collections.Generic;
 
 namespace Service
@@ -17,6 +18,11 @@ namespace Service
         /// Reference to the <see cref="IAdapterSource"/> implementation that must be assigned to <see cref="Instance"/>.
         /// </summary>
         public List<IAdapterSource> Sources { get; set; } = new List<IAdapterSource>();
+
+        /// <summary>
+        /// A reference to an optional broadcaster.
+        /// </summary>
+        public IUPnPService Broadcaster { get; set; }
 
         /// <summary>
         /// Constructs a new <see cref="AdapterInstance"/> from a constructed <see cref="Adapter"/>.
