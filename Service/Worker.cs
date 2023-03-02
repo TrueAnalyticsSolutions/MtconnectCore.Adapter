@@ -39,7 +39,7 @@ namespace Service
         {
             foreach (var importDll in _config.Imports)
             {
-                var dllFilename = Path.Combine(Directory.GetParent(Assembly.GetEntryAssembly().Location).FullName, importDll);
+                var dllFilename = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "Imports", importDll);
                 if (!File.Exists(dllFilename))
                 {
                     _logger?.LogError(new DllNotFoundException("Could not find Adapter DLL"), "Could not find Adapter DLL {AdapterFilename}", dllFilename);
