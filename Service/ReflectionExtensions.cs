@@ -51,7 +51,13 @@ namespace Service
                     }
                     else if (ctorParam.IsOptional)
                     {
-                        resultParams.Add(ctorParam.DefaultValue);
+                        if (ctorParam.ParameterType == typeof(ILogger))
+                        {
+                            resultParams.Add(logger);
+                        } else
+                        {
+                            resultParams.Add(ctorParam.DefaultValue);
+                        }
                     }
                 }
                 if (resultParams.Count == ctorParams.Length)

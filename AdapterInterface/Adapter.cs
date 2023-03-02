@@ -295,7 +295,7 @@ namespace Mtconnect
             var individualValues = values.Where(o => o.HasNewLine).ToList();
             var multiplicityValues = orderedValues.Except(individualValues).ToList();
 
-            _logger?.LogDebug("Sending {AllValueCount}; Individual Values: {IndividualValueCount}; Multiplicity Values: {MultiplicityValueCount};", orderedValues.Count, individualValues.Count, multiplicityValues.Count);
+            _logger?.LogTrace("Sending {AllValueCount}; Individual Values: {IndividualValueCount}; Multiplicity Values: {MultiplicityValueCount};", orderedValues.Count, individualValues.Count, multiplicityValues.Count);
 
             List<string> messages = new List<string>();
 
