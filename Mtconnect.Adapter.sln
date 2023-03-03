@@ -9,6 +9,9 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution 
 		icon.ico = icon.ico
 		icon.jpg = icon.jpg
 		logo_v2.0.jpg = logo_v2.0.jpg
+		VSIX\MTConnect Adapter Source.zip = VSIX\MTConnect Adapter Source.zip
+		VSIX\MTConnect Adapter.zip = VSIX\MTConnect Adapter.zip
+		VSIX\MTConnect TCP Terminal.zip = VSIX\MTConnect TCP Terminal.zip
 	EndProjectSection
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "AdapterSourceTemplate", "AdapterSourceTemplate\AdapterSourceTemplate.csproj", "{6C907DDE-DBFC-4AEC-B037-820339C7E7DB}"
@@ -18,7 +21,7 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "AdapterSourceTemplate", "Ad
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "AdapterSdk", "AdapterInterface\AdapterSdk.csproj", "{3574E405-181D-465D-9F51-477CA8313071}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TcpTerminalTemplate", "TcpTerminalTemplate\TcpTerminalTemplate.csproj", "{A5B4A375-C312-443D-BE1F-CF9C6265DF22}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "TcpTerminalTemplate", "TcpTerminalTemplate\TcpTerminalTemplate.csproj", "{A5B4A375-C312-443D-BE1F-CF9C6265DF22}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "AdapterTemplate", "AdapterTemplate\AdapterTemplate.csproj", "{41A19D0A-BC40-493E-85E6-3338F6DE4690}"
 EndProject
