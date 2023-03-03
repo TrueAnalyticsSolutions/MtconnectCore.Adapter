@@ -6,6 +6,12 @@ on:
       - published
   workflow_dispatch:
 
+env:
+  GH_NUGET_REGISTRY: https://nuget.pkg.github.com/
+  GH_NUGET_NAMESPACE: trueanalyticssolutions
+  GH_NUGET_API_KEY: ${{ secrets.GITHUB_TOKEN }}
+  VS_PROJECT: AdapterInterface
+  
 jobs:
   build:
     name: Build Package
@@ -18,10 +24,10 @@ jobs:
       with:
         dotnet-version: '3.1'
     - name: Build Mtconnect.Adapter with dotnet
-      run: dotnet build "AdapterInterface\AdapterInterface.csproj" --configuration Release
+      run: dotnet build "${{ env.VS_PROJECT }}\AdapterSdk.csproj" --configuration Release
       
     - name: Pack Mtconnect.Adapter
-      run: dotnet pack "AdapterInterface\AdapterInterface.csproj" --configuration Release -o finalpackage --no-build
+      run: dotnet pack "${{ env.VS_PROJECT }}\AdapterSdk.csproj" --configuration Release -o finalpackage --no-build
       
     - name: Publish Artifact
       uses: actions/upload-artifact@master
@@ -51,5 +57,8 @@ jobs:
           nuget-api-key: ${{ secrets.NUGETORG_API_KEY }}
           nuget-version: latest
           
-      - name: Push Mtconnect.AdapterInterface to NuGet
-        run: dotnet nuget push nupkg\Mtconnect.AdapterInterface*.nupkg -k ${{ secrets.NUGETORG_API_KEY }} -s https://nuget.org --skip-duplicate
+      - name: Push NuGet package to NuGet.org
+        run: dotnet nuget push nupkg\*.nupkg -k ${{ secrets.NUGETORG_API_KEY }} -s https://nuget.org --skip-duplicate
+
+      - name: Push NuGet package to GitHub Packages
+        run: dotnet nuget push nupkg\*.nupkg --source ${{ env.GH_NUGET_REGISTRY }}${{ env.GH_NUGET_NAMESPACE }} --api-key ${{ env.GH_NUGET_API_KEY }}
