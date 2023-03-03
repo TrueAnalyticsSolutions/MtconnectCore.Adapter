@@ -1,0 +1,30 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <OutputType>Exe</OutputType>
+    <TargetFramework>net6.0</TargetFramework>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <Nullable>enable</Nullable>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <Content Remove="C:\Users\LightWorks\.nuget\packages\mtconnect.adapterinterface\1.0.19\contentFiles\any\netcoreapp3.1\icon.ico" />
+    <Content Remove="C:\Users\LightWorks\.nuget\packages\mtconnect.adapterinterface\1.0.19\contentFiles\any\netcoreapp3.1\logo_v2.0.jpg" />
+    <Content Remove="C:\Users\LightWorks\.nuget\packages\mtconnect.adapterinterface\1.0.19\contentFiles\any\netcoreapp3.1\MTConnect_8-bit.png" />
+    <Content Remove="C:\Users\LightWorks\.nuget\packages\mtconnect.adapterinterface\1.0.19\contentFiles\any\netcoreapp3.1\Sandbox\Readme.md" />
+    <Content Remove="C:\Users\LightWorks\.nuget\packages\mtconnect.adapterinterface\1.0.19\contentFiles\any\netcoreapp3.1\Sandbox\Sandbox.ps1" />
+    <Content Remove="C:\Users\LightWorks\.nuget\packages\mtconnect.adapterinterface\1.0.19\contentFiles\any\netcoreapp3.1\UPnP-Description.xml" />
+    <Content Remove="C:\Users\LightWorks\.nuget\packages\mtconnect.tcpadapter\1.0.19\contentFiles\any\netcoreapp3.1\icon.ico" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Consoul" Version="1.6.2" />
+    <PackageReference Include="Mtconnect.AdapterInterface" Version="1.0.19" />
+    <PackageReference Include="Mtconnect.TcpAdapter" Version="1.0.19" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\AdapterSourceTemplate\AdapterSourceTemplate.csproj" />
+  </ItemGroup>
+
+</Project>

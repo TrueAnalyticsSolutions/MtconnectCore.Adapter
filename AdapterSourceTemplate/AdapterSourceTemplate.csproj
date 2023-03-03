@@ -1,0 +1,25 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <OutputType>Library</OutputType>
+	  <TargetFrameworks>netcoreapp3.1;netstandard2.1;net461;</TargetFrameworks>
+    <AssemblyVersion>1.0.0.1</AssemblyVersion>
+    <RootNamespace>Mtconnect.$(MSBuildProjectName.Replace(" ", "_"))</RootNamespace>
+    <Title>MTConnect $(MSBuildProjectName) Adapter Source</Title>
+    <PackageTags>Mtconnect;Adapter Source;</PackageTags>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <Content Remove="C:\Users\LightWorks\.nuget\packages\mtconnect.adapterinterface\1.0.19\contentFiles\any\netcoreapp3.1\icon.ico" />
+    <Content Remove="C:\Users\LightWorks\.nuget\packages\mtconnect.adapterinterface\1.0.19\contentFiles\any\netcoreapp3.1\logo_v2.0.jpg" />
+    <Content Remove="C:\Users\LightWorks\.nuget\packages\mtconnect.adapterinterface\1.0.19\contentFiles\any\netcoreapp3.1\MTConnect_8-bit.png" />
+    <Content Remove="C:\Users\LightWorks\.nuget\packages\mtconnect.adapterinterface\1.0.19\contentFiles\any\netcoreapp3.1\Sandbox\Readme.md" />
+    <Content Remove="C:\Users\LightWorks\.nuget\packages\mtconnect.adapterinterface\1.0.19\contentFiles\any\netcoreapp3.1\Sandbox\Sandbox.ps1" />
+    <Content Remove="C:\Users\LightWorks\.nuget\packages\mtconnect.tcpadapter\1.0.19\contentFiles\any\netcoreapp3.1\icon.ico" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Mtconnect.AdapterInterface" Version="1.0.19" />
+  </ItemGroup>
+
+</Project>
