@@ -20,15 +20,9 @@ jobs:
     - name: Build Mtconnect.Adapter with dotnet
       run: dotnet build "AdapterInterface\AdapterInterface.csproj" --configuration Release
       
-    - name: Build Mtconnect.TcpAdapter with dotnet
-      run: dotnet build "MtconnectCore.TcpAdapter\TcpAdapter.csproj" --configuration Release
-      
     - name: Pack Mtconnect.Adapter
       run: dotnet pack "AdapterInterface\AdapterInterface.csproj" --configuration Release -o finalpackage --no-build
       
-    - name: Pack Mtconnect.TcpAdapter
-      run: dotnet pack "MtconnectCore.TcpAdapter\TcpAdapter.csproj" --configuration Release -o finalpackage --no-build
-    
     - name: Publish Artifact
       uses: actions/upload-artifact@master
       with:
@@ -59,6 +53,3 @@ jobs:
           
       - name: Push Mtconnect.AdapterInterface to NuGet
         run: dotnet nuget push nupkg\Mtconnect.AdapterInterface*.nupkg -k ${{ secrets.NUGETORG_API_KEY }} -s https://nuget.org --skip-duplicate
-        
-      - name: Push Mtconnect.TcpAdapter to NuGet
-        run: dotnet nuget push nupkg\Mtconnect.TcpAdapter*.nupkg -k ${{ secrets.NUGETORG_API_KEY }} -s https://nuget.org --skip-duplicate
