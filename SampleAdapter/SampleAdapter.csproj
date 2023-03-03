@@ -17,11 +17,11 @@
   <ItemGroup>
     <PackageReference Include="Consoul" Version="1.6.0" />
     <PackageReference Include="Microsoft.Extensions.Logging" Version="7.0.0" />
+    <PackageReference Include="Mtconnect.TcpAdapter" Version="1.0.19" />
   </ItemGroup>
 
   <ItemGroup>
     <ProjectReference Include="..\AdapterInterface\AdapterInterface.csproj" />
-    <ProjectReference Include="..\MtconnectCore.TcpAdapter\TcpAdapter.csproj" />
   </ItemGroup>
 
 </Project>
