@@ -10,7 +10,7 @@ namespace {{ to_pascal_code source.namespace }}
 	{{~ if source?.deprecated_version != "" ~}}
 	[Obsolete("Deprecated according to https://model.mtconnect.org/")]
 	{{~ end ~}}
-	[GeneratedCode("MtconnectTranspiler.Sinks.CSharp.Example", "{{ version }}")]
+	[GeneratedCode("MtconnectTranspiler.Sinks.CSharp.Adapter", "{{ version }}")]
 	public enum {{ to_pascal_case source.name }}
 	{
 	{{~ for item in source.items ~}}

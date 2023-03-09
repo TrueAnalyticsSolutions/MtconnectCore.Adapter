@@ -3,7 +3,7 @@ using CSharpModels = MtconnectTranspiler.Sinks.CSharp.Models;
 using MtconnectTranspiler.Sinks.CSharp.Attributes;
 using MtconnectTranspiler.Xmi.UML;
 
-namespace Transpiler.Models
+namespace AdapterTranspiler.Models
 {
     [ScribanTemplate("Adapter.Class.scriban")]
     public class AdapterClass : CSharpModels.Class

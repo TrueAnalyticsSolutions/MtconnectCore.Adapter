@@ -5,7 +5,7 @@ namespace {{ to_pascal_code source.namespace }} {
 	/// View in the MTConnect Model browser <seealso href="https://model.mtconnect.org/#Structure__{{ source.id }}">model.mtconnect.org</seealso>
 	{{ source?.summary }}
 	/// </summary>
-	[GeneratedCode("MtconnectTranspiler.Sinks.CSharp.Example", "{{ version }}")]
+	[GeneratedCode("MtconnectTranspiler.Sinks.CSharp.Adapter", "{{ version }}")]
 	public {{ source.modifier }} class {{ source.name }} {
 	{{~ for item in source.items ~}}
 		/// <summary>

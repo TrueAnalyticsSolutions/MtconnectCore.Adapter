@@ -1,12 +1,12 @@
-﻿using Microsoft.Extensions.Logging;
+﻿using AdapterTranspiler.Models;
+using Microsoft.Extensions.Logging;
 using MtconnectTranspiler.Model;
 using MtconnectTranspiler.Sinks.CSharp;
 using MtconnectTranspiler.Sinks.CSharp.Models;
 using MtconnectTranspiler.Xmi.UML;
 using Scriban.Runtime;
-using Transpiler.Models;
 
-namespace Transpiler
+namespace AdapterTranspiler
 {
     public class CategoryFunctions : ScriptObject
     {
@@ -22,13 +22,13 @@ namespace Transpiler
         /// <param name="projectPath"></param>
         public Transpiler(string projectPath, ILogger<Transpiler> logger = default) : base(projectPath, logger) { }
 
-        public override void Transpile(MTConnectModel model, CancellationToken cancellationToken = default(CancellationToken))
+        public override void Transpile(MTConnectModel model, CancellationToken cancellationToken = default)
         {
             _logger?.LogInformation("Received MTConnectModel, beginning transpilation");
 
             Model.SetValue("model", model, true);
 
-            base.TemplateContext.PushGlobal(new CategoryFunctions());
+            TemplateContext.PushGlobal(new CategoryFunctions());
 
             const string DataItemNamespace = "Mtconnect.AdapterInterface.DataItemTypes";
             const string DataItemValueNamespace = "Mtconnect.AdapterInterface.DataItemValues";

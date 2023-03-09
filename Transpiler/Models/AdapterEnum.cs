@@ -4,7 +4,7 @@ using MtconnectTranspiler.Sinks.CSharp.Attributes;
 using MtconnectTranspiler.Xmi;
 using MtconnectTranspiler.Xmi.UML;
 
-namespace Transpiler.Models
+namespace AdapterTranspiler.Models
 {
     [ScribanTemplate("Adapter.Enum.scriban")]
     public class AdapterEnum : CSharpModels.Enum
