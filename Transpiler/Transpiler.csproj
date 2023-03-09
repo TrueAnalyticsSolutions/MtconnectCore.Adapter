@@ -1,0 +1,30 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <OutputType>Exe</OutputType>
+    <TargetFramework>net6.0</TargetFramework>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <Nullable>enable</Nullable>
+	  <StartupObject>Program</StartupObject>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Consoul" Version="1.6.2" />
+    <PackageReference Include="MtconnectTranspiler" Version="0.0.3" />
+    <PackageReference Include="MtconnectTranspiler.Sinks.CSharp" Version="0.0.12" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Content Include="Templates\Adapter.Class.scriban">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Templates\Adapter.Enum.scriban">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Templates\UmlCommentsSummaryContent.scriban" />
+    <Content Update="Templates\UmlCommentsSummaryContent.scriban">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+  </ItemGroup>
+
+</Project>

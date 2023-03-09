@@ -11,9 +11,11 @@ using Mtconnect.AdapterInterface.Assets;
 using System.Data;
 using System.Collections.Concurrent;
 using System.Threading;
+using System.Collections;
 
 namespace Mtconnect
 {
+
 
     /// <summary>
     /// An abstract implementation for a MTConnect adapter
@@ -41,19 +43,20 @@ namespace Mtconnect
         public readonly ILogger<Adapter> _logger;
 
         /// <summary>
-        /// A unique identifier for the device this Adapter is monitoring. **NOTE**: The same uuid can be referenced in multiple Adapter instances.
+        /// A unique identifier for the device this Adapter is monitoring. <b>NOTE</b>: The same uuid can be referenced in multiple Adapter instances.
         /// </summary>
         public string DeviceUUID { get; set; }
 
         /// <summary>
         /// Internal collection of <see cref="DataItem"/>s being tracked.
         /// </summary>
-        protected Dictionary<string, DataItem> _dataItems = new Dictionary<string, DataItem>();
+        protected DataItemLookup _dataItems = new DataItemLookup();
+        //protected Dictionary<string, DataItem> _dataItems = new Dictionary<string, DataItem>();
 
         /// <summary>
         /// Reference to the collection of <see cref="DataItem"/>s being tracked.
         /// </summary>
-        protected IEnumerable<DataItem> DataItems => _dataItems.Values;
+        protected IEnumerable<DataItem> DataItems => _dataItems;
 
         /// <summary>
         /// A queue of <see cref="DataItem"/> changed values that have not been sent to clients.
@@ -65,12 +68,12 @@ namespace Mtconnect
         /// </summary>
         /// <param name="name">Reference to the <see cref="DataItem.Name"/> to lookup.</param>
         /// <returns>Reference to the <see cref="DataItem"/> with the matching <paramref name="name"/>.</returns>
-        public DataItem this[string name]
+        public DataItem this[string name, string devicePrefix = null]
         {
-            get { return _dataItems[name]; }
+            get { return _dataItems[name, devicePrefix]; }
             set
             {
-                _dataItems[name] = value;
+                _dataItems[name, devicePrefix] = value;
             }
         }
 
@@ -130,14 +133,8 @@ namespace Mtconnect
             _logger = logFactory?.CreateLogger<Adapter>();
         }
 
-        public bool Contains(string dataItemName)
-        {
-            return _dataItems.ContainsKey(dataItemName);
-        }
-        public bool Contains(DataItem dataItem)
-        {
-            return Contains(dataItem.Name);
-        }
+        public bool Contains(string name, string devicePrefix = null) => _dataItems.Contains(name, devicePrefix);
+        public bool Contains(DataItem dataItem) => _dataItems.Contains(dataItem);
 
         /// <summary>
         /// Add a data item to the adapter.
@@ -147,30 +144,29 @@ namespace Mtconnect
         public void AddDataItem(DataItem dataItem)
         {
             string internalName = dataItem.Name;
+            string devicePrefix = dataItem.DevicePrefix;
             DataItemOptions options = _options[internalName];
-            if (options != null)
-            {
+            if (!string.IsNullOrEmpty(options?.InternalName))
                 internalName = options?.InternalName;
-            }
 
-            if (_dataItems.ContainsKey(internalName))
-            {
+            if (_dataItems.Contains(internalName, devicePrefix))
                 throw new DuplicateNameException("Adapter cannot handle DataItems with the same name");
-            }
 
-            _dataItems.Add(internalName, dataItem);
-            _dataItems[internalName].OnDataItemChanged += Adapter_OnDataItemChanged;
+            _dataItems.Add(dataItem);
+
+            int index = _dataItems.IndexOf(dataItem);
+            _dataItems[index].OnDataItemChanged += Adapter_OnDataItemChanged;
 
             if (options?.Formatter != null)
             {
-                _dataItems[internalName].FormatValue = options?.Formatter;
+                _dataItems[index].FormatValue = options?.Formatter;
                 _logger?.LogDebug("Applying custom formatter to {DataItemName}", options?.DataItemName);
             }
 
             if (!string.IsNullOrEmpty(options?.DataItemName) && options?.DataItemName != internalName)
-                _dataItems[internalName].Name = options?.DataItemName;
+                _dataItems[index].Name = options?.DataItemName;
 
-            _logger?.LogTrace("Added DataItem {DataItemName}", _dataItems[internalName].Name);
+            _logger?.LogTrace("Added DataItem {DataItemName}", _dataItems[index].Name);
         }
 
         private void Adapter_OnDataItemChanged(DataItem sender, DataItemChangedEventArgs e)
@@ -185,9 +181,7 @@ namespace Mtconnect
         public void RemoveAllDataItems()
         {
             foreach (var item in _dataItems)
-            {
-                RemoveDataItem(item.Value);
-            }
+                RemoveDataItem(item);
         }
 
         /// <summary>
@@ -196,12 +190,12 @@ namespace Mtconnect
         /// <param name="dataItem"></param>
         public void RemoveDataItem(DataItem dataItem)
         {
-            if (!_dataItems.ContainsKey(dataItem.Name))
+            if (!_dataItems.Contains(dataItem))
             {
                 throw new KeyNotFoundException("No DataItems found with the given name");
             }
 
-            _dataItems.Remove(dataItem.Name);
+            _dataItems.Remove(dataItem);
 
             var queue = new List<ReportedValue>();
             ReportedValue value = null;
@@ -212,19 +206,16 @@ namespace Mtconnect
             }
 
             foreach (var item in queue)
-            {
                 _values.Enqueue(item);
-            }
         }
 
         /// <summary>
         /// Make all data items unavailable
         /// </summary>
-        public void Unavailable()
+        public void Unavailable(string devicePrefix = null)
         {
-            _logger?.LogTrace("Setting all DataItem values to UNAVAILABLE");
-            foreach (var kvp in _dataItems)
-                kvp.Value.Unavailable();
+            _logger?.LogTrace("Setting all DataItem values to UNAVAILABLE" + (devicePrefix != null ? " for {DevicePrefix}" : ""), devicePrefix);
+            _dataItems.Unavailable(devicePrefix);
         }
 
         /// <summary>
@@ -236,7 +227,8 @@ namespace Mtconnect
         public void Begin()
         {
             HasBegun = true;
-            foreach (var kvp in _dataItems) kvp.Value.Begin();
+            foreach (var kvp in _dataItems)
+                kvp.Begin();
         }
 
         /// <summary>

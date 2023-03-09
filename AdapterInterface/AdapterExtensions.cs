@@ -84,6 +84,7 @@ namespace Mtconnect
                 Type dataModelType = model.GetType();
 
                 Dictionary<string, PropertyInfo> timestampPropertyLookup;
+                // Try to get the PropertyInfo for the DataItem Timestamp override, if it exists
                 _dataItemTimestampProperties.TryGetValue(dataModelType, out timestampPropertyLookup);
 
                 // Try to get the PropertyInfo[] from the static cache
