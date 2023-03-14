@@ -92,12 +92,18 @@ namespace AdapterTranspiler
                         if (typeValuesSysEnum != null)
                         {
                             var typeValuesEnum = new AdapterEnum(model!, typeValuesSysEnum) { Namespace = DataItemValueNamespace, Name = $"{type!.Name}Values" };
-                            var typeValues = new AdapterValueType(model!, typeValuesSysEnum) { Namespace = DataItemValueNamespace, Name = $"{type!.Name}" };
                             foreach (EnumItem value in typeValuesEnum.Items)
                             {
                                 value.Name = value.SysML_Name;
                             }
                             if (!categoryEnum.ValueTypes.ContainsKey(type.Name)) categoryEnum.ValueTypes.Add(ScribanHelperMethods.ToUpperSnakeCode(type.Name), $"{type.Name}Values");
+
+                            var typeValues = new AdapterValueType(model!, typeValuesSysEnum) { Namespace = DataItemValueNamespace, Name = $"{type!.Name}" };
+                            foreach (EnumItem value in typeValues.Items)
+                            {
+                                value.Name = value.SysML_Name;
+                            }
+
                             valueEnums.Add(typeValuesEnum);
                             valueTypes.Add(typeValues);
                         }
