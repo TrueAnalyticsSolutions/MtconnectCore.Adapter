@@ -8,6 +8,10 @@ namespace Mtconnect.AdapterInterface
         /// </summary>
         internal const string UNAVAILABLE = "UNAVAILABLE";
 
+        internal const string EVENT = "EVENT";
+        internal const string CONDITION = "CONDITION";
+        internal const string SAMPLE = "SAMPLE";
+
         /// <summary>
         /// The W3C ISO 8601 format for timestamps.
         /// </summary>

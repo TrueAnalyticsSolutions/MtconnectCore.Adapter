@@ -51,7 +51,6 @@ namespace Mtconnect
         /// Internal collection of <see cref="DataItem"/>s being tracked.
         /// </summary>
         protected DataItemLookup _dataItems = new DataItemLookup();
-        //protected Dictionary<string, DataItem> _dataItems = new Dictionary<string, DataItem>();
 
         /// <summary>
         /// Reference to the collection of <see cref="DataItem"/>s being tracked.
@@ -61,12 +60,13 @@ namespace Mtconnect
         /// <summary>
         /// A queue of <see cref="DataItem"/> changed values that have not been sent to clients.
         /// </summary>
-        private ConcurrentQueue<ReportedValue> _values = new ConcurrentQueue<ReportedValue>();
+        private readonly ConcurrentQueue<ReportedValue> _values = new ConcurrentQueue<ReportedValue>();
 
         /// <summary>
         /// Provides a reference to a <see cref="DataItem"/> from the internal collection based on the provided <paramref name="name"/>.
         /// </summary>
-        /// <param name="name">Reference to the <see cref="DataItem.Name"/> to lookup.</param>
+        /// <param name="name"><inheritdoc cref="DataItem.Name" path="/summary"/></param>
+        /// <param name="devicePrefix"><inheritdoc cref="DataItem.DevicePrefix" path="/summary"/></param>
         /// <returns>Reference to the <see cref="DataItem"/> with the matching <paramref name="name"/>.</returns>
         public DataItem this[string name, string devicePrefix = null]
         {
@@ -102,6 +102,11 @@ namespace Mtconnect
         }
 
         /// <summary>
+        /// Flags whether or not the Adapter should validate all DataItems before publishing them.
+        /// </summary>
+        public bool CanValidateDataItems { get; set; } = false;
+
+        /// <summary>
         /// The heartbeat interval (in milliseconds).
         /// </summary>
         public virtual double Heartbeat { get; protected set; }
@@ -114,26 +119,41 @@ namespace Mtconnect
         /// <summary>
         /// An optional reference to an Adapter source. If the Adapter is started with a reference to a source, this is where the reference is maintained.
         /// </summary>
-        protected List<IAdapterSource> _sources { get; set; } = new List<IAdapterSource>();
+        protected List<IAdapterSource> Sources { get; set; } = new List<IAdapterSource>();
 
-        protected AdapterOptions _options { get; set; }
+        /// <summary>
+        /// Reference to the options provided in the constructor.
+        /// </summary>
+        protected AdapterOptions Options { get; set; }
 
         /// <summary>
         /// Generic constructor of a new Adapter instance with basic AdapterOptions.
         /// </summary>
         /// <param name="options"><inheritdoc cref="AdapterOptions" path="/summary"/></param>
-        /// <param name="loggerFactory">Reference to the logger factory to handle logging.</param>
+        /// <param name="logFactory">Reference to the logger factory to handle logging.</param>
         public Adapter(AdapterOptions options, ILoggerFactory logFactory = default)
         {
-            _options = options;
+            Options = options;
             DeviceUUID = options.DeviceUUID;
             Heartbeat = options.Heartbeat;
             CanEnqueueDataItems = options.CanEnqueueDataItems;
+            CanValidateDataItems = options.CanValidateDataItems;
 
             _logger = logFactory?.CreateLogger<Adapter>();
         }
 
+        /// <summary>
+        /// Determines whether or not a DataItem with the same <see cref="DataItem.Name"/> (and possibly <see cref="DataItem.DevicePrefix"/> exists in this adapter.
+        /// </summary>
+        /// <param name="name"><inheritdoc cref="DataItem.Name" path="/summary"/></param>
+        /// <param name="devicePrefix"><inheritdoc cref="DataItem.DevicePrefix" path="/summary"/></param>
+        /// <returns>Flag for whether or not a <see cref="DataItem"/> was found.</returns>
         public bool Contains(string name, string devicePrefix = null) => _dataItems.Contains(name, devicePrefix);
+        /// <summary>
+        /// <inheritdoc cref="Contains(string, string)" path="/summary"/>
+        /// </summary>
+        /// <param name="dataItem"></param>
+        /// <returns><inheritdoc cref="Contains(string, string)" path="/returns"/></returns>
         public bool Contains(DataItem dataItem) => _dataItems.Contains(dataItem);
 
         /// <summary>
@@ -145,7 +165,14 @@ namespace Mtconnect
         {
             string internalName = dataItem.Name;
             string devicePrefix = dataItem.DevicePrefix;
-            DataItemOptions options = _options[internalName];
+            DataItemOptions options = Options[internalName];
+
+            if (options?.Ignore == true)
+            {
+                _logger?.LogDebug("Ignoring DataItem '{DataItemName}'", internalName);
+                return;
+            }
+
             if (!string.IsNullOrEmpty(options?.InternalName))
                 internalName = options?.InternalName;
 
@@ -198,8 +225,7 @@ namespace Mtconnect
             _dataItems.Remove(dataItem);
 
             var queue = new List<ReportedValue>();
-            ReportedValue value = null;
-            while (_values.TryDequeue(out value))
+            while (_values.TryDequeue(out ReportedValue value))
             {
                 if (!string.Equals(value.DataItemName, dataItem.Name, StringComparison.OrdinalIgnoreCase))
                     queue.Add(value);
@@ -245,22 +271,28 @@ namespace Mtconnect
         /// <param name="sendType">Flag for identifying which <see cref="ReportedValue"/>s to send.</param>
         public virtual void Send(DataItemSendTypes sendType = DataItemSendTypes.Changed, string clientId = null)
         {
+            bool onlyChanged = sendType == DataItemSendTypes.Changed;
             _logger?.LogTrace("Sending {DataItemSendType} values", sendType.ToString());
 
             var values = new List<ReportedValue>();
             switch (sendType)
             {
                 case DataItemSendTypes.All:
-                    values = DataItems.SelectMany(o => o.ItemList(sendType == DataItemSendTypes.All)).Select(o => new ReportedValue(o)).ToList();
-                    // TODO: Clear ConcurrentQueue
-                    break;
                 case DataItemSendTypes.Changed:
-                    var changedDataItems = DataItems
-                        .SelectMany(o => o.ItemList(sendType == DataItemSendTypes.Changed))
-                        .Where(o => o.HasChanged);
-                    values = changedDataItems.Select(o => new ReportedValue(o)).ToList();
-                    // TODO: Clear ConcurrentQueue of matching DataItems.
+                    var validationExceptions = new List<ValidationResult>();
+
+                    var dataItems = DataItems.SelectMany(o => o.ItemList(!onlyChanged));
+                    foreach (var dataItem in dataItems)
+                    {
+                        bool isValid = dataItem.Validate(out ValidationResult validationResult);
+
+                        validationExceptions.Add(validationResult);
+
+                        if ((!CanValidateDataItems || isValid) && (!onlyChanged || dataItem.HasChanged))
+                            values.Add(new ReportedValue(dataItem));
+                    }
                     break;
+                case DataItemSendTypes.Queued:
                 default:
                     while (_values.TryDequeue(out ReportedValue value))
                     {
@@ -324,10 +356,12 @@ namespace Mtconnect
             sb.Append(asset.GetMTCType());
             sb.Append("|--multiline--ABCD\n");
 
-            XmlWriterSettings settings = new XmlWriterSettings();
-            settings.OmitXmlDeclaration = true;
+            var settings = new XmlWriterSettings
+            {
+                OmitXmlDeclaration = true
+            };
 
-            XmlWriter writer = XmlWriter.Create(sb, settings);
+            var writer = XmlWriter.Create(sb, settings);
             asset.ToXml(writer);
             writer.Close();
             sb.Append("\n--multiline--ABCD\n");
@@ -363,10 +397,10 @@ namespace Mtconnect
 
             foreach (var source in sources)
             {
-                _sources.Add(source);
+                Sources.Add(source);
                 source.OnAdapterSourceStarted += Source_OnAdapterSourceStarted;
                 source.OnAdapterSourceStopped += Source_OnAdapterSourceStopped;
-                source.OnDataReceived += _source_OnDataReceived;
+                source.OnDataReceived += Source_OnDataReceived;
                 source.Start(token);
             }
             TriggerOnStartedEvent();
@@ -382,32 +416,33 @@ namespace Mtconnect
             bool removedSource = false;
             if (e.Exception != null)
             {
-                var source = _sources.FirstOrDefault(o => o == sender);
+                var source = Sources.FirstOrDefault(o => o == sender);
                 if (source != null)
                 {
-                    removedSource = _sources.Remove(source);
+                    removedSource = Sources.Remove(source);
                 }
             }
 
             // Stop the adapter if the last source was removed.
-            if (removedSource && _sources.Count == 0)
+            if (removedSource && Sources.Count == 0)
             {
                 Stop(e.Exception);
             }
         }
 
-        private void _source_OnDataReceived(IAdapterDataModel data, DataReceivedEventArgs e)
+        private void Source_OnDataReceived(IAdapterDataModel data, DataReceivedEventArgs e)
         {
             _logger?.LogTrace("Adapter received data model update from {DataModelType}", data.GetType().FullName);
             bool dataItemsAdded = this.TryAddDataItems(data);
-            bool dataItemsUpdated = false;
-            if (dataItemsAdded && (dataItemsUpdated = this.TryUpdateValues(data)))
+            if (dataItemsAdded && (_ = this.TryUpdateValues(data)))
             {
                 Send(DataItemSendTypes.Changed);
-            } else if (dataItemsAdded)
+            }
+            else if (dataItemsAdded)
             {
                 _logger?.LogWarning("Failed to add DataItems from data model {DataModelType}", data.GetType().FullName);
-            } else
+            }
+            else
             {
                 _logger?.LogWarning("Failed to update DataItem values from data model {DataModelType}", data.GetType().FullName);
             }
@@ -418,12 +453,12 @@ namespace Mtconnect
         /// </summary>
         public virtual void Stop(Exception ex = null)
         {
-            foreach (var source in _sources)
+            foreach (var source in Sources)
             {
                 source.Stop();
                 source.OnAdapterSourceStarted -= Source_OnAdapterSourceStarted;
                 source.OnAdapterSourceStopped -= Source_OnAdapterSourceStopped;
-                source.OnDataReceived -= _source_OnDataReceived;
+                source.OnDataReceived -= Source_OnDataReceived;
             }
             TriggerOnStoppedEvent(ex);
         }

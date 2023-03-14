@@ -30,7 +30,7 @@ namespace Mtconnect
         /// <returns>Set the calibration in the device component of the associated device</returns>
         /// <exception cref="NotImplementedException"></exception>
         public static string Calibration()
-            => _throwOrDebug("* calibration: XXX");
+            => ThrowOrDebug("* calibration: XXX");
 
         /// <summary>
         /// Handles the "<c>* conversionRequired: &lt;yes|no&gt;</c>" command to the MTConnect Agent
@@ -38,7 +38,7 @@ namespace Mtconnect
         /// <returns>Tell the agent that the data coming from this adapter requires conversion</returns>
         /// <exception cref="NotImplementedException"></exception>
         public static string ConversionRequired()
-            => _throwOrDebug("* conversionRequired: no");
+            => ThrowOrDebug("* conversionRequired: no");
 
         /// <summary>
         /// Handles the "<c>* device: &lt;uuid|name&gt;</c>" command to the MTConnect Agent
@@ -46,7 +46,7 @@ namespace Mtconnect
         /// <returns>Specify the default device for this adapter. The device can be specified as either the device name or UUID</returns>
         /// <exception cref="NotImplementedException"></exception>
         public static string Device()
-            => _throwOrDebug($"* device: {Guid.NewGuid()}");
+            => ThrowOrDebug($"* device: {Guid.NewGuid()}");
 
         /// <summary>
         /// Handles the "<c>* description: XXX</c>" command to the MTConnect Agent
@@ -54,7 +54,7 @@ namespace Mtconnect
         /// <returns>Set the description in the device header of the associated device</returns>
         /// <exception cref="NotImplementedException"></exception>
         public static string Description()
-            => _throwOrDebug("* description: \"TEST DESCRIPTION\"");
+            => ThrowOrDebug("* description: \"TEST DESCRIPTION\"");
 
         /// <summary>
         /// Handles the "<c>* manufacturer: XXX</c>" command to the MTConnect Agent
@@ -62,7 +62,7 @@ namespace Mtconnect
         /// <returns>Set the manufacturer in the device header of the associated device</returns>
         /// <exception cref="NotImplementedException"></exception>
         public static string Manufacturer()
-            => _throwOrDebug("* manufacturer: \"True Analytics Manufacturing Solutions, LLC\"");
+            => ThrowOrDebug("* manufacturer: \"True Analytics Manufacturing Solutions, LLC\"");
 
         /// <summary>
         /// Handles the "<c>* mtconnectVersion: &lt;version&gt;</c>" command to the MTConnect Agent
@@ -70,7 +70,7 @@ namespace Mtconnect
         /// <returns>Specify the MTConnect Version the adapter supports</returns>
         /// <exception cref="NotImplementedException"></exception>
         public static string MtconnectVersion()
-            => _throwOrDebug("* mtconnectVersion: 2.0");
+            => ThrowOrDebug("* mtconnectVersion: 2.0");
 
         /// <summary>
         /// Handles the "<c>* nativeName: XXX</c>" command to the MTConnect Agent
@@ -78,7 +78,7 @@ namespace Mtconnect
         /// <returns>Set the nativeName in the device component of the associated device</returns>
         /// <exception cref="NotImplementedException"></exception>
         public static string NativeName()
-            => _throwOrDebug("* nativeName: TEST");
+            => ThrowOrDebug("* nativeName: TEST");
 
         /// <summary>
         /// Handles the "<c>* realTime: &lt;yes|no&gt;</c>" command to the MTConnect Agent
@@ -86,7 +86,7 @@ namespace Mtconnect
         /// <returns>Tell the agent that the data coming from this adapter would like real-time priority</returns>
         /// <exception cref="NotImplementedException"></exception>
         public static string RealTime()
-            => _throwOrDebug("* realTime: no");
+            => ThrowOrDebug("* realTime: no");
 
         /// <summary>
         /// Handles the "<c>* relativeTime: &lt;yes|no&gt;</c>" command to the MTConnect Agent
@@ -101,15 +101,15 @@ namespace Mtconnect
         /// <returns>Set the serialNumber in the device header of the associated device</returns>
         /// <exception cref="NotImplementedException"></exception>
         public static string SerialNumber()
-            => _throwOrDebug($"* serialNumber: {Environment.MachineName}");
+            => ThrowOrDebug($"* serialNumber: {Environment.MachineName}");
 
         /// <summary>
         /// Handles the "<c>* shdrVersion: &lt;version&gt;</c>" command to the MTConnect Agent
         /// </summary>
-        /// <returns>Specify the version of the SHDR protocol delivered by the adapter. See <see cref="">ShdrVersion</see></returns>
+        /// <returns>Specify the version of the SHDR protocol delivered by the adapter. See ShdrVersion</returns>
         /// <exception cref="NotImplementedException"></exception>
         public static string ShdrVersion()
-            => _throwOrDebug("* shdrVersion: 1");
+            => ThrowOrDebug("* shdrVersion: 1");
 
         /// <summary>
         /// Handles the "<c>* station: XXX</c>" command to the MTConnect Agent
@@ -117,12 +117,16 @@ namespace Mtconnect
         /// <returns>Set the station in the device header of the associated device</returns>
         /// <exception cref="NotImplementedException"></exception>
         public static string Station()
-            => _throwOrDebug("* station: STATION01");
+            => ThrowOrDebug("* station: STATION01");
 
-
+        /// <summary>
+        /// Formats an error message to be sent to the Agent.
+        /// </summary>
+        /// <param name="message">Error message to send.</param>
+        /// <returns>Formatted message</returns>
         public static string Error(string message) => $"* error: {message}";
 
-        private static string _throwOrDebug(string message = null)
+        private static string ThrowOrDebug(string message = null)
         {
 #if !DEBUG
             throw new NotImplementedException();

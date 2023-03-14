@@ -120,6 +120,8 @@ namespace Mtconnect
                     {
                         string dataItemName = string.Empty;
                         string dataItemDescription = string.Empty;
+                        string dataItemType = string.Empty;
+                        string dataItemSubType = string.Empty;
 
                         var dataItemAttribute = property.GetCustomAttribute<DataItemAttribute>();
 
@@ -127,6 +129,8 @@ namespace Mtconnect
                         {
                             dataItemName = dataItemNamePrefix + dataItemAttribute.Name;
                             dataItemDescription = dataItemDescriptionPrefix + dataItemAttribute.Description;
+                            dataItemType = dataItemAttribute.Type;
+                            dataItemSubType = dataItemAttribute.SubType;
                         }
 
                         PropertyInfo timestampProperty = null;
@@ -143,19 +147,19 @@ namespace Mtconnect
                                     dataItemAdded = adapter.TryAddDataItems(property.GetValue(model), dataItemName, dataItemDescription);
                                     break;
                                 case EventAttribute _:
-                                    dataItem = new Event(dataItemName, dataItemDescription);
+                                    dataItem = new Event(dataItemName, dataItemDescription, dataItemType, dataItemSubType);
                                     break;
                                 case SampleAttribute _:
-                                    dataItem = new Sample(dataItemName, dataItemDescription);
+                                    dataItem = new Sample(dataItemName, dataItemDescription, dataItemType, dataItemSubType);
                                     break;
                                 case ConditionAttribute _:
-                                    dataItem = new Condition(dataItemName, dataItemDescription);
+                                    dataItem = new Condition(dataItemName, dataItemDescription, type: dataItemType, subType: dataItemSubType);
                                     break;
                                 case TimeSeriesAttribute _:
-                                    dataItem = new TimeSeries(dataItemName, dataItemDescription);
+                                    dataItem = new TimeSeries(dataItemName, dataItemDescription, type: dataItemType, subType: dataItemSubType);
                                     break;
                                 case MessageAttribute _:
-                                    dataItem = new Message(dataItemName, dataItemDescription);
+                                    dataItem = new Message(dataItemName, dataItemDescription, dataItemType, dataItemSubType);
                                     break;
                                 default:
                                     dataItemAdded = false;

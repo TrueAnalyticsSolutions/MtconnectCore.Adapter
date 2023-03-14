@@ -24,6 +24,9 @@ namespace AdapterTranspiler
 
         public override void Transpile(MTConnectModel model, CancellationToken cancellationToken = default)
         {
+            if (model == null)
+                throw new ArgumentNullException(nameof(model), "MTConnect model cannot be null");
+
             _logger?.LogInformation("Received MTConnectModel, beginning transpilation");
 
             Model.SetValue("model", model, true);
@@ -38,7 +41,7 @@ namespace AdapterTranspiler
             var valueEnums = new List<AdapterEnum>();
             string[] categories = new string[] { "Sample", "Event", "Condition" };
 
-            foreach (var category in categories)
+            foreach (string category in categories)
             {
                 // Get the UmlPackage for the category (ie. Samples, Events, Conditions).
                 var typesPackage = model
@@ -46,25 +49,32 @@ namespace AdapterTranspiler
                     ?.ObservationTypes
                     ?.Elements
                     ?.Where(o => o.Name == $"{category} Types")
-                    ?.FirstOrDefault() as UmlPackage;
+                    ?.FirstOrDefault() as UmlPackage
+                    ?? throw new NullReferenceException($"Cannot find {category} package type");
+
                 // Get all DataItem Type and SubType references
                 var allTypes = typesPackage
                     ?.Elements
                     ?.Where(o => o is UmlClass)
-                    ?.Select(o => o as UmlClass);
+                    ?.Select(o => o as UmlClass)
+                    ?.Where(o => o != null)
+                    ?? Enumerable.Empty<UmlClass>();
                 // Filter to get just the Type references
-                var types = allTypes
-                    ?.Where(o => !o.Name.Contains("."));
+                var types = (allTypes
+                    ?.Where(o => !o!.Name.Contains('.')))
+                    ?? throw new NullReferenceException($"Cannot find {category} root types");
+
                 // Filter and group each SubType by the relevant Type reference
-                var subTypes = allTypes
-                    ?.Where(o => o.Name.Contains("."))
-                    ?.GroupBy(o => o.Name.Substring(0, o.Name.IndexOf(".")), o => o)
+                var subTypes = (allTypes
+                    ?.Where(o => o!.Name.Contains('.'))
+                    ?.GroupBy(o => o!.Name[..o.Name.IndexOf(".")], o => o)
                     ?.Where(o => o.Any())
-                    ?.ToDictionary(o => o.Key, o => o?.ToList());
+                    ?.ToDictionary(o => o.Key, o => o.ToList()))
+                    ?? throw new NullReferenceException($"Cannot find {category} sub types");
 
-                var categoryEnum = new AdapterEnum(model, typesPackage, $"{category}Types") { Namespace = DataItemNamespace };
+                var categoryEnum = new AdapterEnum(model!, typesPackage!, $"{category}Types") { Namespace = DataItemNamespace };
 
-                foreach (var type in types)
+                foreach (UmlClass type in types)
                 {
                     // Add type to CATEGORY enum
                     categoryEnum.AddItem(model, type);
@@ -77,11 +87,11 @@ namespace AdapterTranspiler
                             ?.Profile
                             ?.ProfileDataTypes
                             ?.Elements
-                            ?.FirstOrDefault(o => o is UmlEnumeration && o.Id == typeResult.PropertyType);
+                            ?.FirstOrDefault(o => o is UmlEnumeration && o.Id == typeResult.PropertyType) as UmlEnumeration;
                         if (typeValuesSysEnum != null)
                         {
-                            var typeValuesEnum = new AdapterEnum(model, typeValuesSysEnum as UmlEnumeration) { Namespace = DataItemValueNamespace, Name = $"{type.Name}Values" };
-                            foreach (var value in typeValuesEnum.Items)
+                            var typeValuesEnum = new AdapterEnum(model!, typeValuesSysEnum) { Namespace = DataItemValueNamespace, Name = $"{type!.Name}Values" };
+                            foreach (EnumItem value in typeValuesEnum.Items)
                             {
                                 value.Name = value.SysML_Name;
                             }
@@ -96,16 +106,16 @@ namespace AdapterTranspiler
                         // Register type as having a subType in the CATEGORY enum
                         if (!categoryEnum.SubTypes.ContainsKey(type.Name)) categoryEnum.SubTypes.Add(ScribanHelperMethods.ToUpperSnakeCode(type.Name), $"{type.Name}SubTypes");
 
-                        var subTypeEnum = new AdapterEnum(model, type, $"{type.Name}SubTypes") { Namespace = DataItemNamespace };
+                        AdapterEnum subTypeEnum = new(model!, type, $"{type.Name}SubTypes") { Namespace = DataItemNamespace };
 
-                        var typeSubTypes = subTypes[type.Name];
+                        List<UmlClass?>? typeSubTypes = subTypes[type.Name];
                         subTypeEnum.AddItems(model, typeSubTypes);
 
                         // Cleanup Enum names
-                        foreach (var item in subTypeEnum.Items)
+                        foreach (EnumItem item in subTypeEnum.Items)
                         {
-                            if (!item.Name.Contains(".")) continue;
-                            item.Name = ScribanHelperMethods.ToUpperSnakeCode(item.Name.Substring(item.Name.IndexOf(".") + 1));
+                            if (!item.Name.Contains('.')) continue;
+                            item.Name = ScribanHelperMethods.ToUpperSnakeCode(item.Name[(item.Name.IndexOf(".") + 1)..]);
                         }
 
                         // Register the DataItem SubType Enum
@@ -114,7 +124,7 @@ namespace AdapterTranspiler
                 }
 
                 // Cleanup Enum names
-                foreach (var item in categoryEnum.Items)
+                foreach (EnumItem item in categoryEnum.Items)
                 {
                     item.Name = ScribanHelperMethods.ToUpperSnakeCode(item.Name);
                 }

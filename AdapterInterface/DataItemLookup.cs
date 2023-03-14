@@ -20,10 +20,13 @@ namespace Mtconnect
         private readonly Dictionary<string, List<int>> _byDevicePrefix = new Dictionary<string, List<int>>();
         private readonly Dictionary<(string, string), int> _byNameAndDevicePrefix = new Dictionary<(string, string), int>();
 
+        /// <inheritdoc />
         public int Count => _dataItems.Count;
 
+        /// <inheritdoc />
         public bool IsReadOnly => false;
 
+        /// <inheritdoc />
         public DataItem this[int index] { get => _dataItems[index]; set => _dataItems[index] = value; }
 
         /// <summary>
@@ -123,7 +126,7 @@ namespace Mtconnect
 
             if (_byDevicePrefix.TryGetValue(devicePrefix, out List<int> indices))
             {
-                dataItems = getByIndices(indices);
+                dataItems = GetByIndices(indices);
                 return true;
             }
 
@@ -151,6 +154,11 @@ namespace Mtconnect
             return false;
         }
 
+        /// <summary>
+        /// Sets all DataItems to UNAVAILABLE.
+        /// </summary>
+        /// <param name="devicePrefix">Reference to an optional device prefix.</param>
+        /// <exception cref="Exception"></exception>
         public void Unavailable(string devicePrefix = null)
         {
             IEnumerable<DataItem> items = devicePrefix == null
@@ -162,12 +170,20 @@ namespace Mtconnect
                 dataItem.Unavailable();
         }
 
-        private IEnumerable<DataItem> getByIndices(IEnumerable<int> indices) => indices.Select(i => _dataItems[i]);
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="indices"></param>
+        /// <returns></returns>
+        private IEnumerable<DataItem> GetByIndices(IEnumerable<int> indices) => indices.Select(i => _dataItems[i]);
 
+        /// <inheritdoc />
         public int IndexOf(DataItem item) => _dataItems.IndexOf(item);
 
+        /// <inheritdoc />
         public void Insert(int index, DataItem item) => _dataItems.Insert(index, item);
 
+        /// <inheritdoc />
         public void RemoveAt(int index)
         {
             if (index < 0 || index >= _dataItems.Count)
@@ -203,6 +219,7 @@ namespace Mtconnect
             }
         }
 
+        /// <inheritdoc />
         public void Clear()
         {
             _dataItems.Clear();
@@ -211,32 +228,40 @@ namespace Mtconnect
             _byNameAndDevicePrefix.Clear();
         }
 
+        /// <inheritdoc />
         public bool Contains(DataItem item)
             => _byNameAndDevicePrefix.ContainsKey((item.Name, item.DevicePrefix));
 
+        /// <inheritdoc />
         public bool ContainsName(string internalName) => _byName.ContainsKey(internalName);
 
+        /// <inheritdoc />
         public bool ContainsDevicePrefix(string devicePrefix) => _byDevicePrefix.ContainsKey(devicePrefix);
 
+        /// <inheritdoc />
         public bool Contains(string internalName, string devicePrefix) => _byNameAndDevicePrefix.ContainsKey((internalName, devicePrefix));
 
+        /// <inheritdoc />
         public void CopyTo(DataItem[] array, int arrayIndex) => _dataItems.CopyTo(array, arrayIndex);
 
+        /// <inheritdoc />
         public bool Remove(DataItem item)
         {
             try
             {
                 RemoveAt(IndexOf(item));
             }
-            catch (Exception ex)
+            catch
             {
                 return false;
             }
             return true;
         }
 
+        /// <inheritdoc />
         public IEnumerator<DataItem> GetEnumerator() => _dataItems.GetEnumerator();
 
+        /// <inheritdoc />
         IEnumerator IEnumerable.GetEnumerator() => _dataItems.GetEnumerator();
     }
 }

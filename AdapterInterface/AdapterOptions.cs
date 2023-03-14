@@ -22,8 +22,16 @@ namespace Mtconnect.AdapterInterface
         /// <inheritdoc cref="Adapter.CanEnqueueDataItems"/>
         public bool CanEnqueueDataItems { get; protected set; }
 
-        private Dictionary<string, DataItemOptions> dataItems = new Dictionary<string, DataItemOptions>();
+        /// <inheritdoc cref="Adapter.CanValidateDataItems"/>
+        public bool CanValidateDataItems { get; protected set; }
 
+        private readonly Dictionary<string, DataItemOptions> dataItems = new Dictionary<string, DataItemOptions>();
+
+        /// <summary>
+        /// Gets a <see cref="DataItemOptions"/> by the name of the data item as defined internally within the Adapter implementation.
+        /// </summary>
+        /// <param name="internalName">Reference to the internal name of the DataItem within the context of the Adapter implementation.</param>
+        /// <returns>Reference to the <see cref="DataItemOptions"/>.</returns>
         public DataItemOptions this[string internalName]
         {
             get {
@@ -43,10 +51,12 @@ namespace Mtconnect.AdapterInterface
         /// </summary>
         /// <param name="heartbeat"><inheritdoc cref="Adapter.Heartbeat" path="/summary" /></param>
         /// <param name="canQueue"><inheritdoc cref="Adapter.CanEnqueueDataItems" path="/summary"/></param>
-        public AdapterOptions(double heartbeat = 10_000, bool canQueue = false)
+        /// <param name="canValidate"><inheritdoc cref="Adapter.CanValidateDataItems" path="/summary"/></param>
+        public AdapterOptions(double heartbeat = 10_000, bool canQueue = false, bool canValidate = false)
         {
             Heartbeat = heartbeat;
             CanEnqueueDataItems = canQueue;
+            CanValidateDataItems = canValidate;
         }
 
         /// <summary>
@@ -79,8 +89,9 @@ namespace Mtconnect.AdapterInterface
                     if (kvp.Key.Contains(":name"))
                     {
                         dataItems[internalName].DataItemName = Convert.ToString(kvp.Value);
-                        logger?.LogDebug("Recognizing DataItem option for overwriting the name");
-                    } else if (kvp.Key.Contains(":format"))
+                        logger?.LogDebug("Recognizing DataItem option for overwriting the name on {DataItemName}", internalName);
+                    }
+                    else if (kvp.Key.Contains(":format"))
                     {
                         try
                         {
@@ -89,7 +100,7 @@ namespace Mtconnect.AdapterInterface
                             if (func != null)
                             {
                                 dataItems[internalName].Formatter = func;
-                                logger?.LogDebug("Recognizing DataItem option for overwriting the value format");
+                                logger?.LogDebug("Recognizing DataItem option for overwriting the value format on {DataItemName}", internalName);
                             }
                             else
                             {
@@ -101,6 +112,17 @@ namespace Mtconnect.AdapterInterface
                         catch (Exception ex)
                         {
                             logger?.LogError(ex, ex.Message);
+                        }
+                    } else if (kvp.Key.Contains(":publish"))
+                    {
+                        if (Boolean.TryParse(kvp.Value.ToString(), out bool canPublishDataItem))
+                        {
+                            dataItems[internalName].Ignore = canPublishDataItem;
+                            logger?.LogDebug("Recognizing DataItem option for overwriting the publish flag on {DataItemName}", internalName);
+                        } else
+                        {
+                            var ex = new Exception("Failed to parse the DataItem 'publish' flag, must be either 'true' or 'false'");
+                            logger?.LogError(ex, ex.Message + " for DataItem {DataItemName}", internalName);
                         }
                     } else
                     {

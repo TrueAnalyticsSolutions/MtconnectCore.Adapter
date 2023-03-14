@@ -1,5 +1,11 @@
+#pragma warning disable 0618
+#pragma warning disable 1574
 using System;
 using System.CodeDom.Compiler;
+using Mtconnect.AdapterInterface.Contracts.Attributes;
+{{~ if enum_has_values source ~}}
+using Mtconnect.AdapterInterface.DataItemValues;
+{{ end ~}}
 
 namespace {{ to_pascal_code source.namespace }}
 {
@@ -8,23 +14,33 @@ namespace {{ to_pascal_code source.namespace }}
 	{{ include 'UmlCommentsSummaryContent.scriban' source?.summary ~}}
 	/// </summary>
 	{{~ if source?.deprecated_version != "" ~}}
-	[Obsolete("Deprecated according to https://model.mtconnect.org/")]
+	[Obsolete("Deprecated according to https://model.mtconnect.org/ in {{ source?.deprecated_version }}")]
 	{{~ end ~}}
 	[GeneratedCode("MtconnectTranspiler.Sinks.CSharp.Adapter", "{{ version }}")]
 	public enum {{ to_pascal_case source.name }}
 	{
+		/// <summary>
+		/// An extension to the standard. Extensions to the standard are usually prefaced with <c>x:</c>.
+		/// </summary>
+		STANDARD_EXTENSION = -1,
 	{{~ for item in source.items ~}}
 		/// <summary>
 		{{ include 'UmlCommentsSummaryContent.scriban' item?.summary ~}}
-		/// </summary>
-		{{~ if item?.deprecated_version != "" ~}}
-		[Obsolete("Deprecated according to https://model.mtconnect.org/")]
-		{{~ end ~}}
 		{{~ if category_contains_type source item ~}}
-		/// <remarks><b>Observational Sub-Type</b>: {{ source?.sub_types[item.name] }}</remarks>
+		/// <br/><b>Sub-Type</b>: <see cref="{{ source?.sub_types[item.name] }}" />
 {{ end ~}}
 		{{~ if category_contains_value source item ~}}
-		/// <remarks><b>Observational Value</b>: {{ source?.value_types[item.name] }}</remarks>
+		/// <br/><b>Values</b>: <see cref="{{ source?.value_types[item.name] }}" />
+{{ end ~}}
+		/// </summary>
+		{{~ if item?.deprecated_version != "" ~}}
+		[Obsolete("Deprecated according to https://model.mtconnect.org/ in {{ item?.deprecated_version }}")]
+		{{~ end ~}}
+		{{~ if category_contains_type source item ~}}
+		[ObservationalSubType(typeof({{ source?.sub_types[item.name] }}))]
+{{ end ~}}
+		{{~ if category_contains_value source item ~}}
+		[ObservationalValue(typeof({{ source?.value_types[item.name] }}))]
 {{ end ~}}
 		{{ item.name }},
 	{{~ end ~}}

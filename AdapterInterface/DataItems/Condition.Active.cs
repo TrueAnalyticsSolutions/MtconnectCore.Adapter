@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Mtconnect.AdapterInterface.Contracts;
+using System;
 
 namespace Mtconnect.AdapterInterface.DataItems
 {
@@ -48,12 +49,12 @@ namespace Mtconnect.AdapterInterface.DataItems
             /// Create a new activation
             /// </summary>
             /// <param name="name">The name of the condition, passed from the parent</param>
-            /// <param name="level">The condition level</param>
-            /// <param name="description"><inheritdoc cref="DataItem.DataItem(string, string)" path="/param[@name='description']"/></param>
-            /// <param name="text">The descriptive text for the condition</param>
-            /// <param name="code">The native code of the alarm or warning</param>
-            /// <param name="qualifier">A high/low qualifier</param>
-            /// <param name="severity">The native severity of the condition</param>
+            /// <param name="level"><inheritdoc cref="Level" path="/summary"/></param>
+            /// <param name="description"><inheritdoc cref="DataItem.Description" path="/summary"/></param>
+            /// <param name="text"><inheritdoc cref="Text" path="/summary"/></param>
+            /// <param name="code"><inheritdoc cref="NativeCode" path="/summary"/></param>
+            /// <param name="qualifier"><inheritdoc cref="Qualifier" path="/summary"/></param>
+            /// <param name="severity"><inheritdoc cref="NativeSeverity" path="/summary"/></param>
             public Active(string name, Level level, string description = null, string text = "", string code = "", string qualifier = "", string severity = "") : base(name, description)
             {
                 Level = level;
@@ -107,6 +108,20 @@ namespace Mtconnect.AdapterInterface.DataItems
             public void Clear()
             {
                 mMarked = false;
+            }
+
+            /// <inheritdoc />
+            public override bool Validate(out ValidationResult result)
+            {
+                // NOTE: No need to call the base.Validate method because this is not a real DataItem
+
+                result = new ValidationResult
+                {
+                    Level = ValidationLevel.VALID
+                };
+
+                // TODO: Determine what needs to be validated from the Adapter
+                return true;
             }
         }
     }

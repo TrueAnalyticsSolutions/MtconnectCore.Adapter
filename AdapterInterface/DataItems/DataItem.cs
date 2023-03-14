@@ -1,6 +1,8 @@
-﻿using System;
+﻿using Mtconnect.AdapterInterface.Contracts;
+using Mtconnect.AdapterInterface.Contracts.Attributes;
+using Mtconnect.AdapterInterface.DataItemTypes;
+using System;
 using System.Collections.Generic;
-using System.Linq.Expressions;
 
 namespace Mtconnect.AdapterInterface.DataItems
 {
@@ -10,6 +12,7 @@ namespace Mtconnect.AdapterInterface.DataItems
     /// <param name="sender">Reference to the <see cref="DataItem"/>.</param>
     /// <param name="e">Reference to the event arguments for the data changed event.</param>
     public delegate void DataItemChangedHandler(DataItem sender, DataItemChangedEventArgs e);
+
     /// <summary>
     /// Simple base data item class. Has an abstract value and a name. It keeps track if it has changed since the last time it was reset.
     /// </summary>
@@ -19,6 +22,95 @@ namespace Mtconnect.AdapterInterface.DataItems
         /// Occurrs when the value of a DataItem has changed.
         /// </summary>
         public event DataItemChangedHandler OnDataItemChanged;
+
+        /// <summary>
+        /// Refers to the category for the MTConnect observational type.
+        /// </summary>
+        public virtual string Category { get; }
+
+        /// <summary>
+        /// A <see cref="System.Type"/> reference to the <see cref="Enum"/> according the MTConnect Standard. See <see cref="EventTypes"/>, <see cref="SampleTypes"/>, and <see cref="ConditionTypes"/> for examples.
+        /// </summary>
+        protected Enum TypeEnum { get; set; }
+        /// <summary>
+        /// A <see cref="System.Type"/> reference to the <see cref="Enum"/> according to the MTConnect Standard and the provided <see cref="TypeEnum"/> if it is decorated with <see cref="ObservationalSubTypeAttribute"/>.
+        /// </summary>
+        protected Enum SubTypeEnum { get; set; }
+
+        /// <summary>
+        /// A flag for whether or not the <see cref="ObservationalType"/> has been validated against the MTConnect Standard.
+        /// </summary>
+        protected bool TypeValidated { get; set; } = false;
+        /// <summary>
+        /// The protected value for <see cref="ObservationalType"/>.
+        /// </summary>
+        protected string Type { get; set; }
+        /// <summary>
+        /// The intended <c>type</c> for the Data Item. See <see cref="EventTypes">Events</see>, <see cref="SampleTypes">Samples</see>, and <see cref="ConditionTypes">Conditions</see>. The <c>type</c> can also be extended according to the standard be adding the prefix <c>x:</c> to indicate an extended type.
+        /// </summary>
+        public virtual string ObservationalType
+        {
+            get => Type;
+            set
+            {
+                TypeEnum = null;
+                SubTypeEnum = null;
+                switch (Category)
+                {
+                    case Constants.EVENT:
+                        if (Enum.TryParse<EventTypes>(value, true, out EventTypes eventType))
+                            TypeEnum = eventType;
+                        break;
+                    case Constants.SAMPLE:
+                        if (Enum.TryParse<SampleTypes>(value, true, out SampleTypes sampleType))
+                            TypeEnum = sampleType;
+                        break;
+                    case Constants.CONDITION:
+                        if (Enum.TryParse<ConditionTypes>(value, true, out ConditionTypes conditionTypes))
+                            TypeEnum = conditionTypes;
+                        else if (Enum.TryParse<EventTypes>(value, true, out EventTypes cEventType))
+                            TypeEnum = cEventType;
+                        else if(Enum.TryParse<SampleTypes>(value, true, out SampleTypes cSampleType))
+                            TypeEnum = cSampleType;
+                        break;
+                    default:
+                        break;
+                }
+                Type = value;
+                TypeValidated = false;
+            }
+        }
+
+        /// <summary>
+        /// A flag for whether or not the <see cref="ObservationalSubType"/> has been validated against the MTConnect Standard and the provided <see cref="Type"/>.
+        /// </summary>
+        protected bool SubTypeValidated { get; set; } = false;
+        /// <summary>
+        /// The protected value for <see cref="ObservationalSubType"/>.
+        /// </summary>
+        private string SubType { get; set; }
+        /// <summary>
+        /// The intended <c>subType</c> for the Data Item. Refer to the appropriate <see cref="EventTypes">Events</see>, <see cref="SampleTypes">Samples</see>, and <see cref="ConditionTypes">Conditions</see>. The <c>subType</c> can also be extended according to the standard be adding the prefix <c>x:</c> to indicate an extended type.
+        /// </summary>
+        public virtual string ObservationalSubType
+        {
+            get => SubType;
+            set
+            {
+                SubTypeEnum = null;
+                // TODO: Find Enum type from the EventType
+                if (TypeEnum != null)
+                {
+                    var subType = DataItemHelper.GetSubType(TypeEnum, value);
+                    if (subType != null)
+                    {
+                        SubTypeEnum = subType;
+                    }
+                }
+                SubType = value;
+                SubTypeValidated = false;
+            }
+        }
 
         /// <summary>
         /// The name of the data item.
@@ -40,6 +132,10 @@ namespace Mtconnect.AdapterInterface.DataItems
         /// </summary>
         protected object _value = Constants.UNAVAILABLE;
         /// <summary>
+        /// A falg for whether or not the <see cref="Value"/> has been validated against the MTConnect Standard.
+        /// </summary>
+        protected bool ValueValidated { get; set; } = false;
+        /// <summary>
         /// Get and set the Value property. This will check if the value has changed and set the changed flag appropriately. Automatically boxes types so will work for any data.
         /// </summary>
         public object Value
@@ -49,7 +145,7 @@ namespace Mtconnect.AdapterInterface.DataItems
                 var updatedValue = value;
                 if (FormatValue != null) updatedValue = FormatValue(updatedValue);
 
-                if (isReadyToUpdate(updatedValue)
+                if (IsReadyToUpdate(updatedValue)
                     && ((_value == null && updatedValue != null)
                     || (_value != null && updatedValue == null)
                     || _value?.Equals(updatedValue) == false))
@@ -65,6 +161,7 @@ namespace Mtconnect.AdapterInterface.DataItems
                     if (!HasTimestampOverride) LastChanged = now;
 
                     HasChanged = true;
+                    ValueValidated = false;
 
                     TriggerDataChangedEvent(e);
                 }
@@ -72,7 +169,12 @@ namespace Mtconnect.AdapterInterface.DataItems
             get { return _value; }
         }
 
-        protected virtual bool isReadyToUpdate(object value)
+        /// <summary>
+        /// A method for determining whether or not the provided value is worth overriding the existing <see cref="Value"/>.
+        /// </summary>
+        /// <param name="value">Potentially new value</param>
+        /// <returns>Flag for whether or not the new value is different enough compared to the current value.</returns>
+        protected virtual bool IsReadyToUpdate(object value)
             => _value?.Equals(Constants.UNAVAILABLE) == true
             ? (value is string ? !string.IsNullOrEmpty(value as string) : value != null)
             : value != null;
@@ -95,6 +197,9 @@ namespace Mtconnect.AdapterInterface.DataItems
         /// </summary>
         public bool HasNewLine { get; protected set; }
 
+        /// <summary>
+        /// Flag for whether or not this DataItem has a different source for the expected output Timestamp.
+        /// </summary>
         public bool HasTimestampOverride { get; internal set; }
 
         /// <summary>
@@ -107,10 +212,16 @@ namespace Mtconnect.AdapterInterface.DataItems
         /// </summary>
         /// <param name="name"><inheritdoc cref="DataItem.Name" path="/summary"/></param>
         /// <param name="description"><inheritdoc cref="DataItem.Description" path="/summary"/></param>
-        public DataItem(string name, string description = null)
+        /// <param name="type"><inheritdoc cref="DataItem.ObservationalType" path="/summary"/></param>
+        /// <param name="subType"><inheritdoc cref="DataItem.ObservationalSubType" path="/summary"/></param>
+        public DataItem(string name, string description = null, string type = null, string subType = null)
         {
             Name = name;
             Description = description;
+            ObservationalType = type;
+            ObservationalSubType = subType;
+
+            Unavailable();
         }
 
         /// <summary>
@@ -133,6 +244,7 @@ namespace Mtconnect.AdapterInterface.DataItems
             if (!HasTimestampOverride) LastChanged = TimeHelper.GetNow();
         }
 
+        /// <inheritdoc />
         public override bool Equals(object obj)
         {
             if (obj is DataItem)
@@ -191,9 +303,107 @@ namespace Mtconnect.AdapterInterface.DataItems
             return list;
         }
     
+        /// <summary>
+        /// Triggers the <see cref="OnDataItemChanged"/> event.
+        /// </summary>
+        /// <param name="e">Reference to the event arguments.</param>
         protected void TriggerDataChangedEvent(DataItemChangedEventArgs e)
         {
             OnDataItemChanged?.Invoke(this, e);
+        }
+
+        /// <summary>
+        /// Performs validation against the DataItem value based on the <see cref="ObservationalType"/> and <see cref="ObservationalSubType"/>.
+        /// </summary>
+        /// <returns>Flag of whether or not the result yields anything other than <see cref="ValidationLevel.VALID"/>.</returns>
+        public virtual bool Validate(out ValidationResult result)
+        {
+
+            // Validate the DataItem type
+            if (!TypeValidated)
+            {
+                if (TypeEnum == null && !ObservationalType.StartsWith("x:", StringComparison.OrdinalIgnoreCase))
+                {
+                    result = new ValidationResult
+                    {
+                        Level = ValidationLevel.ERROR,
+                        Message = $"{Category} DataItem MUST refer to a defined type or extend the type with the 'x:' prefix"
+                    };
+                    TypeValidated = true;
+                    return false;
+                }
+                else if (ObservationalType.StartsWith("x:", StringComparison.OrdinalIgnoreCase))
+                {
+                    string unextendedType = ObservationalType.Substring(2);
+                    if (Enum.TryParse(unextendedType, out EventTypes unextendedEventType))
+                    {
+                        result = new ValidationResult
+                        {
+                            Level = ValidationLevel.WARNING,
+                            Message = $"{Category} DataItem already contains a defined type of '{unextendedEventType}'"
+                        };
+                        TypeValidated = true;
+                        return false;
+                    }
+                }
+                TypeValidated = true;
+            }
+
+            // Validate the DataItem subType
+            if (!SubTypeValidated)
+            {
+                if (!string.IsNullOrEmpty(ObservationalSubType))
+                {
+                    if (ObservationalType.StartsWith("x:") && !ObservationalSubType.StartsWith("x:"))
+                    {
+                        result = new ValidationResult
+                        {
+                            Level = ValidationLevel.WARNING,
+                            Message = $"{Category} DataItem subType should be extended if the type is extended"
+                        };
+                        SubTypeValidated = true;
+                        return false;
+                    }
+                    else if (!ObservationalType.StartsWith("x:") && TypeEnum != null)
+                    {
+                        var subTypes = DataItemHelper.GetSubTypes(TypeEnum);
+                        if (subTypes != null)
+                        {
+                            var subType = DataItemHelper.GetSubType(TypeEnum, ObservationalSubType);
+                            if (subType == null)
+                            {
+                                result = new ValidationResult
+                                {
+                                    Level = ValidationLevel.ERROR,
+                                    Message = $"{Category} DataItem of type '{ObservationalType}' MUST include one of the defined subTypes or be extended"
+                                };
+                                SubTypeValidated = true;
+                                return false;
+                            }
+                        }
+                    }
+                }
+                SubTypeValidated = true;
+            }
+
+            result = new ValidationResult
+            {
+                Level = ValidationLevel.VALID
+            };
+
+            return true;
+        }
+
+        /// <inheritdoc />
+        public override int GetHashCode()
+        {
+            int hashCode = 934948419;
+            hashCode = hashCode * -1521134295 + EqualityComparer<string>.Default.GetHashCode(Category);
+            hashCode = hashCode * -1521134295 + EqualityComparer<string>.Default.GetHashCode(Type);
+            hashCode = hashCode * -1521134295 + EqualityComparer<string>.Default.GetHashCode(SubType);
+            hashCode = hashCode * -1521134295 + EqualityComparer<string>.Default.GetHashCode(Name);
+            hashCode = hashCode * -1521134295 + EqualityComparer<object>.Default.GetHashCode(Value);
+            return hashCode;
         }
     }
 }

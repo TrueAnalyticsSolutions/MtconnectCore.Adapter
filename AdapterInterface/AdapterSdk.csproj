@@ -17,11 +17,11 @@
     <PackageIcon>icon.jpg</PackageIcon>
     <RepositoryType>git</RepositoryType>
     <PackageTags>MTConnect;Adapter;Interface</PackageTags>
-    <PackageReleaseNotes>Added extra logging and refactored DataItem modeling.</PackageReleaseNotes>
+    <PackageReleaseNotes>Improved data model processing and validation.</PackageReleaseNotes>
     <ApplicationIcon>icon.ico</ApplicationIcon>
     <PackageProjectUrl>https://github.com/TrueAnalyticsSolutions/MtconnectCore.Adapter</PackageProjectUrl>
     <RepositoryUrl>$(ProjectUrl)</RepositoryUrl>
-    <Version>1.0.19</Version>
+    <Version>2.0.0-alpha</Version>
   </PropertyGroup>
 
   <ItemGroup>

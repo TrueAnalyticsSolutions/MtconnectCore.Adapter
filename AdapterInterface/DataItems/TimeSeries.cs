@@ -1,4 +1,6 @@
-﻿using System;
+﻿using Mtconnect.AdapterInterface.Contracts;
+using Mtconnect.AdapterInterface.DataItemTypes;
+using System;
 using System.Linq;
 
 namespace Mtconnect.AdapterInterface.DataItems
@@ -8,6 +10,9 @@ namespace Mtconnect.AdapterInterface.DataItems
     /// </summary>
     public class TimeSeries : DataItem
     {
+        /// <inheritdoc />
+        public override string Category => "SAMPLE";
+
         /// <summary>
         /// Collection rate for a time series data source.
         /// </summary>
@@ -39,16 +44,20 @@ namespace Mtconnect.AdapterInterface.DataItems
         }
 
         /// <summary>
-        /// Constructs a new Time Series dataset.
+        /// Constructs a new SAMPLE DataItem with TimeSeries formatting.
         /// </summary>
-        /// <param name="name"><inheritdoc cref="DataItem.DataItem(string, string)" path="/param[@name='name']"/></param>
-        /// <param name="description"><inheritdoc cref="DataItem.DataItem(string, string)" path="/param[@name='description']"/></param>
+        /// <param name="name"><inheritdoc cref="DataItem.DataItem(string, string, string, string)" path="/param[@name='name']"/></param>
+        /// <param name="description"><inheritdoc cref="DataItem.DataItem(string, string, string, string)" path="/param[@name='description']"/></param>
         /// <param name="rate"><inheritdoc cref="Rate" path="/summary"/></param>
-        public TimeSeries(string name, string description = null, double rate = 0.0) : base(name, description)
+        /// <param name="type"><inheritdoc cref="DataItem.DataItem(string, string, string, string)" path="/param[@name='type']"/></param>
+        /// <param name="subType"><inheritdoc cref="DataItem.DataItem(string, string, string, string)" path="/param[@name='subType']"/></param>
+        public TimeSeries(string name, string description = null, double rate = 0.0, string type = null, string subType = null) : base(name, description, type, subType)
         {
             HasNewLine = true;
             Rate = rate;
         }
+
+        public TimeSeries(string name, string description = null, double rate = 0.0, SampleTypes? type = null, string subType = null) : this(name, description, rate, type.ToString(), subType) { }
 
         public override bool Equals(object obj)
         {
@@ -86,6 +95,20 @@ namespace Mtconnect.AdapterInterface.DataItems
 
             // _value is a string join set in the setter of Values, thru the setter of base.Value
             return $"{Name}|{Values?.Length ?? 0}|{rate}|{_value}";
+        }
+
+        /// <inheritdoc />
+        public override bool Validate(out ValidationResult result)
+        {
+            // NOTE: No need to call the base.Validate method because this is not a real DataItem
+
+            result = new ValidationResult
+            {
+                Level = ValidationLevel.VALID
+            };
+
+            // TODO: Determine what needs to be validated from the Adapter
+            return true;
         }
     }
 }

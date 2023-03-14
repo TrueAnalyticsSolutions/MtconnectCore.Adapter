@@ -1,6 +1,7 @@
-﻿using System;
+﻿using Mtconnect.AdapterInterface.Contracts;
+using Mtconnect.AdapterInterface.DataItemTypes;
+using System;
 using System.Collections.Generic;
-using System.Drawing;
 using System.Linq;
 
 namespace Mtconnect.AdapterInterface.DataItems
@@ -11,6 +12,9 @@ namespace Mtconnect.AdapterInterface.DataItems
     /// </summary>
     public partial class Condition : DataItem
     {
+        /// <inheritdoc />
+        public override string Category => "CONDITION";
+
         /// <summary>
         /// A flag to indicate that the mark and sweep has begun.
         /// </summary>
@@ -27,20 +31,26 @@ namespace Mtconnect.AdapterInterface.DataItems
         public bool IsSimple { get; private set; }
 
         private Dictionary<string, Active> _activeList { get; set; } = new Dictionary<string, Active>();
-        //private List<Active> _activeList { get; set; } = new List<Active>();
 
         /// <summary>
-        /// Create a new condition
+        /// Create a new CONDITION DataItem.
         /// </summary>
-        /// <param name="name"><inheritdoc cref="DataItem.DataItem(string, string)" path="/param[@name='name']"/></param>
-        /// <param name="description"><inheritdoc cref="DataItem.DataItem(string, string)" path="/param[@name='description']"/></param>
+        /// <param name="name"><inheritdoc cref="DataItem.DataItem(string, string, string, string)" path="/param[@name='name']"/></param>
+        /// <param name="description"><inheritdoc cref="DataItem.DataItem(string, string, string, string)" path="/param[@name='description']"/></param>
         /// <param name="simple">If this is a simple condition or if it uses mark and sweep</param>
-        public Condition(string name, string description = null, bool simple = false) : base(name, description)
+        /// <param name="type"><inheritdoc cref="DataItem.DataItem(string, string, string, string)" path="/param[@name='type']"/></param>
+        /// <param name="subType"><inheritdoc cref="DataItem.DataItem(string, string, string, string)" path="/param[@name='subType']"/></param>
+        public Condition(string name, string description = null, bool simple = false, string type = null, string subType = null) : base(name, description, type, subType)
         {
             HasNewLine = true;
             IsSimple = simple;
-            Unavailable();
         }
+
+        public Condition(string name, string description = null, bool simple = false, EventTypes? type = null, string subType = null) : this(name, description, simple, type.ToString(), subType) { }
+
+        public Condition(string name, string description = null, bool simple = false, SampleTypes? type = null, string subType = null) : this(name, description, simple, type.ToString(), subType) { }
+
+        public Condition(string name, string description = null, bool simple = false, ConditionTypes? type = null, string subType = null) : this(name, description, simple, type.ToString(), subType) { }
 
         /// <inheritdoc />
         public override void Unavailable()
@@ -174,7 +184,7 @@ namespace Mtconnect.AdapterInterface.DataItems
             }
 
             if (result
-                && isReadyToUpdate(newActivation.Value)
+                && IsReadyToUpdate(newActivation.Value)
                 && ((previousActivation?.Value == null && newActivation.Value != null)
                 || (previousActivation?.Value != null && newActivation.Value == null)
                 || (previousActivation?.Value.Equals(newActivation.Value) == false)))
@@ -243,6 +253,29 @@ namespace Mtconnect.AdapterInterface.DataItems
             }
 
             return list;
+        }
+
+        /// <inheritdoc />
+        public override bool Validate(out ValidationResult result)
+        {
+            var baseResponse = base.Validate(out result);
+            if (!baseResponse) return baseResponse;
+
+            // Validate the CONDITION value(s)
+            if (_activeList.Any(o => o.Value.Validate(out _) == false)) {
+                result = new ValidationResult
+                {
+                    Level = ValidationLevel.ERROR,
+                    Message = $"{Category} DataItem has invalid ACTIVE states"
+                };
+                return false;
+            }
+
+            result = new ValidationResult
+            {
+                Level = ValidationLevel.VALID
+            };
+            return true;
         }
     }
 }

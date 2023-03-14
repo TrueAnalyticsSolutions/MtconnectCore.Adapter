@@ -9,7 +9,8 @@ namespace Mtconnect.AdapterTemplate
     /// <summary>
     /// TODO: Explain the method or protocol for which MTConnect data is published.
     /// </summary>
-    public sealed class AdapterTemplate : Adapter
+    public sealed class AdapterTemplate
+        : Adapter
     {
         /// <summary>
         /// Constructs a new <see cref="AdapterTemplate"/>.
@@ -42,7 +43,7 @@ namespace Mtconnect.AdapterTemplate
 
             if (State > AdapterStates.NotStarted)
             {
-                _logger?.LogInformation("Stopping TcpAdapter");
+                _logger?.LogInformation("Stopping Adapter");
                 State = AdapterStates.Stopping;
 
                 // TODO: Begin closing connections

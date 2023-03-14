@@ -1,4 +1,8 @@
-﻿namespace Mtconnect.AdapterInterface.DataItems
+﻿using Mtconnect.AdapterInterface.Contracts;
+using Mtconnect.AdapterInterface.DataItemTypes;
+using System;
+
+namespace Mtconnect.AdapterInterface.DataItems
 {
     /// <summary>
     /// A message is an event with an additional native code. The 
@@ -6,6 +10,9 @@
     /// </summary>
     public class Message : DataItem
     {
+        /// <inheritdoc />
+        public override string Category => Constants.EVENT;
+
         private string _code;
         /// <summary>
         /// Native Code property.
@@ -24,15 +31,18 @@
         }
 
         /// <summary>
-        /// Create a new message, set NewLine to true so this comes out on a separate line.
+        /// Create a new EVENT DataItem with Message formatting.
         /// </summary>
-        /// <param name="name"><inheritdoc cref="DataItem.DataItem(string, string)" path="/param[@name='name']"/></param>
-        /// <param name="description"><inheritdoc cref="DataItem.DataItem(string, string)" path="/param[@name='description']"/></param>
-        public Message(string name, string description = null) : base(name, description)
+        /// <param name="name"><inheritdoc cref="DataItem.DataItem(string, string, string, string)" path="/param[@name='name']"/></param>
+        /// <param name="description"><inheritdoc cref="DataItem.DataItem(string, string, string, string)" path="/param[@name='description']"/></param>
+        /// <param name="type"><inheritdoc cref="DataItem.DataItem(string, string, string, string)" path="/param[@name='type']"/></param>
+        /// <param name="subType"><inheritdoc cref="DataItem.DataItem(string, string, string, string)" path="/param[@name='subType']"/></param>
+        public Message(string name, string description = null, string type = null, string subType = null) : base(name, description, type, subType)
         {
             HasNewLine = true;
         }
 
+        public Message(string name, string description = null, EventTypes? type = null, Enum subType = null) : this(name, description, type?.ToString(), subType?.ToString()) { }
 
         /// <summary>
         /// The text representation of the code.
@@ -41,6 +51,20 @@
         public override string ToString()
         {
             return $"{Name}|{_code}|{_value}";
+        }
+
+        /// <inheritdoc />
+        public override bool Validate(out ValidationResult result)
+        {
+            // NOTE: No need to call the base.Validate method because this is not a real DataItem
+
+            result = new ValidationResult
+            {
+                Level = ValidationLevel.VALID
+            };
+
+            // TODO: Determine what needs to be validated from the Adapter
+            return true;
         }
     }
 }
