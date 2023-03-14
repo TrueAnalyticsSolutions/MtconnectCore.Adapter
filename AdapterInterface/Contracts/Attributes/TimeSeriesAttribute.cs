@@ -9,8 +9,6 @@ namespace Mtconnect.AdapterInterface.Contracts.Attributes
     public class TimeSeriesAttribute : DataItemAttribute
     {
         /// <inheritdoc />
-        public TimeSeriesAttribute(string name, string description = null, string type = null, string subtype = null) : base(name, description, type, subtype) { }
-
-        public TimeSeriesAttribute(string name, string description = null, SampleTypes? type = null, Enum subtype = null) : this(name, description, type.ToString(), subtype.ToString()) { }
+        public TimeSeriesAttribute(string name, string description = null) : base(name, description) { }
     }
 }

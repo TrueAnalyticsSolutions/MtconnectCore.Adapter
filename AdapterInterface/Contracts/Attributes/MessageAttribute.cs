@@ -9,8 +9,6 @@ namespace Mtconnect.AdapterInterface.Contracts.Attributes
     public class MessageAttribute : DataItemAttribute
     {
         /// <inheritdoc />
-        public MessageAttribute(string name, string description = null, string type = null, string subtype = null) : base(name, description, type, subtype) { }
-
-        public MessageAttribute(string name, string description = null, EventTypes? type = null, Enum subtype = null) : this(name, description, type.ToString(), subtype.ToString()) { }
+        public MessageAttribute(string name, string description = null) : base(name, description) { }
     }
 }

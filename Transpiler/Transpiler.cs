@@ -39,6 +39,7 @@ namespace AdapterTranspiler
             // Process DataItem Types/Sub-Types
             var dataItemTypeEnums = new List<AdapterEnum>();
             var valueEnums = new List<AdapterEnum>();
+            var valueTypes = new List<AdapterValueType>();
             string[] categories = new string[] { "Sample", "Event", "Condition" };
 
             foreach (string category in categories)
@@ -91,12 +92,14 @@ namespace AdapterTranspiler
                         if (typeValuesSysEnum != null)
                         {
                             var typeValuesEnum = new AdapterEnum(model!, typeValuesSysEnum) { Namespace = DataItemValueNamespace, Name = $"{type!.Name}Values" };
+                            var typeValues = new AdapterValueType(model!, typeValuesSysEnum) { Namespace = DataItemValueNamespace, Name = $"{type!.Name}" };
                             foreach (EnumItem value in typeValuesEnum.Items)
                             {
                                 value.Name = value.SysML_Name;
                             }
                             if (!categoryEnum.ValueTypes.ContainsKey(type.Name)) categoryEnum.ValueTypes.Add(ScribanHelperMethods.ToUpperSnakeCode(type.Name), $"{type.Name}Values");
                             valueEnums.Add(typeValuesEnum);
+                            valueTypes.Add(typeValues);
                         }
                     }
 
@@ -138,6 +141,8 @@ namespace AdapterTranspiler
             // Process the template into enum files
             processTemplate(dataItemTypeEnums, Path.Combine(ProjectPath, "Enums"), true);
             processTemplate(valueEnums, Path.Combine(ProjectPath, "Enums"), true);
+            // Process the template into value type files
+            processTemplate(valueTypes, Path.Combine(ProjectPath, "Values"), true);
         }
     }
 }

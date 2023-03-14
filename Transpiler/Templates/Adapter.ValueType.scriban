@@ -1,0 +1,27 @@
+#pragma warning disable 0618
+#pragma warning disable 1574
+using System;
+using System.CodeDom.Compiler;
+using Mtconnect.AdapterInterface.Contracts.Attributes;
+using Mtconnect.AdapterInterface.DataItems;
+{{~ if enum_has_values source ~}}
+using Mtconnect.AdapterInterface.DataItemValues;
+{{ end ~}}
+
+namespace {{ to_pascal_code source.namespace }}
+{
+	[GeneratedCode("MtconnectTranspiler.Sinks.CSharp.Adapter", "{{ version }}")]
+	public class {{ to_pascal_case source.name }} : EventValue
+    {
+        public {{ to_pascal_case source.name }}(string value) : base(value) { }
+
+		{{~ for item in source.items ~}}
+        public static {{ to_pascal_case source.name }} {{ to_pascal_case item.name }} => new {{ to_pascal_case source.name }}({{ item.name }});
+		{{~ end ~}}
+
+        public static implicit operator {{ to_pascal_case source.name }}(string value)
+        {
+            return new {{ to_pascal_case source.name }}(value.ToUpperInvariant());
+        }
+    }
+}

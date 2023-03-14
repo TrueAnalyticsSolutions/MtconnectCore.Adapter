@@ -22,7 +22,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <PackageReference Include="Mtconnect.AdapterInterface" Version="1.0.19" />
+    <PackageReference Include="Mtconnect.AdapterInterface" Version="2.0.0-alpha" />
   </ItemGroup>
 
 </Project>

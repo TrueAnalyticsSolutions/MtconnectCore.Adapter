@@ -22,12 +22,12 @@ namespace Mtconnect.AdapterInterface.Contracts.Attributes
         /// <summary>
         /// <inheritdoc cref="DataItem.ObservationalType" path="/summary"/>
         /// </summary>
-        public string Type { get; }
+        public string Type { get; set; }
 
         /// <summary>
         /// <inheritdoc cref="DataItem.ObservationalSubType" path="/summary"/>
         /// </summary>
-        public string SubType { get; }
+        public string SubType { get; set; }
 
         /// <summary>
         /// Constructs a new DataItem attribute.
@@ -36,12 +36,10 @@ namespace Mtconnect.AdapterInterface.Contracts.Attributes
         /// <param name="description"><inheritdoc cref="DataItemAttribute.Description" path="/summary"/></param>
         /// <param name="type"><inheritdoc cref="DataItemAttribute.Type" path="/summary"/></param>
         /// <param name="subtype"><inheritdoc cref="DataItemAttribute.SubType" path="/summary"/></param>
-        public DataItemAttribute(string name, string description = null, string type = null, string subtype = null)
+        public DataItemAttribute(string name, string description = null)
         {
             Name = name;
             Description = description;
-            Type = type;
-            SubType = subtype;
         }
     }
 }

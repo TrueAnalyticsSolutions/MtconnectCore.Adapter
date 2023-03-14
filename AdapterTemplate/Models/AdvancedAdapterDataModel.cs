@@ -1,4 +1,6 @@
 ﻿using Mtconnect.AdapterInterface.Contracts.Attributes;
+using Mtconnect.AdapterInterface.DataItemTypes;
+using Mtconnect.AdapterInterface.DataItemValues;
 
 namespace Mtconnect.AdapterTemplate.Models
 {
@@ -7,10 +9,10 @@ namespace Mtconnect.AdapterTemplate.Models
         /// <summary>
         /// The current availability of the machine tool
         /// </summary>
-        [Event("avail")]
-        public string Availability { get; set; }
+        [Event("avail", type: nameof(EventTypes.AVAILABILITY))]
+        public AvailabilityValues Availability { get; set; }
 
-        [Event("exec")]
-        public string Execution { get; set; }
+        [Event("exec", type: nameof(EventTypes.EXECUTION))]
+        public ExecutionValues Execution { get; set; }
     }
 }
