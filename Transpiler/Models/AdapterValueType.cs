@@ -19,8 +19,8 @@ namespace AdapterTranspiler.Models
 
         public AdapterValueType(MTConnectModel model, UmlEnumeration source) : base(model, source) { }
 
-        public AdapterEnum(MTConnectModel model, UmlPackage source) : base(model, source) { }
+        public AdapterValueType(MTConnectModel model, UmlPackage source) : base(model, source) { }
 
-        public AdapterEnum(MTConnectModel model, MTConnectDeviceInformationModel source) : base(model, source) { }
+        public AdapterValueType(MTConnectModel model, MTConnectDeviceInformationModel source) : base(model, source) { }
     }
 }

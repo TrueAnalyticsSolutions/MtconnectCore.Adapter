@@ -9,6 +9,10 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <None Remove="Templates\Adapter.ValueType.scriban" />
+  </ItemGroup>
+
+  <ItemGroup>
     <PackageReference Include="Consoul" Version="1.6.2" />
     <PackageReference Include="MtconnectTranspiler" Version="0.0.3" />
     <PackageReference Include="MtconnectTranspiler.Sinks.CSharp" Version="0.0.12" />
@@ -19,6 +23,9 @@
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
     <Content Include="Templates\Adapter.Enum.scriban">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Templates\Adapter.ValueType.scriban">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
     <Content Include="Templates\UmlCommentsSummaryContent.scriban" />
