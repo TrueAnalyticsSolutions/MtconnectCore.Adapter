@@ -125,7 +125,7 @@ namespace Mtconnect.AdapterInterface.DataItems
         /// <summary>
         /// Optional device prefix.
         /// </summary>
-        public string DevicePrefix = null;
+        public string DevicePrefix = string.Empty;
 
         /// <summary>
         /// The value of the data item, can be any type.

@@ -18,9 +18,8 @@
   </ItemGroup>
 
   <ItemGroup>
-    <PackageReference Include="Consoul" Version="1.6.2" />
-    <PackageReference Include="Mtconnect.AdapterInterface" Version="1.0.19" />
-    <PackageReference Include="Mtconnect.TcpAdapter" Version="1.0.19" />
+    <PackageReference Include="Consoul" Version="1.6.3" />
+    <PackageReference Include="Mtconnect.TcpAdapter" Version="2.0.0-alpha.1" />
   </ItemGroup>
 
   <ItemGroup>

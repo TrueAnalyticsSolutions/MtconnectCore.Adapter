@@ -1,4 +1,6 @@
-﻿using System;
+﻿using Mtconnect.AdapterInterface.DataItemValues;
+using Mtconnect.AdapterSourceTemplate.Models;
+using System;
 using System.Threading;
 
 namespace Mtconnect.AdapterSourceTemplate
@@ -6,7 +8,7 @@ namespace Mtconnect.AdapterSourceTemplate
     /// <summary>
     /// Contains an internal timer that periodically gets the current mouse position and active window title then publishes the values to an Adapter.
     /// </summary>
-    public class AdapterSource : IAdapterSource, IDisposable
+    public class AdvancedAdapterDataModelSource : IAdapterSource, IDisposable
     {
         /// <inheritdoc />
         public event DataReceivedHandler OnDataReceived;
@@ -16,7 +18,7 @@ namespace Mtconnect.AdapterSourceTemplate
         public event AdapterSourceStoppedHandler OnAdapterSourceStopped;
 
         /// TODO: Change the type to your data model or implement some other form of managing a IAdapterDataModel
-        public AdapterSourceModel Model { get; private set; } = new AdapterSourceModel();
+        public AdvancedAdapterDataModel Model { get; private set; } = new AdvancedAdapterDataModel();
 
         private System.Timers.Timer Timer = new System.Timers.Timer();
 
@@ -24,7 +26,7 @@ namespace Mtconnect.AdapterSourceTemplate
         /// Constructs a new instance of the PC monitor.
         /// </summary>
         /// <param name="sampleRate">The frequency for which the current states of the PC are collected (in milliseconds).</param>
-        public AdapterSource(int sampleRate = 50)
+        public AdvancedAdapterDataModelSource(int sampleRate = 50)
         {
             // NOTE: You MUST have at least one constructor with a signature containing ONLY primitive types.
 
@@ -35,7 +37,7 @@ namespace Mtconnect.AdapterSourceTemplate
         // NOTE: This could be tied to a custom egress event, an asynchronous loop, or a timer.
         private void Timer_Elapsed(object sender, System.Timers.ElapsedEventArgs e)
         {
-            Model.Availability = "AVAILABLE";
+            Model.Availability = Availability.AVAILABLE;
 
             // TODO: Continue updating the Model with information.
             // NOTE: The underlying Adapter will determine whether a value has changed, so no need to check for updated information.

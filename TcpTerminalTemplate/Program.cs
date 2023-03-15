@@ -16,7 +16,7 @@ namespace TcpTerminal
 
             using(var adapter = new TcpAdapter(options, loggerFactory))
             {
-                adapter.Start(new AdapterSource());
+                adapter.Start(new BasicAdapterDataModelSource());
 
                 Consoul.Write($"Adapter running @ http://*:{adapter.Port}");
 

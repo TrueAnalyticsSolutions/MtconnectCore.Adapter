@@ -209,7 +209,7 @@ namespace Mtconnect
                     }
                     catch (Exception ex)
                     {
-                        adapter._logger?.LogError(ex, "Error while attempting to add DataItem from property {PropertyName}", property.Name);
+                        adapter._logger?.LogError(ex, "Error while attempting to add DataItem from property {PropertyName}: {Exception}", property.Name, ex);
                     }
 
                     if (!dataItemAdded)

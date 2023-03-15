@@ -1,7 +1,7 @@
 ﻿using Mtconnect.AdapterInterface.Contracts.Attributes;
 using Mtconnect.AdapterInterface.DataItems;
 
-namespace Mtconnect.AdapterTemplate.Models
+namespace Mtconnect.AdapterSourceTemplate.Models
 {
     /// <summary>
     /// A basic implementation of a machine tool data model.
@@ -32,5 +32,7 @@ namespace Mtconnect.AdapterTemplate.Models
         /// </summary>
         [DataItemPartial("z_")]
         public BasicAxis Z { get; set; } = new BasicAxis();
+
+        // NOTE: Make sure to describe how your DataItem values are sourced. This can be helpful when case the philosophy behind some of the states does not align with the implementors are expecting.
     }
 }
