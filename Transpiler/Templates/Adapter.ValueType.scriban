@@ -3,25 +3,64 @@
 using System;
 using System.CodeDom.Compiler;
 using Mtconnect.AdapterInterface.Contracts.Attributes;
+using Mtconnect.AdapterInterface.Contracts;
 using Mtconnect.AdapterInterface.DataItems;
-{{~ if enum_has_values source ~}}
 using Mtconnect.AdapterInterface.DataItemValues;
-{{ end ~}}
 
 namespace {{ to_pascal_code source.namespace }}
 {
+	/// <summary>
+	/// A value type for {{ to_pascal_case source.name }} to be used in a <see cref="IAdapterDataModel" /> implementation. View in the MTConnect Model browser <seealso href="https://model.mtconnect.org/#Enumeration__{{ source.sysml_id }}">model.mtconnect.org</seealso>
+	{{ include 'UmlCommentsSummaryContent.scriban' source?.summary ~}}
+	/// </summary>
+	{{~ if source?.deprecated_version != "" ~}}
+	[Obsolete("Deprecated according to https://model.mtconnect.org/ in {{ source?.deprecated_version }}")]
+	{{~ end ~}}
 	[GeneratedCode("MtconnectTranspiler.Sinks.CSharp.Adapter", "{{ version }}")]
-	public class {{ to_pascal_case source.name }} : EventValue
+	public partial class {{ to_pascal_case source.name }} : {{ source.category }}Value
     {
-        public {{ to_pascal_case source.name }}(string value) : base(value) { }
+		/// <summary>
+		/// Constructs a new value type for the {{ to_pascal_case source.name }} EVENT Data Item.
+		/// </summary>
+        public {{ to_pascal_case source.name }}({{ source.value_type }} value) : base(value) { }
 
 		{{~ for item in source.items ~}}
-        public static {{ to_pascal_case source.name }} {{ to_pascal_case item.name }} => new {{ to_pascal_case source.name }}({{ item.name }});
+        /// <summary>
+		{{ include 'UmlCommentsSummaryContent.scriban' item?.summary ~}}
+        /// </summary>
+		{{~ if item?.deprecated_version != "" ~}}
+		[Obsolete("Deprecated according to https://model.mtconnect.org/ in {{ item?.deprecated_version }}")]
 		{{~ end ~}}
-
-        public static implicit operator {{ to_pascal_case source.name }}(string value)
+		[ObservationalValue(typeof({{ to_pascal_case source.name }}Values))]
+        public static {{ to_pascal_case source.name }} {{ item.name }} => new {{ to_pascal_case source.name }}(nameof({{ to_pascal_case source.name }}Values.{{ item.name }}));
+		{{~ end ~}}
+		
+        /// <summary>
+        /// Implicitly converts the specified {{ source.value_type }} to an <see cref="{{ to_pascal_case source.name }}"/> value.
+        /// The {{ source.value_type }} is converted to uppercase and used to initialize the <see cref="{{ to_pascal_case source.name }}"/> value.
+        /// </summary>
+        /// <param name="value">The {{ source.value_type }} to convert.</param>
+        /// <returns>An <see cref="{{ to_pascal_case source.name }}"/> value initialized with the specified string in uppercase.</returns>
+        public static implicit operator {{ to_pascal_case source.name }}({{ source.value_type }} value)
         {
+			{{~ if source.value_type == "string" ~}}
             return new {{ to_pascal_case source.name }}(value.ToUpperInvariant());
+			{{~ else ~}}
+            return new {{ to_pascal_case source.name }}(value);
+			{{~ end ~}}
         }
+		
+	{{~ for subtype in source.sub_types ~}}
+		/// <summary>
+		/// A Data Item SubType implementation of <see cref="{{ to_pascal_case source.name }}" />.
+		/// </summary>
+		public partial class {{ to_pascal_case subtype }} : {{ to_pascal_case source.name }}
+		{
+			/// <summary>
+			/// Constructs a new value type for {{ subtype }}.
+			/// </summary>
+            public {{ to_pascal_case subtype }}({{ source.value_type }} value) : base(value) { }
+		}
+	{{~ end ~}}
     }
 }

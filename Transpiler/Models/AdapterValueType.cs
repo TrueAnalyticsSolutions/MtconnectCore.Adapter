@@ -9,12 +9,22 @@ namespace AdapterTranspiler.Models
     [ScribanTemplate("Adapter.ValueType.scriban")]
     public class AdapterValueType : CSharpModels.Enum
     {
-        public AdapterValueType(MTConnectModel model, XmiElement source, string name) : base(model, source, name) { }
+        public virtual string Category { get; set; }
 
-        public AdapterValueType(MTConnectModel model, UmlEnumeration source) : base(model, source) { }
+        public virtual string ValueType { get; set; }
 
-        public AdapterValueType(MTConnectModel model, UmlPackage source) : base(model, source) { }
+        public List<string> SubTypes { get; set; } = new List<string>();
 
-        public AdapterValueType(MTConnectModel model, MTConnectDeviceInformationModel source) : base(model, source) { }
+        public AdapterValueType(string category, string valueType, MTConnectModel model, UmlEnumeration source) : base(model, source)
+        {
+            Category = category;
+            ValueType = valueType;
+        }
+
+        public AdapterValueType(string category, string valueType, MTConnectModel model, UmlClass source) : base(model, source, source.Name)
+        {
+            Category = category;
+            ValueType = valueType;
+        }
     }
 }

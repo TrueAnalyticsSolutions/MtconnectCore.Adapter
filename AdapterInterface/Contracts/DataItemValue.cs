@@ -1,6 +1,4 @@
-﻿using Mtconnect.AdapterInterface.DataItems;
-
-namespace Mtconnect.AdapterInterface.Contracts.Values
+﻿namespace Mtconnect.AdapterInterface.Contracts
 {
     /// <summary>
     /// A generic implementation of a DataItem value type.

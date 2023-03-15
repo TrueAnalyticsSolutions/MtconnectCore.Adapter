@@ -5,6 +5,7 @@ using MtconnectTranspiler.Sinks.CSharp;
 using MtconnectTranspiler.Sinks.CSharp.Models;
 using MtconnectTranspiler.Xmi.UML;
 using Scriban.Runtime;
+using CSharpModels = MtconnectTranspiler.Sinks.CSharp.Models;
 
 namespace AdapterTranspiler
 {
@@ -77,6 +78,9 @@ namespace AdapterTranspiler
 
                 foreach (UmlClass type in types)
                 {
+                    AdapterEnum typeValuesEnum;
+                    AdapterValueType typeValues = null;
+
                     // Add type to CATEGORY enum
                     categoryEnum.AddItem(model, type);
 
@@ -91,22 +95,31 @@ namespace AdapterTranspiler
                             ?.FirstOrDefault(o => o is UmlEnumeration && o.Id == typeResult.PropertyType) as UmlEnumeration;
                         if (typeValuesSysEnum != null)
                         {
-                            var typeValuesEnum = new AdapterEnum(model!, typeValuesSysEnum) { Namespace = DataItemValueNamespace, Name = $"{type!.Name}Values" };
+                            // Scratch this, AdapterValueType needs to inherit CSharp.Enum, not CSharp.Class
+                            typeValues = new AdapterEventValueType(model!, typeValuesSysEnum)
+                            {
+                                Namespace = DataItemValueNamespace,
+                                Name = $"{type!.Name}"
+                            };
+
+                            typeValuesEnum = new AdapterEnum(model!, typeValuesSysEnum) { Namespace = DataItemValueNamespace, Name = $"{type!.Name}Values" };
                             foreach (EnumItem value in typeValuesEnum.Items)
                             {
                                 value.Name = value.SysML_Name;
                             }
                             if (!categoryEnum.ValueTypes.ContainsKey(type.Name)) categoryEnum.ValueTypes.Add(ScribanHelperMethods.ToUpperSnakeCode(type.Name), $"{type.Name}Values");
 
-                            var typeValues = new AdapterValueType(model!, typeValuesSysEnum) { Namespace = DataItemValueNamespace, Name = $"{type!.Name}" };
-                            foreach (EnumItem value in typeValues.Items)
-                            {
-                                value.Name = value.SysML_Name;
-                            }
 
                             valueEnums.Add(typeValuesEnum);
-                            valueTypes.Add(typeValues);
                         }
+                    }
+
+                    if (typeValues == null) typeValues = new AdapterValueType(category, category == "Sample" ? "float" : category == "Condition" ? "Condition" : "string", model!, type!) { Namespace = DataItemValueNamespace, Category = category };
+                    if (typeValues != null)
+                    {
+                        foreach (var value in typeValues.Items)
+                            value.Name = value.SysML_Name;
+                        valueTypes.Add(typeValues);
                     }
 
                     // Add subType as enum
@@ -125,6 +138,9 @@ namespace AdapterTranspiler
                         {
                             if (!item.Name.Contains('.')) continue;
                             item.Name = ScribanHelperMethods.ToUpperSnakeCode(item.Name[(item.Name.IndexOf(".") + 1)..]);
+
+                            // Register type as having a subType in the Value Type class
+                            if (typeValues != null && !typeValues.SubTypes.Contains(item.Name)) typeValues.SubTypes.Add(item.Name);
                         }
 
                         // Register the DataItem SubType Enum
