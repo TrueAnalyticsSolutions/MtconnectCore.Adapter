@@ -147,13 +147,13 @@ namespace Mtconnect
                                     dataItemAdded = adapter.TryAddDataItems(property.GetValue(model), dataItemName, dataItemDescription);
                                     break;
                                 case EventAttribute _:
-                                    dataItem = new Event(dataItemName, dataItemDescription, dataItemType, dataItemSubType);
+                                    dataItem = new Event(dataItemName, dataItemType, dataItemSubType, dataItemDescription);
                                     break;
                                 case SampleAttribute _:
-                                    dataItem = new Sample(dataItemName, dataItemDescription, dataItemType, dataItemSubType);
+                                    dataItem = new Sample(dataItemName, dataItemType, dataItemSubType, dataItemDescription);
                                     break;
                                 case ConditionAttribute _:
-                                    dataItem = new Condition(dataItemName, dataItemDescription, type: dataItemType, subType: dataItemSubType);
+                                    dataItem = new Condition(dataItemName, dataItemType, dataItemSubType, dataItemDescription);
                                     break;
                                 case TimeSeriesAttribute _:
                                     dataItem = new TimeSeries(dataItemName, dataItemDescription, type: dataItemType, subType: dataItemSubType);

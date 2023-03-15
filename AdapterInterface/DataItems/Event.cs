@@ -19,9 +19,11 @@ namespace Mtconnect.AdapterInterface.DataItems
         /// <param name="description"><inheritdoc cref="DataItem.DataItem(string, string, string, string)" path="/param[@name='description']"/></param>
         /// <param name="type"><inheritdoc cref="DataItem.DataItem(string, string, string, string)" path="/param[@name='type']"/></param>
         /// <param name="subType"><inheritdoc cref="DataItem.DataItem(string, string, string, string)" path="/param[@name='subType']"/></param>
-        public Event(string name, string description = null, string type = null, string subType = null) : base(name, description, type, subType) { }
+        public Event(string name, string description = null) : base(name, description) { }
 
-        public Event(string name, string description = null, EventTypes? type = null, Enum subType = null) : this(name, description, type?.ToString(), subType?.ToString()) { }
+        public Event(string name, string type, string subtype = null, string description = null) : base(name, type, subtype, description) { }
+
+        public Event(string name, EventTypes type, Enum subtype = null, string description = null) : this(name, type.ToString(), subtype?.ToString(), description) { }
 
         // TODO: Verify other constraints required against Event values.
         /// <inheritdoc />

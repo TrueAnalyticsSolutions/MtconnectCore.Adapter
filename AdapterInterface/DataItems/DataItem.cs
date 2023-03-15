@@ -3,6 +3,7 @@ using Mtconnect.AdapterInterface.Contracts.Attributes;
 using Mtconnect.AdapterInterface.DataItemTypes;
 using System;
 using System.Collections.Generic;
+using System.Data;
 
 namespace Mtconnect.AdapterInterface.DataItems
 {
@@ -199,7 +200,7 @@ namespace Mtconnect.AdapterInterface.DataItems
         /// This is done for all data items that are more complex than simple 
         /// Key|Value pairs.
         /// </summary>
-        public bool HasNewLine { get; protected set; }
+        public virtual bool HasNewLine { get; protected set; }
 
         /// <summary>
         /// Flag for whether or not this DataItem has a different source for the expected output Timestamp.
@@ -218,14 +219,18 @@ namespace Mtconnect.AdapterInterface.DataItems
         /// <param name="description"><inheritdoc cref="DataItem.Description" path="/summary"/></param>
         /// <param name="type"><inheritdoc cref="DataItem.ObservationalType" path="/summary"/></param>
         /// <param name="subType"><inheritdoc cref="DataItem.ObservationalSubType" path="/summary"/></param>
-        public DataItem(string name, string description = null, string type = null, string subType = null)
+        public DataItem(string name, string description = null)
         {
             Name = name;
             Description = description;
-            ObservationalType = type;
-            ObservationalSubType = subType;
 
             Unavailable();
+        }
+
+        public DataItem(string name, string type, string subtype = null, string description = null) : this(name, description)
+        {
+            ObservationalType = type;
+            ObservationalSubType = subtype;
         }
 
         /// <summary>

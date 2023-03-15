@@ -20,6 +20,8 @@ namespace Mtconnect.AdapterInterface.DataItems
         /// </summary>
         public bool HasBegun { get; private set; } = false;
 
+        public override bool HasNewLine { get; protected set; } = true;
+
         /// <summary>
         /// A flag indicating the second phase of the mark and sweep has completed.
         /// </summary>
@@ -40,17 +42,21 @@ namespace Mtconnect.AdapterInterface.DataItems
         /// <param name="simple">If this is a simple condition or if it uses mark and sweep</param>
         /// <param name="type"><inheritdoc cref="DataItem.DataItem(string, string, string, string)" path="/param[@name='type']"/></param>
         /// <param name="subType"><inheritdoc cref="DataItem.DataItem(string, string, string, string)" path="/param[@name='subType']"/></param>
-        public Condition(string name, string description = null, bool simple = false, string type = null, string subType = null) : base(name, description, type, subType)
+        public Condition(string name, string description = null, bool simple = false) : base(name, description)
         {
-            HasNewLine = true;
             IsSimple = simple;
         }
 
-        public Condition(string name, string description = null, bool simple = false, EventTypes? type = null, string subType = null) : this(name, description, simple, type.ToString(), subType) { }
+        public Condition(string name, string type, string subtype = null, string description = null, bool simple = false) : base(name, type, subtype, description)
+        {
+            IsSimple = simple;
+        }
 
-        public Condition(string name, string description = null, bool simple = false, SampleTypes? type = null, string subType = null) : this(name, description, simple, type.ToString(), subType) { }
+        public Condition(string name, EventTypes type, string subtype = null, string description = null, bool simple = false) : this(name, type.ToString(), subtype, description, simple) { }
 
-        public Condition(string name, string description = null, bool simple = false, ConditionTypes? type = null, string subType = null) : this(name, description, simple, type.ToString(), subType) { }
+        public Condition(string name, SampleTypes type, string subtype = null, string description = null, bool simple = false) : this(name, type.ToString(), subtype, description, simple) { }
+
+        public Condition(string name, ConditionTypes type, string subtype = null, string description = null, bool simple = false) : this(name, type.ToString(), subtype, description, simple) { }
 
         /// <inheritdoc />
         public override void Unavailable()
