@@ -1,10 +1,16 @@
-﻿namespace Mtconnect.AdapterInterface.Contracts
+﻿using System;
+
+namespace Mtconnect.AdapterInterface.Contracts
 {
+    public interface IDataItemValue
+    {
+
+    }
     /// <summary>
     /// A generic implementation of a DataItem value type.
     /// </summary>
     /// <typeparam name="T">Generic reference type to the underlying value type.</typeparam>
-    public abstract class DataItemValue<T>
+    public abstract class DataItemValue<T> : IDataItemValue
     {
         private T _value;
 
@@ -17,6 +23,18 @@
             _value = value;
         }
 
+        public override bool Equals(object obj)
+        {
+            if (obj == null || GetType() != obj.GetType() || !(obj is string)) return false;
+
+            return ToString().Equals(obj.ToString());
+        }
+
+        public override int GetHashCode()
+        {
+            return _value.GetHashCode();
+        }
+
         /// <inheritdoc />
         public override string ToString()
         {
@@ -27,6 +45,26 @@
         public static implicit operator T(DataItemValue<T> eventObj)
         {
             return eventObj._value;
+        }
+
+        public static bool operator ==(DataItemValue<T> left, DataItemValue<T> right)
+        {
+            if (ReferenceEquals(left, right))
+            {
+                return true;
+            }
+
+            if (left is null || right is null)
+            {
+                return false;
+            }
+
+            return left.Equals(right);
+        }
+
+        public static bool operator !=(DataItemValue<T> left, DataItemValue<T> right)
+        {
+            return !(left == right);
         }
     }
 }

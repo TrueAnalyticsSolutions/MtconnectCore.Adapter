@@ -143,6 +143,8 @@ namespace Mtconnect.AdapterInterface.DataItems
             set
             {
                 var updatedValue = value;
+                if (updatedValue is IDataItemValue)
+                    updatedValue = updatedValue.ToString();
                 if (FormatValue != null) updatedValue = FormatValue(updatedValue);
 
                 if (IsReadyToUpdate(updatedValue)
@@ -151,7 +153,9 @@ namespace Mtconnect.AdapterInterface.DataItems
                     || _value?.Equals(updatedValue) == false))
                 {
                     // Default the value to UNAVAILABLE to avoid crashing the Agent
-                    if (updatedValue == null || (updatedValue is string && string.IsNullOrEmpty(updatedValue as string))) updatedValue = Constants.UNAVAILABLE;
+                    if (updatedValue == null
+                        || (updatedValue is string && string.IsNullOrEmpty(updatedValue as string)))
+                        updatedValue = Constants.UNAVAILABLE;
 
                     var now = TimeHelper.GetNow();
                     // TODO: Figure out a way to ensure that both now and LastChanged respect TimestampAttribute implementations
@@ -265,7 +269,7 @@ namespace Mtconnect.AdapterInterface.DataItems
         /// <returns>A text representation</returns>
         public override string ToString()
         {
-            if (DevicePrefix == null)
+            if (string.IsNullOrEmpty(DevicePrefix))
                 return $"{Name}|{Value}";
             else
                 return $"{DevicePrefix}:{Name}|{Value}";
@@ -322,28 +326,31 @@ namespace Mtconnect.AdapterInterface.DataItems
             // Validate the DataItem type
             if (!TypeValidated)
             {
-                if (TypeEnum == null && !ObservationalType.StartsWith("x:", StringComparison.OrdinalIgnoreCase))
+                if (!string.IsNullOrEmpty(ObservationalType))
                 {
-                    result = new ValidationResult
-                    {
-                        Level = ValidationLevel.ERROR,
-                        Message = $"{Category} DataItem MUST refer to a defined type or extend the type with the 'x:' prefix"
-                    };
-                    TypeValidated = true;
-                    return false;
-                }
-                else if (ObservationalType.StartsWith("x:", StringComparison.OrdinalIgnoreCase))
-                {
-                    string unextendedType = ObservationalType.Substring(2);
-                    if (Enum.TryParse(unextendedType, out EventTypes unextendedEventType))
+                    if (TypeEnum == null && !ObservationalType.StartsWith("x:", StringComparison.OrdinalIgnoreCase))
                     {
                         result = new ValidationResult
                         {
-                            Level = ValidationLevel.WARNING,
-                            Message = $"{Category} DataItem already contains a defined type of '{unextendedEventType}'"
+                            Level = ValidationLevel.ERROR,
+                            Message = $"{Category} DataItem MUST refer to a defined type or extend the type with the 'x:' prefix"
                         };
                         TypeValidated = true;
                         return false;
+                    }
+                    else if (ObservationalType.StartsWith("x:", StringComparison.OrdinalIgnoreCase))
+                    {
+                        string unextendedType = ObservationalType.Substring(2);
+                        if (Enum.TryParse(unextendedType, out EventTypes unextendedEventType))
+                        {
+                            result = new ValidationResult
+                            {
+                                Level = ValidationLevel.WARNING,
+                                Message = $"{Category} DataItem already contains a defined type of '{unextendedEventType}'"
+                            };
+                            TypeValidated = true;
+                            return false;
+                        }
                     }
                 }
                 TypeValidated = true;

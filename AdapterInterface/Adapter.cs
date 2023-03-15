@@ -70,7 +70,7 @@ namespace Mtconnect
         /// <returns>Reference to the <see cref="DataItem"/> with the matching <paramref name="name"/>.</returns>
         public DataItem this[string name, string devicePrefix = null]
         {
-            get { return _dataItems[name, devicePrefix]; }
+            get { return _dataItems[name, devicePrefix ?? string.Empty]; }
             set
             {
                 _dataItems[name, devicePrefix] = value;
@@ -244,6 +244,16 @@ namespace Mtconnect
             _dataItems.Unavailable(devicePrefix);
         }
 
+        public void Cleanup()
+        {
+            // Cleanup
+            foreach (DataItem di in _dataItems) di.Cleanup();
+        }
+        public void Prepare()
+        {
+            foreach (var item in _dataItems) item.Prepare();
+        }
+
         /// <summary>
         /// The asks all data items to begin themselves for collection. Only 
         /// required for conditions and should not be called if you are not 
@@ -271,6 +281,8 @@ namespace Mtconnect
         /// <param name="sendType">Flag for identifying which <see cref="ReportedValue"/>s to send.</param>
         public virtual void Send(DataItemSendTypes sendType = DataItemSendTypes.Changed, string clientId = null)
         {
+            if (HasBegun) Prepare();
+
             bool onlyChanged = sendType == DataItemSendTypes.Changed;
             _logger?.LogTrace("Sending {DataItemSendType} values", sendType.ToString());
 
@@ -305,6 +317,9 @@ namespace Mtconnect
             {
                 Send(values, clientId);
             }
+
+            Cleanup();
+            HasBegun = false;
         }
 
         /// <summary>
