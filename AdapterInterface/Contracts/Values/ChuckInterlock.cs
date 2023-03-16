@@ -38,9 +38,7 @@ namespace Mtconnect.AdapterInterface.DataItemValues
         /// <param name="value">The string to convert.</param>
         /// <returns>An <see cref="ChuckInterlock"/> value initialized with the specified string in uppercase.</returns>
         public static implicit operator ChuckInterlock(string value)
-        {
-            return new ChuckInterlock(value.ToUpperInvariant());
-        }
+            => new ChuckInterlock(value.ToUpperInvariant());
 		
 		/// <summary>
 		/// A Data Item SubType implementation of <see cref="ChuckInterlock" />.
@@ -51,6 +49,15 @@ namespace Mtconnect.AdapterInterface.DataItemValues
 			/// Constructs a new value type for MANUAL_UNCLAMP.
 			/// </summary>
             public MANUALUNCLAMP(string value) : base(value) { }
+			
+			/// <summary>
+			/// Implicitly converts the specified string to an <see cref="MANUALUNCLAMP"/> value.
+			/// The string is converted to uppercase and used to initialize the <see cref="MANUALUNCLAMP"/> value.
+			/// </summary>
+			/// <param name="value">The string to convert.</param>
+			/// <returns>An <see cref="MANUALUNCLAMP"/> value initialized with the specified string in uppercase.</returns>
+			public static implicit operator MANUALUNCLAMP(string value)
+				=> new MANUALUNCLAMP(value.ToUpperInvariant());
 		}
     }
 }

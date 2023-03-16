@@ -59,9 +59,7 @@ namespace Mtconnect.AdapterInterface.DataItemValues
         /// <param name="value">The string to convert.</param>
         /// <returns>An <see cref="ControllerMode"/> value initialized with the specified string in uppercase.</returns>
         public static implicit operator ControllerMode(string value)
-        {
-            return new ControllerMode(value.ToUpperInvariant());
-        }
+            => new ControllerMode(value.ToUpperInvariant());
 		
     }
 }

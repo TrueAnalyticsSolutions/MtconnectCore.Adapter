@@ -28,9 +28,7 @@ namespace Mtconnect.AdapterInterface.DataItemValues
         /// <param name="value">The string to convert.</param>
         /// <returns>An <see cref="ToolAssetId"/> value initialized with the specified string in uppercase.</returns>
         public static implicit operator ToolAssetId(string value)
-        {
-            return new ToolAssetId(value.ToUpperInvariant());
-        }
+            => new ToolAssetId(value.ToUpperInvariant());
 		
     }
 }

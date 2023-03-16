@@ -28,9 +28,7 @@ namespace Mtconnect.AdapterInterface.DataItemValues
         /// <param name="value">The string to convert.</param>
         /// <returns>An <see cref="AdapterSoftwareVersion"/> value initialized with the specified string in uppercase.</returns>
         public static implicit operator AdapterSoftwareVersion(string value)
-        {
-            return new AdapterSoftwareVersion(value.ToUpperInvariant());
-        }
+            => new AdapterSoftwareVersion(value.ToUpperInvariant());
 		
     }
 }

@@ -58,9 +58,7 @@ namespace Mtconnect.AdapterInterface.DataItemValues
         /// <param name="value">The string to convert.</param>
         /// <returns>An <see cref="ProcessState"/> value initialized with the specified string in uppercase.</returns>
         public static implicit operator ProcessState(string value)
-        {
-            return new ProcessState(value.ToUpperInvariant());
-        }
+            => new ProcessState(value.ToUpperInvariant());
 		
     }
 }

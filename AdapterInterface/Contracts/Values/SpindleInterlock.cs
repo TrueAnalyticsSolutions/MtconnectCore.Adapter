@@ -38,9 +38,7 @@ namespace Mtconnect.AdapterInterface.DataItemValues
         /// <param name="value">The string to convert.</param>
         /// <returns>An <see cref="SpindleInterlock"/> value initialized with the specified string in uppercase.</returns>
         public static implicit operator SpindleInterlock(string value)
-        {
-            return new SpindleInterlock(value.ToUpperInvariant());
-        }
+            => new SpindleInterlock(value.ToUpperInvariant());
 		
     }
 }

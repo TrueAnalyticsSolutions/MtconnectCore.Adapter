@@ -28,9 +28,7 @@ namespace Mtconnect.AdapterInterface.DataItemValues
         /// <param name="value">The string to convert.</param>
         /// <returns>An <see cref="ProcessKindId"/> value initialized with the specified string in uppercase.</returns>
         public static implicit operator ProcessKindId(string value)
-        {
-            return new ProcessKindId(value.ToUpperInvariant());
-        }
+            => new ProcessKindId(value.ToUpperInvariant());
 		
 		/// <summary>
 		/// A Data Item SubType implementation of <see cref="ProcessKindId" />.
@@ -41,6 +39,15 @@ namespace Mtconnect.AdapterInterface.DataItemValues
 			/// Constructs a new value type for UUID.
 			/// </summary>
             public UUID(string value) : base(value) { }
+			
+			/// <summary>
+			/// Implicitly converts the specified string to an <see cref="UUID"/> value.
+			/// The string is converted to uppercase and used to initialize the <see cref="UUID"/> value.
+			/// </summary>
+			/// <param name="value">The string to convert.</param>
+			/// <returns>An <see cref="UUID"/> value initialized with the specified string in uppercase.</returns>
+			public static implicit operator UUID(string value)
+				=> new UUID(value.ToUpperInvariant());
 		}
 		/// <summary>
 		/// A Data Item SubType implementation of <see cref="ProcessKindId" />.
@@ -51,6 +58,15 @@ namespace Mtconnect.AdapterInterface.DataItemValues
 			/// Constructs a new value type for I_S_O_STEP_EXECUTABLE.
 			/// </summary>
             public ISOSTEPEXECUTABLE(string value) : base(value) { }
+			
+			/// <summary>
+			/// Implicitly converts the specified string to an <see cref="ISOSTEPEXECUTABLE"/> value.
+			/// The string is converted to uppercase and used to initialize the <see cref="ISOSTEPEXECUTABLE"/> value.
+			/// </summary>
+			/// <param name="value">The string to convert.</param>
+			/// <returns>An <see cref="ISOSTEPEXECUTABLE"/> value initialized with the specified string in uppercase.</returns>
+			public static implicit operator ISOSTEPEXECUTABLE(string value)
+				=> new ISOSTEPEXECUTABLE(value.ToUpperInvariant());
 		}
 		/// <summary>
 		/// A Data Item SubType implementation of <see cref="ProcessKindId" />.
@@ -61,6 +77,15 @@ namespace Mtconnect.AdapterInterface.DataItemValues
 			/// Constructs a new value type for PROCESS_NAME.
 			/// </summary>
             public PROCESSNAME(string value) : base(value) { }
+			
+			/// <summary>
+			/// Implicitly converts the specified string to an <see cref="PROCESSNAME"/> value.
+			/// The string is converted to uppercase and used to initialize the <see cref="PROCESSNAME"/> value.
+			/// </summary>
+			/// <param name="value">The string to convert.</param>
+			/// <returns>An <see cref="PROCESSNAME"/> value initialized with the specified string in uppercase.</returns>
+			public static implicit operator PROCESSNAME(string value)
+				=> new PROCESSNAME(value.ToUpperInvariant());
 		}
     }
 }

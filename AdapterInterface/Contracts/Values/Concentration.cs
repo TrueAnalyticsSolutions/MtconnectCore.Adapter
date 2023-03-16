@@ -28,9 +28,7 @@ namespace Mtconnect.AdapterInterface.DataItemValues
         /// <param name="value">The float to convert.</param>
         /// <returns>An <see cref="Concentration"/> value initialized with the specified string in uppercase.</returns>
         public static implicit operator Concentration(float value)
-        {
-            return new Concentration(value);
-        }
+            => new Concentration(value);
 		
     }
 }

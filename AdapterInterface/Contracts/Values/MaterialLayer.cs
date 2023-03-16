@@ -28,9 +28,7 @@ namespace Mtconnect.AdapterInterface.DataItemValues
         /// <param name="value">The string to convert.</param>
         /// <returns>An <see cref="MaterialLayer"/> value initialized with the specified string in uppercase.</returns>
         public static implicit operator MaterialLayer(string value)
-        {
-            return new MaterialLayer(value.ToUpperInvariant());
-        }
+            => new MaterialLayer(value.ToUpperInvariant());
 		
 		/// <summary>
 		/// A Data Item SubType implementation of <see cref="MaterialLayer" />.
@@ -41,6 +39,15 @@ namespace Mtconnect.AdapterInterface.DataItemValues
 			/// Constructs a new value type for ACTUAL.
 			/// </summary>
             public ACTUAL(string value) : base(value) { }
+			
+			/// <summary>
+			/// Implicitly converts the specified string to an <see cref="ACTUAL"/> value.
+			/// The string is converted to uppercase and used to initialize the <see cref="ACTUAL"/> value.
+			/// </summary>
+			/// <param name="value">The string to convert.</param>
+			/// <returns>An <see cref="ACTUAL"/> value initialized with the specified string in uppercase.</returns>
+			public static implicit operator ACTUAL(string value)
+				=> new ACTUAL(value.ToUpperInvariant());
 		}
 		/// <summary>
 		/// A Data Item SubType implementation of <see cref="MaterialLayer" />.
@@ -51,6 +58,15 @@ namespace Mtconnect.AdapterInterface.DataItemValues
 			/// Constructs a new value type for TARGET.
 			/// </summary>
             public TARGET(string value) : base(value) { }
+			
+			/// <summary>
+			/// Implicitly converts the specified string to an <see cref="TARGET"/> value.
+			/// The string is converted to uppercase and used to initialize the <see cref="TARGET"/> value.
+			/// </summary>
+			/// <param name="value">The string to convert.</param>
+			/// <returns>An <see cref="TARGET"/> value initialized with the specified string in uppercase.</returns>
+			public static implicit operator TARGET(string value)
+				=> new TARGET(value.ToUpperInvariant());
 		}
     }
 }

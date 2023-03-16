@@ -28,9 +28,7 @@ namespace Mtconnect.AdapterInterface.DataItemValues
         /// <param name="value">The string to convert.</param>
         /// <returns>An <see cref="CoupledAxes"/> value initialized with the specified string in uppercase.</returns>
         public static implicit operator CoupledAxes(string value)
-        {
-            return new CoupledAxes(value.ToUpperInvariant());
-        }
+            => new CoupledAxes(value.ToUpperInvariant());
 		
     }
 }

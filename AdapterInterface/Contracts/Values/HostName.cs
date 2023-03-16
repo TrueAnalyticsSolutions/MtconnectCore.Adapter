@@ -28,9 +28,7 @@ namespace Mtconnect.AdapterInterface.DataItemValues
         /// <param name="value">The string to convert.</param>
         /// <returns>An <see cref="HostName"/> value initialized with the specified string in uppercase.</returns>
         public static implicit operator HostName(string value)
-        {
-            return new HostName(value.ToUpperInvariant());
-        }
+            => new HostName(value.ToUpperInvariant());
 		
     }
 }

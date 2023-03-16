@@ -28,9 +28,7 @@ namespace Mtconnect.AdapterInterface.DataItemValues
         /// <param name="value">The float to convert.</param>
         /// <returns>An <see cref="Strain"/> value initialized with the specified string in uppercase.</returns>
         public static implicit operator Strain(float value)
-        {
-            return new Strain(value);
-        }
+            => new Strain(value);
 		
     }
 }

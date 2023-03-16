@@ -28,9 +28,7 @@ namespace Mtconnect.AdapterInterface.DataItemValues
         /// <param name="value">The string to convert.</param>
         /// <returns>An <see cref="User"/> value initialized with the specified string in uppercase.</returns>
         public static implicit operator User(string value)
-        {
-            return new User(value.ToUpperInvariant());
-        }
+            => new User(value.ToUpperInvariant());
 		
 		/// <summary>
 		/// A Data Item SubType implementation of <see cref="User" />.
@@ -41,6 +39,15 @@ namespace Mtconnect.AdapterInterface.DataItemValues
 			/// Constructs a new value type for OPERATOR.
 			/// </summary>
             public OPERATOR(string value) : base(value) { }
+			
+			/// <summary>
+			/// Implicitly converts the specified string to an <see cref="OPERATOR"/> value.
+			/// The string is converted to uppercase and used to initialize the <see cref="OPERATOR"/> value.
+			/// </summary>
+			/// <param name="value">The string to convert.</param>
+			/// <returns>An <see cref="OPERATOR"/> value initialized with the specified string in uppercase.</returns>
+			public static implicit operator OPERATOR(string value)
+				=> new OPERATOR(value.ToUpperInvariant());
 		}
 		/// <summary>
 		/// A Data Item SubType implementation of <see cref="User" />.
@@ -51,6 +58,15 @@ namespace Mtconnect.AdapterInterface.DataItemValues
 			/// Constructs a new value type for MAINTENANCE.
 			/// </summary>
             public MAINTENANCE(string value) : base(value) { }
+			
+			/// <summary>
+			/// Implicitly converts the specified string to an <see cref="MAINTENANCE"/> value.
+			/// The string is converted to uppercase and used to initialize the <see cref="MAINTENANCE"/> value.
+			/// </summary>
+			/// <param name="value">The string to convert.</param>
+			/// <returns>An <see cref="MAINTENANCE"/> value initialized with the specified string in uppercase.</returns>
+			public static implicit operator MAINTENANCE(string value)
+				=> new MAINTENANCE(value.ToUpperInvariant());
 		}
 		/// <summary>
 		/// A Data Item SubType implementation of <see cref="User" />.
@@ -61,6 +77,15 @@ namespace Mtconnect.AdapterInterface.DataItemValues
 			/// Constructs a new value type for SET_UP.
 			/// </summary>
             public SETUP(string value) : base(value) { }
+			
+			/// <summary>
+			/// Implicitly converts the specified string to an <see cref="SETUP"/> value.
+			/// The string is converted to uppercase and used to initialize the <see cref="SETUP"/> value.
+			/// </summary>
+			/// <param name="value">The string to convert.</param>
+			/// <returns>An <see cref="SETUP"/> value initialized with the specified string in uppercase.</returns>
+			public static implicit operator SETUP(string value)
+				=> new SETUP(value.ToUpperInvariant());
 		}
     }
 }

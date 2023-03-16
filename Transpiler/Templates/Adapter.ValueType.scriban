@@ -42,13 +42,11 @@ namespace {{ to_pascal_code source.namespace }}
         /// <param name="value">The {{ source.value_type }} to convert.</param>
         /// <returns>An <see cref="{{ to_pascal_case source.name }}"/> value initialized with the specified string in uppercase.</returns>
         public static implicit operator {{ to_pascal_case source.name }}({{ source.value_type }} value)
-        {
 			{{~ if source.value_type == "string" ~}}
-            return new {{ to_pascal_case source.name }}(value.ToUpperInvariant());
+            => new {{ to_pascal_case source.name }}(value.ToUpperInvariant());
 			{{~ else ~}}
-            return new {{ to_pascal_case source.name }}(value);
+            => new {{ to_pascal_case source.name }}(value);
 			{{~ end ~}}
-        }
 		
 	{{~ for subtype in source.sub_types ~}}
 		/// <summary>
@@ -60,6 +58,19 @@ namespace {{ to_pascal_code source.namespace }}
 			/// Constructs a new value type for {{ subtype }}.
 			/// </summary>
             public {{ to_pascal_case subtype }}({{ source.value_type }} value) : base(value) { }
+			
+			/// <summary>
+			/// Implicitly converts the specified {{ source.value_type }} to an <see cref="{{ to_pascal_case subtype }}"/> value.
+			/// The {{ source.value_type }} is converted to uppercase and used to initialize the <see cref="{{ to_pascal_case subtype }}"/> value.
+			/// </summary>
+			/// <param name="value">The {{ source.value_type }} to convert.</param>
+			/// <returns>An <see cref="{{ to_pascal_case subtype }}"/> value initialized with the specified string in uppercase.</returns>
+			public static implicit operator {{ to_pascal_case subtype }}({{ source.value_type }} value)
+				{{~ if source.value_type == "string" ~}}
+				=> new {{ to_pascal_case subtype }}(value.ToUpperInvariant());
+				{{~ else ~}}
+				=> new {{ to_pascal_case subtype }}(value);
+				{{~ end ~}}
 		}
 	{{~ end ~}}
     }

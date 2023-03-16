@@ -28,9 +28,7 @@ namespace Mtconnect.AdapterInterface.DataItemValues
         /// <param name="value">The float to convert.</param>
         /// <returns>An <see cref="AngularVelocity"/> value initialized with the specified string in uppercase.</returns>
         public static implicit operator AngularVelocity(float value)
-        {
-            return new AngularVelocity(value);
-        }
+            => new AngularVelocity(value);
 		
     }
 }

@@ -28,9 +28,7 @@ namespace Mtconnect.AdapterInterface.DataItemValues
         /// <param name="value">The float to convert.</param>
         /// <returns>An <see cref="ProcessTimer"/> value initialized with the specified string in uppercase.</returns>
         public static implicit operator ProcessTimer(float value)
-        {
-            return new ProcessTimer(value);
-        }
+            => new ProcessTimer(value);
 		
 		/// <summary>
 		/// A Data Item SubType implementation of <see cref="ProcessTimer" />.
@@ -41,6 +39,15 @@ namespace Mtconnect.AdapterInterface.DataItemValues
 			/// Constructs a new value type for PROCESS.
 			/// </summary>
             public PROCESS(float value) : base(value) { }
+			
+			/// <summary>
+			/// Implicitly converts the specified float to an <see cref="PROCESS"/> value.
+			/// The float is converted to uppercase and used to initialize the <see cref="PROCESS"/> value.
+			/// </summary>
+			/// <param name="value">The float to convert.</param>
+			/// <returns>An <see cref="PROCESS"/> value initialized with the specified string in uppercase.</returns>
+			public static implicit operator PROCESS(float value)
+				=> new PROCESS(value);
 		}
 		/// <summary>
 		/// A Data Item SubType implementation of <see cref="ProcessTimer" />.
@@ -51,6 +58,15 @@ namespace Mtconnect.AdapterInterface.DataItemValues
 			/// Constructs a new value type for DELAY.
 			/// </summary>
             public DELAY(float value) : base(value) { }
+			
+			/// <summary>
+			/// Implicitly converts the specified float to an <see cref="DELAY"/> value.
+			/// The float is converted to uppercase and used to initialize the <see cref="DELAY"/> value.
+			/// </summary>
+			/// <param name="value">The float to convert.</param>
+			/// <returns>An <see cref="DELAY"/> value initialized with the specified string in uppercase.</returns>
+			public static implicit operator DELAY(float value)
+				=> new DELAY(value);
 		}
     }
 }

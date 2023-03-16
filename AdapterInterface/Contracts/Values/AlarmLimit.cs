@@ -28,9 +28,7 @@ namespace Mtconnect.AdapterInterface.DataItemValues
         /// <param name="value">The string to convert.</param>
         /// <returns>An <see cref="AlarmLimit"/> value initialized with the specified string in uppercase.</returns>
         public static implicit operator AlarmLimit(string value)
-        {
-            return new AlarmLimit(value.ToUpperInvariant());
-        }
+            => new AlarmLimit(value.ToUpperInvariant());
 		
     }
 }

@@ -28,9 +28,7 @@ namespace Mtconnect.AdapterInterface.DataItemValues
         /// <param name="value">The Condition to convert.</param>
         /// <returns>An <see cref="LogicProgram"/> value initialized with the specified string in uppercase.</returns>
         public static implicit operator LogicProgram(Condition value)
-        {
-            return new LogicProgram(value);
-        }
+            => new LogicProgram(value);
 		
     }
 }

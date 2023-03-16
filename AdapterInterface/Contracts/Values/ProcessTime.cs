@@ -28,9 +28,7 @@ namespace Mtconnect.AdapterInterface.DataItemValues
         /// <param name="value">The string to convert.</param>
         /// <returns>An <see cref="ProcessTime"/> value initialized with the specified string in uppercase.</returns>
         public static implicit operator ProcessTime(string value)
-        {
-            return new ProcessTime(value.ToUpperInvariant());
-        }
+            => new ProcessTime(value.ToUpperInvariant());
 		
 		/// <summary>
 		/// A Data Item SubType implementation of <see cref="ProcessTime" />.
@@ -41,6 +39,15 @@ namespace Mtconnect.AdapterInterface.DataItemValues
 			/// Constructs a new value type for START.
 			/// </summary>
             public START(string value) : base(value) { }
+			
+			/// <summary>
+			/// Implicitly converts the specified string to an <see cref="START"/> value.
+			/// The string is converted to uppercase and used to initialize the <see cref="START"/> value.
+			/// </summary>
+			/// <param name="value">The string to convert.</param>
+			/// <returns>An <see cref="START"/> value initialized with the specified string in uppercase.</returns>
+			public static implicit operator START(string value)
+				=> new START(value.ToUpperInvariant());
 		}
 		/// <summary>
 		/// A Data Item SubType implementation of <see cref="ProcessTime" />.
@@ -51,6 +58,15 @@ namespace Mtconnect.AdapterInterface.DataItemValues
 			/// Constructs a new value type for COMPLETE.
 			/// </summary>
             public COMPLETE(string value) : base(value) { }
+			
+			/// <summary>
+			/// Implicitly converts the specified string to an <see cref="COMPLETE"/> value.
+			/// The string is converted to uppercase and used to initialize the <see cref="COMPLETE"/> value.
+			/// </summary>
+			/// <param name="value">The string to convert.</param>
+			/// <returns>An <see cref="COMPLETE"/> value initialized with the specified string in uppercase.</returns>
+			public static implicit operator COMPLETE(string value)
+				=> new COMPLETE(value.ToUpperInvariant());
 		}
 		/// <summary>
 		/// A Data Item SubType implementation of <see cref="ProcessTime" />.
@@ -61,6 +77,15 @@ namespace Mtconnect.AdapterInterface.DataItemValues
 			/// Constructs a new value type for TARGET_COMPLETION.
 			/// </summary>
             public TARGETCOMPLETION(string value) : base(value) { }
+			
+			/// <summary>
+			/// Implicitly converts the specified string to an <see cref="TARGETCOMPLETION"/> value.
+			/// The string is converted to uppercase and used to initialize the <see cref="TARGETCOMPLETION"/> value.
+			/// </summary>
+			/// <param name="value">The string to convert.</param>
+			/// <returns>An <see cref="TARGETCOMPLETION"/> value initialized with the specified string in uppercase.</returns>
+			public static implicit operator TARGETCOMPLETION(string value)
+				=> new TARGETCOMPLETION(value.ToUpperInvariant());
 		}
     }
 }

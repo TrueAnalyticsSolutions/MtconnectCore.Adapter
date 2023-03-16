@@ -28,9 +28,7 @@ namespace Mtconnect.AdapterInterface.DataItemValues
         /// <param name="value">The float to convert.</param>
         /// <returns>An <see cref="Velocity"/> value initialized with the specified string in uppercase.</returns>
         public static implicit operator Velocity(float value)
-        {
-            return new Velocity(value);
-        }
+            => new Velocity(value);
 		
     }
 }

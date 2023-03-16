@@ -38,9 +38,7 @@ namespace Mtconnect.AdapterInterface.DataItemValues
         /// <param name="value">The string to convert.</param>
         /// <returns>An <see cref="EquipmentMode"/> value initialized with the specified string in uppercase.</returns>
         public static implicit operator EquipmentMode(string value)
-        {
-            return new EquipmentMode(value.ToUpperInvariant());
-        }
+            => new EquipmentMode(value.ToUpperInvariant());
 		
 		/// <summary>
 		/// A Data Item SubType implementation of <see cref="EquipmentMode" />.
@@ -51,6 +49,15 @@ namespace Mtconnect.AdapterInterface.DataItemValues
 			/// Constructs a new value type for LOADED.
 			/// </summary>
             public LOADED(string value) : base(value) { }
+			
+			/// <summary>
+			/// Implicitly converts the specified string to an <see cref="LOADED"/> value.
+			/// The string is converted to uppercase and used to initialize the <see cref="LOADED"/> value.
+			/// </summary>
+			/// <param name="value">The string to convert.</param>
+			/// <returns>An <see cref="LOADED"/> value initialized with the specified string in uppercase.</returns>
+			public static implicit operator LOADED(string value)
+				=> new LOADED(value.ToUpperInvariant());
 		}
 		/// <summary>
 		/// A Data Item SubType implementation of <see cref="EquipmentMode" />.
@@ -61,6 +68,15 @@ namespace Mtconnect.AdapterInterface.DataItemValues
 			/// Constructs a new value type for WORKING.
 			/// </summary>
             public WORKING(string value) : base(value) { }
+			
+			/// <summary>
+			/// Implicitly converts the specified string to an <see cref="WORKING"/> value.
+			/// The string is converted to uppercase and used to initialize the <see cref="WORKING"/> value.
+			/// </summary>
+			/// <param name="value">The string to convert.</param>
+			/// <returns>An <see cref="WORKING"/> value initialized with the specified string in uppercase.</returns>
+			public static implicit operator WORKING(string value)
+				=> new WORKING(value.ToUpperInvariant());
 		}
 		/// <summary>
 		/// A Data Item SubType implementation of <see cref="EquipmentMode" />.
@@ -71,6 +87,15 @@ namespace Mtconnect.AdapterInterface.DataItemValues
 			/// Constructs a new value type for OPERATING.
 			/// </summary>
             public OPERATING(string value) : base(value) { }
+			
+			/// <summary>
+			/// Implicitly converts the specified string to an <see cref="OPERATING"/> value.
+			/// The string is converted to uppercase and used to initialize the <see cref="OPERATING"/> value.
+			/// </summary>
+			/// <param name="value">The string to convert.</param>
+			/// <returns>An <see cref="OPERATING"/> value initialized with the specified string in uppercase.</returns>
+			public static implicit operator OPERATING(string value)
+				=> new OPERATING(value.ToUpperInvariant());
 		}
 		/// <summary>
 		/// A Data Item SubType implementation of <see cref="EquipmentMode" />.
@@ -81,6 +106,15 @@ namespace Mtconnect.AdapterInterface.DataItemValues
 			/// Constructs a new value type for POWERED.
 			/// </summary>
             public POWERED(string value) : base(value) { }
+			
+			/// <summary>
+			/// Implicitly converts the specified string to an <see cref="POWERED"/> value.
+			/// The string is converted to uppercase and used to initialize the <see cref="POWERED"/> value.
+			/// </summary>
+			/// <param name="value">The string to convert.</param>
+			/// <returns>An <see cref="POWERED"/> value initialized with the specified string in uppercase.</returns>
+			public static implicit operator POWERED(string value)
+				=> new POWERED(value.ToUpperInvariant());
 		}
 		/// <summary>
 		/// A Data Item SubType implementation of <see cref="EquipmentMode" />.
@@ -91,6 +125,15 @@ namespace Mtconnect.AdapterInterface.DataItemValues
 			/// Constructs a new value type for DELAY.
 			/// </summary>
             public DELAY(string value) : base(value) { }
+			
+			/// <summary>
+			/// Implicitly converts the specified string to an <see cref="DELAY"/> value.
+			/// The string is converted to uppercase and used to initialize the <see cref="DELAY"/> value.
+			/// </summary>
+			/// <param name="value">The string to convert.</param>
+			/// <returns>An <see cref="DELAY"/> value initialized with the specified string in uppercase.</returns>
+			public static implicit operator DELAY(string value)
+				=> new DELAY(value.ToUpperInvariant());
 		}
     }
 }

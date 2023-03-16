@@ -28,9 +28,7 @@ namespace Mtconnect.AdapterInterface.DataItemValues
         /// <param name="value">The float to convert.</param>
         /// <returns>An <see cref="DisplacementAngular"/> value initialized with the specified string in uppercase.</returns>
         public static implicit operator DisplacementAngular(float value)
-        {
-            return new DisplacementAngular(value);
-        }
+            => new DisplacementAngular(value);
 		
     }
 }

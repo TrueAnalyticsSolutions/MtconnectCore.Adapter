@@ -28,9 +28,7 @@ namespace Mtconnect.AdapterInterface.DataItemValues
         /// <param name="value">The string to convert.</param>
         /// <returns>An <see cref="Rotation"/> value initialized with the specified string in uppercase.</returns>
         public static implicit operator Rotation(string value)
-        {
-            return new Rotation(value.ToUpperInvariant());
-        }
+            => new Rotation(value.ToUpperInvariant());
 		
     }
 }

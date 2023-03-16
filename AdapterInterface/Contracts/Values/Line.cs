@@ -29,9 +29,7 @@ namespace Mtconnect.AdapterInterface.DataItemValues
         /// <param name="value">The string to convert.</param>
         /// <returns>An <see cref="Line"/> value initialized with the specified string in uppercase.</returns>
         public static implicit operator Line(string value)
-        {
-            return new Line(value.ToUpperInvariant());
-        }
+            => new Line(value.ToUpperInvariant());
 		
 		/// <summary>
 		/// A Data Item SubType implementation of <see cref="Line" />.
@@ -42,6 +40,15 @@ namespace Mtconnect.AdapterInterface.DataItemValues
 			/// Constructs a new value type for MAXIMUM.
 			/// </summary>
             public MAXIMUM(string value) : base(value) { }
+			
+			/// <summary>
+			/// Implicitly converts the specified string to an <see cref="MAXIMUM"/> value.
+			/// The string is converted to uppercase and used to initialize the <see cref="MAXIMUM"/> value.
+			/// </summary>
+			/// <param name="value">The string to convert.</param>
+			/// <returns>An <see cref="MAXIMUM"/> value initialized with the specified string in uppercase.</returns>
+			public static implicit operator MAXIMUM(string value)
+				=> new MAXIMUM(value.ToUpperInvariant());
 		}
 		/// <summary>
 		/// A Data Item SubType implementation of <see cref="Line" />.
@@ -52,6 +59,15 @@ namespace Mtconnect.AdapterInterface.DataItemValues
 			/// Constructs a new value type for MINIMUM.
 			/// </summary>
             public MINIMUM(string value) : base(value) { }
+			
+			/// <summary>
+			/// Implicitly converts the specified string to an <see cref="MINIMUM"/> value.
+			/// The string is converted to uppercase and used to initialize the <see cref="MINIMUM"/> value.
+			/// </summary>
+			/// <param name="value">The string to convert.</param>
+			/// <returns>An <see cref="MINIMUM"/> value initialized with the specified string in uppercase.</returns>
+			public static implicit operator MINIMUM(string value)
+				=> new MINIMUM(value.ToUpperInvariant());
 		}
     }
 }

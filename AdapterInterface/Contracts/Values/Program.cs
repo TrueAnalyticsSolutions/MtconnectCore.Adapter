@@ -28,9 +28,7 @@ namespace Mtconnect.AdapterInterface.DataItemValues
         /// <param name="value">The string to convert.</param>
         /// <returns>An <see cref="Program"/> value initialized with the specified string in uppercase.</returns>
         public static implicit operator Program(string value)
-        {
-            return new Program(value.ToUpperInvariant());
-        }
+            => new Program(value.ToUpperInvariant());
 		
 		/// <summary>
 		/// A Data Item SubType implementation of <see cref="Program" />.
@@ -41,6 +39,15 @@ namespace Mtconnect.AdapterInterface.DataItemValues
 			/// Constructs a new value type for ACTIVITY.
 			/// </summary>
             public ACTIVITY(string value) : base(value) { }
+			
+			/// <summary>
+			/// Implicitly converts the specified string to an <see cref="ACTIVITY"/> value.
+			/// The string is converted to uppercase and used to initialize the <see cref="ACTIVITY"/> value.
+			/// </summary>
+			/// <param name="value">The string to convert.</param>
+			/// <returns>An <see cref="ACTIVITY"/> value initialized with the specified string in uppercase.</returns>
+			public static implicit operator ACTIVITY(string value)
+				=> new ACTIVITY(value.ToUpperInvariant());
 		}
 		/// <summary>
 		/// A Data Item SubType implementation of <see cref="Program" />.
@@ -51,6 +58,15 @@ namespace Mtconnect.AdapterInterface.DataItemValues
 			/// Constructs a new value type for SEGMENT.
 			/// </summary>
             public SEGMENT(string value) : base(value) { }
+			
+			/// <summary>
+			/// Implicitly converts the specified string to an <see cref="SEGMENT"/> value.
+			/// The string is converted to uppercase and used to initialize the <see cref="SEGMENT"/> value.
+			/// </summary>
+			/// <param name="value">The string to convert.</param>
+			/// <returns>An <see cref="SEGMENT"/> value initialized with the specified string in uppercase.</returns>
+			public static implicit operator SEGMENT(string value)
+				=> new SEGMENT(value.ToUpperInvariant());
 		}
 		/// <summary>
 		/// A Data Item SubType implementation of <see cref="Program" />.
@@ -61,6 +77,15 @@ namespace Mtconnect.AdapterInterface.DataItemValues
 			/// Constructs a new value type for RECIPE.
 			/// </summary>
             public RECIPE(string value) : base(value) { }
+			
+			/// <summary>
+			/// Implicitly converts the specified string to an <see cref="RECIPE"/> value.
+			/// The string is converted to uppercase and used to initialize the <see cref="RECIPE"/> value.
+			/// </summary>
+			/// <param name="value">The string to convert.</param>
+			/// <returns>An <see cref="RECIPE"/> value initialized with the specified string in uppercase.</returns>
+			public static implicit operator RECIPE(string value)
+				=> new RECIPE(value.ToUpperInvariant());
 		}
 		/// <summary>
 		/// A Data Item SubType implementation of <see cref="Program" />.
@@ -71,6 +96,15 @@ namespace Mtconnect.AdapterInterface.DataItemValues
 			/// Constructs a new value type for OPERATION.
 			/// </summary>
             public OPERATION(string value) : base(value) { }
+			
+			/// <summary>
+			/// Implicitly converts the specified string to an <see cref="OPERATION"/> value.
+			/// The string is converted to uppercase and used to initialize the <see cref="OPERATION"/> value.
+			/// </summary>
+			/// <param name="value">The string to convert.</param>
+			/// <returns>An <see cref="OPERATION"/> value initialized with the specified string in uppercase.</returns>
+			public static implicit operator OPERATION(string value)
+				=> new OPERATION(value.ToUpperInvariant());
 		}
 		/// <summary>
 		/// A Data Item SubType implementation of <see cref="Program" />.
@@ -81,6 +115,15 @@ namespace Mtconnect.AdapterInterface.DataItemValues
 			/// Constructs a new value type for ACTIVE.
 			/// </summary>
             public ACTIVE(string value) : base(value) { }
+			
+			/// <summary>
+			/// Implicitly converts the specified string to an <see cref="ACTIVE"/> value.
+			/// The string is converted to uppercase and used to initialize the <see cref="ACTIVE"/> value.
+			/// </summary>
+			/// <param name="value">The string to convert.</param>
+			/// <returns>An <see cref="ACTIVE"/> value initialized with the specified string in uppercase.</returns>
+			public static implicit operator ACTIVE(string value)
+				=> new ACTIVE(value.ToUpperInvariant());
 		}
 		/// <summary>
 		/// A Data Item SubType implementation of <see cref="Program" />.
@@ -91,6 +134,15 @@ namespace Mtconnect.AdapterInterface.DataItemValues
 			/// Constructs a new value type for MAIN.
 			/// </summary>
             public MAIN(string value) : base(value) { }
+			
+			/// <summary>
+			/// Implicitly converts the specified string to an <see cref="MAIN"/> value.
+			/// The string is converted to uppercase and used to initialize the <see cref="MAIN"/> value.
+			/// </summary>
+			/// <param name="value">The string to convert.</param>
+			/// <returns>An <see cref="MAIN"/> value initialized with the specified string in uppercase.</returns>
+			public static implicit operator MAIN(string value)
+				=> new MAIN(value.ToUpperInvariant());
 		}
 		/// <summary>
 		/// A Data Item SubType implementation of <see cref="Program" />.
@@ -101,6 +153,15 @@ namespace Mtconnect.AdapterInterface.DataItemValues
 			/// Constructs a new value type for SCHEDULE.
 			/// </summary>
             public SCHEDULE(string value) : base(value) { }
+			
+			/// <summary>
+			/// Implicitly converts the specified string to an <see cref="SCHEDULE"/> value.
+			/// The string is converted to uppercase and used to initialize the <see cref="SCHEDULE"/> value.
+			/// </summary>
+			/// <param name="value">The string to convert.</param>
+			/// <returns>An <see cref="SCHEDULE"/> value initialized with the specified string in uppercase.</returns>
+			public static implicit operator SCHEDULE(string value)
+				=> new SCHEDULE(value.ToUpperInvariant());
 		}
     }
 }

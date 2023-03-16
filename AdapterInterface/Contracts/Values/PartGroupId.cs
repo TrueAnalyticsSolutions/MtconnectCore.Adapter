@@ -28,9 +28,7 @@ namespace Mtconnect.AdapterInterface.DataItemValues
         /// <param name="value">The string to convert.</param>
         /// <returns>An <see cref="PartGroupId"/> value initialized with the specified string in uppercase.</returns>
         public static implicit operator PartGroupId(string value)
-        {
-            return new PartGroupId(value.ToUpperInvariant());
-        }
+            => new PartGroupId(value.ToUpperInvariant());
 		
 		/// <summary>
 		/// A Data Item SubType implementation of <see cref="PartGroupId" />.
@@ -41,6 +39,15 @@ namespace Mtconnect.AdapterInterface.DataItemValues
 			/// Constructs a new value type for LOT.
 			/// </summary>
             public LOT(string value) : base(value) { }
+			
+			/// <summary>
+			/// Implicitly converts the specified string to an <see cref="LOT"/> value.
+			/// The string is converted to uppercase and used to initialize the <see cref="LOT"/> value.
+			/// </summary>
+			/// <param name="value">The string to convert.</param>
+			/// <returns>An <see cref="LOT"/> value initialized with the specified string in uppercase.</returns>
+			public static implicit operator LOT(string value)
+				=> new LOT(value.ToUpperInvariant());
 		}
 		/// <summary>
 		/// A Data Item SubType implementation of <see cref="PartGroupId" />.
@@ -51,6 +58,15 @@ namespace Mtconnect.AdapterInterface.DataItemValues
 			/// Constructs a new value type for RAW_MATERIAL.
 			/// </summary>
             public RAWMATERIAL(string value) : base(value) { }
+			
+			/// <summary>
+			/// Implicitly converts the specified string to an <see cref="RAWMATERIAL"/> value.
+			/// The string is converted to uppercase and used to initialize the <see cref="RAWMATERIAL"/> value.
+			/// </summary>
+			/// <param name="value">The string to convert.</param>
+			/// <returns>An <see cref="RAWMATERIAL"/> value initialized with the specified string in uppercase.</returns>
+			public static implicit operator RAWMATERIAL(string value)
+				=> new RAWMATERIAL(value.ToUpperInvariant());
 		}
 		/// <summary>
 		/// A Data Item SubType implementation of <see cref="PartGroupId" />.
@@ -61,6 +77,15 @@ namespace Mtconnect.AdapterInterface.DataItemValues
 			/// Constructs a new value type for BATCH.
 			/// </summary>
             public BATCH(string value) : base(value) { }
+			
+			/// <summary>
+			/// Implicitly converts the specified string to an <see cref="BATCH"/> value.
+			/// The string is converted to uppercase and used to initialize the <see cref="BATCH"/> value.
+			/// </summary>
+			/// <param name="value">The string to convert.</param>
+			/// <returns>An <see cref="BATCH"/> value initialized with the specified string in uppercase.</returns>
+			public static implicit operator BATCH(string value)
+				=> new BATCH(value.ToUpperInvariant());
 		}
 		/// <summary>
 		/// A Data Item SubType implementation of <see cref="PartGroupId" />.
@@ -71,6 +96,15 @@ namespace Mtconnect.AdapterInterface.DataItemValues
 			/// Constructs a new value type for UUID.
 			/// </summary>
             public UUID(string value) : base(value) { }
+			
+			/// <summary>
+			/// Implicitly converts the specified string to an <see cref="UUID"/> value.
+			/// The string is converted to uppercase and used to initialize the <see cref="UUID"/> value.
+			/// </summary>
+			/// <param name="value">The string to convert.</param>
+			/// <returns>An <see cref="UUID"/> value initialized with the specified string in uppercase.</returns>
+			public static implicit operator UUID(string value)
+				=> new UUID(value.ToUpperInvariant());
 		}
 		/// <summary>
 		/// A Data Item SubType implementation of <see cref="PartGroupId" />.
@@ -81,6 +115,15 @@ namespace Mtconnect.AdapterInterface.DataItemValues
 			/// Constructs a new value type for HEAT_TREAT.
 			/// </summary>
             public HEATTREAT(string value) : base(value) { }
+			
+			/// <summary>
+			/// Implicitly converts the specified string to an <see cref="HEATTREAT"/> value.
+			/// The string is converted to uppercase and used to initialize the <see cref="HEATTREAT"/> value.
+			/// </summary>
+			/// <param name="value">The string to convert.</param>
+			/// <returns>An <see cref="HEATTREAT"/> value initialized with the specified string in uppercase.</returns>
+			public static implicit operator HEATTREAT(string value)
+				=> new HEATTREAT(value.ToUpperInvariant());
 		}
     }
 }

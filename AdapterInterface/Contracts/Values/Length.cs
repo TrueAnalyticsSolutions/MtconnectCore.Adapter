@@ -28,9 +28,7 @@ namespace Mtconnect.AdapterInterface.DataItemValues
         /// <param name="value">The float to convert.</param>
         /// <returns>An <see cref="Length"/> value initialized with the specified string in uppercase.</returns>
         public static implicit operator Length(float value)
-        {
-            return new Length(value);
-        }
+            => new Length(value);
 		
 		/// <summary>
 		/// A Data Item SubType implementation of <see cref="Length" />.
@@ -41,6 +39,15 @@ namespace Mtconnect.AdapterInterface.DataItemValues
 			/// Constructs a new value type for STANDARD.
 			/// </summary>
             public STANDARD(float value) : base(value) { }
+			
+			/// <summary>
+			/// Implicitly converts the specified float to an <see cref="STANDARD"/> value.
+			/// The float is converted to uppercase and used to initialize the <see cref="STANDARD"/> value.
+			/// </summary>
+			/// <param name="value">The float to convert.</param>
+			/// <returns>An <see cref="STANDARD"/> value initialized with the specified string in uppercase.</returns>
+			public static implicit operator STANDARD(float value)
+				=> new STANDARD(value);
 		}
 		/// <summary>
 		/// A Data Item SubType implementation of <see cref="Length" />.
@@ -51,6 +58,15 @@ namespace Mtconnect.AdapterInterface.DataItemValues
 			/// Constructs a new value type for REMAINING.
 			/// </summary>
             public REMAINING(float value) : base(value) { }
+			
+			/// <summary>
+			/// Implicitly converts the specified float to an <see cref="REMAINING"/> value.
+			/// The float is converted to uppercase and used to initialize the <see cref="REMAINING"/> value.
+			/// </summary>
+			/// <param name="value">The float to convert.</param>
+			/// <returns>An <see cref="REMAINING"/> value initialized with the specified string in uppercase.</returns>
+			public static implicit operator REMAINING(float value)
+				=> new REMAINING(value);
 		}
 		/// <summary>
 		/// A Data Item SubType implementation of <see cref="Length" />.
@@ -61,6 +77,15 @@ namespace Mtconnect.AdapterInterface.DataItemValues
 			/// Constructs a new value type for USEABLE.
 			/// </summary>
             public USEABLE(float value) : base(value) { }
+			
+			/// <summary>
+			/// Implicitly converts the specified float to an <see cref="USEABLE"/> value.
+			/// The float is converted to uppercase and used to initialize the <see cref="USEABLE"/> value.
+			/// </summary>
+			/// <param name="value">The float to convert.</param>
+			/// <returns>An <see cref="USEABLE"/> value initialized with the specified string in uppercase.</returns>
+			public static implicit operator USEABLE(float value)
+				=> new USEABLE(value);
 		}
     }
 }

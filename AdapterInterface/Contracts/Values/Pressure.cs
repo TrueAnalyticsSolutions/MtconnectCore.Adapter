@@ -28,9 +28,7 @@ namespace Mtconnect.AdapterInterface.DataItemValues
         /// <param name="value">The float to convert.</param>
         /// <returns>An <see cref="Pressure"/> value initialized with the specified string in uppercase.</returns>
         public static implicit operator Pressure(float value)
-        {
-            return new Pressure(value);
-        }
+            => new Pressure(value);
 		
     }
 }

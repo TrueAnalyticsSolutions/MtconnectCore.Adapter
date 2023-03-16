@@ -28,9 +28,7 @@ namespace Mtconnect.AdapterInterface.DataItemValues
         /// <param name="value">The float to convert.</param>
         /// <returns>An <see cref="AccumulatedTime"/> value initialized with the specified string in uppercase.</returns>
         public static implicit operator AccumulatedTime(float value)
-        {
-            return new AccumulatedTime(value);
-        }
+            => new AccumulatedTime(value);
 		
     }
 }

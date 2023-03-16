@@ -28,9 +28,7 @@ namespace Mtconnect.AdapterInterface.DataItemValues
         /// <param name="value">The string to convert.</param>
         /// <returns>An <see cref="BlockCount"/> value initialized with the specified string in uppercase.</returns>
         public static implicit operator BlockCount(string value)
-        {
-            return new BlockCount(value.ToUpperInvariant());
-        }
+            => new BlockCount(value.ToUpperInvariant());
 		
     }
 }

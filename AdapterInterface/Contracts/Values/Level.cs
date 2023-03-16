@@ -29,9 +29,7 @@ namespace Mtconnect.AdapterInterface.DataItemValues
         /// <param name="value">The float to convert.</param>
         /// <returns>An <see cref="Level"/> value initialized with the specified string in uppercase.</returns>
         public static implicit operator Level(float value)
-        {
-            return new Level(value);
-        }
+            => new Level(value);
 		
     }
 }

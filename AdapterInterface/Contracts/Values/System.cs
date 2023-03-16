@@ -28,9 +28,7 @@ namespace Mtconnect.AdapterInterface.DataItemValues
         /// <param name="value">The Condition to convert.</param>
         /// <returns>An <see cref="System"/> value initialized with the specified string in uppercase.</returns>
         public static implicit operator System(Condition value)
-        {
-            return new System(value);
-        }
+            => new System(value);
 		
     }
 }

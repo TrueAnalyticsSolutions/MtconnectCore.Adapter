@@ -38,9 +38,7 @@ namespace Mtconnect.AdapterInterface.DataItemValues
         /// <param name="value">The string to convert.</param>
         /// <returns>An <see cref="LeakDetect"/> value initialized with the specified string in uppercase.</returns>
         public static implicit operator LeakDetect(string value)
-        {
-            return new LeakDetect(value.ToUpperInvariant());
-        }
+            => new LeakDetect(value.ToUpperInvariant());
 		
     }
 }

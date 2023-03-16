@@ -28,9 +28,7 @@ namespace Mtconnect.AdapterInterface.DataItemValues
         /// <param name="value">The string to convert.</param>
         /// <returns>An <see cref="DateCode"/> value initialized with the specified string in uppercase.</returns>
         public static implicit operator DateCode(string value)
-        {
-            return new DateCode(value.ToUpperInvariant());
-        }
+            => new DateCode(value.ToUpperInvariant());
 		
 		/// <summary>
 		/// A Data Item SubType implementation of <see cref="DateCode" />.
@@ -41,6 +39,15 @@ namespace Mtconnect.AdapterInterface.DataItemValues
 			/// Constructs a new value type for MANUFACTURE.
 			/// </summary>
             public MANUFACTURE(string value) : base(value) { }
+			
+			/// <summary>
+			/// Implicitly converts the specified string to an <see cref="MANUFACTURE"/> value.
+			/// The string is converted to uppercase and used to initialize the <see cref="MANUFACTURE"/> value.
+			/// </summary>
+			/// <param name="value">The string to convert.</param>
+			/// <returns>An <see cref="MANUFACTURE"/> value initialized with the specified string in uppercase.</returns>
+			public static implicit operator MANUFACTURE(string value)
+				=> new MANUFACTURE(value.ToUpperInvariant());
 		}
 		/// <summary>
 		/// A Data Item SubType implementation of <see cref="DateCode" />.
@@ -51,6 +58,15 @@ namespace Mtconnect.AdapterInterface.DataItemValues
 			/// Constructs a new value type for EXPIRATION.
 			/// </summary>
             public EXPIRATION(string value) : base(value) { }
+			
+			/// <summary>
+			/// Implicitly converts the specified string to an <see cref="EXPIRATION"/> value.
+			/// The string is converted to uppercase and used to initialize the <see cref="EXPIRATION"/> value.
+			/// </summary>
+			/// <param name="value">The string to convert.</param>
+			/// <returns>An <see cref="EXPIRATION"/> value initialized with the specified string in uppercase.</returns>
+			public static implicit operator EXPIRATION(string value)
+				=> new EXPIRATION(value.ToUpperInvariant());
 		}
 		/// <summary>
 		/// A Data Item SubType implementation of <see cref="DateCode" />.
@@ -61,6 +77,15 @@ namespace Mtconnect.AdapterInterface.DataItemValues
 			/// Constructs a new value type for FIRST_USE.
 			/// </summary>
             public FIRSTUSE(string value) : base(value) { }
+			
+			/// <summary>
+			/// Implicitly converts the specified string to an <see cref="FIRSTUSE"/> value.
+			/// The string is converted to uppercase and used to initialize the <see cref="FIRSTUSE"/> value.
+			/// </summary>
+			/// <param name="value">The string to convert.</param>
+			/// <returns>An <see cref="FIRSTUSE"/> value initialized with the specified string in uppercase.</returns>
+			public static implicit operator FIRSTUSE(string value)
+				=> new FIRSTUSE(value.ToUpperInvariant());
 		}
     }
 }

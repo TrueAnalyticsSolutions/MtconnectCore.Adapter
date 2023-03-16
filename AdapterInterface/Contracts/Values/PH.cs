@@ -28,9 +28,7 @@ namespace Mtconnect.AdapterInterface.DataItemValues
         /// <param name="value">The float to convert.</param>
         /// <returns>An <see cref="PH"/> value initialized with the specified string in uppercase.</returns>
         public static implicit operator PH(float value)
-        {
-            return new PH(value);
-        }
+            => new PH(value);
 		
     }
 }

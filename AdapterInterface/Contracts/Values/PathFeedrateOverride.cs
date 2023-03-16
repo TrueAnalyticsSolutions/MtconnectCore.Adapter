@@ -28,9 +28,7 @@ namespace Mtconnect.AdapterInterface.DataItemValues
         /// <param name="value">The string to convert.</param>
         /// <returns>An <see cref="PathFeedrateOverride"/> value initialized with the specified string in uppercase.</returns>
         public static implicit operator PathFeedrateOverride(string value)
-        {
-            return new PathFeedrateOverride(value.ToUpperInvariant());
-        }
+            => new PathFeedrateOverride(value.ToUpperInvariant());
 		
 		/// <summary>
 		/// A Data Item SubType implementation of <see cref="PathFeedrateOverride" />.
@@ -41,6 +39,15 @@ namespace Mtconnect.AdapterInterface.DataItemValues
 			/// Constructs a new value type for JOG.
 			/// </summary>
             public JOG(string value) : base(value) { }
+			
+			/// <summary>
+			/// Implicitly converts the specified string to an <see cref="JOG"/> value.
+			/// The string is converted to uppercase and used to initialize the <see cref="JOG"/> value.
+			/// </summary>
+			/// <param name="value">The string to convert.</param>
+			/// <returns>An <see cref="JOG"/> value initialized with the specified string in uppercase.</returns>
+			public static implicit operator JOG(string value)
+				=> new JOG(value.ToUpperInvariant());
 		}
 		/// <summary>
 		/// A Data Item SubType implementation of <see cref="PathFeedrateOverride" />.
@@ -51,6 +58,15 @@ namespace Mtconnect.AdapterInterface.DataItemValues
 			/// Constructs a new value type for PROGRAMMED.
 			/// </summary>
             public PROGRAMMED(string value) : base(value) { }
+			
+			/// <summary>
+			/// Implicitly converts the specified string to an <see cref="PROGRAMMED"/> value.
+			/// The string is converted to uppercase and used to initialize the <see cref="PROGRAMMED"/> value.
+			/// </summary>
+			/// <param name="value">The string to convert.</param>
+			/// <returns>An <see cref="PROGRAMMED"/> value initialized with the specified string in uppercase.</returns>
+			public static implicit operator PROGRAMMED(string value)
+				=> new PROGRAMMED(value.ToUpperInvariant());
 		}
 		/// <summary>
 		/// A Data Item SubType implementation of <see cref="PathFeedrateOverride" />.
@@ -61,6 +77,15 @@ namespace Mtconnect.AdapterInterface.DataItemValues
 			/// Constructs a new value type for RAPID.
 			/// </summary>
             public RAPID(string value) : base(value) { }
+			
+			/// <summary>
+			/// Implicitly converts the specified string to an <see cref="RAPID"/> value.
+			/// The string is converted to uppercase and used to initialize the <see cref="RAPID"/> value.
+			/// </summary>
+			/// <param name="value">The string to convert.</param>
+			/// <returns>An <see cref="RAPID"/> value initialized with the specified string in uppercase.</returns>
+			public static implicit operator RAPID(string value)
+				=> new RAPID(value.ToUpperInvariant());
 		}
     }
 }

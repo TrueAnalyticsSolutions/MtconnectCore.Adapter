@@ -28,9 +28,7 @@ namespace Mtconnect.AdapterInterface.DataItemValues
         /// <param name="value">The float to convert.</param>
         /// <returns>An <see cref="Mass"/> value initialized with the specified string in uppercase.</returns>
         public static implicit operator Mass(float value)
-        {
-            return new Mass(value);
-        }
+            => new Mass(value);
 		
     }
 }

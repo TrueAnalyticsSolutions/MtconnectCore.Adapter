@@ -38,9 +38,7 @@ namespace Mtconnect.AdapterInterface.DataItemValues
         /// <param name="value">The string to convert.</param>
         /// <returns>An <see cref="PowerState"/> value initialized with the specified string in uppercase.</returns>
         public static implicit operator PowerState(string value)
-        {
-            return new PowerState(value.ToUpperInvariant());
-        }
+            => new PowerState(value.ToUpperInvariant());
 		
 		/// <summary>
 		/// A Data Item SubType implementation of <see cref="PowerState" />.
@@ -51,6 +49,15 @@ namespace Mtconnect.AdapterInterface.DataItemValues
 			/// Constructs a new value type for LINE.
 			/// </summary>
             public LINE(string value) : base(value) { }
+			
+			/// <summary>
+			/// Implicitly converts the specified string to an <see cref="LINE"/> value.
+			/// The string is converted to uppercase and used to initialize the <see cref="LINE"/> value.
+			/// </summary>
+			/// <param name="value">The string to convert.</param>
+			/// <returns>An <see cref="LINE"/> value initialized with the specified string in uppercase.</returns>
+			public static implicit operator LINE(string value)
+				=> new LINE(value.ToUpperInvariant());
 		}
 		/// <summary>
 		/// A Data Item SubType implementation of <see cref="PowerState" />.
@@ -61,6 +68,15 @@ namespace Mtconnect.AdapterInterface.DataItemValues
 			/// Constructs a new value type for CONTROL.
 			/// </summary>
             public CONTROL(string value) : base(value) { }
+			
+			/// <summary>
+			/// Implicitly converts the specified string to an <see cref="CONTROL"/> value.
+			/// The string is converted to uppercase and used to initialize the <see cref="CONTROL"/> value.
+			/// </summary>
+			/// <param name="value">The string to convert.</param>
+			/// <returns>An <see cref="CONTROL"/> value initialized with the specified string in uppercase.</returns>
+			public static implicit operator CONTROL(string value)
+				=> new CONTROL(value.ToUpperInvariant());
 		}
     }
 }

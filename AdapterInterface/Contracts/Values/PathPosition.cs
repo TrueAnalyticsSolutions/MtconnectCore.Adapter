@@ -28,9 +28,7 @@ namespace Mtconnect.AdapterInterface.DataItemValues
         /// <param name="value">The float to convert.</param>
         /// <returns>An <see cref="PathPosition"/> value initialized with the specified string in uppercase.</returns>
         public static implicit operator PathPosition(float value)
-        {
-            return new PathPosition(value);
-        }
+            => new PathPosition(value);
 		
 		/// <summary>
 		/// A Data Item SubType implementation of <see cref="PathPosition" />.
@@ -41,6 +39,15 @@ namespace Mtconnect.AdapterInterface.DataItemValues
 			/// Constructs a new value type for ACTUAL.
 			/// </summary>
             public ACTUAL(float value) : base(value) { }
+			
+			/// <summary>
+			/// Implicitly converts the specified float to an <see cref="ACTUAL"/> value.
+			/// The float is converted to uppercase and used to initialize the <see cref="ACTUAL"/> value.
+			/// </summary>
+			/// <param name="value">The float to convert.</param>
+			/// <returns>An <see cref="ACTUAL"/> value initialized with the specified string in uppercase.</returns>
+			public static implicit operator ACTUAL(float value)
+				=> new ACTUAL(value);
 		}
 		/// <summary>
 		/// A Data Item SubType implementation of <see cref="PathPosition" />.
@@ -51,6 +58,15 @@ namespace Mtconnect.AdapterInterface.DataItemValues
 			/// Constructs a new value type for COMMANDED.
 			/// </summary>
             public COMMANDED(float value) : base(value) { }
+			
+			/// <summary>
+			/// Implicitly converts the specified float to an <see cref="COMMANDED"/> value.
+			/// The float is converted to uppercase and used to initialize the <see cref="COMMANDED"/> value.
+			/// </summary>
+			/// <param name="value">The float to convert.</param>
+			/// <returns>An <see cref="COMMANDED"/> value initialized with the specified string in uppercase.</returns>
+			public static implicit operator COMMANDED(float value)
+				=> new COMMANDED(value);
 		}
 		/// <summary>
 		/// A Data Item SubType implementation of <see cref="PathPosition" />.
@@ -61,6 +77,15 @@ namespace Mtconnect.AdapterInterface.DataItemValues
 			/// Constructs a new value type for TARGET.
 			/// </summary>
             public TARGET(float value) : base(value) { }
+			
+			/// <summary>
+			/// Implicitly converts the specified float to an <see cref="TARGET"/> value.
+			/// The float is converted to uppercase and used to initialize the <see cref="TARGET"/> value.
+			/// </summary>
+			/// <param name="value">The float to convert.</param>
+			/// <returns>An <see cref="TARGET"/> value initialized with the specified string in uppercase.</returns>
+			public static implicit operator TARGET(float value)
+				=> new TARGET(value);
 		}
 		/// <summary>
 		/// A Data Item SubType implementation of <see cref="PathPosition" />.
@@ -71,6 +96,15 @@ namespace Mtconnect.AdapterInterface.DataItemValues
 			/// Constructs a new value type for PROBE.
 			/// </summary>
             public PROBE(float value) : base(value) { }
+			
+			/// <summary>
+			/// Implicitly converts the specified float to an <see cref="PROBE"/> value.
+			/// The float is converted to uppercase and used to initialize the <see cref="PROBE"/> value.
+			/// </summary>
+			/// <param name="value">The float to convert.</param>
+			/// <returns>An <see cref="PROBE"/> value initialized with the specified string in uppercase.</returns>
+			public static implicit operator PROBE(float value)
+				=> new PROBE(value);
 		}
     }
 }

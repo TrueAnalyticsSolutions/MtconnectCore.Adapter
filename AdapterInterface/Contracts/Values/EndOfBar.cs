@@ -38,9 +38,7 @@ namespace Mtconnect.AdapterInterface.DataItemValues
         /// <param name="value">The string to convert.</param>
         /// <returns>An <see cref="EndOfBar"/> value initialized with the specified string in uppercase.</returns>
         public static implicit operator EndOfBar(string value)
-        {
-            return new EndOfBar(value.ToUpperInvariant());
-        }
+            => new EndOfBar(value.ToUpperInvariant());
 		
 		/// <summary>
 		/// A Data Item SubType implementation of <see cref="EndOfBar" />.
@@ -51,6 +49,15 @@ namespace Mtconnect.AdapterInterface.DataItemValues
 			/// Constructs a new value type for PRIMARY.
 			/// </summary>
             public PRIMARY(string value) : base(value) { }
+			
+			/// <summary>
+			/// Implicitly converts the specified string to an <see cref="PRIMARY"/> value.
+			/// The string is converted to uppercase and used to initialize the <see cref="PRIMARY"/> value.
+			/// </summary>
+			/// <param name="value">The string to convert.</param>
+			/// <returns>An <see cref="PRIMARY"/> value initialized with the specified string in uppercase.</returns>
+			public static implicit operator PRIMARY(string value)
+				=> new PRIMARY(value.ToUpperInvariant());
 		}
 		/// <summary>
 		/// A Data Item SubType implementation of <see cref="EndOfBar" />.
@@ -61,6 +68,15 @@ namespace Mtconnect.AdapterInterface.DataItemValues
 			/// Constructs a new value type for AUXILIARY.
 			/// </summary>
             public AUXILIARY(string value) : base(value) { }
+			
+			/// <summary>
+			/// Implicitly converts the specified string to an <see cref="AUXILIARY"/> value.
+			/// The string is converted to uppercase and used to initialize the <see cref="AUXILIARY"/> value.
+			/// </summary>
+			/// <param name="value">The string to convert.</param>
+			/// <returns>An <see cref="AUXILIARY"/> value initialized with the specified string in uppercase.</returns>
+			public static implicit operator AUXILIARY(string value)
+				=> new AUXILIARY(value.ToUpperInvariant());
 		}
     }
 }

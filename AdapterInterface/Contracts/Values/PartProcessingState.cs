@@ -88,9 +88,7 @@ namespace Mtconnect.AdapterInterface.DataItemValues
         /// <param name="value">The string to convert.</param>
         /// <returns>An <see cref="PartProcessingState"/> value initialized with the specified string in uppercase.</returns>
         public static implicit operator PartProcessingState(string value)
-        {
-            return new PartProcessingState(value.ToUpperInvariant());
-        }
+            => new PartProcessingState(value.ToUpperInvariant());
 		
     }
 }

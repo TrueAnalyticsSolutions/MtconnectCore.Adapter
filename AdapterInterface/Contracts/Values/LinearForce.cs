@@ -28,9 +28,7 @@ namespace Mtconnect.AdapterInterface.DataItemValues
         /// <param name="value">The float to convert.</param>
         /// <returns>An <see cref="LinearForce"/> value initialized with the specified string in uppercase.</returns>
         public static implicit operator LinearForce(float value)
-        {
-            return new LinearForce(value);
-        }
+            => new LinearForce(value);
 		
     }
 }

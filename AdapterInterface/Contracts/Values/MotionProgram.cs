@@ -28,9 +28,7 @@ namespace Mtconnect.AdapterInterface.DataItemValues
         /// <param name="value">The Condition to convert.</param>
         /// <returns>An <see cref="MotionProgram"/> value initialized with the specified string in uppercase.</returns>
         public static implicit operator MotionProgram(Condition value)
-        {
-            return new MotionProgram(value);
-        }
+            => new MotionProgram(value);
 		
     }
 }

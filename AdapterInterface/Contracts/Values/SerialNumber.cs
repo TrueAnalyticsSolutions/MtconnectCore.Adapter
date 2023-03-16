@@ -28,9 +28,7 @@ namespace Mtconnect.AdapterInterface.DataItemValues
         /// <param name="value">The string to convert.</param>
         /// <returns>An <see cref="SerialNumber"/> value initialized with the specified string in uppercase.</returns>
         public static implicit operator SerialNumber(string value)
-        {
-            return new SerialNumber(value.ToUpperInvariant());
-        }
+            => new SerialNumber(value.ToUpperInvariant());
 		
     }
 }

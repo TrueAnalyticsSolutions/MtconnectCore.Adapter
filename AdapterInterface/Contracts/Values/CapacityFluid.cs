@@ -28,9 +28,7 @@ namespace Mtconnect.AdapterInterface.DataItemValues
         /// <param name="value">The float to convert.</param>
         /// <returns>An <see cref="CapacityFluid"/> value initialized with the specified string in uppercase.</returns>
         public static implicit operator CapacityFluid(float value)
-        {
-            return new CapacityFluid(value);
-        }
+            => new CapacityFluid(value);
 		
     }
 }

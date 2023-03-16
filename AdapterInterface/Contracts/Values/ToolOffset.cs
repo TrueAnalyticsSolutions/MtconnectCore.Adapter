@@ -28,9 +28,7 @@ namespace Mtconnect.AdapterInterface.DataItemValues
         /// <param name="value">The string to convert.</param>
         /// <returns>An <see cref="ToolOffset"/> value initialized with the specified string in uppercase.</returns>
         public static implicit operator ToolOffset(string value)
-        {
-            return new ToolOffset(value.ToUpperInvariant());
-        }
+            => new ToolOffset(value.ToUpperInvariant());
 		
 		/// <summary>
 		/// A Data Item SubType implementation of <see cref="ToolOffset" />.
@@ -41,6 +39,15 @@ namespace Mtconnect.AdapterInterface.DataItemValues
 			/// Constructs a new value type for RADIAL.
 			/// </summary>
             public RADIAL(string value) : base(value) { }
+			
+			/// <summary>
+			/// Implicitly converts the specified string to an <see cref="RADIAL"/> value.
+			/// The string is converted to uppercase and used to initialize the <see cref="RADIAL"/> value.
+			/// </summary>
+			/// <param name="value">The string to convert.</param>
+			/// <returns>An <see cref="RADIAL"/> value initialized with the specified string in uppercase.</returns>
+			public static implicit operator RADIAL(string value)
+				=> new RADIAL(value.ToUpperInvariant());
 		}
 		/// <summary>
 		/// A Data Item SubType implementation of <see cref="ToolOffset" />.
@@ -51,6 +58,15 @@ namespace Mtconnect.AdapterInterface.DataItemValues
 			/// Constructs a new value type for LENGTH.
 			/// </summary>
             public LENGTH(string value) : base(value) { }
+			
+			/// <summary>
+			/// Implicitly converts the specified string to an <see cref="LENGTH"/> value.
+			/// The string is converted to uppercase and used to initialize the <see cref="LENGTH"/> value.
+			/// </summary>
+			/// <param name="value">The string to convert.</param>
+			/// <returns>An <see cref="LENGTH"/> value initialized with the specified string in uppercase.</returns>
+			public static implicit operator LENGTH(string value)
+				=> new LENGTH(value.ToUpperInvariant());
 		}
     }
 }

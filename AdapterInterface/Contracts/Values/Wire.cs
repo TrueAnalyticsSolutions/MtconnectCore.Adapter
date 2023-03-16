@@ -28,9 +28,7 @@ namespace Mtconnect.AdapterInterface.DataItemValues
         /// <param name="value">The string to convert.</param>
         /// <returns>An <see cref="Wire"/> value initialized with the specified string in uppercase.</returns>
         public static implicit operator Wire(string value)
-        {
-            return new Wire(value.ToUpperInvariant());
-        }
+            => new Wire(value.ToUpperInvariant());
 		
     }
 }

@@ -28,9 +28,7 @@ namespace Mtconnect.AdapterInterface.DataItemValues
         /// <param name="value">The float to convert.</param>
         /// <returns>An <see cref="AssetUpdateRate"/> value initialized with the specified string in uppercase.</returns>
         public static implicit operator AssetUpdateRate(float value)
-        {
-            return new AssetUpdateRate(value);
-        }
+            => new AssetUpdateRate(value);
 		
     }
 }

@@ -28,9 +28,7 @@ namespace Mtconnect.AdapterInterface.DataItemValues
         /// <param name="value">The string to convert.</param>
         /// <returns>An <see cref="ClockTime"/> value initialized with the specified string in uppercase.</returns>
         public static implicit operator ClockTime(string value)
-        {
-            return new ClockTime(value.ToUpperInvariant());
-        }
+            => new ClockTime(value.ToUpperInvariant());
 		
     }
 }

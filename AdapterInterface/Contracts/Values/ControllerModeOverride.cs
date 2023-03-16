@@ -38,9 +38,7 @@ namespace Mtconnect.AdapterInterface.DataItemValues
         /// <param name="value">The string to convert.</param>
         /// <returns>An <see cref="ControllerModeOverride"/> value initialized with the specified string in uppercase.</returns>
         public static implicit operator ControllerModeOverride(string value)
-        {
-            return new ControllerModeOverride(value.ToUpperInvariant());
-        }
+            => new ControllerModeOverride(value.ToUpperInvariant());
 		
 		/// <summary>
 		/// A Data Item SubType implementation of <see cref="ControllerModeOverride" />.
@@ -51,6 +49,15 @@ namespace Mtconnect.AdapterInterface.DataItemValues
 			/// Constructs a new value type for DRY_RUN.
 			/// </summary>
             public DRYRUN(string value) : base(value) { }
+			
+			/// <summary>
+			/// Implicitly converts the specified string to an <see cref="DRYRUN"/> value.
+			/// The string is converted to uppercase and used to initialize the <see cref="DRYRUN"/> value.
+			/// </summary>
+			/// <param name="value">The string to convert.</param>
+			/// <returns>An <see cref="DRYRUN"/> value initialized with the specified string in uppercase.</returns>
+			public static implicit operator DRYRUN(string value)
+				=> new DRYRUN(value.ToUpperInvariant());
 		}
 		/// <summary>
 		/// A Data Item SubType implementation of <see cref="ControllerModeOverride" />.
@@ -61,6 +68,15 @@ namespace Mtconnect.AdapterInterface.DataItemValues
 			/// Constructs a new value type for SINGLE_BLOCK.
 			/// </summary>
             public SINGLEBLOCK(string value) : base(value) { }
+			
+			/// <summary>
+			/// Implicitly converts the specified string to an <see cref="SINGLEBLOCK"/> value.
+			/// The string is converted to uppercase and used to initialize the <see cref="SINGLEBLOCK"/> value.
+			/// </summary>
+			/// <param name="value">The string to convert.</param>
+			/// <returns>An <see cref="SINGLEBLOCK"/> value initialized with the specified string in uppercase.</returns>
+			public static implicit operator SINGLEBLOCK(string value)
+				=> new SINGLEBLOCK(value.ToUpperInvariant());
 		}
 		/// <summary>
 		/// A Data Item SubType implementation of <see cref="ControllerModeOverride" />.
@@ -71,6 +87,15 @@ namespace Mtconnect.AdapterInterface.DataItemValues
 			/// Constructs a new value type for MACHINE_AXIS_LOCK.
 			/// </summary>
             public MACHINEAXISLOCK(string value) : base(value) { }
+			
+			/// <summary>
+			/// Implicitly converts the specified string to an <see cref="MACHINEAXISLOCK"/> value.
+			/// The string is converted to uppercase and used to initialize the <see cref="MACHINEAXISLOCK"/> value.
+			/// </summary>
+			/// <param name="value">The string to convert.</param>
+			/// <returns>An <see cref="MACHINEAXISLOCK"/> value initialized with the specified string in uppercase.</returns>
+			public static implicit operator MACHINEAXISLOCK(string value)
+				=> new MACHINEAXISLOCK(value.ToUpperInvariant());
 		}
 		/// <summary>
 		/// A Data Item SubType implementation of <see cref="ControllerModeOverride" />.
@@ -81,6 +106,15 @@ namespace Mtconnect.AdapterInterface.DataItemValues
 			/// Constructs a new value type for OPTIONAL_STOP.
 			/// </summary>
             public OPTIONALSTOP(string value) : base(value) { }
+			
+			/// <summary>
+			/// Implicitly converts the specified string to an <see cref="OPTIONALSTOP"/> value.
+			/// The string is converted to uppercase and used to initialize the <see cref="OPTIONALSTOP"/> value.
+			/// </summary>
+			/// <param name="value">The string to convert.</param>
+			/// <returns>An <see cref="OPTIONALSTOP"/> value initialized with the specified string in uppercase.</returns>
+			public static implicit operator OPTIONALSTOP(string value)
+				=> new OPTIONALSTOP(value.ToUpperInvariant());
 		}
 		/// <summary>
 		/// A Data Item SubType implementation of <see cref="ControllerModeOverride" />.
@@ -91,6 +125,15 @@ namespace Mtconnect.AdapterInterface.DataItemValues
 			/// Constructs a new value type for TOOL_CHANGE_STOP.
 			/// </summary>
             public TOOLCHANGESTOP(string value) : base(value) { }
+			
+			/// <summary>
+			/// Implicitly converts the specified string to an <see cref="TOOLCHANGESTOP"/> value.
+			/// The string is converted to uppercase and used to initialize the <see cref="TOOLCHANGESTOP"/> value.
+			/// </summary>
+			/// <param name="value">The string to convert.</param>
+			/// <returns>An <see cref="TOOLCHANGESTOP"/> value initialized with the specified string in uppercase.</returns>
+			public static implicit operator TOOLCHANGESTOP(string value)
+				=> new TOOLCHANGESTOP(value.ToUpperInvariant());
 		}
     }
 }

@@ -38,9 +38,7 @@ namespace Mtconnect.AdapterInterface.DataItemValues
         /// <param name="value">The string to convert.</param>
         /// <returns>An <see cref="PartCountType"/> value initialized with the specified string in uppercase.</returns>
         public static implicit operator PartCountType(string value)
-        {
-            return new PartCountType(value.ToUpperInvariant());
-        }
+            => new PartCountType(value.ToUpperInvariant());
 		
     }
 }

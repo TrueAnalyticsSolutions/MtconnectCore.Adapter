@@ -28,9 +28,7 @@ namespace Mtconnect.AdapterInterface.DataItemValues
         /// <param name="value">The string to convert.</param>
         /// <returns>An <see cref="AssetRemoved"/> value initialized with the specified string in uppercase.</returns>
         public static implicit operator AssetRemoved(string value)
-        {
-            return new AssetRemoved(value.ToUpperInvariant());
-        }
+            => new AssetRemoved(value.ToUpperInvariant());
 		
     }
 }

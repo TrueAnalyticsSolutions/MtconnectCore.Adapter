@@ -28,9 +28,7 @@ namespace Mtconnect.AdapterInterface.DataItemValues
         /// <param name="value">The float to convert.</param>
         /// <returns>An <see cref="Tilt"/> value initialized with the specified string in uppercase.</returns>
         public static implicit operator Tilt(float value)
-        {
-            return new Tilt(value);
-        }
+            => new Tilt(value);
 		
     }
 }

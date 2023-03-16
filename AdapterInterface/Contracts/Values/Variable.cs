@@ -28,9 +28,7 @@ namespace Mtconnect.AdapterInterface.DataItemValues
         /// <param name="value">The string to convert.</param>
         /// <returns>An <see cref="Variable"/> value initialized with the specified string in uppercase.</returns>
         public static implicit operator Variable(string value)
-        {
-            return new Variable(value.ToUpperInvariant());
-        }
+            => new Variable(value.ToUpperInvariant());
 		
     }
 }

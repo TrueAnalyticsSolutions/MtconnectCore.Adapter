@@ -48,9 +48,7 @@ namespace Mtconnect.AdapterInterface.DataItemValues
         /// <param name="value">The string to convert.</param>
         /// <returns>An <see cref="PathMode"/> value initialized with the specified string in uppercase.</returns>
         public static implicit operator PathMode(string value)
-        {
-            return new PathMode(value.ToUpperInvariant());
-        }
+            => new PathMode(value.ToUpperInvariant());
 		
     }
 }

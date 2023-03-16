@@ -28,9 +28,7 @@ namespace Mtconnect.AdapterInterface.DataItemValues
         /// <param name="value">The float to convert.</param>
         /// <returns>An <see cref="Load"/> value initialized with the specified string in uppercase.</returns>
         public static implicit operator Load(float value)
-        {
-            return new Load(value);
-        }
+            => new Load(value);
 		
     }
 }

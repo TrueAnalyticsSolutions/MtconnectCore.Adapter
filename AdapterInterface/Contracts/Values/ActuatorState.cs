@@ -38,9 +38,7 @@ namespace Mtconnect.AdapterInterface.DataItemValues
         /// <param name="value">The string to convert.</param>
         /// <returns>An <see cref="ActuatorState"/> value initialized with the specified string in uppercase.</returns>
         public static implicit operator ActuatorState(string value)
-        {
-            return new ActuatorState(value.ToUpperInvariant());
-        }
+            => new ActuatorState(value.ToUpperInvariant());
 		
     }
 }

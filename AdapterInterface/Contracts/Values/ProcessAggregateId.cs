@@ -28,9 +28,7 @@ namespace Mtconnect.AdapterInterface.DataItemValues
         /// <param name="value">The string to convert.</param>
         /// <returns>An <see cref="ProcessAggregateId"/> value initialized with the specified string in uppercase.</returns>
         public static implicit operator ProcessAggregateId(string value)
-        {
-            return new ProcessAggregateId(value.ToUpperInvariant());
-        }
+            => new ProcessAggregateId(value.ToUpperInvariant());
 		
 		/// <summary>
 		/// A Data Item SubType implementation of <see cref="ProcessAggregateId" />.
@@ -41,6 +39,15 @@ namespace Mtconnect.AdapterInterface.DataItemValues
 			/// Constructs a new value type for ORDER_NUMBER.
 			/// </summary>
             public ORDERNUMBER(string value) : base(value) { }
+			
+			/// <summary>
+			/// Implicitly converts the specified string to an <see cref="ORDERNUMBER"/> value.
+			/// The string is converted to uppercase and used to initialize the <see cref="ORDERNUMBER"/> value.
+			/// </summary>
+			/// <param name="value">The string to convert.</param>
+			/// <returns>An <see cref="ORDERNUMBER"/> value initialized with the specified string in uppercase.</returns>
+			public static implicit operator ORDERNUMBER(string value)
+				=> new ORDERNUMBER(value.ToUpperInvariant());
 		}
 		/// <summary>
 		/// A Data Item SubType implementation of <see cref="ProcessAggregateId" />.
@@ -51,6 +58,15 @@ namespace Mtconnect.AdapterInterface.DataItemValues
 			/// Constructs a new value type for PROCESS_STEP.
 			/// </summary>
             public PROCESSSTEP(string value) : base(value) { }
+			
+			/// <summary>
+			/// Implicitly converts the specified string to an <see cref="PROCESSSTEP"/> value.
+			/// The string is converted to uppercase and used to initialize the <see cref="PROCESSSTEP"/> value.
+			/// </summary>
+			/// <param name="value">The string to convert.</param>
+			/// <returns>An <see cref="PROCESSSTEP"/> value initialized with the specified string in uppercase.</returns>
+			public static implicit operator PROCESSSTEP(string value)
+				=> new PROCESSSTEP(value.ToUpperInvariant());
 		}
 		/// <summary>
 		/// A Data Item SubType implementation of <see cref="ProcessAggregateId" />.
@@ -61,6 +77,15 @@ namespace Mtconnect.AdapterInterface.DataItemValues
 			/// Constructs a new value type for PROCESS_PLAN.
 			/// </summary>
             public PROCESSPLAN(string value) : base(value) { }
+			
+			/// <summary>
+			/// Implicitly converts the specified string to an <see cref="PROCESSPLAN"/> value.
+			/// The string is converted to uppercase and used to initialize the <see cref="PROCESSPLAN"/> value.
+			/// </summary>
+			/// <param name="value">The string to convert.</param>
+			/// <returns>An <see cref="PROCESSPLAN"/> value initialized with the specified string in uppercase.</returns>
+			public static implicit operator PROCESSPLAN(string value)
+				=> new PROCESSPLAN(value.ToUpperInvariant());
 		}
     }
 }

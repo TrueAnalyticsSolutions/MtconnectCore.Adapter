@@ -28,9 +28,7 @@ namespace Mtconnect.AdapterInterface.DataItemValues
         /// <param name="value">The string to convert.</param>
         /// <returns>An <see cref="AdapterURI"/> value initialized with the specified string in uppercase.</returns>
         public static implicit operator AdapterURI(string value)
-        {
-            return new AdapterURI(value.ToUpperInvariant());
-        }
+            => new AdapterURI(value.ToUpperInvariant());
 		
     }
 }

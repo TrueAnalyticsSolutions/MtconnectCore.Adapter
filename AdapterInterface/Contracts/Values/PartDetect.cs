@@ -38,9 +38,7 @@ namespace Mtconnect.AdapterInterface.DataItemValues
         /// <param name="value">The string to convert.</param>
         /// <returns>An <see cref="PartDetect"/> value initialized with the specified string in uppercase.</returns>
         public static implicit operator PartDetect(string value)
-        {
-            return new PartDetect(value.ToUpperInvariant());
-        }
+            => new PartDetect(value.ToUpperInvariant());
 		
     }
 }

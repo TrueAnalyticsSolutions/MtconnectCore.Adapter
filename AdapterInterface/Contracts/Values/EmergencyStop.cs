@@ -38,9 +38,7 @@ namespace Mtconnect.AdapterInterface.DataItemValues
         /// <param name="value">The string to convert.</param>
         /// <returns>An <see cref="EmergencyStop"/> value initialized with the specified string in uppercase.</returns>
         public static implicit operator EmergencyStop(string value)
-        {
-            return new EmergencyStop(value.ToUpperInvariant());
-        }
+            => new EmergencyStop(value.ToUpperInvariant());
 		
     }
 }

@@ -28,9 +28,7 @@ namespace Mtconnect.AdapterInterface.DataItemValues
         /// <param name="value">The float to convert.</param>
         /// <returns>An <see cref="Flow"/> value initialized with the specified string in uppercase.</returns>
         public static implicit operator Flow(float value)
-        {
-            return new Flow(value);
-        }
+            => new Flow(value);
 		
     }
 }

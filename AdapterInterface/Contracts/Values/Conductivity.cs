@@ -28,9 +28,7 @@ namespace Mtconnect.AdapterInterface.DataItemValues
         /// <param name="value">The float to convert.</param>
         /// <returns>An <see cref="Conductivity"/> value initialized with the specified string in uppercase.</returns>
         public static implicit operator Conductivity(float value)
-        {
-            return new Conductivity(value);
-        }
+            => new Conductivity(value);
 		
     }
 }

@@ -28,9 +28,7 @@ namespace Mtconnect.AdapterInterface.DataItemValues
         /// <param name="value">The float to convert.</param>
         /// <returns>An <see cref="Diameter"/> value initialized with the specified string in uppercase.</returns>
         public static implicit operator Diameter(float value)
-        {
-            return new Diameter(value);
-        }
+            => new Diameter(value);
 		
     }
 }

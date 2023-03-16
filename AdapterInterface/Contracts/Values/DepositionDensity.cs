@@ -28,9 +28,7 @@ namespace Mtconnect.AdapterInterface.DataItemValues
         /// <param name="value">The float to convert.</param>
         /// <returns>An <see cref="DepositionDensity"/> value initialized with the specified string in uppercase.</returns>
         public static implicit operator DepositionDensity(float value)
-        {
-            return new DepositionDensity(value);
-        }
+            => new DepositionDensity(value);
 		
 		/// <summary>
 		/// A Data Item SubType implementation of <see cref="DepositionDensity" />.
@@ -41,6 +39,15 @@ namespace Mtconnect.AdapterInterface.DataItemValues
 			/// Constructs a new value type for ACTUAL.
 			/// </summary>
             public ACTUAL(float value) : base(value) { }
+			
+			/// <summary>
+			/// Implicitly converts the specified float to an <see cref="ACTUAL"/> value.
+			/// The float is converted to uppercase and used to initialize the <see cref="ACTUAL"/> value.
+			/// </summary>
+			/// <param name="value">The float to convert.</param>
+			/// <returns>An <see cref="ACTUAL"/> value initialized with the specified string in uppercase.</returns>
+			public static implicit operator ACTUAL(float value)
+				=> new ACTUAL(value);
 		}
 		/// <summary>
 		/// A Data Item SubType implementation of <see cref="DepositionDensity" />.
@@ -51,6 +58,15 @@ namespace Mtconnect.AdapterInterface.DataItemValues
 			/// Constructs a new value type for COMMANDED.
 			/// </summary>
             public COMMANDED(float value) : base(value) { }
+			
+			/// <summary>
+			/// Implicitly converts the specified float to an <see cref="COMMANDED"/> value.
+			/// The float is converted to uppercase and used to initialize the <see cref="COMMANDED"/> value.
+			/// </summary>
+			/// <param name="value">The float to convert.</param>
+			/// <returns>An <see cref="COMMANDED"/> value initialized with the specified string in uppercase.</returns>
+			public static implicit operator COMMANDED(float value)
+				=> new COMMANDED(value);
 		}
     }
 }

@@ -28,9 +28,7 @@ namespace Mtconnect.AdapterInterface.DataItemValues
         /// <param name="value">The float to convert.</param>
         /// <returns>An <see cref="VoltAmpere"/> value initialized with the specified string in uppercase.</returns>
         public static implicit operator VoltAmpere(float value)
-        {
-            return new VoltAmpere(value);
-        }
+            => new VoltAmpere(value);
 		
     }
 }

@@ -28,9 +28,7 @@ namespace Mtconnect.AdapterInterface.DataItemValues
         /// <param name="value">The string to convert.</param>
         /// <returns>An <see cref="OperatorId"/> value initialized with the specified string in uppercase.</returns>
         public static implicit operator OperatorId(string value)
-        {
-            return new OperatorId(value.ToUpperInvariant());
-        }
+            => new OperatorId(value.ToUpperInvariant());
 		
     }
 }

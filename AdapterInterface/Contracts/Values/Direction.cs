@@ -51,9 +51,7 @@ namespace Mtconnect.AdapterInterface.DataItemValues
         /// <param name="value">The string to convert.</param>
         /// <returns>An <see cref="Direction"/> value initialized with the specified string in uppercase.</returns>
         public static implicit operator Direction(string value)
-        {
-            return new Direction(value.ToUpperInvariant());
-        }
+            => new Direction(value.ToUpperInvariant());
 		
 		/// <summary>
 		/// A Data Item SubType implementation of <see cref="Direction" />.
@@ -64,6 +62,15 @@ namespace Mtconnect.AdapterInterface.DataItemValues
 			/// Constructs a new value type for ROTARY.
 			/// </summary>
             public ROTARY(string value) : base(value) { }
+			
+			/// <summary>
+			/// Implicitly converts the specified string to an <see cref="ROTARY"/> value.
+			/// The string is converted to uppercase and used to initialize the <see cref="ROTARY"/> value.
+			/// </summary>
+			/// <param name="value">The string to convert.</param>
+			/// <returns>An <see cref="ROTARY"/> value initialized with the specified string in uppercase.</returns>
+			public static implicit operator ROTARY(string value)
+				=> new ROTARY(value.ToUpperInvariant());
 		}
 		/// <summary>
 		/// A Data Item SubType implementation of <see cref="Direction" />.
@@ -74,6 +81,15 @@ namespace Mtconnect.AdapterInterface.DataItemValues
 			/// Constructs a new value type for LINEAR.
 			/// </summary>
             public LINEAR(string value) : base(value) { }
+			
+			/// <summary>
+			/// Implicitly converts the specified string to an <see cref="LINEAR"/> value.
+			/// The string is converted to uppercase and used to initialize the <see cref="LINEAR"/> value.
+			/// </summary>
+			/// <param name="value">The string to convert.</param>
+			/// <returns>An <see cref="LINEAR"/> value initialized with the specified string in uppercase.</returns>
+			public static implicit operator LINEAR(string value)
+				=> new LINEAR(value.ToUpperInvariant());
 		}
     }
 }

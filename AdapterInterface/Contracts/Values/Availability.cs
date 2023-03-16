@@ -38,9 +38,7 @@ namespace Mtconnect.AdapterInterface.DataItemValues
         /// <param name="value">The string to convert.</param>
         /// <returns>An <see cref="Availability"/> value initialized with the specified string in uppercase.</returns>
         public static implicit operator Availability(string value)
-        {
-            return new Availability(value.ToUpperInvariant());
-        }
+            => new Availability(value.ToUpperInvariant());
 		
     }
 }

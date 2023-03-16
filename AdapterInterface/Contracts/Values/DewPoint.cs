@@ -28,9 +28,7 @@ namespace Mtconnect.AdapterInterface.DataItemValues
         /// <param name="value">The float to convert.</param>
         /// <returns>An <see cref="DewPoint"/> value initialized with the specified string in uppercase.</returns>
         public static implicit operator DewPoint(float value)
-        {
-            return new DewPoint(value);
-        }
+            => new DewPoint(value);
 		
     }
 }

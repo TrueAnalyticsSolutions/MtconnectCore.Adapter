@@ -28,9 +28,7 @@ namespace Mtconnect.AdapterInterface.DataItemValues
         /// <param name="value">The float to convert.</param>
         /// <returns>An <see cref="Torque"/> value initialized with the specified string in uppercase.</returns>
         public static implicit operator Torque(float value)
-        {
-            return new Torque(value);
-        }
+            => new Torque(value);
 		
     }
 }

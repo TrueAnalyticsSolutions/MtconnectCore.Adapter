@@ -38,9 +38,7 @@ namespace Mtconnect.AdapterInterface.DataItemValues
         /// <param name="value">The string to convert.</param>
         /// <returns>An <see cref="AxisInterlock"/> value initialized with the specified string in uppercase.</returns>
         public static implicit operator AxisInterlock(string value)
-        {
-            return new AxisInterlock(value.ToUpperInvariant());
-        }
+            => new AxisInterlock(value.ToUpperInvariant());
 		
     }
 }

@@ -73,9 +73,7 @@ namespace Mtconnect.AdapterInterface.DataItemValues
         /// <param name="value">The string to convert.</param>
         /// <returns>An <see cref="Execution"/> value initialized with the specified string in uppercase.</returns>
         public static implicit operator Execution(string value)
-        {
-            return new Execution(value.ToUpperInvariant());
-        }
+            => new Execution(value.ToUpperInvariant());
 		
     }
 }

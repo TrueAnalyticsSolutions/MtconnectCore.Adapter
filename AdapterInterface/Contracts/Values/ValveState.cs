@@ -48,9 +48,7 @@ namespace Mtconnect.AdapterInterface.DataItemValues
         /// <param name="value">The string to convert.</param>
         /// <returns>An <see cref="ValveState"/> value initialized with the specified string in uppercase.</returns>
         public static implicit operator ValveState(string value)
-        {
-            return new ValveState(value.ToUpperInvariant());
-        }
+            => new ValveState(value.ToUpperInvariant());
 		
 		/// <summary>
 		/// A Data Item SubType implementation of <see cref="ValveState" />.
@@ -61,6 +59,15 @@ namespace Mtconnect.AdapterInterface.DataItemValues
 			/// Constructs a new value type for ACTUAL.
 			/// </summary>
             public ACTUAL(string value) : base(value) { }
+			
+			/// <summary>
+			/// Implicitly converts the specified string to an <see cref="ACTUAL"/> value.
+			/// The string is converted to uppercase and used to initialize the <see cref="ACTUAL"/> value.
+			/// </summary>
+			/// <param name="value">The string to convert.</param>
+			/// <returns>An <see cref="ACTUAL"/> value initialized with the specified string in uppercase.</returns>
+			public static implicit operator ACTUAL(string value)
+				=> new ACTUAL(value.ToUpperInvariant());
 		}
 		/// <summary>
 		/// A Data Item SubType implementation of <see cref="ValveState" />.
@@ -71,6 +78,15 @@ namespace Mtconnect.AdapterInterface.DataItemValues
 			/// Constructs a new value type for PROGRAMMED.
 			/// </summary>
             public PROGRAMMED(string value) : base(value) { }
+			
+			/// <summary>
+			/// Implicitly converts the specified string to an <see cref="PROGRAMMED"/> value.
+			/// The string is converted to uppercase and used to initialize the <see cref="PROGRAMMED"/> value.
+			/// </summary>
+			/// <param name="value">The string to convert.</param>
+			/// <returns>An <see cref="PROGRAMMED"/> value initialized with the specified string in uppercase.</returns>
+			public static implicit operator PROGRAMMED(string value)
+				=> new PROGRAMMED(value.ToUpperInvariant());
 		}
     }
 }

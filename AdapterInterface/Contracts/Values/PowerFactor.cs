@@ -28,9 +28,7 @@ namespace Mtconnect.AdapterInterface.DataItemValues
         /// <param name="value">The float to convert.</param>
         /// <returns>An <see cref="PowerFactor"/> value initialized with the specified string in uppercase.</returns>
         public static implicit operator PowerFactor(float value)
-        {
-            return new PowerFactor(value);
-        }
+            => new PowerFactor(value);
 		
     }
 }

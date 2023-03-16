@@ -28,9 +28,7 @@ namespace Mtconnect.AdapterInterface.DataItemValues
         /// <param name="value">The Condition to convert.</param>
         /// <returns>An <see cref="Communications"/> value initialized with the specified string in uppercase.</returns>
         public static implicit operator Communications(Condition value)
-        {
-            return new Communications(value);
-        }
+            => new Communications(value);
 		
     }
 }

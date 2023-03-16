@@ -28,9 +28,7 @@ namespace Mtconnect.AdapterInterface.DataItemValues
         /// <param name="value">The float to convert.</param>
         /// <returns>An <see cref="GravitationalForce"/> value initialized with the specified string in uppercase.</returns>
         public static implicit operator GravitationalForce(float value)
-        {
-            return new GravitationalForce(value);
-        }
+            => new GravitationalForce(value);
 		
     }
 }

@@ -28,9 +28,7 @@ namespace Mtconnect.AdapterInterface.DataItemValues
         /// <param name="value">The string to convert.</param>
         /// <returns>An <see cref="PalletId"/> value initialized with the specified string in uppercase.</returns>
         public static implicit operator PalletId(string value)
-        {
-            return new PalletId(value.ToUpperInvariant());
-        }
+            => new PalletId(value.ToUpperInvariant());
 		
     }
 }

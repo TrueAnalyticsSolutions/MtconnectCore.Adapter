@@ -29,9 +29,7 @@ namespace Mtconnect.AdapterInterface.DataItemValues
         /// <param name="value">The float to convert.</param>
         /// <returns>An <see cref="Voltage"/> value initialized with the specified string in uppercase.</returns>
         public static implicit operator Voltage(float value)
-        {
-            return new Voltage(value);
-        }
+            => new Voltage(value);
 		
 		/// <summary>
 		/// A Data Item SubType implementation of <see cref="Voltage" />.
@@ -42,6 +40,15 @@ namespace Mtconnect.AdapterInterface.DataItemValues
 			/// Constructs a new value type for ALTERNATING.
 			/// </summary>
             public ALTERNATING(float value) : base(value) { }
+			
+			/// <summary>
+			/// Implicitly converts the specified float to an <see cref="ALTERNATING"/> value.
+			/// The float is converted to uppercase and used to initialize the <see cref="ALTERNATING"/> value.
+			/// </summary>
+			/// <param name="value">The float to convert.</param>
+			/// <returns>An <see cref="ALTERNATING"/> value initialized with the specified string in uppercase.</returns>
+			public static implicit operator ALTERNATING(float value)
+				=> new ALTERNATING(value);
 		}
 		/// <summary>
 		/// A Data Item SubType implementation of <see cref="Voltage" />.
@@ -52,6 +59,15 @@ namespace Mtconnect.AdapterInterface.DataItemValues
 			/// Constructs a new value type for DIRECT.
 			/// </summary>
             public DIRECT(float value) : base(value) { }
+			
+			/// <summary>
+			/// Implicitly converts the specified float to an <see cref="DIRECT"/> value.
+			/// The float is converted to uppercase and used to initialize the <see cref="DIRECT"/> value.
+			/// </summary>
+			/// <param name="value">The float to convert.</param>
+			/// <returns>An <see cref="DIRECT"/> value initialized with the specified string in uppercase.</returns>
+			public static implicit operator DIRECT(float value)
+				=> new DIRECT(value);
 		}
 		/// <summary>
 		/// A Data Item SubType implementation of <see cref="Voltage" />.
@@ -62,6 +78,15 @@ namespace Mtconnect.AdapterInterface.DataItemValues
 			/// Constructs a new value type for ACTUAL.
 			/// </summary>
             public ACTUAL(float value) : base(value) { }
+			
+			/// <summary>
+			/// Implicitly converts the specified float to an <see cref="ACTUAL"/> value.
+			/// The float is converted to uppercase and used to initialize the <see cref="ACTUAL"/> value.
+			/// </summary>
+			/// <param name="value">The float to convert.</param>
+			/// <returns>An <see cref="ACTUAL"/> value initialized with the specified string in uppercase.</returns>
+			public static implicit operator ACTUAL(float value)
+				=> new ACTUAL(value);
 		}
 		/// <summary>
 		/// A Data Item SubType implementation of <see cref="Voltage" />.
@@ -72,6 +97,15 @@ namespace Mtconnect.AdapterInterface.DataItemValues
 			/// Constructs a new value type for TARGET.
 			/// </summary>
             public TARGET(float value) : base(value) { }
+			
+			/// <summary>
+			/// Implicitly converts the specified float to an <see cref="TARGET"/> value.
+			/// The float is converted to uppercase and used to initialize the <see cref="TARGET"/> value.
+			/// </summary>
+			/// <param name="value">The float to convert.</param>
+			/// <returns>An <see cref="TARGET"/> value initialized with the specified string in uppercase.</returns>
+			public static implicit operator TARGET(float value)
+				=> new TARGET(value);
 		}
     }
 }

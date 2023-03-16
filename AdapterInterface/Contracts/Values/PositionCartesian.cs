@@ -28,9 +28,7 @@ namespace Mtconnect.AdapterInterface.DataItemValues
         /// <param name="value">The float to convert.</param>
         /// <returns>An <see cref="PositionCartesian"/> value initialized with the specified string in uppercase.</returns>
         public static implicit operator PositionCartesian(float value)
-        {
-            return new PositionCartesian(value);
-        }
+            => new PositionCartesian(value);
 		
     }
 }

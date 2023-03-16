@@ -43,9 +43,7 @@ namespace Mtconnect.AdapterInterface.DataItemValues
         /// <param name="value">The string to convert.</param>
         /// <returns>An <see cref="DoorState"/> value initialized with the specified string in uppercase.</returns>
         public static implicit operator DoorState(string value)
-        {
-            return new DoorState(value.ToUpperInvariant());
-        }
+            => new DoorState(value.ToUpperInvariant());
 		
     }
 }

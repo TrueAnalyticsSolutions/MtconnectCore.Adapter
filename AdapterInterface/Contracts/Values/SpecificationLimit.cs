@@ -28,9 +28,7 @@ namespace Mtconnect.AdapterInterface.DataItemValues
         /// <param name="value">The string to convert.</param>
         /// <returns>An <see cref="SpecificationLimit"/> value initialized with the specified string in uppercase.</returns>
         public static implicit operator SpecificationLimit(string value)
-        {
-            return new SpecificationLimit(value.ToUpperInvariant());
-        }
+            => new SpecificationLimit(value.ToUpperInvariant());
 		
     }
 }

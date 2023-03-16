@@ -43,9 +43,7 @@ namespace Mtconnect.AdapterInterface.DataItemValues
         /// <param name="value">The string to convert.</param>
         /// <returns>An <see cref="ChuckState"/> value initialized with the specified string in uppercase.</returns>
         public static implicit operator ChuckState(string value)
-        {
-            return new ChuckState(value.ToUpperInvariant());
-        }
+            => new ChuckState(value.ToUpperInvariant());
 		
     }
 }
