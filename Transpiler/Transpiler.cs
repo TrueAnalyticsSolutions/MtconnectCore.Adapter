@@ -165,6 +165,18 @@ namespace AdapterTranspiler
             processTemplate(valueEnums, Path.Combine(ProjectPath, "Enums"), true);
             // Process the template into value type files
             processTemplate(valueTypes, Path.Combine(ProjectPath, "Values"), true);
+
+            // Process component types
+            var componentTypes = model.DeviceModel.SubModels
+                .FirstOrDefault(o => o.Name == "Components")
+                .SubModels
+                .FirstOrDefault(o => o.Name == "Component Types");
+            var componentInterfaces = new List<AdapterComponentInterface>();
+            foreach (var componentType in componentTypes.Classes)
+            {
+                componentInterfaces.Add(new AdapterComponentInterface(model!, componentType));
+            }
+            processTemplate(componentInterfaces, Path.Combine(ProjectPath, "Components"));
         }
     }
 }

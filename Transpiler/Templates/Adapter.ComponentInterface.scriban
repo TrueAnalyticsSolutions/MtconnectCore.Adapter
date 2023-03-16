@@ -1,0 +1,20 @@
+using System;
+
+namespace {{ to_pascal_code source.namespace }} {
+	/// <summary>
+	/// View in the MTConnect Model browser <seealso href="https://model.mtconnect.org/#Structure__{{ source.id }}">model.mtconnect.org</seealso>
+	{{ source?.summary }}
+	/// </summary>
+	[GeneratedCode("MtconnectTranspiler.Sinks.CSharp.Adapter", "{{ version }}")]
+	public interface {{ source.name }} : IAdapterDataModel {
+	{{~ for sub_component in source.sub_components ~}}
+		/// <inheritdoc cref="{{ sub_component.name }}" />
+		I{{ sub_component.name }} {{ sub_component.name }} { get; set; }
+	{{~ end ~}}
+	
+	{{~ for data_item in source.data_items ~}}
+		/// <inheritdoc cref="{{ data_item.name }}" />
+		{{ data_item.name }} {{ data_item.name }} { get; set; }
+	{{~ end ~}}
+	}
+}

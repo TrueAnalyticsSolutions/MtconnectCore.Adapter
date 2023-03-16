@@ -2,10 +2,6 @@
 
 namespace Mtconnect.AdapterInterface.Contracts
 {
-    public interface IDataItemValue
-    {
-
-    }
     /// <summary>
     /// A generic implementation of a DataItem value type.
     /// </summary>
