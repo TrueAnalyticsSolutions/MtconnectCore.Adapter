@@ -174,7 +174,7 @@ namespace AdapterTranspiler
             var componentInterfaces = new List<AdapterComponentInterface>();
             foreach (var componentType in componentTypes.Classes)
             {
-                componentInterfaces.Add(new AdapterComponentInterface(model!, componentType));
+                componentInterfaces.Add(new AdapterComponentInterface(model!, componentType) { Namespace = DataItemNamespace });
             }
             processTemplate(componentInterfaces, Path.Combine(ProjectPath, "Components"));
         }
