@@ -176,7 +176,7 @@ namespace AdapterTranspiler
             {
                 componentInterfaces.Add(new AdapterComponentInterface(model!, componentType) { Namespace = DataItemNamespace });
             }
-            processTemplate(componentInterfaces, Path.Combine(ProjectPath, "Components"));
+            processTemplate(componentInterfaces, Path.Combine(ProjectPath, "Components"), true);
         }
     }
 }

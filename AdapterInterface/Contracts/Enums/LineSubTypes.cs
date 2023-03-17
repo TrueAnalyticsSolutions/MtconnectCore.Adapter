@@ -10,7 +10,7 @@ namespace Mtconnect.AdapterInterface.DataItemTypes
 	/// View in the MTConnect Model browser <seealso href="https://model.mtconnect.org/#Enumeration__">model.mtconnect.org</seealso>
 	﻿	/// </summary>
 	[Obsolete("Deprecated according to https://model.mtconnect.org/ in MtconnectVersions.V_1_4_0")]
-	[GeneratedCode("MtconnectTranspiler.Sinks.CSharp.Adapter", "0.0.12.0")]
+	[GeneratedCode("MtconnectTranspiler.Sinks.CSharp.Adapter", "0.0.14.0")]
 	public enum LineSubTypes
 	{
 		/// <summary>

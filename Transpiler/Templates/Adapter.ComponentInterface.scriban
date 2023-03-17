@@ -1,4 +1,6 @@
+using Mtconnect.AdapterInterface.DataItemValues;
 using System;
+using System.CodeDom.Compiler;
 
 namespace {{ to_pascal_code source.namespace }} {
 	/// <summary>
@@ -6,14 +8,14 @@ namespace {{ to_pascal_code source.namespace }} {
 	{{ source?.summary }}
 	/// </summary>
 	[GeneratedCode("MtconnectTranspiler.Sinks.CSharp.Adapter", "{{ version }}")]
-	public interface {{ source.name }} : IAdapterDataModel {
+	public interface I{{ source.name }} : IAdapterDataModel {
 	{{~ for sub_component in source.sub_components ~}}
-		/// <inheritdoc cref="{{ sub_component.name }}" />
+		/// <inheritdoc cref="I{{ sub_component.name }}" />
 		I{{ sub_component.name }} {{ sub_component.name }} { get; set; }
 	{{~ end ~}}
 	
 	{{~ for data_item in source.data_items ~}}
-		/// <inheritdoc cref="{{ data_item.name }}" />
+		/// <inheritdoc cref="Mtconnect.AdapterInterface.DataItemValues.{{ data_item.name }}" />
 		{{ data_item.name }} {{ data_item.name }} { get; set; }
 	{{~ end ~}}
 	}

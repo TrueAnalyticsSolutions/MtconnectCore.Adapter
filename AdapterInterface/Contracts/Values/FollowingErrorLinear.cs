@@ -12,7 +12,7 @@ namespace Mtconnect.AdapterInterface.DataItemValues
 	/// <summary>
 	/// A value type for FollowingErrorLinear to be used in a <see cref="IAdapterDataModel" /> implementation. View in the MTConnect Model browser <seealso href="https://model.mtconnect.org/#Enumeration__">model.mtconnect.org</seealso>
 	﻿	/// </summary>
-	[GeneratedCode("MtconnectTranspiler.Sinks.CSharp.Adapter", "0.0.12.0")]
+	[GeneratedCode("MtconnectTranspiler.Sinks.CSharp.Adapter", "0.0.14.0")]
 	public partial class FollowingErrorLinear : SampleValue
     {
 		/// <summary>
