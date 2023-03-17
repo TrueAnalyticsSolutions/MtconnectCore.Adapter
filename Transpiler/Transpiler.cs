@@ -99,10 +99,16 @@ namespace AdapterTranspiler
                             typeValues = new AdapterEventValueType(model!, typeValuesSysEnum)
                             {
                                 Namespace = DataItemValueNamespace,
-                                Name = $"{type!.Name}"
+                                Name = $"{type!.Name}",
+                                ReferenceId = typeValuesSysEnum.Id
                             };
 
-                            typeValuesEnum = new AdapterEnum(model!, typeValuesSysEnum) { Namespace = DataItemValueNamespace, Name = $"{type!.Name}Values" };
+                            typeValuesEnum = new AdapterEnum(model!, typeValuesSysEnum)
+                            {
+                                Namespace = DataItemValueNamespace,
+                                Name = $"{type!.Name}Values",
+                                ReferenceId = typeValuesSysEnum.Id
+                            };
                             foreach (EnumItem value in typeValuesEnum.Items)
                             {
                                 value.Name = value.SysML_Name;
@@ -114,7 +120,21 @@ namespace AdapterTranspiler
                         }
                     }
 
-                    if (typeValues == null) typeValues = new AdapterValueType(category, category == "Sample" ? "float" : category == "Condition" ? "Condition" : "string", model!, type!) { Namespace = DataItemValueNamespace, Category = category };
+                    if (typeValues == null)
+                        typeValues = new AdapterValueType(
+                            category,
+                            category == "Sample"
+                                ? "float"
+                                : category == "Condition"
+                                    ? "Condition"
+                                    : "string",
+                            model!,
+                            type!)
+                    {
+                        Namespace = DataItemValueNamespace,
+                        Category = category,
+                        ReferenceId = type!.Properties.FirstOrDefault(o => o.Name.Equals("result", StringComparison.OrdinalIgnoreCase))?.PropertyType
+                    };
                     if (typeValues != null)
                     {
                         foreach (var value in typeValues.Items)
@@ -128,7 +148,11 @@ namespace AdapterTranspiler
                         // Register type as having a subType in the CATEGORY enum
                         if (!categoryEnum.SubTypes.ContainsKey(type.Name)) categoryEnum.SubTypes.Add(ScribanHelperMethods.ToUpperSnakeCode(type.Name), $"{type.Name}SubTypes");
 
-                        AdapterEnum subTypeEnum = new(model!, type, $"{type.Name}SubTypes") { Namespace = DataItemNamespace };
+                        AdapterEnum subTypeEnum = new(model!, type, $"{type.Name}SubTypes")
+                        {
+                            Namespace = DataItemNamespace,
+                            ReferenceId = type.Id
+                        };
 
                         List<UmlClass?>? typeSubTypes = subTypes[type.Name];
                         subTypeEnum.AddItems(model, typeSubTypes);
@@ -174,7 +198,12 @@ namespace AdapterTranspiler
             var componentInterfaces = new List<AdapterComponentInterface>();
             foreach (var componentType in componentTypes.Classes)
             {
-                componentInterfaces.Add(new AdapterComponentInterface(model!, componentType) { Namespace = DataItemNamespace });
+                var component = new AdapterComponentInterface(model!, componentType)
+                {
+                    Namespace = DataItemNamespace,
+                    ReferenceId = componentType.Id
+                };
+                componentInterfaces.Add(component);
             }
             processTemplate(componentInterfaces, Path.Combine(ProjectPath, "Components"), true);
         }

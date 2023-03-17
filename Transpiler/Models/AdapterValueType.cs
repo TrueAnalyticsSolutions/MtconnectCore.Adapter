@@ -13,6 +13,8 @@ namespace AdapterTranspiler.Models
 
         public virtual string ValueType { get; set; }
 
+        public string ReferenceId { get; set; }
+
         public List<string> SubTypes { get; set; } = new List<string>();
 
         public AdapterValueType(string category, string valueType, MTConnectModel model, UmlEnumeration source) : base(model, source)

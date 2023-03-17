@@ -10,8 +10,9 @@ using Mtconnect.AdapterInterface.DataItemValues;
 namespace Mtconnect.AdapterInterface.DataItemValues
 {
 	/// <summary>
-	/// A value type for AxisInterlock to be used in a <see cref="IAdapterDataModel" /> implementation. View in the MTConnect Model browser <seealso href="https://model.mtconnect.org/#Enumeration__">model.mtconnect.org</seealso>
+	/// A value type for AxisInterlock to be used in a <see cref="IAdapterDataModel" /> implementation. View in the MTConnect Model browser <seealso href="https://model.mtconnect.org/#Enumeration___19_0_3_68e0225_1632486691907_586773_73">model.mtconnect.org</seealso>
 	﻿	/// </summary>
+	/// <remarks>Introduced in <see href="https://model.mtconnect.org/#_Version_1.3">v1.3</see>.</remarks>
 	[GeneratedCode("MtconnectTranspiler.Sinks.CSharp.Adapter", "0.0.14.0")]
 	public partial class AxisInterlock : EventValue
     {
@@ -23,11 +24,13 @@ namespace Mtconnect.AdapterInterface.DataItemValues
         /// <summary>
 		﻿/// axis lockout function is activated, power has been removed from the axis, and the axis is allowed to move freely.
         /// </summary>
+		/// <remarks>Introduced in <see href="https://model.mtconnect.org/#_Version_1.3">v1.3</see>.</remarks>
 		[ObservationalValue(typeof(AxisInterlockValues))]
         public static AxisInterlock ACTIVE => new AxisInterlock(nameof(AxisInterlockValues.ACTIVE));
         /// <summary>
 		﻿/// axis lockout function has not been activated, the axis may be powered, and the axis is capable of being controlled by another component.
         /// </summary>
+		/// <remarks>Introduced in <see href="https://model.mtconnect.org/#_Version_1.3">v1.3</see>.</remarks>
 		[ObservationalValue(typeof(AxisInterlockValues))]
         public static AxisInterlock INACTIVE => new AxisInterlock(nameof(AxisInterlockValues.INACTIVE));
 		

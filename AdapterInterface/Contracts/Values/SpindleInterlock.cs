@@ -10,8 +10,9 @@ using Mtconnect.AdapterInterface.DataItemValues;
 namespace Mtconnect.AdapterInterface.DataItemValues
 {
 	/// <summary>
-	/// A value type for SpindleInterlock to be used in a <see cref="IAdapterDataModel" /> implementation. View in the MTConnect Model browser <seealso href="https://model.mtconnect.org/#Enumeration__">model.mtconnect.org</seealso>
+	/// A value type for SpindleInterlock to be used in a <see cref="IAdapterDataModel" /> implementation. View in the MTConnect Model browser <seealso href="https://model.mtconnect.org/#Enumeration___19_0_3_68e0225_1632486690924_270312_65">model.mtconnect.org</seealso>
 	﻿	/// </summary>
+	/// <remarks>Introduced in <see href="https://model.mtconnect.org/#_Version_1.3">v1.3</see>.</remarks>
 	[GeneratedCode("MtconnectTranspiler.Sinks.CSharp.Adapter", "0.0.14.0")]
 	public partial class SpindleInterlock : EventValue
     {
@@ -23,11 +24,13 @@ namespace Mtconnect.AdapterInterface.DataItemValues
         /// <summary>
 		﻿/// power has been removed and the spindle cannot be operated.
         /// </summary>
+		/// <remarks>Introduced in <see href="https://model.mtconnect.org/#_Version_1.3">v1.3</see>.</remarks>
 		[ObservationalValue(typeof(SpindleInterlockValues))]
         public static SpindleInterlock ACTIVE => new SpindleInterlock(nameof(SpindleInterlockValues.ACTIVE));
         /// <summary>
 		﻿/// spindle has not been deactivated.
         /// </summary>
+		/// <remarks>Introduced in <see href="https://model.mtconnect.org/#_Version_1.3">v1.3</see>.</remarks>
 		[ObservationalValue(typeof(SpindleInterlockValues))]
         public static SpindleInterlock INACTIVE => new SpindleInterlock(nameof(SpindleInterlockValues.INACTIVE));
 		

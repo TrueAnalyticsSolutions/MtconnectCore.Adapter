@@ -8,6 +8,8 @@ namespace AdapterTranspiler.Models
     [ScribanTemplate("Adapter.ComponentInterface.scriban")]
     public class AdapterComponentInterface : CSharpModels.Class
     {
+        public string ReferenceId { get; set; }
+
         public List<UmlClass> SubComponents { get; set; } = new List<UmlClass>();
 
         public List<UmlClass> DataItems { get; set; } = new List<UmlClass>();

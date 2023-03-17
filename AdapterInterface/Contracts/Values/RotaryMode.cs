@@ -10,8 +10,9 @@ using Mtconnect.AdapterInterface.DataItemValues;
 namespace Mtconnect.AdapterInterface.DataItemValues
 {
 	/// <summary>
-	/// A value type for RotaryMode to be used in a <see cref="IAdapterDataModel" /> implementation. View in the MTConnect Model browser <seealso href="https://model.mtconnect.org/#Enumeration__">model.mtconnect.org</seealso>
+	/// A value type for RotaryMode to be used in a <see cref="IAdapterDataModel" /> implementation. View in the MTConnect Model browser <seealso href="https://model.mtconnect.org/#Enumeration___19_0_3_45f01b9_1580378417668_463137_2883">model.mtconnect.org</seealso>
 	﻿	/// </summary>
+	/// <remarks>Introduced in <see href="https://model.mtconnect.org/#_Version_1.1">v1.1</see>.</remarks>
 	[GeneratedCode("MtconnectTranspiler.Sinks.CSharp.Adapter", "0.0.14.0")]
 	public partial class RotaryMode : EventValue
     {
@@ -23,16 +24,19 @@ namespace Mtconnect.AdapterInterface.DataItemValues
         /// <summary>
 		﻿/// axis is functioning as a spindle.
         /// </summary>
+		/// <remarks>Introduced in <see href="https://model.mtconnect.org/#_Version_1.1">v1.1</see>.</remarks>
 		[ObservationalValue(typeof(RotaryModeValues))]
         public static RotaryMode SPINDLE => new RotaryMode(nameof(RotaryModeValues.SPINDLE));
         /// <summary>
 		﻿/// axis is configured to index.
         /// </summary>
+		/// <remarks>Introduced in <see href="https://model.mtconnect.org/#_Version_1.1">v1.1</see>.</remarks>
 		[ObservationalValue(typeof(RotaryModeValues))]
         public static RotaryMode INDEX => new RotaryMode(nameof(RotaryModeValues.INDEX));
         /// <summary>
 		﻿/// position of the axis is being interpolated.
         /// </summary>
+		/// <remarks>Introduced in <see href="https://model.mtconnect.org/#_Version_1.1">v1.1</see>.</remarks>
 		[ObservationalValue(typeof(RotaryModeValues))]
         public static RotaryMode CONTOUR => new RotaryMode(nameof(RotaryModeValues.CONTOUR));
 		

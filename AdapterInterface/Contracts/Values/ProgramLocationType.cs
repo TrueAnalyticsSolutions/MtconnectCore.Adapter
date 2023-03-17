@@ -10,8 +10,9 @@ using Mtconnect.AdapterInterface.DataItemValues;
 namespace Mtconnect.AdapterInterface.DataItemValues
 {
 	/// <summary>
-	/// A value type for ProgramLocationType to be used in a <see cref="IAdapterDataModel" /> implementation. View in the MTConnect Model browser <seealso href="https://model.mtconnect.org/#Enumeration__">model.mtconnect.org</seealso>
+	/// A value type for ProgramLocationType to be used in a <see cref="IAdapterDataModel" /> implementation. View in the MTConnect Model browser <seealso href="https://model.mtconnect.org/#Enumeration___19_0_3_68e0225_1643980698480_209668_2427">model.mtconnect.org</seealso>
 	﻿	/// </summary>
+	/// <remarks>Introduced in <see href="https://model.mtconnect.org/#_Version_1.5">v1.5</see>.</remarks>
 	[GeneratedCode("MtconnectTranspiler.Sinks.CSharp.Adapter", "0.0.14.0")]
 	public partial class ProgramLocationType : EventValue
     {
@@ -23,11 +24,13 @@ namespace Mtconnect.AdapterInterface.DataItemValues
         /// <summary>
 		﻿/// managed by the controller.
         /// </summary>
+		/// <remarks>Introduced in <see href="https://model.mtconnect.org/#_Version_1.5">v1.5</see>.</remarks>
 		[ObservationalValue(typeof(ProgramLocationTypeValues))]
         public static ProgramLocationType LOCAL => new ProgramLocationType(nameof(ProgramLocationTypeValues.LOCAL));
         /// <summary>
 		﻿/// not managed by the controller.
         /// </summary>
+		/// <remarks>Introduced in <see href="https://model.mtconnect.org/#_Version_1.5">v1.5</see>.</remarks>
 		[ObservationalValue(typeof(ProgramLocationTypeValues))]
         public static ProgramLocationType EXTERNAL => new ProgramLocationType(nameof(ProgramLocationTypeValues.EXTERNAL));
 		

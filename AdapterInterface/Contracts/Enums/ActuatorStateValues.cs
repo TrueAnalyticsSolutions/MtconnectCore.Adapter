@@ -7,8 +7,9 @@ using Mtconnect.AdapterInterface.Contracts.Attributes;
 namespace Mtconnect.AdapterInterface.DataItemValues
 {
 	/// <summary>
-	/// View in the MTConnect Model browser <seealso href="https://model.mtconnect.org/#Enumeration__">model.mtconnect.org</seealso>
+	/// View in the MTConnect Model browser <seealso href="https://model.mtconnect.org/#Enumeration___19_0_3_45f01b9_1580378417652_570136_2869">model.mtconnect.org</seealso>
 	﻿	/// </summary>
+	/// <remarks>Introduced in <see href="https://model.mtconnect.org/#_Version_1.2">v1.2</see>.</remarks>
 	[GeneratedCode("MtconnectTranspiler.Sinks.CSharp.Adapter", "0.0.14.0")]
 	public enum ActuatorStateValues
 	{
@@ -19,10 +20,12 @@ namespace Mtconnect.AdapterInterface.DataItemValues
 		/// <summary>
 		﻿/// <see cref="Actuator">Actuator</see> is operating.
 		/// </summary>
+		/// <remarks>Introduced in <see href="https://model.mtconnect.org/#_Version_1.2">v1.2</see>.</remarks>
 		ACTIVE,
 		/// <summary>
 		﻿/// <see cref="Actuator">Actuator</see> is not operating.
 		/// </summary>
+		/// <remarks>Introduced in <see href="https://model.mtconnect.org/#_Version_1.2">v1.2</see>.</remarks>
 		INACTIVE,
 	}
 }

@@ -10,8 +10,9 @@ using Mtconnect.AdapterInterface.DataItemValues;
 namespace Mtconnect.AdapterInterface.DataItemValues
 {
 	/// <summary>
-	/// A value type for SpecificationLimit to be used in a <see cref="IAdapterDataModel" /> implementation. View in the MTConnect Model browser <seealso href="https://model.mtconnect.org/#Enumeration__">model.mtconnect.org</seealso>
+	/// A value type for SpecificationLimit to be used in a <see cref="IAdapterDataModel" /> implementation. View in the MTConnect Model browser <seealso href="https://model.mtconnect.org/#Enumeration___19_0_3_68e0225_1620206901637_323897_780">model.mtconnect.org</seealso>
 	﻿	/// </summary>
+	/// <remarks>Introduced in <see href="https://model.mtconnect.org/#_Version_1.7">v1.7</see>.</remarks>
 	[GeneratedCode("MtconnectTranspiler.Sinks.CSharp.Adapter", "0.0.14.0")]
 	public partial class SpecificationLimit : EventValue
     {

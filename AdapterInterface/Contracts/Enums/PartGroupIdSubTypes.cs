@@ -7,8 +7,9 @@ using Mtconnect.AdapterInterface.Contracts.Attributes;
 namespace Mtconnect.AdapterInterface.DataItemTypes
 {
 	/// <summary>
-	/// View in the MTConnect Model browser <seealso href="https://model.mtconnect.org/#Enumeration__">model.mtconnect.org</seealso>
+	/// View in the MTConnect Model browser <seealso href="https://model.mtconnect.org/#Enumeration___19_0_3_68e0225_1605548793581_13403_454">model.mtconnect.org</seealso>
 	﻿	/// </summary>
+	/// <remarks>Introduced in <see href="https://model.mtconnect.org/#_Version_1.7">v1.7</see>.</remarks>
 	[GeneratedCode("MtconnectTranspiler.Sinks.CSharp.Adapter", "0.0.14.0")]
 	public enum PartGroupIdSubTypes
 	{
@@ -19,22 +20,27 @@ namespace Mtconnect.AdapterInterface.DataItemTypes
 		/// <summary>
 		﻿/// identifier that references a group of parts tracked as a lot. 
 		/// </summary>
+		/// <remarks>Introduced in <see href="https://model.mtconnect.org/#_Version_1.7">v1.7</see>.</remarks>
 		LOT,
 		/// <summary>
 		﻿/// material that is used to produce parts.
 		/// </summary>
+		/// <remarks>Introduced in <see href="https://model.mtconnect.org/#_Version_1.7">v1.7</see>.</remarks>
 		RAW_MATERIAL,
 		/// <summary>
 		﻿/// identifier that references a group of parts produced in a batch.
 		/// </summary>
+		/// <remarks>Introduced in <see href="https://model.mtconnect.org/#_Version_1.7">v1.7</see>.</remarks>
 		BATCH,
 		/// <summary>
 		﻿/// universally unique identifier as specified in ISO 11578 or RFC 4122.
 		/// </summary>
+		/// <remarks>Introduced in <see href="https://model.mtconnect.org/#_Version_1.7">v1.7</see>.</remarks>
 		UUID,
 		/// <summary>
 		﻿/// identifier used to reference a material heat number.
 		/// </summary>
+		/// <remarks>Introduced in <see href="https://model.mtconnect.org/#_Version_1.7">v1.7</see>.</remarks>
 		HEAT_TREAT,
 	}
 }

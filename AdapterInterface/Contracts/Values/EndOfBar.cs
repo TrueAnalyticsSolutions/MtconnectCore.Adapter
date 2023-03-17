@@ -10,8 +10,9 @@ using Mtconnect.AdapterInterface.DataItemValues;
 namespace Mtconnect.AdapterInterface.DataItemValues
 {
 	/// <summary>
-	/// A value type for EndOfBar to be used in a <see cref="IAdapterDataModel" /> implementation. View in the MTConnect Model browser <seealso href="https://model.mtconnect.org/#Enumeration__">model.mtconnect.org</seealso>
+	/// A value type for EndOfBar to be used in a <see cref="IAdapterDataModel" /> implementation. View in the MTConnect Model browser <seealso href="https://model.mtconnect.org/#Enumeration___19_0_3_45f01b9_1580378417663_685842_2877">model.mtconnect.org</seealso>
 	﻿	/// </summary>
+	/// <remarks>Introduced in <see href="https://model.mtconnect.org/#_Version_1.3">v1.3</see>.</remarks>
 	[GeneratedCode("MtconnectTranspiler.Sinks.CSharp.Adapter", "0.0.14.0")]
 	public partial class EndOfBar : EventValue
     {
@@ -23,11 +24,13 @@ namespace Mtconnect.AdapterInterface.DataItemValues
         /// <summary>
 		﻿/// <see cref="EndOfBar">EndOfBar</see> has been reached.
         /// </summary>
+		/// <remarks>Introduced in <see href="https://model.mtconnect.org/#_Version_1.3">v1.3</see>.</remarks>
 		[ObservationalValue(typeof(EndOfBarValues))]
         public static EndOfBar YES => new EndOfBar(nameof(EndOfBarValues.YES));
         /// <summary>
 		﻿/// <see cref="EndOfBar">EndOfBar</see> has not been reached.
         /// </summary>
+		/// <remarks>Introduced in <see href="https://model.mtconnect.org/#_Version_1.3">v1.3</see>.</remarks>
 		[ObservationalValue(typeof(EndOfBarValues))]
         public static EndOfBar NO => new EndOfBar(nameof(EndOfBarValues.NO));
 		

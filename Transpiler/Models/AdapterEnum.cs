@@ -9,6 +9,11 @@ namespace AdapterTranspiler.Models
     [ScribanTemplate("Adapter.Enum.scriban")]
     public class AdapterEnum : CSharpModels.Enum
     {
+        /// <summary>
+        /// Reference to the xmi:id
+        /// </summary>
+        public string ReferenceId { get; set; }
+
         // NOTE: Only used for CATEGORY types that have subTypes.
         public Dictionary<string, string> SubTypes { get; set; } = new Dictionary<string, string>();
 

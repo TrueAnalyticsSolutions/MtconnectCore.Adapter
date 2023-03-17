@@ -4,9 +4,10 @@ using System.CodeDom.Compiler;
 
 namespace Mtconnect.AdapterInterface.DataItemTypes {
 	/// <summary>
-	/// View in the MTConnect Model browser <seealso href="https://model.mtconnect.org/#Structure__">model.mtconnect.org</seealso>
+	/// View in the MTConnect Model browser <seealso href="https://model.mtconnect.org/#Structure___19_0_3_45f01b9_1579572381987_89386_42234">model.mtconnect.org</seealso>
 	/// <see cref="System">System</see> composed of a structure that is used to contain or isolate a piece of equipment or area./// Description
 	/// </summary>
+	/// <remarks>Introduced in <see href="https://model.mtconnect.org/#_Version_1.4">v1.4</see>.</remarks>
 	[GeneratedCode("MtconnectTranspiler.Sinks.CSharp.Adapter", "0.0.14.0")]
 	public interface IEnclosure : IAdapterDataModel {
 	

@@ -7,8 +7,9 @@ using Mtconnect.AdapterInterface.Contracts.Attributes;
 namespace Mtconnect.AdapterInterface.DataItemValues
 {
 	/// <summary>
-	/// View in the MTConnect Model browser <seealso href="https://model.mtconnect.org/#Enumeration__">model.mtconnect.org</seealso>
+	/// View in the MTConnect Model browser <seealso href="https://model.mtconnect.org/#Enumeration___19_0_3_68e0225_1659073241126_204554_44">model.mtconnect.org</seealso>
 	﻿	/// </summary>
+	/// <remarks>Introduced in <see href="https://model.mtconnect.org/#_Version_2.1">v2.1</see>.</remarks>
 	[GeneratedCode("MtconnectTranspiler.Sinks.CSharp.Adapter", "0.0.14.0")]
 	public enum LeakDetectValues
 	{
@@ -19,10 +20,12 @@ namespace Mtconnect.AdapterInterface.DataItemValues
 		/// <summary>
 		﻿/// leak is currently being detected.
 		/// </summary>
+		/// <remarks>Introduced in <see href="https://model.mtconnect.org/#_Version_2.1">v2.1</see>.</remarks>
 		DETECTED,
 		/// <summary>
 		﻿/// leak is currently not being detected.
 		/// </summary>
+		/// <remarks>Introduced in <see href="https://model.mtconnect.org/#_Version_2.1">v2.1</see>.</remarks>
 		NOT_DETECTED,
 	}
 }

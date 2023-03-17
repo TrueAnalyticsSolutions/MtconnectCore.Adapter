@@ -10,8 +10,9 @@ using Mtconnect.AdapterInterface.DataItemValues;
 namespace Mtconnect.AdapterInterface.DataItemValues
 {
 	/// <summary>
-	/// A value type for AxisCoupling to be used in a <see cref="IAdapterDataModel" /> implementation. View in the MTConnect Model browser <seealso href="https://model.mtconnect.org/#Enumeration__">model.mtconnect.org</seealso>
+	/// A value type for AxisCoupling to be used in a <see cref="IAdapterDataModel" /> implementation. View in the MTConnect Model browser <seealso href="https://model.mtconnect.org/#Enumeration___19_0_3_45f01b9_1580378417657_726565_2871">model.mtconnect.org</seealso>
 	﻿	/// </summary>
+	/// <remarks>Introduced in <see href="https://model.mtconnect.org/#_Version_1.1">v1.1</see>.</remarks>
 	[GeneratedCode("MtconnectTranspiler.Sinks.CSharp.Adapter", "0.0.14.0")]
 	public partial class AxisCoupling : EventValue
     {
@@ -23,21 +24,25 @@ namespace Mtconnect.AdapterInterface.DataItemValues
         /// <summary>
 		﻿/// axes are physically connected to each other and operate as a single unit.
         /// </summary>
+		/// <remarks>Introduced in <see href="https://model.mtconnect.org/#_Version_1.1">v1.1</see>.</remarks>
 		[ObservationalValue(typeof(AxisCouplingValues))]
         public static AxisCoupling TANDEM => new AxisCoupling(nameof(AxisCouplingValues.TANDEM));
         /// <summary>
 		﻿/// axes are not physically connected to each other but are operating together in lockstep.
         /// </summary>
+		/// <remarks>Introduced in <see href="https://model.mtconnect.org/#_Version_1.1">v1.1</see>.</remarks>
 		[ObservationalValue(typeof(AxisCouplingValues))]
         public static AxisCoupling SYNCHRONOUS => new AxisCoupling(nameof(AxisCouplingValues.SYNCHRONOUS));
         /// <summary>
 		﻿/// axis is the master of the <see cref="CoupledAxes">CoupledAxes</see>.
         /// </summary>
+		/// <remarks>Introduced in <see href="https://model.mtconnect.org/#_Version_1.1">v1.1</see>.</remarks>
 		[ObservationalValue(typeof(AxisCouplingValues))]
         public static AxisCoupling MASTER => new AxisCoupling(nameof(AxisCouplingValues.MASTER));
         /// <summary>
 		﻿/// axis is a slave to the <see cref="CoupledAxes">CoupledAxes</see>.
         /// </summary>
+		/// <remarks>Introduced in <see href="https://model.mtconnect.org/#_Version_1.1">v1.1</see>.</remarks>
 		[ObservationalValue(typeof(AxisCouplingValues))]
         public static AxisCoupling SLAVE => new AxisCoupling(nameof(AxisCouplingValues.SLAVE));
 		

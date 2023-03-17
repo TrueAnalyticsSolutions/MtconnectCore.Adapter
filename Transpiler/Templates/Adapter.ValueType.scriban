@@ -1,3 +1,5 @@
+{{~ nversion_slim = (source?.normative_version | string.slice 20 3) | string.replace "_" "."
+dversion_slim = (source?.deprecated_version | string.slice 20 3) | string.replace "_" "." ~}}
 #pragma warning disable 0618
 #pragma warning disable 1574
 using System;
@@ -10,11 +12,15 @@ using Mtconnect.AdapterInterface.DataItemValues;
 namespace {{ to_pascal_code source.namespace }}
 {
 	/// <summary>
-	/// A value type for {{ to_pascal_case source.name }} to be used in a <see cref="IAdapterDataModel" /> implementation. View in the MTConnect Model browser <seealso href="https://model.mtconnect.org/#Enumeration__{{ source.sysml_id }}">model.mtconnect.org</seealso>
+	/// A value type for {{ to_pascal_case source.name }} to be used in a <see cref="IAdapterDataModel" /> implementation. View in the MTConnect Model browser <seealso href="https://model.mtconnect.org/#Enumeration__{{ source.reference_id }}">model.mtconnect.org</seealso>
 	{{ include 'UmlCommentsSummaryContent.scriban' source?.summary ~}}
 	/// </summary>
-	{{~ if source?.deprecated_version != "" ~}}
-	[Obsolete("Deprecated according to https://model.mtconnect.org/ in {{ source?.deprecated_version }}")]
+	{{~ if nversion_slim != "" ~}}
+	/// <remarks>Introduced in <see href="https://model.mtconnect.org/#_Version_{{ nversion_slim }}">v{{ nversion_slim }}</see>.</remarks>
+	{{~ end ~}}
+	{{~ if dversion_slim != "" ~}}
+	/// <remarks>Deprecated in <see href="https://model.mtconnect.org/#_Version_{{ dversion_slim }}">v{{ dversion_slim }}</see>.</remarks>
+	[Obsolete("Deprecated in v{{ dversion_slim }} according to https://model.mtconnect.org/#_Version_{{ dversion_slim }}")]
 	{{~ end ~}}
 	[GeneratedCode("MtconnectTranspiler.Sinks.CSharp.Adapter", "{{ version }}")]
 	public partial class {{ to_pascal_case source.name }} : {{ source.category }}Value
@@ -25,11 +31,17 @@ namespace {{ to_pascal_code source.namespace }}
         public {{ to_pascal_case source.name }}({{ source.value_type }} value) : base(value) { }
 
 		{{~ for item in source.items ~}}
+{{~ n_item_version_slim = (item?.normative_version | string.slice 20 3) | string.replace "_" "."
+d_item_version_slim = (item?.deprecated_version | string.slice 20 3) | string.replace "_" "." ~}}
         /// <summary>
 		{{ include 'UmlCommentsSummaryContent.scriban' item?.summary ~}}
         /// </summary>
-		{{~ if item?.deprecated_version != "" ~}}
-		[Obsolete("Deprecated according to https://model.mtconnect.org/ in {{ item?.deprecated_version }}")]
+		{{~ if n_item_version_slim != "" ~}}
+		/// <remarks>Introduced in <see href="https://model.mtconnect.org/#_Version_{{ n_item_version_slim }}">v{{ n_item_version_slim }}</see>.</remarks>
+		{{~ end ~}}
+		{{~ if d_item_version_slim != "" ~}}
+		/// <remarks>Deprecated in <see href="https://model.mtconnect.org/#_Version_{{ d_item_version_slim }}">v{{ d_item_version_slim }}</see>.</remarks>
+		[Obsolete("Deprecated in v{{ d_item_version_slim }} according to https://model.mtconnect.org/#_Version_{{ d_item_version_slim }}")]
 		{{~ end ~}}
 		[ObservationalValue(typeof({{ to_pascal_case source.name }}Values))]
         public static {{ to_pascal_case source.name }} {{ item.name }} => new {{ to_pascal_case source.name }}(nameof({{ to_pascal_case source.name }}Values.{{ item.name }}));

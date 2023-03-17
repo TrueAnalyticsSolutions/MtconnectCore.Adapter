@@ -7,8 +7,9 @@ using Mtconnect.AdapterInterface.Contracts.Attributes;
 namespace Mtconnect.AdapterInterface.DataItemTypes
 {
 	/// <summary>
-	/// View in the MTConnect Model browser <seealso href="https://model.mtconnect.org/#Enumeration__">model.mtconnect.org</seealso>
+	/// View in the MTConnect Model browser <seealso href="https://model.mtconnect.org/#Enumeration___19_0_3_45f01b9_1580378218298_41713_1803">model.mtconnect.org</seealso>
 	﻿	/// </summary>
+	/// <remarks>Introduced in <see href="https://model.mtconnect.org/#_Version_1.4">v1.4</see>.</remarks>
 	[GeneratedCode("MtconnectTranspiler.Sinks.CSharp.Adapter", "0.0.14.0")]
 	public enum EquipmentTimerSubTypes
 	{
@@ -19,22 +20,27 @@ namespace Mtconnect.AdapterInterface.DataItemTypes
 		/// <summary>
 		﻿/// time that the sub-parts of a piece of equipment are under load.  Example: For traditional machine tools, this is a measurement of the time that the cutting tool is assumed to be engaged with the part.
 		/// </summary>
+		/// <remarks>Introduced in <see href="https://model.mtconnect.org/#_Version_1.4">v1.4</see>.</remarks>
 		LOADED,
 		/// <summary>
 		﻿/// time that a piece of equipment is performing any activity the equipment is active and performing a function under load or not.  Example: For traditional machine tools, this includes <c>LOADED</c>, plus rapid moves, tool changes, etc.
 		/// </summary>
+		/// <remarks>Introduced in <see href="https://model.mtconnect.org/#_Version_1.4">v1.4</see>.</remarks>
 		WORKING,
 		/// <summary>
 		﻿/// time that the major sub-parts of a piece of equipment are powered or performing any activity whether producing a part or product or not.  Example: For traditional machine tools, this includes <c>WORKING</c>, plus idle time.
 		/// </summary>
+		/// <remarks>Introduced in <see href="https://model.mtconnect.org/#_Version_1.4">v1.4</see>.</remarks>
 		OPERATING,
 		/// <summary>
 		﻿/// time that primary power is applied to the piece of equipment and, as a minimum, the controller or logic portion of the piece of equipment is powered and functioning or components that are required to remain on are powered.  Example: Heaters for an extrusion machine that are required to be powered even when the equipment is turned off.
 		/// </summary>
+		/// <remarks>Introduced in <see href="https://model.mtconnect.org/#_Version_1.4">v1.4</see>.</remarks>
 		POWERED,
 		/// <summary>
 		﻿/// elapsed time of a temporary halt of action.
 		/// </summary>
+		/// <remarks>Introduced in <see href="https://model.mtconnect.org/#_Version_1.4">v1.4</see>.</remarks>
 		DELAY,
 	}
 }

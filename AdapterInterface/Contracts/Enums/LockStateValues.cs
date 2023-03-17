@@ -7,8 +7,9 @@ using Mtconnect.AdapterInterface.Contracts.Attributes;
 namespace Mtconnect.AdapterInterface.DataItemValues
 {
 	/// <summary>
-	/// View in the MTConnect Model browser <seealso href="https://model.mtconnect.org/#Enumeration__">model.mtconnect.org</seealso>
+	/// View in the MTConnect Model browser <seealso href="https://model.mtconnect.org/#Enumeration___19_0_3_68e0225_1622457615279_962450_700">model.mtconnect.org</seealso>
 	﻿	/// </summary>
+	/// <remarks>Introduced in <see href="https://model.mtconnect.org/#_Version_1.8">v1.8</see>.</remarks>
 	[GeneratedCode("MtconnectTranspiler.Sinks.CSharp.Adapter", "0.0.14.0")]
 	public enum LockStateValues
 	{
@@ -19,10 +20,12 @@ namespace Mtconnect.AdapterInterface.DataItemValues
 		/// <summary>
 		﻿/// mechanism is engaged and preventing the associated <see cref="Component">Component</see> from being opened or operated.
 		/// </summary>
+		/// <remarks>Introduced in <see href="https://model.mtconnect.org/#_Version_1.8">v1.8</see>.</remarks>
 		LOCKED,
 		/// <summary>
 		﻿/// mechanism is disengaged and the associated <see cref="Component">Component</see> is able to be opened or operated.
 		/// </summary>
+		/// <remarks>Introduced in <see href="https://model.mtconnect.org/#_Version_1.8">v1.8</see>.</remarks>
 		UNLOCKED,
 	}
 }

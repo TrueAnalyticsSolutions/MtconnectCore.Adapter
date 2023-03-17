@@ -10,8 +10,9 @@ using Mtconnect.AdapterInterface.DataItemValues;
 namespace Mtconnect.AdapterInterface.DataItemValues
 {
 	/// <summary>
-	/// A value type for Execution to be used in a <see cref="IAdapterDataModel" /> implementation. View in the MTConnect Model browser <seealso href="https://model.mtconnect.org/#Enumeration__">model.mtconnect.org</seealso>
+	/// A value type for Execution to be used in a <see cref="IAdapterDataModel" /> implementation. View in the MTConnect Model browser <seealso href="https://model.mtconnect.org/#Enumeration___19_0_3_45f01b9_1580378417664_592980_2878">model.mtconnect.org</seealso>
 	﻿	/// </summary>
+	/// <remarks>Introduced in <see href="https://model.mtconnect.org/#_Version_1.0">v1.0</see>.</remarks>
 	[GeneratedCode("MtconnectTranspiler.Sinks.CSharp.Adapter", "0.0.14.0")]
 	public partial class Execution : EventValue
     {
@@ -23,46 +24,55 @@ namespace Mtconnect.AdapterInterface.DataItemValues
         /// <summary>
 		﻿/// <see cref="Component">Component</see> is ready to execute instructions.  It is currently idle.
         /// </summary>
+		/// <remarks>Introduced in <see href="https://model.mtconnect.org/#_Version_1.0">v1.0</see>.</remarks>
 		[ObservationalValue(typeof(ExecutionValues))]
         public static Execution READY => new Execution(nameof(ExecutionValues.READY));
         /// <summary>
 		﻿/// <see cref="Component">Component</see> is actively executing an instruction.
         /// </summary>
+		/// <remarks>Introduced in <see href="https://model.mtconnect.org/#_Version_1.0">v1.0</see>.</remarks>
 		[ObservationalValue(typeof(ExecutionValues))]
         public static Execution ACTIVE => new Execution(nameof(ExecutionValues.ACTIVE));
         /// <summary>
 		﻿/// <see cref="Component">Component</see> suspends the execution of the program due to an external signal.  Action is required to resume execution.
         /// </summary>
+		/// <remarks>Introduced in <see href="https://model.mtconnect.org/#_Version_1.0">v1.0</see>.</remarks>
 		[ObservationalValue(typeof(ExecutionValues))]
         public static Execution INTERRUPTED => new Execution(nameof(ExecutionValues.INTERRUPTED));
         /// <summary>
 		﻿/// motion of the active axes are commanded to stop at their current position.
         /// </summary>
+		/// <remarks>Introduced in <see href="https://model.mtconnect.org/#_Version_1.3">v1.3</see>.</remarks>
 		[ObservationalValue(typeof(ExecutionValues))]
         public static Execution FEED_HOLD => new Execution(nameof(ExecutionValues.FEED_HOLD));
         /// <summary>
 		﻿/// <see cref="Component">Component</see> program is not <c>READY</c> to execute.
         /// </summary>
+		/// <remarks>Introduced in <see href="https://model.mtconnect.org/#_Version_1.0">v1.0</see>.</remarks>
 		[ObservationalValue(typeof(ExecutionValues))]
         public static Execution STOPPED => new Execution(nameof(ExecutionValues.STOPPED));
         /// <summary>
 		﻿/// command from the program has intentionally interrupted execution.  The <see cref="Component">Component</see> <b>MAY</b> have another state that indicates if the execution is interrupted or the execution ignores the interrupt instruction.
         /// </summary>
+		/// <remarks>Introduced in <see href="https://model.mtconnect.org/#_Version_1.3">v1.3</see>.</remarks>
 		[ObservationalValue(typeof(ExecutionValues))]
         public static Execution OPTIONAL_STOP => new Execution(nameof(ExecutionValues.OPTIONAL_STOP));
         /// <summary>
 		﻿/// command from the program has intentionally interrupted execution.  Action is required to resume execution.
         /// </summary>
+		/// <remarks>Introduced in <see href="https://model.mtconnect.org/#_Version_1.3">v1.3</see>.</remarks>
 		[ObservationalValue(typeof(ExecutionValues))]
         public static Execution PROGRAM_STOPPED => new Execution(nameof(ExecutionValues.PROGRAM_STOPPED));
         /// <summary>
 		﻿/// program completed execution.
         /// </summary>
+		/// <remarks>Introduced in <see href="https://model.mtconnect.org/#_Version_1.3">v1.3</see>.</remarks>
 		[ObservationalValue(typeof(ExecutionValues))]
         public static Execution PROGRAM_COMPLETED => new Execution(nameof(ExecutionValues.PROGRAM_COMPLETED));
         /// <summary>
 		﻿/// <see cref="Component">Component</see> suspends execution while a secondary operation executes.  Execution resumes automatically once the secondary operation completes.
         /// </summary>
+		/// <remarks>Introduced in <see href="https://model.mtconnect.org/#_Version_1.5">v1.5</see>.</remarks>
 		[ObservationalValue(typeof(ExecutionValues))]
         public static Execution WAIT => new Execution(nameof(ExecutionValues.WAIT));
 		

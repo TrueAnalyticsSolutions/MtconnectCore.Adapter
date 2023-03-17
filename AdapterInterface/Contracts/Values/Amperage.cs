@@ -12,7 +12,9 @@ namespace Mtconnect.AdapterInterface.DataItemValues
 	/// <summary>
 	/// A value type for Amperage to be used in a <see cref="IAdapterDataModel" /> implementation. View in the MTConnect Model browser <seealso href="https://model.mtconnect.org/#Enumeration__">model.mtconnect.org</seealso>
 	﻿	/// </summary>
-	[Obsolete("Deprecated according to https://model.mtconnect.org/ in MtconnectVersions.V_1_6_0")]
+	/// <remarks>Introduced in <see href="https://model.mtconnect.org/#_Version_1.0">v1.0</see>.</remarks>
+	/// <remarks>Deprecated in <see href="https://model.mtconnect.org/#_Version_1.6">v1.6</see>.</remarks>
+	[Obsolete("Deprecated in v1.6 according to https://model.mtconnect.org/#_Version_1.6")]
 	[GeneratedCode("MtconnectTranspiler.Sinks.CSharp.Adapter", "0.0.14.0")]
 	public partial class Amperage : SampleValue
     {

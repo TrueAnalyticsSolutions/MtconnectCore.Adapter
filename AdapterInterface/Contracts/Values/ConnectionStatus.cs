@@ -10,8 +10,9 @@ using Mtconnect.AdapterInterface.DataItemValues;
 namespace Mtconnect.AdapterInterface.DataItemValues
 {
 	/// <summary>
-	/// A value type for ConnectionStatus to be used in a <see cref="IAdapterDataModel" /> implementation. View in the MTConnect Model browser <seealso href="https://model.mtconnect.org/#Enumeration__">model.mtconnect.org</seealso>
+	/// A value type for ConnectionStatus to be used in a <see cref="IAdapterDataModel" /> implementation. View in the MTConnect Model browser <seealso href="https://model.mtconnect.org/#Enumeration___19_0_3_68e0225_1605104600701_22176_1030">model.mtconnect.org</seealso>
 	﻿	/// </summary>
+	/// <remarks>Introduced in <see href="https://model.mtconnect.org/#_Version_1.7">v1.7</see>.</remarks>
 	[GeneratedCode("MtconnectTranspiler.Sinks.CSharp.Adapter", "0.0.14.0")]
 	public partial class ConnectionStatus : EventValue
     {
@@ -23,16 +24,19 @@ namespace Mtconnect.AdapterInterface.DataItemValues
         /// <summary>
 		﻿/// no connection at all.
         /// </summary>
+		/// <remarks>Introduced in <see href="https://model.mtconnect.org/#_Version_1.7">v1.7</see>.</remarks>
 		[ObservationalValue(typeof(ConnectionStatusValues))]
         public static ConnectionStatus CLOSED => new ConnectionStatus(nameof(ConnectionStatusValues.CLOSED));
         /// <summary>
 		﻿/// <i>agent</i> is waiting for a connection request from an <i>adapter</i>.
         /// </summary>
+		/// <remarks>Introduced in <see href="https://model.mtconnect.org/#_Version_1.7">v1.7</see>.</remarks>
 		[ObservationalValue(typeof(ConnectionStatusValues))]
         public static ConnectionStatus LISTEN => new ConnectionStatus(nameof(ConnectionStatusValues.LISTEN));
         /// <summary>
 		﻿/// open connection.  The normal state for the data transfer phase of the connection.
         /// </summary>
+		/// <remarks>Introduced in <see href="https://model.mtconnect.org/#_Version_1.7">v1.7</see>.</remarks>
 		[ObservationalValue(typeof(ConnectionStatusValues))]
         public static ConnectionStatus ESTABLISHED => new ConnectionStatus(nameof(ConnectionStatusValues.ESTABLISHED));
 		

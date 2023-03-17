@@ -10,9 +10,11 @@ using Mtconnect.AdapterInterface.DataItemValues;
 namespace Mtconnect.AdapterInterface.DataItemValues
 {
 	/// <summary>
-	/// A value type for Direction to be used in a <see cref="IAdapterDataModel" /> implementation. View in the MTConnect Model browser <seealso href="https://model.mtconnect.org/#Enumeration__">model.mtconnect.org</seealso>
+	/// A value type for Direction to be used in a <see cref="IAdapterDataModel" /> implementation. View in the MTConnect Model browser <seealso href="https://model.mtconnect.org/#Enumeration___19_0_3_68e0225_1643977882360_173549_1229">model.mtconnect.org</seealso>
 	﻿	/// </summary>
-	[Obsolete("Deprecated according to https://model.mtconnect.org/ in MtconnectVersions.V_1_4_0")]
+	/// <remarks>Introduced in <see href="https://model.mtconnect.org/#_Version_1.0">v1.0</see>.</remarks>
+	/// <remarks>Deprecated in <see href="https://model.mtconnect.org/#_Version_1.4">v1.4</see>.</remarks>
+	[Obsolete("Deprecated in v1.4 according to https://model.mtconnect.org/#_Version_1.4")]
 	[GeneratedCode("MtconnectTranspiler.Sinks.CSharp.Adapter", "0.0.14.0")]
 	public partial class Direction : EventValue
     {
@@ -24,23 +26,31 @@ namespace Mtconnect.AdapterInterface.DataItemValues
         /// <summary>
 		﻿/// clockwise rotation using the right-hand rule.
         /// </summary>
-		[Obsolete("Deprecated according to https://model.mtconnect.org/ in MtconnectVersions.V_1_4_0")]
+		/// <remarks>Introduced in <see href="https://model.mtconnect.org/#_Version_1.0">v1.0</see>.</remarks>
+		/// <remarks>Deprecated in <see href="https://model.mtconnect.org/#_Version_1.4">v1.4</see>.</remarks>
+		[Obsolete("Deprecated in v1.4 according to https://model.mtconnect.org/#_Version_1.4")]
 		[ObservationalValue(typeof(DirectionValues))]
         public static Direction CLOCKWISE => new Direction(nameof(DirectionValues.CLOCKWISE));
         /// <summary>
 		﻿/// counter-clockwise rotation using the right-hand rule.
         /// </summary>
-		[Obsolete("Deprecated according to https://model.mtconnect.org/ in MtconnectVersions.V_1_4_0")]
+		/// <remarks>Introduced in <see href="https://model.mtconnect.org/#_Version_1.0">v1.0</see>.</remarks>
+		/// <remarks>Deprecated in <see href="https://model.mtconnect.org/#_Version_1.4">v1.4</see>.</remarks>
+		[Obsolete("Deprecated in v1.4 according to https://model.mtconnect.org/#_Version_1.4")]
 		[ObservationalValue(typeof(DirectionValues))]
         public static Direction COUNTER_CLOCKWISE => new Direction(nameof(DirectionValues.COUNTER_CLOCKWISE));
         /// <summary>
 		﻿        /// </summary>
-		[Obsolete("Deprecated according to https://model.mtconnect.org/ in MtconnectVersions.V_1_4_0")]
+		/// <remarks>Introduced in <see href="https://model.mtconnect.org/#_Version_1.2">v1.2</see>.</remarks>
+		/// <remarks>Deprecated in <see href="https://model.mtconnect.org/#_Version_1.4">v1.4</see>.</remarks>
+		[Obsolete("Deprecated in v1.4 according to https://model.mtconnect.org/#_Version_1.4")]
 		[ObservationalValue(typeof(DirectionValues))]
         public static Direction POSITIVE => new Direction(nameof(DirectionValues.POSITIVE));
         /// <summary>
 		﻿        /// </summary>
-		[Obsolete("Deprecated according to https://model.mtconnect.org/ in MtconnectVersions.V_1_4_0")]
+		/// <remarks>Introduced in <see href="https://model.mtconnect.org/#_Version_1.2">v1.2</see>.</remarks>
+		/// <remarks>Deprecated in <see href="https://model.mtconnect.org/#_Version_1.4">v1.4</see>.</remarks>
+		[Obsolete("Deprecated in v1.4 according to https://model.mtconnect.org/#_Version_1.4")]
 		[ObservationalValue(typeof(DirectionValues))]
         public static Direction NEGATIVE => new Direction(nameof(DirectionValues.NEGATIVE));
 		

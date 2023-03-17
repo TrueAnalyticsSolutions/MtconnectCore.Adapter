@@ -19,26 +19,32 @@ namespace Mtconnect.AdapterInterface.DataItemTypes
 		/// <summary>
 		﻿/// {{def(ConditionEnum:ACTUATOR)}}
 		/// </summary>
+		/// <remarks>Introduced in <see href="https://model.mtconnect.org/#_Version_1.1">v1.1</see>.</remarks>
 		ACTUATOR,
 		/// <summary>
 		﻿/// {{def(ConditionEnum:COMMUNICATIONS)}}
 		/// </summary>
+		/// <remarks>Introduced in <see href="https://model.mtconnect.org/#_Version_1.1">v1.1</see>.</remarks>
 		COMMUNICATIONS,
 		/// <summary>
 		﻿/// {{def(ConditionEnum:DATA_RANGE)}}
 		/// </summary>
+		/// <remarks>Introduced in <see href="https://model.mtconnect.org/#_Version_1.2">v1.2</see>.</remarks>
 		DATA_RANGE,
 		/// <summary>
 		﻿/// {{def(ConditionEnum:LOGIC_PROGRAM)}}
 		/// </summary>
+		/// <remarks>Introduced in <see href="https://model.mtconnect.org/#_Version_1.1">v1.1</see>.</remarks>
 		LOGIC_PROGRAM,
 		/// <summary>
 		﻿/// {{def(ConditionEnum:MOTION_PROGRAM)}}
 		/// </summary>
+		/// <remarks>Introduced in <see href="https://model.mtconnect.org/#_Version_1.1">v1.1</see>.</remarks>
 		MOTION_PROGRAM,
 		/// <summary>
 		﻿/// {{def(ConditionEnum:SYSTEM)}}
 		/// </summary>
+		/// <remarks>Introduced in <see href="https://model.mtconnect.org/#_Version_1.1">v1.1</see>.</remarks>
 		SYSTEM,
 	}
 }

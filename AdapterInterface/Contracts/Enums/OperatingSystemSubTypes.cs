@@ -7,8 +7,9 @@ using Mtconnect.AdapterInterface.Contracts.Attributes;
 namespace Mtconnect.AdapterInterface.DataItemTypes
 {
 	/// <summary>
-	/// View in the MTConnect Model browser <seealso href="https://model.mtconnect.org/#Enumeration__">model.mtconnect.org</seealso>
+	/// View in the MTConnect Model browser <seealso href="https://model.mtconnect.org/#Enumeration___19_0_3_91b028d_1587749356759_918178_2174">model.mtconnect.org</seealso>
 	﻿	/// </summary>
+	/// <remarks>Introduced in <see href="https://model.mtconnect.org/#_Version_1.6">v1.6</see>.</remarks>
 	[GeneratedCode("MtconnectTranspiler.Sinks.CSharp.Adapter", "0.0.14.0")]
 	public enum OperatingSystemSubTypes
 	{
@@ -19,22 +20,27 @@ namespace Mtconnect.AdapterInterface.DataItemTypes
 		/// <summary>
 		﻿/// license code to validate or activate the hardware or software.
 		/// </summary>
+		/// <remarks>Introduced in <see href="https://model.mtconnect.org/#_Version_1.6">v1.6</see>.</remarks>
 		LICENSE,
 		/// <summary>
 		﻿/// version of the hardware or software.
 		/// </summary>
+		/// <remarks>Introduced in <see href="https://model.mtconnect.org/#_Version_1.6">v1.6</see>.</remarks>
 		VERSION,
 		/// <summary>
 		﻿/// date the hardware or software was released for general use.  
 		/// </summary>
+		/// <remarks>Introduced in <see href="https://model.mtconnect.org/#_Version_1.6">v1.6</see>.</remarks>
 		RELEASE_DATE,
 		/// <summary>
 		﻿/// date the hardware or software was installed.
 		/// </summary>
+		/// <remarks>Introduced in <see href="https://model.mtconnect.org/#_Version_1.6">v1.6</see>.</remarks>
 		INSTALL_DATE,
 		/// <summary>
 		﻿/// corporate identity for the maker of the hardware or software.  
 		/// </summary>
+		/// <remarks>Introduced in <see href="https://model.mtconnect.org/#_Version_1.6">v1.6</see>.</remarks>
 		MANUFACTURER,
 	}
 }

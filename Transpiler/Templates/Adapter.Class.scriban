@@ -1,10 +1,19 @@
+{{~ nversion_slim = (source?.normative_version | string.slice 20 3) | string.replace "_" "."
+dversion_slim = (source?.deprecated_version | string.slice 20 3) | string.replace "_" "." ~}}
 using System;
 
 namespace {{ to_pascal_code source.namespace }} {
 	/// <summary>
-	/// View in the MTConnect Model browser <seealso href="https://model.mtconnect.org/#Structure__{{ source.id }}">model.mtconnect.org</seealso>
+	/// View in the MTConnect Model browser <seealso href="https://model.mtconnect.org/#Structure__{{ source.reference_id }}">model.mtconnect.org</seealso>
 	{{ source?.summary }}
 	/// </summary>
+	{{~ if nversion_slim != "" ~}}
+	/// <remarks>Introduced in <see href="https://model.mtconnect.org/#_Version_{{ nversion_slim }}">v{{ nversion_slim }}</see>.</remarks>
+	{{~ end ~}}
+	{{~ if dversion_slim != "" ~}}
+	/// <remarks>Deprecated in <see href="https://model.mtconnect.org/#_Version_{{ dversion_slim }}">v{{ dversion_slim }}</see>.</remarks>
+	[Obsolete("Deprecated in v{{ dversion_slim }} according to https://model.mtconnect.org/#_Version_{{ dversion_slim }}")]
+	{{~ end ~}}
 	[GeneratedCode("MtconnectTranspiler.Sinks.CSharp.Adapter", "{{ version }}")]
 	public {{ source.modifier }} class {{ source.name }} {
 	{{~ for item in source.items ~}}

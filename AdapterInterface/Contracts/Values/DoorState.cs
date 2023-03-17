@@ -10,8 +10,9 @@ using Mtconnect.AdapterInterface.DataItemValues;
 namespace Mtconnect.AdapterInterface.DataItemValues
 {
 	/// <summary>
-	/// A value type for DoorState to be used in a <see cref="IAdapterDataModel" /> implementation. View in the MTConnect Model browser <seealso href="https://model.mtconnect.org/#Enumeration__">model.mtconnect.org</seealso>
+	/// A value type for DoorState to be used in a <see cref="IAdapterDataModel" /> implementation. View in the MTConnect Model browser <seealso href="https://model.mtconnect.org/#Enumeration___19_0_3_68e0225_1632488689397_578974_93">model.mtconnect.org</seealso>
 	﻿	/// </summary>
+	/// <remarks>Introduced in <see href="https://model.mtconnect.org/#_Version_1.1">v1.1</see>.</remarks>
 	[GeneratedCode("MtconnectTranspiler.Sinks.CSharp.Adapter", "0.0.14.0")]
 	public partial class DoorState : EventValue
     {
@@ -23,16 +24,19 @@ namespace Mtconnect.AdapterInterface.DataItemValues
         /// <summary>
 		﻿/// <see cref="Door">Door</see> is open to the point of a positive confirmation.
         /// </summary>
+		/// <remarks>Introduced in <see href="https://model.mtconnect.org/#_Version_1.1">v1.1</see>.</remarks>
 		[ObservationalValue(typeof(DoorStateValues))]
         public static DoorState OPEN => new DoorState(nameof(DoorStateValues.OPEN));
         /// <summary>
 		﻿/// <see cref="Door">Door</see> is closed to the point of a positive confirmation.
         /// </summary>
+		/// <remarks>Introduced in <see href="https://model.mtconnect.org/#_Version_1.1">v1.1</see>.</remarks>
 		[ObservationalValue(typeof(DoorStateValues))]
         public static DoorState CLOSED => new DoorState(nameof(DoorStateValues.CLOSED));
         /// <summary>
 		﻿/// <see cref="Door">Door</see> is not closed to the point of a positive confirmation and not open to the point of a positive confirmation.   It is in an intermediate position.
         /// </summary>
+		/// <remarks>Introduced in <see href="https://model.mtconnect.org/#_Version_1.2">v1.2</see>.</remarks>
 		[ObservationalValue(typeof(DoorStateValues))]
         public static DoorState UNLATCHED => new DoorState(nameof(DoorStateValues.UNLATCHED));
 		
