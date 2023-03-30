@@ -14,9 +14,9 @@
   </ItemGroup>
 
   <ItemGroup>
-    <PackageReference Include="Consoul" Version="1.6.2" />
-    <PackageReference Include="MtconnectTranspiler" Version="0.0.5" />
-    <PackageReference Include="MtconnectTranspiler.Sinks.CSharp" Version="0.0.14" />
+    <PackageReference Include="Consoul" Version="1.6.3" />
+    <PackageReference Include="MtconnectTranspiler" Version="1.0.4" />
+    <PackageReference Include="MtconnectTranspiler.Sinks.CSharp" Version="1.0.2" />
   </ItemGroup>
 
   <ItemGroup>

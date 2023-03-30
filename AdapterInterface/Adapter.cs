@@ -55,7 +55,7 @@ namespace Mtconnect
         /// <summary>
         /// Reference to the collection of <see cref="DataItem"/>s being tracked.
         /// </summary>
-        protected IEnumerable<DataItem> DataItems => _dataItems;
+        public IEnumerable<DataItem> DataItems => _dataItems;
 
         /// <summary>
         /// A queue of <see cref="DataItem"/> changed values that have not been sent to clients.

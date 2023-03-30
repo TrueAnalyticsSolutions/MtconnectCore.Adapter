@@ -34,8 +34,6 @@ namespace Mtconnect.AdapterInterface.Contracts.Attributes
         /// </summary>
         /// <param name="name"><inheritdoc cref="DataItemAttribute.Name" path="/summary"/></param>
         /// <param name="description"><inheritdoc cref="DataItemAttribute.Description" path="/summary"/></param>
-        /// <param name="type"><inheritdoc cref="DataItemAttribute.Type" path="/summary"/></param>
-        /// <param name="subtype"><inheritdoc cref="DataItemAttribute.SubType" path="/summary"/></param>
         public DataItemAttribute(string name, string description = null)
         {
             Name = name;

@@ -7,11 +7,19 @@ namespace {{ to_pascal_code source.namespace }} {
 	/// View in the MTConnect Model browser <seealso href="https://model.mtconnect.org/#Structure__{{ source.reference_id }}">model.mtconnect.org</seealso>
 	{{ source?.summary }}
 	/// </summary>
+	{{~ if nversion_slim != "" || dversion_slim != "" ~}}
+	/// <remarks>
+	/// <list type="bullet">
 	{{~ if nversion_slim != "" ~}}
-	/// <remarks>Introduced in <see href="https://model.mtconnect.org/#_Version_{{ nversion_slim }}">v{{ nversion_slim }}</see>.</remarks>
+	/// <item><b>Introduced</b>: <see href="https://model.mtconnect.org/#_Version_{{ nversion_slim }}">v{{ nversion_slim }}</see></item>
 	{{~ end ~}}
 	{{~ if dversion_slim != "" ~}}
-	/// <remarks>Deprecated in <see href="https://model.mtconnect.org/#_Version_{{ dversion_slim }}">v{{ dversion_slim }}</see>.</remarks>
+	/// <item><b>Deprecated</b>: <see href="https://model.mtconnect.org/#_Version_{{ dversion_slim }}">v{{ dversion_slim }}</see></item>
+	{{~ end ~}}
+	/// </list>
+	/// </remarks>
+	{{~ end ~}}
+	{{~ if dversion_slim != "" ~}}
 	[Obsolete("Deprecated in v{{ dversion_slim }} according to https://model.mtconnect.org/#_Version_{{ dversion_slim }}")]
 	{{~ end ~}}
 	[GeneratedCode("MtconnectTranspiler.Sinks.CSharp.Adapter", "{{ version }}")]

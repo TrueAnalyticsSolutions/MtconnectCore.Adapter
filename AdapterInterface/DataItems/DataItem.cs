@@ -4,6 +4,7 @@ using Mtconnect.AdapterInterface.DataItemTypes;
 using System;
 using System.Collections.Generic;
 using System.Data;
+using System.Reflection;
 
 namespace Mtconnect.AdapterInterface.DataItems
 {
@@ -23,6 +24,11 @@ namespace Mtconnect.AdapterInterface.DataItems
         /// Occurrs when the value of a DataItem has changed.
         /// </summary>
         public event DataItemChangedHandler OnDataItemChanged;
+
+        /// <summary>
+        /// Reference to the type of source model (see <see cref="IAdapterDataModel"/>) this DataItem was constructed from.
+        /// </summary>
+        public PropertyInfo ModelType { get; internal set; } = null;
 
         /// <summary>
         /// Refers to the category for the MTConnect observational type.
@@ -112,6 +118,11 @@ namespace Mtconnect.AdapterInterface.DataItems
                 SubTypeValidated = false;
             }
         }
+
+        /// <summary>
+        /// Reference to the <c>nativeUnits</c> of the DataItem
+        /// </summary>
+        public virtual string Units { get; set; }
 
         /// <summary>
         /// The name of the data item.

@@ -1,47 +1,45 @@
-﻿using MtconnectTranspiler.Model;
-using CSharpModels = MtconnectTranspiler.Sinks.CSharp.Models;
+﻿using CSharpModels = MtconnectTranspiler.Sinks.CSharp.Models;
 using MtconnectTranspiler.Sinks.CSharp.Attributes;
 using MtconnectTranspiler.Xmi.UML;
+using MtconnectTranspiler.Xmi;
+using MtconnectTranspiler.Contracts;
 
 namespace AdapterTranspiler.Models
 {
     [ScribanTemplate("Adapter.ComponentInterface.scriban")]
     public class AdapterComponentInterface : CSharpModels.Class
     {
-        public string ReferenceId { get; set; }
-
         public List<UmlClass> SubComponents { get; set; } = new List<UmlClass>();
 
         public List<UmlClass> DataItems { get; set; } = new List<UmlClass>();
 
-        public AdapterComponentInterface(MTConnectModel model, UmlClass source) : base(model, source)
+        public AdapterComponentInterface(XmiDocument model, UmlClass source) : base(model, source)
         {
-            var componentTypes = model.DeviceModel.SubModels
-                .FirstOrDefault(o => o.Name == "Components")
-                .SubModels
-                .FirstOrDefault(o => o.Name == "Component Types");
-            var dataItems = model.ObservationInformationModel
-                    .ObservationTypes
-                    .Elements
-                    .Where(o => o is UmlPackage)
-                    .Select(o => o as UmlPackage)
-                    .SelectMany(o => o.Elements)
-                    .Where(o => o is UmlClass)
-                    .Select(o => o as UmlClass);
-            foreach (var property in source.Properties)
+            var componentTypes = MTConnectHelper
+                .JumpToPackage(model!, MTConnectHelper.PackageNavigationTree.DeviceInformationModel.Components.ComponentTypes);
+            var dataItems = MTConnectHelper
+                .JumpToPackage(model!, MTConnectHelper.PackageNavigationTree.ObservationInformationModel.ObservationTypes)?
+                .Packages
+                .SelectMany(o => o.Classes)
+                .Where(o => o != null);
+            if (source.Properties != null)
             {
-                var dataItem = dataItems
-                    .Where(o => o.Id == property.PropertyType)
-                    .FirstOrDefault();
-                if (dataItem != null)
+                foreach (var property in source.Properties)
                 {
-                    DataItems.Add(dataItem);
-                } else
-                {
-                    var subComponent = componentTypes.Classes.FirstOrDefault(o => o.Id == property.PropertyType);
-                    if (subComponent != null)
+                    var dataItem = dataItems
+                        .Where(o => o.Id == property.PropertyType)
+                        .FirstOrDefault();
+                    if (dataItem != null)
                     {
-                        SubComponents.Add(subComponent);
+                        DataItems.Add(dataItem);
+                    }
+                    else
+                    {
+                        var subComponent = componentTypes.Classes.FirstOrDefault(o => o.Id == property.PropertyType);
+                        if (subComponent != null)
+                        {
+                            SubComponents.Add(subComponent);
+                        }
                     }
                 }
             }

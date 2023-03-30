@@ -1,5 +1,6 @@
 {{~ nversion_slim = (source?.normative_version | string.slice 20 3) | string.replace "_" "."
 dversion_slim = (source?.deprecated_version | string.slice 20 3) | string.replace "_" "." ~}}
+using Mtconnect.AdapterInterface.Contracts;
 using Mtconnect.AdapterInterface.DataItemValues;
 using System;
 using System.CodeDom.Compiler;
@@ -17,7 +18,7 @@ namespace {{ to_pascal_code source.namespace }} {
 	[Obsolete("Deprecated in v{{ dversion_slim }} according to https://model.mtconnect.org/#_Version_{{ dversion_slim }}")]
 	{{~ end ~}}
 	[GeneratedCode("MtconnectTranspiler.Sinks.CSharp.Adapter", "{{ version }}")]
-	public interface I{{ source.name }} : IAdapterDataModel {
+	public interface I{{ source.name }} : IAdapterDataModel, IComponentModel {
 	{{~ for sub_component in source.sub_components ~}}
 		/// <inheritdoc cref="I{{ sub_component.name }}" />
 		I{{ sub_component.name }} {{ sub_component.name }} { get; set; }

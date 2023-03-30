@@ -3,9 +3,9 @@
     /// <summary>
     /// A generic implementation of an Event DataItem value type.
     /// </summary>
-    public abstract class EventValue : DataItemValue<string>
+    public abstract class EventValue : DataItemValue<object>
     {
         /// <inheritdoc />
-        protected EventValue(string value) : base(value) { }
+        protected EventValue(object value) : base(value) { }
     }
 }

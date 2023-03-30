@@ -14,12 +14,23 @@ namespace {{ to_pascal_code source.namespace }}
 	/// <summary>
 	/// A value type for {{ to_pascal_case source.name }} to be used in a <see cref="IAdapterDataModel" /> implementation. View in the MTConnect Model browser <seealso href="https://model.mtconnect.org/#Enumeration__{{ source.reference_id }}">model.mtconnect.org</seealso>
 	{{ include 'UmlCommentsSummaryContent.scriban' source?.summary ~}}
+	{{~ if source.expected_units != null && source.expected_units != "" ~}}
+	/// <br /><br/><b>NOTE</b>: Expected units are <i>{{ source.expected_units }}</i>
+	{{~ end ~}}
 	/// </summary>
+	{{~ if nversion_slim != "" || dversion_slim != "" ~}}
+	/// <remarks>
+	/// <list type="bullet">
 	{{~ if nversion_slim != "" ~}}
-	/// <remarks>Introduced in <see href="https://model.mtconnect.org/#_Version_{{ nversion_slim }}">v{{ nversion_slim }}</see>.</remarks>
+	/// <item><b>Introduced</b>: <see href="https://model.mtconnect.org/#_Version_{{ nversion_slim }}">v{{ nversion_slim }}</see></item>
 	{{~ end ~}}
 	{{~ if dversion_slim != "" ~}}
-	/// <remarks>Deprecated in <see href="https://model.mtconnect.org/#_Version_{{ dversion_slim }}">v{{ dversion_slim }}</see>.</remarks>
+	/// <item><b>Deprecated</b>: <see href="https://model.mtconnect.org/#_Version_{{ dversion_slim }}">v{{ dversion_slim }}</see></item>
+	{{~ end ~}}
+	/// </list>
+	/// </remarks>
+	{{~ end ~}}
+	{{~ if dversion_slim != "" ~}}
 	[Obsolete("Deprecated in v{{ dversion_slim }} according to https://model.mtconnect.org/#_Version_{{ dversion_slim }}")]
 	{{~ end ~}}
 	[GeneratedCode("MtconnectTranspiler.Sinks.CSharp.Adapter", "{{ version }}")]
@@ -36,11 +47,19 @@ d_item_version_slim = (item?.deprecated_version | string.slice 20 3) | string.re
         /// <summary>
 		{{ include 'UmlCommentsSummaryContent.scriban' item?.summary ~}}
         /// </summary>
+		{{~ if n_item_version_slim != "" || d_item_version_slim != "" ~}}
+		/// <remarks>
+		/// <list type="bullet">
 		{{~ if n_item_version_slim != "" ~}}
-		/// <remarks>Introduced in <see href="https://model.mtconnect.org/#_Version_{{ n_item_version_slim }}">v{{ n_item_version_slim }}</see>.</remarks>
+		/// <item><b>Introduced</b>: <see href="https://model.mtconnect.org/#_Version_{{ n_item_version_slim }}">v{{ n_item_version_slim }}</see></item>
 		{{~ end ~}}
 		{{~ if d_item_version_slim != "" ~}}
-		/// <remarks>Deprecated in <see href="https://model.mtconnect.org/#_Version_{{ d_item_version_slim }}">v{{ d_item_version_slim }}</see>.</remarks>
+		/// <item><b>Deprecated</b>: <see href="https://model.mtconnect.org/#_Version_{{ d_item_version_slim }}">v{{ d_item_version_slim }}</see></item>
+		{{~ end ~}}
+		/// </list>
+		/// </remarks>
+		{{~ end ~}}
+		{{~ if d_item_version_slim != "" ~}}
 		[Obsolete("Deprecated in v{{ d_item_version_slim }} according to https://model.mtconnect.org/#_Version_{{ d_item_version_slim }}")]
 		{{~ end ~}}
 		[ObservationalValue(typeof({{ to_pascal_case source.name }}Values))]

@@ -199,13 +199,13 @@ namespace Mtconnect
                         // Now add the DataItem if it was constructed
                         if (dataItem != null)
                         {
+                            dataItem.ModelType = property;
                             if (timestampProperty != null)
                             {
                                 dataItem.HasTimestampOverride = true;
                             }
                             dataItemAdded = adapter.TryAddDataItem(dataItem, !isCached);
                         }
-
                     }
                     catch (Exception ex)
                     {
