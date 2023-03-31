@@ -197,7 +197,8 @@ namespace AdapterTranspiler
                             item.Name = ScribanHelperMethods.ToUpperSnakeCode(item.Name[(item.Name.IndexOf(".") + 1)..]);
 
                             // Register type as having a subType in the Value Type class
-                            if (typeValues != null && !typeValues.SubTypes.Contains(item.Name)) typeValues.SubTypes.Add(item.Name);
+                            if (typeValues != null && !typeValues.SubTypes.Contains(item.Name))
+                                typeValues.SubTypes.Add(item.Name);
                         }
 
                         // Register the DataItem SubType Enum

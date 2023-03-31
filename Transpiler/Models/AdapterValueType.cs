@@ -22,7 +22,7 @@ namespace AdapterTranspiler.Models
             ValueType = valueType;
         }
 
-        public AdapterValueType(string category, string valueType, XmiDocument model, UmlClass source) : base(model, source, source.Name)
+        public AdapterValueType(string category, string valueType, XmiDocument model, XmiElement source) : base(model, source, source.Name)
         {
             Category = category;
             ValueType = valueType;
