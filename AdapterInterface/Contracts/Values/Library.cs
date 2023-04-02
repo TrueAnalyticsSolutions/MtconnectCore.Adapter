@@ -6,16 +6,27 @@ using Mtconnect.AdapterInterface.Contracts.Attributes;
 using Mtconnect.AdapterInterface.Contracts;
 using Mtconnect.AdapterInterface.DataItems;
 using Mtconnect.AdapterInterface.DataItemValues;
+using Mtconnect.AdapterInterface.Units;
 
 namespace Mtconnect.AdapterInterface.DataItemValues
 {
 	/// <summary>
 	/// A value type for Library to be used in a <see cref="IAdapterDataModel" /> implementation. View in the MTConnect Model browser <seealso href="https://model.mtconnect.org/#Enumeration__">model.mtconnect.org</seealso>
 	﻿	/// </summary>
-	/// <remarks>Introduced in <see href="https://model.mtconnect.org/#_Version_1.6">v1.6</see>.</remarks>
-	[GeneratedCode("MtconnectTranspiler.Sinks.CSharp.Adapter", "0.0.14.0")]
+	/// <remarks>
+	/// <list type="bullet">
+	/// <item><b>Introduced</b>: <see href="https://model.mtconnect.org/#_Version_1.6">v1.6</see></item>
+	/// </list>
+	/// </remarks>
+	[GeneratedCode("MtconnectTranspiler.Sinks.CSharp.Adapter", "1.0.5.0")]
 	public partial class Library : EventValue
     {
+        /// <inheritdoc />
+        public override string ObservationalType => nameof(DataItemTypes.EventTypes.LIBRARY);
+
+		/// <inheritdoc />
+        public override string ObservationalSubType => null;
+
 		/// <summary>
 		/// Constructs a new value type for the Library EVENT Data Item.
 		/// </summary>
@@ -36,6 +47,9 @@ namespace Mtconnect.AdapterInterface.DataItemValues
 		/// </summary>
 		public partial class VERSION : Library
 		{
+			/// <inheritdoc />
+            public override string ObservationalSubType => nameof(DataItemTypes.LibrarySubTypes.VERSION);
+
 			/// <summary>
 			/// Constructs a new value type for VERSION.
 			/// </summary>
@@ -55,6 +69,9 @@ namespace Mtconnect.AdapterInterface.DataItemValues
 		/// </summary>
 		public partial class RELEASEDATE : Library
 		{
+			/// <inheritdoc />
+            public override string ObservationalSubType => nameof(DataItemTypes.LibrarySubTypes.RELEASE_DATE);
+
 			/// <summary>
 			/// Constructs a new value type for RELEASE_DATE.
 			/// </summary>
@@ -74,6 +91,9 @@ namespace Mtconnect.AdapterInterface.DataItemValues
 		/// </summary>
 		public partial class MANUFACTURER : Library
 		{
+			/// <inheritdoc />
+            public override string ObservationalSubType => nameof(DataItemTypes.LibrarySubTypes.MANUFACTURER);
+
 			/// <summary>
 			/// Constructs a new value type for MANUFACTURER.
 			/// </summary>
@@ -93,6 +113,9 @@ namespace Mtconnect.AdapterInterface.DataItemValues
 		/// </summary>
 		public partial class LICENSE : Library
 		{
+			/// <inheritdoc />
+            public override string ObservationalSubType => nameof(DataItemTypes.LibrarySubTypes.LICENSE);
+
 			/// <summary>
 			/// Constructs a new value type for LICENSE.
 			/// </summary>
@@ -112,6 +135,9 @@ namespace Mtconnect.AdapterInterface.DataItemValues
 		/// </summary>
 		public partial class INSTALLDATE : Library
 		{
+			/// <inheritdoc />
+            public override string ObservationalSubType => nameof(DataItemTypes.LibrarySubTypes.INSTALL_DATE);
+
 			/// <summary>
 			/// Constructs a new value type for INSTALL_DATE.
 			/// </summary>

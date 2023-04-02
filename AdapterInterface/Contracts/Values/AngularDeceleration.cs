@@ -6,16 +6,28 @@ using Mtconnect.AdapterInterface.Contracts.Attributes;
 using Mtconnect.AdapterInterface.Contracts;
 using Mtconnect.AdapterInterface.DataItems;
 using Mtconnect.AdapterInterface.DataItemValues;
+using Mtconnect.AdapterInterface.Units;
 
 namespace Mtconnect.AdapterInterface.DataItemValues
 {
 	/// <summary>
 	/// A value type for AngularDeceleration to be used in a <see cref="IAdapterDataModel" /> implementation. View in the MTConnect Model browser <seealso href="https://model.mtconnect.org/#Enumeration__">model.mtconnect.org</seealso>
 	﻿	/// </summary>
-	/// <remarks>Introduced in <see href="https://model.mtconnect.org/#_Version_1.7">v1.7</see>.</remarks>
-	[GeneratedCode("MtconnectTranspiler.Sinks.CSharp.Adapter", "0.0.14.0")]
+	/// <remarks>
+	/// <list type="bullet">
+	/// <item><b>Introduced</b>: <see href="https://model.mtconnect.org/#_Version_1.7">v1.7</see></item>
+	/// <item><b>Units</b>: <see cref="MtconnectUnit.DEGREE_PER_SECOND_SQUARED" /></item>
+	/// </list>
+	/// </remarks>
+	[GeneratedCode("MtconnectTranspiler.Sinks.CSharp.Adapter", "1.0.5.0")]
 	public partial class AngularDeceleration : SampleValue
     {
+        /// <inheritdoc />
+        public override string ObservationalType => nameof(DataItemTypes.SampleTypes.ANGULAR_DECELERATION);
+
+		/// <inheritdoc />
+        public override string ObservationalSubType => null;
+
 		/// <summary>
 		/// Constructs a new value type for the AngularDeceleration EVENT Data Item.
 		/// </summary>
@@ -36,6 +48,9 @@ namespace Mtconnect.AdapterInterface.DataItemValues
 		/// </summary>
 		public partial class ACTUAL : AngularDeceleration
 		{
+			/// <inheritdoc />
+            public override string ObservationalSubType => nameof(DataItemTypes.AngularDecelerationSubTypes.ACTUAL);
+
 			/// <summary>
 			/// Constructs a new value type for ACTUAL.
 			/// </summary>
@@ -55,6 +70,9 @@ namespace Mtconnect.AdapterInterface.DataItemValues
 		/// </summary>
 		public partial class PROGRAMMED : AngularDeceleration
 		{
+			/// <inheritdoc />
+            public override string ObservationalSubType => nameof(DataItemTypes.AngularDecelerationSubTypes.PROGRAMMED);
+
 			/// <summary>
 			/// Constructs a new value type for PROGRAMMED.
 			/// </summary>
@@ -74,6 +92,9 @@ namespace Mtconnect.AdapterInterface.DataItemValues
 		/// </summary>
 		public partial class COMMANDED : AngularDeceleration
 		{
+			/// <inheritdoc />
+            public override string ObservationalSubType => nameof(DataItemTypes.AngularDecelerationSubTypes.COMMANDED);
+
 			/// <summary>
 			/// Constructs a new value type for COMMANDED.
 			/// </summary>

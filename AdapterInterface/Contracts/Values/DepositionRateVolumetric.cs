@@ -6,16 +6,28 @@ using Mtconnect.AdapterInterface.Contracts.Attributes;
 using Mtconnect.AdapterInterface.Contracts;
 using Mtconnect.AdapterInterface.DataItems;
 using Mtconnect.AdapterInterface.DataItemValues;
+using Mtconnect.AdapterInterface.Units;
 
 namespace Mtconnect.AdapterInterface.DataItemValues
 {
 	/// <summary>
 	/// A value type for DepositionRateVolumetric to be used in a <see cref="IAdapterDataModel" /> implementation. View in the MTConnect Model browser <seealso href="https://model.mtconnect.org/#Enumeration__">model.mtconnect.org</seealso>
 	﻿	/// </summary>
-	/// <remarks>Introduced in <see href="https://model.mtconnect.org/#_Version_1.5">v1.5</see>.</remarks>
-	[GeneratedCode("MtconnectTranspiler.Sinks.CSharp.Adapter", "0.0.14.0")]
+	/// <remarks>
+	/// <list type="bullet">
+	/// <item><b>Introduced</b>: <see href="https://model.mtconnect.org/#_Version_1.5">v1.5</see></item>
+	/// <item><b>Units</b>: <see cref="MtconnectUnit.CUBIC_MILLIMETER_PER_SECOND" /></item>
+	/// </list>
+	/// </remarks>
+	[GeneratedCode("MtconnectTranspiler.Sinks.CSharp.Adapter", "1.0.5.0")]
 	public partial class DepositionRateVolumetric : SampleValue
     {
+        /// <inheritdoc />
+        public override string ObservationalType => nameof(DataItemTypes.SampleTypes.DEPOSITION_RATE_VOLUMETRIC);
+
+		/// <inheritdoc />
+        public override string ObservationalSubType => null;
+
 		/// <summary>
 		/// Constructs a new value type for the DepositionRateVolumetric EVENT Data Item.
 		/// </summary>
@@ -36,6 +48,9 @@ namespace Mtconnect.AdapterInterface.DataItemValues
 		/// </summary>
 		public partial class ACTUAL : DepositionRateVolumetric
 		{
+			/// <inheritdoc />
+            public override string ObservationalSubType => nameof(DataItemTypes.DepositionRateVolumetricSubTypes.ACTUAL);
+
 			/// <summary>
 			/// Constructs a new value type for ACTUAL.
 			/// </summary>
@@ -55,6 +70,9 @@ namespace Mtconnect.AdapterInterface.DataItemValues
 		/// </summary>
 		public partial class COMMANDED : DepositionRateVolumetric
 		{
+			/// <inheritdoc />
+            public override string ObservationalSubType => nameof(DataItemTypes.DepositionRateVolumetricSubTypes.COMMANDED);
+
 			/// <summary>
 			/// Constructs a new value type for COMMANDED.
 			/// </summary>

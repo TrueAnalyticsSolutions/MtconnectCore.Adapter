@@ -5,6 +5,19 @@
     /// </summary>
     public interface IDataItemValue
     {
+        /// <summary>
+        /// Represents the <c>category</c> attribute
+        /// </summary>
+        string Category { get; }
 
+        /// <summary>
+        /// Represents the <c>type</c> attribute
+        /// </summary>
+        string ObservationalType { get; }
+
+        /// <summary>
+        /// Represents the <c>subType</c> attribute
+        /// </summary>
+        string ObservationalSubType { get; }
     }
 }

@@ -6,16 +6,27 @@ using Mtconnect.AdapterInterface.Contracts.Attributes;
 using Mtconnect.AdapterInterface.Contracts;
 using Mtconnect.AdapterInterface.DataItems;
 using Mtconnect.AdapterInterface.DataItemValues;
+using Mtconnect.AdapterInterface.Units;
 
 namespace Mtconnect.AdapterInterface.DataItemValues
 {
 	/// <summary>
 	/// A value type for LeakDetect to be used in a <see cref="IAdapterDataModel" /> implementation. View in the MTConnect Model browser <seealso href="https://model.mtconnect.org/#Enumeration___19_0_3_68e0225_1659073241126_204554_44">model.mtconnect.org</seealso>
 	﻿	/// </summary>
-	/// <remarks>Introduced in <see href="https://model.mtconnect.org/#_Version_2.1">v2.1</see>.</remarks>
-	[GeneratedCode("MtconnectTranspiler.Sinks.CSharp.Adapter", "0.0.14.0")]
+	/// <remarks>
+	/// <list type="bullet">
+	/// <item><b>Introduced</b>: <see href="https://model.mtconnect.org/#_Version_2.1">v2.1</see></item>
+	/// </list>
+	/// </remarks>
+	[GeneratedCode("MtconnectTranspiler.Sinks.CSharp.Adapter", "1.0.5.0")]
 	public partial class LeakDetect : EventValue
     {
+        /// <inheritdoc />
+        public override string ObservationalType => nameof(DataItemTypes.EventTypes.LEAK_DETECT);
+
+		/// <inheritdoc />
+        public override string ObservationalSubType => null;
+
 		/// <summary>
 		/// Constructs a new value type for the LeakDetect EVENT Data Item.
 		/// </summary>
@@ -24,13 +35,21 @@ namespace Mtconnect.AdapterInterface.DataItemValues
         /// <summary>
 		﻿/// leak is currently being detected.
         /// </summary>
-		/// <remarks>Introduced in <see href="https://model.mtconnect.org/#_Version_2.1">v2.1</see>.</remarks>
+		/// <remarks>
+		/// <list type="bullet">
+		/// <item><b>Introduced</b>: <see href="https://model.mtconnect.org/#_Version_2.1">v2.1</see></item>
+		/// </list>
+		/// </remarks>
 		[ObservationalValue(typeof(LeakDetectValues))]
         public static LeakDetect DETECTED => new LeakDetect(nameof(LeakDetectValues.DETECTED));
         /// <summary>
 		﻿/// leak is currently not being detected.
         /// </summary>
-		/// <remarks>Introduced in <see href="https://model.mtconnect.org/#_Version_2.1">v2.1</see>.</remarks>
+		/// <remarks>
+		/// <list type="bullet">
+		/// <item><b>Introduced</b>: <see href="https://model.mtconnect.org/#_Version_2.1">v2.1</see></item>
+		/// </list>
+		/// </remarks>
 		[ObservationalValue(typeof(LeakDetectValues))]
         public static LeakDetect NOT_DETECTED => new LeakDetect(nameof(LeakDetectValues.NOT_DETECTED));
 		

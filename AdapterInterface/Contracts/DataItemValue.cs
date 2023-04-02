@@ -10,6 +10,15 @@ namespace Mtconnect.AdapterInterface.Contracts
     {
         private T _value;
 
+        /// <inheritdoc />
+        public abstract string Category { get; }
+
+        /// <inheritdoc />
+        public abstract string ObservationalType { get; }
+
+        /// <inheritdoc />
+        public abstract string ObservationalSubType { get; }
+
         /// <summary>
         /// Constructs a new DataItem Value type.
         /// </summary>

@@ -6,30 +6,41 @@ using Mtconnect.AdapterInterface.Contracts.Attributes;
 using Mtconnect.AdapterInterface.Contracts;
 using Mtconnect.AdapterInterface.DataItems;
 using Mtconnect.AdapterInterface.DataItemValues;
+using Mtconnect.AdapterInterface.Units;
 
 namespace Mtconnect.AdapterInterface.DataItemValues
 {
 	/// <summary>
 	/// A value type for ClockTime to be used in a <see cref="IAdapterDataModel" /> implementation. View in the MTConnect Model browser <seealso href="https://model.mtconnect.org/#Enumeration___19_0_3_91b028d_1579272233011_597138_670">model.mtconnect.org</seealso>
 	﻿	/// </summary>
-	/// <remarks>Introduced in <see href="https://model.mtconnect.org/#_Version_1.2">v1.2</see>.</remarks>
-	[GeneratedCode("MtconnectTranspiler.Sinks.CSharp.Adapter", "0.0.14.0")]
+	/// <remarks>
+	/// <list type="bullet">
+	/// <item><b>Introduced</b>: <see href="https://model.mtconnect.org/#_Version_1.2">v1.2</see></item>
+	/// </list>
+	/// </remarks>
+	[GeneratedCode("MtconnectTranspiler.Sinks.CSharp.Adapter", "1.0.5.0")]
 	public partial class ClockTime : EventValue
     {
+        /// <inheritdoc />
+        public override string ObservationalType => nameof(DataItemTypes.EventTypes.CLOCK_TIME);
+
+		/// <inheritdoc />
+        public override string ObservationalSubType => null;
+
 		/// <summary>
 		/// Constructs a new value type for the ClockTime EVENT Data Item.
 		/// </summary>
-        public ClockTime(string value) : base(value) { }
+        public ClockTime(DateTime value) : base(value) { }
 
 		
         /// <summary>
-        /// Implicitly converts the specified string to an <see cref="ClockTime"/> value.
-        /// The string is converted to uppercase and used to initialize the <see cref="ClockTime"/> value.
+        /// Implicitly converts the specified DateTime to an <see cref="ClockTime"/> value.
+        /// The DateTime is converted to uppercase and used to initialize the <see cref="ClockTime"/> value.
         /// </summary>
-        /// <param name="value">The string to convert.</param>
+        /// <param name="value">The DateTime to convert.</param>
         /// <returns>An <see cref="ClockTime"/> value initialized with the specified string in uppercase.</returns>
-        public static implicit operator ClockTime(string value)
-            => new ClockTime(value.ToUpperInvariant());
+        public static implicit operator ClockTime(DateTime value)
+            => new ClockTime(value);
 		
     }
 }

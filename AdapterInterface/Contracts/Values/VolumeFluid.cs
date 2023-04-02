@@ -6,16 +6,28 @@ using Mtconnect.AdapterInterface.Contracts.Attributes;
 using Mtconnect.AdapterInterface.Contracts;
 using Mtconnect.AdapterInterface.DataItems;
 using Mtconnect.AdapterInterface.DataItemValues;
+using Mtconnect.AdapterInterface.Units;
 
 namespace Mtconnect.AdapterInterface.DataItemValues
 {
 	/// <summary>
 	/// A value type for VolumeFluid to be used in a <see cref="IAdapterDataModel" /> implementation. View in the MTConnect Model browser <seealso href="https://model.mtconnect.org/#Enumeration__">model.mtconnect.org</seealso>
 	﻿	/// </summary>
-	/// <remarks>Introduced in <see href="https://model.mtconnect.org/#_Version_1.5">v1.5</see>.</remarks>
-	[GeneratedCode("MtconnectTranspiler.Sinks.CSharp.Adapter", "0.0.14.0")]
+	/// <remarks>
+	/// <list type="bullet">
+	/// <item><b>Introduced</b>: <see href="https://model.mtconnect.org/#_Version_1.5">v1.5</see></item>
+	/// <item><b>Units</b>: <see cref="MtconnectUnit.MILLILITER" /></item>
+	/// </list>
+	/// </remarks>
+	[GeneratedCode("MtconnectTranspiler.Sinks.CSharp.Adapter", "1.0.5.0")]
 	public partial class VolumeFluid : SampleValue
     {
+        /// <inheritdoc />
+        public override string ObservationalType => nameof(DataItemTypes.SampleTypes.VOLUME_FLUID);
+
+		/// <inheritdoc />
+        public override string ObservationalSubType => null;
+
 		/// <summary>
 		/// Constructs a new value type for the VolumeFluid EVENT Data Item.
 		/// </summary>
@@ -36,6 +48,9 @@ namespace Mtconnect.AdapterInterface.DataItemValues
 		/// </summary>
 		public partial class ACTUAL : VolumeFluid
 		{
+			/// <inheritdoc />
+            public override string ObservationalSubType => nameof(DataItemTypes.VolumeFluidSubTypes.ACTUAL);
+
 			/// <summary>
 			/// Constructs a new value type for ACTUAL.
 			/// </summary>
@@ -55,6 +70,9 @@ namespace Mtconnect.AdapterInterface.DataItemValues
 		/// </summary>
 		public partial class CONSUMED : VolumeFluid
 		{
+			/// <inheritdoc />
+            public override string ObservationalSubType => nameof(DataItemTypes.VolumeFluidSubTypes.CONSUMED);
+
 			/// <summary>
 			/// Constructs a new value type for CONSUMED.
 			/// </summary>
@@ -74,6 +92,9 @@ namespace Mtconnect.AdapterInterface.DataItemValues
 		/// </summary>
 		public partial class PART : VolumeFluid
 		{
+			/// <inheritdoc />
+            public override string ObservationalSubType => nameof(DataItemTypes.VolumeFluidSubTypes.PART);
+
 			/// <summary>
 			/// Constructs a new value type for PART.
 			/// </summary>
@@ -93,6 +114,9 @@ namespace Mtconnect.AdapterInterface.DataItemValues
 		/// </summary>
 		public partial class WASTE : VolumeFluid
 		{
+			/// <inheritdoc />
+            public override string ObservationalSubType => nameof(DataItemTypes.VolumeFluidSubTypes.WASTE);
+
 			/// <summary>
 			/// Constructs a new value type for WASTE.
 			/// </summary>
@@ -112,6 +136,9 @@ namespace Mtconnect.AdapterInterface.DataItemValues
 		/// </summary>
 		public partial class START : VolumeFluid
 		{
+			/// <inheritdoc />
+            public override string ObservationalSubType => nameof(DataItemTypes.VolumeFluidSubTypes.START);
+
 			/// <summary>
 			/// Constructs a new value type for START.
 			/// </summary>
@@ -131,6 +158,9 @@ namespace Mtconnect.AdapterInterface.DataItemValues
 		/// </summary>
 		public partial class ENDED : VolumeFluid
 		{
+			/// <inheritdoc />
+            public override string ObservationalSubType => nameof(DataItemTypes.VolumeFluidSubTypes.ENDED);
+
 			/// <summary>
 			/// Constructs a new value type for ENDED.
 			/// </summary>

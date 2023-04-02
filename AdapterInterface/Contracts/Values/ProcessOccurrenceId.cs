@@ -6,16 +6,27 @@ using Mtconnect.AdapterInterface.Contracts.Attributes;
 using Mtconnect.AdapterInterface.Contracts;
 using Mtconnect.AdapterInterface.DataItems;
 using Mtconnect.AdapterInterface.DataItemValues;
+using Mtconnect.AdapterInterface.Units;
 
 namespace Mtconnect.AdapterInterface.DataItemValues
 {
 	/// <summary>
 	/// A value type for ProcessOccurrenceId to be used in a <see cref="IAdapterDataModel" /> implementation. View in the MTConnect Model browser <seealso href="https://model.mtconnect.org/#Enumeration__">model.mtconnect.org</seealso>
 	﻿	/// </summary>
-	/// <remarks>Introduced in <see href="https://model.mtconnect.org/#_Version_1.7">v1.7</see>.</remarks>
-	[GeneratedCode("MtconnectTranspiler.Sinks.CSharp.Adapter", "0.0.14.0")]
+	/// <remarks>
+	/// <list type="bullet">
+	/// <item><b>Introduced</b>: <see href="https://model.mtconnect.org/#_Version_1.7">v1.7</see></item>
+	/// </list>
+	/// </remarks>
+	[GeneratedCode("MtconnectTranspiler.Sinks.CSharp.Adapter", "1.0.5.0")]
 	public partial class ProcessOccurrenceId : EventValue
     {
+        /// <inheritdoc />
+        public override string ObservationalType => nameof(DataItemTypes.EventTypes.PROCESS_OCCURRENCE_ID);
+
+		/// <inheritdoc />
+        public override string ObservationalSubType => null;
+
 		/// <summary>
 		/// Constructs a new value type for the ProcessOccurrenceId EVENT Data Item.
 		/// </summary>
@@ -36,6 +47,9 @@ namespace Mtconnect.AdapterInterface.DataItemValues
 		/// </summary>
 		public partial class ACTIVITY : ProcessOccurrenceId
 		{
+			/// <inheritdoc />
+            public override string ObservationalSubType => nameof(DataItemTypes.ProcessOccurrenceIdSubTypes.ACTIVITY);
+
 			/// <summary>
 			/// Constructs a new value type for ACTIVITY.
 			/// </summary>
@@ -55,6 +69,9 @@ namespace Mtconnect.AdapterInterface.DataItemValues
 		/// </summary>
 		public partial class SEGMENT : ProcessOccurrenceId
 		{
+			/// <inheritdoc />
+            public override string ObservationalSubType => nameof(DataItemTypes.ProcessOccurrenceIdSubTypes.SEGMENT);
+
 			/// <summary>
 			/// Constructs a new value type for SEGMENT.
 			/// </summary>
@@ -74,6 +91,9 @@ namespace Mtconnect.AdapterInterface.DataItemValues
 		/// </summary>
 		public partial class RECIPE : ProcessOccurrenceId
 		{
+			/// <inheritdoc />
+            public override string ObservationalSubType => nameof(DataItemTypes.ProcessOccurrenceIdSubTypes.RECIPE);
+
 			/// <summary>
 			/// Constructs a new value type for RECIPE.
 			/// </summary>
@@ -93,6 +113,9 @@ namespace Mtconnect.AdapterInterface.DataItemValues
 		/// </summary>
 		public partial class OPERATION : ProcessOccurrenceId
 		{
+			/// <inheritdoc />
+            public override string ObservationalSubType => nameof(DataItemTypes.ProcessOccurrenceIdSubTypes.OPERATION);
+
 			/// <summary>
 			/// Constructs a new value type for OPERATION.
 			/// </summary>

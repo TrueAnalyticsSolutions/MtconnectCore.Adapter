@@ -6,16 +6,28 @@ using Mtconnect.AdapterInterface.Contracts.Attributes;
 using Mtconnect.AdapterInterface.Contracts;
 using Mtconnect.AdapterInterface.DataItems;
 using Mtconnect.AdapterInterface.DataItemValues;
+using Mtconnect.AdapterInterface.Units;
 
 namespace Mtconnect.AdapterInterface.DataItemValues
 {
 	/// <summary>
 	/// A value type for PathFeedrate to be used in a <see cref="IAdapterDataModel" /> implementation. View in the MTConnect Model browser <seealso href="https://model.mtconnect.org/#Enumeration__">model.mtconnect.org</seealso>
 	﻿	/// </summary>
-	/// <remarks>Introduced in <see href="https://model.mtconnect.org/#_Version_1.0">v1.0</see>.</remarks>
-	[GeneratedCode("MtconnectTranspiler.Sinks.CSharp.Adapter", "0.0.14.0")]
+	/// <remarks>
+	/// <list type="bullet">
+	/// <item><b>Introduced</b>: <see href="https://model.mtconnect.org/#_Version_1.0">v1.0</see></item>
+	/// <item><b>Units</b>: <see cref="MtconnectUnit.MILLIMETER_PER_SECOND" /></item>
+	/// </list>
+	/// </remarks>
+	[GeneratedCode("MtconnectTranspiler.Sinks.CSharp.Adapter", "1.0.5.0")]
 	public partial class PathFeedrate : SampleValue
     {
+        /// <inheritdoc />
+        public override string ObservationalType => nameof(DataItemTypes.SampleTypes.PATH_FEEDRATE);
+
+		/// <inheritdoc />
+        public override string ObservationalSubType => null;
+
 		/// <summary>
 		/// Constructs a new value type for the PathFeedrate EVENT Data Item.
 		/// </summary>
@@ -36,6 +48,9 @@ namespace Mtconnect.AdapterInterface.DataItemValues
 		/// </summary>
 		public partial class ACTUAL : PathFeedrate
 		{
+			/// <inheritdoc />
+            public override string ObservationalSubType => nameof(DataItemTypes.PathFeedrateSubTypes.ACTUAL);
+
 			/// <summary>
 			/// Constructs a new value type for ACTUAL.
 			/// </summary>
@@ -55,6 +70,9 @@ namespace Mtconnect.AdapterInterface.DataItemValues
 		/// </summary>
 		public partial class COMMANDED : PathFeedrate
 		{
+			/// <inheritdoc />
+            public override string ObservationalSubType => nameof(DataItemTypes.PathFeedrateSubTypes.COMMANDED);
+
 			/// <summary>
 			/// Constructs a new value type for COMMANDED.
 			/// </summary>
@@ -74,6 +92,9 @@ namespace Mtconnect.AdapterInterface.DataItemValues
 		/// </summary>
 		public partial class JOG : PathFeedrate
 		{
+			/// <inheritdoc />
+            public override string ObservationalSubType => nameof(DataItemTypes.PathFeedrateSubTypes.JOG);
+
 			/// <summary>
 			/// Constructs a new value type for JOG.
 			/// </summary>
@@ -93,6 +114,9 @@ namespace Mtconnect.AdapterInterface.DataItemValues
 		/// </summary>
 		public partial class PROGRAMMED : PathFeedrate
 		{
+			/// <inheritdoc />
+            public override string ObservationalSubType => nameof(DataItemTypes.PathFeedrateSubTypes.PROGRAMMED);
+
 			/// <summary>
 			/// Constructs a new value type for PROGRAMMED.
 			/// </summary>
@@ -112,6 +136,9 @@ namespace Mtconnect.AdapterInterface.DataItemValues
 		/// </summary>
 		public partial class RAPID : PathFeedrate
 		{
+			/// <inheritdoc />
+            public override string ObservationalSubType => nameof(DataItemTypes.PathFeedrateSubTypes.RAPID);
+
 			/// <summary>
 			/// Constructs a new value type for RAPID.
 			/// </summary>
@@ -131,6 +158,9 @@ namespace Mtconnect.AdapterInterface.DataItemValues
 		/// </summary>
 		public partial class OVERRIDE : PathFeedrate
 		{
+			/// <inheritdoc />
+            public override string ObservationalSubType => nameof(DataItemTypes.PathFeedrateSubTypes.OVERRIDE);
+
 			/// <summary>
 			/// Constructs a new value type for OVERRIDE.
 			/// </summary>

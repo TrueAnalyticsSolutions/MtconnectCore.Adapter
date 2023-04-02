@@ -6,16 +6,28 @@ using Mtconnect.AdapterInterface.Contracts.Attributes;
 using Mtconnect.AdapterInterface.Contracts;
 using Mtconnect.AdapterInterface.DataItems;
 using Mtconnect.AdapterInterface.DataItemValues;
+using Mtconnect.AdapterInterface.Units;
 
 namespace Mtconnect.AdapterInterface.DataItemValues
 {
 	/// <summary>
 	/// A value type for SettlingErrorLinear to be used in a <see cref="IAdapterDataModel" /> implementation. View in the MTConnect Model browser <seealso href="https://model.mtconnect.org/#Enumeration__">model.mtconnect.org</seealso>
 	﻿	/// </summary>
-	/// <remarks>Introduced in <see href="https://model.mtconnect.org/#_Version_2.1">v2.1</see>.</remarks>
-	[GeneratedCode("MtconnectTranspiler.Sinks.CSharp.Adapter", "0.0.14.0")]
+	/// <remarks>
+	/// <list type="bullet">
+	/// <item><b>Introduced</b>: <see href="https://model.mtconnect.org/#_Version_2.1">v2.1</see></item>
+	/// <item><b>Units</b>: <see cref="MtconnectUnit.MILLIMETER" /></item>
+	/// </list>
+	/// </remarks>
+	[GeneratedCode("MtconnectTranspiler.Sinks.CSharp.Adapter", "1.0.5.0")]
 	public partial class SettlingErrorLinear : SampleValue
     {
+        /// <inheritdoc />
+        public override string ObservationalType => nameof(DataItemTypes.SampleTypes.SETTLING_ERROR_LINEAR);
+
+		/// <inheritdoc />
+        public override string ObservationalSubType => null;
+
 		/// <summary>
 		/// Constructs a new value type for the SettlingErrorLinear EVENT Data Item.
 		/// </summary>
@@ -36,6 +48,9 @@ namespace Mtconnect.AdapterInterface.DataItemValues
 		/// </summary>
 		public partial class ACTUAL : SettlingErrorLinear
 		{
+			/// <inheritdoc />
+            public override string ObservationalSubType => nameof(DataItemTypes.SettlingErrorLinearSubTypes.ACTUAL);
+
 			/// <summary>
 			/// Constructs a new value type for ACTUAL.
 			/// </summary>

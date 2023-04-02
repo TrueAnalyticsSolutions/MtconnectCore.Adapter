@@ -6,16 +6,27 @@ using Mtconnect.AdapterInterface.Contracts.Attributes;
 using Mtconnect.AdapterInterface.Contracts;
 using Mtconnect.AdapterInterface.DataItems;
 using Mtconnect.AdapterInterface.DataItemValues;
+using Mtconnect.AdapterInterface.Units;
 
 namespace Mtconnect.AdapterInterface.DataItemValues
 {
 	/// <summary>
 	/// A value type for ChuckInterlock to be used in a <see cref="IAdapterDataModel" /> implementation. View in the MTConnect Model browser <seealso href="https://model.mtconnect.org/#Enumeration___19_0_3_68e0225_1632486692761_582059_81">model.mtconnect.org</seealso>
 	﻿	/// </summary>
-	/// <remarks>Introduced in <see href="https://model.mtconnect.org/#_Version_1.3">v1.3</see>.</remarks>
-	[GeneratedCode("MtconnectTranspiler.Sinks.CSharp.Adapter", "0.0.14.0")]
+	/// <remarks>
+	/// <list type="bullet">
+	/// <item><b>Introduced</b>: <see href="https://model.mtconnect.org/#_Version_1.3">v1.3</see></item>
+	/// </list>
+	/// </remarks>
+	[GeneratedCode("MtconnectTranspiler.Sinks.CSharp.Adapter", "1.0.5.0")]
 	public partial class ChuckInterlock : EventValue
     {
+        /// <inheritdoc />
+        public override string ObservationalType => nameof(DataItemTypes.EventTypes.CHUCK_INTERLOCK);
+
+		/// <inheritdoc />
+        public override string ObservationalSubType => null;
+
 		/// <summary>
 		/// Constructs a new value type for the ChuckInterlock EVENT Data Item.
 		/// </summary>
@@ -24,13 +35,21 @@ namespace Mtconnect.AdapterInterface.DataItemValues
         /// <summary>
 		﻿/// chuck cannot be unclamped.
         /// </summary>
-		/// <remarks>Introduced in <see href="https://model.mtconnect.org/#_Version_1.3">v1.3</see>.</remarks>
+		/// <remarks>
+		/// <list type="bullet">
+		/// <item><b>Introduced</b>: <see href="https://model.mtconnect.org/#_Version_1.3">v1.3</see></item>
+		/// </list>
+		/// </remarks>
 		[ObservationalValue(typeof(ChuckInterlockValues))]
         public static ChuckInterlock ACTIVE => new ChuckInterlock(nameof(ChuckInterlockValues.ACTIVE));
         /// <summary>
 		﻿/// chuck can be unclamped.
         /// </summary>
-		/// <remarks>Introduced in <see href="https://model.mtconnect.org/#_Version_1.3">v1.3</see>.</remarks>
+		/// <remarks>
+		/// <list type="bullet">
+		/// <item><b>Introduced</b>: <see href="https://model.mtconnect.org/#_Version_1.3">v1.3</see></item>
+		/// </list>
+		/// </remarks>
 		[ObservationalValue(typeof(ChuckInterlockValues))]
         public static ChuckInterlock INACTIVE => new ChuckInterlock(nameof(ChuckInterlockValues.INACTIVE));
 		
@@ -48,6 +67,9 @@ namespace Mtconnect.AdapterInterface.DataItemValues
 		/// </summary>
 		public partial class MANUALUNCLAMP : ChuckInterlock
 		{
+			/// <inheritdoc />
+            public override string ObservationalSubType => nameof(DataItemTypes.ChuckInterlockSubTypes.MANUAL_UNCLAMP);
+
 			/// <summary>
 			/// Constructs a new value type for MANUAL_UNCLAMP.
 			/// </summary>

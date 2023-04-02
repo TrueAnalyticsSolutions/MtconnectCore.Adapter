@@ -1,3 +1,4 @@
+using Mtconnect.AdapterInterface.Contracts;
 using Mtconnect.AdapterInterface.DataItemValues;
 using System;
 using System.CodeDom.Compiler;
@@ -8,8 +9,8 @@ namespace Mtconnect.AdapterInterface.DataItemTypes {
 	/// <see cref="Resource">Resource</see> composed of material that is consumed or used by the piece of equipment for production of parts, materials, or other types of goods.
 	/// </summary>
 	/// <remarks>Introduced in <see href="https://model.mtconnect.org/#_Version_1.8">v1.8</see>.</remarks>
-	[GeneratedCode("MtconnectTranspiler.Sinks.CSharp.Adapter", "0.0.14.0")]
-	public interface IMaterial : IAdapterDataModel {
+	[GeneratedCode("MtconnectTranspiler.Sinks.CSharp.Adapter", "1.0.5.0")]
+	public interface IMaterial : IAdapterDataModel, IComponentModel {
 	
 	}
 }

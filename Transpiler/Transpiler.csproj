@@ -10,16 +10,20 @@
 
   <ItemGroup>
     <None Remove="Templates\Adapter.ComponentInterface.scriban" />
+    <None Remove="Templates\Adapter.UnitStaticHelper.scriban" />
     <None Remove="Templates\Adapter.ValueType.scriban" />
   </ItemGroup>
 
   <ItemGroup>
     <PackageReference Include="Consoul" Version="1.6.3" />
-    <PackageReference Include="MtconnectTranspiler" Version="1.0.4" />
-    <PackageReference Include="MtconnectTranspiler.Sinks.CSharp" Version="1.0.3" />
+    <PackageReference Include="MtconnectTranspiler" Version="1.0.6" />
+    <PackageReference Include="MtconnectTranspiler.Sinks.CSharp" Version="1.0.5" />
   </ItemGroup>
 
   <ItemGroup>
+    <Content Include="Templates\Adapter.UnitStaticHelper.scriban">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
     <Content Include="Templates\Adapter.ComponentInterface.scriban">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>

@@ -1,3 +1,4 @@
+using Mtconnect.AdapterInterface.Contracts;
 using Mtconnect.AdapterInterface.DataItemValues;
 using System;
 using System.CodeDom.Compiler;
@@ -8,8 +9,8 @@ namespace Mtconnect.AdapterInterface.DataItemTypes {
 	/// <see cref="Process">Process</see> that takes place at a specific place and time, such as a specific instance of part-milling occurring at a specific timestamp./// Description
 	/// </summary>
 	/// <remarks>Introduced in <see href="https://model.mtconnect.org/#_Version_1.7">v1.7</see>.</remarks>
-	[GeneratedCode("MtconnectTranspiler.Sinks.CSharp.Adapter", "0.0.14.0")]
-	public interface IProcessOccurrence : IAdapterDataModel {
+	[GeneratedCode("MtconnectTranspiler.Sinks.CSharp.Adapter", "1.0.5.0")]
+	public interface IProcessOccurrence : IAdapterDataModel, IComponentModel {
 	
 		/// <inheritdoc cref="Mtconnect.AdapterInterface.DataItemValues.ProcessOccurrenceId" />
 		ProcessOccurrenceId ProcessOccurrenceId { get; set; }

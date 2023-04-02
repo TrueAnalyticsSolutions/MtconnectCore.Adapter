@@ -8,9 +8,9 @@ using Mtconnect.AdapterInterface.DataItemValues;
 namespace Mtconnect.AdapterInterface.DataItemTypes
 {
 	/// <summary>
-	/// View in the MTConnect Model browser <seealso href="https://model.mtconnect.org/#Enumeration__">model.mtconnect.org</seealso>
+	/// View in the MTConnect Model browser <seealso href="https://model.mtconnect.org/#Enumeration___19_0_3_45f01b9_1580309852285_621670_44358">model.mtconnect.org</seealso>
 	﻿	/// </summary>
-	[GeneratedCode("MtconnectTranspiler.Sinks.CSharp.Adapter", "0.0.14.0")]
+	[GeneratedCode("MtconnectTranspiler.Sinks.CSharp.Adapter", "1.0.5.0")]
 	public enum EventTypes
 	{
 		/// <summary>
@@ -18,744 +18,1204 @@ namespace Mtconnect.AdapterInterface.DataItemTypes
 		/// </summary>
 		STANDARD_EXTENSION = -1,
 		/// <summary>
-		﻿/// {{def(EventEnum:ACTIVE_AXES)}}
+		﻿/// <see cref="EventEnum.ACTIVE_AXES />
 		/// </summary>
-		/// <remarks>Introduced in <see href="https://model.mtconnect.org/#_Version_1.1">v1.1</see>.</remarks>
+		/// <remarks>
+		/// <list type="bullet">
+		/// <item><b>Introduced</b>: <see href="https://model.mtconnect.org/#_Version_1.1">v1.1</see></item>
+		/// </list>
+		/// </remarks>
 		ACTIVE_AXES,
 		/// <summary>
-		﻿/// {{def(EventEnum:ACTUATOR_STATE)}}
+		﻿/// <see cref="EventEnum.ACTUATOR_STATE />
 		/// <br/><b>Values</b>: <see cref="ActuatorStateValues" />
 		/// </summary>
-		/// <remarks>Introduced in <see href="https://model.mtconnect.org/#_Version_1.2">v1.2</see>.</remarks>
+		/// <remarks>
+		/// <list type="bullet">
+		/// <item><b>Introduced</b>: <see href="https://model.mtconnect.org/#_Version_1.2">v1.2</see></item>
+		/// </list>
+		/// </remarks>
 		[ObservationalValue(typeof(ActuatorStateValues))]
 		ACTUATOR_STATE,
 		/// <summary>
-		﻿/// {{def(EventEnum:ALARM)}}
+		﻿/// <see cref="EventEnum.ALARM />
 		/// </summary>
-		/// <remarks>Introduced in <see href="https://model.mtconnect.org/#_Version_1.0">v1.0</see>.</remarks>
-		/// <remarks>Deprecated in <see href="https://model.mtconnect.org/#_Version_1.1">v1.1</see>.</remarks>
+		/// <remarks>
+		/// <list type="bullet">
+		/// <item><b>Introduced</b>: <see href="https://model.mtconnect.org/#_Version_1.0">v1.0</see></item>
+		/// <item><b>Deprecated</b>: <see href="https://model.mtconnect.org/#_Version_1.1">v1.1</see></item>
+		/// </list>
+		/// </remarks>
 		[Obsolete("Deprecated in v1.1 according to https://model.mtconnect.org/#_Version_1.1")]
 		ALARM,
 		/// <summary>
-		﻿/// {{def(EventEnum:ASSET_CHANGED)}}
+		﻿/// <see cref="EventEnum.ASSET_CHANGED />
 		/// </summary>
-		/// <remarks>Introduced in <see href="https://model.mtconnect.org/#_Version_1.2">v1.2</see>.</remarks>
+		/// <remarks>
+		/// <list type="bullet">
+		/// <item><b>Introduced</b>: <see href="https://model.mtconnect.org/#_Version_1.2">v1.2</see></item>
+		/// </list>
+		/// </remarks>
 		ASSET_CHANGED,
 		/// <summary>
-		﻿/// {{def(EventEnum:ASSET_REMOVED)}}
+		﻿/// <see cref="EventEnum.ASSET_REMOVED />
 		/// </summary>
-		/// <remarks>Introduced in <see href="https://model.mtconnect.org/#_Version_1.3">v1.3</see>.</remarks>
+		/// <remarks>
+		/// <list type="bullet">
+		/// <item><b>Introduced</b>: <see href="https://model.mtconnect.org/#_Version_1.3">v1.3</see></item>
+		/// </list>
+		/// </remarks>
 		ASSET_REMOVED,
 		/// <summary>
-		﻿/// {{def(EventEnum:AVAILABILITY)}}
+		﻿/// <see cref="EventEnum.AVAILABILITY />
 		/// <br/><b>Values</b>: <see cref="AvailabilityValues" />
 		/// </summary>
-		/// <remarks>Introduced in <see href="https://model.mtconnect.org/#_Version_1.1">v1.1</see>.</remarks>
+		/// <remarks>
+		/// <list type="bullet">
+		/// <item><b>Introduced</b>: <see href="https://model.mtconnect.org/#_Version_1.1">v1.1</see></item>
+		/// </list>
+		/// </remarks>
 		[ObservationalValue(typeof(AvailabilityValues))]
 		AVAILABILITY,
 		/// <summary>
-		﻿/// {{def(EventEnum:AXIS_COUPLING)}}
+		﻿/// <see cref="EventEnum.AXIS_COUPLING />
 		/// <br/><b>Values</b>: <see cref="AxisCouplingValues" />
 		/// </summary>
-		/// <remarks>Introduced in <see href="https://model.mtconnect.org/#_Version_1.1">v1.1</see>.</remarks>
+		/// <remarks>
+		/// <list type="bullet">
+		/// <item><b>Introduced</b>: <see href="https://model.mtconnect.org/#_Version_1.1">v1.1</see></item>
+		/// </list>
+		/// </remarks>
 		[ObservationalValue(typeof(AxisCouplingValues))]
 		AXIS_COUPLING,
 		/// <summary>
-		﻿/// {{def(EventEnum:AXIS_FEEDRATE_OVERRIDE)}}
+		﻿/// <see cref="EventEnum.AXIS_FEEDRATE_OVERRIDE />
 		/// <br/><b>Sub-Type</b>: <see cref="AxisFeedrateOverrideSubTypes" />
 		/// </summary>
-		/// <remarks>Introduced in <see href="https://model.mtconnect.org/#_Version_1.3">v1.3</see>.</remarks>
+		/// <remarks>
+		/// <list type="bullet">
+		/// <item><b>Introduced</b>: <see href="https://model.mtconnect.org/#_Version_1.3">v1.3</see></item>
+		/// </list>
+		/// </remarks>
 		[ObservationalSubType(typeof(AxisFeedrateOverrideSubTypes))]
 		AXIS_FEEDRATE_OVERRIDE,
 		/// <summary>
-		﻿/// {{def(EventEnum:AXIS_INTERLOCK)}}
+		﻿/// <see cref="EventEnum.AXIS_INTERLOCK />
 		/// <br/><b>Values</b>: <see cref="AxisInterlockValues" />
 		/// </summary>
-		/// <remarks>Introduced in <see href="https://model.mtconnect.org/#_Version_1.3">v1.3</see>.</remarks>
+		/// <remarks>
+		/// <list type="bullet">
+		/// <item><b>Introduced</b>: <see href="https://model.mtconnect.org/#_Version_1.3">v1.3</see></item>
+		/// </list>
+		/// </remarks>
 		[ObservationalValue(typeof(AxisInterlockValues))]
 		AXIS_INTERLOCK,
 		/// <summary>
-		﻿/// {{def(EventEnum:AXIS_STATE)}}
+		﻿/// <see cref="EventEnum.AXIS_STATE />
 		/// <br/><b>Values</b>: <see cref="AxisStateValues" />
 		/// </summary>
-		/// <remarks>Introduced in <see href="https://model.mtconnect.org/#_Version_1.3">v1.3</see>.</remarks>
+		/// <remarks>
+		/// <list type="bullet">
+		/// <item><b>Introduced</b>: <see href="https://model.mtconnect.org/#_Version_1.3">v1.3</see></item>
+		/// </list>
+		/// </remarks>
 		[ObservationalValue(typeof(AxisStateValues))]
 		AXIS_STATE,
 		/// <summary>
-		﻿/// {{def(EventEnum:BLOCK)}}
+		﻿/// <see cref="EventEnum.BLOCK />
 		/// </summary>
-		/// <remarks>Introduced in <see href="https://model.mtconnect.org/#_Version_1.0">v1.0</see>.</remarks>
+		/// <remarks>
+		/// <list type="bullet">
+		/// <item><b>Introduced</b>: <see href="https://model.mtconnect.org/#_Version_1.0">v1.0</see></item>
+		/// </list>
+		/// </remarks>
 		BLOCK,
 		/// <summary>
-		﻿/// {{def(EventEnum:BLOCK_COUNT)}}
+		﻿/// <see cref="EventEnum.BLOCK_COUNT />
 		/// </summary>
-		/// <remarks>Introduced in <see href="https://model.mtconnect.org/#_Version_1.4">v1.4</see>.</remarks>
+		/// <remarks>
+		/// <list type="bullet">
+		/// <item><b>Introduced</b>: <see href="https://model.mtconnect.org/#_Version_1.4">v1.4</see></item>
+		/// </list>
+		/// </remarks>
 		BLOCK_COUNT,
 		/// <summary>
-		﻿/// {{def(EventEnum:CHUCK_INTERLOCK)}}
+		﻿/// <see cref="EventEnum.CHUCK_INTERLOCK />
 		/// <br/><b>Sub-Type</b>: <see cref="ChuckInterlockSubTypes" />
 		/// <br/><b>Values</b>: <see cref="ChuckInterlockValues" />
 		/// </summary>
-		/// <remarks>Introduced in <see href="https://model.mtconnect.org/#_Version_1.3">v1.3</see>.</remarks>
+		/// <remarks>
+		/// <list type="bullet">
+		/// <item><b>Introduced</b>: <see href="https://model.mtconnect.org/#_Version_1.3">v1.3</see></item>
+		/// </list>
+		/// </remarks>
 		[ObservationalSubType(typeof(ChuckInterlockSubTypes))]
 		[ObservationalValue(typeof(ChuckInterlockValues))]
 		CHUCK_INTERLOCK,
 		/// <summary>
-		﻿/// {{def(EventEnum:CHUCK_STATE)}}
+		﻿/// <see cref="EventEnum.CHUCK_STATE />
 		/// <br/><b>Values</b>: <see cref="ChuckStateValues" />
 		/// </summary>
-		/// <remarks>Introduced in <see href="https://model.mtconnect.org/#_Version_1.3">v1.3</see>.</remarks>
+		/// <remarks>
+		/// <list type="bullet">
+		/// <item><b>Introduced</b>: <see href="https://model.mtconnect.org/#_Version_1.3">v1.3</see></item>
+		/// </list>
+		/// </remarks>
 		[ObservationalValue(typeof(ChuckStateValues))]
 		CHUCK_STATE,
 		/// <summary>
-		﻿/// {{def(EventEnum:CODE)}}
+		﻿/// <see cref="EventEnum.CODE />
 		/// </summary>
-		/// <remarks>Introduced in <see href="https://model.mtconnect.org/#_Version_1.0">v1.0</see>.</remarks>
-		/// <remarks>Deprecated in <see href="https://model.mtconnect.org/#_Version_1.1">v1.1</see>.</remarks>
+		/// <remarks>
+		/// <list type="bullet">
+		/// <item><b>Introduced</b>: <see href="https://model.mtconnect.org/#_Version_1.0">v1.0</see></item>
+		/// <item><b>Deprecated</b>: <see href="https://model.mtconnect.org/#_Version_1.1">v1.1</see></item>
+		/// </list>
+		/// </remarks>
 		[Obsolete("Deprecated in v1.1 according to https://model.mtconnect.org/#_Version_1.1")]
 		CODE,
 		/// <summary>
-		﻿/// {{def(EventEnum:COMPOSITION_STATE)}}
+		﻿/// <see cref="EventEnum.COMPOSITION_STATE />
 		/// <br/><b>Sub-Type</b>: <see cref="CompositionStateSubTypes" />
 		/// </summary>
-		/// <remarks>Introduced in <see href="https://model.mtconnect.org/#_Version_1.4">v1.4</see>.</remarks>
+		/// <remarks>
+		/// <list type="bullet">
+		/// <item><b>Introduced</b>: <see href="https://model.mtconnect.org/#_Version_1.4">v1.4</see></item>
+		/// </list>
+		/// </remarks>
 		[ObservationalSubType(typeof(CompositionStateSubTypes))]
 		COMPOSITION_STATE,
 		/// <summary>
-		﻿/// {{def(EventEnum:CONTROLLER_MODE)}}
+		﻿/// <see cref="EventEnum.CONTROLLER_MODE />
 		/// <br/><b>Values</b>: <see cref="ControllerModeValues" />
 		/// </summary>
-		/// <remarks>Introduced in <see href="https://model.mtconnect.org/#_Version_1.0">v1.0</see>.</remarks>
+		/// <remarks>
+		/// <list type="bullet">
+		/// <item><b>Introduced</b>: <see href="https://model.mtconnect.org/#_Version_1.0">v1.0</see></item>
+		/// </list>
+		/// </remarks>
 		[ObservationalValue(typeof(ControllerModeValues))]
 		CONTROLLER_MODE,
 		/// <summary>
-		﻿/// {{def(EventEnum:CONTROLLER_MODE_OVERRIDE)}}
+		﻿/// <see cref="EventEnum.CONTROLLER_MODE_OVERRIDE />
 		/// <br/><b>Sub-Type</b>: <see cref="ControllerModeOverrideSubTypes" />
 		/// <br/><b>Values</b>: <see cref="ControllerModeOverrideValues" />
 		/// </summary>
-		/// <remarks>Introduced in <see href="https://model.mtconnect.org/#_Version_1.4">v1.4</see>.</remarks>
+		/// <remarks>
+		/// <list type="bullet">
+		/// <item><b>Introduced</b>: <see href="https://model.mtconnect.org/#_Version_1.4">v1.4</see></item>
+		/// </list>
+		/// </remarks>
 		[ObservationalSubType(typeof(ControllerModeOverrideSubTypes))]
 		[ObservationalValue(typeof(ControllerModeOverrideValues))]
 		CONTROLLER_MODE_OVERRIDE,
 		/// <summary>
-		﻿/// {{def(EventEnum:COUPLED_AXES)}}
+		﻿/// <see cref="EventEnum.COUPLED_AXES />
 		/// </summary>
-		/// <remarks>Introduced in <see href="https://model.mtconnect.org/#_Version_1.2">v1.2</see>.</remarks>
+		/// <remarks>
+		/// <list type="bullet">
+		/// <item><b>Introduced</b>: <see href="https://model.mtconnect.org/#_Version_1.2">v1.2</see></item>
+		/// </list>
+		/// </remarks>
 		COUPLED_AXES,
 		/// <summary>
-		﻿/// {{def(EventEnum:DATE_CODE)}}
+		﻿/// <see cref="EventEnum.DATE_CODE />
 		/// <br/><b>Sub-Type</b>: <see cref="DateCodeSubTypes" />
 		/// </summary>
-		/// <remarks>Introduced in <see href="https://model.mtconnect.org/#_Version_1.5">v1.5</see>.</remarks>
+		/// <remarks>
+		/// <list type="bullet">
+		/// <item><b>Introduced</b>: <see href="https://model.mtconnect.org/#_Version_1.5">v1.5</see></item>
+		/// </list>
+		/// </remarks>
 		[ObservationalSubType(typeof(DateCodeSubTypes))]
 		DATE_CODE,
 		/// <summary>
-		﻿/// {{def(EventEnum:DEVICE_UUID)}}
+		﻿/// <see cref="EventEnum.DEVICE_UUID />
 		/// </summary>
-		/// <remarks>Introduced in <see href="https://model.mtconnect.org/#_Version_1.5">v1.5</see>.</remarks>
+		/// <remarks>
+		/// <list type="bullet">
+		/// <item><b>Introduced</b>: <see href="https://model.mtconnect.org/#_Version_1.5">v1.5</see></item>
+		/// </list>
+		/// </remarks>
 		DEVICE_UUID,
 		/// <summary>
-		﻿/// {{def(EventEnum:DIRECTION)}}
+		﻿/// <see cref="EventEnum.DIRECTION />
 		/// <br/><b>Sub-Type</b>: <see cref="DirectionSubTypes" />
 		/// <br/><b>Values</b>: <see cref="DirectionValues" />
 		/// </summary>
-		/// <remarks>Introduced in <see href="https://model.mtconnect.org/#_Version_1.0">v1.0</see>.</remarks>
+		/// <remarks>
+		/// <list type="bullet">
+		/// <item><b>Introduced</b>: <see href="https://model.mtconnect.org/#_Version_1.0">v1.0</see></item>
+		/// </list>
+		/// </remarks>
 		[ObservationalSubType(typeof(DirectionSubTypes))]
 		[ObservationalValue(typeof(DirectionValues))]
 		DIRECTION,
 		/// <summary>
-		﻿/// {{def(EventEnum:DOOR_STATE)}}
+		﻿/// <see cref="EventEnum.DOOR_STATE />
 		/// <br/><b>Values</b>: <see cref="DoorStateValues" />
 		/// </summary>
-		/// <remarks>Introduced in <see href="https://model.mtconnect.org/#_Version_1.1">v1.1</see>.</remarks>
+		/// <remarks>
+		/// <list type="bullet">
+		/// <item><b>Introduced</b>: <see href="https://model.mtconnect.org/#_Version_1.1">v1.1</see></item>
+		/// </list>
+		/// </remarks>
 		[ObservationalValue(typeof(DoorStateValues))]
 		DOOR_STATE,
 		/// <summary>
-		﻿/// {{def(EventEnum:EMERGENCY_STOP)}}
+		﻿/// <see cref="EventEnum.EMERGENCY_STOP />
 		/// <br/><b>Values</b>: <see cref="EmergencyStopValues" />
 		/// </summary>
-		/// <remarks>Introduced in <see href="https://model.mtconnect.org/#_Version_1.1">v1.1</see>.</remarks>
+		/// <remarks>
+		/// <list type="bullet">
+		/// <item><b>Introduced</b>: <see href="https://model.mtconnect.org/#_Version_1.1">v1.1</see></item>
+		/// </list>
+		/// </remarks>
 		[ObservationalValue(typeof(EmergencyStopValues))]
 		EMERGENCY_STOP,
 		/// <summary>
-		﻿/// {{def(EventEnum:END_OF_BAR)}}
+		﻿/// <see cref="EventEnum.END_OF_BAR />
 		/// <br/><b>Sub-Type</b>: <see cref="EndOfBarSubTypes" />
 		/// <br/><b>Values</b>: <see cref="EndOfBarValues" />
 		/// </summary>
-		/// <remarks>Introduced in <see href="https://model.mtconnect.org/#_Version_1.3">v1.3</see>.</remarks>
+		/// <remarks>
+		/// <list type="bullet">
+		/// <item><b>Introduced</b>: <see href="https://model.mtconnect.org/#_Version_1.3">v1.3</see></item>
+		/// </list>
+		/// </remarks>
 		[ObservationalSubType(typeof(EndOfBarSubTypes))]
 		[ObservationalValue(typeof(EndOfBarValues))]
 		END_OF_BAR,
 		/// <summary>
-		﻿/// {{def(EventEnum:EQUIPMENT_MODE)}}
+		﻿/// <see cref="EventEnum.EQUIPMENT_MODE />
 		/// <br/><b>Sub-Type</b>: <see cref="EquipmentModeSubTypes" />
 		/// <br/><b>Values</b>: <see cref="EquipmentModeValues" />
 		/// </summary>
-		/// <remarks>Introduced in <see href="https://model.mtconnect.org/#_Version_1.4">v1.4</see>.</remarks>
+		/// <remarks>
+		/// <list type="bullet">
+		/// <item><b>Introduced</b>: <see href="https://model.mtconnect.org/#_Version_1.4">v1.4</see></item>
+		/// </list>
+		/// </remarks>
 		[ObservationalSubType(typeof(EquipmentModeSubTypes))]
 		[ObservationalValue(typeof(EquipmentModeValues))]
 		EQUIPMENT_MODE,
 		/// <summary>
-		﻿/// {{def(EventEnum:EXECUTION)}}
+		﻿/// <see cref="EventEnum.EXECUTION />
 		/// <br/><b>Values</b>: <see cref="ExecutionValues" />
 		/// </summary>
-		/// <remarks>Introduced in <see href="https://model.mtconnect.org/#_Version_1.0">v1.0</see>.</remarks>
+		/// <remarks>
+		/// <list type="bullet">
+		/// <item><b>Introduced</b>: <see href="https://model.mtconnect.org/#_Version_1.0">v1.0</see></item>
+		/// </list>
+		/// </remarks>
 		[ObservationalValue(typeof(ExecutionValues))]
 		EXECUTION,
 		/// <summary>
-		﻿/// {{def(EventEnum:FUNCTIONAL_MODE)}}
+		﻿/// <see cref="EventEnum.FUNCTIONAL_MODE />
 		/// <br/><b>Values</b>: <see cref="FunctionalModeValues" />
 		/// </summary>
-		/// <remarks>Introduced in <see href="https://model.mtconnect.org/#_Version_1.3">v1.3</see>.</remarks>
+		/// <remarks>
+		/// <list type="bullet">
+		/// <item><b>Introduced</b>: <see href="https://model.mtconnect.org/#_Version_1.3">v1.3</see></item>
+		/// </list>
+		/// </remarks>
 		[ObservationalValue(typeof(FunctionalModeValues))]
 		FUNCTIONAL_MODE,
 		/// <summary>
-		﻿/// {{def(EventEnum:HARDNESS)}}
+		﻿/// <see cref="EventEnum.HARDNESS />
 		/// <br/><b>Sub-Type</b>: <see cref="HardnessSubTypes" />
 		/// </summary>
-		/// <remarks>Introduced in <see href="https://model.mtconnect.org/#_Version_1.4">v1.4</see>.</remarks>
+		/// <remarks>
+		/// <list type="bullet">
+		/// <item><b>Introduced</b>: <see href="https://model.mtconnect.org/#_Version_1.4">v1.4</see></item>
+		/// </list>
+		/// </remarks>
 		[ObservationalSubType(typeof(HardnessSubTypes))]
 		HARDNESS,
 		/// <summary>
-		﻿/// {{def(EventEnum:LINE)}}
+		﻿/// <see cref="EventEnum.LINE />
 		/// <br/><b>Sub-Type</b>: <see cref="LineSubTypes" />
 		/// </summary>
-		/// <remarks>Introduced in <see href="https://model.mtconnect.org/#_Version_1.0">v1.0</see>.</remarks>
-		/// <remarks>Deprecated in <see href="https://model.mtconnect.org/#_Version_1.4">v1.4</see>.</remarks>
+		/// <remarks>
+		/// <list type="bullet">
+		/// <item><b>Introduced</b>: <see href="https://model.mtconnect.org/#_Version_1.0">v1.0</see></item>
+		/// <item><b>Deprecated</b>: <see href="https://model.mtconnect.org/#_Version_1.4">v1.4</see></item>
+		/// </list>
+		/// </remarks>
 		[Obsolete("Deprecated in v1.4 according to https://model.mtconnect.org/#_Version_1.4")]
 		[ObservationalSubType(typeof(LineSubTypes))]
 		LINE,
 		/// <summary>
-		﻿/// {{def(EventEnum:LINE_LABEL)}}
+		﻿/// <see cref="EventEnum.LINE_LABEL />
 		/// </summary>
-		/// <remarks>Introduced in <see href="https://model.mtconnect.org/#_Version_1.4">v1.4</see>.</remarks>
+		/// <remarks>
+		/// <list type="bullet">
+		/// <item><b>Introduced</b>: <see href="https://model.mtconnect.org/#_Version_1.4">v1.4</see></item>
+		/// </list>
+		/// </remarks>
 		LINE_LABEL,
 		/// <summary>
-		﻿/// {{def(EventEnum:LINE_NUMBER)}}
+		﻿/// <see cref="EventEnum.LINE_NUMBER />
 		/// <br/><b>Sub-Type</b>: <see cref="LineNumberSubTypes" />
 		/// </summary>
-		/// <remarks>Introduced in <see href="https://model.mtconnect.org/#_Version_1.4">v1.4</see>.</remarks>
+		/// <remarks>
+		/// <list type="bullet">
+		/// <item><b>Introduced</b>: <see href="https://model.mtconnect.org/#_Version_1.4">v1.4</see></item>
+		/// </list>
+		/// </remarks>
 		[ObservationalSubType(typeof(LineNumberSubTypes))]
 		LINE_NUMBER,
 		/// <summary>
-		﻿/// {{def(EventEnum:MATERIAL)}}
+		﻿/// <see cref="EventEnum.MATERIAL />
 		/// </summary>
-		/// <remarks>Introduced in <see href="https://model.mtconnect.org/#_Version_1.5">v1.5</see>.</remarks>
+		/// <remarks>
+		/// <list type="bullet">
+		/// <item><b>Introduced</b>: <see href="https://model.mtconnect.org/#_Version_1.5">v1.5</see></item>
+		/// </list>
+		/// </remarks>
 		MATERIAL,
 		/// <summary>
-		﻿/// {{def(EventEnum:MATERIAL_LAYER)}}
+		﻿/// <see cref="EventEnum.MATERIAL_LAYER />
 		/// <br/><b>Sub-Type</b>: <see cref="MaterialLayerSubTypes" />
 		/// </summary>
-		/// <remarks>Introduced in <see href="https://model.mtconnect.org/#_Version_1.5">v1.5</see>.</remarks>
+		/// <remarks>
+		/// <list type="bullet">
+		/// <item><b>Introduced</b>: <see href="https://model.mtconnect.org/#_Version_1.5">v1.5</see></item>
+		/// </list>
+		/// </remarks>
 		[ObservationalSubType(typeof(MaterialLayerSubTypes))]
 		MATERIAL_LAYER,
 		/// <summary>
-		﻿/// {{def(EventEnum:MESSAGE)}}
+		﻿/// <see cref="EventEnum.MESSAGE />
 		/// </summary>
-		/// <remarks>Introduced in <see href="https://model.mtconnect.org/#_Version_1.1">v1.1</see>.</remarks>
+		/// <remarks>
+		/// <list type="bullet">
+		/// <item><b>Introduced</b>: <see href="https://model.mtconnect.org/#_Version_1.1">v1.1</see></item>
+		/// </list>
+		/// </remarks>
 		MESSAGE,
 		/// <summary>
-		﻿/// {{def(EventEnum:OPERATOR_ID)}}
+		﻿/// <see cref="EventEnum.OPERATOR_ID />
 		/// </summary>
-		/// <remarks>Introduced in <see href="https://model.mtconnect.org/#_Version_1.3">v1.3</see>.</remarks>
+		/// <remarks>
+		/// <list type="bullet">
+		/// <item><b>Introduced</b>: <see href="https://model.mtconnect.org/#_Version_1.3">v1.3</see></item>
+		/// </list>
+		/// </remarks>
 		OPERATOR_ID,
 		/// <summary>
-		﻿/// {{def(EventEnum:PALLET_ID)}}
+		﻿/// <see cref="EventEnum.PALLET_ID />
 		/// </summary>
-		/// <remarks>Introduced in <see href="https://model.mtconnect.org/#_Version_1.2">v1.2</see>.</remarks>
+		/// <remarks>
+		/// <list type="bullet">
+		/// <item><b>Introduced</b>: <see href="https://model.mtconnect.org/#_Version_1.2">v1.2</see></item>
+		/// </list>
+		/// </remarks>
 		PALLET_ID,
 		/// <summary>
-		﻿/// {{def(EventEnum:PART_COUNT)}}
+		﻿/// <see cref="EventEnum.PART_COUNT />
 		/// <br/><b>Sub-Type</b>: <see cref="PartCountSubTypes" />
 		/// </summary>
-		/// <remarks>Introduced in <see href="https://model.mtconnect.org/#_Version_1.0">v1.0</see>.</remarks>
+		/// <remarks>
+		/// <list type="bullet">
+		/// <item><b>Introduced</b>: <see href="https://model.mtconnect.org/#_Version_1.0">v1.0</see></item>
+		/// </list>
+		/// </remarks>
 		[ObservationalSubType(typeof(PartCountSubTypes))]
 		PART_COUNT,
 		/// <summary>
-		﻿/// {{def(EventEnum:PART_DETECT)}}
+		﻿/// <see cref="EventEnum.PART_DETECT />
 		/// <br/><b>Values</b>: <see cref="PartDetectValues" />
 		/// </summary>
-		/// <remarks>Introduced in <see href="https://model.mtconnect.org/#_Version_1.5">v1.5</see>.</remarks>
+		/// <remarks>
+		/// <list type="bullet">
+		/// <item><b>Introduced</b>: <see href="https://model.mtconnect.org/#_Version_1.5">v1.5</see></item>
+		/// </list>
+		/// </remarks>
 		[ObservationalValue(typeof(PartDetectValues))]
 		PART_DETECT,
 		/// <summary>
-		﻿/// {{def(EventEnum:PART_ID)}}
+		﻿/// <see cref="EventEnum.PART_ID />
 		/// </summary>
-		/// <remarks>Introduced in <see href="https://model.mtconnect.org/#_Version_1.1">v1.1</see>.</remarks>
+		/// <remarks>
+		/// <list type="bullet">
+		/// <item><b>Introduced</b>: <see href="https://model.mtconnect.org/#_Version_1.1">v1.1</see></item>
+		/// </list>
+		/// </remarks>
 		PART_ID,
 		/// <summary>
-		﻿/// {{def(EventEnum:PART_NUMBER)}}
+		﻿/// <see cref="EventEnum.PART_NUMBER />
 		/// </summary>
-		/// <remarks>Introduced in <see href="https://model.mtconnect.org/#_Version_1.4">v1.4</see>.</remarks>
-		/// <remarks>Deprecated in <see href="https://model.mtconnect.org/#_Version_1.7">v1.7</see>.</remarks>
+		/// <remarks>
+		/// <list type="bullet">
+		/// <item><b>Introduced</b>: <see href="https://model.mtconnect.org/#_Version_1.4">v1.4</see></item>
+		/// <item><b>Deprecated</b>: <see href="https://model.mtconnect.org/#_Version_1.7">v1.7</see></item>
+		/// </list>
+		/// </remarks>
 		[Obsolete("Deprecated in v1.7 according to https://model.mtconnect.org/#_Version_1.7")]
 		PART_NUMBER,
 		/// <summary>
-		﻿/// {{def(EventEnum:PATH_FEEDRATE_OVERRIDE)}}
+		﻿/// <see cref="EventEnum.PATH_FEEDRATE_OVERRIDE />
 		/// <br/><b>Sub-Type</b>: <see cref="PathFeedrateOverrideSubTypes" />
 		/// </summary>
-		/// <remarks>Introduced in <see href="https://model.mtconnect.org/#_Version_1.3">v1.3</see>.</remarks>
+		/// <remarks>
+		/// <list type="bullet">
+		/// <item><b>Introduced</b>: <see href="https://model.mtconnect.org/#_Version_1.3">v1.3</see></item>
+		/// </list>
+		/// </remarks>
 		[ObservationalSubType(typeof(PathFeedrateOverrideSubTypes))]
 		PATH_FEEDRATE_OVERRIDE,
 		/// <summary>
-		﻿/// {{def(EventEnum:PATH_MODE)}}
+		﻿/// <see cref="EventEnum.PATH_MODE />
 		/// <br/><b>Values</b>: <see cref="PathModeValues" />
 		/// </summary>
-		/// <remarks>Introduced in <see href="https://model.mtconnect.org/#_Version_1.1">v1.1</see>.</remarks>
+		/// <remarks>
+		/// <list type="bullet">
+		/// <item><b>Introduced</b>: <see href="https://model.mtconnect.org/#_Version_1.1">v1.1</see></item>
+		/// </list>
+		/// </remarks>
 		[ObservationalValue(typeof(PathModeValues))]
 		PATH_MODE,
 		/// <summary>
-		﻿/// {{def(EventEnum:POWER_STATE)}}
+		﻿/// <see cref="EventEnum.POWER_STATE />
 		/// <br/><b>Sub-Type</b>: <see cref="PowerStateSubTypes" />
 		/// <br/><b>Values</b>: <see cref="PowerStateValues" />
 		/// </summary>
-		/// <remarks>Introduced in <see href="https://model.mtconnect.org/#_Version_1.1">v1.1</see>.</remarks>
+		/// <remarks>
+		/// <list type="bullet">
+		/// <item><b>Introduced</b>: <see href="https://model.mtconnect.org/#_Version_1.1">v1.1</see></item>
+		/// </list>
+		/// </remarks>
 		[ObservationalSubType(typeof(PowerStateSubTypes))]
 		[ObservationalValue(typeof(PowerStateValues))]
 		POWER_STATE,
 		/// <summary>
-		﻿/// {{def(EventEnum:POWER_STATUS)}}
+		﻿/// <see cref="EventEnum.POWER_STATUS />
 		/// <br/><b>Values</b>: <see cref="PowerStatusValues" />
 		/// </summary>
-		/// <remarks>Introduced in <see href="https://model.mtconnect.org/#_Version_1.0">v1.0</see>.</remarks>
-		/// <remarks>Deprecated in <see href="https://model.mtconnect.org/#_Version_1.1">v1.1</see>.</remarks>
+		/// <remarks>
+		/// <list type="bullet">
+		/// <item><b>Introduced</b>: <see href="https://model.mtconnect.org/#_Version_1.0">v1.0</see></item>
+		/// <item><b>Deprecated</b>: <see href="https://model.mtconnect.org/#_Version_1.1">v1.1</see></item>
+		/// </list>
+		/// </remarks>
 		[Obsolete("Deprecated in v1.1 according to https://model.mtconnect.org/#_Version_1.1")]
 		[ObservationalValue(typeof(PowerStatusValues))]
 		POWER_STATUS,
 		/// <summary>
-		﻿/// {{def(EventEnum:PROCESS_TIME)}}
+		﻿/// <see cref="EventEnum.PROCESS_TIME />
 		/// <br/><b>Sub-Type</b>: <see cref="ProcessTimeSubTypes" />
 		/// </summary>
-		/// <remarks>Introduced in <see href="https://model.mtconnect.org/#_Version_1.5">v1.5</see>.</remarks>
+		/// <remarks>
+		/// <list type="bullet">
+		/// <item><b>Introduced</b>: <see href="https://model.mtconnect.org/#_Version_1.5">v1.5</see></item>
+		/// </list>
+		/// </remarks>
 		[ObservationalSubType(typeof(ProcessTimeSubTypes))]
 		PROCESS_TIME,
 		/// <summary>
-		﻿/// {{def(EventEnum:PROGRAM)}}
+		﻿/// <see cref="EventEnum.PROGRAM />
 		/// <br/><b>Sub-Type</b>: <see cref="ProgramSubTypes" />
 		/// </summary>
-		/// <remarks>Introduced in <see href="https://model.mtconnect.org/#_Version_1.0">v1.0</see>.</remarks>
+		/// <remarks>
+		/// <list type="bullet">
+		/// <item><b>Introduced</b>: <see href="https://model.mtconnect.org/#_Version_1.0">v1.0</see></item>
+		/// </list>
+		/// </remarks>
 		[ObservationalSubType(typeof(ProgramSubTypes))]
 		PROGRAM,
 		/// <summary>
-		﻿/// {{def(EventEnum:PROGRAM_COMMENT)}}
+		﻿/// <see cref="EventEnum.PROGRAM_COMMENT />
 		/// <br/><b>Sub-Type</b>: <see cref="ProgramCommentSubTypes" />
 		/// </summary>
-		/// <remarks>Introduced in <see href="https://model.mtconnect.org/#_Version_1.3">v1.3</see>.</remarks>
+		/// <remarks>
+		/// <list type="bullet">
+		/// <item><b>Introduced</b>: <see href="https://model.mtconnect.org/#_Version_1.3">v1.3</see></item>
+		/// </list>
+		/// </remarks>
 		[ObservationalSubType(typeof(ProgramCommentSubTypes))]
 		PROGRAM_COMMENT,
 		/// <summary>
-		﻿/// {{def(EventEnum:PROGRAM_EDIT)}}
+		﻿/// <see cref="EventEnum.PROGRAM_EDIT />
 		/// <br/><b>Values</b>: <see cref="ProgramEditValues" />
 		/// </summary>
-		/// <remarks>Introduced in <see href="https://model.mtconnect.org/#_Version_1.3">v1.3</see>.</remarks>
+		/// <remarks>
+		/// <list type="bullet">
+		/// <item><b>Introduced</b>: <see href="https://model.mtconnect.org/#_Version_1.3">v1.3</see></item>
+		/// </list>
+		/// </remarks>
 		[ObservationalValue(typeof(ProgramEditValues))]
 		PROGRAM_EDIT,
 		/// <summary>
-		﻿/// {{def(EventEnum:PROGRAM_EDIT_NAME)}}
+		﻿/// <see cref="EventEnum.PROGRAM_EDIT_NAME />
 		/// </summary>
-		/// <remarks>Introduced in <see href="https://model.mtconnect.org/#_Version_1.3">v1.3</see>.</remarks>
+		/// <remarks>
+		/// <list type="bullet">
+		/// <item><b>Introduced</b>: <see href="https://model.mtconnect.org/#_Version_1.3">v1.3</see></item>
+		/// </list>
+		/// </remarks>
 		PROGRAM_EDIT_NAME,
 		/// <summary>
-		﻿/// {{def(EventEnum:PROGRAM_HEADER)}}
+		﻿/// <see cref="EventEnum.PROGRAM_HEADER />
 		/// <br/><b>Sub-Type</b>: <see cref="ProgramHeaderSubTypes" />
 		/// </summary>
-		/// <remarks>Introduced in <see href="https://model.mtconnect.org/#_Version_1.3">v1.3</see>.</remarks>
+		/// <remarks>
+		/// <list type="bullet">
+		/// <item><b>Introduced</b>: <see href="https://model.mtconnect.org/#_Version_1.3">v1.3</see></item>
+		/// </list>
+		/// </remarks>
 		[ObservationalSubType(typeof(ProgramHeaderSubTypes))]
 		PROGRAM_HEADER,
 		/// <summary>
-		﻿/// {{def(EventEnum:PROGRAM_LOCATION)}}
+		﻿/// <see cref="EventEnum.PROGRAM_LOCATION />
 		/// <br/><b>Sub-Type</b>: <see cref="ProgramLocationSubTypes" />
 		/// </summary>
-		/// <remarks>Introduced in <see href="https://model.mtconnect.org/#_Version_1.5">v1.5</see>.</remarks>
+		/// <remarks>
+		/// <list type="bullet">
+		/// <item><b>Introduced</b>: <see href="https://model.mtconnect.org/#_Version_1.5">v1.5</see></item>
+		/// </list>
+		/// </remarks>
 		[ObservationalSubType(typeof(ProgramLocationSubTypes))]
 		PROGRAM_LOCATION,
 		/// <summary>
-		﻿/// {{def(EventEnum:PROGRAM_LOCATION_TYPE)}}
+		﻿/// <see cref="EventEnum.PROGRAM_LOCATION_TYPE />
 		/// <br/><b>Sub-Type</b>: <see cref="ProgramLocationTypeSubTypes" />
 		/// <br/><b>Values</b>: <see cref="ProgramLocationTypeValues" />
 		/// </summary>
-		/// <remarks>Introduced in <see href="https://model.mtconnect.org/#_Version_1.5">v1.5</see>.</remarks>
+		/// <remarks>
+		/// <list type="bullet">
+		/// <item><b>Introduced</b>: <see href="https://model.mtconnect.org/#_Version_1.5">v1.5</see></item>
+		/// </list>
+		/// </remarks>
 		[ObservationalSubType(typeof(ProgramLocationTypeSubTypes))]
 		[ObservationalValue(typeof(ProgramLocationTypeValues))]
 		PROGRAM_LOCATION_TYPE,
 		/// <summary>
-		﻿/// {{def(EventEnum:PROGRAM_NEST_LEVEL)}}  If an initial value is not defined, the nesting level associated with the highest or initial nesting level of the program <b>MUST</b> default to zero (0). 
+		﻿/// <see cref="EventEnum.PROGRAM_NEST_LEVEL />  If an initial value is not defined, the nesting level associated with the highest or initial nesting level of the program <b>MUST</b> default to zero (0). 
 		/// </summary>
-		/// <remarks>Introduced in <see href="https://model.mtconnect.org/#_Version_1.5">v1.5</see>.</remarks>
+		/// <remarks>
+		/// <list type="bullet">
+		/// <item><b>Introduced</b>: <see href="https://model.mtconnect.org/#_Version_1.5">v1.5</see></item>
+		/// </list>
+		/// </remarks>
 		PROGRAM_NEST_LEVEL,
 		/// <summary>
-		﻿/// {{def(EventEnum:ROTARY_MODE)}}
+		﻿/// <see cref="EventEnum.ROTARY_MODE />
 		/// <br/><b>Values</b>: <see cref="RotaryModeValues" />
 		/// </summary>
-		/// <remarks>Introduced in <see href="https://model.mtconnect.org/#_Version_1.1">v1.1</see>.</remarks>
+		/// <remarks>
+		/// <list type="bullet">
+		/// <item><b>Introduced</b>: <see href="https://model.mtconnect.org/#_Version_1.1">v1.1</see></item>
+		/// </list>
+		/// </remarks>
 		[ObservationalValue(typeof(RotaryModeValues))]
 		ROTARY_MODE,
 		/// <summary>
-		﻿/// {{def(EventEnum:ROTARY_VELOCITY_OVERRIDE)}}  This command represents a percentage change to the velocity calculated by a logic or motion program or set by a switch for a <see cref="Rotary">Rotary</see> type axis.
+		﻿/// <see cref="EventEnum.ROTARY_VELOCITY_OVERRIDE />  This command represents a percentage change to the velocity calculated by a logic or motion program or set by a switch for a <see cref="Rotary">Rotary</see> type axis.
 		/// </summary>
-		/// <remarks>Introduced in <see href="https://model.mtconnect.org/#_Version_1.3">v1.3</see>.</remarks>
+		/// <remarks>
+		/// <list type="bullet">
+		/// <item><b>Introduced</b>: <see href="https://model.mtconnect.org/#_Version_1.3">v1.3</see></item>
+		/// </list>
+		/// </remarks>
 		ROTARY_VELOCITY_OVERRIDE,
 		/// <summary>
-		﻿/// {{def(EventEnum:SERIAL_NUMBER)}}
+		﻿/// <see cref="EventEnum.SERIAL_NUMBER />
 		/// </summary>
-		/// <remarks>Introduced in <see href="https://model.mtconnect.org/#_Version_1.4">v1.4</see>.</remarks>
+		/// <remarks>
+		/// <list type="bullet">
+		/// <item><b>Introduced</b>: <see href="https://model.mtconnect.org/#_Version_1.4">v1.4</see></item>
+		/// </list>
+		/// </remarks>
 		SERIAL_NUMBER,
 		/// <summary>
-		﻿/// {{def(EventEnum:SPINDLE_INTERLOCK)}}
+		﻿/// <see cref="EventEnum.SPINDLE_INTERLOCK />
 		/// <br/><b>Values</b>: <see cref="SpindleInterlockValues" />
 		/// </summary>
-		/// <remarks>Introduced in <see href="https://model.mtconnect.org/#_Version_1.3">v1.3</see>.</remarks>
+		/// <remarks>
+		/// <list type="bullet">
+		/// <item><b>Introduced</b>: <see href="https://model.mtconnect.org/#_Version_1.3">v1.3</see></item>
+		/// </list>
+		/// </remarks>
 		[ObservationalValue(typeof(SpindleInterlockValues))]
 		SPINDLE_INTERLOCK,
 		/// <summary>
-		﻿/// {{def(EventEnum:TOOL_ASSET_ID)}}
+		﻿/// <see cref="EventEnum.TOOL_ASSET_ID />
 		/// </summary>
-		/// <remarks>Introduced in <see href="https://model.mtconnect.org/#_Version_1.2">v1.2</see>.</remarks>
+		/// <remarks>
+		/// <list type="bullet">
+		/// <item><b>Introduced</b>: <see href="https://model.mtconnect.org/#_Version_1.2">v1.2</see></item>
+		/// </list>
+		/// </remarks>
 		TOOL_ASSET_ID,
 		/// <summary>
-		﻿/// {{def(EventEnum:TOOL_GROUP)}}
+		﻿/// <see cref="EventEnum.TOOL_GROUP />
 		/// </summary>
-		/// <remarks>Introduced in <see href="https://model.mtconnect.org/#_Version_1.5">v1.5</see>.</remarks>
+		/// <remarks>
+		/// <list type="bullet">
+		/// <item><b>Introduced</b>: <see href="https://model.mtconnect.org/#_Version_1.5">v1.5</see></item>
+		/// </list>
+		/// </remarks>
 		TOOL_GROUP,
 		/// <summary>
-		﻿/// {{def(EventEnum:TOOL_ID)}}
+		﻿/// <see cref="EventEnum.TOOL_ID />
 		/// </summary>
-		/// <remarks>Introduced in <see href="https://model.mtconnect.org/#_Version_1.1">v1.1</see>.</remarks>
-		/// <remarks>Deprecated in <see href="https://model.mtconnect.org/#_Version_1.2">v1.2</see>.</remarks>
+		/// <remarks>
+		/// <list type="bullet">
+		/// <item><b>Introduced</b>: <see href="https://model.mtconnect.org/#_Version_1.1">v1.1</see></item>
+		/// <item><b>Deprecated</b>: <see href="https://model.mtconnect.org/#_Version_1.2">v1.2</see></item>
+		/// </list>
+		/// </remarks>
 		[Obsolete("Deprecated in v1.2 according to https://model.mtconnect.org/#_Version_1.2")]
 		TOOL_ID,
 		/// <summary>
-		﻿/// {{def(EventEnum:TOOL_NUMBER)}}
+		﻿/// <see cref="EventEnum.TOOL_NUMBER />
 		/// </summary>
-		/// <remarks>Introduced in <see href="https://model.mtconnect.org/#_Version_1.2">v1.2</see>.</remarks>
+		/// <remarks>
+		/// <list type="bullet">
+		/// <item><b>Introduced</b>: <see href="https://model.mtconnect.org/#_Version_1.2">v1.2</see></item>
+		/// </list>
+		/// </remarks>
 		TOOL_NUMBER,
 		/// <summary>
-		﻿/// {{def(EventEnum:TOOL_OFFSET)}}
+		﻿/// <see cref="EventEnum.TOOL_OFFSET />
 		/// <br/><b>Sub-Type</b>: <see cref="ToolOffsetSubTypes" />
 		/// </summary>
-		/// <remarks>Introduced in <see href="https://model.mtconnect.org/#_Version_1.4">v1.4</see>.</remarks>
+		/// <remarks>
+		/// <list type="bullet">
+		/// <item><b>Introduced</b>: <see href="https://model.mtconnect.org/#_Version_1.4">v1.4</see></item>
+		/// </list>
+		/// </remarks>
 		[ObservationalSubType(typeof(ToolOffsetSubTypes))]
 		TOOL_OFFSET,
 		/// <summary>
-		﻿/// {{def(EventEnum:USER)}}
+		﻿/// <see cref="EventEnum.USER />
 		/// <br/><b>Sub-Type</b>: <see cref="UserSubTypes" />
 		/// </summary>
-		/// <remarks>Introduced in <see href="https://model.mtconnect.org/#_Version_1.4">v1.4</see>.</remarks>
+		/// <remarks>
+		/// <list type="bullet">
+		/// <item><b>Introduced</b>: <see href="https://model.mtconnect.org/#_Version_1.4">v1.4</see></item>
+		/// </list>
+		/// </remarks>
 		[ObservationalSubType(typeof(UserSubTypes))]
 		USER,
 		/// <summary>
-		﻿/// {{def(EventEnum:VARIABLE)}}
+		﻿/// <see cref="EventEnum.VARIABLE />
 		/// </summary>
-		/// <remarks>Introduced in <see href="https://model.mtconnect.org/#_Version_1.5">v1.5</see>.</remarks>
+		/// <remarks>
+		/// <list type="bullet">
+		/// <item><b>Introduced</b>: <see href="https://model.mtconnect.org/#_Version_1.5">v1.5</see></item>
+		/// </list>
+		/// </remarks>
 		VARIABLE,
 		/// <summary>
-		﻿/// {{def(EventEnum:WAIT_STATE)}}
+		﻿/// <see cref="EventEnum.WAIT_STATE />
 		/// <br/><b>Values</b>: <see cref="WaitStateValues" />
 		/// </summary>
-		/// <remarks>Introduced in <see href="https://model.mtconnect.org/#_Version_1.5">v1.5</see>.</remarks>
+		/// <remarks>
+		/// <list type="bullet">
+		/// <item><b>Introduced</b>: <see href="https://model.mtconnect.org/#_Version_1.5">v1.5</see></item>
+		/// </list>
+		/// </remarks>
 		[ObservationalValue(typeof(WaitStateValues))]
 		WAIT_STATE,
 		/// <summary>
-		﻿/// {{def(EventEnum:WIRE)}}
+		﻿/// <see cref="EventEnum.WIRE />
 		/// </summary>
-		/// <remarks>Introduced in <see href="https://model.mtconnect.org/#_Version_1.4">v1.4</see>.</remarks>
+		/// <remarks>
+		/// <list type="bullet">
+		/// <item><b>Introduced</b>: <see href="https://model.mtconnect.org/#_Version_1.4">v1.4</see></item>
+		/// </list>
+		/// </remarks>
 		WIRE,
 		/// <summary>
-		﻿/// {{def(EventEnum:WORKHOLDING_ID)}}
+		﻿/// <see cref="EventEnum.WORKHOLDING_ID />
 		/// </summary>
-		/// <remarks>Introduced in <see href="https://model.mtconnect.org/#_Version_1.1">v1.1</see>.</remarks>
+		/// <remarks>
+		/// <list type="bullet">
+		/// <item><b>Introduced</b>: <see href="https://model.mtconnect.org/#_Version_1.1">v1.1</see></item>
+		/// </list>
+		/// </remarks>
 		WORKHOLDING_ID,
 		/// <summary>
-		﻿/// {{def(EventEnum:WORK_OFFSET)}}
+		﻿/// <see cref="EventEnum.WORK_OFFSET />
 		/// </summary>
-		/// <remarks>Introduced in <see href="https://model.mtconnect.org/#_Version_1.4">v1.4</see>.</remarks>
+		/// <remarks>
+		/// <list type="bullet">
+		/// <item><b>Introduced</b>: <see href="https://model.mtconnect.org/#_Version_1.4">v1.4</see></item>
+		/// </list>
+		/// </remarks>
 		WORK_OFFSET,
 		/// <summary>
-		﻿/// {{def(EventEnum:OPERATING_SYSTEM)}}
+		﻿/// <see cref="EventEnum.OPERATING_SYSTEM />
 		/// <br/><b>Sub-Type</b>: <see cref="OperatingSystemSubTypes" />
 		/// </summary>
-		/// <remarks>Introduced in <see href="https://model.mtconnect.org/#_Version_1.6">v1.6</see>.</remarks>
+		/// <remarks>
+		/// <list type="bullet">
+		/// <item><b>Introduced</b>: <see href="https://model.mtconnect.org/#_Version_1.6">v1.6</see></item>
+		/// </list>
+		/// </remarks>
 		[ObservationalSubType(typeof(OperatingSystemSubTypes))]
 		OPERATING_SYSTEM,
 		/// <summary>
-		﻿/// {{def(EventEnum:FIRMWARE)}}
+		﻿/// <see cref="EventEnum.FIRMWARE />
 		/// <br/><b>Sub-Type</b>: <see cref="FirmwareSubTypes" />
 		/// </summary>
-		/// <remarks>Introduced in <see href="https://model.mtconnect.org/#_Version_1.6">v1.6</see>.</remarks>
+		/// <remarks>
+		/// <list type="bullet">
+		/// <item><b>Introduced</b>: <see href="https://model.mtconnect.org/#_Version_1.6">v1.6</see></item>
+		/// </list>
+		/// </remarks>
 		[ObservationalSubType(typeof(FirmwareSubTypes))]
 		FIRMWARE,
 		/// <summary>
-		﻿/// {{def(EventEnum:APPLICATION)}}
+		﻿/// <see cref="EventEnum.APPLICATION />
 		/// <br/><b>Sub-Type</b>: <see cref="ApplicationSubTypes" />
 		/// </summary>
-		/// <remarks>Introduced in <see href="https://model.mtconnect.org/#_Version_1.6">v1.6</see>.</remarks>
+		/// <remarks>
+		/// <list type="bullet">
+		/// <item><b>Introduced</b>: <see href="https://model.mtconnect.org/#_Version_1.6">v1.6</see></item>
+		/// </list>
+		/// </remarks>
 		[ObservationalSubType(typeof(ApplicationSubTypes))]
 		APPLICATION,
 		/// <summary>
-		﻿/// {{def(EventEnum:LIBRARY)}}
+		﻿/// <see cref="EventEnum.LIBRARY />
 		/// <br/><b>Sub-Type</b>: <see cref="LibrarySubTypes" />
 		/// </summary>
-		/// <remarks>Introduced in <see href="https://model.mtconnect.org/#_Version_1.6">v1.6</see>.</remarks>
+		/// <remarks>
+		/// <list type="bullet">
+		/// <item><b>Introduced</b>: <see href="https://model.mtconnect.org/#_Version_1.6">v1.6</see></item>
+		/// </list>
+		/// </remarks>
 		[ObservationalSubType(typeof(LibrarySubTypes))]
 		LIBRARY,
 		/// <summary>
-		﻿/// {{def(EventEnum:HARDWARE)}}
+		﻿/// <see cref="EventEnum.HARDWARE />
 		/// <br/><b>Sub-Type</b>: <see cref="HardwareSubTypes" />
 		/// </summary>
-		/// <remarks>Introduced in <see href="https://model.mtconnect.org/#_Version_1.4">v1.4</see>.</remarks>
+		/// <remarks>
+		/// <list type="bullet">
+		/// <item><b>Introduced</b>: <see href="https://model.mtconnect.org/#_Version_1.4">v1.4</see></item>
+		/// </list>
+		/// </remarks>
 		[ObservationalSubType(typeof(HardwareSubTypes))]
 		HARDWARE,
 		/// <summary>
-		﻿/// {{def(EventEnum:NETWORK)}}
+		﻿/// <see cref="EventEnum.NETWORK />
 		/// <br/><b>Sub-Type</b>: <see cref="NetworkSubTypes" />
 		/// </summary>
-		/// <remarks>Introduced in <see href="https://model.mtconnect.org/#_Version_1.6">v1.6</see>.</remarks>
+		/// <remarks>
+		/// <list type="bullet">
+		/// <item><b>Introduced</b>: <see href="https://model.mtconnect.org/#_Version_1.6">v1.6</see></item>
+		/// </list>
+		/// </remarks>
 		[ObservationalSubType(typeof(NetworkSubTypes))]
 		NETWORK,
 		/// <summary>
-		﻿/// {{def(EventEnum:ROTATION)}}
+		﻿/// <see cref="EventEnum.ROTATION />
 		/// </summary>
-		/// <remarks>Introduced in <see href="https://model.mtconnect.org/#_Version_1.6">v1.6</see>.</remarks>
+		/// <remarks>
+		/// <list type="bullet">
+		/// <item><b>Introduced</b>: <see href="https://model.mtconnect.org/#_Version_1.6">v1.6</see></item>
+		/// </list>
+		/// </remarks>
 		ROTATION,
 		/// <summary>
-		﻿/// {{def(EventEnum:TRANSLATION)}}
+		﻿/// <see cref="EventEnum.TRANSLATION />
 		/// </summary>
-		/// <remarks>Introduced in <see href="https://model.mtconnect.org/#_Version_1.6">v1.6</see>.</remarks>
+		/// <remarks>
+		/// <list type="bullet">
+		/// <item><b>Introduced</b>: <see href="https://model.mtconnect.org/#_Version_1.6">v1.6</see></item>
+		/// </list>
+		/// </remarks>
 		TRANSLATION,
 		/// <summary>
-		﻿/// {{def(EventEnum:PROCESS_KIND_ID)}}
+		﻿/// <see cref="EventEnum.PROCESS_KIND_ID />
 		/// <br/><b>Sub-Type</b>: <see cref="ProcessKindIdSubTypes" />
 		/// </summary>
-		/// <remarks>Introduced in <see href="https://model.mtconnect.org/#_Version_1.7">v1.7</see>.</remarks>
+		/// <remarks>
+		/// <list type="bullet">
+		/// <item><b>Introduced</b>: <see href="https://model.mtconnect.org/#_Version_1.7">v1.7</see></item>
+		/// </list>
+		/// </remarks>
 		[ObservationalSubType(typeof(ProcessKindIdSubTypes))]
 		PROCESS_KIND_ID,
 		/// <summary>
-		﻿/// {{def(EventEnum:PART_STATUS)}}  If unique identifier is given, part status is for that individual. If group identifier is given without a unique identifier, then the status is assumed to be for the whole group.
+		﻿/// <see cref="EventEnum.PART_STATUS />  If unique identifier is given, part status is for that individual. If group identifier is given without a unique identifier, then the status is assumed to be for the whole group.
 		/// <br/><b>Values</b>: <see cref="PartStatusValues" />
 		/// </summary>
-		/// <remarks>Introduced in <see href="https://model.mtconnect.org/#_Version_1.7">v1.7</see>.</remarks>
+		/// <remarks>
+		/// <list type="bullet">
+		/// <item><b>Introduced</b>: <see href="https://model.mtconnect.org/#_Version_1.7">v1.7</see></item>
+		/// </list>
+		/// </remarks>
 		[ObservationalValue(typeof(PartStatusValues))]
 		PART_STATUS,
 		/// <summary>
-		﻿/// {{def(EventEnum:ALARM_LIMIT)}}
+		﻿/// <see cref="EventEnum.ALARM_LIMIT />
 		/// </summary>
-		/// <remarks>Introduced in <see href="https://model.mtconnect.org/#_Version_1.7">v1.7</see>.</remarks>
+		/// <remarks>
+		/// <list type="bullet">
+		/// <item><b>Introduced</b>: <see href="https://model.mtconnect.org/#_Version_1.7">v1.7</see></item>
+		/// </list>
+		/// </remarks>
 		ALARM_LIMIT,
 		/// <summary>
-		﻿/// {{def(EventEnum:PROCESS_AGGREGATE_ID)}}
+		﻿/// <see cref="EventEnum.PROCESS_AGGREGATE_ID />
 		/// <br/><b>Sub-Type</b>: <see cref="ProcessAggregateIdSubTypes" />
 		/// </summary>
-		/// <remarks>Introduced in <see href="https://model.mtconnect.org/#_Version_1.7">v1.7</see>.</remarks>
+		/// <remarks>
+		/// <list type="bullet">
+		/// <item><b>Introduced</b>: <see href="https://model.mtconnect.org/#_Version_1.7">v1.7</see></item>
+		/// </list>
+		/// </remarks>
 		[ObservationalSubType(typeof(ProcessAggregateIdSubTypes))]
 		PROCESS_AGGREGATE_ID,
 		/// <summary>
-		﻿/// {{def(EventEnum:PART_KIND_ID)}}  If no {{property(subType)}} is specified, <c>UUID</c> is default. 
+		﻿/// <see cref="EventEnum.PART_KIND_ID />  If no <see cref="subType" /> is specified, <c>UUID</c> is default. 
 		/// <br/><b>Sub-Type</b>: <see cref="PartKindIdSubTypes" />
 		/// </summary>
-		/// <remarks>Introduced in <see href="https://model.mtconnect.org/#_Version_1.7">v1.7</see>.</remarks>
+		/// <remarks>
+		/// <list type="bullet">
+		/// <item><b>Introduced</b>: <see href="https://model.mtconnect.org/#_Version_1.7">v1.7</see></item>
+		/// </list>
+		/// </remarks>
 		[ObservationalSubType(typeof(PartKindIdSubTypes))]
 		PART_KIND_ID,
 		/// <summary>
-		﻿/// {{def(EventEnum:ADAPTER_URI)}}
+		﻿/// <see cref="EventEnum.ADAPTER_URI />
 		/// </summary>
-		/// <remarks>Introduced in <see href="https://model.mtconnect.org/#_Version_1.7">v1.7</see>.</remarks>
+		/// <remarks>
+		/// <list type="bullet">
+		/// <item><b>Introduced</b>: <see href="https://model.mtconnect.org/#_Version_1.7">v1.7</see></item>
+		/// </list>
+		/// </remarks>
 		ADAPTER_U_R_I,
 		/// <summary>
-		﻿/// {{def(EventEnum:DEVICE_REMOVED)}}
+		﻿/// <see cref="EventEnum.DEVICE_REMOVED />
 		/// </summary>
-		/// <remarks>Introduced in <see href="https://model.mtconnect.org/#_Version_1.7">v1.7</see>.</remarks>
+		/// <remarks>
+		/// <list type="bullet">
+		/// <item><b>Introduced</b>: <see href="https://model.mtconnect.org/#_Version_1.7">v1.7</see></item>
+		/// </list>
+		/// </remarks>
 		DEVICE_REMOVED,
 		/// <summary>
-		﻿/// {{def(EventEnum:DEVICE_CHANGED)}}
+		﻿/// <see cref="EventEnum.DEVICE_CHANGED />
 		/// </summary>
-		/// <remarks>Introduced in <see href="https://model.mtconnect.org/#_Version_1.7">v1.7</see>.</remarks>
+		/// <remarks>
+		/// <list type="bullet">
+		/// <item><b>Introduced</b>: <see href="https://model.mtconnect.org/#_Version_1.7">v1.7</see></item>
+		/// </list>
+		/// </remarks>
 		DEVICE_CHANGED,
 		/// <summary>
-		﻿/// {{def(EventEnum:SPECIFICATION_LIMIT)}}
+		﻿/// <see cref="EventEnum.SPECIFICATION_LIMIT />
 		/// </summary>
-		/// <remarks>Introduced in <see href="https://model.mtconnect.org/#_Version_1.7">v1.7</see>.</remarks>
+		/// <remarks>
+		/// <list type="bullet">
+		/// <item><b>Introduced</b>: <see href="https://model.mtconnect.org/#_Version_1.7">v1.7</see></item>
+		/// </list>
+		/// </remarks>
 		SPECIFICATION_LIMIT,
 		/// <summary>
-		﻿/// {{def(EventEnum:CONNECTION_STATUS)}}
+		﻿/// <see cref="EventEnum.CONNECTION_STATUS />
 		/// <br/><b>Values</b>: <see cref="ConnectionStatusValues" />
 		/// </summary>
-		/// <remarks>Introduced in <see href="https://model.mtconnect.org/#_Version_1.7">v1.7</see>.</remarks>
+		/// <remarks>
+		/// <list type="bullet">
+		/// <item><b>Introduced</b>: <see href="https://model.mtconnect.org/#_Version_1.7">v1.7</see></item>
+		/// </list>
+		/// </remarks>
 		[ObservationalValue(typeof(ConnectionStatusValues))]
 		CONNECTION_STATUS,
 		/// <summary>
-		﻿/// {{def(EventEnum:ADAPTER_SOFTWARE_VERSION)}}
+		﻿/// <see cref="EventEnum.ADAPTER_SOFTWARE_VERSION />
 		/// </summary>
-		/// <remarks>Introduced in <see href="https://model.mtconnect.org/#_Version_1.7">v1.7</see>.</remarks>
+		/// <remarks>
+		/// <list type="bullet">
+		/// <item><b>Introduced</b>: <see href="https://model.mtconnect.org/#_Version_1.7">v1.7</see></item>
+		/// </list>
+		/// </remarks>
 		ADAPTER_SOFTWARE_VERSION,
 		/// <summary>
-		﻿/// {{def(EventEnum:SENSOR_ATTACHMENT)}}
+		﻿/// <see cref="EventEnum.SENSOR_ATTACHMENT />
 		/// </summary>
-		/// <remarks>Introduced in <see href="https://model.mtconnect.org/#_Version_1.7">v1.7</see>.</remarks>
+		/// <remarks>
+		/// <list type="bullet">
+		/// <item><b>Introduced</b>: <see href="https://model.mtconnect.org/#_Version_1.7">v1.7</see></item>
+		/// </list>
+		/// </remarks>
 		SENSOR_ATTACHMENT,
 		/// <summary>
-		﻿/// {{def(EventEnum:CONTROL_LIMIT)}}
+		﻿/// <see cref="EventEnum.CONTROL_LIMIT />
 		/// </summary>
-		/// <remarks>Introduced in <see href="https://model.mtconnect.org/#_Version_1.7">v1.7</see>.</remarks>
+		/// <remarks>
+		/// <list type="bullet">
+		/// <item><b>Introduced</b>: <see href="https://model.mtconnect.org/#_Version_1.7">v1.7</see></item>
+		/// </list>
+		/// </remarks>
 		CONTROL_LIMIT,
 		/// <summary>
-		﻿/// {{def(EventEnum:DEVICE_ADDED)}}
+		﻿/// <see cref="EventEnum.DEVICE_ADDED />
 		/// </summary>
-		/// <remarks>Introduced in <see href="https://model.mtconnect.org/#_Version_1.7">v1.7</see>.</remarks>
+		/// <remarks>
+		/// <list type="bullet">
+		/// <item><b>Introduced</b>: <see href="https://model.mtconnect.org/#_Version_1.7">v1.7</see></item>
+		/// </list>
+		/// </remarks>
 		DEVICE_ADDED,
 		/// <summary>
-		﻿/// {{def(EventEnum:MTCONNECT_VERSION)}}
+		﻿/// <see cref="EventEnum.MTCONNECT_VERSION />
 		/// </summary>
-		/// <remarks>Introduced in <see href="https://model.mtconnect.org/#_Version_1.7">v1.7</see>.</remarks>
+		/// <remarks>
+		/// <list type="bullet">
+		/// <item><b>Introduced</b>: <see href="https://model.mtconnect.org/#_Version_1.7">v1.7</see></item>
+		/// </list>
+		/// </remarks>
 		M_T_CONNECT_VERSION,
 		/// <summary>
-		﻿/// {{def(EventEnum:PROCESS_OCCURRENCE_ID)}}
+		﻿/// <see cref="EventEnum.PROCESS_OCCURRENCE_ID />
 		/// <br/><b>Sub-Type</b>: <see cref="ProcessOccurrenceIdSubTypes" />
 		/// </summary>
-		/// <remarks>Introduced in <see href="https://model.mtconnect.org/#_Version_1.7">v1.7</see>.</remarks>
+		/// <remarks>
+		/// <list type="bullet">
+		/// <item><b>Introduced</b>: <see href="https://model.mtconnect.org/#_Version_1.7">v1.7</see></item>
+		/// </list>
+		/// </remarks>
 		[ObservationalSubType(typeof(ProcessOccurrenceIdSubTypes))]
 		PROCESS_OCCURRENCE_ID,
 		/// <summary>
-		﻿/// {{def(EventEnum:PART_GROUP_ID)}}  If no {{property(subType)}} is specified, <c>UUID</c> is default.
+		﻿/// <see cref="EventEnum.PART_GROUP_ID />  If no <see cref="subType" /> is specified, <c>UUID</c> is default.
 		/// <br/><b>Sub-Type</b>: <see cref="PartGroupIdSubTypes" />
 		/// </summary>
-		/// <remarks>Introduced in <see href="https://model.mtconnect.org/#_Version_1.7">v1.7</see>.</remarks>
+		/// <remarks>
+		/// <list type="bullet">
+		/// <item><b>Introduced</b>: <see href="https://model.mtconnect.org/#_Version_1.7">v1.7</see></item>
+		/// </list>
+		/// </remarks>
 		[ObservationalSubType(typeof(PartGroupIdSubTypes))]
 		PART_GROUP_ID,
 		/// <summary>
-		﻿/// {{def(EventEnum:PART_UNIQUE_ID)}}  If no {{property(subType)}} is specified, <c>UUID</c> is default. 
+		﻿/// <see cref="EventEnum.PART_UNIQUE_ID />  If no <see cref="subType" /> is specified, <c>UUID</c> is default. 
 		/// <br/><b>Sub-Type</b>: <see cref="PartUniqueIdSubTypes" />
 		/// </summary>
-		/// <remarks>Introduced in <see href="https://model.mtconnect.org/#_Version_1.7">v1.7</see>.</remarks>
+		/// <remarks>
+		/// <list type="bullet">
+		/// <item><b>Introduced</b>: <see href="https://model.mtconnect.org/#_Version_1.7">v1.7</see></item>
+		/// </list>
+		/// </remarks>
 		[ObservationalSubType(typeof(PartUniqueIdSubTypes))]
 		PART_UNIQUE_ID,
 		/// <summary>
-		﻿/// {{def(EventEnum:ACTIVATION_COUNT)}}
+		﻿/// <see cref="EventEnum.ACTIVATION_COUNT />
 		/// <br/><b>Sub-Type</b>: <see cref="ActivationCountSubTypes" />
 		/// </summary>
-		/// <remarks>Introduced in <see href="https://model.mtconnect.org/#_Version_1.8">v1.8</see>.</remarks>
+		/// <remarks>
+		/// <list type="bullet">
+		/// <item><b>Introduced</b>: <see href="https://model.mtconnect.org/#_Version_1.8">v1.8</see></item>
+		/// </list>
+		/// </remarks>
 		[ObservationalSubType(typeof(ActivationCountSubTypes))]
 		ACTIVATION_COUNT,
 		/// <summary>
-		﻿/// {{def(EventEnum:DEACTIVATION_COUNT)}}
+		﻿/// <see cref="EventEnum.DEACTIVATION_COUNT />
 		/// <br/><b>Sub-Type</b>: <see cref="DeactivationCountSubTypes" />
 		/// </summary>
-		/// <remarks>Introduced in <see href="https://model.mtconnect.org/#_Version_1.8">v1.8</see>.</remarks>
+		/// <remarks>
+		/// <list type="bullet">
+		/// <item><b>Introduced</b>: <see href="https://model.mtconnect.org/#_Version_1.8">v1.8</see></item>
+		/// </list>
+		/// </remarks>
 		[ObservationalSubType(typeof(DeactivationCountSubTypes))]
 		DEACTIVATION_COUNT,
 		/// <summary>
-		﻿/// {{def(EventEnum:TRANSFER_COUNT)}}
+		﻿/// <see cref="EventEnum.TRANSFER_COUNT />
 		/// <br/><b>Sub-Type</b>: <see cref="TransferCountSubTypes" />
 		/// </summary>
-		/// <remarks>Introduced in <see href="https://model.mtconnect.org/#_Version_1.8">v1.8</see>.</remarks>
+		/// <remarks>
+		/// <list type="bullet">
+		/// <item><b>Introduced</b>: <see href="https://model.mtconnect.org/#_Version_1.8">v1.8</see></item>
+		/// </list>
+		/// </remarks>
 		[ObservationalSubType(typeof(TransferCountSubTypes))]
 		TRANSFER_COUNT,
 		/// <summary>
-		﻿/// {{def(EventEnum:LOAD_COUNT)}}
+		﻿/// <see cref="EventEnum.LOAD_COUNT />
 		/// <br/><b>Sub-Type</b>: <see cref="LoadCountSubTypes" />
 		/// </summary>
-		/// <remarks>Introduced in <see href="https://model.mtconnect.org/#_Version_1.8">v1.8</see>.</remarks>
+		/// <remarks>
+		/// <list type="bullet">
+		/// <item><b>Introduced</b>: <see href="https://model.mtconnect.org/#_Version_1.8">v1.8</see></item>
+		/// </list>
+		/// </remarks>
 		[ObservationalSubType(typeof(LoadCountSubTypes))]
 		LOAD_COUNT,
 		/// <summary>
-		﻿/// {{def(EventEnum:PART_PROCESSING_STATE)}}
+		﻿/// <see cref="EventEnum.PART_PROCESSING_STATE />
 		/// <br/><b>Values</b>: <see cref="PartProcessingStateValues" />
 		/// </summary>
-		/// <remarks>Introduced in <see href="https://model.mtconnect.org/#_Version_1.8">v1.8</see>.</remarks>
+		/// <remarks>
+		/// <list type="bullet">
+		/// <item><b>Introduced</b>: <see href="https://model.mtconnect.org/#_Version_1.8">v1.8</see></item>
+		/// </list>
+		/// </remarks>
 		[ObservationalValue(typeof(PartProcessingStateValues))]
 		PART_PROCESSING_STATE,
 		/// <summary>
-		﻿/// {{def(EventEnum:PROCESS_STATE)}}
+		﻿/// <see cref="EventEnum.PROCESS_STATE />
 		/// <br/><b>Values</b>: <see cref="ProcessStateValues" />
 		/// </summary>
-		/// <remarks>Introduced in <see href="https://model.mtconnect.org/#_Version_1.8">v1.8</see>.</remarks>
+		/// <remarks>
+		/// <list type="bullet">
+		/// <item><b>Introduced</b>: <see href="https://model.mtconnect.org/#_Version_1.8">v1.8</see></item>
+		/// </list>
+		/// </remarks>
 		[ObservationalValue(typeof(ProcessStateValues))]
 		PROCESS_STATE,
 		/// <summary>
-		﻿/// {{def(EventEnum:VALVE_STATE)}}
+		﻿/// <see cref="EventEnum.VALVE_STATE />
 		/// <br/><b>Sub-Type</b>: <see cref="ValveStateSubTypes" />
 		/// <br/><b>Values</b>: <see cref="ValveStateValues" />
 		/// </summary>
-		/// <remarks>Introduced in <see href="https://model.mtconnect.org/#_Version_1.8">v1.8</see>.</remarks>
+		/// <remarks>
+		/// <list type="bullet">
+		/// <item><b>Introduced</b>: <see href="https://model.mtconnect.org/#_Version_1.8">v1.8</see></item>
+		/// </list>
+		/// </remarks>
 		[ObservationalSubType(typeof(ValveStateSubTypes))]
 		[ObservationalValue(typeof(ValveStateValues))]
 		VALVE_STATE,
 		/// <summary>
-		﻿/// {{def(EventEnum:LOCK_STATE)}}
+		﻿/// <see cref="EventEnum.LOCK_STATE />
 		/// <br/><b>Values</b>: <see cref="LockStateValues" />
 		/// </summary>
-		/// <remarks>Introduced in <see href="https://model.mtconnect.org/#_Version_1.8">v1.8</see>.</remarks>
+		/// <remarks>
+		/// <list type="bullet">
+		/// <item><b>Introduced</b>: <see href="https://model.mtconnect.org/#_Version_1.8">v1.8</see></item>
+		/// </list>
+		/// </remarks>
 		[ObservationalValue(typeof(LockStateValues))]
 		LOCK_STATE,
 		/// <summary>
-		﻿/// {{def(EventEnum:UNLOAD_COUNT)}}
+		﻿/// <see cref="EventEnum.UNLOAD_COUNT />
 		/// <br/><b>Sub-Type</b>: <see cref="UnloadCountSubTypes" />
 		/// </summary>
-		/// <remarks>Introduced in <see href="https://model.mtconnect.org/#_Version_1.8">v1.8</see>.</remarks>
+		/// <remarks>
+		/// <list type="bullet">
+		/// <item><b>Introduced</b>: <see href="https://model.mtconnect.org/#_Version_1.8">v1.8</see></item>
+		/// </list>
+		/// </remarks>
 		[ObservationalSubType(typeof(UnloadCountSubTypes))]
 		UNLOAD_COUNT,
 		/// <summary>
-		﻿/// {{def(EventEnum:CYCLE_COUNT)}}
+		﻿/// <see cref="EventEnum.CYCLE_COUNT />
 		/// <br/><b>Sub-Type</b>: <see cref="CycleCountSubTypes" />
 		/// </summary>
-		/// <remarks>Introduced in <see href="https://model.mtconnect.org/#_Version_1.8">v1.8</see>.</remarks>
+		/// <remarks>
+		/// <list type="bullet">
+		/// <item><b>Introduced</b>: <see href="https://model.mtconnect.org/#_Version_1.8">v1.8</see></item>
+		/// </list>
+		/// </remarks>
 		[ObservationalSubType(typeof(CycleCountSubTypes))]
 		CYCLE_COUNT,
 		/// <summary>
-		﻿/// {{def(EventEnum:OPERATING_MODE)}}
+		﻿/// <see cref="EventEnum.OPERATING_MODE />
 		/// <br/><b>Values</b>: <see cref="OperatingModeValues" />
 		/// </summary>
-		/// <remarks>Introduced in <see href="https://model.mtconnect.org/#_Version_2.0">v2.0</see>.</remarks>
+		/// <remarks>
+		/// <list type="bullet">
+		/// <item><b>Introduced</b>: <see href="https://model.mtconnect.org/#_Version_2.0">v2.0</see></item>
+		/// </list>
+		/// </remarks>
 		[ObservationalValue(typeof(OperatingModeValues))]
 		OPERATING_MODE,
 		/// <summary>
-		﻿/// {{def(EventEnum:ASSET_COUNT)}}
+		﻿/// <see cref="EventEnum.ASSET_COUNT />
 		/// </summary>
-		/// <remarks>Introduced in <see href="https://model.mtconnect.org/#_Version_2.0">v2.0</see>.</remarks>
+		/// <remarks>
+		/// <list type="bullet">
+		/// <item><b>Introduced</b>: <see href="https://model.mtconnect.org/#_Version_2.0">v2.0</see></item>
+		/// </list>
+		/// </remarks>
 		ASSET_COUNT,
 		/// <summary>
-		﻿/// {{def(EventEnum:MAINTENANCE_LIST)}}  If the {{property(INTERVAL)}} {{property(key)}} is not provided, it is assumed <c>ABSOLUTE</c>.  If the {{property(DIRECTION)}} {{property(key)}} is not provided, it is assumed <c>UP</c>.  If the {{property(UNITS)}} {{property(key)}} is not provided, it is assumed to be <c>COUNT</c>.
+		﻿/// <see cref="EventEnum.MAINTENANCE_LIST />  If the <see cref="INTERVAL" /> <see cref="key" /> is not provided, it is assumed <c>ABSOLUTE</c>.  If the <see cref="DIRECTION" /> <see cref="key" /> is not provided, it is assumed <c>UP</c>.  If the <see cref="UNITS" /> <see cref="key" /> is not provided, it is assumed to be <c>COUNT</c>.
 		/// </summary>
-		/// <remarks>Introduced in <see href="https://model.mtconnect.org/#_Version_2.0">v2.0</see>.</remarks>
+		/// <remarks>
+		/// <list type="bullet">
+		/// <item><b>Introduced</b>: <see href="https://model.mtconnect.org/#_Version_2.0">v2.0</see></item>
+		/// </list>
+		/// </remarks>
 		MAINTENANCE_LIST,
 		/// <summary>
-		﻿/// {{def(EventEnum:FIXTURE_ID)}}
+		﻿/// <see cref="EventEnum.FIXTURE_ID />
 		/// </summary>
-		/// <remarks>Introduced in <see href="https://model.mtconnect.org/#_Version_2.0">v2.0</see>.</remarks>
+		/// <remarks>
+		/// <list type="bullet">
+		/// <item><b>Introduced</b>: <see href="https://model.mtconnect.org/#_Version_2.0">v2.0</see></item>
+		/// </list>
+		/// </remarks>
 		FIXTURE_ID,
 		/// <summary>
-		﻿/// {{def(EventEnum:PART_COUNT_TYPE)}}
+		﻿/// <see cref="EventEnum.PART_COUNT_TYPE />
 		/// <br/><b>Values</b>: <see cref="PartCountTypeValues" />
 		/// </summary>
-		/// <remarks>Introduced in <see href="https://model.mtconnect.org/#_Version_2.0">v2.0</see>.</remarks>
+		/// <remarks>
+		/// <list type="bullet">
+		/// <item><b>Introduced</b>: <see href="https://model.mtconnect.org/#_Version_2.0">v2.0</see></item>
+		/// </list>
+		/// </remarks>
 		[ObservationalValue(typeof(PartCountTypeValues))]
 		PART_COUNT_TYPE,
 		/// <summary>
-		﻿/// {{def(EventEnum:CLOCK_TIME)}}
+		﻿/// <see cref="EventEnum.CLOCK_TIME />
 		/// </summary>
-		/// <remarks>Introduced in <see href="https://model.mtconnect.org/#_Version_1.2">v1.2</see>.</remarks>
+		/// <remarks>
+		/// <list type="bullet">
+		/// <item><b>Introduced</b>: <see href="https://model.mtconnect.org/#_Version_1.2">v1.2</see></item>
+		/// </list>
+		/// </remarks>
 		CLOCK_TIME,
 		/// <summary>
-		﻿/// {{def(EventEnum:NETWORK_PORT)}}
+		﻿/// <see cref="EventEnum.NETWORK_PORT />
 		/// </summary>
-		/// <remarks>Introduced in <see href="https://model.mtconnect.org/#_Version_2.1">v2.1</see>.</remarks>
+		/// <remarks>
+		/// <list type="bullet">
+		/// <item><b>Introduced</b>: <see href="https://model.mtconnect.org/#_Version_2.1">v2.1</see></item>
+		/// </list>
+		/// </remarks>
 		NETWORK_PORT,
 		/// <summary>
-		﻿/// {{def(EventEnum:HOST_NAME)}}
+		﻿/// <see cref="EventEnum.HOST_NAME />
 		/// </summary>
-		/// <remarks>Introduced in <see href="https://model.mtconnect.org/#_Version_2.1">v2.1</see>.</remarks>
+		/// <remarks>
+		/// <list type="bullet">
+		/// <item><b>Introduced</b>: <see href="https://model.mtconnect.org/#_Version_2.1">v2.1</see></item>
+		/// </list>
+		/// </remarks>
 		HOST_NAME,
 		/// <summary>
-		﻿/// {{def(EventEnum:LEAK_DETECT)}}
+		﻿/// <see cref="EventEnum.LEAK_DETECT />
 		/// <br/><b>Values</b>: <see cref="LeakDetectValues" />
 		/// </summary>
-		/// <remarks>Introduced in <see href="https://model.mtconnect.org/#_Version_2.1">v2.1</see>.</remarks>
+		/// <remarks>
+		/// <list type="bullet">
+		/// <item><b>Introduced</b>: <see href="https://model.mtconnect.org/#_Version_2.1">v2.1</see></item>
+		/// </list>
+		/// </remarks>
 		[ObservationalValue(typeof(LeakDetectValues))]
 		LEAK_DETECT,
 		/// <summary>
-		﻿/// {{def(EventEnum:BATTERY_STATE)}}
+		﻿/// <see cref="EventEnum.BATTERY_STATE />
 		/// <br/><b>Values</b>: <see cref="BatteryStateValues" />
 		/// </summary>
-		/// <remarks>Introduced in <see href="https://model.mtconnect.org/#_Version_2.1">v2.1</see>.</remarks>
+		/// <remarks>
+		/// <list type="bullet">
+		/// <item><b>Introduced</b>: <see href="https://model.mtconnect.org/#_Version_2.1">v2.1</see></item>
+		/// </list>
+		/// </remarks>
 		[ObservationalValue(typeof(BatteryStateValues))]
 		BATTERY_STATE,
 	}

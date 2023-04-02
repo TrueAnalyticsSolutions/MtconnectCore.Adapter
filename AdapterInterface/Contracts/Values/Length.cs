@@ -6,16 +6,28 @@ using Mtconnect.AdapterInterface.Contracts.Attributes;
 using Mtconnect.AdapterInterface.Contracts;
 using Mtconnect.AdapterInterface.DataItems;
 using Mtconnect.AdapterInterface.DataItemValues;
+using Mtconnect.AdapterInterface.Units;
 
 namespace Mtconnect.AdapterInterface.DataItemValues
 {
 	/// <summary>
 	/// A value type for Length to be used in a <see cref="IAdapterDataModel" /> implementation. View in the MTConnect Model browser <seealso href="https://model.mtconnect.org/#Enumeration__">model.mtconnect.org</seealso>
 	﻿	/// </summary>
-	/// <remarks>Introduced in <see href="https://model.mtconnect.org/#_Version_1.3">v1.3</see>.</remarks>
-	[GeneratedCode("MtconnectTranspiler.Sinks.CSharp.Adapter", "0.0.14.0")]
+	/// <remarks>
+	/// <list type="bullet">
+	/// <item><b>Introduced</b>: <see href="https://model.mtconnect.org/#_Version_1.3">v1.3</see></item>
+	/// <item><b>Units</b>: <see cref="MtconnectUnit.MILLIMETER" /></item>
+	/// </list>
+	/// </remarks>
+	[GeneratedCode("MtconnectTranspiler.Sinks.CSharp.Adapter", "1.0.5.0")]
 	public partial class Length : SampleValue
     {
+        /// <inheritdoc />
+        public override string ObservationalType => nameof(DataItemTypes.SampleTypes.LENGTH);
+
+		/// <inheritdoc />
+        public override string ObservationalSubType => null;
+
 		/// <summary>
 		/// Constructs a new value type for the Length EVENT Data Item.
 		/// </summary>
@@ -36,6 +48,9 @@ namespace Mtconnect.AdapterInterface.DataItemValues
 		/// </summary>
 		public partial class STANDARD : Length
 		{
+			/// <inheritdoc />
+            public override string ObservationalSubType => nameof(DataItemTypes.LengthSubTypes.STANDARD);
+
 			/// <summary>
 			/// Constructs a new value type for STANDARD.
 			/// </summary>
@@ -55,6 +70,9 @@ namespace Mtconnect.AdapterInterface.DataItemValues
 		/// </summary>
 		public partial class REMAINING : Length
 		{
+			/// <inheritdoc />
+            public override string ObservationalSubType => nameof(DataItemTypes.LengthSubTypes.REMAINING);
+
 			/// <summary>
 			/// Constructs a new value type for REMAINING.
 			/// </summary>
@@ -74,6 +92,9 @@ namespace Mtconnect.AdapterInterface.DataItemValues
 		/// </summary>
 		public partial class USEABLE : Length
 		{
+			/// <inheritdoc />
+            public override string ObservationalSubType => nameof(DataItemTypes.LengthSubTypes.USEABLE);
+
 			/// <summary>
 			/// Constructs a new value type for USEABLE.
 			/// </summary>

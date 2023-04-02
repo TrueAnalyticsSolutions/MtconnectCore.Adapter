@@ -6,68 +6,85 @@ using Mtconnect.AdapterInterface.Contracts.Attributes;
 using Mtconnect.AdapterInterface.Contracts;
 using Mtconnect.AdapterInterface.DataItems;
 using Mtconnect.AdapterInterface.DataItemValues;
+using Mtconnect.AdapterInterface.Units;
 
 namespace Mtconnect.AdapterInterface.DataItemValues
 {
 	/// <summary>
 	/// A value type for MaterialLayer to be used in a <see cref="IAdapterDataModel" /> implementation. View in the MTConnect Model browser <seealso href="https://model.mtconnect.org/#Enumeration___19_0_3_91b028d_1579272271512_537408_674">model.mtconnect.org</seealso>
 	﻿	/// </summary>
-	/// <remarks>Introduced in <see href="https://model.mtconnect.org/#_Version_1.5">v1.5</see>.</remarks>
-	[GeneratedCode("MtconnectTranspiler.Sinks.CSharp.Adapter", "0.0.14.0")]
+	/// <remarks>
+	/// <list type="bullet">
+	/// <item><b>Introduced</b>: <see href="https://model.mtconnect.org/#_Version_1.5">v1.5</see></item>
+	/// </list>
+	/// </remarks>
+	[GeneratedCode("MtconnectTranspiler.Sinks.CSharp.Adapter", "1.0.5.0")]
 	public partial class MaterialLayer : EventValue
     {
+        /// <inheritdoc />
+        public override string ObservationalType => nameof(DataItemTypes.EventTypes.MATERIAL_LAYER);
+
+		/// <inheritdoc />
+        public override string ObservationalSubType => null;
+
 		/// <summary>
 		/// Constructs a new value type for the MaterialLayer EVENT Data Item.
 		/// </summary>
-        public MaterialLayer(string value) : base(value) { }
+        public MaterialLayer(Int32 value) : base(value) { }
 
 		
         /// <summary>
-        /// Implicitly converts the specified string to an <see cref="MaterialLayer"/> value.
-        /// The string is converted to uppercase and used to initialize the <see cref="MaterialLayer"/> value.
+        /// Implicitly converts the specified Int32 to an <see cref="MaterialLayer"/> value.
+        /// The Int32 is converted to uppercase and used to initialize the <see cref="MaterialLayer"/> value.
         /// </summary>
-        /// <param name="value">The string to convert.</param>
+        /// <param name="value">The Int32 to convert.</param>
         /// <returns>An <see cref="MaterialLayer"/> value initialized with the specified string in uppercase.</returns>
-        public static implicit operator MaterialLayer(string value)
-            => new MaterialLayer(value.ToUpperInvariant());
+        public static implicit operator MaterialLayer(Int32 value)
+            => new MaterialLayer(value);
 		
 		/// <summary>
 		/// A Data Item SubType implementation of <see cref="MaterialLayer" />.
 		/// </summary>
 		public partial class ACTUAL : MaterialLayer
 		{
+			/// <inheritdoc />
+            public override string ObservationalSubType => nameof(DataItemTypes.MaterialLayerSubTypes.ACTUAL);
+
 			/// <summary>
 			/// Constructs a new value type for ACTUAL.
 			/// </summary>
-            public ACTUAL(string value) : base(value) { }
+            public ACTUAL(Int32 value) : base(value) { }
 			
 			/// <summary>
-			/// Implicitly converts the specified string to an <see cref="ACTUAL"/> value.
-			/// The string is converted to uppercase and used to initialize the <see cref="ACTUAL"/> value.
+			/// Implicitly converts the specified Int32 to an <see cref="ACTUAL"/> value.
+			/// The Int32 is converted to uppercase and used to initialize the <see cref="ACTUAL"/> value.
 			/// </summary>
-			/// <param name="value">The string to convert.</param>
+			/// <param name="value">The Int32 to convert.</param>
 			/// <returns>An <see cref="ACTUAL"/> value initialized with the specified string in uppercase.</returns>
-			public static implicit operator ACTUAL(string value)
-				=> new ACTUAL(value.ToUpperInvariant());
+			public static implicit operator ACTUAL(Int32 value)
+				=> new ACTUAL(value);
 		}
 		/// <summary>
 		/// A Data Item SubType implementation of <see cref="MaterialLayer" />.
 		/// </summary>
 		public partial class TARGET : MaterialLayer
 		{
+			/// <inheritdoc />
+            public override string ObservationalSubType => nameof(DataItemTypes.MaterialLayerSubTypes.TARGET);
+
 			/// <summary>
 			/// Constructs a new value type for TARGET.
 			/// </summary>
-            public TARGET(string value) : base(value) { }
+            public TARGET(Int32 value) : base(value) { }
 			
 			/// <summary>
-			/// Implicitly converts the specified string to an <see cref="TARGET"/> value.
-			/// The string is converted to uppercase and used to initialize the <see cref="TARGET"/> value.
+			/// Implicitly converts the specified Int32 to an <see cref="TARGET"/> value.
+			/// The Int32 is converted to uppercase and used to initialize the <see cref="TARGET"/> value.
 			/// </summary>
-			/// <param name="value">The string to convert.</param>
+			/// <param name="value">The Int32 to convert.</param>
 			/// <returns>An <see cref="TARGET"/> value initialized with the specified string in uppercase.</returns>
-			public static implicit operator TARGET(string value)
-				=> new TARGET(value.ToUpperInvariant());
+			public static implicit operator TARGET(Int32 value)
+				=> new TARGET(value);
 		}
     }
 }

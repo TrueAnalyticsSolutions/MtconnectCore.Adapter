@@ -8,17 +8,15 @@ using Mtconnect.AdapterInterface.Contracts.Attributes;
 using Mtconnect.AdapterInterface.Contracts;
 using Mtconnect.AdapterInterface.DataItems;
 using Mtconnect.AdapterInterface.DataItemValues;
+using Mtconnect.AdapterInterface.Units;
 
 namespace {{ to_pascal_code source.namespace }}
 {
 	/// <summary>
 	/// A value type for {{ to_pascal_case source.name }} to be used in a <see cref="IAdapterDataModel" /> implementation. View in the MTConnect Model browser <seealso href="https://model.mtconnect.org/#Enumeration__{{ source.reference_id }}">model.mtconnect.org</seealso>
 	{{ include 'UmlCommentsSummaryContent.scriban' source?.summary ~}}
-	{{~ if source.expected_units != null && source.expected_units != "" ~}}
-	/// <br /><br/><b>NOTE</b>: Expected units are <i>{{ source.expected_units }}</i>
-	{{~ end ~}}
 	/// </summary>
-	{{~ if nversion_slim != "" || dversion_slim != "" ~}}
+	{{~ if nversion_slim != "" || dversion_slim != "" || (source.expected_units != null && source.expected_units != "") ~}}
 	/// <remarks>
 	/// <list type="bullet">
 	{{~ if nversion_slim != "" ~}}
@@ -26,6 +24,9 @@ namespace {{ to_pascal_code source.namespace }}
 	{{~ end ~}}
 	{{~ if dversion_slim != "" ~}}
 	/// <item><b>Deprecated</b>: <see href="https://model.mtconnect.org/#_Version_{{ dversion_slim }}">v{{ dversion_slim }}</see></item>
+	{{~ end ~}}
+	{{~ if source.expected_units != null && source.expected_units != "" ~}}
+	/// <item><b>Units</b>: <see cref="MtconnectUnit.{{ source.expected_units }}" /></item>
 	{{~ end ~}}
 	/// </list>
 	/// </remarks>
@@ -36,6 +37,12 @@ namespace {{ to_pascal_code source.namespace }}
 	[GeneratedCode("MtconnectTranspiler.Sinks.CSharp.Adapter", "{{ version }}")]
 	public partial class {{ to_pascal_case source.name }} : {{ source.category }}Value
     {
+        /// <inheritdoc />
+        public override string ObservationalType => nameof(DataItemTypes.{{ source.category | string.replace "3D" "" }}Types.{{ to_upper_snake_code source.name }});
+
+		/// <inheritdoc />
+        public override string ObservationalSubType => null;
+
 		/// <summary>
 		/// Constructs a new value type for the {{ to_pascal_case source.name }} EVENT Data Item.
 		/// </summary>
@@ -85,6 +92,9 @@ d_item_version_slim = (item?.deprecated_version | string.slice 20 3) | string.re
 		/// </summary>
 		public partial class {{ to_pascal_case subtype }} : {{ to_pascal_case source.name }}
 		{
+			/// <inheritdoc />
+            public override string ObservationalSubType => nameof(DataItemTypes.{{ source.name }}SubTypes.{{ subtype }});
+
 			/// <summary>
 			/// Constructs a new value type for {{ subtype }}.
 			/// </summary>

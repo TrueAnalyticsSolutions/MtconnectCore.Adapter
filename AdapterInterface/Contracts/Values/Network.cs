@@ -6,16 +6,27 @@ using Mtconnect.AdapterInterface.Contracts.Attributes;
 using Mtconnect.AdapterInterface.Contracts;
 using Mtconnect.AdapterInterface.DataItems;
 using Mtconnect.AdapterInterface.DataItemValues;
+using Mtconnect.AdapterInterface.Units;
 
 namespace Mtconnect.AdapterInterface.DataItemValues
 {
 	/// <summary>
 	/// A value type for Network to be used in a <see cref="IAdapterDataModel" /> implementation. View in the MTConnect Model browser <seealso href="https://model.mtconnect.org/#Enumeration__">model.mtconnect.org</seealso>
 	﻿	/// </summary>
-	/// <remarks>Introduced in <see href="https://model.mtconnect.org/#_Version_1.6">v1.6</see>.</remarks>
-	[GeneratedCode("MtconnectTranspiler.Sinks.CSharp.Adapter", "0.0.14.0")]
+	/// <remarks>
+	/// <list type="bullet">
+	/// <item><b>Introduced</b>: <see href="https://model.mtconnect.org/#_Version_1.6">v1.6</see></item>
+	/// </list>
+	/// </remarks>
+	[GeneratedCode("MtconnectTranspiler.Sinks.CSharp.Adapter", "1.0.5.0")]
 	public partial class Network : EventValue
     {
+        /// <inheritdoc />
+        public override string ObservationalType => nameof(DataItemTypes.EventTypes.NETWORK);
+
+		/// <inheritdoc />
+        public override string ObservationalSubType => null;
+
 		/// <summary>
 		/// Constructs a new value type for the Network EVENT Data Item.
 		/// </summary>
@@ -36,6 +47,9 @@ namespace Mtconnect.AdapterInterface.DataItemValues
 		/// </summary>
 		public partial class IPV4ADDRESS : Network
 		{
+			/// <inheritdoc />
+            public override string ObservationalSubType => nameof(DataItemTypes.NetworkSubTypes.I_PV4_ADDRESS);
+
 			/// <summary>
 			/// Constructs a new value type for I_PV4_ADDRESS.
 			/// </summary>
@@ -55,6 +69,9 @@ namespace Mtconnect.AdapterInterface.DataItemValues
 		/// </summary>
 		public partial class IPV6ADDRESS : Network
 		{
+			/// <inheritdoc />
+            public override string ObservationalSubType => nameof(DataItemTypes.NetworkSubTypes.I_PV6_ADDRESS);
+
 			/// <summary>
 			/// Constructs a new value type for I_PV6_ADDRESS.
 			/// </summary>
@@ -74,6 +91,9 @@ namespace Mtconnect.AdapterInterface.DataItemValues
 		/// </summary>
 		public partial class GATEWAY : Network
 		{
+			/// <inheritdoc />
+            public override string ObservationalSubType => nameof(DataItemTypes.NetworkSubTypes.GATEWAY);
+
 			/// <summary>
 			/// Constructs a new value type for GATEWAY.
 			/// </summary>
@@ -93,6 +113,9 @@ namespace Mtconnect.AdapterInterface.DataItemValues
 		/// </summary>
 		public partial class SUBNETMASK : Network
 		{
+			/// <inheritdoc />
+            public override string ObservationalSubType => nameof(DataItemTypes.NetworkSubTypes.SUBNET_MASK);
+
 			/// <summary>
 			/// Constructs a new value type for SUBNET_MASK.
 			/// </summary>
@@ -112,6 +135,9 @@ namespace Mtconnect.AdapterInterface.DataItemValues
 		/// </summary>
 		public partial class VLANID : Network
 		{
+			/// <inheritdoc />
+            public override string ObservationalSubType => nameof(DataItemTypes.NetworkSubTypes.V_LAN_ID);
+
 			/// <summary>
 			/// Constructs a new value type for V_LAN_ID.
 			/// </summary>
@@ -131,6 +157,9 @@ namespace Mtconnect.AdapterInterface.DataItemValues
 		/// </summary>
 		public partial class MACADDRESS : Network
 		{
+			/// <inheritdoc />
+            public override string ObservationalSubType => nameof(DataItemTypes.NetworkSubTypes.MAC_ADDRESS);
+
 			/// <summary>
 			/// Constructs a new value type for MAC_ADDRESS.
 			/// </summary>
@@ -150,6 +179,9 @@ namespace Mtconnect.AdapterInterface.DataItemValues
 		/// </summary>
 		public partial class WIRELESS : Network
 		{
+			/// <inheritdoc />
+            public override string ObservationalSubType => nameof(DataItemTypes.NetworkSubTypes.WIRELESS);
+
 			/// <summary>
 			/// Constructs a new value type for WIRELESS.
 			/// </summary>

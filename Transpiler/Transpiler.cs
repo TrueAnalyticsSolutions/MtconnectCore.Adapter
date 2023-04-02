@@ -42,6 +42,8 @@ namespace AdapterTranspiler
             var dataItemTypeEnums = new List<AdapterEnum>();
             var valueEnums = new List<AdapterEnum>();
             var valueTypes = new List<AdapterValueType>();
+            var unitHelper = new AdapterUnitHelper(model);
+
             string[] categories = new string[] { "Sample", "Event", "Condition" };
 
             foreach (string category in categories)
@@ -73,6 +75,9 @@ namespace AdapterTranspiler
 
                 var categoryEnum = new AdapterEnum(model!, typesPackage!, $"{category}Types") { Namespace = DataItemNamespace };
 
+                var dataTypesPackage = MTConnectHelper
+                    .JumpToPackage(model!, MTConnectHelper.PackageNavigationTree.Profile.DataTypes);
+
                 foreach (UmlClass type in types)
                 {
                     AdapterEnum typeValuesEnum;
@@ -81,94 +86,120 @@ namespace AdapterTranspiler
                     // Add type to CATEGORY enum
                     categoryEnum.Add(model, type);
 
-                    // Find value
-                    var typeResult = type?.Properties?.FirstOrDefault(o => o.Name == "result");
+                    string? valueType = null;
+
+                    // Find the value type for the observational type
+                    var typeResult = type?.Properties?.FirstOrDefault(o => o.Name.Equals("result", StringComparison.OrdinalIgnoreCase));
                     if (!string.IsNullOrEmpty(typeResult?.PropertyType))
                     {
-                        var typeValuesSysEnum = MTConnectHelper
-                            .JumpToPackage(model!, MTConnectHelper.PackageNavigationTree.Profile.DataTypes)
+                        // Attempt to find a UmlEnumeration as the value type
+                        var typeValuesSysEnum = dataTypesPackage
                             .Enumerations
                             .GetById(typeResult?.PropertyType);
-                        var typeValuesSysDataType = MTConnectHelper
-                            .JumpToPackage(model!, MTConnectHelper.PackageNavigationTree.Profile.DataTypes)
+                        // Attempt to find a UmlDataType as the value type
+                        var typeValuesSysDataType = dataTypesPackage
                             .DataTypes
                             .GetById(typeResult?.PropertyType);
-                        //model
-                        //?.Profile
-                        //?.ProfileDataTypes
-                        //?.Elements
-                        //?.FirstOrDefault(o => o.Id == typeResult?.PropertyType);
-                        if (typeResult != null)
+
+                        // Make first attempt to process the value type in the context of an EVENT, which uses Enumerations for some of its values
+                        if (typeValuesSysEnum != null)
                         {
-                            if (typeValuesSysEnum != null && typeValuesSysEnum is UmlEnumeration)
-                            {
-                                // Scratch this, AdapterValueType needs to inherit CSharp.Enum, not CSharp.Class
-                                typeValues = new AdapterEventValueType(model!, typeValuesSysEnum)
-                                {
-                                    Namespace = DataItemValueNamespace,
-                                    Name = $"{type!.Name}",
-                                    ReferenceId = typeValuesSysEnum.Id
-                                };
+                            valueType = "string";
 
-                                typeValuesEnum = new AdapterEnum(model!, typeValuesSysEnum)
-                                {
-                                    Namespace = DataItemValueNamespace,
-                                    Name = $"{type!.Name}Values",
-                                    ReferenceId = typeValuesSysEnum.Id
-                                };
-                                foreach (EnumItem value in typeValuesEnum.Items)
-                                {
-                                    value.Name = value.SysML_Name;
-                                }
-                                if (!categoryEnum.ValueTypes.ContainsKey(type.Name)) categoryEnum.ValueTypes.Add(ScribanHelperMethods.ToUpperSnakeCode(type.Name), $"{type.Name}Values");
-
-
-                                valueEnums.Add(typeValuesEnum);
-                            }
-                        }
-
-                        if (typeValues == null)
-                            typeValues = new AdapterValueType(
-                                category,
-                                category == "Sample"
-                                    ? "float"
-                                    : category == "Condition"
-                                        ? "Condition"
-                                        : (typeValuesSysDataType != null && typeValuesSysDataType is UmlDataType)
-                                            ? ScribanHelperMethods.ToPrimitiveType(typeValuesSysDataType)?.Name ?? "string"
-                                            : "string",
-                                model!,
-                                type!)
+                            // Create the value type enumeration
+                            typeValues = new AdapterEventValueType(model!, typeValuesSysEnum)
                             {
                                 Namespace = DataItemValueNamespace,
-                                Category = category,
-                                ReferenceId = type!.Properties.FirstOrDefault(o => o.Name.Equals("result", StringComparison.OrdinalIgnoreCase))?.PropertyType
+                                Name = $"{type!.Name}",
+                                ReferenceId = typeValuesSysEnum.Id
                             };
+
+                            // Create the Enum for value options
+                            typeValuesEnum = new AdapterEnum(model!, typeValuesSysEnum)
+                            {
+                                Namespace = DataItemValueNamespace,
+                                Name = $"{type!.Name}Values",
+                                ReferenceId = typeValuesSysEnum.Id
+                            };
+                            // Cleanup Enum names
+                            foreach (EnumItem value in typeValuesEnum.Items)
+                                value.Name = value.SysML_Name;
+
+                            // Add value type reference
+                            if (!categoryEnum.ValueTypes.ContainsKey(type.Name))
+                                categoryEnum.ValueTypes.Add(ScribanHelperMethods.ToUpperSnakeCode(type.Name), $"{type.Name}Values");
+
+
+                            valueEnums.Add(typeValuesEnum);
+                        } else if (typeValuesSysDataType != null)
+                        {
+                            valueType = ScribanHelperMethods.ToPrimitiveType(typeValuesSysDataType)?.Name ?? "string";
+                        }
+                    }
+
+                    if (string.IsNullOrEmpty(valueType))
+                    {
+                        valueType = category == "Sample"
+                            ? "float"
+                            : category == "Condition"
+                                ? "Condition"
+                                : "string";
+                    }
+
+                    // If the previous logic didn't create value type from UmlEnumeration, try a primitive type
+                    if (typeValues == null)
+                        typeValues = new AdapterValueType(
+                            category,
+                            valueType,
+                            model!,
+                            type!)
+                        {
+                            Namespace = DataItemValueNamespace,
+                            Category = category,
+                            ReferenceId = type!.Properties.FirstOrDefault(o => o.Name.Equals("result", StringComparison.OrdinalIgnoreCase))?.PropertyType
+                        };
+
+                    // Attempt to add native units
+                    string? expectedUnits = null;
+                    var unitsAttribute = type!.Properties.FirstOrDefault(o => o.Name.Equals("units", StringComparison.OrdinalIgnoreCase));
+                    if (unitsAttribute != null)
+                    {
+                        if (unitsAttribute.DefaultValue is UmlInstanceValue)
+                        {
+                            string defaultValueInstance = (unitsAttribute.DefaultValue as UmlInstanceValue).Instance;
+                            // Find the instance in the Profile.Data Types.UnitEnum package
+                            var unit = MTConnectHelper
+                                .JumpToPackage(model!, MTConnectHelper.PackageNavigationTree.Profile.DataTypes)?
+                                .Enumerations
+                                .GetByName("UnitEnum")
+                                .Items?
+                                .FirstOrDefault(o => o.Id == defaultValueInstance);
+                            if (unit != null)
+                                expectedUnits = AdapterUnitHelper.ToEnumSafe(unit.Name);
+                        }
+                        else if (unitsAttribute.DefaultValue is UmlLiteralString)
+                        {
+                            string defaultValueValue = (unitsAttribute.DefaultValue as UmlLiteralString).Value;
+                            // TODO: Check the unit.value attribute, see Amperage as an example with AMPERE
+                            expectedUnits = defaultValueValue;
+                        }
+                        else
+                        {
+                            _logger?.LogTrace("Unidentified units type: {UnitType}", unitsAttribute.DefaultValueElement.GetAttribute("type", "http://www.omg.org/spec/XMI/20131001"));
+                        }
+
+                        if (!string.IsNullOrEmpty(expectedUnits))
+                            unitHelper.TypeLookup.TryAdd(ScribanHelperMethods.ToUpperSnakeCode(type.Name!), expectedUnits);
                     }
 
                     if (typeValues != null)
                     {
-                        // Attempt to add native units
-                        var unitsAttribute = type!.Properties.FirstOrDefault(o => o.Name.Equals("units", StringComparison.OrdinalIgnoreCase));
-                        if (unitsAttribute != null)
+                        typeValues.ExpectedUnits = expectedUnits;
+                        // Update value type based on presence of Unit type
+                        if (category == "Sample" && expectedUnits?.Contains("3D") == true)
                         {
-                            if (!string.IsNullOrEmpty(unitsAttribute.DefaultValue?.Instance))
-                            {
-                                // Find the instance in the Profile.Data Types.UnitEnum package
-                                var unit = MTConnectHelper
-                                    .JumpToPackage(model!, MTConnectHelper.PackageNavigationTree.Profile.DataTypes)?
-                                    .Enumerations
-                                    .GetByName("UnitEnum")
-                                    .Items?
-                                    .FirstOrDefault(o => o.Id == unitsAttribute.DefaultValue?.Instance);
-                                if (unit != null)
-                                    typeValues.ExpectedUnits = unit.Name!;
-                            }
-                            else if (!string.IsNullOrEmpty(unitsAttribute?.DefaultValue?.Value))
-                            {
-                                // TODO: Check the unit.value attribute, see Amperage as an example with AMPERE
-                                typeValues.ExpectedUnits = unitsAttribute?.DefaultValue?.Value;
-                            }
+                            typeValues.Category = "Sample3D";
+                            typeValues.ValueType = "float[]";
                         }
                         foreach (var value in typeValues.Items)
                             value.Name = value.SysML_Name;
@@ -223,14 +254,13 @@ namespace AdapterTranspiler
             ProcessTemplate(valueEnums, Path.Combine(ProjectPath, "Enums"), true);
             // Process the template into value type files
             ProcessTemplate(valueTypes, Path.Combine(ProjectPath, "Values"), true);
+            // Process the unit files
+            ProcessTemplate(unitHelper.UnitsEnum, Path.Combine(ProjectPath, "Units"), true);
+            ProcessTemplate(unitHelper, Path.Combine(ProjectPath, "Units"), true);
 
             // Process component types
             var componentTypes = MTConnectHelper
                 .JumpToPackage(model!, MTConnectHelper.PackageNavigationTree.DeviceInformationModel.Components.ComponentTypes);
-                //model.DeviceModel.SubModels
-                //.FirstOrDefault(o => o.Name == "Components")
-                //.SubModels
-                //.FirstOrDefault(o => o.Name == "Component Types");
             var componentInterfaces = new List<AdapterComponentInterface>();
             foreach (var componentType in componentTypes.Classes)
             {

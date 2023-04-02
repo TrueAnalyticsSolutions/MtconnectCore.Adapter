@@ -6,16 +6,27 @@ using Mtconnect.AdapterInterface.Contracts.Attributes;
 using Mtconnect.AdapterInterface.Contracts;
 using Mtconnect.AdapterInterface.DataItems;
 using Mtconnect.AdapterInterface.DataItemValues;
+using Mtconnect.AdapterInterface.Units;
 
 namespace Mtconnect.AdapterInterface.DataItemValues
 {
 	/// <summary>
 	/// A value type for ProgramComment to be used in a <see cref="IAdapterDataModel" /> implementation. View in the MTConnect Model browser <seealso href="https://model.mtconnect.org/#Enumeration__">model.mtconnect.org</seealso>
 	﻿	/// </summary>
-	/// <remarks>Introduced in <see href="https://model.mtconnect.org/#_Version_1.3">v1.3</see>.</remarks>
-	[GeneratedCode("MtconnectTranspiler.Sinks.CSharp.Adapter", "0.0.14.0")]
+	/// <remarks>
+	/// <list type="bullet">
+	/// <item><b>Introduced</b>: <see href="https://model.mtconnect.org/#_Version_1.3">v1.3</see></item>
+	/// </list>
+	/// </remarks>
+	[GeneratedCode("MtconnectTranspiler.Sinks.CSharp.Adapter", "1.0.5.0")]
 	public partial class ProgramComment : EventValue
     {
+        /// <inheritdoc />
+        public override string ObservationalType => nameof(DataItemTypes.EventTypes.PROGRAM_COMMENT);
+
+		/// <inheritdoc />
+        public override string ObservationalSubType => null;
+
 		/// <summary>
 		/// Constructs a new value type for the ProgramComment EVENT Data Item.
 		/// </summary>
@@ -36,6 +47,9 @@ namespace Mtconnect.AdapterInterface.DataItemValues
 		/// </summary>
 		public partial class MAIN : ProgramComment
 		{
+			/// <inheritdoc />
+            public override string ObservationalSubType => nameof(DataItemTypes.ProgramCommentSubTypes.MAIN);
+
 			/// <summary>
 			/// Constructs a new value type for MAIN.
 			/// </summary>
@@ -55,6 +69,9 @@ namespace Mtconnect.AdapterInterface.DataItemValues
 		/// </summary>
 		public partial class SCHEDULE : ProgramComment
 		{
+			/// <inheritdoc />
+            public override string ObservationalSubType => nameof(DataItemTypes.ProgramCommentSubTypes.SCHEDULE);
+
 			/// <summary>
 			/// Constructs a new value type for SCHEDULE.
 			/// </summary>
@@ -74,6 +91,9 @@ namespace Mtconnect.AdapterInterface.DataItemValues
 		/// </summary>
 		public partial class ACTIVE : ProgramComment
 		{
+			/// <inheritdoc />
+            public override string ObservationalSubType => nameof(DataItemTypes.ProgramCommentSubTypes.ACTIVE);
+
 			/// <summary>
 			/// Constructs a new value type for ACTIVE.
 			/// </summary>

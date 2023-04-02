@@ -21,7 +21,7 @@
     <ApplicationIcon>icon.ico</ApplicationIcon>
     <PackageProjectUrl>https://github.com/TrueAnalyticsSolutions/MtconnectCore.Adapter</PackageProjectUrl>
     <RepositoryUrl>$(ProjectUrl)</RepositoryUrl>
-    <Version>2.0.0-alpha.5</Version>
+    <Version>2.0.0-alpha.6</Version>
   </PropertyGroup>
 
   <ItemGroup>
@@ -83,6 +83,7 @@
 
   <ItemGroup>
     <Folder Include="Contracts\Components\" />
+    <Folder Include="Contracts\Units\" />
   </ItemGroup>
 
 </Project>

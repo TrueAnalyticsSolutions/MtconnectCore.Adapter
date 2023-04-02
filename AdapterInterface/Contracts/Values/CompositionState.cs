@@ -6,16 +6,27 @@ using Mtconnect.AdapterInterface.Contracts.Attributes;
 using Mtconnect.AdapterInterface.Contracts;
 using Mtconnect.AdapterInterface.DataItems;
 using Mtconnect.AdapterInterface.DataItemValues;
+using Mtconnect.AdapterInterface.Units;
 
 namespace Mtconnect.AdapterInterface.DataItemValues
 {
 	/// <summary>
 	/// A value type for CompositionState to be used in a <see cref="IAdapterDataModel" /> implementation. View in the MTConnect Model browser <seealso href="https://model.mtconnect.org/#Enumeration__">model.mtconnect.org</seealso>
 	﻿	/// </summary>
-	/// <remarks>Introduced in <see href="https://model.mtconnect.org/#_Version_1.4">v1.4</see>.</remarks>
-	[GeneratedCode("MtconnectTranspiler.Sinks.CSharp.Adapter", "0.0.14.0")]
+	/// <remarks>
+	/// <list type="bullet">
+	/// <item><b>Introduced</b>: <see href="https://model.mtconnect.org/#_Version_1.4">v1.4</see></item>
+	/// </list>
+	/// </remarks>
+	[GeneratedCode("MtconnectTranspiler.Sinks.CSharp.Adapter", "1.0.5.0")]
 	public partial class CompositionState : EventValue
     {
+        /// <inheritdoc />
+        public override string ObservationalType => nameof(DataItemTypes.EventTypes.COMPOSITION_STATE);
+
+		/// <inheritdoc />
+        public override string ObservationalSubType => null;
+
 		/// <summary>
 		/// Constructs a new value type for the CompositionState EVENT Data Item.
 		/// </summary>
@@ -36,6 +47,9 @@ namespace Mtconnect.AdapterInterface.DataItemValues
 		/// </summary>
 		public partial class ACTION : CompositionState
 		{
+			/// <inheritdoc />
+            public override string ObservationalSubType => nameof(DataItemTypes.CompositionStateSubTypes.ACTION);
+
 			/// <summary>
 			/// Constructs a new value type for ACTION.
 			/// </summary>
@@ -55,6 +69,9 @@ namespace Mtconnect.AdapterInterface.DataItemValues
 		/// </summary>
 		public partial class LATERAL : CompositionState
 		{
+			/// <inheritdoc />
+            public override string ObservationalSubType => nameof(DataItemTypes.CompositionStateSubTypes.LATERAL);
+
 			/// <summary>
 			/// Constructs a new value type for LATERAL.
 			/// </summary>
@@ -74,6 +91,9 @@ namespace Mtconnect.AdapterInterface.DataItemValues
 		/// </summary>
 		public partial class MOTION : CompositionState
 		{
+			/// <inheritdoc />
+            public override string ObservationalSubType => nameof(DataItemTypes.CompositionStateSubTypes.MOTION);
+
 			/// <summary>
 			/// Constructs a new value type for MOTION.
 			/// </summary>
@@ -93,6 +113,9 @@ namespace Mtconnect.AdapterInterface.DataItemValues
 		/// </summary>
 		public partial class SWITCHED : CompositionState
 		{
+			/// <inheritdoc />
+            public override string ObservationalSubType => nameof(DataItemTypes.CompositionStateSubTypes.SWITCHED);
+
 			/// <summary>
 			/// Constructs a new value type for SWITCHED.
 			/// </summary>
@@ -112,6 +135,9 @@ namespace Mtconnect.AdapterInterface.DataItemValues
 		/// </summary>
 		public partial class VERTICAL : CompositionState
 		{
+			/// <inheritdoc />
+            public override string ObservationalSubType => nameof(DataItemTypes.CompositionStateSubTypes.VERTICAL);
+
 			/// <summary>
 			/// Constructs a new value type for VERTICAL.
 			/// </summary>

@@ -6,16 +6,28 @@ using Mtconnect.AdapterInterface.Contracts.Attributes;
 using Mtconnect.AdapterInterface.Contracts;
 using Mtconnect.AdapterInterface.DataItems;
 using Mtconnect.AdapterInterface.DataItemValues;
+using Mtconnect.AdapterInterface.Units;
 
 namespace Mtconnect.AdapterInterface.DataItemValues
 {
 	/// <summary>
 	/// A value type for SoundLevel to be used in a <see cref="IAdapterDataModel" /> implementation. View in the MTConnect Model browser <seealso href="https://model.mtconnect.org/#Enumeration__">model.mtconnect.org</seealso>
 	﻿	/// </summary>
-	/// <remarks>Introduced in <see href="https://model.mtconnect.org/#_Version_1.2">v1.2</see>.</remarks>
-	[GeneratedCode("MtconnectTranspiler.Sinks.CSharp.Adapter", "0.0.14.0")]
+	/// <remarks>
+	/// <list type="bullet">
+	/// <item><b>Introduced</b>: <see href="https://model.mtconnect.org/#_Version_1.2">v1.2</see></item>
+	/// <item><b>Units</b>: <see cref="MtconnectUnit.DECIBEL" /></item>
+	/// </list>
+	/// </remarks>
+	[GeneratedCode("MtconnectTranspiler.Sinks.CSharp.Adapter", "1.0.5.0")]
 	public partial class SoundLevel : SampleValue
     {
+        /// <inheritdoc />
+        public override string ObservationalType => nameof(DataItemTypes.SampleTypes.SOUND_LEVEL);
+
+		/// <inheritdoc />
+        public override string ObservationalSubType => null;
+
 		/// <summary>
 		/// Constructs a new value type for the SoundLevel EVENT Data Item.
 		/// </summary>
@@ -36,6 +48,9 @@ namespace Mtconnect.AdapterInterface.DataItemValues
 		/// </summary>
 		public partial class NOSCALE : SoundLevel
 		{
+			/// <inheritdoc />
+            public override string ObservationalSubType => nameof(DataItemTypes.SoundLevelSubTypes.NO_SCALE);
+
 			/// <summary>
 			/// Constructs a new value type for NO_SCALE.
 			/// </summary>
@@ -55,6 +70,9 @@ namespace Mtconnect.AdapterInterface.DataItemValues
 		/// </summary>
 		public partial class ASCALE : SoundLevel
 		{
+			/// <inheritdoc />
+            public override string ObservationalSubType => nameof(DataItemTypes.SoundLevelSubTypes.A_SCALE);
+
 			/// <summary>
 			/// Constructs a new value type for A_SCALE.
 			/// </summary>
@@ -74,6 +92,9 @@ namespace Mtconnect.AdapterInterface.DataItemValues
 		/// </summary>
 		public partial class BSCALE : SoundLevel
 		{
+			/// <inheritdoc />
+            public override string ObservationalSubType => nameof(DataItemTypes.SoundLevelSubTypes.B_SCALE);
+
 			/// <summary>
 			/// Constructs a new value type for B_SCALE.
 			/// </summary>
@@ -93,6 +114,9 @@ namespace Mtconnect.AdapterInterface.DataItemValues
 		/// </summary>
 		public partial class CSCALE : SoundLevel
 		{
+			/// <inheritdoc />
+            public override string ObservationalSubType => nameof(DataItemTypes.SoundLevelSubTypes.C_SCALE);
+
 			/// <summary>
 			/// Constructs a new value type for C_SCALE.
 			/// </summary>
@@ -112,6 +136,9 @@ namespace Mtconnect.AdapterInterface.DataItemValues
 		/// </summary>
 		public partial class DSCALE : SoundLevel
 		{
+			/// <inheritdoc />
+            public override string ObservationalSubType => nameof(DataItemTypes.SoundLevelSubTypes.D_SCALE);
+
 			/// <summary>
 			/// Constructs a new value type for D_SCALE.
 			/// </summary>

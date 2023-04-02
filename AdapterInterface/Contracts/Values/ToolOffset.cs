@@ -6,68 +6,85 @@ using Mtconnect.AdapterInterface.Contracts.Attributes;
 using Mtconnect.AdapterInterface.Contracts;
 using Mtconnect.AdapterInterface.DataItems;
 using Mtconnect.AdapterInterface.DataItemValues;
+using Mtconnect.AdapterInterface.Units;
 
 namespace Mtconnect.AdapterInterface.DataItemValues
 {
 	/// <summary>
 	/// A value type for ToolOffset to be used in a <see cref="IAdapterDataModel" /> implementation. View in the MTConnect Model browser <seealso href="https://model.mtconnect.org/#Enumeration___19_0_3_91b028d_1579272506322_914606_702">model.mtconnect.org</seealso>
 	﻿	/// </summary>
-	/// <remarks>Introduced in <see href="https://model.mtconnect.org/#_Version_1.4">v1.4</see>.</remarks>
-	[GeneratedCode("MtconnectTranspiler.Sinks.CSharp.Adapter", "0.0.14.0")]
+	/// <remarks>
+	/// <list type="bullet">
+	/// <item><b>Introduced</b>: <see href="https://model.mtconnect.org/#_Version_1.4">v1.4</see></item>
+	/// </list>
+	/// </remarks>
+	[GeneratedCode("MtconnectTranspiler.Sinks.CSharp.Adapter", "1.0.5.0")]
 	public partial class ToolOffset : EventValue
     {
+        /// <inheritdoc />
+        public override string ObservationalType => nameof(DataItemTypes.EventTypes.TOOL_OFFSET);
+
+		/// <inheritdoc />
+        public override string ObservationalSubType => null;
+
 		/// <summary>
 		/// Constructs a new value type for the ToolOffset EVENT Data Item.
 		/// </summary>
-        public ToolOffset(string value) : base(value) { }
+        public ToolOffset(Single value) : base(value) { }
 
 		
         /// <summary>
-        /// Implicitly converts the specified string to an <see cref="ToolOffset"/> value.
-        /// The string is converted to uppercase and used to initialize the <see cref="ToolOffset"/> value.
+        /// Implicitly converts the specified Single to an <see cref="ToolOffset"/> value.
+        /// The Single is converted to uppercase and used to initialize the <see cref="ToolOffset"/> value.
         /// </summary>
-        /// <param name="value">The string to convert.</param>
+        /// <param name="value">The Single to convert.</param>
         /// <returns>An <see cref="ToolOffset"/> value initialized with the specified string in uppercase.</returns>
-        public static implicit operator ToolOffset(string value)
-            => new ToolOffset(value.ToUpperInvariant());
+        public static implicit operator ToolOffset(Single value)
+            => new ToolOffset(value);
 		
 		/// <summary>
 		/// A Data Item SubType implementation of <see cref="ToolOffset" />.
 		/// </summary>
 		public partial class RADIAL : ToolOffset
 		{
+			/// <inheritdoc />
+            public override string ObservationalSubType => nameof(DataItemTypes.ToolOffsetSubTypes.RADIAL);
+
 			/// <summary>
 			/// Constructs a new value type for RADIAL.
 			/// </summary>
-            public RADIAL(string value) : base(value) { }
+            public RADIAL(Single value) : base(value) { }
 			
 			/// <summary>
-			/// Implicitly converts the specified string to an <see cref="RADIAL"/> value.
-			/// The string is converted to uppercase and used to initialize the <see cref="RADIAL"/> value.
+			/// Implicitly converts the specified Single to an <see cref="RADIAL"/> value.
+			/// The Single is converted to uppercase and used to initialize the <see cref="RADIAL"/> value.
 			/// </summary>
-			/// <param name="value">The string to convert.</param>
+			/// <param name="value">The Single to convert.</param>
 			/// <returns>An <see cref="RADIAL"/> value initialized with the specified string in uppercase.</returns>
-			public static implicit operator RADIAL(string value)
-				=> new RADIAL(value.ToUpperInvariant());
+			public static implicit operator RADIAL(Single value)
+				=> new RADIAL(value);
 		}
 		/// <summary>
 		/// A Data Item SubType implementation of <see cref="ToolOffset" />.
 		/// </summary>
 		public partial class LENGTH : ToolOffset
 		{
+			/// <inheritdoc />
+            public override string ObservationalSubType => nameof(DataItemTypes.ToolOffsetSubTypes.LENGTH);
+
 			/// <summary>
 			/// Constructs a new value type for LENGTH.
 			/// </summary>
-            public LENGTH(string value) : base(value) { }
+            public LENGTH(Single value) : base(value) { }
 			
 			/// <summary>
-			/// Implicitly converts the specified string to an <see cref="LENGTH"/> value.
-			/// The string is converted to uppercase and used to initialize the <see cref="LENGTH"/> value.
+			/// Implicitly converts the specified Single to an <see cref="LENGTH"/> value.
+			/// The Single is converted to uppercase and used to initialize the <see cref="LENGTH"/> value.
 			/// </summary>
-			/// <param name="value">The string to convert.</param>
+			/// <param name="value">The Single to convert.</param>
 			/// <returns>An <see cref="LENGTH"/> value initialized with the specified string in uppercase.</returns>
-			public static implicit operator LENGTH(string value)
-				=> new LENGTH(value.ToUpperInvariant());
+			public static implicit operator LENGTH(Single value)
+				=> new LENGTH(value);
 		}
     }
 }

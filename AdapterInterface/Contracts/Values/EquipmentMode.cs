@@ -6,16 +6,27 @@ using Mtconnect.AdapterInterface.Contracts.Attributes;
 using Mtconnect.AdapterInterface.Contracts;
 using Mtconnect.AdapterInterface.DataItems;
 using Mtconnect.AdapterInterface.DataItemValues;
+using Mtconnect.AdapterInterface.Units;
 
 namespace Mtconnect.AdapterInterface.DataItemValues
 {
 	/// <summary>
 	/// A value type for EquipmentMode to be used in a <see cref="IAdapterDataModel" /> implementation. View in the MTConnect Model browser <seealso href="https://model.mtconnect.org/#Enumeration___19_0_3_68e0225_1632489429268_660861_104">model.mtconnect.org</seealso>
 	﻿	/// </summary>
-	/// <remarks>Introduced in <see href="https://model.mtconnect.org/#_Version_1.4">v1.4</see>.</remarks>
-	[GeneratedCode("MtconnectTranspiler.Sinks.CSharp.Adapter", "0.0.14.0")]
+	/// <remarks>
+	/// <list type="bullet">
+	/// <item><b>Introduced</b>: <see href="https://model.mtconnect.org/#_Version_1.4">v1.4</see></item>
+	/// </list>
+	/// </remarks>
+	[GeneratedCode("MtconnectTranspiler.Sinks.CSharp.Adapter", "1.0.5.0")]
 	public partial class EquipmentMode : EventValue
     {
+        /// <inheritdoc />
+        public override string ObservationalType => nameof(DataItemTypes.EventTypes.EQUIPMENT_MODE);
+
+		/// <inheritdoc />
+        public override string ObservationalSubType => null;
+
 		/// <summary>
 		/// Constructs a new value type for the EquipmentMode EVENT Data Item.
 		/// </summary>
@@ -24,13 +35,21 @@ namespace Mtconnect.AdapterInterface.DataItemValues
         /// <summary>
 		﻿/// equipment is functioning in the mode designated by the <c>subType</c>.
         /// </summary>
-		/// <remarks>Introduced in <see href="https://model.mtconnect.org/#_Version_1.4">v1.4</see>.</remarks>
+		/// <remarks>
+		/// <list type="bullet">
+		/// <item><b>Introduced</b>: <see href="https://model.mtconnect.org/#_Version_1.4">v1.4</see></item>
+		/// </list>
+		/// </remarks>
 		[ObservationalValue(typeof(EquipmentModeValues))]
         public static EquipmentMode ON => new EquipmentMode(nameof(EquipmentModeValues.ON));
         /// <summary>
 		﻿/// equipment is not functioning in the mode designated by the <c>subType</c>.
         /// </summary>
-		/// <remarks>Introduced in <see href="https://model.mtconnect.org/#_Version_1.4">v1.4</see>.</remarks>
+		/// <remarks>
+		/// <list type="bullet">
+		/// <item><b>Introduced</b>: <see href="https://model.mtconnect.org/#_Version_1.4">v1.4</see></item>
+		/// </list>
+		/// </remarks>
 		[ObservationalValue(typeof(EquipmentModeValues))]
         public static EquipmentMode OFF => new EquipmentMode(nameof(EquipmentModeValues.OFF));
 		
@@ -48,6 +67,9 @@ namespace Mtconnect.AdapterInterface.DataItemValues
 		/// </summary>
 		public partial class LOADED : EquipmentMode
 		{
+			/// <inheritdoc />
+            public override string ObservationalSubType => nameof(DataItemTypes.EquipmentModeSubTypes.LOADED);
+
 			/// <summary>
 			/// Constructs a new value type for LOADED.
 			/// </summary>
@@ -67,6 +89,9 @@ namespace Mtconnect.AdapterInterface.DataItemValues
 		/// </summary>
 		public partial class WORKING : EquipmentMode
 		{
+			/// <inheritdoc />
+            public override string ObservationalSubType => nameof(DataItemTypes.EquipmentModeSubTypes.WORKING);
+
 			/// <summary>
 			/// Constructs a new value type for WORKING.
 			/// </summary>
@@ -86,6 +111,9 @@ namespace Mtconnect.AdapterInterface.DataItemValues
 		/// </summary>
 		public partial class OPERATING : EquipmentMode
 		{
+			/// <inheritdoc />
+            public override string ObservationalSubType => nameof(DataItemTypes.EquipmentModeSubTypes.OPERATING);
+
 			/// <summary>
 			/// Constructs a new value type for OPERATING.
 			/// </summary>
@@ -105,6 +133,9 @@ namespace Mtconnect.AdapterInterface.DataItemValues
 		/// </summary>
 		public partial class POWERED : EquipmentMode
 		{
+			/// <inheritdoc />
+            public override string ObservationalSubType => nameof(DataItemTypes.EquipmentModeSubTypes.POWERED);
+
 			/// <summary>
 			/// Constructs a new value type for POWERED.
 			/// </summary>
@@ -124,6 +155,9 @@ namespace Mtconnect.AdapterInterface.DataItemValues
 		/// </summary>
 		public partial class DELAY : EquipmentMode
 		{
+			/// <inheritdoc />
+            public override string ObservationalSubType => nameof(DataItemTypes.EquipmentModeSubTypes.DELAY);
+
 			/// <summary>
 			/// Constructs a new value type for DELAY.
 			/// </summary>

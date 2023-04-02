@@ -6,16 +6,28 @@ using Mtconnect.AdapterInterface.Contracts.Attributes;
 using Mtconnect.AdapterInterface.Contracts;
 using Mtconnect.AdapterInterface.DataItems;
 using Mtconnect.AdapterInterface.DataItemValues;
+using Mtconnect.AdapterInterface.Units;
 
 namespace Mtconnect.AdapterInterface.DataItemValues
 {
 	/// <summary>
 	/// A value type for EquipmentTimer to be used in a <see cref="IAdapterDataModel" /> implementation. View in the MTConnect Model browser <seealso href="https://model.mtconnect.org/#Enumeration__">model.mtconnect.org</seealso>
 	﻿	/// </summary>
-	/// <remarks>Introduced in <see href="https://model.mtconnect.org/#_Version_1.4">v1.4</see>.</remarks>
-	[GeneratedCode("MtconnectTranspiler.Sinks.CSharp.Adapter", "0.0.14.0")]
+	/// <remarks>
+	/// <list type="bullet">
+	/// <item><b>Introduced</b>: <see href="https://model.mtconnect.org/#_Version_1.4">v1.4</see></item>
+	/// <item><b>Units</b>: <see cref="MtconnectUnit.SECOND" /></item>
+	/// </list>
+	/// </remarks>
+	[GeneratedCode("MtconnectTranspiler.Sinks.CSharp.Adapter", "1.0.5.0")]
 	public partial class EquipmentTimer : SampleValue
     {
+        /// <inheritdoc />
+        public override string ObservationalType => nameof(DataItemTypes.SampleTypes.EQUIPMENT_TIMER);
+
+		/// <inheritdoc />
+        public override string ObservationalSubType => null;
+
 		/// <summary>
 		/// Constructs a new value type for the EquipmentTimer EVENT Data Item.
 		/// </summary>
@@ -36,6 +48,9 @@ namespace Mtconnect.AdapterInterface.DataItemValues
 		/// </summary>
 		public partial class LOADED : EquipmentTimer
 		{
+			/// <inheritdoc />
+            public override string ObservationalSubType => nameof(DataItemTypes.EquipmentTimerSubTypes.LOADED);
+
 			/// <summary>
 			/// Constructs a new value type for LOADED.
 			/// </summary>
@@ -55,6 +70,9 @@ namespace Mtconnect.AdapterInterface.DataItemValues
 		/// </summary>
 		public partial class WORKING : EquipmentTimer
 		{
+			/// <inheritdoc />
+            public override string ObservationalSubType => nameof(DataItemTypes.EquipmentTimerSubTypes.WORKING);
+
 			/// <summary>
 			/// Constructs a new value type for WORKING.
 			/// </summary>
@@ -74,6 +92,9 @@ namespace Mtconnect.AdapterInterface.DataItemValues
 		/// </summary>
 		public partial class OPERATING : EquipmentTimer
 		{
+			/// <inheritdoc />
+            public override string ObservationalSubType => nameof(DataItemTypes.EquipmentTimerSubTypes.OPERATING);
+
 			/// <summary>
 			/// Constructs a new value type for OPERATING.
 			/// </summary>
@@ -93,6 +114,9 @@ namespace Mtconnect.AdapterInterface.DataItemValues
 		/// </summary>
 		public partial class POWERED : EquipmentTimer
 		{
+			/// <inheritdoc />
+            public override string ObservationalSubType => nameof(DataItemTypes.EquipmentTimerSubTypes.POWERED);
+
 			/// <summary>
 			/// Constructs a new value type for POWERED.
 			/// </summary>
@@ -112,6 +136,9 @@ namespace Mtconnect.AdapterInterface.DataItemValues
 		/// </summary>
 		public partial class DELAY : EquipmentTimer
 		{
+			/// <inheritdoc />
+            public override string ObservationalSubType => nameof(DataItemTypes.EquipmentTimerSubTypes.DELAY);
+
 			/// <summary>
 			/// Constructs a new value type for DELAY.
 			/// </summary>

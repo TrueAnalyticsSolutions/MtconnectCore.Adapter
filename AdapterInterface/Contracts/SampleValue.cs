@@ -6,6 +6,9 @@
     public abstract class SampleValue : DataItemValue<float>
     {
         /// <inheritdoc />
+        public override string Category => Constants.SAMPLE;
+
+        /// <inheritdoc />
         protected SampleValue(float value) : base(value) { }
     }
 }

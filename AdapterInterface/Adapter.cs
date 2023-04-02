@@ -121,6 +121,8 @@ namespace Mtconnect
         /// </summary>
         protected List<IAdapterSource> Sources { get; set; } = new List<IAdapterSource>();
 
+        private HashSet<Type> DataModelTypes { get; set; } = new HashSet<Type>();
+
         /// <summary>
         /// Reference to the options provided in the constructor.
         /// </summary>
@@ -448,6 +450,10 @@ namespace Mtconnect
         private void Source_OnDataReceived(IAdapterDataModel data, DataReceivedEventArgs e)
         {
             _logger?.LogTrace("Adapter received data model update from {DataModelType}", data.GetType().FullName);
+
+            if (!DataModelTypes.Contains(data.GetType()))
+                DataModelTypes.Add(data.GetType());
+
             bool dataItemsAdded = this.TryAddDataItems(data);
             if (dataItemsAdded && (_ = this.TryUpdateValues(data)))
             {
@@ -483,6 +489,8 @@ namespace Mtconnect
         /// </summary>
         /// <returns>Array of <see cref="DataItem.Name"/>s that are registered in this <see cref="Adapter"/>.</returns>
         public string[] GetDataItemNames() => DataItems?.Select(o => o.Name)?.DefaultIfEmpty().ToArray();
+
+        public Type[] GetDataModelTypes() => DataModelTypes.ToArray();
 
         /// <summary>
         /// Handle an incoming command from a client.

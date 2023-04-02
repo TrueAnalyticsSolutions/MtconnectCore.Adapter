@@ -6,16 +6,27 @@ using Mtconnect.AdapterInterface.Contracts.Attributes;
 using Mtconnect.AdapterInterface.Contracts;
 using Mtconnect.AdapterInterface.DataItems;
 using Mtconnect.AdapterInterface.DataItemValues;
+using Mtconnect.AdapterInterface.Units;
 
 namespace Mtconnect.AdapterInterface.DataItemValues
 {
 	/// <summary>
 	/// A value type for PartUniqueId to be used in a <see cref="IAdapterDataModel" /> implementation. View in the MTConnect Model browser <seealso href="https://model.mtconnect.org/#Enumeration__">model.mtconnect.org</seealso>
 	﻿	/// </summary>
-	/// <remarks>Introduced in <see href="https://model.mtconnect.org/#_Version_1.7">v1.7</see>.</remarks>
-	[GeneratedCode("MtconnectTranspiler.Sinks.CSharp.Adapter", "0.0.14.0")]
+	/// <remarks>
+	/// <list type="bullet">
+	/// <item><b>Introduced</b>: <see href="https://model.mtconnect.org/#_Version_1.7">v1.7</see></item>
+	/// </list>
+	/// </remarks>
+	[GeneratedCode("MtconnectTranspiler.Sinks.CSharp.Adapter", "1.0.5.0")]
 	public partial class PartUniqueId : EventValue
     {
+        /// <inheritdoc />
+        public override string ObservationalType => nameof(DataItemTypes.EventTypes.PART_UNIQUE_ID);
+
+		/// <inheritdoc />
+        public override string ObservationalSubType => null;
+
 		/// <summary>
 		/// Constructs a new value type for the PartUniqueId EVENT Data Item.
 		/// </summary>
@@ -36,6 +47,9 @@ namespace Mtconnect.AdapterInterface.DataItemValues
 		/// </summary>
 		public partial class SERIALNUMBER : PartUniqueId
 		{
+			/// <inheritdoc />
+            public override string ObservationalSubType => nameof(DataItemTypes.PartUniqueIdSubTypes.SERIAL_NUMBER);
+
 			/// <summary>
 			/// Constructs a new value type for SERIAL_NUMBER.
 			/// </summary>
@@ -55,6 +69,9 @@ namespace Mtconnect.AdapterInterface.DataItemValues
 		/// </summary>
 		public partial class RAWMATERIAL : PartUniqueId
 		{
+			/// <inheritdoc />
+            public override string ObservationalSubType => nameof(DataItemTypes.PartUniqueIdSubTypes.RAW_MATERIAL);
+
 			/// <summary>
 			/// Constructs a new value type for RAW_MATERIAL.
 			/// </summary>
@@ -74,6 +91,9 @@ namespace Mtconnect.AdapterInterface.DataItemValues
 		/// </summary>
 		public partial class UUID : PartUniqueId
 		{
+			/// <inheritdoc />
+            public override string ObservationalSubType => nameof(DataItemTypes.PartUniqueIdSubTypes.UUID);
+
 			/// <summary>
 			/// Constructs a new value type for UUID.
 			/// </summary>

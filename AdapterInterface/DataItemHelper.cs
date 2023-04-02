@@ -115,6 +115,5 @@ namespace Mtconnect
 #endif
             return null;
         }
-
     }
 }

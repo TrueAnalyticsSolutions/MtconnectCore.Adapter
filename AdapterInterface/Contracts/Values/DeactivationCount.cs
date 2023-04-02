@@ -6,182 +6,217 @@ using Mtconnect.AdapterInterface.Contracts.Attributes;
 using Mtconnect.AdapterInterface.Contracts;
 using Mtconnect.AdapterInterface.DataItems;
 using Mtconnect.AdapterInterface.DataItemValues;
+using Mtconnect.AdapterInterface.Units;
 
 namespace Mtconnect.AdapterInterface.DataItemValues
 {
 	/// <summary>
 	/// A value type for DeactivationCount to be used in a <see cref="IAdapterDataModel" /> implementation. View in the MTConnect Model browser <seealso href="https://model.mtconnect.org/#Enumeration___19_0_3_91b028d_1579272271512_537408_674">model.mtconnect.org</seealso>
 	﻿	/// </summary>
-	/// <remarks>Introduced in <see href="https://model.mtconnect.org/#_Version_1.8">v1.8</see>.</remarks>
-	[GeneratedCode("MtconnectTranspiler.Sinks.CSharp.Adapter", "0.0.14.0")]
+	/// <remarks>
+	/// <list type="bullet">
+	/// <item><b>Introduced</b>: <see href="https://model.mtconnect.org/#_Version_1.8">v1.8</see></item>
+	/// </list>
+	/// </remarks>
+	[GeneratedCode("MtconnectTranspiler.Sinks.CSharp.Adapter", "1.0.5.0")]
 	public partial class DeactivationCount : EventValue
     {
+        /// <inheritdoc />
+        public override string ObservationalType => nameof(DataItemTypes.EventTypes.DEACTIVATION_COUNT);
+
+		/// <inheritdoc />
+        public override string ObservationalSubType => null;
+
 		/// <summary>
 		/// Constructs a new value type for the DeactivationCount EVENT Data Item.
 		/// </summary>
-        public DeactivationCount(string value) : base(value) { }
+        public DeactivationCount(Int32 value) : base(value) { }
 
 		
         /// <summary>
-        /// Implicitly converts the specified string to an <see cref="DeactivationCount"/> value.
-        /// The string is converted to uppercase and used to initialize the <see cref="DeactivationCount"/> value.
+        /// Implicitly converts the specified Int32 to an <see cref="DeactivationCount"/> value.
+        /// The Int32 is converted to uppercase and used to initialize the <see cref="DeactivationCount"/> value.
         /// </summary>
-        /// <param name="value">The string to convert.</param>
+        /// <param name="value">The Int32 to convert.</param>
         /// <returns>An <see cref="DeactivationCount"/> value initialized with the specified string in uppercase.</returns>
-        public static implicit operator DeactivationCount(string value)
-            => new DeactivationCount(value.ToUpperInvariant());
+        public static implicit operator DeactivationCount(Int32 value)
+            => new DeactivationCount(value);
 		
 		/// <summary>
 		/// A Data Item SubType implementation of <see cref="DeactivationCount" />.
 		/// </summary>
 		public partial class BAD : DeactivationCount
 		{
+			/// <inheritdoc />
+            public override string ObservationalSubType => nameof(DataItemTypes.DeactivationCountSubTypes.BAD);
+
 			/// <summary>
 			/// Constructs a new value type for BAD.
 			/// </summary>
-            public BAD(string value) : base(value) { }
+            public BAD(Int32 value) : base(value) { }
 			
 			/// <summary>
-			/// Implicitly converts the specified string to an <see cref="BAD"/> value.
-			/// The string is converted to uppercase and used to initialize the <see cref="BAD"/> value.
+			/// Implicitly converts the specified Int32 to an <see cref="BAD"/> value.
+			/// The Int32 is converted to uppercase and used to initialize the <see cref="BAD"/> value.
 			/// </summary>
-			/// <param name="value">The string to convert.</param>
+			/// <param name="value">The Int32 to convert.</param>
 			/// <returns>An <see cref="BAD"/> value initialized with the specified string in uppercase.</returns>
-			public static implicit operator BAD(string value)
-				=> new BAD(value.ToUpperInvariant());
+			public static implicit operator BAD(Int32 value)
+				=> new BAD(value);
 		}
 		/// <summary>
 		/// A Data Item SubType implementation of <see cref="DeactivationCount" />.
 		/// </summary>
 		public partial class FAILED : DeactivationCount
 		{
+			/// <inheritdoc />
+            public override string ObservationalSubType => nameof(DataItemTypes.DeactivationCountSubTypes.FAILED);
+
 			/// <summary>
 			/// Constructs a new value type for FAILED.
 			/// </summary>
-            public FAILED(string value) : base(value) { }
+            public FAILED(Int32 value) : base(value) { }
 			
 			/// <summary>
-			/// Implicitly converts the specified string to an <see cref="FAILED"/> value.
-			/// The string is converted to uppercase and used to initialize the <see cref="FAILED"/> value.
+			/// Implicitly converts the specified Int32 to an <see cref="FAILED"/> value.
+			/// The Int32 is converted to uppercase and used to initialize the <see cref="FAILED"/> value.
 			/// </summary>
-			/// <param name="value">The string to convert.</param>
+			/// <param name="value">The Int32 to convert.</param>
 			/// <returns>An <see cref="FAILED"/> value initialized with the specified string in uppercase.</returns>
-			public static implicit operator FAILED(string value)
-				=> new FAILED(value.ToUpperInvariant());
+			public static implicit operator FAILED(Int32 value)
+				=> new FAILED(value);
 		}
 		/// <summary>
 		/// A Data Item SubType implementation of <see cref="DeactivationCount" />.
 		/// </summary>
 		public partial class TARGET : DeactivationCount
 		{
+			/// <inheritdoc />
+            public override string ObservationalSubType => nameof(DataItemTypes.DeactivationCountSubTypes.TARGET);
+
 			/// <summary>
 			/// Constructs a new value type for TARGET.
 			/// </summary>
-            public TARGET(string value) : base(value) { }
+            public TARGET(Int32 value) : base(value) { }
 			
 			/// <summary>
-			/// Implicitly converts the specified string to an <see cref="TARGET"/> value.
-			/// The string is converted to uppercase and used to initialize the <see cref="TARGET"/> value.
+			/// Implicitly converts the specified Int32 to an <see cref="TARGET"/> value.
+			/// The Int32 is converted to uppercase and used to initialize the <see cref="TARGET"/> value.
 			/// </summary>
-			/// <param name="value">The string to convert.</param>
+			/// <param name="value">The Int32 to convert.</param>
 			/// <returns>An <see cref="TARGET"/> value initialized with the specified string in uppercase.</returns>
-			public static implicit operator TARGET(string value)
-				=> new TARGET(value.ToUpperInvariant());
+			public static implicit operator TARGET(Int32 value)
+				=> new TARGET(value);
 		}
 		/// <summary>
 		/// A Data Item SubType implementation of <see cref="DeactivationCount" />.
 		/// </summary>
 		public partial class COMPLETE : DeactivationCount
 		{
+			/// <inheritdoc />
+            public override string ObservationalSubType => nameof(DataItemTypes.DeactivationCountSubTypes.COMPLETE);
+
 			/// <summary>
 			/// Constructs a new value type for COMPLETE.
 			/// </summary>
-            public COMPLETE(string value) : base(value) { }
+            public COMPLETE(Int32 value) : base(value) { }
 			
 			/// <summary>
-			/// Implicitly converts the specified string to an <see cref="COMPLETE"/> value.
-			/// The string is converted to uppercase and used to initialize the <see cref="COMPLETE"/> value.
+			/// Implicitly converts the specified Int32 to an <see cref="COMPLETE"/> value.
+			/// The Int32 is converted to uppercase and used to initialize the <see cref="COMPLETE"/> value.
 			/// </summary>
-			/// <param name="value">The string to convert.</param>
+			/// <param name="value">The Int32 to convert.</param>
 			/// <returns>An <see cref="COMPLETE"/> value initialized with the specified string in uppercase.</returns>
-			public static implicit operator COMPLETE(string value)
-				=> new COMPLETE(value.ToUpperInvariant());
+			public static implicit operator COMPLETE(Int32 value)
+				=> new COMPLETE(value);
 		}
 		/// <summary>
 		/// A Data Item SubType implementation of <see cref="DeactivationCount" />.
 		/// </summary>
 		public partial class REMAINING : DeactivationCount
 		{
+			/// <inheritdoc />
+            public override string ObservationalSubType => nameof(DataItemTypes.DeactivationCountSubTypes.REMAINING);
+
 			/// <summary>
 			/// Constructs a new value type for REMAINING.
 			/// </summary>
-            public REMAINING(string value) : base(value) { }
+            public REMAINING(Int32 value) : base(value) { }
 			
 			/// <summary>
-			/// Implicitly converts the specified string to an <see cref="REMAINING"/> value.
-			/// The string is converted to uppercase and used to initialize the <see cref="REMAINING"/> value.
+			/// Implicitly converts the specified Int32 to an <see cref="REMAINING"/> value.
+			/// The Int32 is converted to uppercase and used to initialize the <see cref="REMAINING"/> value.
 			/// </summary>
-			/// <param name="value">The string to convert.</param>
+			/// <param name="value">The Int32 to convert.</param>
 			/// <returns>An <see cref="REMAINING"/> value initialized with the specified string in uppercase.</returns>
-			public static implicit operator REMAINING(string value)
-				=> new REMAINING(value.ToUpperInvariant());
+			public static implicit operator REMAINING(Int32 value)
+				=> new REMAINING(value);
 		}
 		/// <summary>
 		/// A Data Item SubType implementation of <see cref="DeactivationCount" />.
 		/// </summary>
 		public partial class ALL : DeactivationCount
 		{
+			/// <inheritdoc />
+            public override string ObservationalSubType => nameof(DataItemTypes.DeactivationCountSubTypes.ALL);
+
 			/// <summary>
 			/// Constructs a new value type for ALL.
 			/// </summary>
-            public ALL(string value) : base(value) { }
+            public ALL(Int32 value) : base(value) { }
 			
 			/// <summary>
-			/// Implicitly converts the specified string to an <see cref="ALL"/> value.
-			/// The string is converted to uppercase and used to initialize the <see cref="ALL"/> value.
+			/// Implicitly converts the specified Int32 to an <see cref="ALL"/> value.
+			/// The Int32 is converted to uppercase and used to initialize the <see cref="ALL"/> value.
 			/// </summary>
-			/// <param name="value">The string to convert.</param>
+			/// <param name="value">The Int32 to convert.</param>
 			/// <returns>An <see cref="ALL"/> value initialized with the specified string in uppercase.</returns>
-			public static implicit operator ALL(string value)
-				=> new ALL(value.ToUpperInvariant());
+			public static implicit operator ALL(Int32 value)
+				=> new ALL(value);
 		}
 		/// <summary>
 		/// A Data Item SubType implementation of <see cref="DeactivationCount" />.
 		/// </summary>
 		public partial class GOOD : DeactivationCount
 		{
+			/// <inheritdoc />
+            public override string ObservationalSubType => nameof(DataItemTypes.DeactivationCountSubTypes.GOOD);
+
 			/// <summary>
 			/// Constructs a new value type for GOOD.
 			/// </summary>
-            public GOOD(string value) : base(value) { }
+            public GOOD(Int32 value) : base(value) { }
 			
 			/// <summary>
-			/// Implicitly converts the specified string to an <see cref="GOOD"/> value.
-			/// The string is converted to uppercase and used to initialize the <see cref="GOOD"/> value.
+			/// Implicitly converts the specified Int32 to an <see cref="GOOD"/> value.
+			/// The Int32 is converted to uppercase and used to initialize the <see cref="GOOD"/> value.
 			/// </summary>
-			/// <param name="value">The string to convert.</param>
+			/// <param name="value">The Int32 to convert.</param>
 			/// <returns>An <see cref="GOOD"/> value initialized with the specified string in uppercase.</returns>
-			public static implicit operator GOOD(string value)
-				=> new GOOD(value.ToUpperInvariant());
+			public static implicit operator GOOD(Int32 value)
+				=> new GOOD(value);
 		}
 		/// <summary>
 		/// A Data Item SubType implementation of <see cref="DeactivationCount" />.
 		/// </summary>
 		public partial class ABORTED : DeactivationCount
 		{
+			/// <inheritdoc />
+            public override string ObservationalSubType => nameof(DataItemTypes.DeactivationCountSubTypes.ABORTED);
+
 			/// <summary>
 			/// Constructs a new value type for ABORTED.
 			/// </summary>
-            public ABORTED(string value) : base(value) { }
+            public ABORTED(Int32 value) : base(value) { }
 			
 			/// <summary>
-			/// Implicitly converts the specified string to an <see cref="ABORTED"/> value.
-			/// The string is converted to uppercase and used to initialize the <see cref="ABORTED"/> value.
+			/// Implicitly converts the specified Int32 to an <see cref="ABORTED"/> value.
+			/// The Int32 is converted to uppercase and used to initialize the <see cref="ABORTED"/> value.
 			/// </summary>
-			/// <param name="value">The string to convert.</param>
+			/// <param name="value">The Int32 to convert.</param>
 			/// <returns>An <see cref="ABORTED"/> value initialized with the specified string in uppercase.</returns>
-			public static implicit operator ABORTED(string value)
-				=> new ABORTED(value.ToUpperInvariant());
+			public static implicit operator ABORTED(Int32 value)
+				=> new ABORTED(value);
 		}
     }
 }

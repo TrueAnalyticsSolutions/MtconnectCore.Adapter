@@ -6,30 +6,42 @@ using Mtconnect.AdapterInterface.Contracts.Attributes;
 using Mtconnect.AdapterInterface.Contracts;
 using Mtconnect.AdapterInterface.DataItems;
 using Mtconnect.AdapterInterface.DataItemValues;
+using Mtconnect.AdapterInterface.Units;
 
 namespace Mtconnect.AdapterInterface.DataItemValues
 {
 	/// <summary>
 	/// A value type for Translation to be used in a <see cref="IAdapterDataModel" /> implementation. View in the MTConnect Model browser <seealso href="https://model.mtconnect.org/#Enumeration___19_0_3_91b028d_1579272506322_914606_702">model.mtconnect.org</seealso>
 	﻿	/// </summary>
-	/// <remarks>Introduced in <see href="https://model.mtconnect.org/#_Version_1.6">v1.6</see>.</remarks>
-	[GeneratedCode("MtconnectTranspiler.Sinks.CSharp.Adapter", "0.0.14.0")]
+	/// <remarks>
+	/// <list type="bullet">
+	/// <item><b>Introduced</b>: <see href="https://model.mtconnect.org/#_Version_1.6">v1.6</see></item>
+	/// <item><b>Units</b>: <see cref="MtconnectUnit.MILLIMETER_3D" /></item>
+	/// </list>
+	/// </remarks>
+	[GeneratedCode("MtconnectTranspiler.Sinks.CSharp.Adapter", "1.0.5.0")]
 	public partial class Translation : EventValue
     {
+        /// <inheritdoc />
+        public override string ObservationalType => nameof(DataItemTypes.EventTypes.TRANSLATION);
+
+		/// <inheritdoc />
+        public override string ObservationalSubType => null;
+
 		/// <summary>
 		/// Constructs a new value type for the Translation EVENT Data Item.
 		/// </summary>
-        public Translation(string value) : base(value) { }
+        public Translation(Single value) : base(value) { }
 
 		
         /// <summary>
-        /// Implicitly converts the specified string to an <see cref="Translation"/> value.
-        /// The string is converted to uppercase and used to initialize the <see cref="Translation"/> value.
+        /// Implicitly converts the specified Single to an <see cref="Translation"/> value.
+        /// The Single is converted to uppercase and used to initialize the <see cref="Translation"/> value.
         /// </summary>
-        /// <param name="value">The string to convert.</param>
+        /// <param name="value">The Single to convert.</param>
         /// <returns>An <see cref="Translation"/> value initialized with the specified string in uppercase.</returns>
-        public static implicit operator Translation(string value)
-            => new Translation(value.ToUpperInvariant());
+        public static implicit operator Translation(Single value)
+            => new Translation(value);
 		
     }
 }

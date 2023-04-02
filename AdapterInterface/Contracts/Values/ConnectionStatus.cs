@@ -6,16 +6,27 @@ using Mtconnect.AdapterInterface.Contracts.Attributes;
 using Mtconnect.AdapterInterface.Contracts;
 using Mtconnect.AdapterInterface.DataItems;
 using Mtconnect.AdapterInterface.DataItemValues;
+using Mtconnect.AdapterInterface.Units;
 
 namespace Mtconnect.AdapterInterface.DataItemValues
 {
 	/// <summary>
 	/// A value type for ConnectionStatus to be used in a <see cref="IAdapterDataModel" /> implementation. View in the MTConnect Model browser <seealso href="https://model.mtconnect.org/#Enumeration___19_0_3_68e0225_1605104600701_22176_1030">model.mtconnect.org</seealso>
 	﻿	/// </summary>
-	/// <remarks>Introduced in <see href="https://model.mtconnect.org/#_Version_1.7">v1.7</see>.</remarks>
-	[GeneratedCode("MtconnectTranspiler.Sinks.CSharp.Adapter", "0.0.14.0")]
+	/// <remarks>
+	/// <list type="bullet">
+	/// <item><b>Introduced</b>: <see href="https://model.mtconnect.org/#_Version_1.7">v1.7</see></item>
+	/// </list>
+	/// </remarks>
+	[GeneratedCode("MtconnectTranspiler.Sinks.CSharp.Adapter", "1.0.5.0")]
 	public partial class ConnectionStatus : EventValue
     {
+        /// <inheritdoc />
+        public override string ObservationalType => nameof(DataItemTypes.EventTypes.CONNECTION_STATUS);
+
+		/// <inheritdoc />
+        public override string ObservationalSubType => null;
+
 		/// <summary>
 		/// Constructs a new value type for the ConnectionStatus EVENT Data Item.
 		/// </summary>
@@ -24,19 +35,31 @@ namespace Mtconnect.AdapterInterface.DataItemValues
         /// <summary>
 		﻿/// no connection at all.
         /// </summary>
-		/// <remarks>Introduced in <see href="https://model.mtconnect.org/#_Version_1.7">v1.7</see>.</remarks>
+		/// <remarks>
+		/// <list type="bullet">
+		/// <item><b>Introduced</b>: <see href="https://model.mtconnect.org/#_Version_1.7">v1.7</see></item>
+		/// </list>
+		/// </remarks>
 		[ObservationalValue(typeof(ConnectionStatusValues))]
         public static ConnectionStatus CLOSED => new ConnectionStatus(nameof(ConnectionStatusValues.CLOSED));
         /// <summary>
 		﻿/// <i>agent</i> is waiting for a connection request from an <i>adapter</i>.
         /// </summary>
-		/// <remarks>Introduced in <see href="https://model.mtconnect.org/#_Version_1.7">v1.7</see>.</remarks>
+		/// <remarks>
+		/// <list type="bullet">
+		/// <item><b>Introduced</b>: <see href="https://model.mtconnect.org/#_Version_1.7">v1.7</see></item>
+		/// </list>
+		/// </remarks>
 		[ObservationalValue(typeof(ConnectionStatusValues))]
         public static ConnectionStatus LISTEN => new ConnectionStatus(nameof(ConnectionStatusValues.LISTEN));
         /// <summary>
 		﻿/// open connection.  The normal state for the data transfer phase of the connection.
         /// </summary>
-		/// <remarks>Introduced in <see href="https://model.mtconnect.org/#_Version_1.7">v1.7</see>.</remarks>
+		/// <remarks>
+		/// <list type="bullet">
+		/// <item><b>Introduced</b>: <see href="https://model.mtconnect.org/#_Version_1.7">v1.7</see></item>
+		/// </list>
+		/// </remarks>
 		[ObservationalValue(typeof(ConnectionStatusValues))]
         public static ConnectionStatus ESTABLISHED => new ConnectionStatus(nameof(ConnectionStatusValues.ESTABLISHED));
 		

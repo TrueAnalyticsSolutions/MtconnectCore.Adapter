@@ -6,16 +6,27 @@ using Mtconnect.AdapterInterface.Contracts.Attributes;
 using Mtconnect.AdapterInterface.Contracts;
 using Mtconnect.AdapterInterface.DataItems;
 using Mtconnect.AdapterInterface.DataItemValues;
+using Mtconnect.AdapterInterface.Units;
 
 namespace Mtconnect.AdapterInterface.DataItemValues
 {
 	/// <summary>
 	/// A value type for ProgramLocationType to be used in a <see cref="IAdapterDataModel" /> implementation. View in the MTConnect Model browser <seealso href="https://model.mtconnect.org/#Enumeration___19_0_3_68e0225_1643980698480_209668_2427">model.mtconnect.org</seealso>
 	﻿	/// </summary>
-	/// <remarks>Introduced in <see href="https://model.mtconnect.org/#_Version_1.5">v1.5</see>.</remarks>
-	[GeneratedCode("MtconnectTranspiler.Sinks.CSharp.Adapter", "0.0.14.0")]
+	/// <remarks>
+	/// <list type="bullet">
+	/// <item><b>Introduced</b>: <see href="https://model.mtconnect.org/#_Version_1.5">v1.5</see></item>
+	/// </list>
+	/// </remarks>
+	[GeneratedCode("MtconnectTranspiler.Sinks.CSharp.Adapter", "1.0.5.0")]
 	public partial class ProgramLocationType : EventValue
     {
+        /// <inheritdoc />
+        public override string ObservationalType => nameof(DataItemTypes.EventTypes.PROGRAM_LOCATION_TYPE);
+
+		/// <inheritdoc />
+        public override string ObservationalSubType => null;
+
 		/// <summary>
 		/// Constructs a new value type for the ProgramLocationType EVENT Data Item.
 		/// </summary>
@@ -24,13 +35,21 @@ namespace Mtconnect.AdapterInterface.DataItemValues
         /// <summary>
 		﻿/// managed by the controller.
         /// </summary>
-		/// <remarks>Introduced in <see href="https://model.mtconnect.org/#_Version_1.5">v1.5</see>.</remarks>
+		/// <remarks>
+		/// <list type="bullet">
+		/// <item><b>Introduced</b>: <see href="https://model.mtconnect.org/#_Version_1.5">v1.5</see></item>
+		/// </list>
+		/// </remarks>
 		[ObservationalValue(typeof(ProgramLocationTypeValues))]
         public static ProgramLocationType LOCAL => new ProgramLocationType(nameof(ProgramLocationTypeValues.LOCAL));
         /// <summary>
 		﻿/// not managed by the controller.
         /// </summary>
-		/// <remarks>Introduced in <see href="https://model.mtconnect.org/#_Version_1.5">v1.5</see>.</remarks>
+		/// <remarks>
+		/// <list type="bullet">
+		/// <item><b>Introduced</b>: <see href="https://model.mtconnect.org/#_Version_1.5">v1.5</see></item>
+		/// </list>
+		/// </remarks>
 		[ObservationalValue(typeof(ProgramLocationTypeValues))]
         public static ProgramLocationType EXTERNAL => new ProgramLocationType(nameof(ProgramLocationTypeValues.EXTERNAL));
 		
@@ -48,6 +67,9 @@ namespace Mtconnect.AdapterInterface.DataItemValues
 		/// </summary>
 		public partial class SCHEDULE : ProgramLocationType
 		{
+			/// <inheritdoc />
+            public override string ObservationalSubType => nameof(DataItemTypes.ProgramLocationTypeSubTypes.SCHEDULE);
+
 			/// <summary>
 			/// Constructs a new value type for SCHEDULE.
 			/// </summary>
@@ -67,6 +89,9 @@ namespace Mtconnect.AdapterInterface.DataItemValues
 		/// </summary>
 		public partial class MAIN : ProgramLocationType
 		{
+			/// <inheritdoc />
+            public override string ObservationalSubType => nameof(DataItemTypes.ProgramLocationTypeSubTypes.MAIN);
+
 			/// <summary>
 			/// Constructs a new value type for MAIN.
 			/// </summary>
@@ -86,6 +111,9 @@ namespace Mtconnect.AdapterInterface.DataItemValues
 		/// </summary>
 		public partial class ACTIVE : ProgramLocationType
 		{
+			/// <inheritdoc />
+            public override string ObservationalSubType => nameof(DataItemTypes.ProgramLocationTypeSubTypes.ACTIVE);
+
 			/// <summary>
 			/// Constructs a new value type for ACTIVE.
 			/// </summary>
