@@ -121,11 +121,8 @@ namespace Mtconnect.AdapterInterface.DeviceConfiguration
             {
                 var dataItemAttribute = property.GetCustomAttribute<DataItemAttribute>();
                 
-                if (typeof(IAdapterDataModel).IsAssignableFrom(property.PropertyType))
-                {
-                    AddComponents(parentElement, property.PropertyType, adapter, dataItemAttribute?.Name ?? $"{prefix}{property.Name}_");
-                }
-                else if (typeof(IComponentModel).IsAssignableFrom(property.PropertyType))
+                // NOTE: IComponentModel is first because IComponentModel implements IAdapterDataModel
+                if (typeof(IComponentModel).IsAssignableFrom(property.PropertyType))
                 {
                     //var component = (IComponentModel)property.GetValue(this);
                     hasComponents = true;
@@ -135,7 +132,11 @@ namespace Mtconnect.AdapterInterface.DeviceConfiguration
                     componentsElement.AppendChild(componentElement);
 
                     AddComponents(componentElement, property.PropertyType, adapter, dataItemAttribute?.Name ?? $"{prefix}{property.Name}_");
-                } else if (typeof(DataItem).IsAssignableFrom(property.PropertyType) ||
+                } else if (typeof(IAdapterDataModel).IsAssignableFrom(property.PropertyType))
+                {
+                    AddComponents(parentElement, property.PropertyType, adapter, dataItemAttribute?.Name ?? $"{prefix}{property.Name}_");
+                }
+                else if (typeof(DataItem).IsAssignableFrom(property.PropertyType) ||
                     dataItemAttribute != null ||
                     typeof(IDataItemValue).IsAssignableFrom(property.PropertyType))
                 {
