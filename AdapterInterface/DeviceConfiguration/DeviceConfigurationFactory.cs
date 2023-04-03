@@ -120,7 +120,22 @@ namespace Mtconnect.AdapterInterface.DeviceConfiguration
             foreach (var property in type.GetProperties())
             {
                 var dataItemAttribute = property.GetCustomAttribute<DataItemAttribute>();
-                if (typeof(DataItem).IsAssignableFrom(property.PropertyType) ||
+                
+                if (typeof(IAdapterDataModel).IsAssignableFrom(property.PropertyType))
+                {
+                    AddComponents(parentElement, property.PropertyType, adapter);
+                }
+                else if (typeof(IComponentModel).IsAssignableFrom(property.PropertyType))
+                {
+                    //var component = (IComponentModel)property.GetValue(this);
+                    hasComponents = true;
+                    var componentElement = parentElement.OwnerDocument.CreateElement(property.Name);
+                    componentElement.SetAttribute("id", property.Name.ToLower());
+
+                    componentsElement.AppendChild(componentElement);
+
+                    AddComponents(componentElement, property.PropertyType, adapter);
+                } else if (typeof(DataItem).IsAssignableFrom(property.PropertyType) ||
                     dataItemAttribute != null ||
                     typeof(IDataItemValue).IsAssignableFrom(property.PropertyType))
                 {
@@ -138,7 +153,7 @@ namespace Mtconnect.AdapterInterface.DeviceConfiguration
                                 ? "SAMPLE"
                                 : dataItemAttribute is ConditionAttribute
                                     ? "CONDITION"
-                                    : "UNKNOWN";
+                                    : null;// "UNKNOWN";
                         dataItemValues.Type = dataItemAttribute.Type;
                         dataItemValues.SubType = dataItemAttribute.SubType;
                         dataItemValues.Name = dataItemAttribute.Name;
@@ -157,7 +172,8 @@ namespace Mtconnect.AdapterInterface.DeviceConfiguration
                             dataItemValues.Name = dataItem.Name;
                             dataItemValues.Units = dataItem.Units;
                         }
-                    } else if (typeof(IDataItemValue).IsAssignableFrom(property.PropertyType))
+                    }
+                    else if (typeof(IDataItemValue).IsAssignableFrom(property.PropertyType))
                     {
                         var instance = FormatterServices.GetUninitializedObject(property.PropertyType) as IDataItemValue;// Activator.CreateInstance(property.PropertyType) as IDataItemValue;
                         // QUESTION: Is property.PropertyType.Name an appropriate id?
@@ -175,22 +191,6 @@ namespace Mtconnect.AdapterInterface.DeviceConfiguration
 
                     if (dataItemElement != null)
                         dataItemsElement.AppendChild(dataItemElement);
-                }
-                else if (typeof(IAdapterDataModel).IsAssignableFrom(property.PropertyType))
-                {
-                    AddComponents(parentElement, property.PropertyType, adapter);
-                }
-                else if (typeof(IComponentModel).IsAssignableFrom(property.PropertyType))
-                {
-                    //var component = (IComponentModel)property.GetValue(this);
-                    hasComponents = true;
-                    var componentElement = parentElement.OwnerDocument.CreateElement(property.Name);
-                    componentElement.SetAttribute("id", property.Name.ToLower());
-
-                    parentElement.AppendChild(componentsElement);
-                    componentsElement.AppendChild(componentElement);
-
-                    AddComponents(componentElement, property.PropertyType, adapter);
                 }
             }
 
@@ -215,24 +215,24 @@ namespace Mtconnect.AdapterInterface.DeviceConfiguration
 
             xDataItem.SetAttribute("category", category.ToUpper());
 
-            bool isExtension = false;
+            bool isDefined = false;
             switch (category.ToUpper())
             {
                 case "SAMPLE":
-                    isExtension = Enum.TryParse<SampleTypes>(type, true, out var _);
+                    isDefined = Enum.TryParse<SampleTypes>(type, true, out var _);
                     break;
                 case "EVENT":
-                    isExtension = Enum.TryParse<EventTypes>(type, true, out var _);
+                    isDefined = Enum.TryParse<EventTypes>(type, true, out var _);
                     break;
                 case "CONDITION":
-                    isExtension = Enum.TryParse<ConditionTypes>(type, true, out var _)
+                    isDefined = Enum.TryParse<ConditionTypes>(type, true, out var _)
                         || Enum.TryParse<SampleTypes>(type, true, out var _)
                         || Enum.TryParse<EventTypes>(type, true, out var _);
                     break;
                 default:
                     break;
             }
-            xDataItem.SetAttribute("type", isExtension && !type.StartsWith("x:") ? $"x:{type}" : type);
+            xDataItem.SetAttribute("type", isDefined && !type.StartsWith("x:") ? $"x:{type}" : type);
 
             if (!string.IsNullOrEmpty(subType))
                 xDataItem.SetAttribute("subType", subType);
