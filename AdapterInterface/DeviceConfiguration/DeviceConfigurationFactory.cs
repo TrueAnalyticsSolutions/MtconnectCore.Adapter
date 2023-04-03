@@ -212,7 +212,7 @@ namespace Mtconnect.AdapterInterface.DeviceConfiguration
         private static string GetInterfaceName(Type type, Type parentInterfaceType)
         {
             return type.GetInterfaces()
-                .Where(i => i.IsAssignableFrom(parentInterfaceType) && i != parentInterfaceType)
+                .Where(i => parentInterfaceType.IsAssignableFrom(i) && i != parentInterfaceType)
                 .Select(i => i.Name)
                 .FirstOrDefault();
         }
