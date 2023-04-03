@@ -30,6 +30,11 @@ namespace Mtconnect.AdapterInterface.Contracts.Attributes
         public string SubType { get; set; }
 
         /// <summary>
+        /// <inheritdoc cref="DataItem.Units" path="/summary"/>
+        /// </summary>
+        public string Units { get; set; }
+
+        /// <summary>
         /// Constructs a new DataItem attribute.
         /// </summary>
         /// <param name="name"><inheritdoc cref="DataItemAttribute.Name" path="/summary"/></param>

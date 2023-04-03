@@ -126,23 +126,51 @@ namespace Mtconnect.AdapterInterface.DeviceConfiguration
                     hasDataItems = true;
                     // TODO: Handle property that meets the conditions
                     XmlElement dataItemElement = null;
+                    DataItemValues dataItemValues = new DataItemValues();
+
+                    if (dataItemAttribute != null)
+                    {
+                        // QUESTION: Is dataItemAttribute.Name an appropriate id?
+                        dataItemValues.Category = dataItemAttribute is EventAttribute
+                            ? "EVENT"
+                            : dataItemAttribute is SampleAttribute
+                                ? "SAMPLE"
+                                : dataItemAttribute is ConditionAttribute
+                                    ? "CONDITION"
+                                    : "UNKNOWN";
+                        dataItemValues.Type = dataItemAttribute.Type;
+                        dataItemValues.SubType = dataItemAttribute.SubType;
+                        dataItemValues.Name = dataItemAttribute.Name;
+                        dataItemValues.Units = dataItemAttribute.Units;
+                    }
+
                     if (typeof(DataItem).IsAssignableFrom(property.PropertyType))
                     {
                         var dataItem = adapter.DataItems.FirstOrDefault(o => o.ModelType == property);
                         // QUESTION: Is dataItem.Name an appropriate id?
                         if (dataItem != null)
-                            dataItemElement = CreateDataItemElement(parentElement.OwnerDocument, dataItem.Category, dataItem.ObservationalType, dataItem.ObservationalSubType, dataItem.Name, dataItem.Units);
-                    } else if (dataItemAttribute != null)
-                    {
-                        // QUESTION: Is dataItemAttribute.Name an appropriate id?
-                        dataItemElement = CreateDataItemElement(parentElement.OwnerDocument, "UNKNOWN", dataItemAttribute.Type, dataItemAttribute.SubType, dataItemAttribute.Name, null);
+                        {
+                            dataItemValues.Category = dataItem.Category;
+                            dataItemValues.Type = dataItem.ObservationalType;
+                            dataItemValues.SubType = dataItem.ObservationalSubType;
+                            dataItemValues.Name = dataItem.Name;
+                            dataItemValues.Units = dataItem.Units;
+                        }
                     } else if (typeof(IDataItemValue).IsAssignableFrom(property.PropertyType))
                     {
                         var instance = Activator.CreateInstance(property.PropertyType) as IDataItemValue;
                         // QUESTION: Is property.PropertyType.Name an appropriate id?
                         if (instance != null)
-                            dataItemElement = CreateDataItemElement(parentElement.OwnerDocument, instance.Category, instance.ObservationalType, instance.ObservationalSubType, property.PropertyType.Name, null);
+                        {
+                            dataItemValues.Category = instance.Category;
+                            dataItemValues.Type = instance.ObservationalType;
+                            dataItemValues.SubType = instance.ObservationalSubType;
+                            dataItemValues.Name = property.Name;
+                            dataItemValues.Units = null;
+                        }
                     }
+
+                    dataItemElement = CreateDataItemElement(parentElement.OwnerDocument, dataItemValues.Category, dataItemValues.Type, dataItemValues.SubType, dataItemValues.Name, dataItemValues.Units);
 
                     if (dataItemElement != null)
                         dataItemsElement.AppendChild(dataItemElement);
@@ -229,6 +257,59 @@ namespace Mtconnect.AdapterInterface.DeviceConfiguration
         private string GetMaximumMtconnectVersion(Adapter adapter)
         {
             return "2.2";
+        }
+
+        private class DataItemValues
+        {
+            // Compiler improvements
+            private const string CATEGORY = "category";
+            private const string TYPE = "type";
+            private const string SUB_TYPE = "subType";
+            private const string NAME = "name";
+            private const string UNITS = "units";
+
+            private Dictionary<string, string> _values = new Dictionary<string, string>()
+            {
+                { CATEGORY, null },
+                { TYPE, null },
+                { SUB_TYPE, null },
+                { NAME, null },
+                { UNITS, null }
+            };
+
+            public string Category
+            {
+                get => _values[CATEGORY];
+                set => SetValue(CATEGORY, value);
+            }
+            public string Type
+            {
+                get => _values[TYPE];
+                set => SetValue(TYPE, value);
+            }
+            public string SubType
+            {
+                get => _values[SUB_TYPE];
+                set => SetValue(SUB_TYPE, value);
+            }
+            public string Name
+            {
+                get => _values[NAME];
+                set => SetValue(NAME, value);
+            }
+            public string Units
+            {
+                get => _values[UNITS];
+                set => SetValue(UNITS, value);
+            }
+
+            private void SetValue(string key, string value)
+            {
+                if (!string.IsNullOrEmpty(_values[key]))
+                    return;
+
+                _values[key] = value;
+            }
         }
     }
 
