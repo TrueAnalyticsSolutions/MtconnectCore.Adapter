@@ -111,7 +111,7 @@ namespace Mtconnect.AdapterInterface.DeviceConfiguration
 
             return xDoc;
         }
-        private void AddComponents(XmlElement parentElement, Type type, Adapter adapter)
+        private void AddComponents(XmlElement parentElement, Type type, Adapter adapter, string prefix = null)
         {
             var dataItemsElement = parentElement.OwnerDocument.CreateElement("DataItems");
             var componentsElement = parentElement.OwnerDocument.CreateElement("Components");
@@ -123,7 +123,7 @@ namespace Mtconnect.AdapterInterface.DeviceConfiguration
                 
                 if (typeof(IAdapterDataModel).IsAssignableFrom(property.PropertyType))
                 {
-                    AddComponents(parentElement, property.PropertyType, adapter);
+                    AddComponents(parentElement, property.PropertyType, adapter, dataItemAttribute?.Name ?? $"{prefix}{property.Name}_");
                 }
                 else if (typeof(IComponentModel).IsAssignableFrom(property.PropertyType))
                 {
@@ -134,7 +134,7 @@ namespace Mtconnect.AdapterInterface.DeviceConfiguration
 
                     componentsElement.AppendChild(componentElement);
 
-                    AddComponents(componentElement, property.PropertyType, adapter);
+                    AddComponents(componentElement, property.PropertyType, adapter, dataItemAttribute?.Name ?? $"{prefix}{property.Name}_");
                 } else if (typeof(DataItem).IsAssignableFrom(property.PropertyType) ||
                     dataItemAttribute != null ||
                     typeof(IDataItemValue).IsAssignableFrom(property.PropertyType))
@@ -175,7 +175,7 @@ namespace Mtconnect.AdapterInterface.DeviceConfiguration
                     }
                     else if (typeof(IDataItemValue).IsAssignableFrom(property.PropertyType))
                     {
-                        var instance = FormatterServices.GetUninitializedObject(property.PropertyType) as IDataItemValue;// Activator.CreateInstance(property.PropertyType) as IDataItemValue;
+                        var instance = FormatterServices.GetUninitializedObject(property.PropertyType) as IDataItemValue;
                         // QUESTION: Is property.PropertyType.Name an appropriate id?
                         if (instance != null)
                         {
@@ -232,7 +232,7 @@ namespace Mtconnect.AdapterInterface.DeviceConfiguration
                 default:
                     break;
             }
-            xDataItem.SetAttribute("type", isDefined && !type.StartsWith("x:") ? $"x:{type}" : type);
+            xDataItem.SetAttribute("type", isDefined && !type.StartsWith("x:") ? type : $"x:{type}");
 
             if (!string.IsNullOrEmpty(subType))
                 xDataItem.SetAttribute("subType", subType);
