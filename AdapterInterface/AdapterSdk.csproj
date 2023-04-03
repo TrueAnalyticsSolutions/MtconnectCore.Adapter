@@ -22,6 +22,8 @@
     <PackageProjectUrl>https://github.com/TrueAnalyticsSolutions/MtconnectCore.Adapter</PackageProjectUrl>
     <RepositoryUrl>$(ProjectUrl)</RepositoryUrl>
     <Version>2.0.0-beta.6</Version>
+    <IncludeSymbols>True</IncludeSymbols>
+    <SymbolPackageFormat>snupkg</SymbolPackageFormat>
   </PropertyGroup>
 
   <ItemGroup>
