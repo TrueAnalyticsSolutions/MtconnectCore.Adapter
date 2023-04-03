@@ -126,8 +126,16 @@ namespace Mtconnect.AdapterInterface.DeviceConfiguration
                 {
                     //var component = (IComponentModel)property.GetValue(this);
                     hasComponents = true;
-                    var componentElement = parentElement.OwnerDocument.CreateElement(property.Name);
-                    componentElement.SetAttribute("id", property.Name.ToLower());
+                    var componentElement = parentElement.OwnerDocument.CreateElement(GetInterfaceName(property.PropertyType, typeof(IComponentModel)).Substring(1));
+                    string id = property.Name.ToLower();
+                    if (dataItemAttribute != null)
+                    {
+                        id = dataItemAttribute.Name;
+                        if (id.EndsWith("_"))
+                            id = id.Replace("_", string.Empty);
+                    }
+                    componentElement.SetAttribute("id", id.ToLower());
+                    componentElement.SetAttribute("name", property.Name);
 
                     componentsElement.AppendChild(componentElement);
 
@@ -188,7 +196,7 @@ namespace Mtconnect.AdapterInterface.DeviceConfiguration
                         }
                     }
 
-                    dataItemElement = CreateDataItemElement(parentElement.OwnerDocument, dataItemValues.Category, dataItemValues.Type, dataItemValues.SubType, dataItemValues.Name, dataItemValues.Units);
+                    dataItemElement = CreateDataItemElement(parentElement.OwnerDocument, dataItemValues.Category, dataItemValues.Type, dataItemValues.SubType, prefix + dataItemValues.Name, dataItemValues.Units);
 
                     if (dataItemElement != null)
                         dataItemsElement.AppendChild(dataItemElement);
@@ -199,6 +207,14 @@ namespace Mtconnect.AdapterInterface.DeviceConfiguration
                 parentElement.AppendChild(dataItemsElement);
             if (hasComponents)
                 parentElement.AppendChild(componentsElement);
+        }
+
+        private static string GetInterfaceName(Type type, Type parentInterfaceType)
+        {
+            return type.GetInterfaces()
+                .Where(i => i.IsAssignableFrom(parentInterfaceType) && i != parentInterfaceType)
+                .Select(i => i.Name)
+                .FirstOrDefault();
         }
 
         private static void AddDataItems(XmlNode xDataItems, IEnumerable<DataItem> dataItems)

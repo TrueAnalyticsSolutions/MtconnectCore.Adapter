@@ -8,7 +8,7 @@ namespace Mtconnect.AdapterSourceTemplate.Models
     /// <summary>
     /// Basic data model representation of a machine tool axis.
     /// </summary>
-    public sealed class BasicAxis : IAxis
+    public sealed class BasicAxis : ILinear
     {
         /// <summary>
         /// The actual position of the axis.
