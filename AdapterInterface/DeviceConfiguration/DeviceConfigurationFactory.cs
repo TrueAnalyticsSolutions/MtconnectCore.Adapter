@@ -8,6 +8,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Reflection;
 using System.Reflection.Emit;
+using System.Runtime.Serialization;
 using System.Text;
 using System.Xml;
 using System.Xml.Linq;
@@ -158,7 +159,7 @@ namespace Mtconnect.AdapterInterface.DeviceConfiguration
                         }
                     } else if (typeof(IDataItemValue).IsAssignableFrom(property.PropertyType))
                     {
-                        var instance = Activator.CreateInstance(property.PropertyType) as IDataItemValue;
+                        var instance = FormatterServices.GetUninitializedObject(property.PropertyType) as IDataItemValue;// Activator.CreateInstance(property.PropertyType) as IDataItemValue;
                         // QUESTION: Is property.PropertyType.Name an appropriate id?
                         if (instance != null)
                         {
