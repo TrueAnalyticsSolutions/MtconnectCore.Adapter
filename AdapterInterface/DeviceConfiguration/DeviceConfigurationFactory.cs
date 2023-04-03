@@ -215,7 +215,7 @@ namespace Mtconnect.AdapterInterface.DeviceConfiguration
             if (!string.IsNullOrEmpty(nativeUnits))
                 xDataItem.SetAttribute("nativeUnits", nativeUnits);
 
-            if (UnitHelper.TypeLookup.TryGetValue(type, out var unit))
+            if (!string.IsNullOrEmpty(type) && UnitHelper.TypeLookup.TryGetValue(type, out var unit))
                 xDataItem.SetAttribute("units", UnitHelper.ToString(unit));
 
             // TODO: Add coordinateSystem to DataItem and/or consider adding a CoordinateSystemAttribute to be used on IAdapterDataModel

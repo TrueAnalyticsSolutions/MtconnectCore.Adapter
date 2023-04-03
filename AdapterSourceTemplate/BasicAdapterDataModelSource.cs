@@ -47,15 +47,15 @@ namespace Mtconnect.AdapterSourceTemplate
             Model.Execution = executionStates[Rng.Next(0, 2)];
 
             Model.X.ActualPosition = Rng.Next(0, 300);
-            Model.X.CommandedPosition = Model.X.ActualPosition;
+            Model.X.CommandedPosition = (float)Model.X.ActualPosition;
             Model.X.Load = Rng.Next(0, 100);
 
             Model.Y.ActualPosition = Rng.Next(0, 300);
-            Model.Y.CommandedPosition = Model.Y.ActualPosition;
+            Model.Y.CommandedPosition = (float)Model.Y.ActualPosition;
             Model.Y.Load = Rng.Next(0, 100);
 
             Model.Z.ActualPosition = Rng.Next(0, 300);
-            Model.Z.CommandedPosition = Model.Z.ActualPosition;
+            Model.Z.CommandedPosition = (float)Model.Z.ActualPosition;
             Model.Z.Load = Rng.Next(0, 100);
 
             OnDataReceived?.Invoke(Model, new DataReceivedEventArgs());

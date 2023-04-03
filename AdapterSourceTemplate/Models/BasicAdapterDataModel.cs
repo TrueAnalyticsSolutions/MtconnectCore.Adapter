@@ -1,5 +1,6 @@
 ﻿using Mtconnect.AdapterInterface.Contracts.Attributes;
 using Mtconnect.AdapterInterface.DataItems;
+using Mtconnect.AdapterInterface.DataItemValues;
 
 namespace Mtconnect.AdapterSourceTemplate.Models
 {
@@ -12,10 +13,10 @@ namespace Mtconnect.AdapterSourceTemplate.Models
         /// The current availability of the machine tool
         /// </summary>
         [Event("avail")]
-        public string Availability { get; set; }
+        public Availability Availability { get; set; }
 
         [Event("exec")]
-        public string Execution { get; set; }
+        public Execution Execution { get; set; }
 
         /// <summary>
         /// The linear -X- Axis
