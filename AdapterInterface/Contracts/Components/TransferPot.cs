@@ -9,7 +9,7 @@ namespace Mtconnect.AdapterInterface.DataItemTypes {
 	/// leaf <see cref="Component">Component</see> that is a <see cref="Pot">Pot</see> for a tool that is awaiting transfer from a <see cref="ToolMagazine">ToolMagazine</see> to <i>spindle</i> or <see cref="Turret">Turret</see>.
 	/// </summary>
 	/// <remarks>Introduced in <see href="https://model.mtconnect.org/#_Version_1.7">v1.7</see>.</remarks>
-	[GeneratedCode("MtconnectTranspiler.Sinks.CSharp.Adapter", "1.0.5.0")]
+	[GeneratedCode("MtconnectTranspiler.Sinks.CSharp.Adapter", "1.0.6.0")]
 	public interface ITransferPot : IAdapterDataModel, IComponentModel {
 	
 	}

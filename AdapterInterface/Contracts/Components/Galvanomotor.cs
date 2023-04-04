@@ -9,7 +9,7 @@ namespace Mtconnect.AdapterInterface.DataItemTypes {
 	/// leaf <see cref="Component">Component</see> composed of an electromechanical actuator that produces deflection of a beam of light or energy in response to electric current through its coil in a magnetic field.
 	/// </summary>
 	/// <remarks>Introduced in <see href="https://model.mtconnect.org/#_Version_1.5">v1.5</see>.</remarks>
-	[GeneratedCode("MtconnectTranspiler.Sinks.CSharp.Adapter", "1.0.5.0")]
+	[GeneratedCode("MtconnectTranspiler.Sinks.CSharp.Adapter", "1.0.6.0")]
 	public interface IGalvanomotor : IAdapterDataModel, IComponentModel {
 	
 	}

@@ -9,7 +9,7 @@ namespace Mtconnect.AdapterInterface.DataItemTypes
 	/// <summary>
 	/// View in the MTConnect Model browser <seealso href="https://model.mtconnect.org/#Enumeration___19_0_3_45f01b9_1580309868367_570061_44359">model.mtconnect.org</seealso>
 	﻿	/// </summary>
-	[GeneratedCode("MtconnectTranspiler.Sinks.CSharp.Adapter", "1.0.5.0")]
+	[GeneratedCode("MtconnectTranspiler.Sinks.CSharp.Adapter", "1.0.6.0")]
 	public enum SampleTypes
 	{
 		/// <summary>
@@ -17,18 +17,18 @@ namespace Mtconnect.AdapterInterface.DataItemTypes
 		/// </summary>
 		STANDARD_EXTENSION = -1,
 		/// <summary>
-		﻿/// <see cref="SampleEnum.ACCELERATION />
-		/// <br/><b>Sub-Type</b>: <see cref="AccelerationSubTypes" />
+		﻿/// <see cref="SampleEnum.ACCELERATION" />
 		/// </summary>
 		/// <remarks>
 		/// <list type="bullet">
+		/// <item><b>Sub-Type</b>: <see cref="AccelerationSubTypes" /></item>
 		/// <item><b>Introduced</b>: <see href="https://model.mtconnect.org/#_Version_1.0">v1.0</see></item>
 		/// </list>
 		/// </remarks>
 		[ObservationalSubType(typeof(AccelerationSubTypes))]
 		ACCELERATION,
 		/// <summary>
-		﻿/// <see cref="SampleEnum.ACCUMULATED_TIME />
+		﻿/// <see cref="SampleEnum.ACCUMULATED_TIME" />
 		/// </summary>
 		/// <remarks>
 		/// <list type="bullet">
@@ -37,11 +37,11 @@ namespace Mtconnect.AdapterInterface.DataItemTypes
 		/// </remarks>
 		ACCUMULATED_TIME,
 		/// <summary>
-		﻿/// <see cref="SampleEnum.AMPERAGE />
-		/// <br/><b>Sub-Type</b>: <see cref="AmperageSubTypes" />
+		﻿/// <see cref="SampleEnum.AMPERAGE" />
 		/// </summary>
 		/// <remarks>
 		/// <list type="bullet">
+		/// <item><b>Sub-Type</b>: <see cref="AmperageSubTypes" /></item>
 		/// <item><b>Introduced</b>: <see href="https://model.mtconnect.org/#_Version_1.0">v1.0</see></item>
 		/// <item><b>Deprecated</b>: <see href="https://model.mtconnect.org/#_Version_1.6">v1.6</see></item>
 		/// </list>
@@ -50,29 +50,29 @@ namespace Mtconnect.AdapterInterface.DataItemTypes
 		[ObservationalSubType(typeof(AmperageSubTypes))]
 		AMPERAGE,
 		/// <summary>
-		﻿/// <see cref="SampleEnum.ANGLE />
-		/// <br/><b>Sub-Type</b>: <see cref="AngleSubTypes" />
+		﻿/// <see cref="SampleEnum.ANGLE" />
 		/// </summary>
 		/// <remarks>
 		/// <list type="bullet">
+		/// <item><b>Sub-Type</b>: <see cref="AngleSubTypes" /></item>
 		/// <item><b>Introduced</b>: <see href="https://model.mtconnect.org/#_Version_1.0">v1.0</see></item>
 		/// </list>
 		/// </remarks>
 		[ObservationalSubType(typeof(AngleSubTypes))]
 		ANGLE,
 		/// <summary>
-		﻿/// <see cref="SampleEnum.ANGULAR_ACCELERATION />
-		/// <br/><b>Sub-Type</b>: <see cref="AngularAccelerationSubTypes" />
+		﻿/// <see cref="SampleEnum.ANGULAR_ACCELERATION" />
 		/// </summary>
 		/// <remarks>
 		/// <list type="bullet">
+		/// <item><b>Sub-Type</b>: <see cref="AngularAccelerationSubTypes" /></item>
 		/// <item><b>Introduced</b>: <see href="https://model.mtconnect.org/#_Version_1.0">v1.0</see></item>
 		/// </list>
 		/// </remarks>
 		[ObservationalSubType(typeof(AngularAccelerationSubTypes))]
 		ANGULAR_ACCELERATION,
 		/// <summary>
-		﻿/// <see cref="SampleEnum.ANGULAR_VELOCITY />
+		﻿/// <see cref="SampleEnum.ANGULAR_VELOCITY" />
 		/// </summary>
 		/// <remarks>
 		/// <list type="bullet">
@@ -81,18 +81,18 @@ namespace Mtconnect.AdapterInterface.DataItemTypes
 		/// </remarks>
 		ANGULAR_VELOCITY,
 		/// <summary>
-		﻿/// <see cref="SampleEnum.AXIS_FEEDRATE />
-		/// <br/><b>Sub-Type</b>: <see cref="AxisFeedrateSubTypes" />
+		﻿/// <see cref="SampleEnum.AXIS_FEEDRATE" />
 		/// </summary>
 		/// <remarks>
 		/// <list type="bullet">
+		/// <item><b>Sub-Type</b>: <see cref="AxisFeedrateSubTypes" /></item>
 		/// <item><b>Introduced</b>: <see href="https://model.mtconnect.org/#_Version_1.0">v1.0</see></item>
 		/// </list>
 		/// </remarks>
 		[ObservationalSubType(typeof(AxisFeedrateSubTypes))]
 		AXIS_FEEDRATE,
 		/// <summary>
-		﻿/// <see cref="SampleEnum.CAPACITY_FLUID />
+		﻿/// <see cref="SampleEnum.CAPACITY_FLUID" />
 		/// </summary>
 		/// <remarks>
 		/// <list type="bullet">
@@ -101,7 +101,7 @@ namespace Mtconnect.AdapterInterface.DataItemTypes
 		/// </remarks>
 		CAPACITY_FLUID,
 		/// <summary>
-		﻿/// <see cref="SampleEnum.CAPACITY_SPATIAL />
+		﻿/// <see cref="SampleEnum.CAPACITY_SPATIAL" />
 		/// </summary>
 		/// <remarks>
 		/// <list type="bullet">
@@ -110,7 +110,7 @@ namespace Mtconnect.AdapterInterface.DataItemTypes
 		/// </remarks>
 		CAPACITY_SPATIAL,
 		/// <summary>
-		﻿/// <see cref="SampleEnum.CONCENTRATION />
+		﻿/// <see cref="SampleEnum.CONCENTRATION" />
 		/// </summary>
 		/// <remarks>
 		/// <list type="bullet">
@@ -119,7 +119,7 @@ namespace Mtconnect.AdapterInterface.DataItemTypes
 		/// </remarks>
 		CONCENTRATION,
 		/// <summary>
-		﻿/// <see cref="SampleEnum.CONDUCTIVITY />
+		﻿/// <see cref="SampleEnum.CONDUCTIVITY" />
 		/// </summary>
 		/// <remarks>
 		/// <list type="bullet">
@@ -128,18 +128,18 @@ namespace Mtconnect.AdapterInterface.DataItemTypes
 		/// </remarks>
 		CONDUCTIVITY,
 		/// <summary>
-		﻿/// <see cref="SampleEnum.CUTTING_SPEED />
-		/// <br/><b>Sub-Type</b>: <see cref="CuttingSpeedSubTypes" />
+		﻿/// <see cref="SampleEnum.CUTTING_SPEED" />
 		/// </summary>
 		/// <remarks>
 		/// <list type="bullet">
+		/// <item><b>Sub-Type</b>: <see cref="CuttingSpeedSubTypes" /></item>
 		/// <item><b>Introduced</b>: <see href="https://model.mtconnect.org/#_Version_1.5">v1.5</see></item>
 		/// </list>
 		/// </remarks>
 		[ObservationalSubType(typeof(CuttingSpeedSubTypes))]
 		CUTTING_SPEED,
 		/// <summary>
-		﻿/// <see cref="SampleEnum.DENSITY />
+		﻿/// <see cref="SampleEnum.DENSITY" />
 		/// </summary>
 		/// <remarks>
 		/// <list type="bullet">
@@ -148,62 +148,62 @@ namespace Mtconnect.AdapterInterface.DataItemTypes
 		/// </remarks>
 		DENSITY,
 		/// <summary>
-		﻿/// <see cref="SampleEnum.DEPOSITION_ACCELERATION_VOLUMETRIC />
-		/// <br/><b>Sub-Type</b>: <see cref="DepositionAccelerationVolumetricSubTypes" />
+		﻿/// <see cref="SampleEnum.DEPOSITION_ACCELERATION_VOLUMETRIC" />
 		/// </summary>
 		/// <remarks>
 		/// <list type="bullet">
+		/// <item><b>Sub-Type</b>: <see cref="DepositionAccelerationVolumetricSubTypes" /></item>
 		/// <item><b>Introduced</b>: <see href="https://model.mtconnect.org/#_Version_1.5">v1.5</see></item>
 		/// </list>
 		/// </remarks>
 		[ObservationalSubType(typeof(DepositionAccelerationVolumetricSubTypes))]
 		DEPOSITION_ACCELERATION_VOLUMETRIC,
 		/// <summary>
-		﻿/// <see cref="SampleEnum.DEPOSITION_DENSITY />
-		/// <br/><b>Sub-Type</b>: <see cref="DepositionDensitySubTypes" />
+		﻿/// <see cref="SampleEnum.DEPOSITION_DENSITY" />
 		/// </summary>
 		/// <remarks>
 		/// <list type="bullet">
+		/// <item><b>Sub-Type</b>: <see cref="DepositionDensitySubTypes" /></item>
 		/// <item><b>Introduced</b>: <see href="https://model.mtconnect.org/#_Version_1.5">v1.5</see></item>
 		/// </list>
 		/// </remarks>
 		[ObservationalSubType(typeof(DepositionDensitySubTypes))]
 		DEPOSITION_DENSITY,
 		/// <summary>
-		﻿/// <see cref="SampleEnum.DEPOSITION_MASS />
-		/// <br/><b>Sub-Type</b>: <see cref="DepositionMassSubTypes" />
+		﻿/// <see cref="SampleEnum.DEPOSITION_MASS" />
 		/// </summary>
 		/// <remarks>
 		/// <list type="bullet">
+		/// <item><b>Sub-Type</b>: <see cref="DepositionMassSubTypes" /></item>
 		/// <item><b>Introduced</b>: <see href="https://model.mtconnect.org/#_Version_1.5">v1.5</see></item>
 		/// </list>
 		/// </remarks>
 		[ObservationalSubType(typeof(DepositionMassSubTypes))]
 		DEPOSITION_MASS,
 		/// <summary>
-		﻿/// <see cref="SampleEnum.DEPOSITION_RATE_VOLUMETRIC />
-		/// <br/><b>Sub-Type</b>: <see cref="DepositionRateVolumetricSubTypes" />
+		﻿/// <see cref="SampleEnum.DEPOSITION_RATE_VOLUMETRIC" />
 		/// </summary>
 		/// <remarks>
 		/// <list type="bullet">
+		/// <item><b>Sub-Type</b>: <see cref="DepositionRateVolumetricSubTypes" /></item>
 		/// <item><b>Introduced</b>: <see href="https://model.mtconnect.org/#_Version_1.5">v1.5</see></item>
 		/// </list>
 		/// </remarks>
 		[ObservationalSubType(typeof(DepositionRateVolumetricSubTypes))]
 		DEPOSITION_RATE_VOLUMETRIC,
 		/// <summary>
-		﻿/// <see cref="SampleEnum.DEPOSITION_VOLUME />
-		/// <br/><b>Sub-Type</b>: <see cref="DepositionVolumeSubTypes" />
+		﻿/// <see cref="SampleEnum.DEPOSITION_VOLUME" />
 		/// </summary>
 		/// <remarks>
 		/// <list type="bullet">
+		/// <item><b>Sub-Type</b>: <see cref="DepositionVolumeSubTypes" /></item>
 		/// <item><b>Introduced</b>: <see href="https://model.mtconnect.org/#_Version_1.5">v1.5</see></item>
 		/// </list>
 		/// </remarks>
 		[ObservationalSubType(typeof(DepositionVolumeSubTypes))]
 		DEPOSITION_VOLUME,
 		/// <summary>
-		﻿/// <see cref="SampleEnum.DISPLACEMENT />
+		﻿/// <see cref="SampleEnum.DISPLACEMENT" />
 		/// </summary>
 		/// <remarks>
 		/// <list type="bullet">
@@ -212,7 +212,7 @@ namespace Mtconnect.AdapterInterface.DataItemTypes
 		/// </remarks>
 		DISPLACEMENT,
 		/// <summary>
-		﻿/// <see cref="SampleEnum.ELECTRICAL_ENERGY />
+		﻿/// <see cref="SampleEnum.ELECTRICAL_ENERGY" />
 		/// </summary>
 		/// <remarks>
 		/// <list type="bullet">
@@ -221,18 +221,18 @@ namespace Mtconnect.AdapterInterface.DataItemTypes
 		/// </remarks>
 		ELECTRICAL_ENERGY,
 		/// <summary>
-		﻿/// <see cref="SampleEnum.EQUIPMENT_TIMER />
-		/// <br/><b>Sub-Type</b>: <see cref="EquipmentTimerSubTypes" />
+		﻿/// <see cref="SampleEnum.EQUIPMENT_TIMER" />
 		/// </summary>
 		/// <remarks>
 		/// <list type="bullet">
+		/// <item><b>Sub-Type</b>: <see cref="EquipmentTimerSubTypes" /></item>
 		/// <item><b>Introduced</b>: <see href="https://model.mtconnect.org/#_Version_1.4">v1.4</see></item>
 		/// </list>
 		/// </remarks>
 		[ObservationalSubType(typeof(EquipmentTimerSubTypes))]
 		EQUIPMENT_TIMER,
 		/// <summary>
-		﻿/// <see cref="SampleEnum.FILL_LEVEL />
+		﻿/// <see cref="SampleEnum.FILL_LEVEL" />
 		/// </summary>
 		/// <remarks>
 		/// <list type="bullet">
@@ -241,7 +241,7 @@ namespace Mtconnect.AdapterInterface.DataItemTypes
 		/// </remarks>
 		FILL_LEVEL,
 		/// <summary>
-		﻿/// <see cref="SampleEnum.FLOW />
+		﻿/// <see cref="SampleEnum.FLOW" />
 		/// </summary>
 		/// <remarks>
 		/// <list type="bullet">
@@ -250,7 +250,7 @@ namespace Mtconnect.AdapterInterface.DataItemTypes
 		/// </remarks>
 		FLOW,
 		/// <summary>
-		﻿/// <see cref="SampleEnum.FREQUENCY />
+		﻿/// <see cref="SampleEnum.FREQUENCY" />
 		/// </summary>
 		/// <remarks>
 		/// <list type="bullet">
@@ -259,11 +259,11 @@ namespace Mtconnect.AdapterInterface.DataItemTypes
 		/// </remarks>
 		FREQUENCY,
 		/// <summary>
-		﻿/// <see cref="SampleEnum.GLOBAL_POSITION />
-		/// <br/><b>Sub-Type</b>: <see cref="GlobalPositionSubTypes" />
+		﻿/// <see cref="SampleEnum.GLOBAL_POSITION" />
 		/// </summary>
 		/// <remarks>
 		/// <list type="bullet">
+		/// <item><b>Sub-Type</b>: <see cref="GlobalPositionSubTypes" /></item>
 		/// <item><b>Introduced</b>: <see href="https://model.mtconnect.org/#_Version_1.0">v1.0</see></item>
 		/// <item><b>Deprecated</b>: <see href="https://model.mtconnect.org/#_Version_1.1">v1.1</see></item>
 		/// </list>
@@ -272,18 +272,18 @@ namespace Mtconnect.AdapterInterface.DataItemTypes
 		[ObservationalSubType(typeof(GlobalPositionSubTypes))]
 		GLOBAL_POSITION,
 		/// <summary>
-		﻿/// <see cref="SampleEnum.LENGTH />
-		/// <br/><b>Sub-Type</b>: <see cref="LengthSubTypes" />
+		﻿/// <see cref="SampleEnum.LENGTH" />
 		/// </summary>
 		/// <remarks>
 		/// <list type="bullet">
+		/// <item><b>Sub-Type</b>: <see cref="LengthSubTypes" /></item>
 		/// <item><b>Introduced</b>: <see href="https://model.mtconnect.org/#_Version_1.3">v1.3</see></item>
 		/// </list>
 		/// </remarks>
 		[ObservationalSubType(typeof(LengthSubTypes))]
 		LENGTH,
 		/// <summary>
-		﻿/// <see cref="SampleEnum.LEVEL />
+		﻿/// <see cref="SampleEnum.LEVEL" />
 		/// </summary>
 		/// <remarks>
 		/// <list type="bullet">
@@ -294,7 +294,7 @@ namespace Mtconnect.AdapterInterface.DataItemTypes
 		[Obsolete("Deprecated in v1.2 according to https://model.mtconnect.org/#_Version_1.2")]
 		LEVEL,
 		/// <summary>
-		﻿/// <see cref="SampleEnum.LINEAR_FORCE />
+		﻿/// <see cref="SampleEnum.LINEAR_FORCE" />
 		/// </summary>
 		/// <remarks>
 		/// <list type="bullet">
@@ -303,7 +303,7 @@ namespace Mtconnect.AdapterInterface.DataItemTypes
 		/// </remarks>
 		LINEAR_FORCE,
 		/// <summary>
-		﻿/// <see cref="SampleEnum.LOAD />
+		﻿/// <see cref="SampleEnum.LOAD" />
 		/// </summary>
 		/// <remarks>
 		/// <list type="bullet">
@@ -312,7 +312,7 @@ namespace Mtconnect.AdapterInterface.DataItemTypes
 		/// </remarks>
 		LOAD,
 		/// <summary>
-		﻿/// <see cref="SampleEnum.MASS />
+		﻿/// <see cref="SampleEnum.MASS" />
 		/// </summary>
 		/// <remarks>
 		/// <list type="bullet">
@@ -321,40 +321,40 @@ namespace Mtconnect.AdapterInterface.DataItemTypes
 		/// </remarks>
 		MASS,
 		/// <summary>
-		﻿/// <see cref="SampleEnum.PATH_FEEDRATE />
-		/// <br/><b>Sub-Type</b>: <see cref="PathFeedrateSubTypes" />
+		﻿/// <see cref="SampleEnum.PATH_FEEDRATE" />
 		/// </summary>
 		/// <remarks>
 		/// <list type="bullet">
+		/// <item><b>Sub-Type</b>: <see cref="PathFeedrateSubTypes" /></item>
 		/// <item><b>Introduced</b>: <see href="https://model.mtconnect.org/#_Version_1.0">v1.0</see></item>
 		/// </list>
 		/// </remarks>
 		[ObservationalSubType(typeof(PathFeedrateSubTypes))]
 		PATH_FEEDRATE,
 		/// <summary>
-		﻿/// <see cref="SampleEnum.PATH_FEEDRATE_PER_REVOLUTION />
-		/// <br/><b>Sub-Type</b>: <see cref="PathFeedratePerRevolutionSubTypes" />
+		﻿/// <see cref="SampleEnum.PATH_FEEDRATE_PER_REVOLUTION" />
 		/// </summary>
 		/// <remarks>
 		/// <list type="bullet">
+		/// <item><b>Sub-Type</b>: <see cref="PathFeedratePerRevolutionSubTypes" /></item>
 		/// <item><b>Introduced</b>: <see href="https://model.mtconnect.org/#_Version_1.5">v1.5</see></item>
 		/// </list>
 		/// </remarks>
 		[ObservationalSubType(typeof(PathFeedratePerRevolutionSubTypes))]
 		PATH_FEEDRATE_PER_REVOLUTION,
 		/// <summary>
-		﻿/// <see cref="SampleEnum.PATH_POSITION />
-		/// <br/><b>Sub-Type</b>: <see cref="PathPositionSubTypes" />
+		﻿/// <see cref="SampleEnum.PATH_POSITION" />
 		/// </summary>
 		/// <remarks>
 		/// <list type="bullet">
+		/// <item><b>Sub-Type</b>: <see cref="PathPositionSubTypes" /></item>
 		/// <item><b>Introduced</b>: <see href="https://model.mtconnect.org/#_Version_1.1">v1.1</see></item>
 		/// </list>
 		/// </remarks>
 		[ObservationalSubType(typeof(PathPositionSubTypes))]
 		PATH_POSITION,
 		/// <summary>
-		﻿/// <see cref="SampleEnum.PH />
+		﻿/// <see cref="SampleEnum.PH" />
 		/// </summary>
 		/// <remarks>
 		/// <list type="bullet">
@@ -363,18 +363,18 @@ namespace Mtconnect.AdapterInterface.DataItemTypes
 		/// </remarks>
 		P_H,
 		/// <summary>
-		﻿/// <see cref="SampleEnum.POSITION />
-		/// <br/><b>Sub-Type</b>: <see cref="PositionSubTypes" />
+		﻿/// <see cref="SampleEnum.POSITION" />
 		/// </summary>
 		/// <remarks>
 		/// <list type="bullet">
+		/// <item><b>Sub-Type</b>: <see cref="PositionSubTypes" /></item>
 		/// <item><b>Introduced</b>: <see href="https://model.mtconnect.org/#_Version_1.0">v1.0</see></item>
 		/// </list>
 		/// </remarks>
 		[ObservationalSubType(typeof(PositionSubTypes))]
 		POSITION,
 		/// <summary>
-		﻿/// <see cref="SampleEnum.POWER_FACTOR />
+		﻿/// <see cref="SampleEnum.POWER_FACTOR" />
 		/// </summary>
 		/// <remarks>
 		/// <list type="bullet">
@@ -383,7 +383,7 @@ namespace Mtconnect.AdapterInterface.DataItemTypes
 		/// </remarks>
 		POWER_FACTOR,
 		/// <summary>
-		﻿/// <see cref="SampleEnum.PRESSURE />
+		﻿/// <see cref="SampleEnum.PRESSURE" />
 		/// </summary>
 		/// <remarks>
 		/// <list type="bullet">
@@ -392,18 +392,18 @@ namespace Mtconnect.AdapterInterface.DataItemTypes
 		/// </remarks>
 		PRESSURE,
 		/// <summary>
-		﻿/// <see cref="SampleEnum.PROCESS_TIMER />
-		/// <br/><b>Sub-Type</b>: <see cref="ProcessTimerSubTypes" />
+		﻿/// <see cref="SampleEnum.PROCESS_TIMER" />
 		/// </summary>
 		/// <remarks>
 		/// <list type="bullet">
+		/// <item><b>Sub-Type</b>: <see cref="ProcessTimerSubTypes" /></item>
 		/// <item><b>Introduced</b>: <see href="https://model.mtconnect.org/#_Version_1.4">v1.4</see></item>
 		/// </list>
 		/// </remarks>
 		[ObservationalSubType(typeof(ProcessTimerSubTypes))]
 		PROCESS_TIMER,
 		/// <summary>
-		﻿/// <see cref="SampleEnum.RESISTANCE />
+		﻿/// <see cref="SampleEnum.RESISTANCE" />
 		/// </summary>
 		/// <remarks>
 		/// <list type="bullet">
@@ -412,33 +412,33 @@ namespace Mtconnect.AdapterInterface.DataItemTypes
 		/// </remarks>
 		RESISTANCE,
 		/// <summary>
-		﻿/// <see cref="SampleEnum.ROTARY_VELOCITY />
-		/// <br/><b>Sub-Type</b>: <see cref="RotaryVelocitySubTypes" />
+		﻿/// <see cref="SampleEnum.ROTARY_VELOCITY" />
 		/// </summary>
 		/// <remarks>
 		/// <list type="bullet">
+		/// <item><b>Sub-Type</b>: <see cref="RotaryVelocitySubTypes" /></item>
 		/// <item><b>Introduced</b>: <see href="https://model.mtconnect.org/#_Version_1.2">v1.2</see></item>
 		/// </list>
 		/// </remarks>
 		[ObservationalSubType(typeof(RotaryVelocitySubTypes))]
 		ROTARY_VELOCITY,
 		/// <summary>
-		﻿/// <see cref="SampleEnum.SOUND_LEVEL />
-		/// <br/><b>Sub-Type</b>: <see cref="SoundLevelSubTypes" />
+		﻿/// <see cref="SampleEnum.SOUND_LEVEL" />
 		/// </summary>
 		/// <remarks>
 		/// <list type="bullet">
+		/// <item><b>Sub-Type</b>: <see cref="SoundLevelSubTypes" /></item>
 		/// <item><b>Introduced</b>: <see href="https://model.mtconnect.org/#_Version_1.2">v1.2</see></item>
 		/// </list>
 		/// </remarks>
 		[ObservationalSubType(typeof(SoundLevelSubTypes))]
 		SOUND_LEVEL,
 		/// <summary>
-		﻿/// <see cref="SampleEnum.SPINDLE_SPEED />
-		/// <br/><b>Sub-Type</b>: <see cref="SpindleSpeedSubTypes" />
+		﻿/// <see cref="SampleEnum.SPINDLE_SPEED" />
 		/// </summary>
 		/// <remarks>
 		/// <list type="bullet">
+		/// <item><b>Sub-Type</b>: <see cref="SpindleSpeedSubTypes" /></item>
 		/// <item><b>Introduced</b>: <see href="https://model.mtconnect.org/#_Version_1.0">v1.0</see></item>
 		/// <item><b>Deprecated</b>: <see href="https://model.mtconnect.org/#_Version_1.2">v1.2</see></item>
 		/// </list>
@@ -447,7 +447,7 @@ namespace Mtconnect.AdapterInterface.DataItemTypes
 		[ObservationalSubType(typeof(SpindleSpeedSubTypes))]
 		SPINDLE_SPEED,
 		/// <summary>
-		﻿/// <see cref="SampleEnum.STRAIN />
+		﻿/// <see cref="SampleEnum.STRAIN" />
 		/// </summary>
 		/// <remarks>
 		/// <list type="bullet">
@@ -456,7 +456,7 @@ namespace Mtconnect.AdapterInterface.DataItemTypes
 		/// </remarks>
 		STRAIN,
 		/// <summary>
-		﻿/// <see cref="SampleEnum.TEMPERATURE />
+		﻿/// <see cref="SampleEnum.TEMPERATURE" />
 		/// </summary>
 		/// <remarks>
 		/// <list type="bullet">
@@ -465,7 +465,7 @@ namespace Mtconnect.AdapterInterface.DataItemTypes
 		/// </remarks>
 		TEMPERATURE,
 		/// <summary>
-		﻿/// <see cref="SampleEnum.TENSION />
+		﻿/// <see cref="SampleEnum.TENSION" />
 		/// </summary>
 		/// <remarks>
 		/// <list type="bullet">
@@ -474,7 +474,7 @@ namespace Mtconnect.AdapterInterface.DataItemTypes
 		/// </remarks>
 		TENSION,
 		/// <summary>
-		﻿/// <see cref="SampleEnum.TILT />
+		﻿/// <see cref="SampleEnum.TILT" />
 		/// </summary>
 		/// <remarks>
 		/// <list type="bullet">
@@ -483,7 +483,7 @@ namespace Mtconnect.AdapterInterface.DataItemTypes
 		/// </remarks>
 		TILT,
 		/// <summary>
-		﻿/// <see cref="SampleEnum.TORQUE />
+		﻿/// <see cref="SampleEnum.TORQUE" />
 		/// </summary>
 		/// <remarks>
 		/// <list type="bullet">
@@ -492,7 +492,7 @@ namespace Mtconnect.AdapterInterface.DataItemTypes
 		/// </remarks>
 		TORQUE,
 		/// <summary>
-		﻿/// <see cref="SampleEnum.VELOCITY />
+		﻿/// <see cref="SampleEnum.VELOCITY" />
 		/// </summary>
 		/// <remarks>
 		/// <list type="bullet">
@@ -501,7 +501,7 @@ namespace Mtconnect.AdapterInterface.DataItemTypes
 		/// </remarks>
 		VELOCITY,
 		/// <summary>
-		﻿/// <see cref="SampleEnum.VISCOSITY />
+		﻿/// <see cref="SampleEnum.VISCOSITY" />
 		/// </summary>
 		/// <remarks>
 		/// <list type="bullet">
@@ -510,11 +510,11 @@ namespace Mtconnect.AdapterInterface.DataItemTypes
 		/// </remarks>
 		VISCOSITY,
 		/// <summary>
-		﻿/// <see cref="SampleEnum.VOLTAGE />
-		/// <br/><b>Sub-Type</b>: <see cref="VoltageSubTypes" />
+		﻿/// <see cref="SampleEnum.VOLTAGE" />
 		/// </summary>
 		/// <remarks>
 		/// <list type="bullet">
+		/// <item><b>Sub-Type</b>: <see cref="VoltageSubTypes" /></item>
 		/// <item><b>Introduced</b>: <see href="https://model.mtconnect.org/#_Version_1.0">v1.0</see></item>
 		/// <item><b>Deprecated</b>: <see href="https://model.mtconnect.org/#_Version_1.6">v1.6</see></item>
 		/// </list>
@@ -523,7 +523,7 @@ namespace Mtconnect.AdapterInterface.DataItemTypes
 		[ObservationalSubType(typeof(VoltageSubTypes))]
 		VOLTAGE,
 		/// <summary>
-		﻿/// <see cref="SampleEnum.VOLT_AMPERE />
+		﻿/// <see cref="SampleEnum.VOLT_AMPERE" />
 		/// </summary>
 		/// <remarks>
 		/// <list type="bullet">
@@ -532,7 +532,7 @@ namespace Mtconnect.AdapterInterface.DataItemTypes
 		/// </remarks>
 		VOLT_AMPERE,
 		/// <summary>
-		﻿/// <see cref="SampleEnum.VOLT_AMPERE_REACTIVE />
+		﻿/// <see cref="SampleEnum.VOLT_AMPERE_REACTIVE" />
 		/// </summary>
 		/// <remarks>
 		/// <list type="bullet">
@@ -541,84 +541,84 @@ namespace Mtconnect.AdapterInterface.DataItemTypes
 		/// </remarks>
 		VOLT_AMPERE_REACTIVE,
 		/// <summary>
-		﻿/// <see cref="SampleEnum.VOLUME_FLUID />
-		/// <br/><b>Sub-Type</b>: <see cref="VolumeFluidSubTypes" />
+		﻿/// <see cref="SampleEnum.VOLUME_FLUID" />
 		/// </summary>
 		/// <remarks>
 		/// <list type="bullet">
+		/// <item><b>Sub-Type</b>: <see cref="VolumeFluidSubTypes" /></item>
 		/// <item><b>Introduced</b>: <see href="https://model.mtconnect.org/#_Version_1.5">v1.5</see></item>
 		/// </list>
 		/// </remarks>
 		[ObservationalSubType(typeof(VolumeFluidSubTypes))]
 		VOLUME_FLUID,
 		/// <summary>
-		﻿/// <see cref="SampleEnum.VOLUME_SPATIAL />
-		/// <br/><b>Sub-Type</b>: <see cref="VolumeSpatialSubTypes" />
+		﻿/// <see cref="SampleEnum.VOLUME_SPATIAL" />
 		/// </summary>
 		/// <remarks>
 		/// <list type="bullet">
+		/// <item><b>Sub-Type</b>: <see cref="VolumeSpatialSubTypes" /></item>
 		/// <item><b>Introduced</b>: <see href="https://model.mtconnect.org/#_Version_1.5">v1.5</see></item>
 		/// </list>
 		/// </remarks>
 		[ObservationalSubType(typeof(VolumeSpatialSubTypes))]
 		VOLUME_SPATIAL,
 		/// <summary>
-		﻿/// <see cref="SampleEnum.WATTAGE />
-		/// <br/><b>Sub-Type</b>: <see cref="WattageSubTypes" />
+		﻿/// <see cref="SampleEnum.WATTAGE" />
 		/// </summary>
 		/// <remarks>
 		/// <list type="bullet">
+		/// <item><b>Sub-Type</b>: <see cref="WattageSubTypes" /></item>
 		/// <item><b>Introduced</b>: <see href="https://model.mtconnect.org/#_Version_1.0">v1.0</see></item>
 		/// </list>
 		/// </remarks>
 		[ObservationalSubType(typeof(WattageSubTypes))]
 		WATTAGE,
 		/// <summary>
-		﻿/// <see cref="SampleEnum.AMPERAGE_DC />
-		/// <br/><b>Sub-Type</b>: <see cref="AmperageDCSubTypes" />
+		﻿/// <see cref="SampleEnum.AMPERAGE_DC" />
 		/// </summary>
 		/// <remarks>
 		/// <list type="bullet">
+		/// <item><b>Sub-Type</b>: <see cref="AmperageDCSubTypes" /></item>
 		/// <item><b>Introduced</b>: <see href="https://model.mtconnect.org/#_Version_1.6">v1.6</see></item>
 		/// </list>
 		/// </remarks>
 		[ObservationalSubType(typeof(AmperageDCSubTypes))]
 		AMPERAGE_D_C,
 		/// <summary>
-		﻿/// <see cref="SampleEnum.AMPERAGE_AC />
-		/// <br/><b>Sub-Type</b>: <see cref="AmperageACSubTypes" />
+		﻿/// <see cref="SampleEnum.AMPERAGE_AC" />
 		/// </summary>
 		/// <remarks>
 		/// <list type="bullet">
+		/// <item><b>Sub-Type</b>: <see cref="AmperageACSubTypes" /></item>
 		/// <item><b>Introduced</b>: <see href="https://model.mtconnect.org/#_Version_1.6">v1.6</see></item>
 		/// </list>
 		/// </remarks>
 		[ObservationalSubType(typeof(AmperageACSubTypes))]
 		AMPERAGE_A_C,
 		/// <summary>
-		﻿/// <see cref="SampleEnum.VOLTAGE_AC />
-		/// <br/><b>Sub-Type</b>: <see cref="VoltageACSubTypes" />
+		﻿/// <see cref="SampleEnum.VOLTAGE_AC" />
 		/// </summary>
 		/// <remarks>
 		/// <list type="bullet">
+		/// <item><b>Sub-Type</b>: <see cref="VoltageACSubTypes" /></item>
 		/// <item><b>Introduced</b>: <see href="https://model.mtconnect.org/#_Version_1.6">v1.6</see></item>
 		/// </list>
 		/// </remarks>
 		[ObservationalSubType(typeof(VoltageACSubTypes))]
 		VOLTAGE_A_C,
 		/// <summary>
-		﻿/// <see cref="SampleEnum.VOLTAGE_DC />
-		/// <br/><b>Sub-Type</b>: <see cref="VoltageDCSubTypes" />
+		﻿/// <see cref="SampleEnum.VOLTAGE_DC" />
 		/// </summary>
 		/// <remarks>
 		/// <list type="bullet">
+		/// <item><b>Sub-Type</b>: <see cref="VoltageDCSubTypes" /></item>
 		/// <item><b>Introduced</b>: <see href="https://model.mtconnect.org/#_Version_1.6">v1.6</see></item>
 		/// </list>
 		/// </remarks>
 		[ObservationalSubType(typeof(VoltageDCSubTypes))]
 		VOLTAGE_D_C,
 		/// <summary>
-		﻿/// <see cref="SampleEnum.X_DIMENSION />
+		﻿/// <see cref="SampleEnum.X_DIMENSION" />
 		/// </summary>
 		/// <remarks>
 		/// <list type="bullet">
@@ -627,7 +627,7 @@ namespace Mtconnect.AdapterInterface.DataItemTypes
 		/// </remarks>
 		X_DIMENSION,
 		/// <summary>
-		﻿/// <see cref="SampleEnum.Y_DIMENSION />
+		﻿/// <see cref="SampleEnum.Y_DIMENSION" />
 		/// </summary>
 		/// <remarks>
 		/// <list type="bullet">
@@ -636,7 +636,7 @@ namespace Mtconnect.AdapterInterface.DataItemTypes
 		/// </remarks>
 		Y_DIMENSION,
 		/// <summary>
-		﻿/// <see cref="SampleEnum.Z_DIMENSION />
+		﻿/// <see cref="SampleEnum.Z_DIMENSION" />
 		/// </summary>
 		/// <remarks>
 		/// <list type="bullet">
@@ -645,7 +645,7 @@ namespace Mtconnect.AdapterInterface.DataItemTypes
 		/// </remarks>
 		Z_DIMENSION,
 		/// <summary>
-		﻿/// <see cref="SampleEnum.DIAMETER />
+		﻿/// <see cref="SampleEnum.DIAMETER" />
 		/// </summary>
 		/// <remarks>
 		/// <list type="bullet">
@@ -654,73 +654,73 @@ namespace Mtconnect.AdapterInterface.DataItemTypes
 		/// </remarks>
 		DIAMETER,
 		/// <summary>
-		﻿/// <see cref="SampleEnum.ORIENTATION />
-		/// <br/><b>Sub-Type</b>: <see cref="OrientationSubTypes" />
+		﻿/// <see cref="SampleEnum.ORIENTATION" />
 		/// </summary>
 		/// <remarks>
 		/// <list type="bullet">
+		/// <item><b>Sub-Type</b>: <see cref="OrientationSubTypes" /></item>
 		/// <item><b>Introduced</b>: <see href="https://model.mtconnect.org/#_Version_1.6">v1.6</see></item>
 		/// </list>
 		/// </remarks>
 		[ObservationalSubType(typeof(OrientationSubTypes))]
 		ORIENTATION,
 		/// <summary>
-		﻿/// <see cref="SampleEnum.HUMIDITY_RELATIVE />
-		/// <br/><b>Sub-Type</b>: <see cref="HumidityRelativeSubTypes" />
+		﻿/// <see cref="SampleEnum.HUMIDITY_RELATIVE" />
 		/// </summary>
 		/// <remarks>
 		/// <list type="bullet">
+		/// <item><b>Sub-Type</b>: <see cref="HumidityRelativeSubTypes" /></item>
 		/// <item><b>Introduced</b>: <see href="https://model.mtconnect.org/#_Version_1.6">v1.6</see></item>
 		/// </list>
 		/// </remarks>
 		[ObservationalSubType(typeof(HumidityRelativeSubTypes))]
 		HUMIDITY_RELATIVE,
 		/// <summary>
-		﻿/// <see cref="SampleEnum.HUMIDITY_ABSOLUTE />
-		/// <br/><b>Sub-Type</b>: <see cref="HumidityAbsoluteSubTypes" />
+		﻿/// <see cref="SampleEnum.HUMIDITY_ABSOLUTE" />
 		/// </summary>
 		/// <remarks>
 		/// <list type="bullet">
+		/// <item><b>Sub-Type</b>: <see cref="HumidityAbsoluteSubTypes" /></item>
 		/// <item><b>Introduced</b>: <see href="https://model.mtconnect.org/#_Version_1.6">v1.6</see></item>
 		/// </list>
 		/// </remarks>
 		[ObservationalSubType(typeof(HumidityAbsoluteSubTypes))]
 		HUMIDITY_ABSOLUTE,
 		/// <summary>
-		﻿/// <see cref="SampleEnum.HUMIDITY_SPECIFIC />
-		/// <br/><b>Sub-Type</b>: <see cref="HumiditySpecificSubTypes" />
+		﻿/// <see cref="SampleEnum.HUMIDITY_SPECIFIC" />
 		/// </summary>
 		/// <remarks>
 		/// <list type="bullet">
+		/// <item><b>Sub-Type</b>: <see cref="HumiditySpecificSubTypes" /></item>
 		/// <item><b>Introduced</b>: <see href="https://model.mtconnect.org/#_Version_1.6">v1.6</see></item>
 		/// </list>
 		/// </remarks>
 		[ObservationalSubType(typeof(HumiditySpecificSubTypes))]
 		HUMIDITY_SPECIFIC,
 		/// <summary>
-		﻿/// <see cref="SampleEnum.PRESSURIZATION_RATE />
-		/// <br/><b>Sub-Type</b>: <see cref="PressurizationRateSubTypes" />
+		﻿/// <see cref="SampleEnum.PRESSURIZATION_RATE" />
 		/// </summary>
 		/// <remarks>
 		/// <list type="bullet">
+		/// <item><b>Sub-Type</b>: <see cref="PressurizationRateSubTypes" /></item>
 		/// <item><b>Introduced</b>: <see href="https://model.mtconnect.org/#_Version_1.7">v1.7</see></item>
 		/// </list>
 		/// </remarks>
 		[ObservationalSubType(typeof(PressurizationRateSubTypes))]
 		PRESSURIZATION_RATE,
 		/// <summary>
-		﻿/// <see cref="SampleEnum.DECELERATION />
-		/// <br/><b>Sub-Type</b>: <see cref="DecelerationSubTypes" />
+		﻿/// <see cref="SampleEnum.DECELERATION" />
 		/// </summary>
 		/// <remarks>
 		/// <list type="bullet">
+		/// <item><b>Sub-Type</b>: <see cref="DecelerationSubTypes" /></item>
 		/// <item><b>Introduced</b>: <see href="https://model.mtconnect.org/#_Version_1.7">v1.7</see></item>
 		/// </list>
 		/// </remarks>
 		[ObservationalSubType(typeof(DecelerationSubTypes))]
 		DECELERATION,
 		/// <summary>
-		﻿/// <see cref="SampleEnum.ASSET_UPDATE_RATE />
+		﻿/// <see cref="SampleEnum.ASSET_UPDATE_RATE" />
 		/// </summary>
 		/// <remarks>
 		/// <list type="bullet">
@@ -729,18 +729,18 @@ namespace Mtconnect.AdapterInterface.DataItemTypes
 		/// </remarks>
 		ASSET_UPDATE_RATE,
 		/// <summary>
-		﻿/// <see cref="SampleEnum.ANGULAR_DECELERATION />
-		/// <br/><b>Sub-Type</b>: <see cref="AngularDecelerationSubTypes" />
+		﻿/// <see cref="SampleEnum.ANGULAR_DECELERATION" />
 		/// </summary>
 		/// <remarks>
 		/// <list type="bullet">
+		/// <item><b>Sub-Type</b>: <see cref="AngularDecelerationSubTypes" /></item>
 		/// <item><b>Introduced</b>: <see href="https://model.mtconnect.org/#_Version_1.7">v1.7</see></item>
 		/// </list>
 		/// </remarks>
 		[ObservationalSubType(typeof(AngularDecelerationSubTypes))]
 		ANGULAR_DECELERATION,
 		/// <summary>
-		﻿/// <see cref="SampleEnum.OBSERVATION_UPDATE_RATE />
+		﻿/// <see cref="SampleEnum.OBSERVATION_UPDATE_RATE" />
 		/// </summary>
 		/// <remarks>
 		/// <list type="bullet">
@@ -758,7 +758,7 @@ namespace Mtconnect.AdapterInterface.DataItemTypes
 		/// </remarks>
 		PRESSURE_ABSOLUTE,
 		/// <summary>
-		﻿/// <see cref="SampleEnum.OPENNESS />
+		﻿/// <see cref="SampleEnum.OPENNESS" />
 		/// </summary>
 		/// <remarks>
 		/// <list type="bullet">
@@ -767,7 +767,7 @@ namespace Mtconnect.AdapterInterface.DataItemTypes
 		/// </remarks>
 		OPENNESS,
 		/// <summary>
-		﻿/// <see cref="SampleEnum.DEW_POINT />
+		﻿/// <see cref="SampleEnum.DEW_POINT" />
 		/// </summary>
 		/// <remarks>
 		/// <list type="bullet">
@@ -776,7 +776,7 @@ namespace Mtconnect.AdapterInterface.DataItemTypes
 		/// </remarks>
 		DEW_POINT,
 		/// <summary>
-		﻿/// <see cref="SampleEnum.GRAVITATIONAL_FORCE />  > Note: <i><c>Mass</c> x <c>GravitationalAcceleration</c></i>
+		﻿/// <see cref="SampleEnum.GRAVITATIONAL_FORCE" />  > Note: <i><c>Mass</c> x <c>GravitationalAcceleration</c></i>
 		/// </summary>
 		/// <remarks>
 		/// <list type="bullet">
@@ -785,7 +785,7 @@ namespace Mtconnect.AdapterInterface.DataItemTypes
 		/// </remarks>
 		GRAVITATIONAL_FORCE,
 		/// <summary>
-		﻿/// <see cref="SampleEnum.GRAVITATIONAL_ACCELERATION />  
+		﻿/// <see cref="SampleEnum.GRAVITATIONAL_ACCELERATION" />  
 		/// </summary>
 		/// <remarks>
 		/// <list type="bullet">
@@ -794,117 +794,117 @@ namespace Mtconnect.AdapterInterface.DataItemTypes
 		/// </remarks>
 		GRAVITATIONAL_ACCELERATION,
 		/// <summary>
-		﻿/// <see cref="SampleEnum.BATTERY_CAPACITY />
-		/// <br/><b>Sub-Type</b>: <see cref="BatteryCapacitySubTypes" />
+		﻿/// <see cref="SampleEnum.BATTERY_CAPACITY" />
 		/// </summary>
 		/// <remarks>
 		/// <list type="bullet">
+		/// <item><b>Sub-Type</b>: <see cref="BatteryCapacitySubTypes" /></item>
 		/// <item><b>Introduced</b>: <see href="https://model.mtconnect.org/#_Version_2.1">v2.1</see></item>
 		/// </list>
 		/// </remarks>
 		[ObservationalSubType(typeof(BatteryCapacitySubTypes))]
 		BATTERY_CAPACITY,
 		/// <summary>
-		﻿/// <see cref="SampleEnum.DISCHARGE_RATE />
-		/// <br/><b>Sub-Type</b>: <see cref="DischargeRateSubTypes" />
+		﻿/// <see cref="SampleEnum.DISCHARGE_RATE" />
 		/// </summary>
 		/// <remarks>
 		/// <list type="bullet">
+		/// <item><b>Sub-Type</b>: <see cref="DischargeRateSubTypes" /></item>
 		/// <item><b>Introduced</b>: <see href="https://model.mtconnect.org/#_Version_2.1">v2.1</see></item>
 		/// </list>
 		/// </remarks>
 		[ObservationalSubType(typeof(DischargeRateSubTypes))]
 		DISCHARGE_RATE,
 		/// <summary>
-		﻿/// <see cref="SampleEnum.CHARGE_RATE />
-		/// <br/><b>Sub-Type</b>: <see cref="ChargeRateSubTypes" />
+		﻿/// <see cref="SampleEnum.CHARGE_RATE" />
 		/// </summary>
 		/// <remarks>
 		/// <list type="bullet">
+		/// <item><b>Sub-Type</b>: <see cref="ChargeRateSubTypes" /></item>
 		/// <item><b>Introduced</b>: <see href="https://model.mtconnect.org/#_Version_2.1">v2.1</see></item>
 		/// </list>
 		/// </remarks>
 		[ObservationalSubType(typeof(ChargeRateSubTypes))]
 		CHARGE_RATE,
 		/// <summary>
-		﻿/// <see cref="SampleEnum.BATTERY_CHARGE />
-		/// <br/><b>Sub-Type</b>: <see cref="BatteryChargeSubTypes" />
+		﻿/// <see cref="SampleEnum.BATTERY_CHARGE" />
 		/// </summary>
 		/// <remarks>
 		/// <list type="bullet">
+		/// <item><b>Sub-Type</b>: <see cref="BatteryChargeSubTypes" /></item>
 		/// <item><b>Introduced</b>: <see href="https://model.mtconnect.org/#_Version_2.1">v2.1</see></item>
 		/// </list>
 		/// </remarks>
 		[ObservationalSubType(typeof(BatteryChargeSubTypes))]
 		BATTERY_CHARGE,
 		/// <summary>
-		﻿/// <see cref="SampleEnum.SETTLING_ERROR />
-		/// <br/><b>Sub-Type</b>: <see cref="SettlingErrorSubTypes" />
+		﻿/// <see cref="SampleEnum.SETTLING_ERROR" />
 		/// </summary>
 		/// <remarks>
 		/// <list type="bullet">
+		/// <item><b>Sub-Type</b>: <see cref="SettlingErrorSubTypes" /></item>
 		/// <item><b>Introduced</b>: <see href="https://model.mtconnect.org/#_Version_2.1">v2.1</see></item>
 		/// </list>
 		/// </remarks>
 		[ObservationalSubType(typeof(SettlingErrorSubTypes))]
 		SETTLING_ERROR,
 		/// <summary>
-		﻿/// <see cref="SampleEnum.SETTLING_ERROR_LINEAR />
-		/// <br/><b>Sub-Type</b>: <see cref="SettlingErrorLinearSubTypes" />
+		﻿/// <see cref="SampleEnum.SETTLING_ERROR_LINEAR" />
 		/// </summary>
 		/// <remarks>
 		/// <list type="bullet">
+		/// <item><b>Sub-Type</b>: <see cref="SettlingErrorLinearSubTypes" /></item>
 		/// <item><b>Introduced</b>: <see href="https://model.mtconnect.org/#_Version_2.1">v2.1</see></item>
 		/// </list>
 		/// </remarks>
 		[ObservationalSubType(typeof(SettlingErrorLinearSubTypes))]
 		SETTLING_ERROR_LINEAR,
 		/// <summary>
-		﻿/// <see cref="SampleEnum.SETTLING_ERROR_ANGULAR />
-		/// <br/><b>Sub-Type</b>: <see cref="SettlingErrorAngularSubTypes" />
+		﻿/// <see cref="SampleEnum.SETTLING_ERROR_ANGULAR" />
 		/// </summary>
 		/// <remarks>
 		/// <list type="bullet">
+		/// <item><b>Sub-Type</b>: <see cref="SettlingErrorAngularSubTypes" /></item>
 		/// <item><b>Introduced</b>: <see href="https://model.mtconnect.org/#_Version_2.1">v2.1</see></item>
 		/// </list>
 		/// </remarks>
 		[ObservationalSubType(typeof(SettlingErrorAngularSubTypes))]
 		SETTLING_ERROR_ANGULAR,
 		/// <summary>
-		﻿/// <see cref="SampleEnum.FOLLOWING_ERROR />
-		/// <br/><b>Sub-Type</b>: <see cref="FollowingErrorSubTypes" />
+		﻿/// <see cref="SampleEnum.FOLLOWING_ERROR" />
 		/// </summary>
 		/// <remarks>
 		/// <list type="bullet">
+		/// <item><b>Sub-Type</b>: <see cref="FollowingErrorSubTypes" /></item>
 		/// <item><b>Introduced</b>: <see href="https://model.mtconnect.org/#_Version_2.1">v2.1</see></item>
 		/// </list>
 		/// </remarks>
 		[ObservationalSubType(typeof(FollowingErrorSubTypes))]
 		FOLLOWING_ERROR,
 		/// <summary>
-		﻿/// <see cref="SampleEnum.FOLLOWING_ERROR_ANGULAR />
-		/// <br/><b>Sub-Type</b>: <see cref="FollowingErrorAngularSubTypes" />
+		﻿/// <see cref="SampleEnum.FOLLOWING_ERROR_ANGULAR" />
 		/// </summary>
 		/// <remarks>
 		/// <list type="bullet">
+		/// <item><b>Sub-Type</b>: <see cref="FollowingErrorAngularSubTypes" /></item>
 		/// <item><b>Introduced</b>: <see href="https://model.mtconnect.org/#_Version_2.1">v2.1</see></item>
 		/// </list>
 		/// </remarks>
 		[ObservationalSubType(typeof(FollowingErrorAngularSubTypes))]
 		FOLLOWING_ERROR_ANGULAR,
 		/// <summary>
-		﻿/// <see cref="SampleEnum.FOLLOWING_ERROR_LINEAR />
-		/// <br/><b>Sub-Type</b>: <see cref="FollowingErrorLinearSubTypes" />
+		﻿/// <see cref="SampleEnum.FOLLOWING_ERROR_LINEAR" />
 		/// </summary>
 		/// <remarks>
 		/// <list type="bullet">
+		/// <item><b>Sub-Type</b>: <see cref="FollowingErrorLinearSubTypes" /></item>
 		/// <item><b>Introduced</b>: <see href="https://model.mtconnect.org/#_Version_2.1">v2.1</see></item>
 		/// </list>
 		/// </remarks>
 		[ObservationalSubType(typeof(FollowingErrorLinearSubTypes))]
 		FOLLOWING_ERROR_LINEAR,
 		/// <summary>
-		﻿/// <see cref="SampleEnum.DISPLACEMENT_LINEAR />  > Note: The displacement vector <b>MAY</b> be defined by the motion of the owning <see cref="component">component</see>.
+		﻿/// <see cref="SampleEnum.DISPLACEMENT_LINEAR" />  > Note: The displacement vector <b>MAY</b> be defined by the motion of the owning <see cref="component">component</see>.
 		/// </summary>
 		/// <remarks>
 		/// <list type="bullet">
@@ -913,7 +913,7 @@ namespace Mtconnect.AdapterInterface.DataItemTypes
 		/// </remarks>
 		DISPLACEMENT_LINEAR,
 		/// <summary>
-		﻿/// <see cref="SampleEnum.DISPLACEMENT_ANGULAR />  > Note: The displacement vector <b>MAY</b> be defined by the motion of the owning <see cref="component">component</see>.
+		﻿/// <see cref="SampleEnum.DISPLACEMENT_ANGULAR" />  > Note: The displacement vector <b>MAY</b> be defined by the motion of the owning <see cref="component">component</see>.
 		/// </summary>
 		/// <remarks>
 		/// <list type="bullet">
@@ -922,7 +922,7 @@ namespace Mtconnect.AdapterInterface.DataItemTypes
 		/// </remarks>
 		DISPLACEMENT_ANGULAR,
 		/// <summary>
-		﻿/// <see cref="SampleEnum.POSITION_CARTESIAN />
+		﻿/// <see cref="SampleEnum.POSITION_CARTESIAN" />
 		/// </summary>
 		/// <remarks>
 		/// <list type="bullet">

@@ -42,16 +42,16 @@ namespace {{ to_pascal_code source.namespace }}
 d_item_version_slim = (item?.deprecated_version | string.slice 20 3) | string.replace "_" "." ~}}
 		/// <summary>
 		{{ include 'UmlCommentsSummaryContent.scriban' item?.summary ~}}
-		{{~ if category_contains_type source item ~}}
-		/// <br/><b>Sub-Type</b>: <see cref="{{ source?.sub_types[item.name] }}" />
-{{ end ~}}
-		{{~ if category_contains_value source item ~}}
-		/// <br/><b>Values</b>: <see cref="{{ source?.value_types[item.name] }}" />
-{{ end ~}}
 		/// </summary>
-		{{~ if n_item_version_slim != "" || d_item_version_slim != "" ~}}
+		{{~ if n_item_version_slim != "" || d_item_version_slim != "" ||  category_contains_type source item || category_contains_value source item ~}}
 		/// <remarks>
 		/// <list type="bullet">
+		{{~ if category_contains_type source item ~}}
+		/// <item><b>Sub-Type</b>: <see cref="{{ source?.sub_types[item.name] }}" /></item>
+		{{~ end ~}}
+		{{~ if category_contains_value source item ~}}
+		/// <item><b>Values</b>: <see cref="{{ source?.value_types[item.name] }}" /></item>
+		{{~ end ~}}
 		{{~ if n_item_version_slim != "" ~}}
 		/// <item><b>Introduced</b>: <see href="https://model.mtconnect.org/#_Version_{{ n_item_version_slim }}">v{{ n_item_version_slim }}</see></item>
 		{{~ end ~}}

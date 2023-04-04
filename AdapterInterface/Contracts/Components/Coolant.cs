@@ -9,7 +9,7 @@ namespace Mtconnect.AdapterInterface.DataItemTypes {
 	/// <see cref="System">System</see> that provides distribution and management of fluids that remove heat from a piece of equipment.
 	/// </summary>
 	/// <remarks>Introduced in <see href="https://model.mtconnect.org/#_Version_1.2">v1.2</see>.</remarks>
-	[GeneratedCode("MtconnectTranspiler.Sinks.CSharp.Adapter", "1.0.5.0")]
+	[GeneratedCode("MtconnectTranspiler.Sinks.CSharp.Adapter", "1.0.6.0")]
 	public interface ICoolant : IAdapterDataModel, IComponentModel {
 	
 	}

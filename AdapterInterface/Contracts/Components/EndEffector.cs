@@ -9,7 +9,7 @@ namespace Mtconnect.AdapterInterface.DataItemTypes {
 	/// <see cref="System">System</see> composed of functions that form the last link segment of a piece of equipment./// Description
 	/// </summary>
 	/// <remarks>Introduced in <see href="https://model.mtconnect.org/#_Version_1.5">v1.5</see>.</remarks>
-	[GeneratedCode("MtconnectTranspiler.Sinks.CSharp.Adapter", "1.0.5.0")]
+	[GeneratedCode("MtconnectTranspiler.Sinks.CSharp.Adapter", "1.0.6.0")]
 	public interface IEndEffector : IAdapterDataModel, IComponentModel {
 	
 	}

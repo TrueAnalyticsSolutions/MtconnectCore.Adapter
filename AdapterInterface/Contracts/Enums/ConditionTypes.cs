@@ -9,7 +9,7 @@ namespace Mtconnect.AdapterInterface.DataItemTypes
 	/// <summary>
 	/// View in the MTConnect Model browser <seealso href="https://model.mtconnect.org/#Enumeration___19_0_3_45f01b9_1580309879217_713704_44360">model.mtconnect.org</seealso>
 	﻿	/// </summary>
-	[GeneratedCode("MtconnectTranspiler.Sinks.CSharp.Adapter", "1.0.5.0")]
+	[GeneratedCode("MtconnectTranspiler.Sinks.CSharp.Adapter", "1.0.6.0")]
 	public enum ConditionTypes
 	{
 		/// <summary>
@@ -17,7 +17,7 @@ namespace Mtconnect.AdapterInterface.DataItemTypes
 		/// </summary>
 		STANDARD_EXTENSION = -1,
 		/// <summary>
-		﻿/// <see cref="ConditionEnum.ACTUATOR />
+		﻿/// <see cref="ConditionEnum.ACTUATOR" />
 		/// </summary>
 		/// <remarks>
 		/// <list type="bullet">
@@ -26,7 +26,7 @@ namespace Mtconnect.AdapterInterface.DataItemTypes
 		/// </remarks>
 		ACTUATOR,
 		/// <summary>
-		﻿/// <see cref="ConditionEnum.COMMUNICATIONS />
+		﻿/// <see cref="ConditionEnum.COMMUNICATIONS" />
 		/// </summary>
 		/// <remarks>
 		/// <list type="bullet">
@@ -35,7 +35,7 @@ namespace Mtconnect.AdapterInterface.DataItemTypes
 		/// </remarks>
 		COMMUNICATIONS,
 		/// <summary>
-		﻿/// <see cref="ConditionEnum.DATA_RANGE />
+		﻿/// <see cref="ConditionEnum.DATA_RANGE" />
 		/// </summary>
 		/// <remarks>
 		/// <list type="bullet">
@@ -44,7 +44,7 @@ namespace Mtconnect.AdapterInterface.DataItemTypes
 		/// </remarks>
 		DATA_RANGE,
 		/// <summary>
-		﻿/// <see cref="ConditionEnum.LOGIC_PROGRAM />
+		﻿/// <see cref="ConditionEnum.LOGIC_PROGRAM" />
 		/// </summary>
 		/// <remarks>
 		/// <list type="bullet">
@@ -53,7 +53,7 @@ namespace Mtconnect.AdapterInterface.DataItemTypes
 		/// </remarks>
 		LOGIC_PROGRAM,
 		/// <summary>
-		﻿/// <see cref="ConditionEnum.MOTION_PROGRAM />
+		﻿/// <see cref="ConditionEnum.MOTION_PROGRAM" />
 		/// </summary>
 		/// <remarks>
 		/// <list type="bullet">
@@ -62,7 +62,7 @@ namespace Mtconnect.AdapterInterface.DataItemTypes
 		/// </remarks>
 		MOTION_PROGRAM,
 		/// <summary>
-		﻿/// <see cref="ConditionEnum.SYSTEM />
+		﻿/// <see cref="ConditionEnum.SYSTEM" />
 		/// </summary>
 		/// <remarks>
 		/// <list type="bullet">

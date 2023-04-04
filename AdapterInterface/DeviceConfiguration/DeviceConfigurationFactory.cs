@@ -64,10 +64,10 @@ namespace Mtconnect.AdapterInterface.DeviceConfiguration
             var xHeader = xRoot.AppendChild(xDoc.CreateElement("Header"));
             xHeader.Attributes.Append(xDoc.CreateAttribute("creationTime")).Value = DateTime.UtcNow.ToString("");// TODO: Ensure this is in the proper format
             xHeader.Attributes.Append(xDoc.CreateAttribute("sender")).Value = AppDomain.CurrentDomain.FriendlyName;
-            xHeader.Attributes.Append(xDoc.CreateAttribute("instanceId")).Value = "0"; // QUESTION: Should this be '1' to be valid?
-            xHeader.Attributes.Append(xDoc.CreateAttribute("bufferSize")).Value = "0"; // QUESTION: Should this be '1' to be valid?
+            xHeader.Attributes.Append(xDoc.CreateAttribute("instanceId")).Value = "1"; // QUESTION: Should this be '1' to be valid?
+            xHeader.Attributes.Append(xDoc.CreateAttribute("bufferSize")).Value = "1"; // QUESTION: Should this be '1' to be valid?
             xHeader.Attributes.Append(xDoc.CreateAttribute("version")).Value = adapterVersion;
-            xHeader.Attributes.Append(xDoc.CreateAttribute("assetBufferSize")).Value = "0"; // QUESTION: Should this be based on the memory allocation for the Adapter?
+            xHeader.Attributes.Append(xDoc.CreateAttribute("assetBufferSize")).Value = "1"; // QUESTION: Should this be based on the memory allocation for the Adapter?
             xHeader.Attributes.Append(xDoc.CreateAttribute("assetCount")).Value = "0"; // QUESTION: Should this be based on the memory allocation for the Adapter?
 
             // Build Devices element

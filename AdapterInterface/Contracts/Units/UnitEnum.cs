@@ -6,7 +6,7 @@ namespace Mtconnect.AdapterInterface.Units {
 	/// <summary>
 	/// Helper resources for Unit usage within the MTConnect Standard
 	/// </summary>
-	[GeneratedCode("MtconnectTranspiler.Sinks.CSharp.Adapter", "1.0.5.0")]
+	[GeneratedCode("MtconnectTranspiler.Sinks.CSharp.Adapter", "1.0.6.0")]
 	public static class UnitHelper {
 		/// <summary>
 		/// A lookup relating observational types to their respective unit. See <see cref="Mtconnect.AdapterInterface.DataItemTypes.SampleTypes" />, <see cref="Mtconnect.AdapterInterface.DataItemTypes.EventTypes" />, and <see cref="Mtconnect.AdapterInterface.DataItemTypes.ConditionTypes" /> for keys. <b>NOTE</b>: this collection only contains observational types, not sub-types.
