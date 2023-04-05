@@ -23,6 +23,7 @@
   </ItemGroup>
 
   <ItemGroup>
+    <ProjectReference Include="..\AdapterInterface\AdapterSdk.csproj" />
     <ProjectReference Include="..\AdapterSourceTemplate\AdapterSourceTemplate.csproj" />
   </ItemGroup>
 

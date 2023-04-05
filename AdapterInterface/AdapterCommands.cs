@@ -104,7 +104,10 @@ namespace Mtconnect
         /// <returns>Provides the Agent with a <c>MTConnectDevices</c> Response Document for the DataItem defined in the Adapter.</returns>
         public static string Configuration(Adapter adapter, string message)
         {
-            string deviceName = message.Remove(0, message.LastIndexOf(' ') + 1);
+            string deviceName = null;
+            if (message.Contains(":"))
+                deviceName = message.Remove(0, message.LastIndexOf(':') + 1).Trim();
+
             var configFactory = new DeviceConfigurationFactory();
             var xDoc = configFactory.Create(adapter, deviceName);
             return $"* configuration: {deviceName} {xDoc.OuterXml}";
