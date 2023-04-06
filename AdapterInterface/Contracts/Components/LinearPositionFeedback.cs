@@ -10,7 +10,7 @@ namespace Mtconnect.AdapterInterface.DataItemTypes {
 	/// leaf <see cref="Component">Component</see> that measures linear motion or position.  <b>DEPRECATION WARNING</b> : May be deprecated in the future. Recommend using <see cref="Encoder">Encoder</see>.
 	/// </summary>
 	/// <remarks>Introduced in <see href="https://model.mtconnect.org/#_Version_1.4">v1.4</see>.</remarks>
-	[GeneratedCode("MtconnectTranspiler.Sinks.CSharp.Adapter", "1.0.6.0")]
+	[GeneratedCode("MtconnectTranspiler.Sinks.CSharp.Adapter", "1.0.7.0")]
 	public class LinearPositionFeedback : IAdapterDataModel, IComponentModel {
 	}
 }

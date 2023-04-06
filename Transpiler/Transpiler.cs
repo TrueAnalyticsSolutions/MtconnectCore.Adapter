@@ -271,6 +271,19 @@ namespace AdapterTranspiler
                 };
                 componentInterfaces.Add(component);
             }
+            // Add Organizer Types
+            var organizerTypes = MTConnectHelper
+                .JumpToPackage(model!, MTConnectHelper.PackageNavigationTree.DeviceInformationModel.Components.ComponentTypes.ComponentOrganizerTypes);
+            foreach (var organizerType in organizerTypes.AssociationClasses)
+            {
+                var component = new AdapterComponentInterface(model!, organizerType)
+                {
+                    Namespace = DataItemNamespace,
+                    ReferenceId = organizerType.Id
+                };
+                componentInterfaces.Add(component);
+            }
+
             ProcessTemplate(componentInterfaces, Path.Combine(ProjectPath, "Components"), true);
         }
     }
