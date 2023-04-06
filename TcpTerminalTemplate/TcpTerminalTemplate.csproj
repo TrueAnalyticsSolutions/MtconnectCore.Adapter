@@ -1,4 +1,4 @@
-<Project Sdk="Microsoft.NET.Sdk">
+﻿<Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
     <OutputType>Exe</OutputType>
@@ -19,11 +19,10 @@
 
   <ItemGroup>
     <PackageReference Include="Consoul" Version="1.6.3" />
-    <PackageReference Include="Mtconnect.TcpAdapter" Version="2.0.0-beta.12" />
+    <PackageReference Include="Mtconnect.TcpAdapter" Version="2.0.0-beta.13" />
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\AdapterInterface\AdapterSdk.csproj" />
     <ProjectReference Include="..\AdapterSourceTemplate\AdapterSourceTemplate.csproj" />
   </ItemGroup>
 

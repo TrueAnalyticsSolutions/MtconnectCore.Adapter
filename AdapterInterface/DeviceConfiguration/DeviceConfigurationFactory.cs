@@ -124,23 +124,9 @@ namespace Mtconnect.AdapterInterface.DeviceConfiguration
                 // NOTE: IComponentModel is first because IComponentModel implements IAdapterDataModel
                 if (typeof(IComponentModel).IsAssignableFrom(property.PropertyType))
                 {
-                    //var component = (IComponentModel)property.GetValue(this);
-                    hasComponents = true;
-                    var componentElement = parentElement.OwnerDocument.CreateElement(GetInterfaceName(property.PropertyType, typeof(IComponentModel)).Substring(1));
-                    string id = property.Name.ToLower();
-                    if (dataItemAttribute != null)
-                    {
-                        id = dataItemAttribute.Name;
-                        if (id.EndsWith("_"))
-                            id = id.Replace("_", string.Empty);
-                    }
-                    componentElement.SetAttribute("id", id.ToLower());
-                    componentElement.SetAttribute("name", property.Name);
-
-                    componentsElement.AppendChild(componentElement);
-
-                    AddComponents(componentElement, property.PropertyType, adapter, dataItemAttribute?.Name ?? $"{prefix}{property.Name}_");
-                } else if (typeof(IAdapterDataModel).IsAssignableFrom(property.PropertyType))
+                    hasComponents = ProcessComponentModel(parentElement, adapter, prefix, componentsElement, property, dataItemAttribute);
+                }
+                else if (typeof(IAdapterDataModel).IsAssignableFrom(property.PropertyType))
                 {
                     AddComponents(parentElement, property.PropertyType, adapter, dataItemAttribute?.Name ?? $"{prefix}{property.Name}_");
                 }
@@ -148,58 +134,7 @@ namespace Mtconnect.AdapterInterface.DeviceConfiguration
                     dataItemAttribute != null ||
                     typeof(IDataItemValue).IsAssignableFrom(property.PropertyType))
                 {
-                    hasDataItems = true;
-                    // TODO: Handle property that meets the conditions
-                    XmlElement dataItemElement = null;
-                    DataItemValues dataItemValues = new DataItemValues();
-
-                    if (dataItemAttribute != null)
-                    {
-                        // QUESTION: Is dataItemAttribute.Name an appropriate id?
-                        dataItemValues.Category = dataItemAttribute is EventAttribute
-                            ? "EVENT"
-                            : dataItemAttribute is SampleAttribute
-                                ? "SAMPLE"
-                                : dataItemAttribute is ConditionAttribute
-                                    ? "CONDITION"
-                                    : null;// "UNKNOWN";
-                        dataItemValues.Type = dataItemAttribute.Type;
-                        dataItemValues.SubType = dataItemAttribute.SubType;
-                        dataItemValues.Name = dataItemAttribute.Name;
-                        dataItemValues.Units = dataItemAttribute.Units;
-                    }
-
-                    if (typeof(DataItem).IsAssignableFrom(property.PropertyType))
-                    {
-                        var dataItem = adapter.DataItems.FirstOrDefault(o => o.ModelType == property);
-                        // QUESTION: Is dataItem.Name an appropriate id?
-                        if (dataItem != null)
-                        {
-                            dataItemValues.Category = dataItem.Category;
-                            dataItemValues.Type = dataItem.ObservationalType;
-                            dataItemValues.SubType = dataItem.ObservationalSubType;
-                            dataItemValues.Name = dataItem.Name;
-                            dataItemValues.Units = dataItem.Units;
-                        }
-                    }
-                    else if (typeof(IDataItemValue).IsAssignableFrom(property.PropertyType))
-                    {
-                        var instance = FormatterServices.GetUninitializedObject(property.PropertyType) as IDataItemValue;
-                        // QUESTION: Is property.PropertyType.Name an appropriate id?
-                        if (instance != null)
-                        {
-                            dataItemValues.Category = instance.Category;
-                            dataItemValues.Type = instance.ObservationalType;
-                            dataItemValues.SubType = instance.ObservationalSubType;
-                            dataItemValues.Name = property.Name;
-                            dataItemValues.Units = null;
-                        }
-                    }
-
-                    dataItemElement = CreateDataItemElement(parentElement.OwnerDocument, dataItemValues.Category, dataItemValues.Type, dataItemValues.SubType, prefix + dataItemValues.Name, dataItemValues.Units);
-
-                    if (dataItemElement != null)
-                        dataItemsElement.AppendChild(dataItemElement);
+                    hasDataItems = ProcessDataItem(parentElement, adapter, prefix, dataItemsElement, property, dataItemAttribute);
                 }
             }
 
@@ -207,6 +142,83 @@ namespace Mtconnect.AdapterInterface.DeviceConfiguration
                 parentElement.AppendChild(dataItemsElement);
             if (hasComponents)
                 parentElement.AppendChild(componentsElement);
+        }
+
+        private static bool ProcessDataItem(XmlElement parentElement, Adapter adapter, string prefix, XmlElement dataItemsElement, PropertyInfo property, DataItemAttribute dataItemAttribute)
+        {
+            bool hasDataItems = true;
+            // TODO: Handle property that meets the conditions
+            XmlElement dataItemElement = null;
+            DataItemValues dataItemValues = new DataItemValues();
+
+            if (dataItemAttribute != null)
+            {
+                // QUESTION: Is dataItemAttribute.Name an appropriate id?
+                dataItemValues.Category = dataItemAttribute is EventAttribute
+                    ? "EVENT"
+                    : dataItemAttribute is SampleAttribute
+                        ? "SAMPLE"
+                        : dataItemAttribute is ConditionAttribute
+                            ? "CONDITION"
+                            : null;// "UNKNOWN";
+                dataItemValues.Type = dataItemAttribute.Type;
+                dataItemValues.SubType = dataItemAttribute.SubType;
+                dataItemValues.Name = dataItemAttribute.Name;
+                dataItemValues.Units = dataItemAttribute.Units;
+            }
+
+            if (typeof(DataItem).IsAssignableFrom(property.PropertyType))
+            {
+                var dataItem = adapter.DataItems.FirstOrDefault(o => o.ModelType == property);
+                // QUESTION: Is dataItem.Name an appropriate id?
+                if (dataItem != null)
+                {
+                    dataItemValues.Category = dataItem.Category;
+                    dataItemValues.Type = dataItem.ObservationalType;
+                    dataItemValues.SubType = dataItem.ObservationalSubType;
+                    dataItemValues.Name = dataItem.Name;
+                    dataItemValues.Units = dataItem.Units;
+                }
+            }
+            else if (typeof(IDataItemValue).IsAssignableFrom(property.PropertyType))
+            {
+                var instance = FormatterServices.GetUninitializedObject(property.PropertyType) as IDataItemValue;
+                // QUESTION: Is property.PropertyType.Name an appropriate id?
+                if (instance != null)
+                {
+                    dataItemValues.Category = instance.Category;
+                    dataItemValues.Type = instance.ObservationalType;
+                    dataItemValues.SubType = instance.ObservationalSubType;
+                    dataItemValues.Name = property.Name;
+                    dataItemValues.Units = null;
+                }
+            }
+
+            dataItemElement = CreateDataItemElement(parentElement.OwnerDocument, dataItemValues.Category, dataItemValues.Type, dataItemValues.SubType, prefix + dataItemValues.Name, dataItemValues.Units);
+
+            if (dataItemElement != null)
+                dataItemsElement.AppendChild(dataItemElement);
+            return hasDataItems;
+        }
+
+        private bool ProcessComponentModel(XmlElement parentElement, Adapter adapter, string prefix, XmlElement componentsElement, PropertyInfo property, DataItemAttribute dataItemAttribute)
+        {
+            bool hasComponents = true;
+            var componentElement = parentElement.OwnerDocument.CreateElement(GetInterfaceName(property.PropertyType, typeof(IComponentModel)).Substring(1));
+            string id = property.Name.ToLower();
+            if (dataItemAttribute != null)
+            {
+                id = dataItemAttribute.Name;
+                if (id.EndsWith("_"))
+                    id = id.Replace("_", string.Empty);
+            }
+            componentElement.SetAttribute("id", id.ToLower());
+            componentElement.SetAttribute("name", property.Name);
+
+            componentsElement.AppendChild(componentElement);
+
+            AddComponents(componentElement, property.PropertyType, adapter, dataItemAttribute?.Name ?? $"{prefix}{property.Name}_");
+            return hasComponents;
         }
 
         private static string GetInterfaceName(Type type, Type parentInterfaceType)
