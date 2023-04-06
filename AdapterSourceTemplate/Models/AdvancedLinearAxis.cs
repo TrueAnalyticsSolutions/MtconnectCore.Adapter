@@ -4,7 +4,7 @@ using Mtconnect.AdapterInterface.DataItemValues;
 
 namespace Mtconnect.AdapterSourceTemplate.Models
 {
-    public sealed class AdvancedLinearAxis
+    public sealed class AdvancedLinearAxis : Linear
     {
         /// <summary>
         /// The actual position of the axis.
