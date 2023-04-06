@@ -2,6 +2,7 @@ using Mtconnect.AdapterInterface.Contracts;
 using Mtconnect.AdapterInterface.DataItemValues;
 using System;
 using System.CodeDom.Compiler;
+using System.Collections.Generic;
 
 namespace Mtconnect.AdapterInterface.DataItemTypes {
 	/// <summary>
@@ -12,7 +13,6 @@ namespace Mtconnect.AdapterInterface.DataItemTypes {
 	/// <remarks>Deprecated in <see href="https://model.mtconnect.org/#_Version_1.2">v1.2</see>.</remarks>
 	[Obsolete("Deprecated in v1.2 according to https://model.mtconnect.org/#_Version_1.2")]
 	[GeneratedCode("MtconnectTranspiler.Sinks.CSharp.Adapter", "1.0.6.0")]
-	public interface IVibration : IAdapterDataModel, IComponentModel {
-	
+	public class Vibration : IAdapterDataModel, IComponentModel {
 	}
 }

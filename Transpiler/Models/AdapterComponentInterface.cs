@@ -43,6 +43,16 @@ namespace AdapterTranspiler.Models
                     }
                 }
             }
+
+            // Check generalization
+            var generalizations = componentTypes.Classes.Where(o => o.Generalization?.General == source.Id).ToList();
+            if (generalizations.Count > 0)
+            {
+                foreach (var generalization in generalizations)
+                {
+                    SubComponents.Add(generalization);
+                }
+            }
         }
     }
 }

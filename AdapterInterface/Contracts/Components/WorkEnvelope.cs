@@ -2,6 +2,7 @@ using Mtconnect.AdapterInterface.Contracts;
 using Mtconnect.AdapterInterface.DataItemValues;
 using System;
 using System.CodeDom.Compiler;
+using System.Collections.Generic;
 
 namespace Mtconnect.AdapterInterface.DataItemTypes {
 	/// <summary>
@@ -10,7 +11,6 @@ namespace Mtconnect.AdapterInterface.DataItemTypes {
 	/// </summary>
 	/// <remarks>Introduced in <see href="https://model.mtconnect.org/#_Version_1.6">v1.6</see>.</remarks>
 	[GeneratedCode("MtconnectTranspiler.Sinks.CSharp.Adapter", "1.0.6.0")]
-	public interface IWorkEnvelope : IAdapterDataModel, IComponentModel {
-	
+	public class WorkEnvelope : IAdapterDataModel, IComponentModel {
 	}
 }

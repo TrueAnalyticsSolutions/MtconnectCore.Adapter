@@ -2,6 +2,7 @@ using Mtconnect.AdapterInterface.Contracts;
 using Mtconnect.AdapterInterface.DataItemValues;
 using System;
 using System.CodeDom.Compiler;
+using System.Collections.Generic;
 
 namespace Mtconnect.AdapterInterface.DataItemTypes {
 	/// <summary>
@@ -10,21 +11,27 @@ namespace Mtconnect.AdapterInterface.DataItemTypes {
 	/// </summary>
 	/// <remarks>Introduced in <see href="https://model.mtconnect.org/#_Version_1.7">v1.7</see>.</remarks>
 	[GeneratedCode("MtconnectTranspiler.Sinks.CSharp.Adapter", "1.0.6.0")]
-	public interface IProcessOccurrence : IAdapterDataModel, IComponentModel {
-	
+	public class ProcessOccurrence : IAdapterDataModel, IComponentModel {
+
 		/// <inheritdoc cref="Mtconnect.AdapterInterface.DataItemValues.ProcessOccurrenceId" />
-		ProcessOccurrenceId ProcessOccurrenceId { get; set; }
+		public virtual ProcessOccurrenceId ProcessOccurrenceId { get; set; }
+
 		/// <inheritdoc cref="Mtconnect.AdapterInterface.DataItemValues.ProcessAggregateId" />
-		ProcessAggregateId ProcessAggregateId { get; set; }
+		public virtual ProcessAggregateId ProcessAggregateId { get; set; }
+
 		/// <inheritdoc cref="Mtconnect.AdapterInterface.DataItemValues.ProcessTime" />
-		ProcessTime ProcessTime { get; set; }
+		public virtual ProcessTime ProcessTime { get; set; }
+
 		/// <inheritdoc cref="Mtconnect.AdapterInterface.DataItemValues.ProcessKindId" />
-		ProcessKindId ProcessKindId { get; set; }
+		public virtual ProcessKindId ProcessKindId { get; set; }
+
 		/// <inheritdoc cref="Mtconnect.AdapterInterface.DataItemValues.User" />
-		User User { get; set; }
+		public virtual User User { get; set; }
+
 		/// <inheritdoc cref="Mtconnect.AdapterInterface.DataItemValues.Program" />
-		Program Program { get; set; }
+		public virtual Program Program { get; set; }
+
 		/// <inheritdoc cref="Mtconnect.AdapterInterface.DataItemValues.PartUniqueId" />
-		PartUniqueId PartUniqueId { get; set; }
+		public virtual PartUniqueId PartUniqueId { get; set; }
 	}
 }

@@ -2,6 +2,7 @@ using Mtconnect.AdapterInterface.Contracts;
 using Mtconnect.AdapterInterface.DataItemValues;
 using System;
 using System.CodeDom.Compiler;
+using System.Collections.Generic;
 
 namespace Mtconnect.AdapterInterface.DataItemTypes {
 	/// <summary>
@@ -10,7 +11,27 @@ namespace Mtconnect.AdapterInterface.DataItemTypes {
 	/// </summary>
 	/// <remarks>Introduced in <see href="https://model.mtconnect.org/#_Version_1.7">v1.7</see>.</remarks>
 	[GeneratedCode("MtconnectTranspiler.Sinks.CSharp.Adapter", "1.0.6.0")]
-	public interface IStructure : IAdapterDataModel, IComponentModel {
-	
+	public class Structure : IAdapterDataModel, IComponentModel {
+
+		/// <summary>
+		/// Internal collection of <see cref="Link" /> to be maintained by the implementer. The dictionary key is recommended to be the names of any hard-coded properties
+		/// </summary>
+		private Dictionary<string, Link> LinkComponents { get; set; } = new Dictionary<string, Link>();
+		/// <summary>
+		/// Gets the instance of a <see cref="Link" /> by name. <b>NOTE</b>: The <paramref name="propertyName"/> should usually be the name of a property within the class.
+		/// <br /><example>
+		/// Expected use:
+		/// <code>
+		/// public Link ExampleLink =&gt; GetOrAddLink&lt;Link&gt;(nameof(ExampleLink));
+		/// </code>
+		/// </example>
+		/// </summary>
+		/// <param name="propertyName">Reference to the name of the property that is the entry point for this <see cref="Link" /> component</param>
+		protected TLink GetOrAddLink<TLink>(string propertyName) where TLink : Link
+		{
+			if (!LinkComponents.ContainsKey(propertyName))
+				LinkComponents.Add(propertyName, (TLink)Activator.CreateInstance(typeof(TLink)));
+			return (TLink)LinkComponents[propertyName];
+		}
 	}
 }

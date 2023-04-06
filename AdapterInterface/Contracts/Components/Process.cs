@@ -2,6 +2,7 @@ using Mtconnect.AdapterInterface.Contracts;
 using Mtconnect.AdapterInterface.DataItemValues;
 using System;
 using System.CodeDom.Compiler;
+using System.Collections.Generic;
 
 namespace Mtconnect.AdapterInterface.DataItemTypes {
 	/// <summary>
@@ -10,7 +11,27 @@ namespace Mtconnect.AdapterInterface.DataItemTypes {
 	/// </summary>
 	/// <remarks>Introduced in <see href="https://model.mtconnect.org/#_Version_1.7">v1.7</see>.</remarks>
 	[GeneratedCode("MtconnectTranspiler.Sinks.CSharp.Adapter", "1.0.6.0")]
-	public interface IProcess : IAdapterDataModel, IComponentModel {
-	
+	public class Process : IAdapterDataModel, IComponentModel {
+
+		/// <summary>
+		/// Internal collection of <see cref="ProcessOccurrence" /> to be maintained by the implementer. The dictionary key is recommended to be the names of any hard-coded properties
+		/// </summary>
+		private Dictionary<string, ProcessOccurrence> ProcessOccurrenceComponents { get; set; } = new Dictionary<string, ProcessOccurrence>();
+		/// <summary>
+		/// Gets the instance of a <see cref="ProcessOccurrence" /> by name. <b>NOTE</b>: The <paramref name="propertyName"/> should usually be the name of a property within the class.
+		/// <br /><example>
+		/// Expected use:
+		/// <code>
+		/// public ProcessOccurrence ExampleProcessOccurrence =&gt; GetOrAddProcessOccurrence&lt;ProcessOccurrence&gt;(nameof(ExampleProcessOccurrence));
+		/// </code>
+		/// </example>
+		/// </summary>
+		/// <param name="propertyName">Reference to the name of the property that is the entry point for this <see cref="ProcessOccurrence" /> component</param>
+		protected TProcessOccurrence GetOrAddProcessOccurrence<TProcessOccurrence>(string propertyName) where TProcessOccurrence : ProcessOccurrence
+		{
+			if (!ProcessOccurrenceComponents.ContainsKey(propertyName))
+				ProcessOccurrenceComponents.Add(propertyName, (TProcessOccurrence)Activator.CreateInstance(typeof(TProcessOccurrence)));
+			return (TProcessOccurrence)ProcessOccurrenceComponents[propertyName];
+		}
 	}
 }

@@ -2,6 +2,7 @@ using Mtconnect.AdapterInterface.Contracts;
 using Mtconnect.AdapterInterface.DataItemValues;
 using System;
 using System.CodeDom.Compiler;
+using System.Collections.Generic;
 
 namespace Mtconnect.AdapterInterface.DataItemTypes {
 	/// <summary>
@@ -10,7 +11,48 @@ namespace Mtconnect.AdapterInterface.DataItemTypes {
 	/// </summary>
 	/// <remarks>Introduced in <see href="https://model.mtconnect.org/#_Version_1.2">v1.2</see>.</remarks>
 	[GeneratedCode("MtconnectTranspiler.Sinks.CSharp.Adapter", "1.0.6.0")]
-	public interface ISensor : IAdapterDataModel, IComponentModel {
-	
+	public class Sensor : IAdapterDataModel, IComponentModel {
+
+		/// <summary>
+		/// Internal collection of <see cref="Thermostat" /> to be maintained by the implementer. The dictionary key is recommended to be the names of any hard-coded properties
+		/// </summary>
+		private Dictionary<string, Thermostat> ThermostatComponents { get; set; } = new Dictionary<string, Thermostat>();
+		/// <summary>
+		/// Gets the instance of a <see cref="Thermostat" /> by name. <b>NOTE</b>: The <paramref name="propertyName"/> should usually be the name of a property within the class.
+		/// <br /><example>
+		/// Expected use:
+		/// <code>
+		/// public Thermostat ExampleThermostat =&gt; GetOrAddThermostat&lt;Thermostat&gt;(nameof(ExampleThermostat));
+		/// </code>
+		/// </example>
+		/// </summary>
+		/// <param name="propertyName">Reference to the name of the property that is the entry point for this <see cref="Thermostat" /> component</param>
+		protected TThermostat GetOrAddThermostat<TThermostat>(string propertyName) where TThermostat : Thermostat
+		{
+			if (!ThermostatComponents.ContainsKey(propertyName))
+				ThermostatComponents.Add(propertyName, (TThermostat)Activator.CreateInstance(typeof(TThermostat)));
+			return (TThermostat)ThermostatComponents[propertyName];
+		}
+
+		/// <summary>
+		/// Internal collection of <see cref="Vibration" /> to be maintained by the implementer. The dictionary key is recommended to be the names of any hard-coded properties
+		/// </summary>
+		private Dictionary<string, Vibration> VibrationComponents { get; set; } = new Dictionary<string, Vibration>();
+		/// <summary>
+		/// Gets the instance of a <see cref="Vibration" /> by name. <b>NOTE</b>: The <paramref name="propertyName"/> should usually be the name of a property within the class.
+		/// <br /><example>
+		/// Expected use:
+		/// <code>
+		/// public Vibration ExampleVibration =&gt; GetOrAddVibration&lt;Vibration&gt;(nameof(ExampleVibration));
+		/// </code>
+		/// </example>
+		/// </summary>
+		/// <param name="propertyName">Reference to the name of the property that is the entry point for this <see cref="Vibration" /> component</param>
+		protected TVibration GetOrAddVibration<TVibration>(string propertyName) where TVibration : Vibration
+		{
+			if (!VibrationComponents.ContainsKey(propertyName))
+				VibrationComponents.Add(propertyName, (TVibration)Activator.CreateInstance(typeof(TVibration)));
+			return (TVibration)VibrationComponents[propertyName];
+		}
 	}
 }

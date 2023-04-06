@@ -2,6 +2,7 @@ using Mtconnect.AdapterInterface.Contracts;
 using Mtconnect.AdapterInterface.DataItemValues;
 using System;
 using System.CodeDom.Compiler;
+using System.Collections.Generic;
 
 namespace Mtconnect.AdapterInterface.DataItemTypes {
 	/// <summary>
@@ -10,25 +11,33 @@ namespace Mtconnect.AdapterInterface.DataItemTypes {
 	/// </summary>
 	/// <remarks>Introduced in <see href="https://model.mtconnect.org/#_Version_1.7">v1.7</see>.</remarks>
 	[GeneratedCode("MtconnectTranspiler.Sinks.CSharp.Adapter", "1.0.6.0")]
-	public interface IPartOccurrence : IAdapterDataModel, IComponentModel {
-	
+	public class PartOccurrence : IAdapterDataModel, IComponentModel {
+
 		/// <inheritdoc cref="Mtconnect.AdapterInterface.DataItemValues.PartId" />
-		PartId PartId { get; set; }
+		public virtual PartId PartId { get; set; }
+
 		/// <inheritdoc cref="Mtconnect.AdapterInterface.DataItemValues.PartUniqueId" />
-		PartUniqueId PartUniqueId { get; set; }
+		public virtual PartUniqueId PartUniqueId { get; set; }
+
 		/// <inheritdoc cref="Mtconnect.AdapterInterface.DataItemValues.PartGroupId" />
-		PartGroupId PartGroupId { get; set; }
+		public virtual PartGroupId PartGroupId { get; set; }
+
 		/// <inheritdoc cref="Mtconnect.AdapterInterface.DataItemValues.PartKindId" />
-		PartKindId PartKindId { get; set; }
+		public virtual PartKindId PartKindId { get; set; }
+
 		/// <inheritdoc cref="Mtconnect.AdapterInterface.DataItemValues.PartCount" />
-		PartCount PartCount { get; set; }
+		public virtual PartCount PartCount { get; set; }
+
 		/// <inheritdoc cref="Mtconnect.AdapterInterface.DataItemValues.PartStatus" />
-		PartStatus PartStatus { get; set; }
+		public virtual PartStatus PartStatus { get; set; }
+
 		/// <inheritdoc cref="Mtconnect.AdapterInterface.DataItemValues.ProcessOccurrenceId" />
-		ProcessOccurrenceId ProcessOccurrenceId { get; set; }
+		public virtual ProcessOccurrenceId ProcessOccurrenceId { get; set; }
+
 		/// <inheritdoc cref="Mtconnect.AdapterInterface.DataItemValues.ProcessTime" />
-		ProcessTime ProcessTime { get; set; }
+		public virtual ProcessTime ProcessTime { get; set; }
+
 		/// <inheritdoc cref="Mtconnect.AdapterInterface.DataItemValues.User" />
-		User User { get; set; }
+		public virtual User User { get; set; }
 	}
 }
