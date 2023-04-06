@@ -19,7 +19,7 @@ namespace {{ to_pascal_code source.namespace }} {
 	[Obsolete("Deprecated in v{{ dversion_slim }} according to https://model.mtconnect.org/#_Version_{{ dversion_slim }}")]
 	{{~ end ~}}
 	[GeneratedCode("MtconnectTranspiler.Sinks.CSharp.Adapter", "{{ version }}")]
-	public class {{ source.name }} : IAdapterDataModel, IComponentModel {
+	public class {{ source.name }} :{{ if source.parent_component != null }} {{ source.parent_component.name }},{{ end }} IAdapterDataModel, IComponentModel {
 	{{~ for sub_component in source.sub_components ~}}
 
 		/// <summary>

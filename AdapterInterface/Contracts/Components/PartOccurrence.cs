@@ -11,7 +11,7 @@ namespace Mtconnect.AdapterInterface.DataItemTypes {
 	/// </summary>
 	/// <remarks>Introduced in <see href="https://model.mtconnect.org/#_Version_1.7">v1.7</see>.</remarks>
 	[GeneratedCode("MtconnectTranspiler.Sinks.CSharp.Adapter", "1.0.7.0")]
-	public class PartOccurrence : IAdapterDataModel, IComponentModel {
+	public class PartOccurrence : Part, IAdapterDataModel, IComponentModel {
 
 		/// <inheritdoc cref="Mtconnect.AdapterInterface.DataItemValues.PartId" />
 		public virtual PartId PartId { get; set; }

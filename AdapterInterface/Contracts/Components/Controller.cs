@@ -11,7 +11,7 @@ namespace Mtconnect.AdapterInterface.DataItemTypes {
 	/// </summary>
 	/// <remarks>Introduced in <see href="https://model.mtconnect.org/#_Version_1.0">v1.0</see>.</remarks>
 	[GeneratedCode("MtconnectTranspiler.Sinks.CSharp.Adapter", "1.0.7.0")]
-	public class Controller : IAdapterDataModel, IComponentModel {
+	public class Controller : System, IAdapterDataModel, IComponentModel {
 
 		/// <summary>
 		/// Internal collection of <see cref="Path" /> to be maintained by the implementer. The dictionary key is recommended to be the names of any hard-coded properties

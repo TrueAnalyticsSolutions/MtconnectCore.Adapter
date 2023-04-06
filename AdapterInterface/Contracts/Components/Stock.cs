@@ -11,6 +11,6 @@ namespace Mtconnect.AdapterInterface.DataItemTypes {
 	/// </summary>
 	/// <remarks>Introduced in <see href="https://model.mtconnect.org/#_Version_1.3">v1.3</see>.</remarks>
 	[GeneratedCode("MtconnectTranspiler.Sinks.CSharp.Adapter", "1.0.7.0")]
-	public class Stock : IAdapterDataModel, IComponentModel {
+	public class Stock : Material, IAdapterDataModel, IComponentModel {
 	}
 }

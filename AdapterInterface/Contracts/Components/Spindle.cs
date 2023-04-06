@@ -13,6 +13,6 @@ namespace Mtconnect.AdapterInterface.DataItemTypes {
 	/// <remarks>Deprecated in <see href="https://model.mtconnect.org/#_Version_1.1">v1.1</see>.</remarks>
 	[Obsolete("Deprecated in v1.1 according to https://model.mtconnect.org/#_Version_1.1")]
 	[GeneratedCode("MtconnectTranspiler.Sinks.CSharp.Adapter", "1.0.7.0")]
-	public class Spindle : IAdapterDataModel, IComponentModel {
+	public class Spindle : Axis, IAdapterDataModel, IComponentModel {
 	}
 }

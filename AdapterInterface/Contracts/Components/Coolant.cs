@@ -11,6 +11,6 @@ namespace Mtconnect.AdapterInterface.DataItemTypes {
 	/// </summary>
 	/// <remarks>Introduced in <see href="https://model.mtconnect.org/#_Version_1.2">v1.2</see>.</remarks>
 	[GeneratedCode("MtconnectTranspiler.Sinks.CSharp.Adapter", "1.0.7.0")]
-	public class Coolant : IAdapterDataModel, IComponentModel {
+	public class Coolant : System, IAdapterDataModel, IComponentModel {
 	}
 }

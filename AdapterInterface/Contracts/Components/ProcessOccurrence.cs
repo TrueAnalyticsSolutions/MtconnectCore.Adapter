@@ -11,7 +11,7 @@ namespace Mtconnect.AdapterInterface.DataItemTypes {
 	/// </summary>
 	/// <remarks>Introduced in <see href="https://model.mtconnect.org/#_Version_1.7">v1.7</see>.</remarks>
 	[GeneratedCode("MtconnectTranspiler.Sinks.CSharp.Adapter", "1.0.7.0")]
-	public class ProcessOccurrence : IAdapterDataModel, IComponentModel {
+	public class ProcessOccurrence : Process, IAdapterDataModel, IComponentModel {
 
 		/// <inheritdoc cref="Mtconnect.AdapterInterface.DataItemValues.ProcessOccurrenceId" />
 		public virtual ProcessOccurrenceId ProcessOccurrenceId { get; set; }

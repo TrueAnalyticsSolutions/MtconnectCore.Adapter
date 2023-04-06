@@ -9,6 +9,8 @@ namespace AdapterTranspiler.Models
     [ScribanTemplate("Adapter.ComponentInterface.scriban")]
     public class AdapterComponentInterface : CSharpModels.Class
     {
+        public UmlClass ParentComponent { get; set; }
+
         public List<UmlClass> SubComponents { get; set; } = new List<UmlClass>();
 
         public List<UmlClass> DataItems { get; set; } = new List<UmlClass>();
@@ -43,6 +45,11 @@ namespace AdapterTranspiler.Models
                     }
                 }
             }
+
+            // Check for parent
+            var parentComponent = componentTypes.Classes.FirstOrDefault(o => o.Id == source.Generalization?.General);
+            if (parentComponent != null)
+                ParentComponent = parentComponent;
 
             // Check generalization
             var generalizations = componentTypes.Classes.Where(o => o.Generalization?.General == source.Id).ToList();
