@@ -204,7 +204,8 @@ namespace Mtconnect.AdapterInterface.DeviceConfiguration
         private bool ProcessComponentModel(XmlElement parentElement, Adapter adapter, string prefix, XmlElement componentsElement, PropertyInfo property, DataItemAttribute dataItemAttribute)
         {
             bool hasComponents = true;
-            var componentElement = parentElement.OwnerDocument.CreateElement(GetInterfaceName(property.PropertyType, typeof(IComponentModel)).Substring(1));
+            var componentModelType = GetNearestComponentModelType(property.PropertyType);
+            var componentElement = parentElement.OwnerDocument.CreateElement(componentModelType?.Name ?? property.PropertyType.Name);
             string id = property.Name.ToLower();
             if (dataItemAttribute != null)
             {
@@ -221,13 +222,44 @@ namespace Mtconnect.AdapterInterface.DeviceConfiguration
             return hasComponents;
         }
 
-        private static string GetInterfaceName(Type type, Type parentInterfaceType)
+        public static Type GetNearestComponentModelType(Type type)
         {
-            return type.GetInterfaces()
-                .Where(i => parentInterfaceType.IsAssignableFrom(i) && i != parentInterfaceType)
-                .Select(i => i.Name)
-                .FirstOrDefault();
+            Type nearestType = null;
+            int distance = int.MaxValue;
+
+            foreach (Type iface in type.GetInterfaces())
+            {
+                if (iface == typeof(IComponentModel))
+                {
+                    // The source type directly implements IComponentModel
+                    return type;
+                }
+                else if (iface.IsAssignableFrom(typeof(IComponentModel)))
+                {
+                    int ifaceDistance = GetTypeDistance(iface, typeof(IComponentModel));
+                    if (ifaceDistance < distance)
+                    {
+                        distance = ifaceDistance;
+                        nearestType = iface;
+                    }
+                }
+            }
+
+            return nearestType;
         }
+
+        private static int GetTypeDistance(Type derivedType, Type baseType)
+        {
+            int distance = 0;
+            Type currentType = derivedType;
+            while (currentType != baseType && currentType != null)
+            {
+                distance++;
+                currentType = currentType.BaseType;
+            }
+            return distance;
+        }
+
 
         private static void AddDataItems(XmlNode xDataItems, IEnumerable<DataItem> dataItems)
         {
