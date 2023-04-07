@@ -9,6 +9,7 @@ using System.Linq;
 using System.Reflection;
 using System.Reflection.Emit;
 using System.Runtime.Serialization;
+using System.Security.AccessControl;
 using System.Text;
 using System.Xml;
 using System.Xml.Linq;
@@ -224,41 +225,18 @@ namespace Mtconnect.AdapterInterface.DeviceConfiguration
 
         public static Type GetNearestComponentModelType(Type type)
         {
-            Type nearestType = null;
-            int distance = int.MaxValue;
-
-            foreach (Type iface in type.GetInterfaces())
+            Type currentType = type.BaseType;
+            while (currentType != null)
             {
-                if (iface == typeof(IComponentModel))
+                if (typeof(IComponentModel).IsAssignableFrom(currentType))
                 {
-                    // The source type directly implements IComponentModel
-                    return type;
+                    return currentType;
                 }
-                else if (iface.IsAssignableFrom(typeof(IComponentModel)))
-                {
-                    int ifaceDistance = GetTypeDistance(iface, typeof(IComponentModel));
-                    if (ifaceDistance < distance)
-                    {
-                        distance = ifaceDistance;
-                        nearestType = iface;
-                    }
-                }
-            }
-
-            return nearestType;
-        }
-
-        private static int GetTypeDistance(Type derivedType, Type baseType)
-        {
-            int distance = 0;
-            Type currentType = derivedType;
-            while (currentType != baseType && currentType != null)
-            {
-                distance++;
                 currentType = currentType.BaseType;
             }
-            return distance;
+            return null;
         }
+
 
 
         private static void AddDataItems(XmlNode xDataItems, IEnumerable<DataItem> dataItems)
