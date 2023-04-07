@@ -271,7 +271,7 @@ namespace Mtconnect.AdapterInterface.DeviceConfiguration
                 default:
                     break;
             }
-            xDataItem.SetAttribute("type", isDefined && !type.StartsWith("x:") ? type : $"x:{type}");
+            xDataItem.SetAttribute("type", isDefined && !type.StartsWith("x:") ? type : $"x:{type ?? id}");
 
             if (!string.IsNullOrEmpty(subType))
                 xDataItem.SetAttribute("subType", subType);
