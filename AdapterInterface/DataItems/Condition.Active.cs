@@ -99,6 +99,7 @@ namespace Mtconnect.AdapterInterface.DataItems
             /// <inheritdoc />
             public override string ToString()
             {
+                // TODO: Don't forget DataItemPrefix
                 return $"{Name}|{Enum.GetName(Level.GetType(), Level)}|{NativeCode}|{NativeSeverity}|{Qualifier}|{Text}";
             }
 

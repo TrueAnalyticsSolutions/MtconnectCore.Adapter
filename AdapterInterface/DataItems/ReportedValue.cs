@@ -37,7 +37,7 @@ namespace Mtconnect.AdapterInterface.DataItems
             Timestamp = dataItem.LastChanged.GetValueOrDefault();
             HasNewLine = dataItem.HasNewLine;
 
-            Output = dataItem.ToString();
+            Output = dataItem.ToString().RemoveControlCharacters();
         }
 
         /// <inheritdoc />

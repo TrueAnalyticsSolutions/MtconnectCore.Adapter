@@ -2,11 +2,32 @@
 using System;
 using System.Linq;
 using System.Reflection;
+using System.Text;
 
 namespace Mtconnect
 {
     public static class DataItemHelper
     {
+        internal static string RemoveControlCharacters(this string input)
+        {
+            // Create a new string builder to hold the cleaned string
+            var builder = new StringBuilder();
+
+            // Loop through each character in the input string
+            foreach (var c in input)
+            {
+                // If the character is not a control code character, add it to the builder
+                if (!char.IsControl(c))
+                {
+                    builder.Append(c);
+                }
+            }
+
+            // Return the cleaned string
+            return builder.ToString();
+        }
+
+
         /// <summary>
         /// <inheritdoc cref="GetSubTypes(Type, string)" path="/summary"/>
         /// </summary>

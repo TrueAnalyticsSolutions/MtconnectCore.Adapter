@@ -154,6 +154,16 @@ namespace Mtconnect.AdapterInterface.DeviceConfiguration
 
             if (dataItemAttribute != null)
             {
+                // Lookup DataItem from adapter
+                var dataItem = adapter.DataItems.FirstOrDefault(o => o.ModelType == property);
+                if (dataItem != null)
+                {
+                    dataItemValues.Category = dataItem.Category;
+                    dataItemValues.Type = dataItem.ObservationalType;
+                    dataItemValues.SubType = dataItem.ObservationalSubType;
+                    dataItemValues.Name = dataItem.Name;
+                    dataItemValues.Units = dataItem.Units;
+                }
                 // QUESTION: Is dataItemAttribute.Name an appropriate id?
                 dataItemValues.Category = dataItemAttribute is EventAttribute
                     ? "EVENT"
@@ -248,7 +258,7 @@ namespace Mtconnect.AdapterInterface.DeviceConfiguration
             }
         }
 
-        private static XmlElement CreateDataItemElement(XmlDocument xDoc, string category, string type, string subType, string id, string nativeUnits = null)
+        private static XmlElement CreateDataItemElement(XmlDocument xDoc, string category, string type, string subType, string id, string nativeUnits = null, string description = null)
         {
             var xDataItem = xDoc.CreateElement("DataItem");
 
@@ -286,6 +296,9 @@ namespace Mtconnect.AdapterInterface.DeviceConfiguration
             if (!string.IsNullOrEmpty(type) && UnitHelper.TypeLookup.TryGetValue(type, out var unit))
                 xDataItem.SetAttribute("units", UnitHelper.ToString(unit));
 
+            if (!string.IsNullOrEmpty(description))
+                xDataItem.AppendChild(xDoc.CreateElement("Definition")).AppendChild(xDoc.CreateElement("Description")).InnerText = description;
+
             // TODO: Add coordinateSystem to DataItem and/or consider adding a CoordinateSystemAttribute to be used on IAdapterDataModel
 
             return xDataItem;
@@ -307,6 +320,7 @@ namespace Mtconnect.AdapterInterface.DeviceConfiguration
             private const string SUB_TYPE = "subType";
             private const string NAME = "name";
             private const string UNITS = "units";
+            private const string DESCRIPTION = "description";
 
             private Dictionary<string, string> _values = new Dictionary<string, string>()
             {
@@ -314,7 +328,8 @@ namespace Mtconnect.AdapterInterface.DeviceConfiguration
                 { TYPE, null },
                 { SUB_TYPE, null },
                 { NAME, null },
-                { UNITS, null }
+                { UNITS, null },
+                { DESCRIPTION, null }
             };
 
             public string Category
@@ -341,6 +356,11 @@ namespace Mtconnect.AdapterInterface.DeviceConfiguration
             {
                 get => _values[UNITS];
                 set => SetValue(UNITS, value);
+            }
+            public string Description
+            {
+                get => _values[DESCRIPTION];
+                set => SetValue(DESCRIPTION, value);
             }
 
             private void SetValue(string key, string value)
