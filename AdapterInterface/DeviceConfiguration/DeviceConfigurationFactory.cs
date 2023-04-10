@@ -181,7 +181,7 @@ namespace Mtconnect.AdapterInterface.DeviceConfiguration
 
             if (typeof(DataItem).IsAssignableFrom(property.PropertyType))
             {
-                var dataItem = adapter.DataItems.FirstOrDefault(o => o.ModelType == property);
+                var dataItem = FindDataItem(adapter, property);
                 // QUESTION: Is dataItem.Name an appropriate id?
                 if (dataItem != null)
                 {
