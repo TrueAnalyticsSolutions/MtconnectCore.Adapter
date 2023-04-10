@@ -155,7 +155,8 @@ namespace Mtconnect.AdapterInterface.DeviceConfiguration
             if (dataItemAttribute != null)
             {
                 // Lookup DataItem from adapter
-                var dataItem = adapter.DataItems.FirstOrDefault(o => o.ModelType == property);
+                // TODO: Getting the DataItem from the Adapter based on the PropertyInfo seems to half work. Need to improve comparison of PropertyInfo beyond defaults.
+                var dataItem = FindDataItem(adapter, property);
                 if (dataItem != null)
                 {
                     dataItemValues.Category = dataItem.Category;
@@ -247,7 +248,14 @@ namespace Mtconnect.AdapterInterface.DeviceConfiguration
             return null;
         }
 
-
+        private static DataItem FindDataItem(Adapter adapter, PropertyInfo property)
+        {
+            return adapter.DataItems
+                .FirstOrDefault(o =>
+                    o.ModelType?.DeclaringType == property.DeclaringType
+                    && o.ModelType?.Name == property.Name
+                );
+        }
 
         private static void AddDataItems(XmlNode xDataItems, IEnumerable<DataItem> dataItems)
         {
