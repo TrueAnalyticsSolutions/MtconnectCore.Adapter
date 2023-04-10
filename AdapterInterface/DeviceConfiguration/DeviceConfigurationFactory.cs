@@ -206,7 +206,7 @@ namespace Mtconnect.AdapterInterface.DeviceConfiguration
                 }
             }
 
-            dataItemElement = CreateDataItemElement(parentElement.OwnerDocument, dataItemValues.Category, dataItemValues.Type, dataItemValues.SubType, prefix + dataItemValues.Name, dataItemValues.Units);
+            dataItemElement = CreateDataItemElement(parentElement.OwnerDocument, dataItemValues.Category, dataItemValues.Type, dataItemValues.SubType, dataItemValues.Name, dataItemValues.Units);
 
             if (dataItemElement != null)
                 dataItemsElement.AppendChild(dataItemElement);
