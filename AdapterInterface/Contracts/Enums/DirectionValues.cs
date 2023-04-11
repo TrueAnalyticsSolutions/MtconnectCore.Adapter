@@ -2,6 +2,7 @@
 #pragma warning disable 1574
 using System;
 using System.CodeDom.Compiler;
+using Mtconnect.AdapterInterface.Contracts;
 using Mtconnect.AdapterInterface.Contracts.Attributes;
 
 namespace Mtconnect.AdapterInterface.DataItemValues
@@ -16,6 +17,7 @@ namespace Mtconnect.AdapterInterface.DataItemValues
 	/// </list>
 	/// </remarks>
 	[Obsolete("Deprecated in v1.4 according to https://model.mtconnect.org/#_Version_1.4")]
+	[MtconnectVersion(MtconnectVersions.V_1_0_1, "https://model.mtconnect.org/#_Version_1.0", MtconnectVersions.V_1_4_0)]
 	[GeneratedCode("MtconnectTranspiler.Sinks.CSharp.Adapter", "1.0.7.0")]
 	public enum DirectionValues
 	{
@@ -33,6 +35,7 @@ namespace Mtconnect.AdapterInterface.DataItemValues
 		/// </list>
 		/// </remarks>
 		[Obsolete("Deprecated in v1.4 according to https://model.mtconnect.org/#_Version_1.4")]
+		[MtconnectVersion(MtconnectVersions.V_1_0_1, "https://model.mtconnect.org/#_Version_1.0", MtconnectVersions.V_1_4_0)]
 		CLOCKWISE,
 		/// <summary>
 		﻿/// counter-clockwise rotation using the right-hand rule.
@@ -44,6 +47,7 @@ namespace Mtconnect.AdapterInterface.DataItemValues
 		/// </list>
 		/// </remarks>
 		[Obsolete("Deprecated in v1.4 according to https://model.mtconnect.org/#_Version_1.4")]
+		[MtconnectVersion(MtconnectVersions.V_1_0_1, "https://model.mtconnect.org/#_Version_1.0", MtconnectVersions.V_1_4_0)]
 		COUNTER_CLOCKWISE,
 		/// <summary>
 		﻿		/// </summary>
@@ -54,6 +58,7 @@ namespace Mtconnect.AdapterInterface.DataItemValues
 		/// </list>
 		/// </remarks>
 		[Obsolete("Deprecated in v1.4 according to https://model.mtconnect.org/#_Version_1.4")]
+		[MtconnectVersion(MtconnectVersions.V_1_2_0, "https://model.mtconnect.org/#_Version_1.2", MtconnectVersions.V_1_4_0)]
 		POSITIVE,
 		/// <summary>
 		﻿		/// </summary>
@@ -64,6 +69,7 @@ namespace Mtconnect.AdapterInterface.DataItemValues
 		/// </list>
 		/// </remarks>
 		[Obsolete("Deprecated in v1.4 according to https://model.mtconnect.org/#_Version_1.4")]
+		[MtconnectVersion(MtconnectVersions.V_1_2_0, "https://model.mtconnect.org/#_Version_1.2", MtconnectVersions.V_1_4_0)]
 		NEGATIVE,
 	}
 }

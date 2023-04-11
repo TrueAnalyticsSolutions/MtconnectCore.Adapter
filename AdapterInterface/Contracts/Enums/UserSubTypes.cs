@@ -2,6 +2,7 @@
 #pragma warning disable 1574
 using System;
 using System.CodeDom.Compiler;
+using Mtconnect.AdapterInterface.Contracts;
 using Mtconnect.AdapterInterface.Contracts.Attributes;
 
 namespace Mtconnect.AdapterInterface.DataItemTypes
@@ -14,6 +15,7 @@ namespace Mtconnect.AdapterInterface.DataItemTypes
 	/// <item><b>Introduced</b>: <see href="https://model.mtconnect.org/#_Version_1.4">v1.4</see></item>
 	/// </list>
 	/// </remarks>
+	[MtconnectVersion(MtconnectVersions.V_1_4_0, "https://model.mtconnect.org/#_Version_1.4")]
 	[GeneratedCode("MtconnectTranspiler.Sinks.CSharp.Adapter", "1.0.7.0")]
 	public enum UserSubTypes
 	{
@@ -29,6 +31,7 @@ namespace Mtconnect.AdapterInterface.DataItemTypes
 		/// <item><b>Introduced</b>: <see href="https://model.mtconnect.org/#_Version_1.4">v1.4</see></item>
 		/// </list>
 		/// </remarks>
+		[MtconnectVersion(MtconnectVersions.V_1_4_0, "https://model.mtconnect.org/#_Version_1.4")]
 		OPERATOR,
 		/// <summary>
 		﻿/// identifier of the person currently responsible for performing maintenance on the piece of equipment.
@@ -38,10 +41,12 @@ namespace Mtconnect.AdapterInterface.DataItemTypes
 		/// <item><b>Introduced</b>: <see href="https://model.mtconnect.org/#_Version_1.4">v1.4</see></item>
 		/// </list>
 		/// </remarks>
+		[MtconnectVersion(MtconnectVersions.V_1_4_0, "https://model.mtconnect.org/#_Version_1.4")]
 		MAINTENANCE,
 		/// <summary>
 		﻿/// identifier of the person currently responsible for preparing a piece of equipment for production or restoring the piece of equipment to a neutral state after production.
 		/// </summary>
+		
 		SET_UP,
 	}
 }

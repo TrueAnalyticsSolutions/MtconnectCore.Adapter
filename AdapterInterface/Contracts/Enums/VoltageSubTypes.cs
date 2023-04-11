@@ -2,6 +2,7 @@
 #pragma warning disable 1574
 using System;
 using System.CodeDom.Compiler;
+using Mtconnect.AdapterInterface.Contracts;
 using Mtconnect.AdapterInterface.Contracts.Attributes;
 
 namespace Mtconnect.AdapterInterface.DataItemTypes
@@ -16,6 +17,7 @@ namespace Mtconnect.AdapterInterface.DataItemTypes
 	/// </list>
 	/// </remarks>
 	[Obsolete("Deprecated in v1.6 according to https://model.mtconnect.org/#_Version_1.6")]
+	[MtconnectVersion(MtconnectVersions.V_1_0_1, "https://model.mtconnect.org/#_Version_1.0", MtconnectVersions.V_1_6_0)]
 	[GeneratedCode("MtconnectTranspiler.Sinks.CSharp.Adapter", "1.0.7.0")]
 	public enum VoltageSubTypes
 	{
@@ -33,6 +35,7 @@ namespace Mtconnect.AdapterInterface.DataItemTypes
 		/// </list>
 		/// </remarks>
 		[Obsolete("Deprecated in v1.6 according to https://model.mtconnect.org/#_Version_1.6")]
+		[MtconnectVersion(MtconnectVersions.V_1_2_0, "https://model.mtconnect.org/#_Version_1.2", MtconnectVersions.V_1_6_0)]
 		ALTERNATING,
 		/// <summary>
 		﻿/// DC current or voltage.  <b>DEPRECATED</b> in <i>Version 1.6</i>.
@@ -44,6 +47,7 @@ namespace Mtconnect.AdapterInterface.DataItemTypes
 		/// </list>
 		/// </remarks>
 		[Obsolete("Deprecated in v1.6 according to https://model.mtconnect.org/#_Version_1.6")]
+		[MtconnectVersion(MtconnectVersions.V_1_2_0, "https://model.mtconnect.org/#_Version_1.2", MtconnectVersions.V_1_6_0)]
 		DIRECT,
 		/// <summary>
 		﻿/// measured or reported value of an <i>observation</i>.  <b>DEPRECATED</b> in <i>Version 1.6</i>.
@@ -55,6 +59,7 @@ namespace Mtconnect.AdapterInterface.DataItemTypes
 		/// </list>
 		/// </remarks>
 		[Obsolete("Deprecated in v1.6 according to https://model.mtconnect.org/#_Version_1.6")]
+		[MtconnectVersion(MtconnectVersions.V_1_4_0, "https://model.mtconnect.org/#_Version_1.4", MtconnectVersions.V_1_6_0)]
 		ACTUAL,
 		/// <summary>
 		﻿/// goal of the operation or process.  <b>DEPRECATED</b> in <i>Version 1.6</i>.
@@ -66,6 +71,7 @@ namespace Mtconnect.AdapterInterface.DataItemTypes
 		/// </list>
 		/// </remarks>
 		[Obsolete("Deprecated in v1.6 according to https://model.mtconnect.org/#_Version_1.6")]
+		[MtconnectVersion(MtconnectVersions.V_1_4_0, "https://model.mtconnect.org/#_Version_1.4", MtconnectVersions.V_1_6_0)]
 		TARGET,
 	}
 }

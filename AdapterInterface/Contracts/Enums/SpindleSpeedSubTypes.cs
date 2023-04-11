@@ -2,6 +2,7 @@
 #pragma warning disable 1574
 using System;
 using System.CodeDom.Compiler;
+using Mtconnect.AdapterInterface.Contracts;
 using Mtconnect.AdapterInterface.Contracts.Attributes;
 
 namespace Mtconnect.AdapterInterface.DataItemTypes
@@ -16,6 +17,7 @@ namespace Mtconnect.AdapterInterface.DataItemTypes
 	/// </list>
 	/// </remarks>
 	[Obsolete("Deprecated in v1.2 according to https://model.mtconnect.org/#_Version_1.2")]
+	[MtconnectVersion(MtconnectVersions.V_1_0_1, "https://model.mtconnect.org/#_Version_1.0", MtconnectVersions.V_1_2_0)]
 	[GeneratedCode("MtconnectTranspiler.Sinks.CSharp.Adapter", "1.0.7.0")]
 	public enum SpindleSpeedSubTypes
 	{
@@ -33,6 +35,7 @@ namespace Mtconnect.AdapterInterface.DataItemTypes
 		/// </list>
 		/// </remarks>
 		[Obsolete("Deprecated in v1.2 according to https://model.mtconnect.org/#_Version_1.2")]
+		[MtconnectVersion(MtconnectVersions.V_1_0_1, "https://model.mtconnect.org/#_Version_1.0", MtconnectVersions.V_1_2_0)]
 		ACTUAL,
 		/// <summary>
 		﻿/// directive value including adjustments such as an offset or overrides.  <b>DEPRECATED</b> in <i>Version 1.3</i>.
@@ -44,6 +47,7 @@ namespace Mtconnect.AdapterInterface.DataItemTypes
 		/// </list>
 		/// </remarks>
 		[Obsolete("Deprecated in v1.2 according to https://model.mtconnect.org/#_Version_1.2")]
+		[MtconnectVersion(MtconnectVersions.V_1_0_1, "https://model.mtconnect.org/#_Version_1.0", MtconnectVersions.V_1_2_0)]
 		COMMANDED,
 		/// <summary>
 		﻿/// operator's overridden value.  <b>DEPRECATED</b> in <i>Version 1.3</i>.
@@ -55,6 +59,7 @@ namespace Mtconnect.AdapterInterface.DataItemTypes
 		/// </list>
 		/// </remarks>
 		[Obsolete("Deprecated in v1.2 according to https://model.mtconnect.org/#_Version_1.2")]
+		[MtconnectVersion(MtconnectVersions.V_1_0_1, "https://model.mtconnect.org/#_Version_1.0", MtconnectVersions.V_1_2_0)]
 		OVERRIDE,
 	}
 }

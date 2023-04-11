@@ -2,6 +2,7 @@
 #pragma warning disable 1574
 using System;
 using System.CodeDom.Compiler;
+using Mtconnect.AdapterInterface.Contracts;
 using Mtconnect.AdapterInterface.Contracts.Attributes;
 
 namespace Mtconnect.AdapterInterface.DataItemValues
@@ -14,6 +15,7 @@ namespace Mtconnect.AdapterInterface.DataItemValues
 	/// <item><b>Introduced</b>: <see href="https://model.mtconnect.org/#_Version_1.4">v1.4</see></item>
 	/// </list>
 	/// </remarks>
+	[MtconnectVersion(MtconnectVersions.V_1_4_0, "https://model.mtconnect.org/#_Version_1.4")]
 	[GeneratedCode("MtconnectTranspiler.Sinks.CSharp.Adapter", "1.0.7.0")]
 	public enum EquipmentModeValues
 	{
@@ -29,6 +31,7 @@ namespace Mtconnect.AdapterInterface.DataItemValues
 		/// <item><b>Introduced</b>: <see href="https://model.mtconnect.org/#_Version_1.4">v1.4</see></item>
 		/// </list>
 		/// </remarks>
+		[MtconnectVersion(MtconnectVersions.V_1_4_0, "https://model.mtconnect.org/#_Version_1.4")]
 		ON,
 		/// <summary>
 		﻿/// equipment is not functioning in the mode designated by the <c>subType</c>.
@@ -38,6 +41,7 @@ namespace Mtconnect.AdapterInterface.DataItemValues
 		/// <item><b>Introduced</b>: <see href="https://model.mtconnect.org/#_Version_1.4">v1.4</see></item>
 		/// </list>
 		/// </remarks>
+		[MtconnectVersion(MtconnectVersions.V_1_4_0, "https://model.mtconnect.org/#_Version_1.4")]
 		OFF,
 	}
 }

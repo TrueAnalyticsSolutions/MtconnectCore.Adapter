@@ -2,6 +2,7 @@
 #pragma warning disable 1574
 using System;
 using System.CodeDom.Compiler;
+using Mtconnect.AdapterInterface.Contracts;
 using Mtconnect.AdapterInterface.Contracts.Attributes;
 
 namespace Mtconnect.AdapterInterface.DataItemTypes
@@ -14,6 +15,7 @@ namespace Mtconnect.AdapterInterface.DataItemTypes
 	/// <item><b>Introduced</b>: <see href="https://model.mtconnect.org/#_Version_1.4">v1.4</see></item>
 	/// </list>
 	/// </remarks>
+	[MtconnectVersion(MtconnectVersions.V_1_4_0, "https://model.mtconnect.org/#_Version_1.4")]
 	[GeneratedCode("MtconnectTranspiler.Sinks.CSharp.Adapter", "1.0.7.0")]
 	public enum CompositionStateSubTypes
 	{
@@ -29,6 +31,7 @@ namespace Mtconnect.AdapterInterface.DataItemTypes
 		/// <item><b>Introduced</b>: <see href="https://model.mtconnect.org/#_Version_1.4">v1.4</see></item>
 		/// </list>
 		/// </remarks>
+		[MtconnectVersion(MtconnectVersions.V_1_4_0, "https://model.mtconnect.org/#_Version_1.4")]
 		ACTION,
 		/// <summary>
 		﻿/// indication of the position of a mechanism that may move in a lateral direction.   
@@ -38,6 +41,7 @@ namespace Mtconnect.AdapterInterface.DataItemTypes
 		/// <item><b>Introduced</b>: <see href="https://model.mtconnect.org/#_Version_1.4">v1.4</see></item>
 		/// </list>
 		/// </remarks>
+		[MtconnectVersion(MtconnectVersions.V_1_4_0, "https://model.mtconnect.org/#_Version_1.4")]
 		LATERAL,
 		/// <summary>
 		﻿/// indication of the open or closed state of a mechanism. 
@@ -47,6 +51,7 @@ namespace Mtconnect.AdapterInterface.DataItemTypes
 		/// <item><b>Introduced</b>: <see href="https://model.mtconnect.org/#_Version_1.4">v1.4</see></item>
 		/// </list>
 		/// </remarks>
+		[MtconnectVersion(MtconnectVersions.V_1_4_0, "https://model.mtconnect.org/#_Version_1.4")]
 		MOTION,
 		/// <summary>
 		﻿/// indication of the activation state of a mechanism.
@@ -56,6 +61,7 @@ namespace Mtconnect.AdapterInterface.DataItemTypes
 		/// <item><b>Introduced</b>: <see href="https://model.mtconnect.org/#_Version_1.4">v1.4</see></item>
 		/// </list>
 		/// </remarks>
+		[MtconnectVersion(MtconnectVersions.V_1_4_0, "https://model.mtconnect.org/#_Version_1.4")]
 		SWITCHED,
 		/// <summary>
 		﻿/// indication of the position of a mechanism that may move in a vertical direction.
@@ -65,6 +71,7 @@ namespace Mtconnect.AdapterInterface.DataItemTypes
 		/// <item><b>Introduced</b>: <see href="https://model.mtconnect.org/#_Version_1.4">v1.4</see></item>
 		/// </list>
 		/// </remarks>
+		[MtconnectVersion(MtconnectVersions.V_1_4_0, "https://model.mtconnect.org/#_Version_1.4")]
 		VERTICAL,
 	}
 }

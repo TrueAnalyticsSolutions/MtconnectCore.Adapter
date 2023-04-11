@@ -2,6 +2,7 @@
 #pragma warning disable 1574
 using System;
 using System.CodeDom.Compiler;
+using Mtconnect.AdapterInterface.Contracts;
 using Mtconnect.AdapterInterface.Contracts.Attributes;
 
 namespace Mtconnect.AdapterInterface.DataItemTypes
@@ -14,6 +15,7 @@ namespace Mtconnect.AdapterInterface.DataItemTypes
 	/// <item><b>Introduced</b>: <see href="https://model.mtconnect.org/#_Version_1.5">v1.5</see></item>
 	/// </list>
 	/// </remarks>
+	[MtconnectVersion(MtconnectVersions.V_1_5_0, "https://model.mtconnect.org/#_Version_1.5")]
 	[GeneratedCode("MtconnectTranspiler.Sinks.CSharp.Adapter", "1.0.7.0")]
 	public enum VolumeSpatialSubTypes
 	{
@@ -29,6 +31,7 @@ namespace Mtconnect.AdapterInterface.DataItemTypes
 		/// <item><b>Introduced</b>: <see href="https://model.mtconnect.org/#_Version_1.5">v1.5</see></item>
 		/// </list>
 		/// </remarks>
+		[MtconnectVersion(MtconnectVersions.V_1_5_0, "https://model.mtconnect.org/#_Version_1.5")]
 		ACTUAL,
 		/// <summary>
 		﻿/// reported or measured value of the amount used in the manufacturing process.
@@ -38,6 +41,7 @@ namespace Mtconnect.AdapterInterface.DataItemTypes
 		/// <item><b>Introduced</b>: <see href="https://model.mtconnect.org/#_Version_1.5">v1.5</see></item>
 		/// </list>
 		/// </remarks>
+		[MtconnectVersion(MtconnectVersions.V_1_5_0, "https://model.mtconnect.org/#_Version_1.5")]
 		CONSUMED,
 		/// <summary>
 		﻿/// reported or measured value of amount included in the <i>part</i>.
@@ -47,6 +51,7 @@ namespace Mtconnect.AdapterInterface.DataItemTypes
 		/// <item><b>Introduced</b>: <see href="https://model.mtconnect.org/#_Version_1.8">v1.8</see></item>
 		/// </list>
 		/// </remarks>
+		[MtconnectVersion(MtconnectVersions.V_1_8_0, "https://model.mtconnect.org/#_Version_1.8")]
 		PART,
 		/// <summary>
 		﻿/// reported or measured value of the amount discarded
@@ -56,6 +61,7 @@ namespace Mtconnect.AdapterInterface.DataItemTypes
 		/// <item><b>Introduced</b>: <see href="https://model.mtconnect.org/#_Version_1.8">v1.8</see></item>
 		/// </list>
 		/// </remarks>
+		[MtconnectVersion(MtconnectVersions.V_1_8_0, "https://model.mtconnect.org/#_Version_1.8")]
 		WASTE,
 		/// <summary>
 		﻿/// boundary when an activity or an event terminates.
@@ -65,6 +71,7 @@ namespace Mtconnect.AdapterInterface.DataItemTypes
 		/// <item><b>Introduced</b>: <see href="https://model.mtconnect.org/#_Version_1.8">v1.8</see></item>
 		/// </list>
 		/// </remarks>
+		[MtconnectVersion(MtconnectVersions.V_1_8_0, "https://model.mtconnect.org/#_Version_1.8")]
 		ENDED,
 		/// <summary>
 		﻿/// boundary when an activity or an event commences.
@@ -74,6 +81,7 @@ namespace Mtconnect.AdapterInterface.DataItemTypes
 		/// <item><b>Introduced</b>: <see href="https://model.mtconnect.org/#_Version_1.8">v1.8</see></item>
 		/// </list>
 		/// </remarks>
+		[MtconnectVersion(MtconnectVersions.V_1_8_0, "https://model.mtconnect.org/#_Version_1.8")]
 		START,
 	}
 }

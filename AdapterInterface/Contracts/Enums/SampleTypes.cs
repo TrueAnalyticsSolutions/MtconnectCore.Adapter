@@ -2,6 +2,7 @@
 #pragma warning disable 1574
 using System;
 using System.CodeDom.Compiler;
+using Mtconnect.AdapterInterface.Contracts;
 using Mtconnect.AdapterInterface.Contracts.Attributes;
 
 namespace Mtconnect.AdapterInterface.DataItemTypes
@@ -9,6 +10,7 @@ namespace Mtconnect.AdapterInterface.DataItemTypes
 	/// <summary>
 	/// View in the MTConnect Model browser <seealso href="https://model.mtconnect.org/#Enumeration___19_0_3_45f01b9_1580309868367_570061_44359">model.mtconnect.org</seealso>
 	﻿	/// </summary>
+	
 	[GeneratedCode("MtconnectTranspiler.Sinks.CSharp.Adapter", "1.0.7.0")]
 	public enum SampleTypes
 	{
@@ -26,6 +28,7 @@ namespace Mtconnect.AdapterInterface.DataItemTypes
 		/// </list>
 		/// </remarks>
 		[ObservationalSubType(typeof(AccelerationSubTypes))]
+		[MtconnectVersion(MtconnectVersions.V_1_0_1, "https://model.mtconnect.org/#_Version_1.0")]
 		ACCELERATION,
 		/// <summary>
 		﻿/// <see cref="SampleEnum.ACCUMULATED_TIME" />
@@ -35,6 +38,7 @@ namespace Mtconnect.AdapterInterface.DataItemTypes
 		/// <item><b>Introduced</b>: <see href="https://model.mtconnect.org/#_Version_1.2">v1.2</see></item>
 		/// </list>
 		/// </remarks>
+		[MtconnectVersion(MtconnectVersions.V_1_2_0, "https://model.mtconnect.org/#_Version_1.2")]
 		ACCUMULATED_TIME,
 		/// <summary>
 		﻿/// <see cref="SampleEnum.AMPERAGE" />
@@ -48,6 +52,7 @@ namespace Mtconnect.AdapterInterface.DataItemTypes
 		/// </remarks>
 		[Obsolete("Deprecated in v1.6 according to https://model.mtconnect.org/#_Version_1.6")]
 		[ObservationalSubType(typeof(AmperageSubTypes))]
+		[MtconnectVersion(MtconnectVersions.V_1_0_1, "https://model.mtconnect.org/#_Version_1.0", MtconnectVersions.V_1_6_0)]
 		AMPERAGE,
 		/// <summary>
 		﻿/// <see cref="SampleEnum.ANGLE" />
@@ -59,6 +64,7 @@ namespace Mtconnect.AdapterInterface.DataItemTypes
 		/// </list>
 		/// </remarks>
 		[ObservationalSubType(typeof(AngleSubTypes))]
+		[MtconnectVersion(MtconnectVersions.V_1_0_1, "https://model.mtconnect.org/#_Version_1.0")]
 		ANGLE,
 		/// <summary>
 		﻿/// <see cref="SampleEnum.ANGULAR_ACCELERATION" />
@@ -70,6 +76,7 @@ namespace Mtconnect.AdapterInterface.DataItemTypes
 		/// </list>
 		/// </remarks>
 		[ObservationalSubType(typeof(AngularAccelerationSubTypes))]
+		[MtconnectVersion(MtconnectVersions.V_1_0_1, "https://model.mtconnect.org/#_Version_1.0")]
 		ANGULAR_ACCELERATION,
 		/// <summary>
 		﻿/// <see cref="SampleEnum.ANGULAR_VELOCITY" />
@@ -79,6 +86,7 @@ namespace Mtconnect.AdapterInterface.DataItemTypes
 		/// <item><b>Introduced</b>: <see href="https://model.mtconnect.org/#_Version_1.0">v1.0</see></item>
 		/// </list>
 		/// </remarks>
+		[MtconnectVersion(MtconnectVersions.V_1_0_1, "https://model.mtconnect.org/#_Version_1.0")]
 		ANGULAR_VELOCITY,
 		/// <summary>
 		﻿/// <see cref="SampleEnum.AXIS_FEEDRATE" />
@@ -90,6 +98,7 @@ namespace Mtconnect.AdapterInterface.DataItemTypes
 		/// </list>
 		/// </remarks>
 		[ObservationalSubType(typeof(AxisFeedrateSubTypes))]
+		[MtconnectVersion(MtconnectVersions.V_1_0_1, "https://model.mtconnect.org/#_Version_1.0")]
 		AXIS_FEEDRATE,
 		/// <summary>
 		﻿/// <see cref="SampleEnum.CAPACITY_FLUID" />
@@ -99,6 +108,7 @@ namespace Mtconnect.AdapterInterface.DataItemTypes
 		/// <item><b>Introduced</b>: <see href="https://model.mtconnect.org/#_Version_1.5">v1.5</see></item>
 		/// </list>
 		/// </remarks>
+		[MtconnectVersion(MtconnectVersions.V_1_5_0, "https://model.mtconnect.org/#_Version_1.5")]
 		CAPACITY_FLUID,
 		/// <summary>
 		﻿/// <see cref="SampleEnum.CAPACITY_SPATIAL" />
@@ -108,6 +118,7 @@ namespace Mtconnect.AdapterInterface.DataItemTypes
 		/// <item><b>Introduced</b>: <see href="https://model.mtconnect.org/#_Version_1.5">v1.5</see></item>
 		/// </list>
 		/// </remarks>
+		[MtconnectVersion(MtconnectVersions.V_1_5_0, "https://model.mtconnect.org/#_Version_1.5")]
 		CAPACITY_SPATIAL,
 		/// <summary>
 		﻿/// <see cref="SampleEnum.CONCENTRATION" />
@@ -117,6 +128,7 @@ namespace Mtconnect.AdapterInterface.DataItemTypes
 		/// <item><b>Introduced</b>: <see href="https://model.mtconnect.org/#_Version_1.2">v1.2</see></item>
 		/// </list>
 		/// </remarks>
+		[MtconnectVersion(MtconnectVersions.V_1_2_0, "https://model.mtconnect.org/#_Version_1.2")]
 		CONCENTRATION,
 		/// <summary>
 		﻿/// <see cref="SampleEnum.CONDUCTIVITY" />
@@ -126,6 +138,7 @@ namespace Mtconnect.AdapterInterface.DataItemTypes
 		/// <item><b>Introduced</b>: <see href="https://model.mtconnect.org/#_Version_1.2">v1.2</see></item>
 		/// </list>
 		/// </remarks>
+		[MtconnectVersion(MtconnectVersions.V_1_2_0, "https://model.mtconnect.org/#_Version_1.2")]
 		CONDUCTIVITY,
 		/// <summary>
 		﻿/// <see cref="SampleEnum.CUTTING_SPEED" />
@@ -137,6 +150,7 @@ namespace Mtconnect.AdapterInterface.DataItemTypes
 		/// </list>
 		/// </remarks>
 		[ObservationalSubType(typeof(CuttingSpeedSubTypes))]
+		[MtconnectVersion(MtconnectVersions.V_1_5_0, "https://model.mtconnect.org/#_Version_1.5")]
 		CUTTING_SPEED,
 		/// <summary>
 		﻿/// <see cref="SampleEnum.DENSITY" />
@@ -146,6 +160,7 @@ namespace Mtconnect.AdapterInterface.DataItemTypes
 		/// <item><b>Introduced</b>: <see href="https://model.mtconnect.org/#_Version_1.5">v1.5</see></item>
 		/// </list>
 		/// </remarks>
+		[MtconnectVersion(MtconnectVersions.V_1_5_0, "https://model.mtconnect.org/#_Version_1.5")]
 		DENSITY,
 		/// <summary>
 		﻿/// <see cref="SampleEnum.DEPOSITION_ACCELERATION_VOLUMETRIC" />
@@ -157,6 +172,7 @@ namespace Mtconnect.AdapterInterface.DataItemTypes
 		/// </list>
 		/// </remarks>
 		[ObservationalSubType(typeof(DepositionAccelerationVolumetricSubTypes))]
+		[MtconnectVersion(MtconnectVersions.V_1_5_0, "https://model.mtconnect.org/#_Version_1.5")]
 		DEPOSITION_ACCELERATION_VOLUMETRIC,
 		/// <summary>
 		﻿/// <see cref="SampleEnum.DEPOSITION_DENSITY" />
@@ -168,6 +184,7 @@ namespace Mtconnect.AdapterInterface.DataItemTypes
 		/// </list>
 		/// </remarks>
 		[ObservationalSubType(typeof(DepositionDensitySubTypes))]
+		[MtconnectVersion(MtconnectVersions.V_1_5_0, "https://model.mtconnect.org/#_Version_1.5")]
 		DEPOSITION_DENSITY,
 		/// <summary>
 		﻿/// <see cref="SampleEnum.DEPOSITION_MASS" />
@@ -179,6 +196,7 @@ namespace Mtconnect.AdapterInterface.DataItemTypes
 		/// </list>
 		/// </remarks>
 		[ObservationalSubType(typeof(DepositionMassSubTypes))]
+		[MtconnectVersion(MtconnectVersions.V_1_5_0, "https://model.mtconnect.org/#_Version_1.5")]
 		DEPOSITION_MASS,
 		/// <summary>
 		﻿/// <see cref="SampleEnum.DEPOSITION_RATE_VOLUMETRIC" />
@@ -190,6 +208,7 @@ namespace Mtconnect.AdapterInterface.DataItemTypes
 		/// </list>
 		/// </remarks>
 		[ObservationalSubType(typeof(DepositionRateVolumetricSubTypes))]
+		[MtconnectVersion(MtconnectVersions.V_1_5_0, "https://model.mtconnect.org/#_Version_1.5")]
 		DEPOSITION_RATE_VOLUMETRIC,
 		/// <summary>
 		﻿/// <see cref="SampleEnum.DEPOSITION_VOLUME" />
@@ -201,6 +220,7 @@ namespace Mtconnect.AdapterInterface.DataItemTypes
 		/// </list>
 		/// </remarks>
 		[ObservationalSubType(typeof(DepositionVolumeSubTypes))]
+		[MtconnectVersion(MtconnectVersions.V_1_5_0, "https://model.mtconnect.org/#_Version_1.5")]
 		DEPOSITION_VOLUME,
 		/// <summary>
 		﻿/// <see cref="SampleEnum.DISPLACEMENT" />
@@ -210,6 +230,7 @@ namespace Mtconnect.AdapterInterface.DataItemTypes
 		/// <item><b>Introduced</b>: <see href="https://model.mtconnect.org/#_Version_1.0">v1.0</see></item>
 		/// </list>
 		/// </remarks>
+		[MtconnectVersion(MtconnectVersions.V_1_0_1, "https://model.mtconnect.org/#_Version_1.0")]
 		DISPLACEMENT,
 		/// <summary>
 		﻿/// <see cref="SampleEnum.ELECTRICAL_ENERGY" />
@@ -219,6 +240,7 @@ namespace Mtconnect.AdapterInterface.DataItemTypes
 		/// <item><b>Introduced</b>: <see href="https://model.mtconnect.org/#_Version_1.2">v1.2</see></item>
 		/// </list>
 		/// </remarks>
+		[MtconnectVersion(MtconnectVersions.V_1_2_0, "https://model.mtconnect.org/#_Version_1.2")]
 		ELECTRICAL_ENERGY,
 		/// <summary>
 		﻿/// <see cref="SampleEnum.EQUIPMENT_TIMER" />
@@ -230,6 +252,7 @@ namespace Mtconnect.AdapterInterface.DataItemTypes
 		/// </list>
 		/// </remarks>
 		[ObservationalSubType(typeof(EquipmentTimerSubTypes))]
+		[MtconnectVersion(MtconnectVersions.V_1_4_0, "https://model.mtconnect.org/#_Version_1.4")]
 		EQUIPMENT_TIMER,
 		/// <summary>
 		﻿/// <see cref="SampleEnum.FILL_LEVEL" />
@@ -239,6 +262,7 @@ namespace Mtconnect.AdapterInterface.DataItemTypes
 		/// <item><b>Introduced</b>: <see href="https://model.mtconnect.org/#_Version_1.2">v1.2</see></item>
 		/// </list>
 		/// </remarks>
+		[MtconnectVersion(MtconnectVersions.V_1_2_0, "https://model.mtconnect.org/#_Version_1.2")]
 		FILL_LEVEL,
 		/// <summary>
 		﻿/// <see cref="SampleEnum.FLOW" />
@@ -248,6 +272,7 @@ namespace Mtconnect.AdapterInterface.DataItemTypes
 		/// <item><b>Introduced</b>: <see href="https://model.mtconnect.org/#_Version_1.2">v1.2</see></item>
 		/// </list>
 		/// </remarks>
+		[MtconnectVersion(MtconnectVersions.V_1_2_0, "https://model.mtconnect.org/#_Version_1.2")]
 		FLOW,
 		/// <summary>
 		﻿/// <see cref="SampleEnum.FREQUENCY" />
@@ -257,6 +282,7 @@ namespace Mtconnect.AdapterInterface.DataItemTypes
 		/// <item><b>Introduced</b>: <see href="https://model.mtconnect.org/#_Version_1.0">v1.0</see></item>
 		/// </list>
 		/// </remarks>
+		[MtconnectVersion(MtconnectVersions.V_1_0_1, "https://model.mtconnect.org/#_Version_1.0")]
 		FREQUENCY,
 		/// <summary>
 		﻿/// <see cref="SampleEnum.GLOBAL_POSITION" />
@@ -270,6 +296,7 @@ namespace Mtconnect.AdapterInterface.DataItemTypes
 		/// </remarks>
 		[Obsolete("Deprecated in v1.1 according to https://model.mtconnect.org/#_Version_1.1")]
 		[ObservationalSubType(typeof(GlobalPositionSubTypes))]
+		[MtconnectVersion(MtconnectVersions.V_1_0_1, "https://model.mtconnect.org/#_Version_1.0", MtconnectVersions.V_1_1_0)]
 		GLOBAL_POSITION,
 		/// <summary>
 		﻿/// <see cref="SampleEnum.LENGTH" />
@@ -281,6 +308,7 @@ namespace Mtconnect.AdapterInterface.DataItemTypes
 		/// </list>
 		/// </remarks>
 		[ObservationalSubType(typeof(LengthSubTypes))]
+		[MtconnectVersion(MtconnectVersions.V_1_3_0, "https://model.mtconnect.org/#_Version_1.3")]
 		LENGTH,
 		/// <summary>
 		﻿/// <see cref="SampleEnum.LEVEL" />
@@ -292,6 +320,7 @@ namespace Mtconnect.AdapterInterface.DataItemTypes
 		/// </list>
 		/// </remarks>
 		[Obsolete("Deprecated in v1.2 according to https://model.mtconnect.org/#_Version_1.2")]
+		[MtconnectVersion(MtconnectVersions.V_1_1_0, "https://model.mtconnect.org/#_Version_1.1", MtconnectVersions.V_1_2_0)]
 		LEVEL,
 		/// <summary>
 		﻿/// <see cref="SampleEnum.LINEAR_FORCE" />
@@ -301,6 +330,7 @@ namespace Mtconnect.AdapterInterface.DataItemTypes
 		/// <item><b>Introduced</b>: <see href="https://model.mtconnect.org/#_Version_1.2">v1.2</see></item>
 		/// </list>
 		/// </remarks>
+		[MtconnectVersion(MtconnectVersions.V_1_2_0, "https://model.mtconnect.org/#_Version_1.2")]
 		LINEAR_FORCE,
 		/// <summary>
 		﻿/// <see cref="SampleEnum.LOAD" />
@@ -310,6 +340,7 @@ namespace Mtconnect.AdapterInterface.DataItemTypes
 		/// <item><b>Introduced</b>: <see href="https://model.mtconnect.org/#_Version_1.0">v1.0</see></item>
 		/// </list>
 		/// </remarks>
+		[MtconnectVersion(MtconnectVersions.V_1_0_1, "https://model.mtconnect.org/#_Version_1.0")]
 		LOAD,
 		/// <summary>
 		﻿/// <see cref="SampleEnum.MASS" />
@@ -319,6 +350,7 @@ namespace Mtconnect.AdapterInterface.DataItemTypes
 		/// <item><b>Introduced</b>: <see href="https://model.mtconnect.org/#_Version_1.2">v1.2</see></item>
 		/// </list>
 		/// </remarks>
+		[MtconnectVersion(MtconnectVersions.V_1_2_0, "https://model.mtconnect.org/#_Version_1.2")]
 		MASS,
 		/// <summary>
 		﻿/// <see cref="SampleEnum.PATH_FEEDRATE" />
@@ -330,6 +362,7 @@ namespace Mtconnect.AdapterInterface.DataItemTypes
 		/// </list>
 		/// </remarks>
 		[ObservationalSubType(typeof(PathFeedrateSubTypes))]
+		[MtconnectVersion(MtconnectVersions.V_1_0_1, "https://model.mtconnect.org/#_Version_1.0")]
 		PATH_FEEDRATE,
 		/// <summary>
 		﻿/// <see cref="SampleEnum.PATH_FEEDRATE_PER_REVOLUTION" />
@@ -341,6 +374,7 @@ namespace Mtconnect.AdapterInterface.DataItemTypes
 		/// </list>
 		/// </remarks>
 		[ObservationalSubType(typeof(PathFeedratePerRevolutionSubTypes))]
+		[MtconnectVersion(MtconnectVersions.V_1_5_0, "https://model.mtconnect.org/#_Version_1.5")]
 		PATH_FEEDRATE_PER_REVOLUTION,
 		/// <summary>
 		﻿/// <see cref="SampleEnum.PATH_POSITION" />
@@ -352,6 +386,7 @@ namespace Mtconnect.AdapterInterface.DataItemTypes
 		/// </list>
 		/// </remarks>
 		[ObservationalSubType(typeof(PathPositionSubTypes))]
+		[MtconnectVersion(MtconnectVersions.V_1_1_0, "https://model.mtconnect.org/#_Version_1.1")]
 		PATH_POSITION,
 		/// <summary>
 		﻿/// <see cref="SampleEnum.PH" />
@@ -361,6 +396,7 @@ namespace Mtconnect.AdapterInterface.DataItemTypes
 		/// <item><b>Introduced</b>: <see href="https://model.mtconnect.org/#_Version_1.1">v1.1</see></item>
 		/// </list>
 		/// </remarks>
+		[MtconnectVersion(MtconnectVersions.V_1_1_0, "https://model.mtconnect.org/#_Version_1.1")]
 		P_H,
 		/// <summary>
 		﻿/// <see cref="SampleEnum.POSITION" />
@@ -372,6 +408,7 @@ namespace Mtconnect.AdapterInterface.DataItemTypes
 		/// </list>
 		/// </remarks>
 		[ObservationalSubType(typeof(PositionSubTypes))]
+		[MtconnectVersion(MtconnectVersions.V_1_0_1, "https://model.mtconnect.org/#_Version_1.0")]
 		POSITION,
 		/// <summary>
 		﻿/// <see cref="SampleEnum.POWER_FACTOR" />
@@ -381,6 +418,7 @@ namespace Mtconnect.AdapterInterface.DataItemTypes
 		/// <item><b>Introduced</b>: <see href="https://model.mtconnect.org/#_Version_1.2">v1.2</see></item>
 		/// </list>
 		/// </remarks>
+		[MtconnectVersion(MtconnectVersions.V_1_2_0, "https://model.mtconnect.org/#_Version_1.2")]
 		POWER_FACTOR,
 		/// <summary>
 		﻿/// <see cref="SampleEnum.PRESSURE" />
@@ -390,6 +428,7 @@ namespace Mtconnect.AdapterInterface.DataItemTypes
 		/// <item><b>Introduced</b>: <see href="https://model.mtconnect.org/#_Version_1.0">v1.0</see></item>
 		/// </list>
 		/// </remarks>
+		[MtconnectVersion(MtconnectVersions.V_1_0_1, "https://model.mtconnect.org/#_Version_1.0")]
 		PRESSURE,
 		/// <summary>
 		﻿/// <see cref="SampleEnum.PROCESS_TIMER" />
@@ -401,6 +440,7 @@ namespace Mtconnect.AdapterInterface.DataItemTypes
 		/// </list>
 		/// </remarks>
 		[ObservationalSubType(typeof(ProcessTimerSubTypes))]
+		[MtconnectVersion(MtconnectVersions.V_1_4_0, "https://model.mtconnect.org/#_Version_1.4")]
 		PROCESS_TIMER,
 		/// <summary>
 		﻿/// <see cref="SampleEnum.RESISTANCE" />
@@ -410,6 +450,7 @@ namespace Mtconnect.AdapterInterface.DataItemTypes
 		/// <item><b>Introduced</b>: <see href="https://model.mtconnect.org/#_Version_1.2">v1.2</see></item>
 		/// </list>
 		/// </remarks>
+		[MtconnectVersion(MtconnectVersions.V_1_2_0, "https://model.mtconnect.org/#_Version_1.2")]
 		RESISTANCE,
 		/// <summary>
 		﻿/// <see cref="SampleEnum.ROTARY_VELOCITY" />
@@ -421,6 +462,7 @@ namespace Mtconnect.AdapterInterface.DataItemTypes
 		/// </list>
 		/// </remarks>
 		[ObservationalSubType(typeof(RotaryVelocitySubTypes))]
+		[MtconnectVersion(MtconnectVersions.V_1_2_0, "https://model.mtconnect.org/#_Version_1.2")]
 		ROTARY_VELOCITY,
 		/// <summary>
 		﻿/// <see cref="SampleEnum.SOUND_LEVEL" />
@@ -432,6 +474,7 @@ namespace Mtconnect.AdapterInterface.DataItemTypes
 		/// </list>
 		/// </remarks>
 		[ObservationalSubType(typeof(SoundLevelSubTypes))]
+		[MtconnectVersion(MtconnectVersions.V_1_2_0, "https://model.mtconnect.org/#_Version_1.2")]
 		SOUND_LEVEL,
 		/// <summary>
 		﻿/// <see cref="SampleEnum.SPINDLE_SPEED" />
@@ -445,6 +488,7 @@ namespace Mtconnect.AdapterInterface.DataItemTypes
 		/// </remarks>
 		[Obsolete("Deprecated in v1.2 according to https://model.mtconnect.org/#_Version_1.2")]
 		[ObservationalSubType(typeof(SpindleSpeedSubTypes))]
+		[MtconnectVersion(MtconnectVersions.V_1_0_1, "https://model.mtconnect.org/#_Version_1.0", MtconnectVersions.V_1_2_0)]
 		SPINDLE_SPEED,
 		/// <summary>
 		﻿/// <see cref="SampleEnum.STRAIN" />
@@ -454,6 +498,7 @@ namespace Mtconnect.AdapterInterface.DataItemTypes
 		/// <item><b>Introduced</b>: <see href="https://model.mtconnect.org/#_Version_1.2">v1.2</see></item>
 		/// </list>
 		/// </remarks>
+		[MtconnectVersion(MtconnectVersions.V_1_2_0, "https://model.mtconnect.org/#_Version_1.2")]
 		STRAIN,
 		/// <summary>
 		﻿/// <see cref="SampleEnum.TEMPERATURE" />
@@ -463,6 +508,7 @@ namespace Mtconnect.AdapterInterface.DataItemTypes
 		/// <item><b>Introduced</b>: <see href="https://model.mtconnect.org/#_Version_1.0">v1.0</see></item>
 		/// </list>
 		/// </remarks>
+		[MtconnectVersion(MtconnectVersions.V_1_0_1, "https://model.mtconnect.org/#_Version_1.0")]
 		TEMPERATURE,
 		/// <summary>
 		﻿/// <see cref="SampleEnum.TENSION" />
@@ -472,6 +518,7 @@ namespace Mtconnect.AdapterInterface.DataItemTypes
 		/// <item><b>Introduced</b>: <see href="https://model.mtconnect.org/#_Version_1.4">v1.4</see></item>
 		/// </list>
 		/// </remarks>
+		[MtconnectVersion(MtconnectVersions.V_1_4_0, "https://model.mtconnect.org/#_Version_1.4")]
 		TENSION,
 		/// <summary>
 		﻿/// <see cref="SampleEnum.TILT" />
@@ -481,6 +528,7 @@ namespace Mtconnect.AdapterInterface.DataItemTypes
 		/// <item><b>Introduced</b>: <see href="https://model.mtconnect.org/#_Version_1.2">v1.2</see></item>
 		/// </list>
 		/// </remarks>
+		[MtconnectVersion(MtconnectVersions.V_1_2_0, "https://model.mtconnect.org/#_Version_1.2")]
 		TILT,
 		/// <summary>
 		﻿/// <see cref="SampleEnum.TORQUE" />
@@ -490,6 +538,7 @@ namespace Mtconnect.AdapterInterface.DataItemTypes
 		/// <item><b>Introduced</b>: <see href="https://model.mtconnect.org/#_Version_1.5">v1.5</see></item>
 		/// </list>
 		/// </remarks>
+		[MtconnectVersion(MtconnectVersions.V_1_5_0, "https://model.mtconnect.org/#_Version_1.5")]
 		TORQUE,
 		/// <summary>
 		﻿/// <see cref="SampleEnum.VELOCITY" />
@@ -499,6 +548,7 @@ namespace Mtconnect.AdapterInterface.DataItemTypes
 		/// <item><b>Introduced</b>: <see href="https://model.mtconnect.org/#_Version_1.0">v1.0</see></item>
 		/// </list>
 		/// </remarks>
+		[MtconnectVersion(MtconnectVersions.V_1_0_1, "https://model.mtconnect.org/#_Version_1.0")]
 		VELOCITY,
 		/// <summary>
 		﻿/// <see cref="SampleEnum.VISCOSITY" />
@@ -508,6 +558,7 @@ namespace Mtconnect.AdapterInterface.DataItemTypes
 		/// <item><b>Introduced</b>: <see href="https://model.mtconnect.org/#_Version_1.2">v1.2</see></item>
 		/// </list>
 		/// </remarks>
+		[MtconnectVersion(MtconnectVersions.V_1_2_0, "https://model.mtconnect.org/#_Version_1.2")]
 		VISCOSITY,
 		/// <summary>
 		﻿/// <see cref="SampleEnum.VOLTAGE" />
@@ -521,6 +572,7 @@ namespace Mtconnect.AdapterInterface.DataItemTypes
 		/// </remarks>
 		[Obsolete("Deprecated in v1.6 according to https://model.mtconnect.org/#_Version_1.6")]
 		[ObservationalSubType(typeof(VoltageSubTypes))]
+		[MtconnectVersion(MtconnectVersions.V_1_0_1, "https://model.mtconnect.org/#_Version_1.0", MtconnectVersions.V_1_6_0)]
 		VOLTAGE,
 		/// <summary>
 		﻿/// <see cref="SampleEnum.VOLT_AMPERE" />
@@ -530,6 +582,7 @@ namespace Mtconnect.AdapterInterface.DataItemTypes
 		/// <item><b>Introduced</b>: <see href="https://model.mtconnect.org/#_Version_1.2">v1.2</see></item>
 		/// </list>
 		/// </remarks>
+		[MtconnectVersion(MtconnectVersions.V_1_2_0, "https://model.mtconnect.org/#_Version_1.2")]
 		VOLT_AMPERE,
 		/// <summary>
 		﻿/// <see cref="SampleEnum.VOLT_AMPERE_REACTIVE" />
@@ -539,6 +592,7 @@ namespace Mtconnect.AdapterInterface.DataItemTypes
 		/// <item><b>Introduced</b>: <see href="https://model.mtconnect.org/#_Version_1.2">v1.2</see></item>
 		/// </list>
 		/// </remarks>
+		[MtconnectVersion(MtconnectVersions.V_1_2_0, "https://model.mtconnect.org/#_Version_1.2")]
 		VOLT_AMPERE_REACTIVE,
 		/// <summary>
 		﻿/// <see cref="SampleEnum.VOLUME_FLUID" />
@@ -550,6 +604,7 @@ namespace Mtconnect.AdapterInterface.DataItemTypes
 		/// </list>
 		/// </remarks>
 		[ObservationalSubType(typeof(VolumeFluidSubTypes))]
+		[MtconnectVersion(MtconnectVersions.V_1_5_0, "https://model.mtconnect.org/#_Version_1.5")]
 		VOLUME_FLUID,
 		/// <summary>
 		﻿/// <see cref="SampleEnum.VOLUME_SPATIAL" />
@@ -561,6 +616,7 @@ namespace Mtconnect.AdapterInterface.DataItemTypes
 		/// </list>
 		/// </remarks>
 		[ObservationalSubType(typeof(VolumeSpatialSubTypes))]
+		[MtconnectVersion(MtconnectVersions.V_1_5_0, "https://model.mtconnect.org/#_Version_1.5")]
 		VOLUME_SPATIAL,
 		/// <summary>
 		﻿/// <see cref="SampleEnum.WATTAGE" />
@@ -572,6 +628,7 @@ namespace Mtconnect.AdapterInterface.DataItemTypes
 		/// </list>
 		/// </remarks>
 		[ObservationalSubType(typeof(WattageSubTypes))]
+		[MtconnectVersion(MtconnectVersions.V_1_0_1, "https://model.mtconnect.org/#_Version_1.0")]
 		WATTAGE,
 		/// <summary>
 		﻿/// <see cref="SampleEnum.AMPERAGE_DC" />
@@ -583,6 +640,7 @@ namespace Mtconnect.AdapterInterface.DataItemTypes
 		/// </list>
 		/// </remarks>
 		[ObservationalSubType(typeof(AmperageDCSubTypes))]
+		[MtconnectVersion(MtconnectVersions.V_1_6_0, "https://model.mtconnect.org/#_Version_1.6")]
 		AMPERAGE_D_C,
 		/// <summary>
 		﻿/// <see cref="SampleEnum.AMPERAGE_AC" />
@@ -594,6 +652,7 @@ namespace Mtconnect.AdapterInterface.DataItemTypes
 		/// </list>
 		/// </remarks>
 		[ObservationalSubType(typeof(AmperageACSubTypes))]
+		[MtconnectVersion(MtconnectVersions.V_1_6_0, "https://model.mtconnect.org/#_Version_1.6")]
 		AMPERAGE_A_C,
 		/// <summary>
 		﻿/// <see cref="SampleEnum.VOLTAGE_AC" />
@@ -605,6 +664,7 @@ namespace Mtconnect.AdapterInterface.DataItemTypes
 		/// </list>
 		/// </remarks>
 		[ObservationalSubType(typeof(VoltageACSubTypes))]
+		[MtconnectVersion(MtconnectVersions.V_1_6_0, "https://model.mtconnect.org/#_Version_1.6")]
 		VOLTAGE_A_C,
 		/// <summary>
 		﻿/// <see cref="SampleEnum.VOLTAGE_DC" />
@@ -616,6 +676,7 @@ namespace Mtconnect.AdapterInterface.DataItemTypes
 		/// </list>
 		/// </remarks>
 		[ObservationalSubType(typeof(VoltageDCSubTypes))]
+		[MtconnectVersion(MtconnectVersions.V_1_6_0, "https://model.mtconnect.org/#_Version_1.6")]
 		VOLTAGE_D_C,
 		/// <summary>
 		﻿/// <see cref="SampleEnum.X_DIMENSION" />
@@ -625,6 +686,7 @@ namespace Mtconnect.AdapterInterface.DataItemTypes
 		/// <item><b>Introduced</b>: <see href="https://model.mtconnect.org/#_Version_1.6">v1.6</see></item>
 		/// </list>
 		/// </remarks>
+		[MtconnectVersion(MtconnectVersions.V_1_6_0, "https://model.mtconnect.org/#_Version_1.6")]
 		X_DIMENSION,
 		/// <summary>
 		﻿/// <see cref="SampleEnum.Y_DIMENSION" />
@@ -634,6 +696,7 @@ namespace Mtconnect.AdapterInterface.DataItemTypes
 		/// <item><b>Introduced</b>: <see href="https://model.mtconnect.org/#_Version_1.6">v1.6</see></item>
 		/// </list>
 		/// </remarks>
+		[MtconnectVersion(MtconnectVersions.V_1_6_0, "https://model.mtconnect.org/#_Version_1.6")]
 		Y_DIMENSION,
 		/// <summary>
 		﻿/// <see cref="SampleEnum.Z_DIMENSION" />
@@ -643,6 +706,7 @@ namespace Mtconnect.AdapterInterface.DataItemTypes
 		/// <item><b>Introduced</b>: <see href="https://model.mtconnect.org/#_Version_1.6">v1.6</see></item>
 		/// </list>
 		/// </remarks>
+		[MtconnectVersion(MtconnectVersions.V_1_6_0, "https://model.mtconnect.org/#_Version_1.6")]
 		Z_DIMENSION,
 		/// <summary>
 		﻿/// <see cref="SampleEnum.DIAMETER" />
@@ -652,6 +716,7 @@ namespace Mtconnect.AdapterInterface.DataItemTypes
 		/// <item><b>Introduced</b>: <see href="https://model.mtconnect.org/#_Version_1.6">v1.6</see></item>
 		/// </list>
 		/// </remarks>
+		[MtconnectVersion(MtconnectVersions.V_1_6_0, "https://model.mtconnect.org/#_Version_1.6")]
 		DIAMETER,
 		/// <summary>
 		﻿/// <see cref="SampleEnum.ORIENTATION" />
@@ -663,6 +728,7 @@ namespace Mtconnect.AdapterInterface.DataItemTypes
 		/// </list>
 		/// </remarks>
 		[ObservationalSubType(typeof(OrientationSubTypes))]
+		[MtconnectVersion(MtconnectVersions.V_1_6_0, "https://model.mtconnect.org/#_Version_1.6")]
 		ORIENTATION,
 		/// <summary>
 		﻿/// <see cref="SampleEnum.HUMIDITY_RELATIVE" />
@@ -674,6 +740,7 @@ namespace Mtconnect.AdapterInterface.DataItemTypes
 		/// </list>
 		/// </remarks>
 		[ObservationalSubType(typeof(HumidityRelativeSubTypes))]
+		[MtconnectVersion(MtconnectVersions.V_1_6_0, "https://model.mtconnect.org/#_Version_1.6")]
 		HUMIDITY_RELATIVE,
 		/// <summary>
 		﻿/// <see cref="SampleEnum.HUMIDITY_ABSOLUTE" />
@@ -685,6 +752,7 @@ namespace Mtconnect.AdapterInterface.DataItemTypes
 		/// </list>
 		/// </remarks>
 		[ObservationalSubType(typeof(HumidityAbsoluteSubTypes))]
+		[MtconnectVersion(MtconnectVersions.V_1_6_0, "https://model.mtconnect.org/#_Version_1.6")]
 		HUMIDITY_ABSOLUTE,
 		/// <summary>
 		﻿/// <see cref="SampleEnum.HUMIDITY_SPECIFIC" />
@@ -696,6 +764,7 @@ namespace Mtconnect.AdapterInterface.DataItemTypes
 		/// </list>
 		/// </remarks>
 		[ObservationalSubType(typeof(HumiditySpecificSubTypes))]
+		[MtconnectVersion(MtconnectVersions.V_1_6_0, "https://model.mtconnect.org/#_Version_1.6")]
 		HUMIDITY_SPECIFIC,
 		/// <summary>
 		﻿/// <see cref="SampleEnum.PRESSURIZATION_RATE" />
@@ -707,6 +776,7 @@ namespace Mtconnect.AdapterInterface.DataItemTypes
 		/// </list>
 		/// </remarks>
 		[ObservationalSubType(typeof(PressurizationRateSubTypes))]
+		[MtconnectVersion(MtconnectVersions.V_1_7_0, "https://model.mtconnect.org/#_Version_1.7")]
 		PRESSURIZATION_RATE,
 		/// <summary>
 		﻿/// <see cref="SampleEnum.DECELERATION" />
@@ -718,6 +788,7 @@ namespace Mtconnect.AdapterInterface.DataItemTypes
 		/// </list>
 		/// </remarks>
 		[ObservationalSubType(typeof(DecelerationSubTypes))]
+		[MtconnectVersion(MtconnectVersions.V_1_7_0, "https://model.mtconnect.org/#_Version_1.7")]
 		DECELERATION,
 		/// <summary>
 		﻿/// <see cref="SampleEnum.ASSET_UPDATE_RATE" />
@@ -727,6 +798,7 @@ namespace Mtconnect.AdapterInterface.DataItemTypes
 		/// <item><b>Introduced</b>: <see href="https://model.mtconnect.org/#_Version_1.7">v1.7</see></item>
 		/// </list>
 		/// </remarks>
+		[MtconnectVersion(MtconnectVersions.V_1_7_0, "https://model.mtconnect.org/#_Version_1.7")]
 		ASSET_UPDATE_RATE,
 		/// <summary>
 		﻿/// <see cref="SampleEnum.ANGULAR_DECELERATION" />
@@ -738,6 +810,7 @@ namespace Mtconnect.AdapterInterface.DataItemTypes
 		/// </list>
 		/// </remarks>
 		[ObservationalSubType(typeof(AngularDecelerationSubTypes))]
+		[MtconnectVersion(MtconnectVersions.V_1_7_0, "https://model.mtconnect.org/#_Version_1.7")]
 		ANGULAR_DECELERATION,
 		/// <summary>
 		﻿/// <see cref="SampleEnum.OBSERVATION_UPDATE_RATE" />
@@ -747,6 +820,7 @@ namespace Mtconnect.AdapterInterface.DataItemTypes
 		/// <item><b>Introduced</b>: <see href="https://model.mtconnect.org/#_Version_1.7">v1.7</see></item>
 		/// </list>
 		/// </remarks>
+		[MtconnectVersion(MtconnectVersions.V_1_7_0, "https://model.mtconnect.org/#_Version_1.7")]
 		OBSERVATION_UPDATE_RATE,
 		/// <summary>
 		﻿/// The force per unit area measured relative to a vacuum.
@@ -756,6 +830,7 @@ namespace Mtconnect.AdapterInterface.DataItemTypes
 		/// <item><b>Introduced</b>: <see href="https://model.mtconnect.org/#_Version_1.7">v1.7</see></item>
 		/// </list>
 		/// </remarks>
+		[MtconnectVersion(MtconnectVersions.V_1_7_0, "https://model.mtconnect.org/#_Version_1.7")]
 		PRESSURE_ABSOLUTE,
 		/// <summary>
 		﻿/// <see cref="SampleEnum.OPENNESS" />
@@ -765,6 +840,7 @@ namespace Mtconnect.AdapterInterface.DataItemTypes
 		/// <item><b>Introduced</b>: <see href="https://model.mtconnect.org/#_Version_2.0">v2.0</see></item>
 		/// </list>
 		/// </remarks>
+		[MtconnectVersion(MtconnectVersions.V_2_0_0, "https://model.mtconnect.org/#_Version_2.0")]
 		OPENNESS,
 		/// <summary>
 		﻿/// <see cref="SampleEnum.DEW_POINT" />
@@ -774,6 +850,7 @@ namespace Mtconnect.AdapterInterface.DataItemTypes
 		/// <item><b>Introduced</b>: <see href="https://model.mtconnect.org/#_Version_2.1">v2.1</see></item>
 		/// </list>
 		/// </remarks>
+		[MtconnectVersion(MtconnectVersions.V_2_1_0, "https://model.mtconnect.org/#_Version_2.1")]
 		DEW_POINT,
 		/// <summary>
 		﻿/// <see cref="SampleEnum.GRAVITATIONAL_FORCE" />  > Note: <i><c>Mass</c> x <c>GravitationalAcceleration</c></i>
@@ -783,6 +860,7 @@ namespace Mtconnect.AdapterInterface.DataItemTypes
 		/// <item><b>Introduced</b>: <see href="https://model.mtconnect.org/#_Version_2.1">v2.1</see></item>
 		/// </list>
 		/// </remarks>
+		[MtconnectVersion(MtconnectVersions.V_2_1_0, "https://model.mtconnect.org/#_Version_2.1")]
 		GRAVITATIONAL_FORCE,
 		/// <summary>
 		﻿/// <see cref="SampleEnum.GRAVITATIONAL_ACCELERATION" />  
@@ -792,6 +870,7 @@ namespace Mtconnect.AdapterInterface.DataItemTypes
 		/// <item><b>Introduced</b>: <see href="https://model.mtconnect.org/#_Version_2.1">v2.1</see></item>
 		/// </list>
 		/// </remarks>
+		[MtconnectVersion(MtconnectVersions.V_2_1_0, "https://model.mtconnect.org/#_Version_2.1")]
 		GRAVITATIONAL_ACCELERATION,
 		/// <summary>
 		﻿/// <see cref="SampleEnum.BATTERY_CAPACITY" />
@@ -803,6 +882,7 @@ namespace Mtconnect.AdapterInterface.DataItemTypes
 		/// </list>
 		/// </remarks>
 		[ObservationalSubType(typeof(BatteryCapacitySubTypes))]
+		[MtconnectVersion(MtconnectVersions.V_2_1_0, "https://model.mtconnect.org/#_Version_2.1")]
 		BATTERY_CAPACITY,
 		/// <summary>
 		﻿/// <see cref="SampleEnum.DISCHARGE_RATE" />
@@ -814,6 +894,7 @@ namespace Mtconnect.AdapterInterface.DataItemTypes
 		/// </list>
 		/// </remarks>
 		[ObservationalSubType(typeof(DischargeRateSubTypes))]
+		[MtconnectVersion(MtconnectVersions.V_2_1_0, "https://model.mtconnect.org/#_Version_2.1")]
 		DISCHARGE_RATE,
 		/// <summary>
 		﻿/// <see cref="SampleEnum.CHARGE_RATE" />
@@ -825,6 +906,7 @@ namespace Mtconnect.AdapterInterface.DataItemTypes
 		/// </list>
 		/// </remarks>
 		[ObservationalSubType(typeof(ChargeRateSubTypes))]
+		[MtconnectVersion(MtconnectVersions.V_2_1_0, "https://model.mtconnect.org/#_Version_2.1")]
 		CHARGE_RATE,
 		/// <summary>
 		﻿/// <see cref="SampleEnum.BATTERY_CHARGE" />
@@ -836,6 +918,7 @@ namespace Mtconnect.AdapterInterface.DataItemTypes
 		/// </list>
 		/// </remarks>
 		[ObservationalSubType(typeof(BatteryChargeSubTypes))]
+		[MtconnectVersion(MtconnectVersions.V_2_1_0, "https://model.mtconnect.org/#_Version_2.1")]
 		BATTERY_CHARGE,
 		/// <summary>
 		﻿/// <see cref="SampleEnum.SETTLING_ERROR" />
@@ -847,6 +930,7 @@ namespace Mtconnect.AdapterInterface.DataItemTypes
 		/// </list>
 		/// </remarks>
 		[ObservationalSubType(typeof(SettlingErrorSubTypes))]
+		[MtconnectVersion(MtconnectVersions.V_2_1_0, "https://model.mtconnect.org/#_Version_2.1")]
 		SETTLING_ERROR,
 		/// <summary>
 		﻿/// <see cref="SampleEnum.SETTLING_ERROR_LINEAR" />
@@ -858,6 +942,7 @@ namespace Mtconnect.AdapterInterface.DataItemTypes
 		/// </list>
 		/// </remarks>
 		[ObservationalSubType(typeof(SettlingErrorLinearSubTypes))]
+		[MtconnectVersion(MtconnectVersions.V_2_1_0, "https://model.mtconnect.org/#_Version_2.1")]
 		SETTLING_ERROR_LINEAR,
 		/// <summary>
 		﻿/// <see cref="SampleEnum.SETTLING_ERROR_ANGULAR" />
@@ -869,6 +954,7 @@ namespace Mtconnect.AdapterInterface.DataItemTypes
 		/// </list>
 		/// </remarks>
 		[ObservationalSubType(typeof(SettlingErrorAngularSubTypes))]
+		[MtconnectVersion(MtconnectVersions.V_2_1_0, "https://model.mtconnect.org/#_Version_2.1")]
 		SETTLING_ERROR_ANGULAR,
 		/// <summary>
 		﻿/// <see cref="SampleEnum.FOLLOWING_ERROR" />
@@ -880,6 +966,7 @@ namespace Mtconnect.AdapterInterface.DataItemTypes
 		/// </list>
 		/// </remarks>
 		[ObservationalSubType(typeof(FollowingErrorSubTypes))]
+		[MtconnectVersion(MtconnectVersions.V_2_1_0, "https://model.mtconnect.org/#_Version_2.1")]
 		FOLLOWING_ERROR,
 		/// <summary>
 		﻿/// <see cref="SampleEnum.FOLLOWING_ERROR_ANGULAR" />
@@ -891,6 +978,7 @@ namespace Mtconnect.AdapterInterface.DataItemTypes
 		/// </list>
 		/// </remarks>
 		[ObservationalSubType(typeof(FollowingErrorAngularSubTypes))]
+		[MtconnectVersion(MtconnectVersions.V_2_1_0, "https://model.mtconnect.org/#_Version_2.1")]
 		FOLLOWING_ERROR_ANGULAR,
 		/// <summary>
 		﻿/// <see cref="SampleEnum.FOLLOWING_ERROR_LINEAR" />
@@ -902,6 +990,7 @@ namespace Mtconnect.AdapterInterface.DataItemTypes
 		/// </list>
 		/// </remarks>
 		[ObservationalSubType(typeof(FollowingErrorLinearSubTypes))]
+		[MtconnectVersion(MtconnectVersions.V_2_1_0, "https://model.mtconnect.org/#_Version_2.1")]
 		FOLLOWING_ERROR_LINEAR,
 		/// <summary>
 		﻿/// <see cref="SampleEnum.DISPLACEMENT_LINEAR" />  > Note: The displacement vector <b>MAY</b> be defined by the motion of the owning <see cref="component">component</see>.
@@ -911,6 +1000,7 @@ namespace Mtconnect.AdapterInterface.DataItemTypes
 		/// <item><b>Introduced</b>: <see href="https://model.mtconnect.org/#_Version_2.1">v2.1</see></item>
 		/// </list>
 		/// </remarks>
+		[MtconnectVersion(MtconnectVersions.V_2_1_0, "https://model.mtconnect.org/#_Version_2.1")]
 		DISPLACEMENT_LINEAR,
 		/// <summary>
 		﻿/// <see cref="SampleEnum.DISPLACEMENT_ANGULAR" />  > Note: The displacement vector <b>MAY</b> be defined by the motion of the owning <see cref="component">component</see>.
@@ -920,6 +1010,7 @@ namespace Mtconnect.AdapterInterface.DataItemTypes
 		/// <item><b>Introduced</b>: <see href="https://model.mtconnect.org/#_Version_2.1">v2.1</see></item>
 		/// </list>
 		/// </remarks>
+		[MtconnectVersion(MtconnectVersions.V_2_1_0, "https://model.mtconnect.org/#_Version_2.1")]
 		DISPLACEMENT_ANGULAR,
 		/// <summary>
 		﻿/// <see cref="SampleEnum.POSITION_CARTESIAN" />
@@ -929,6 +1020,7 @@ namespace Mtconnect.AdapterInterface.DataItemTypes
 		/// <item><b>Introduced</b>: <see href="https://model.mtconnect.org/#_Version_2.1">v2.1</see></item>
 		/// </list>
 		/// </remarks>
+		[MtconnectVersion(MtconnectVersions.V_2_1_0, "https://model.mtconnect.org/#_Version_2.1")]
 		POSITION_CARTESIAN,
 	}
 }

@@ -2,6 +2,7 @@
 #pragma warning disable 1574
 using System;
 using System.CodeDom.Compiler;
+using Mtconnect.AdapterInterface.Contracts;
 using Mtconnect.AdapterInterface.Contracts.Attributes;
 
 namespace Mtconnect.AdapterInterface.DataItemValues
@@ -14,6 +15,7 @@ namespace Mtconnect.AdapterInterface.DataItemValues
 	/// <item><b>Introduced</b>: <see href="https://model.mtconnect.org/#_Version_1.8">v1.8</see></item>
 	/// </list>
 	/// </remarks>
+	[MtconnectVersion(MtconnectVersions.V_1_8_0, "https://model.mtconnect.org/#_Version_1.8")]
 	[GeneratedCode("MtconnectTranspiler.Sinks.CSharp.Adapter", "1.0.7.0")]
 	public enum PartProcessingStateValues
 	{
@@ -29,6 +31,7 @@ namespace Mtconnect.AdapterInterface.DataItemValues
 		/// <item><b>Introduced</b>: <see href="https://model.mtconnect.org/#_Version_1.8">v1.8</see></item>
 		/// </list>
 		/// </remarks>
+		[MtconnectVersion(MtconnectVersions.V_1_8_0, "https://model.mtconnect.org/#_Version_1.8")]
 		NEEDS_PROCESSING,
 		/// <summary>
 		﻿/// part occurrence is actively being processed.
@@ -38,6 +41,7 @@ namespace Mtconnect.AdapterInterface.DataItemValues
 		/// <item><b>Introduced</b>: <see href="https://model.mtconnect.org/#_Version_1.8">v1.8</see></item>
 		/// </list>
 		/// </remarks>
+		[MtconnectVersion(MtconnectVersions.V_1_8_0, "https://model.mtconnect.org/#_Version_1.8")]
 		IN_PROCESS,
 		/// <summary>
 		﻿/// part occurrence is no longer being processed.   A general state when the reason for termination is unknown.
@@ -47,6 +51,7 @@ namespace Mtconnect.AdapterInterface.DataItemValues
 		/// <item><b>Introduced</b>: <see href="https://model.mtconnect.org/#_Version_1.8">v1.8</see></item>
 		/// </list>
 		/// </remarks>
+		[MtconnectVersion(MtconnectVersions.V_1_8_0, "https://model.mtconnect.org/#_Version_1.8")]
 		PROCESSING_ENDED,
 		/// <summary>
 		﻿/// part occurrence has completed processing successfully.
@@ -56,6 +61,7 @@ namespace Mtconnect.AdapterInterface.DataItemValues
 		/// <item><b>Introduced</b>: <see href="https://model.mtconnect.org/#_Version_1.8">v1.8</see></item>
 		/// </list>
 		/// </remarks>
+		[MtconnectVersion(MtconnectVersions.V_1_8_0, "https://model.mtconnect.org/#_Version_1.8")]
 		PROCESSING_ENDED_COMPLETE,
 		/// <summary>
 		﻿/// process has been stopped during the processing.   The part occurrence will require special treatment.
@@ -65,6 +71,7 @@ namespace Mtconnect.AdapterInterface.DataItemValues
 		/// <item><b>Introduced</b>: <see href="https://model.mtconnect.org/#_Version_1.8">v1.8</see></item>
 		/// </list>
 		/// </remarks>
+		[MtconnectVersion(MtconnectVersions.V_1_8_0, "https://model.mtconnect.org/#_Version_1.8")]
 		PROCESSING_ENDED_STOPPED,
 		/// <summary>
 		﻿/// processing of the part occurrence has come to a premature end.
@@ -74,6 +81,7 @@ namespace Mtconnect.AdapterInterface.DataItemValues
 		/// <item><b>Introduced</b>: <see href="https://model.mtconnect.org/#_Version_1.8">v1.8</see></item>
 		/// </list>
 		/// </remarks>
+		[MtconnectVersion(MtconnectVersions.V_1_8_0, "https://model.mtconnect.org/#_Version_1.8")]
 		PROCESSING_ENDED_ABORTED,
 		/// <summary>
 		﻿/// terminal state when the part occurrence has been removed from the equipment by an external entity and it no longer exists at the equipment.
@@ -83,6 +91,7 @@ namespace Mtconnect.AdapterInterface.DataItemValues
 		/// <item><b>Introduced</b>: <see href="https://model.mtconnect.org/#_Version_1.8">v1.8</see></item>
 		/// </list>
 		/// </remarks>
+		[MtconnectVersion(MtconnectVersions.V_1_8_0, "https://model.mtconnect.org/#_Version_1.8")]
 		PROCESSING_ENDED_LOST,
 		/// <summary>
 		﻿/// part occurrence has been skipped for processing on the piece of equipment.
@@ -92,6 +101,7 @@ namespace Mtconnect.AdapterInterface.DataItemValues
 		/// <item><b>Introduced</b>: <see href="https://model.mtconnect.org/#_Version_1.8">v1.8</see></item>
 		/// </list>
 		/// </remarks>
+		[MtconnectVersion(MtconnectVersions.V_1_8_0, "https://model.mtconnect.org/#_Version_1.8")]
 		PROCESSING_ENDED_SKIPPED,
 		/// <summary>
 		﻿/// part occurrence has been processed completely. However, the processing may have a problem.
@@ -101,6 +111,7 @@ namespace Mtconnect.AdapterInterface.DataItemValues
 		/// <item><b>Introduced</b>: <see href="https://model.mtconnect.org/#_Version_1.8">v1.8</see></item>
 		/// </list>
 		/// </remarks>
+		[MtconnectVersion(MtconnectVersions.V_1_8_0, "https://model.mtconnect.org/#_Version_1.8")]
 		PROCESSING_ENDED_REJECTED,
 		/// <summary>
 		﻿/// part occurrence is waiting for transit.
@@ -110,6 +121,7 @@ namespace Mtconnect.AdapterInterface.DataItemValues
 		/// <item><b>Introduced</b>: <see href="https://model.mtconnect.org/#_Version_1.8">v1.8</see></item>
 		/// </list>
 		/// </remarks>
+		[MtconnectVersion(MtconnectVersions.V_1_8_0, "https://model.mtconnect.org/#_Version_1.8")]
 		WAITING_FOR_TRANSIT,
 		/// <summary>
 		﻿/// part occurrence is being transported to its destination.
@@ -119,6 +131,7 @@ namespace Mtconnect.AdapterInterface.DataItemValues
 		/// <item><b>Introduced</b>: <see href="https://model.mtconnect.org/#_Version_1.8">v1.8</see></item>
 		/// </list>
 		/// </remarks>
+		[MtconnectVersion(MtconnectVersions.V_1_8_0, "https://model.mtconnect.org/#_Version_1.8")]
 		IN_TRANSIT,
 		/// <summary>
 		﻿/// part occurrence has been placed at its designated destination.
@@ -128,6 +141,7 @@ namespace Mtconnect.AdapterInterface.DataItemValues
 		/// <item><b>Introduced</b>: <see href="https://model.mtconnect.org/#_Version_1.8">v1.8</see></item>
 		/// </list>
 		/// </remarks>
+		[MtconnectVersion(MtconnectVersions.V_1_8_0, "https://model.mtconnect.org/#_Version_1.8")]
 		TRANSIT_COMPLETE,
 	}
 }

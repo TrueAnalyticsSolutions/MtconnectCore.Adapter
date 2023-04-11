@@ -2,6 +2,7 @@
 #pragma warning disable 1574
 using System;
 using System.CodeDom.Compiler;
+using Mtconnect.AdapterInterface.Contracts;
 using Mtconnect.AdapterInterface.Contracts.Attributes;
 
 namespace Mtconnect.AdapterInterface.DataItemValues
@@ -14,6 +15,7 @@ namespace Mtconnect.AdapterInterface.DataItemValues
 	/// <item><b>Introduced</b>: <see href="https://model.mtconnect.org/#_Version_1.1">v1.1</see></item>
 	/// </list>
 	/// </remarks>
+	[MtconnectVersion(MtconnectVersions.V_1_1_0, "https://model.mtconnect.org/#_Version_1.1")]
 	[GeneratedCode("MtconnectTranspiler.Sinks.CSharp.Adapter", "1.0.7.0")]
 	public enum PathModeValues
 	{
@@ -29,6 +31,7 @@ namespace Mtconnect.AdapterInterface.DataItemValues
 		/// <item><b>Introduced</b>: <see href="https://model.mtconnect.org/#_Version_1.1">v1.1</see></item>
 		/// </list>
 		/// </remarks>
+		[MtconnectVersion(MtconnectVersions.V_1_1_0, "https://model.mtconnect.org/#_Version_1.1")]
 		INDEPENDENT,
 		/// <summary>
 		﻿/// path provides information or state values that influences the operation of other <see cref="DataItem">DataItem</see> of similar type.
@@ -38,6 +41,7 @@ namespace Mtconnect.AdapterInterface.DataItemValues
 		/// <item><b>Introduced</b>: <see href="https://model.mtconnect.org/#_Version_1.2">v1.2</see></item>
 		/// </list>
 		/// </remarks>
+		[MtconnectVersion(MtconnectVersions.V_1_2_0, "https://model.mtconnect.org/#_Version_1.2")]
 		MASTER,
 		/// <summary>
 		﻿/// physical or logical parts which are not physically connected to each other but are operating together.
@@ -47,6 +51,7 @@ namespace Mtconnect.AdapterInterface.DataItemValues
 		/// <item><b>Introduced</b>: <see href="https://model.mtconnect.org/#_Version_1.1">v1.1</see></item>
 		/// </list>
 		/// </remarks>
+		[MtconnectVersion(MtconnectVersions.V_1_1_0, "https://model.mtconnect.org/#_Version_1.1")]
 		SYNCHRONOUS,
 		/// <summary>
 		﻿/// axes associated with the path are mirroring the motion of the <c>MASTER</c> path.
@@ -56,6 +61,7 @@ namespace Mtconnect.AdapterInterface.DataItemValues
 		/// <item><b>Introduced</b>: <see href="https://model.mtconnect.org/#_Version_1.1">v1.1</see></item>
 		/// </list>
 		/// </remarks>
+		[MtconnectVersion(MtconnectVersions.V_1_1_0, "https://model.mtconnect.org/#_Version_1.1")]
 		MIRROR,
 	}
 }

@@ -4,6 +4,7 @@ dversion_slim = (source?.deprecated_version | string.slice 20 3) | string.replac
 #pragma warning disable 1574
 using System;
 using System.CodeDom.Compiler;
+using Mtconnect.AdapterInterface.Contracts;
 using Mtconnect.AdapterInterface.Contracts.Attributes;
 {{~ if enum_has_values source ~}}
 using Mtconnect.AdapterInterface.DataItemValues;
@@ -71,7 +72,7 @@ d_item_version_slim = (item?.deprecated_version | string.slice 20 3) | string.re
 		{{~ if category_contains_value source item ~}}
 		[ObservationalValue(typeof({{ source?.value_types[item.name] }}))]
 {{ end ~}}
-		{{ include 'MtconnectVersion.scriban' source }}
+		{{ include 'MtconnectVersion.scriban' item }}
 		{{ item.name }},
 	{{~ end ~}}
 	}

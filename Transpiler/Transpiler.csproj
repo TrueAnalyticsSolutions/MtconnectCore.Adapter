@@ -12,6 +12,7 @@
     <None Remove="Templates\Adapter.ComponentInterface.scriban" />
     <None Remove="Templates\Adapter.UnitStaticHelper.scriban" />
     <None Remove="Templates\Adapter.ValueType.scriban" />
+    <None Remove="Templates\MtconnectVersion.scriban" />
   </ItemGroup>
 
   <ItemGroup>
@@ -34,6 +35,9 @@
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
     <Content Include="Templates\Adapter.ValueType.scriban">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Templates\MtconnectVersion.scriban">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
     <Content Include="Templates\UmlCommentsSummaryContent.scriban" />

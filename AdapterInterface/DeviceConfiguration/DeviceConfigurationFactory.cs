@@ -309,7 +309,16 @@ namespace Mtconnect.AdapterInterface.DeviceConfiguration
         // TODO: Update DataItem to internally manage the "Introduced" and "Deprecated" properties according to the Type/SubType
         private string GetMaximumMtconnectVersion(Adapter adapter)
         {
-            return "2.2";
+            var maxVersion = adapter.DataItems.Select(o => o.TypeEnum?.GetType()?.GetCustomAttribute<MtconnectVersionAttribute>())
+                .Where(o => o != null)
+                .Select(o => o.MinimumVersion)
+                .Distinct()
+                .DefaultIfEmpty(MtconnectVersions.V_1_0_1)
+                .Max();
+            string result = maxVersion.ToString();
+            result = result.Substring(result.IndexOf("_") + 1);// Remove 'V_'
+            result = result.Substring(0 ,result.IndexOf("_", 2) - 1); // Take everything up to the next '_'
+            return result.Replace("_", ".");
         }
 
         private class DataItemValues

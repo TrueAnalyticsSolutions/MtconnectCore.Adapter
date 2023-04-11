@@ -2,6 +2,7 @@
 #pragma warning disable 1574
 using System;
 using System.CodeDom.Compiler;
+using Mtconnect.AdapterInterface.Contracts;
 using Mtconnect.AdapterInterface.Contracts.Attributes;
 
 namespace Mtconnect.AdapterInterface.DataItemValues
@@ -16,6 +17,7 @@ namespace Mtconnect.AdapterInterface.DataItemValues
 	/// </list>
 	/// </remarks>
 	[Obsolete("Deprecated in v1.1 according to https://model.mtconnect.org/#_Version_1.1")]
+	[MtconnectVersion(MtconnectVersions.V_1_0_1, "https://model.mtconnect.org/#_Version_1.0", MtconnectVersions.V_1_1_0)]
 	[GeneratedCode("MtconnectTranspiler.Sinks.CSharp.Adapter", "1.0.7.0")]
 	public enum PowerStatusValues
 	{
@@ -32,6 +34,7 @@ namespace Mtconnect.AdapterInterface.DataItemValues
 		/// </list>
 		/// </remarks>
 		[Obsolete("Deprecated in v1.1 according to https://model.mtconnect.org/#_Version_1.1")]
+		[MtconnectVersion(MtconnectVersions.V_1_0_1, "https://model.mtconnect.org/#_Version_1.0", MtconnectVersions.V_1_1_0)]
 		ON,
 		/// <summary>
 		﻿		/// </summary>
@@ -42,6 +45,7 @@ namespace Mtconnect.AdapterInterface.DataItemValues
 		/// </list>
 		/// </remarks>
 		[Obsolete("Deprecated in v1.1 according to https://model.mtconnect.org/#_Version_1.1")]
+		[MtconnectVersion(MtconnectVersions.V_1_0_1, "https://model.mtconnect.org/#_Version_1.0", MtconnectVersions.V_1_1_0)]
 		OFF,
 	}
 }

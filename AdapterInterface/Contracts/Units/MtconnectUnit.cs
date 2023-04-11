@@ -2,6 +2,7 @@
 #pragma warning disable 1574
 using System;
 using System.CodeDom.Compiler;
+using Mtconnect.AdapterInterface.Contracts;
 using Mtconnect.AdapterInterface.Contracts.Attributes;
 
 namespace Mtconnect.AdapterInterface.Units
@@ -14,6 +15,7 @@ namespace Mtconnect.AdapterInterface.Units
 	/// <item><b>Introduced</b>: <see href="https://model.mtconnect.org/#_Version_1.0">v1.0</see></item>
 	/// </list>
 	/// </remarks>
+	[MtconnectVersion(MtconnectVersions.V_1_0_1, "https://model.mtconnect.org/#_Version_1.0")]
 	[GeneratedCode("MtconnectTranspiler.Sinks.CSharp.Adapter", "1.0.7.0")]
 	public enum MtconnectUnit
 	{
@@ -29,6 +31,7 @@ namespace Mtconnect.AdapterInterface.Units
 		/// <item><b>Introduced</b>: <see href="https://model.mtconnect.org/#_Version_1.0">v1.0</see></item>
 		/// </list>
 		/// </remarks>
+		[MtconnectVersion(MtconnectVersions.V_1_0_1, "https://model.mtconnect.org/#_Version_1.0")]
 		AMPERE,
 		/// <summary>
 		﻿/// degrees Celsius.
@@ -38,6 +41,7 @@ namespace Mtconnect.AdapterInterface.Units
 		/// <item><b>Introduced</b>: <see href="https://model.mtconnect.org/#_Version_1.0">v1.0</see></item>
 		/// </list>
 		/// </remarks>
+		[MtconnectVersion(MtconnectVersions.V_1_0_1, "https://model.mtconnect.org/#_Version_1.0")]
 		CELSIUS,
 		/// <summary>
 		﻿/// count of something.
@@ -47,6 +51,7 @@ namespace Mtconnect.AdapterInterface.Units
 		/// <item><b>Introduced</b>: <see href="https://model.mtconnect.org/#_Version_1.0">v1.0</see></item>
 		/// </list>
 		/// </remarks>
+		[MtconnectVersion(MtconnectVersions.V_1_0_1, "https://model.mtconnect.org/#_Version_1.0")]
 		COUNT,
 		/// <summary>
 		﻿/// sound level.
@@ -56,6 +61,7 @@ namespace Mtconnect.AdapterInterface.Units
 		/// <item><b>Introduced</b>: <see href="https://model.mtconnect.org/#_Version_1.2">v1.2</see></item>
 		/// </list>
 		/// </remarks>
+		[MtconnectVersion(MtconnectVersions.V_1_2_0, "https://model.mtconnect.org/#_Version_1.2")]
 		DECIBEL,
 		/// <summary>
 		﻿/// angle in degrees.
@@ -65,6 +71,7 @@ namespace Mtconnect.AdapterInterface.Units
 		/// <item><b>Introduced</b>: <see href="https://model.mtconnect.org/#_Version_1.0">v1.0</see></item>
 		/// </list>
 		/// </remarks>
+		[MtconnectVersion(MtconnectVersions.V_1_0_1, "https://model.mtconnect.org/#_Version_1.0")]
 		DEGREE,
 		/// <summary>
 		﻿/// space-delimited, floating-point representation of the angular rotation in degrees around the X, Y, and Z axes relative to a cartesian coordinate system respectively in order as A, B, and C.   If any of the rotations is not known, it <b>MUST</b> be zero (0).
@@ -74,6 +81,7 @@ namespace Mtconnect.AdapterInterface.Units
 		/// <item><b>Introduced</b>: <see href="https://model.mtconnect.org/#_Version_1.6">v1.6</see></item>
 		/// </list>
 		/// </remarks>
+		[MtconnectVersion(MtconnectVersions.V_1_6_0, "https://model.mtconnect.org/#_Version_1.6")]
 		DEGREE_3D,
 		/// <summary>
 		﻿/// angular degrees per second.
@@ -83,6 +91,7 @@ namespace Mtconnect.AdapterInterface.Units
 		/// <item><b>Introduced</b>: <see href="https://model.mtconnect.org/#_Version_1.0">v1.0</see></item>
 		/// </list>
 		/// </remarks>
+		[MtconnectVersion(MtconnectVersions.V_1_0_1, "https://model.mtconnect.org/#_Version_1.0")]
 		DEGREE_PER_SECOND,
 		/// <summary>
 		﻿/// angular acceleration in degrees per second squared.
@@ -92,6 +101,7 @@ namespace Mtconnect.AdapterInterface.Units
 		/// <item><b>Introduced</b>: <see href="https://model.mtconnect.org/#_Version_1.0">v1.0</see></item>
 		/// </list>
 		/// </remarks>
+		[MtconnectVersion(MtconnectVersions.V_1_0_1, "https://model.mtconnect.org/#_Version_1.0")]
 		DEGREE_PER_SECOND_SQUARED,
 		/// <summary>
 		﻿/// frequency measured in cycles per second.
@@ -101,6 +111,7 @@ namespace Mtconnect.AdapterInterface.Units
 		/// <item><b>Introduced</b>: <see href="https://model.mtconnect.org/#_Version_1.0">v1.0</see></item>
 		/// </list>
 		/// </remarks>
+		[MtconnectVersion(MtconnectVersions.V_1_0_1, "https://model.mtconnect.org/#_Version_1.0")]
 		HERTZ,
 		/// <summary>
 		﻿/// measurement of energy.
@@ -110,6 +121,7 @@ namespace Mtconnect.AdapterInterface.Units
 		/// <item><b>Introduced</b>: <see href="https://model.mtconnect.org/#_Version_1.1">v1.1</see></item>
 		/// </list>
 		/// </remarks>
+		[MtconnectVersion(MtconnectVersions.V_1_1_0, "https://model.mtconnect.org/#_Version_1.1")]
 		JOULE,
 		/// <summary>
 		﻿/// kilograms.
@@ -119,6 +131,7 @@ namespace Mtconnect.AdapterInterface.Units
 		/// <item><b>Introduced</b>: <see href="https://model.mtconnect.org/#_Version_1.0">v1.0</see></item>
 		/// </list>
 		/// </remarks>
+		[MtconnectVersion(MtconnectVersions.V_1_0_1, "https://model.mtconnect.org/#_Version_1.0")]
 		KILOGRAM,
 		/// <summary>
 		﻿/// measurement of volume of a fluid.
@@ -128,6 +141,7 @@ namespace Mtconnect.AdapterInterface.Units
 		/// <item><b>Introduced</b>: <see href="https://model.mtconnect.org/#_Version_1.0">v1.0</see></item>
 		/// </list>
 		/// </remarks>
+		[MtconnectVersion(MtconnectVersions.V_1_0_1, "https://model.mtconnect.org/#_Version_1.0")]
 		LITER,
 		/// <summary>
 		﻿/// liters per second.
@@ -137,6 +151,7 @@ namespace Mtconnect.AdapterInterface.Units
 		/// <item><b>Introduced</b>: <see href="https://model.mtconnect.org/#_Version_1.2">v1.2</see></item>
 		/// </list>
 		/// </remarks>
+		[MtconnectVersion(MtconnectVersions.V_1_2_0, "https://model.mtconnect.org/#_Version_1.2")]
 		LITER_PER_SECOND,
 		/// <summary>
 		﻿/// measurement of tilt.
@@ -146,6 +161,7 @@ namespace Mtconnect.AdapterInterface.Units
 		/// <item><b>Introduced</b>: <see href="https://model.mtconnect.org/#_Version_1.2">v1.2</see></item>
 		/// </list>
 		/// </remarks>
+		[MtconnectVersion(MtconnectVersions.V_1_2_0, "https://model.mtconnect.org/#_Version_1.2")]
 		MICRO_RADIAN,
 		/// <summary>
 		﻿/// millimeters.
@@ -155,6 +171,7 @@ namespace Mtconnect.AdapterInterface.Units
 		/// <item><b>Introduced</b>: <see href="https://model.mtconnect.org/#_Version_1.0">v1.0</see></item>
 		/// </list>
 		/// </remarks>
+		[MtconnectVersion(MtconnectVersions.V_1_0_1, "https://model.mtconnect.org/#_Version_1.0")]
 		MILLIMETER,
 		/// <summary>
 		﻿/// point in space identified by X, Y, and Z positions and represented by a space-delimited set of numbers each expressed in millimeters.
@@ -164,6 +181,7 @@ namespace Mtconnect.AdapterInterface.Units
 		/// <item><b>Introduced</b>: <see href="https://model.mtconnect.org/#_Version_1.1">v1.1</see></item>
 		/// </list>
 		/// </remarks>
+		[MtconnectVersion(MtconnectVersions.V_1_1_0, "https://model.mtconnect.org/#_Version_1.1")]
 		MILLIMETER_3D,
 		/// <summary>
 		﻿/// millimeters per revolution.
@@ -173,6 +191,7 @@ namespace Mtconnect.AdapterInterface.Units
 		/// <item><b>Introduced</b>: <see href="https://model.mtconnect.org/#_Version_1.5">v1.5</see></item>
 		/// </list>
 		/// </remarks>
+		[MtconnectVersion(MtconnectVersions.V_1_5_0, "https://model.mtconnect.org/#_Version_1.5")]
 		MILLIMETER_PER_REVOLUTION,
 		/// <summary>
 		﻿/// millimeters per second.
@@ -182,6 +201,7 @@ namespace Mtconnect.AdapterInterface.Units
 		/// <item><b>Introduced</b>: <see href="https://model.mtconnect.org/#_Version_1.0">v1.0</see></item>
 		/// </list>
 		/// </remarks>
+		[MtconnectVersion(MtconnectVersions.V_1_0_1, "https://model.mtconnect.org/#_Version_1.0")]
 		MILLIMETER_PER_SECOND,
 		/// <summary>
 		﻿/// acceleration in millimeters per second squared.
@@ -191,6 +211,7 @@ namespace Mtconnect.AdapterInterface.Units
 		/// <item><b>Introduced</b>: <see href="https://model.mtconnect.org/#_Version_1.0">v1.0</see></item>
 		/// </list>
 		/// </remarks>
+		[MtconnectVersion(MtconnectVersions.V_1_0_1, "https://model.mtconnect.org/#_Version_1.0")]
 		MILLIMETER_PER_SECOND_SQUARED,
 		/// <summary>
 		﻿/// force in Newtons.
@@ -200,6 +221,7 @@ namespace Mtconnect.AdapterInterface.Units
 		/// <item><b>Introduced</b>: <see href="https://model.mtconnect.org/#_Version_1.0">v1.0</see></item>
 		/// </list>
 		/// </remarks>
+		[MtconnectVersion(MtconnectVersions.V_1_0_1, "https://model.mtconnect.org/#_Version_1.0")]
 		NEWTON,
 		/// <summary>
 		﻿/// torque, a unit for force times distance.
@@ -209,6 +231,7 @@ namespace Mtconnect.AdapterInterface.Units
 		/// <item><b>Introduced</b>: <see href="https://model.mtconnect.org/#_Version_1.0">v1.0</see></item>
 		/// </list>
 		/// </remarks>
+		[MtconnectVersion(MtconnectVersions.V_1_0_1, "https://model.mtconnect.org/#_Version_1.0")]
 		NEWTON_METER,
 		/// <summary>
 		﻿/// measure of electrical resistance.
@@ -218,6 +241,7 @@ namespace Mtconnect.AdapterInterface.Units
 		/// <item><b>Introduced</b>: <see href="https://model.mtconnect.org/#_Version_1.2">v1.2</see></item>
 		/// </list>
 		/// </remarks>
+		[MtconnectVersion(MtconnectVersions.V_1_2_0, "https://model.mtconnect.org/#_Version_1.2")]
 		OHM,
 		/// <summary>
 		﻿/// pressure in Newtons per square meter.
@@ -227,6 +251,7 @@ namespace Mtconnect.AdapterInterface.Units
 		/// <item><b>Introduced</b>: <see href="https://model.mtconnect.org/#_Version_1.0">v1.0</see></item>
 		/// </list>
 		/// </remarks>
+		[MtconnectVersion(MtconnectVersions.V_1_0_1, "https://model.mtconnect.org/#_Version_1.0")]
 		PASCAL,
 		/// <summary>
 		﻿/// measurement of viscosity.
@@ -236,6 +261,7 @@ namespace Mtconnect.AdapterInterface.Units
 		/// <item><b>Introduced</b>: <see href="https://model.mtconnect.org/#_Version_1.2">v1.2</see></item>
 		/// </list>
 		/// </remarks>
+		[MtconnectVersion(MtconnectVersions.V_1_2_0, "https://model.mtconnect.org/#_Version_1.2")]
 		PASCAL_SECOND,
 		/// <summary>
 		﻿/// percentage.
@@ -245,6 +271,7 @@ namespace Mtconnect.AdapterInterface.Units
 		/// <item><b>Introduced</b>: <see href="https://model.mtconnect.org/#_Version_1.0">v1.0</see></item>
 		/// </list>
 		/// </remarks>
+		[MtconnectVersion(MtconnectVersions.V_1_0_1, "https://model.mtconnect.org/#_Version_1.0")]
 		PERCENT,
 		/// <summary>
 		﻿/// measure of the acidity or alkalinity of a solution.
@@ -254,6 +281,7 @@ namespace Mtconnect.AdapterInterface.Units
 		/// <item><b>Introduced</b>: <see href="https://model.mtconnect.org/#_Version_1.1">v1.1</see></item>
 		/// </list>
 		/// </remarks>
+		[MtconnectVersion(MtconnectVersions.V_1_1_0, "https://model.mtconnect.org/#_Version_1.1")]
 		PH,
 		/// <summary>
 		﻿/// revolutions per minute.
@@ -263,6 +291,7 @@ namespace Mtconnect.AdapterInterface.Units
 		/// <item><b>Introduced</b>: <see href="https://model.mtconnect.org/#_Version_1.0">v1.0</see></item>
 		/// </list>
 		/// </remarks>
+		[MtconnectVersion(MtconnectVersions.V_1_0_1, "https://model.mtconnect.org/#_Version_1.0")]
 		REVOLUTION_PER_MINUTE,
 		/// <summary>
 		﻿/// measurement of time.
@@ -272,6 +301,7 @@ namespace Mtconnect.AdapterInterface.Units
 		/// <item><b>Introduced</b>: <see href="https://model.mtconnect.org/#_Version_1.0">v1.0</see></item>
 		/// </list>
 		/// </remarks>
+		[MtconnectVersion(MtconnectVersions.V_1_0_1, "https://model.mtconnect.org/#_Version_1.0")]
 		SECOND,
 		/// <summary>
 		﻿/// measurement of electrical conductivity.
@@ -281,6 +311,7 @@ namespace Mtconnect.AdapterInterface.Units
 		/// <item><b>Introduced</b>: <see href="https://model.mtconnect.org/#_Version_1.2">v1.2</see></item>
 		/// </list>
 		/// </remarks>
+		[MtconnectVersion(MtconnectVersions.V_1_2_0, "https://model.mtconnect.org/#_Version_1.2")]
 		SIEMENS_PER_METER,
 		/// <summary>
 		﻿/// volts.
@@ -290,6 +321,7 @@ namespace Mtconnect.AdapterInterface.Units
 		/// <item><b>Introduced</b>: <see href="https://model.mtconnect.org/#_Version_1.0">v1.0</see></item>
 		/// </list>
 		/// </remarks>
+		[MtconnectVersion(MtconnectVersions.V_1_0_1, "https://model.mtconnect.org/#_Version_1.0")]
 		VOLT,
 		/// <summary>
 		﻿/// measurement of the apparent power in an electrical circuit, equal to the product of root-mean-square (RMS) voltage and RMS current (commonly referred to as VA).
@@ -299,6 +331,7 @@ namespace Mtconnect.AdapterInterface.Units
 		/// <item><b>Introduced</b>: <see href="https://model.mtconnect.org/#_Version_1.2">v1.2</see></item>
 		/// </list>
 		/// </remarks>
+		[MtconnectVersion(MtconnectVersions.V_1_2_0, "https://model.mtconnect.org/#_Version_1.2")]
 		VOLT_AMPERE,
 		/// <summary>
 		﻿/// measurement of reactive power in an AC electrical circuit (commonly referred to as VAR).
@@ -308,6 +341,7 @@ namespace Mtconnect.AdapterInterface.Units
 		/// <item><b>Introduced</b>: <see href="https://model.mtconnect.org/#_Version_1.2">v1.2</see></item>
 		/// </list>
 		/// </remarks>
+		[MtconnectVersion(MtconnectVersions.V_1_2_0, "https://model.mtconnect.org/#_Version_1.2")]
 		VOLT_AMPERE_REACTIVE,
 		/// <summary>
 		﻿/// watts.
@@ -317,6 +351,7 @@ namespace Mtconnect.AdapterInterface.Units
 		/// <item><b>Introduced</b>: <see href="https://model.mtconnect.org/#_Version_1.0">v1.0</see></item>
 		/// </list>
 		/// </remarks>
+		[MtconnectVersion(MtconnectVersions.V_1_0_1, "https://model.mtconnect.org/#_Version_1.0")]
 		WATT,
 		/// <summary>
 		﻿/// measurement of electrical energy, equal to one Joule.
@@ -326,6 +361,7 @@ namespace Mtconnect.AdapterInterface.Units
 		/// <item><b>Introduced</b>: <see href="https://model.mtconnect.org/#_Version_1.2">v1.2</see></item>
 		/// </list>
 		/// </remarks>
+		[MtconnectVersion(MtconnectVersions.V_1_2_0, "https://model.mtconnect.org/#_Version_1.2")]
 		WATT_SECOND,
 		/// <summary>
 		﻿/// gram per cubic meter.
@@ -335,6 +371,7 @@ namespace Mtconnect.AdapterInterface.Units
 		/// <item><b>Introduced</b>: <see href="https://model.mtconnect.org/#_Version_1.6">v1.6</see></item>
 		/// </list>
 		/// </remarks>
+		[MtconnectVersion(MtconnectVersions.V_1_6_0, "https://model.mtconnect.org/#_Version_1.6")]
 		GRAM_PER_CUBIC_METER,
 		/// <summary>
 		﻿/// geometric volume in millimeters.
@@ -344,6 +381,7 @@ namespace Mtconnect.AdapterInterface.Units
 		/// <item><b>Introduced</b>: <see href="https://model.mtconnect.org/#_Version_1.5">v1.5</see></item>
 		/// </list>
 		/// </remarks>
+		[MtconnectVersion(MtconnectVersions.V_1_5_0, "https://model.mtconnect.org/#_Version_1.5")]
 		CUBIC_MILLIMETER,
 		/// <summary>
 		﻿/// change of geometric volume per second.
@@ -353,6 +391,7 @@ namespace Mtconnect.AdapterInterface.Units
 		/// <item><b>Introduced</b>: <see href="https://model.mtconnect.org/#_Version_1.5">v1.5</see></item>
 		/// </list>
 		/// </remarks>
+		[MtconnectVersion(MtconnectVersions.V_1_5_0, "https://model.mtconnect.org/#_Version_1.5")]
 		CUBIC_MILLIMETER_PER_SECOND,
 		/// <summary>
 		﻿/// change in geometric volume per second squared.
@@ -362,6 +401,7 @@ namespace Mtconnect.AdapterInterface.Units
 		/// <item><b>Introduced</b>: <see href="https://model.mtconnect.org/#_Version_1.5">v1.5</see></item>
 		/// </list>
 		/// </remarks>
+		[MtconnectVersion(MtconnectVersions.V_1_5_0, "https://model.mtconnect.org/#_Version_1.5")]
 		CUBIC_MILLIMETER_PER_SECOND_SQUARED,
 		/// <summary>
 		﻿/// milligram.
@@ -371,6 +411,7 @@ namespace Mtconnect.AdapterInterface.Units
 		/// <item><b>Introduced</b>: <see href="https://model.mtconnect.org/#_Version_1.5">v1.5</see></item>
 		/// </list>
 		/// </remarks>
+		[MtconnectVersion(MtconnectVersions.V_1_5_0, "https://model.mtconnect.org/#_Version_1.5")]
 		MILLIGRAM,
 		/// <summary>
 		﻿/// milligram per cubic millimeter.
@@ -380,6 +421,7 @@ namespace Mtconnect.AdapterInterface.Units
 		/// <item><b>Introduced</b>: <see href="https://model.mtconnect.org/#_Version_1.5">v1.5</see></item>
 		/// </list>
 		/// </remarks>
+		[MtconnectVersion(MtconnectVersions.V_1_5_0, "https://model.mtconnect.org/#_Version_1.5")]
 		MILLIGRAM_PER_CUBIC_MILLIMETER,
 		/// <summary>
 		﻿/// milliliter.
@@ -389,6 +431,7 @@ namespace Mtconnect.AdapterInterface.Units
 		/// <item><b>Introduced</b>: <see href="https://model.mtconnect.org/#_Version_1.5">v1.5</see></item>
 		/// </list>
 		/// </remarks>
+		[MtconnectVersion(MtconnectVersions.V_1_5_0, "https://model.mtconnect.org/#_Version_1.5")]
 		MILLILITER,
 		/// <summary>
 		﻿/// counts per second.
@@ -398,6 +441,7 @@ namespace Mtconnect.AdapterInterface.Units
 		/// <item><b>Introduced</b>: <see href="https://model.mtconnect.org/#_Version_1.7">v1.7</see></item>
 		/// </list>
 		/// </remarks>
+		[MtconnectVersion(MtconnectVersions.V_1_7_0, "https://model.mtconnect.org/#_Version_1.7")]
 		COUNT_PER_SECOND,
 		/// <summary>
 		﻿/// pascal per second.
@@ -407,6 +451,7 @@ namespace Mtconnect.AdapterInterface.Units
 		/// <item><b>Introduced</b>: <see href="https://model.mtconnect.org/#_Version_1.7">v1.7</see></item>
 		/// </list>
 		/// </remarks>
+		[MtconnectVersion(MtconnectVersions.V_1_7_0, "https://model.mtconnect.org/#_Version_1.7")]
 		PASCAL_PER_SECOND,
 		/// <summary>
 		﻿/// 3D Unit Vector.  Space delimited list of three floating point numbers.
@@ -416,6 +461,7 @@ namespace Mtconnect.AdapterInterface.Units
 		/// <item><b>Introduced</b>: <see href="https://model.mtconnect.org/#_Version_1.7">v1.7</see></item>
 		/// </list>
 		/// </remarks>
+		[MtconnectVersion(MtconnectVersions.V_1_7_0, "https://model.mtconnect.org/#_Version_1.7")]
 		UNIT_VECTOR_3D,
 		/// <summary>
 		﻿/// revolutions per second squared.
@@ -425,6 +471,7 @@ namespace Mtconnect.AdapterInterface.Units
 		/// <item><b>Introduced</b>: <see href="https://model.mtconnect.org/#_Version_1.6">v1.6</see></item>
 		/// </list>
 		/// </remarks>
+		[MtconnectVersion(MtconnectVersions.V_1_6_0, "https://model.mtconnect.org/#_Version_1.6")]
 		REVOLUTION_PER_SECOND_SQUARED,
 		/// <summary>
 		﻿/// rotational velocity in revolution per second.
@@ -434,6 +481,7 @@ namespace Mtconnect.AdapterInterface.Units
 		/// <item><b>Introduced</b>: <see href="https://model.mtconnect.org/#_Version_1.1">v1.1</see></item>
 		/// </list>
 		/// </remarks>
+		[MtconnectVersion(MtconnectVersions.V_1_1_0, "https://model.mtconnect.org/#_Version_1.1")]
 		REVOLUTION_PER_SECOND,
 		/// <summary>
 		﻿/// gram.
@@ -443,6 +491,7 @@ namespace Mtconnect.AdapterInterface.Units
 		/// <item><b>Introduced</b>: <see href="https://model.mtconnect.org/#_Version_1.2">v1.2</see></item>
 		/// </list>
 		/// </remarks>
+		[MtconnectVersion(MtconnectVersions.V_1_2_0, "https://model.mtconnect.org/#_Version_1.2")]
 		GRAM,
 		/// <summary>
 		﻿/// acceleration in meters per second squared.
@@ -452,10 +501,12 @@ namespace Mtconnect.AdapterInterface.Units
 		/// <item><b>Introduced</b>: <see href="https://model.mtconnect.org/#_Version_2.1">v2.1</see></item>
 		/// </list>
 		/// </remarks>
+		[MtconnectVersion(MtconnectVersions.V_2_1_0, "https://model.mtconnect.org/#_Version_2.1")]
 		METER_PER_SECOND_SQUARED,
 		/// <summary>
 		﻿/// electric charge in coulombs (C).
 		/// </summary>
+		
 		COULOMB,
 	}
 }
