@@ -1004,17 +1004,15 @@ namespace Mtconnect.AdapterInterface.DataItemTypes
 		/// </remarks>
 		[MtconnectVersion(MtconnectVersions.V_2_1_0, "https://model.mtconnect.org/#_Version_2.1")]
 		DISPLACEMENT_ANGULAR,
-		/// <summary>
-		﻿/// position of a control point associated with a <see cref="Controller">Controller</see> or a <see cref="Path">Path</see>.
-		/// </summary>
-		/// <remarks>
-		/// <list type="bullet">
-		/// <item><b>Sub-Type</b>: <see cref="PathPositionSubTypes" /></item>
-		/// <item><b>Introduced</b>: <see href="https://model.mtconnect.org/#_Version_1.1">v1.1</see></item>
-		/// </list>
-		/// </remarks>
-		[ObservationalSubType(typeof(PathPositionSubTypes))]
-		[MtconnectVersion(MtconnectVersions.V_1_1_0, "https://model.mtconnect.org/#_Version_1.1")]
-		PATH_POSITION,
+        /// <summary>
+        ﻿/// point in a cartesian coordinate system.
+        /// </summary>
+        /// <remarks>
+        /// <list type="bullet">
+        /// <item><b>Introduced</b>: <see href="https://model.mtconnect.org/#_Version_2.1">v2.1</see></item>
+        /// </list>
+        /// </remarks>
+        [MtconnectVersion(MtconnectVersions.V_2_1_0, "https://model.mtconnect.org/#_Version_2.1")]
+		POSITION_CARTESIAN,
 	}
 }
