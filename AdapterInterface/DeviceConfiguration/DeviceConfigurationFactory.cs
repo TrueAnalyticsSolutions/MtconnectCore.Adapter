@@ -271,28 +271,28 @@ namespace Mtconnect.AdapterInterface.DeviceConfiguration
             switch (category.ToUpper())
             {
                 case "SAMPLE":
-                    isDefined = Enum.TryParse<SampleTypes>(type, true, out SampleTypes sampleType);
+                    isDefined = Enum.TryParse<SampleTypes>(type, true, out var _);
                     if (isDefined)
-                        version = sampleType.GetType().GetCustomAttribute<MtconnectVersionAttribute>()?.MinimumVersion;
+                        version = GetVersion<SampleTypes>(type);
                     break;
                 case "EVENT":
-                    isDefined = Enum.TryParse<EventTypes>(type, true, out var eventType);
+                    isDefined = Enum.TryParse<EventTypes>(type, true, out var _);
                     if (isDefined)
-                        version = eventType.GetType().GetCustomAttribute<MtconnectVersionAttribute>()?.MinimumVersion;
+                        version = GetVersion<EventTypes>(type);
                     break;
                 case "CONDITION":
-                    if (Enum.TryParse<ConditionTypes>(type, true, out var conditionType))
+                    if (Enum.TryParse<ConditionTypes>(type, true, out var _))
                     {
                         isDefined = true;
-                        version = conditionType.GetType().GetCustomAttribute<MtconnectVersionAttribute>()?.MinimumVersion;
-                    } else if (Enum.TryParse<SampleTypes>(type, true, out var sampleConditionType))
+                        version = GetVersion<ConditionTypes>(type);
+                    } else if (Enum.TryParse<SampleTypes>(type, true, out var _))
                     {
                         isDefined = true;
-                        version = sampleConditionType.GetType().GetCustomAttribute<MtconnectVersionAttribute>()?.MinimumVersion;
-                    } else if (Enum.TryParse<EventTypes>(type, true, out var eventConditionType))
+                        version = GetVersion<SampleTypes>(type);
+                    } else if (Enum.TryParse<EventTypes>(type, true, out var _))
                     {
                         isDefined = true;
-                        version = eventConditionType.GetType().GetCustomAttribute<MtconnectVersionAttribute>()?.MinimumVersion;
+                        version = GetVersion<EventTypes>(type);
                     }
                     break;
                 default:
@@ -323,6 +323,13 @@ namespace Mtconnect.AdapterInterface.DeviceConfiguration
             return xDataItem;
         }
 
+        private MtconnectVersions? GetVersion<T>(string member)
+        {
+            return typeof(T).GetMember(member)
+                .FirstOrDefault(o => o.DeclaringType == typeof(T))
+                ?.GetCustomAttribute<MtconnectVersionAttribute>()
+                ?.MinimumVersion;
+        }
 
         // TODO: Update DataItem to yield the enum of Type and SubType.
         // TODO: Update DataItem to internally manage the "Introduced" and "Deprecated" properties according to the Type/SubType
