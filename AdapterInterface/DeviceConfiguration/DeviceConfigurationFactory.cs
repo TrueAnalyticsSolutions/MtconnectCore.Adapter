@@ -159,6 +159,7 @@ namespace Mtconnect.AdapterInterface.DeviceConfiguration
                 var dataItem = adapter.DataItems.FirstOrDefault(o => o.ModelPath == modelPath);
                 if (dataItem != null)
                 {
+                    dataItemValues.FoundDataItem = true;
                     dataItemValues.Category = dataItem.Category;
                     dataItemValues.Type = dataItem.ObservationalType;
                     dataItemValues.SubType = dataItem.ObservationalSubType;
@@ -185,6 +186,7 @@ namespace Mtconnect.AdapterInterface.DeviceConfiguration
                 // QUESTION: Is dataItem.Name an appropriate id?
                 if (dataItem != null)
                 {
+                    dataItemValues.FoundDataItem = true;
                     dataItemValues.Category = dataItem.Category;
                     dataItemValues.Type = dataItem.ObservationalType;
                     dataItemValues.SubType = dataItem.ObservationalSubType;
@@ -207,7 +209,7 @@ namespace Mtconnect.AdapterInterface.DeviceConfiguration
             }
 
             dataItemElement = CreateDataItemElement(parentElement.OwnerDocument, dataItemValues.Category, dataItemValues.Type, dataItemValues.SubType, dataItemValues.Name, dataItemValues.Units);
-            dataItemElement.AppendChild(parentElement.OwnerDocument.CreateCDataSection($"PropertyInfo: {property.DeclaringType.FullName}.{property.Name}\rn\nDataItem.Name: {dataItemValues.Name}\r\nModel Path: {modelPath}"));
+            dataItemElement.AppendChild(parentElement.OwnerDocument.CreateCDataSection($"PropertyInfo: {property.DeclaringType.FullName}.{property.Name}\rn\nDataItem.Name: {dataItemValues.Name}\r\nModel Path: {modelPath}\r\nFound DataItem: {dataItemValues.FoundDataItem}"));
 
             if (dataItemElement != null)
                 dataItemsElement.AppendChild(dataItemElement);
@@ -362,6 +364,8 @@ namespace Mtconnect.AdapterInterface.DeviceConfiguration
                 get => _values[DESCRIPTION];
                 set => SetValue(DESCRIPTION, value);
             }
+
+            public bool FoundDataItem { get; set; }
 
             private void SetValue(string key, string value)
             {
