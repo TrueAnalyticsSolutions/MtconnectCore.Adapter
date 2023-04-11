@@ -19,7 +19,7 @@ namespace Mtconnect.AdapterInterface.DataItemTypes
 		/// </summary>
 		STANDARD_EXTENSION = -1,
 		/// <summary>
-		﻿/// <see cref="SampleEnum.ACCELERATION" />
+		﻿/// positive rate of change of velocity.
 		/// </summary>
 		/// <remarks>
 		/// <list type="bullet">
@@ -31,7 +31,7 @@ namespace Mtconnect.AdapterInterface.DataItemTypes
 		[MtconnectVersion(MtconnectVersions.V_1_0_1, "https://model.mtconnect.org/#_Version_1.0")]
 		ACCELERATION,
 		/// <summary>
-		﻿/// <see cref="SampleEnum.ACCUMULATED_TIME" />
+		﻿/// accumulated time for an activity or event.
 		/// </summary>
 		/// <remarks>
 		/// <list type="bullet">
@@ -41,7 +41,7 @@ namespace Mtconnect.AdapterInterface.DataItemTypes
 		[MtconnectVersion(MtconnectVersions.V_1_2_0, "https://model.mtconnect.org/#_Version_1.2")]
 		ACCUMULATED_TIME,
 		/// <summary>
-		﻿/// <see cref="SampleEnum.AMPERAGE" />
+		﻿/// strength of electrical current.  <b>DEPRECATED</b> in <i>Version 1.6</i>. Replaced by <c>AMPERAGE_AC</c> and <c>AMPERAGE_DC</c>.
 		/// </summary>
 		/// <remarks>
 		/// <list type="bullet">
@@ -55,7 +55,7 @@ namespace Mtconnect.AdapterInterface.DataItemTypes
 		[MtconnectVersion(MtconnectVersions.V_1_0_1, "https://model.mtconnect.org/#_Version_1.0", MtconnectVersions.V_1_6_0)]
 		AMPERAGE,
 		/// <summary>
-		﻿/// <see cref="SampleEnum.ANGLE" />
+		﻿/// angular position.
 		/// </summary>
 		/// <remarks>
 		/// <list type="bullet">
@@ -67,7 +67,7 @@ namespace Mtconnect.AdapterInterface.DataItemTypes
 		[MtconnectVersion(MtconnectVersions.V_1_0_1, "https://model.mtconnect.org/#_Version_1.0")]
 		ANGLE,
 		/// <summary>
-		﻿/// <see cref="SampleEnum.ANGULAR_ACCELERATION" />
+		﻿/// positive rate of change of angular velocity.
 		/// </summary>
 		/// <remarks>
 		/// <list type="bullet">
@@ -79,7 +79,7 @@ namespace Mtconnect.AdapterInterface.DataItemTypes
 		[MtconnectVersion(MtconnectVersions.V_1_0_1, "https://model.mtconnect.org/#_Version_1.0")]
 		ANGULAR_ACCELERATION,
 		/// <summary>
-		﻿/// <see cref="SampleEnum.ANGULAR_VELOCITY" />
+		﻿/// rate of change of angular position.
 		/// </summary>
 		/// <remarks>
 		/// <list type="bullet">
@@ -89,7 +89,7 @@ namespace Mtconnect.AdapterInterface.DataItemTypes
 		[MtconnectVersion(MtconnectVersions.V_1_0_1, "https://model.mtconnect.org/#_Version_1.0")]
 		ANGULAR_VELOCITY,
 		/// <summary>
-		﻿/// <see cref="SampleEnum.AXIS_FEEDRATE" />
+		﻿/// feedrate of a linear axis.
 		/// </summary>
 		/// <remarks>
 		/// <list type="bullet">
@@ -101,7 +101,7 @@ namespace Mtconnect.AdapterInterface.DataItemTypes
 		[MtconnectVersion(MtconnectVersions.V_1_0_1, "https://model.mtconnect.org/#_Version_1.0")]
 		AXIS_FEEDRATE,
 		/// <summary>
-		﻿/// <see cref="SampleEnum.CAPACITY_FLUID" />
+		﻿/// fluid capacity of an object or container.
 		/// </summary>
 		/// <remarks>
 		/// <list type="bullet">
@@ -111,7 +111,7 @@ namespace Mtconnect.AdapterInterface.DataItemTypes
 		[MtconnectVersion(MtconnectVersions.V_1_5_0, "https://model.mtconnect.org/#_Version_1.5")]
 		CAPACITY_FLUID,
 		/// <summary>
-		﻿/// <see cref="SampleEnum.CAPACITY_SPATIAL" />
+		﻿/// geometric capacity of an object or container.
 		/// </summary>
 		/// <remarks>
 		/// <list type="bullet">
@@ -121,7 +121,7 @@ namespace Mtconnect.AdapterInterface.DataItemTypes
 		[MtconnectVersion(MtconnectVersions.V_1_5_0, "https://model.mtconnect.org/#_Version_1.5")]
 		CAPACITY_SPATIAL,
 		/// <summary>
-		﻿/// <see cref="SampleEnum.CONCENTRATION" />
+		﻿/// percentage of one component within a mixture of components.
 		/// </summary>
 		/// <remarks>
 		/// <list type="bullet">
@@ -131,7 +131,7 @@ namespace Mtconnect.AdapterInterface.DataItemTypes
 		[MtconnectVersion(MtconnectVersions.V_1_2_0, "https://model.mtconnect.org/#_Version_1.2")]
 		CONCENTRATION,
 		/// <summary>
-		﻿/// <see cref="SampleEnum.CONDUCTIVITY" />
+		﻿/// ability of a material to conduct electricity.
 		/// </summary>
 		/// <remarks>
 		/// <list type="bullet">
@@ -141,7 +141,7 @@ namespace Mtconnect.AdapterInterface.DataItemTypes
 		[MtconnectVersion(MtconnectVersions.V_1_2_0, "https://model.mtconnect.org/#_Version_1.2")]
 		CONDUCTIVITY,
 		/// <summary>
-		﻿/// <see cref="SampleEnum.CUTTING_SPEED" />
+		﻿/// speed difference (relative velocity) between the cutting mechanism and the surface of the workpiece it is operating on.
 		/// </summary>
 		/// <remarks>
 		/// <list type="bullet">
@@ -153,7 +153,7 @@ namespace Mtconnect.AdapterInterface.DataItemTypes
 		[MtconnectVersion(MtconnectVersions.V_1_5_0, "https://model.mtconnect.org/#_Version_1.5")]
 		CUTTING_SPEED,
 		/// <summary>
-		﻿/// <see cref="SampleEnum.DENSITY" />
+		﻿/// volumetric mass of a material per unit volume of that material.
 		/// </summary>
 		/// <remarks>
 		/// <list type="bullet">
@@ -163,7 +163,7 @@ namespace Mtconnect.AdapterInterface.DataItemTypes
 		[MtconnectVersion(MtconnectVersions.V_1_5_0, "https://model.mtconnect.org/#_Version_1.5")]
 		DENSITY,
 		/// <summary>
-		﻿/// <see cref="SampleEnum.DEPOSITION_ACCELERATION_VOLUMETRIC" />
+		﻿/// rate of change in spatial volume of material deposited in an additive manufacturing process.
 		/// </summary>
 		/// <remarks>
 		/// <list type="bullet">
@@ -175,7 +175,7 @@ namespace Mtconnect.AdapterInterface.DataItemTypes
 		[MtconnectVersion(MtconnectVersions.V_1_5_0, "https://model.mtconnect.org/#_Version_1.5")]
 		DEPOSITION_ACCELERATION_VOLUMETRIC,
 		/// <summary>
-		﻿/// <see cref="SampleEnum.DEPOSITION_DENSITY" />
+		﻿/// density of the material deposited in an additive manufacturing process per unit of volume.
 		/// </summary>
 		/// <remarks>
 		/// <list type="bullet">
@@ -187,7 +187,7 @@ namespace Mtconnect.AdapterInterface.DataItemTypes
 		[MtconnectVersion(MtconnectVersions.V_1_5_0, "https://model.mtconnect.org/#_Version_1.5")]
 		DEPOSITION_DENSITY,
 		/// <summary>
-		﻿/// <see cref="SampleEnum.DEPOSITION_MASS" />
+		﻿/// mass of the material deposited in an additive manufacturing process.
 		/// </summary>
 		/// <remarks>
 		/// <list type="bullet">
@@ -199,7 +199,7 @@ namespace Mtconnect.AdapterInterface.DataItemTypes
 		[MtconnectVersion(MtconnectVersions.V_1_5_0, "https://model.mtconnect.org/#_Version_1.5")]
 		DEPOSITION_MASS,
 		/// <summary>
-		﻿/// <see cref="SampleEnum.DEPOSITION_RATE_VOLUMETRIC" />
+		﻿/// rate at which a spatial volume of material is deposited in an additive manufacturing process.
 		/// </summary>
 		/// <remarks>
 		/// <list type="bullet">
@@ -211,7 +211,7 @@ namespace Mtconnect.AdapterInterface.DataItemTypes
 		[MtconnectVersion(MtconnectVersions.V_1_5_0, "https://model.mtconnect.org/#_Version_1.5")]
 		DEPOSITION_RATE_VOLUMETRIC,
 		/// <summary>
-		﻿/// <see cref="SampleEnum.DEPOSITION_VOLUME" />
+		﻿/// spatial volume of material to be deposited in an additive manufacturing process.
 		/// </summary>
 		/// <remarks>
 		/// <list type="bullet">
@@ -223,7 +223,7 @@ namespace Mtconnect.AdapterInterface.DataItemTypes
 		[MtconnectVersion(MtconnectVersions.V_1_5_0, "https://model.mtconnect.org/#_Version_1.5")]
 		DEPOSITION_VOLUME,
 		/// <summary>
-		﻿/// <see cref="SampleEnum.DISPLACEMENT" />
+		﻿/// change in position of an object.
 		/// </summary>
 		/// <remarks>
 		/// <list type="bullet">
@@ -233,7 +233,7 @@ namespace Mtconnect.AdapterInterface.DataItemTypes
 		[MtconnectVersion(MtconnectVersions.V_1_0_1, "https://model.mtconnect.org/#_Version_1.0")]
 		DISPLACEMENT,
 		/// <summary>
-		﻿/// <see cref="SampleEnum.ELECTRICAL_ENERGY" />
+		﻿/// <see cref="Wattage">Wattage</see> used or generated by a component over an interval of time.
 		/// </summary>
 		/// <remarks>
 		/// <list type="bullet">
@@ -243,7 +243,7 @@ namespace Mtconnect.AdapterInterface.DataItemTypes
 		[MtconnectVersion(MtconnectVersions.V_1_2_0, "https://model.mtconnect.org/#_Version_1.2")]
 		ELECTRICAL_ENERGY,
 		/// <summary>
-		﻿/// <see cref="SampleEnum.EQUIPMENT_TIMER" />
+		﻿/// amount of time a piece of equipment or a sub-part of a piece of equipment has performed specific activities.
 		/// </summary>
 		/// <remarks>
 		/// <list type="bullet">
@@ -255,7 +255,7 @@ namespace Mtconnect.AdapterInterface.DataItemTypes
 		[MtconnectVersion(MtconnectVersions.V_1_4_0, "https://model.mtconnect.org/#_Version_1.4")]
 		EQUIPMENT_TIMER,
 		/// <summary>
-		﻿/// <see cref="SampleEnum.FILL_LEVEL" />
+		﻿/// amount of a substance remaining compared to the planned maximum amount of that substance.
 		/// </summary>
 		/// <remarks>
 		/// <list type="bullet">
@@ -265,7 +265,7 @@ namespace Mtconnect.AdapterInterface.DataItemTypes
 		[MtconnectVersion(MtconnectVersions.V_1_2_0, "https://model.mtconnect.org/#_Version_1.2")]
 		FILL_LEVEL,
 		/// <summary>
-		﻿/// <see cref="SampleEnum.FLOW" />
+		﻿/// rate of flow of a fluid.
 		/// </summary>
 		/// <remarks>
 		/// <list type="bullet">
@@ -275,7 +275,7 @@ namespace Mtconnect.AdapterInterface.DataItemTypes
 		[MtconnectVersion(MtconnectVersions.V_1_2_0, "https://model.mtconnect.org/#_Version_1.2")]
 		FLOW,
 		/// <summary>
-		﻿/// <see cref="SampleEnum.FREQUENCY" />
+		﻿/// number of occurrences of a repeating event per unit time.
 		/// </summary>
 		/// <remarks>
 		/// <list type="bullet">
@@ -285,7 +285,7 @@ namespace Mtconnect.AdapterInterface.DataItemTypes
 		[MtconnectVersion(MtconnectVersions.V_1_0_1, "https://model.mtconnect.org/#_Version_1.0")]
 		FREQUENCY,
 		/// <summary>
-		﻿/// <see cref="SampleEnum.GLOBAL_POSITION" />
+		﻿/// position in three-dimensional space.  <b>DEPRECATED</b> in Version 1.1.
 		/// </summary>
 		/// <remarks>
 		/// <list type="bullet">
@@ -299,7 +299,7 @@ namespace Mtconnect.AdapterInterface.DataItemTypes
 		[MtconnectVersion(MtconnectVersions.V_1_0_1, "https://model.mtconnect.org/#_Version_1.0", MtconnectVersions.V_1_1_0)]
 		GLOBAL_POSITION,
 		/// <summary>
-		﻿/// <see cref="SampleEnum.LENGTH" />
+		﻿/// length of an object.
 		/// </summary>
 		/// <remarks>
 		/// <list type="bullet">
@@ -311,7 +311,7 @@ namespace Mtconnect.AdapterInterface.DataItemTypes
 		[MtconnectVersion(MtconnectVersions.V_1_3_0, "https://model.mtconnect.org/#_Version_1.3")]
 		LENGTH,
 		/// <summary>
-		﻿/// <see cref="SampleEnum.LEVEL" />
+		﻿/// level of a resource.  <b>DEPRECATED</b> in <i>Version 1.2</i>.  See <c>FILL_LEVEL</c>.
 		/// </summary>
 		/// <remarks>
 		/// <list type="bullet">
@@ -323,7 +323,7 @@ namespace Mtconnect.AdapterInterface.DataItemTypes
 		[MtconnectVersion(MtconnectVersions.V_1_1_0, "https://model.mtconnect.org/#_Version_1.1", MtconnectVersions.V_1_2_0)]
 		LEVEL,
 		/// <summary>
-		﻿/// <see cref="SampleEnum.LINEAR_FORCE" />
+		﻿/// <i>force</i> applied to a mass in one direction only.
 		/// </summary>
 		/// <remarks>
 		/// <list type="bullet">
@@ -333,7 +333,7 @@ namespace Mtconnect.AdapterInterface.DataItemTypes
 		[MtconnectVersion(MtconnectVersions.V_1_2_0, "https://model.mtconnect.org/#_Version_1.2")]
 		LINEAR_FORCE,
 		/// <summary>
-		﻿/// <see cref="SampleEnum.LOAD" />
+		﻿/// actual versus the standard rating of a piece of equipment.
 		/// </summary>
 		/// <remarks>
 		/// <list type="bullet">
@@ -343,7 +343,7 @@ namespace Mtconnect.AdapterInterface.DataItemTypes
 		[MtconnectVersion(MtconnectVersions.V_1_0_1, "https://model.mtconnect.org/#_Version_1.0")]
 		LOAD,
 		/// <summary>
-		﻿/// <see cref="SampleEnum.MASS" />
+		﻿/// mass of an object(s) or an amount of material.
 		/// </summary>
 		/// <remarks>
 		/// <list type="bullet">
@@ -353,7 +353,7 @@ namespace Mtconnect.AdapterInterface.DataItemTypes
 		[MtconnectVersion(MtconnectVersions.V_1_2_0, "https://model.mtconnect.org/#_Version_1.2")]
 		MASS,
 		/// <summary>
-		﻿/// <see cref="SampleEnum.PATH_FEEDRATE" />
+		﻿/// feedrate for the axes, or a single axis, associated with a <see cref="Path">Path</see> component.
 		/// </summary>
 		/// <remarks>
 		/// <list type="bullet">
@@ -365,7 +365,7 @@ namespace Mtconnect.AdapterInterface.DataItemTypes
 		[MtconnectVersion(MtconnectVersions.V_1_0_1, "https://model.mtconnect.org/#_Version_1.0")]
 		PATH_FEEDRATE,
 		/// <summary>
-		﻿/// <see cref="SampleEnum.PATH_FEEDRATE_PER_REVOLUTION" />
+		﻿/// feedrate for the axes, or a single axis.
 		/// </summary>
 		/// <remarks>
 		/// <list type="bullet">
@@ -377,7 +377,7 @@ namespace Mtconnect.AdapterInterface.DataItemTypes
 		[MtconnectVersion(MtconnectVersions.V_1_5_0, "https://model.mtconnect.org/#_Version_1.5")]
 		PATH_FEEDRATE_PER_REVOLUTION,
 		/// <summary>
-		﻿/// <see cref="SampleEnum.PATH_POSITION" />
+		﻿/// position of a control point associated with a <see cref="Controller">Controller</see> or a <see cref="Path">Path</see>.
 		/// </summary>
 		/// <remarks>
 		/// <list type="bullet">
@@ -389,7 +389,7 @@ namespace Mtconnect.AdapterInterface.DataItemTypes
 		[MtconnectVersion(MtconnectVersions.V_1_1_0, "https://model.mtconnect.org/#_Version_1.1")]
 		PATH_POSITION,
 		/// <summary>
-		﻿/// <see cref="SampleEnum.PH" />
+		﻿/// acidity or alkalinity of a solution.
 		/// </summary>
 		/// <remarks>
 		/// <list type="bullet">
@@ -397,9 +397,9 @@ namespace Mtconnect.AdapterInterface.DataItemTypes
 		/// </list>
 		/// </remarks>
 		[MtconnectVersion(MtconnectVersions.V_1_1_0, "https://model.mtconnect.org/#_Version_1.1")]
-		P_H,
+		PH,
 		/// <summary>
-		﻿/// <see cref="SampleEnum.POSITION" />
+		﻿/// point along an axis in a <i>cartesian coordinate system</i>.
 		/// </summary>
 		/// <remarks>
 		/// <list type="bullet">
@@ -411,7 +411,7 @@ namespace Mtconnect.AdapterInterface.DataItemTypes
 		[MtconnectVersion(MtconnectVersions.V_1_0_1, "https://model.mtconnect.org/#_Version_1.0")]
 		POSITION,
 		/// <summary>
-		﻿/// <see cref="SampleEnum.POWER_FACTOR" />
+		﻿/// ratio of real power flowing to a load to the apparent power in that AC circuit.
 		/// </summary>
 		/// <remarks>
 		/// <list type="bullet">
@@ -421,7 +421,7 @@ namespace Mtconnect.AdapterInterface.DataItemTypes
 		[MtconnectVersion(MtconnectVersions.V_1_2_0, "https://model.mtconnect.org/#_Version_1.2")]
 		POWER_FACTOR,
 		/// <summary>
-		﻿/// <see cref="SampleEnum.PRESSURE" />
+		﻿/// force per unit area measured relative to atmospheric pressure.   Commonly referred to as gauge pressure.
 		/// </summary>
 		/// <remarks>
 		/// <list type="bullet">
@@ -431,7 +431,7 @@ namespace Mtconnect.AdapterInterface.DataItemTypes
 		[MtconnectVersion(MtconnectVersions.V_1_0_1, "https://model.mtconnect.org/#_Version_1.0")]
 		PRESSURE,
 		/// <summary>
-		﻿/// <see cref="SampleEnum.PROCESS_TIMER" />
+		﻿/// amount of time a piece of equipment has performed different types of activities associated with the process being performed at that piece of equipment.
 		/// </summary>
 		/// <remarks>
 		/// <list type="bullet">
@@ -443,7 +443,7 @@ namespace Mtconnect.AdapterInterface.DataItemTypes
 		[MtconnectVersion(MtconnectVersions.V_1_4_0, "https://model.mtconnect.org/#_Version_1.4")]
 		PROCESS_TIMER,
 		/// <summary>
-		﻿/// <see cref="SampleEnum.RESISTANCE" />
+		﻿/// degree to which a substance opposes the passage of an electric current.
 		/// </summary>
 		/// <remarks>
 		/// <list type="bullet">
@@ -453,7 +453,7 @@ namespace Mtconnect.AdapterInterface.DataItemTypes
 		[MtconnectVersion(MtconnectVersions.V_1_2_0, "https://model.mtconnect.org/#_Version_1.2")]
 		RESISTANCE,
 		/// <summary>
-		﻿/// <see cref="SampleEnum.ROTARY_VELOCITY" />
+		﻿/// rotational speed of a rotary axis.
 		/// </summary>
 		/// <remarks>
 		/// <list type="bullet">
@@ -465,7 +465,7 @@ namespace Mtconnect.AdapterInterface.DataItemTypes
 		[MtconnectVersion(MtconnectVersions.V_1_2_0, "https://model.mtconnect.org/#_Version_1.2")]
 		ROTARY_VELOCITY,
 		/// <summary>
-		﻿/// <see cref="SampleEnum.SOUND_LEVEL" />
+		﻿/// sound level or sound pressure level relative to atmospheric pressure.
 		/// </summary>
 		/// <remarks>
 		/// <list type="bullet">
@@ -477,7 +477,7 @@ namespace Mtconnect.AdapterInterface.DataItemTypes
 		[MtconnectVersion(MtconnectVersions.V_1_2_0, "https://model.mtconnect.org/#_Version_1.2")]
 		SOUND_LEVEL,
 		/// <summary>
-		﻿/// <see cref="SampleEnum.SPINDLE_SPEED" />
+		﻿/// rotational speed of the rotary axis.  <b>DEPRECATED</b> in <i>Version 1.2</i>.  Replaced by <c>ROTARY_VELOCITY</c>.
 		/// </summary>
 		/// <remarks>
 		/// <list type="bullet">
@@ -491,7 +491,7 @@ namespace Mtconnect.AdapterInterface.DataItemTypes
 		[MtconnectVersion(MtconnectVersions.V_1_0_1, "https://model.mtconnect.org/#_Version_1.0", MtconnectVersions.V_1_2_0)]
 		SPINDLE_SPEED,
 		/// <summary>
-		﻿/// <see cref="SampleEnum.STRAIN" />
+		﻿/// amount of deformation per unit length of an object when a load is applied.
 		/// </summary>
 		/// <remarks>
 		/// <list type="bullet">
@@ -501,7 +501,7 @@ namespace Mtconnect.AdapterInterface.DataItemTypes
 		[MtconnectVersion(MtconnectVersions.V_1_2_0, "https://model.mtconnect.org/#_Version_1.2")]
 		STRAIN,
 		/// <summary>
-		﻿/// <see cref="SampleEnum.TEMPERATURE" />
+		﻿/// degree of hotness or coldness measured on a definite scale.
 		/// </summary>
 		/// <remarks>
 		/// <list type="bullet">
@@ -511,7 +511,7 @@ namespace Mtconnect.AdapterInterface.DataItemTypes
 		[MtconnectVersion(MtconnectVersions.V_1_0_1, "https://model.mtconnect.org/#_Version_1.0")]
 		TEMPERATURE,
 		/// <summary>
-		﻿/// <see cref="SampleEnum.TENSION" />
+		﻿/// force that stretches or elongates an object.
 		/// </summary>
 		/// <remarks>
 		/// <list type="bullet">
@@ -521,7 +521,7 @@ namespace Mtconnect.AdapterInterface.DataItemTypes
 		[MtconnectVersion(MtconnectVersions.V_1_4_0, "https://model.mtconnect.org/#_Version_1.4")]
 		TENSION,
 		/// <summary>
-		﻿/// <see cref="SampleEnum.TILT" />
+		﻿/// angular displacement.
 		/// </summary>
 		/// <remarks>
 		/// <list type="bullet">
@@ -531,17 +531,17 @@ namespace Mtconnect.AdapterInterface.DataItemTypes
 		[MtconnectVersion(MtconnectVersions.V_1_2_0, "https://model.mtconnect.org/#_Version_1.2")]
 		TILT,
 		/// <summary>
-		﻿/// <see cref="SampleEnum.TORQUE" />
+		﻿/// turning force exerted on an object or by an object.
 		/// </summary>
 		/// <remarks>
 		/// <list type="bullet">
-		/// <item><b>Introduced</b>: <see href="https://model.mtconnect.org/#_Version_1.5">v1.5</see></item>
+		/// <item><b>Introduced</b>: <see href="https://model.mtconnect.org/#_Version_1.0">v1.0</see></item>
 		/// </list>
 		/// </remarks>
-		[MtconnectVersion(MtconnectVersions.V_1_5_0, "https://model.mtconnect.org/#_Version_1.5")]
+		[MtconnectVersion(MtconnectVersions.V_1_0_1, "https://model.mtconnect.org/#_Version_1.0")]
 		TORQUE,
 		/// <summary>
-		﻿/// <see cref="SampleEnum.VELOCITY" />
+		﻿/// rate of change of position of a <see cref="Component">Component</see>.
 		/// </summary>
 		/// <remarks>
 		/// <list type="bullet">
@@ -551,7 +551,7 @@ namespace Mtconnect.AdapterInterface.DataItemTypes
 		[MtconnectVersion(MtconnectVersions.V_1_0_1, "https://model.mtconnect.org/#_Version_1.0")]
 		VELOCITY,
 		/// <summary>
-		﻿/// <see cref="SampleEnum.VISCOSITY" />
+		﻿/// fluid's resistance to flow.
 		/// </summary>
 		/// <remarks>
 		/// <list type="bullet">
@@ -561,7 +561,7 @@ namespace Mtconnect.AdapterInterface.DataItemTypes
 		[MtconnectVersion(MtconnectVersions.V_1_2_0, "https://model.mtconnect.org/#_Version_1.2")]
 		VISCOSITY,
 		/// <summary>
-		﻿/// <see cref="SampleEnum.VOLTAGE" />
+		﻿/// electrical potential between two points.  <b>DEPRECATED</b> in <i>Version 1.6</i>. Replaced by <c>VOLTAGE_AC</c> and <c>VOLTAGE_DC</c>.
 		/// </summary>
 		/// <remarks>
 		/// <list type="bullet">
@@ -575,7 +575,7 @@ namespace Mtconnect.AdapterInterface.DataItemTypes
 		[MtconnectVersion(MtconnectVersions.V_1_0_1, "https://model.mtconnect.org/#_Version_1.0", MtconnectVersions.V_1_6_0)]
 		VOLTAGE,
 		/// <summary>
-		﻿/// <see cref="SampleEnum.VOLT_AMPERE" />
+		﻿/// apparent power in an electrical circuit, equal to the product of root-mean-square (RMS) voltage and RMS current (commonly referred to as VA).
 		/// </summary>
 		/// <remarks>
 		/// <list type="bullet">
@@ -585,7 +585,7 @@ namespace Mtconnect.AdapterInterface.DataItemTypes
 		[MtconnectVersion(MtconnectVersions.V_1_2_0, "https://model.mtconnect.org/#_Version_1.2")]
 		VOLT_AMPERE,
 		/// <summary>
-		﻿/// <see cref="SampleEnum.VOLT_AMPERE_REACTIVE" />
+		﻿/// reactive power in an AC electrical circuit (commonly referred to as VAR).
 		/// </summary>
 		/// <remarks>
 		/// <list type="bullet">
@@ -595,7 +595,7 @@ namespace Mtconnect.AdapterInterface.DataItemTypes
 		[MtconnectVersion(MtconnectVersions.V_1_2_0, "https://model.mtconnect.org/#_Version_1.2")]
 		VOLT_AMPERE_REACTIVE,
 		/// <summary>
-		﻿/// <see cref="SampleEnum.VOLUME_FLUID" />
+		﻿/// fluid volume of an object or container.
 		/// </summary>
 		/// <remarks>
 		/// <list type="bullet">
@@ -607,7 +607,7 @@ namespace Mtconnect.AdapterInterface.DataItemTypes
 		[MtconnectVersion(MtconnectVersions.V_1_5_0, "https://model.mtconnect.org/#_Version_1.5")]
 		VOLUME_FLUID,
 		/// <summary>
-		﻿/// <see cref="SampleEnum.VOLUME_SPATIAL" />
+		﻿/// geometric volume of an object or container.
 		/// </summary>
 		/// <remarks>
 		/// <list type="bullet">
@@ -619,7 +619,7 @@ namespace Mtconnect.AdapterInterface.DataItemTypes
 		[MtconnectVersion(MtconnectVersions.V_1_5_0, "https://model.mtconnect.org/#_Version_1.5")]
 		VOLUME_SPATIAL,
 		/// <summary>
-		﻿/// <see cref="SampleEnum.WATTAGE" />
+		﻿/// power flowing through or dissipated by an electrical circuit or piece of equipment.
 		/// </summary>
 		/// <remarks>
 		/// <list type="bullet">
@@ -631,55 +631,47 @@ namespace Mtconnect.AdapterInterface.DataItemTypes
 		[MtconnectVersion(MtconnectVersions.V_1_0_1, "https://model.mtconnect.org/#_Version_1.0")]
 		WATTAGE,
 		/// <summary>
-		﻿/// <see cref="SampleEnum.AMPERAGE_DC" />
+		﻿/// electric current flowing in one direction only.
 		/// </summary>
 		/// <remarks>
 		/// <list type="bullet">
-		/// <item><b>Sub-Type</b>: <see cref="AmperageDCSubTypes" /></item>
 		/// <item><b>Introduced</b>: <see href="https://model.mtconnect.org/#_Version_1.6">v1.6</see></item>
 		/// </list>
 		/// </remarks>
-		[ObservationalSubType(typeof(AmperageDCSubTypes))]
 		[MtconnectVersion(MtconnectVersions.V_1_6_0, "https://model.mtconnect.org/#_Version_1.6")]
-		AMPERAGE_D_C,
+		AMPERAGE_DC,
 		/// <summary>
-		﻿/// <see cref="SampleEnum.AMPERAGE_AC" />
+		﻿/// electrical current that reverses direction at regular short intervals.
 		/// </summary>
 		/// <remarks>
 		/// <list type="bullet">
-		/// <item><b>Sub-Type</b>: <see cref="AmperageACSubTypes" /></item>
 		/// <item><b>Introduced</b>: <see href="https://model.mtconnect.org/#_Version_1.6">v1.6</see></item>
 		/// </list>
 		/// </remarks>
-		[ObservationalSubType(typeof(AmperageACSubTypes))]
 		[MtconnectVersion(MtconnectVersions.V_1_6_0, "https://model.mtconnect.org/#_Version_1.6")]
-		AMPERAGE_A_C,
+		AMPERAGE_AC,
 		/// <summary>
-		﻿/// <see cref="SampleEnum.VOLTAGE_AC" />
+		﻿/// electrical potential between two points in an electrical circuit in which the current periodically reverses direction.
 		/// </summary>
 		/// <remarks>
 		/// <list type="bullet">
-		/// <item><b>Sub-Type</b>: <see cref="VoltageACSubTypes" /></item>
 		/// <item><b>Introduced</b>: <see href="https://model.mtconnect.org/#_Version_1.6">v1.6</see></item>
 		/// </list>
 		/// </remarks>
-		[ObservationalSubType(typeof(VoltageACSubTypes))]
 		[MtconnectVersion(MtconnectVersions.V_1_6_0, "https://model.mtconnect.org/#_Version_1.6")]
-		VOLTAGE_A_C,
+		VOLTAGE_AC,
 		/// <summary>
-		﻿/// <see cref="SampleEnum.VOLTAGE_DC" />
+		﻿/// electrical potential between two points in an electrical circuit in which the current is unidirectional.
 		/// </summary>
 		/// <remarks>
 		/// <list type="bullet">
-		/// <item><b>Sub-Type</b>: <see cref="VoltageDCSubTypes" /></item>
 		/// <item><b>Introduced</b>: <see href="https://model.mtconnect.org/#_Version_1.6">v1.6</see></item>
 		/// </list>
 		/// </remarks>
-		[ObservationalSubType(typeof(VoltageDCSubTypes))]
 		[MtconnectVersion(MtconnectVersions.V_1_6_0, "https://model.mtconnect.org/#_Version_1.6")]
-		VOLTAGE_D_C,
+		VOLTAGE_DC,
 		/// <summary>
-		﻿/// <see cref="SampleEnum.X_DIMENSION" />
+		﻿/// dimension of an entity relative to the X direction of the referenced coordinate system. 
 		/// </summary>
 		/// <remarks>
 		/// <list type="bullet">
@@ -689,7 +681,7 @@ namespace Mtconnect.AdapterInterface.DataItemTypes
 		[MtconnectVersion(MtconnectVersions.V_1_6_0, "https://model.mtconnect.org/#_Version_1.6")]
 		X_DIMENSION,
 		/// <summary>
-		﻿/// <see cref="SampleEnum.Y_DIMENSION" />
+		﻿/// dimension of an entity relative to the Y direction of the referenced coordinate system.
 		/// </summary>
 		/// <remarks>
 		/// <list type="bullet">
@@ -699,7 +691,7 @@ namespace Mtconnect.AdapterInterface.DataItemTypes
 		[MtconnectVersion(MtconnectVersions.V_1_6_0, "https://model.mtconnect.org/#_Version_1.6")]
 		Y_DIMENSION,
 		/// <summary>
-		﻿/// <see cref="SampleEnum.Z_DIMENSION" />
+		﻿/// dimension of an entity relative to the Z direction of the referenced coordinate system.
 		/// </summary>
 		/// <remarks>
 		/// <list type="bullet">
@@ -709,7 +701,7 @@ namespace Mtconnect.AdapterInterface.DataItemTypes
 		[MtconnectVersion(MtconnectVersions.V_1_6_0, "https://model.mtconnect.org/#_Version_1.6")]
 		Z_DIMENSION,
 		/// <summary>
-		﻿/// <see cref="SampleEnum.DIAMETER" />
+		﻿/// dimension of a diameter.
 		/// </summary>
 		/// <remarks>
 		/// <list type="bullet">
@@ -719,7 +711,7 @@ namespace Mtconnect.AdapterInterface.DataItemTypes
 		[MtconnectVersion(MtconnectVersions.V_1_6_0, "https://model.mtconnect.org/#_Version_1.6")]
 		DIAMETER,
 		/// <summary>
-		﻿/// <see cref="SampleEnum.ORIENTATION" />
+		﻿/// angular position of a plane or vector relative to a <i>cartesian coordinate system</i>
 		/// </summary>
 		/// <remarks>
 		/// <list type="bullet">
@@ -731,7 +723,7 @@ namespace Mtconnect.AdapterInterface.DataItemTypes
 		[MtconnectVersion(MtconnectVersions.V_1_6_0, "https://model.mtconnect.org/#_Version_1.6")]
 		ORIENTATION,
 		/// <summary>
-		﻿/// <see cref="SampleEnum.HUMIDITY_RELATIVE" />
+		﻿/// amount of water vapor present expressed as a percent to reach saturation at the same temperature.
 		/// </summary>
 		/// <remarks>
 		/// <list type="bullet">
@@ -743,7 +735,7 @@ namespace Mtconnect.AdapterInterface.DataItemTypes
 		[MtconnectVersion(MtconnectVersions.V_1_6_0, "https://model.mtconnect.org/#_Version_1.6")]
 		HUMIDITY_RELATIVE,
 		/// <summary>
-		﻿/// <see cref="SampleEnum.HUMIDITY_ABSOLUTE" />
+		﻿/// amount of water vapor expressed in grams per cubic meter.
 		/// </summary>
 		/// <remarks>
 		/// <list type="bullet">
@@ -755,7 +747,7 @@ namespace Mtconnect.AdapterInterface.DataItemTypes
 		[MtconnectVersion(MtconnectVersions.V_1_6_0, "https://model.mtconnect.org/#_Version_1.6")]
 		HUMIDITY_ABSOLUTE,
 		/// <summary>
-		﻿/// <see cref="SampleEnum.HUMIDITY_SPECIFIC" />
+		﻿/// ratio of the water vapor present over the total weight of the water vapor and air present expressed as a percent.
 		/// </summary>
 		/// <remarks>
 		/// <list type="bullet">
@@ -767,7 +759,7 @@ namespace Mtconnect.AdapterInterface.DataItemTypes
 		[MtconnectVersion(MtconnectVersions.V_1_6_0, "https://model.mtconnect.org/#_Version_1.6")]
 		HUMIDITY_SPECIFIC,
 		/// <summary>
-		﻿/// <see cref="SampleEnum.PRESSURIZATION_RATE" />
+		﻿/// change of pressure per unit time.
 		/// </summary>
 		/// <remarks>
 		/// <list type="bullet">
@@ -779,7 +771,7 @@ namespace Mtconnect.AdapterInterface.DataItemTypes
 		[MtconnectVersion(MtconnectVersions.V_1_7_0, "https://model.mtconnect.org/#_Version_1.7")]
 		PRESSURIZATION_RATE,
 		/// <summary>
-		﻿/// <see cref="SampleEnum.DECELERATION" />
+		﻿/// negative rate of change of velocity.
 		/// </summary>
 		/// <remarks>
 		/// <list type="bullet">
@@ -791,7 +783,7 @@ namespace Mtconnect.AdapterInterface.DataItemTypes
 		[MtconnectVersion(MtconnectVersions.V_1_7_0, "https://model.mtconnect.org/#_Version_1.7")]
 		DECELERATION,
 		/// <summary>
-		﻿/// <see cref="SampleEnum.ASSET_UPDATE_RATE" />
+		﻿/// average rate of change of values for assets in the MTConnect streams.   The average is computed over a rolling window defined by the implementation.
 		/// </summary>
 		/// <remarks>
 		/// <list type="bullet">
@@ -801,7 +793,7 @@ namespace Mtconnect.AdapterInterface.DataItemTypes
 		[MtconnectVersion(MtconnectVersions.V_1_7_0, "https://model.mtconnect.org/#_Version_1.7")]
 		ASSET_UPDATE_RATE,
 		/// <summary>
-		﻿/// <see cref="SampleEnum.ANGULAR_DECELERATION" />
+		﻿/// negative rate of change of angular velocity.
 		/// </summary>
 		/// <remarks>
 		/// <list type="bullet">
@@ -813,7 +805,7 @@ namespace Mtconnect.AdapterInterface.DataItemTypes
 		[MtconnectVersion(MtconnectVersions.V_1_7_0, "https://model.mtconnect.org/#_Version_1.7")]
 		ANGULAR_DECELERATION,
 		/// <summary>
-		﻿/// <see cref="SampleEnum.OBSERVATION_UPDATE_RATE" />
+		﻿/// average rate of change of values for data items in the MTConnect streams. The average is computed over a rolling window defined by the implementation.
 		/// </summary>
 		/// <remarks>
 		/// <list type="bullet">
@@ -823,7 +815,7 @@ namespace Mtconnect.AdapterInterface.DataItemTypes
 		[MtconnectVersion(MtconnectVersions.V_1_7_0, "https://model.mtconnect.org/#_Version_1.7")]
 		OBSERVATION_UPDATE_RATE,
 		/// <summary>
-		﻿/// The force per unit area measured relative to a vacuum.
+		﻿/// force per unit area measured relative to a vacuum.
 		/// </summary>
 		/// <remarks>
 		/// <list type="bullet">
@@ -833,7 +825,7 @@ namespace Mtconnect.AdapterInterface.DataItemTypes
 		[MtconnectVersion(MtconnectVersions.V_1_7_0, "https://model.mtconnect.org/#_Version_1.7")]
 		PRESSURE_ABSOLUTE,
 		/// <summary>
-		﻿/// <see cref="SampleEnum.OPENNESS" />
+		﻿/// percentage open where 100% is fully open and 0% is fully closed.
 		/// </summary>
 		/// <remarks>
 		/// <list type="bullet">
@@ -843,7 +835,7 @@ namespace Mtconnect.AdapterInterface.DataItemTypes
 		[MtconnectVersion(MtconnectVersions.V_2_0_0, "https://model.mtconnect.org/#_Version_2.0")]
 		OPENNESS,
 		/// <summary>
-		﻿/// <see cref="SampleEnum.DEW_POINT" />
+		﻿/// temperature at which moisture begins to condense, corresponding to saturation for a given absolute humidity.
 		/// </summary>
 		/// <remarks>
 		/// <list type="bullet">
@@ -853,7 +845,7 @@ namespace Mtconnect.AdapterInterface.DataItemTypes
 		[MtconnectVersion(MtconnectVersions.V_2_1_0, "https://model.mtconnect.org/#_Version_2.1")]
 		DEW_POINT,
 		/// <summary>
-		﻿/// <see cref="SampleEnum.GRAVITATIONAL_FORCE" />  > Note: <i><c>Mass</c> x <c>GravitationalAcceleration</c></i>
+		﻿/// force relative to earth's gravity.
 		/// </summary>
 		/// <remarks>
 		/// <list type="bullet">
@@ -863,7 +855,7 @@ namespace Mtconnect.AdapterInterface.DataItemTypes
 		[MtconnectVersion(MtconnectVersions.V_2_1_0, "https://model.mtconnect.org/#_Version_2.1")]
 		GRAVITATIONAL_FORCE,
 		/// <summary>
-		﻿/// <see cref="SampleEnum.GRAVITATIONAL_ACCELERATION" />  
+		﻿/// acceleration relative to Earth's gravity of 9.80665 <c>METER/SECOND^2</c>.
 		/// </summary>
 		/// <remarks>
 		/// <list type="bullet">
@@ -873,7 +865,7 @@ namespace Mtconnect.AdapterInterface.DataItemTypes
 		[MtconnectVersion(MtconnectVersions.V_2_1_0, "https://model.mtconnect.org/#_Version_2.1")]
 		GRAVITATIONAL_ACCELERATION,
 		/// <summary>
-		﻿/// <see cref="SampleEnum.BATTERY_CAPACITY" />
+		﻿/// maximum rated charge a battery is capable of maintaining based on the battery discharging at a specified current over a specified time period.
 		/// </summary>
 		/// <remarks>
 		/// <list type="bullet">
@@ -885,7 +877,7 @@ namespace Mtconnect.AdapterInterface.DataItemTypes
 		[MtconnectVersion(MtconnectVersions.V_2_1_0, "https://model.mtconnect.org/#_Version_2.1")]
 		BATTERY_CAPACITY,
 		/// <summary>
-		﻿/// <see cref="SampleEnum.DISCHARGE_RATE" />
+		﻿/// value of current being drawn from the <see cref="Component">Component</see>.
 		/// </summary>
 		/// <remarks>
 		/// <list type="bullet">
@@ -897,7 +889,7 @@ namespace Mtconnect.AdapterInterface.DataItemTypes
 		[MtconnectVersion(MtconnectVersions.V_2_1_0, "https://model.mtconnect.org/#_Version_2.1")]
 		DISCHARGE_RATE,
 		/// <summary>
-		﻿/// <see cref="SampleEnum.CHARGE_RATE" />
+		﻿/// value of the current being supplied to the <see cref="Component">Component</see> for the purpose of charging.
 		/// </summary>
 		/// <remarks>
 		/// <list type="bullet">
@@ -909,7 +901,7 @@ namespace Mtconnect.AdapterInterface.DataItemTypes
 		[MtconnectVersion(MtconnectVersions.V_2_1_0, "https://model.mtconnect.org/#_Version_2.1")]
 		CHARGE_RATE,
 		/// <summary>
-		﻿/// <see cref="SampleEnum.BATTERY_CHARGE" />
+		﻿/// value of the battery's present capacity expressed as a percentage of the battery's maximum rated capacity.
 		/// </summary>
 		/// <remarks>
 		/// <list type="bullet">
@@ -921,7 +913,7 @@ namespace Mtconnect.AdapterInterface.DataItemTypes
 		[MtconnectVersion(MtconnectVersions.V_2_1_0, "https://model.mtconnect.org/#_Version_2.1")]
 		BATTERY_CHARGE,
 		/// <summary>
-		﻿/// <see cref="SampleEnum.SETTLING_ERROR" />
+		﻿/// difference between actual and commanded position at the end of a motion.
 		/// </summary>
 		/// <remarks>
 		/// <list type="bullet">
@@ -933,7 +925,7 @@ namespace Mtconnect.AdapterInterface.DataItemTypes
 		[MtconnectVersion(MtconnectVersions.V_2_1_0, "https://model.mtconnect.org/#_Version_2.1")]
 		SETTLING_ERROR,
 		/// <summary>
-		﻿/// <see cref="SampleEnum.SETTLING_ERROR_LINEAR" />
+		﻿/// difference between the commanded encoder/resolver position, and the actual encoder/resolver position when motion is complete.
 		/// </summary>
 		/// <remarks>
 		/// <list type="bullet">
@@ -945,7 +937,7 @@ namespace Mtconnect.AdapterInterface.DataItemTypes
 		[MtconnectVersion(MtconnectVersions.V_2_1_0, "https://model.mtconnect.org/#_Version_2.1")]
 		SETTLING_ERROR_LINEAR,
 		/// <summary>
-		﻿/// <see cref="SampleEnum.SETTLING_ERROR_ANGULAR" />
+		﻿/// angular difference between the commanded encoder/resolver position, and the actual encoder/resolver position when motion is complete.
 		/// </summary>
 		/// <remarks>
 		/// <list type="bullet">
@@ -957,7 +949,7 @@ namespace Mtconnect.AdapterInterface.DataItemTypes
 		[MtconnectVersion(MtconnectVersions.V_2_1_0, "https://model.mtconnect.org/#_Version_2.1")]
 		SETTLING_ERROR_ANGULAR,
 		/// <summary>
-		﻿/// <see cref="SampleEnum.FOLLOWING_ERROR" />
+		﻿/// difference between actual and commanded position at any specific point in time during a motion.
 		/// </summary>
 		/// <remarks>
 		/// <list type="bullet">
@@ -969,7 +961,7 @@ namespace Mtconnect.AdapterInterface.DataItemTypes
 		[MtconnectVersion(MtconnectVersions.V_2_1_0, "https://model.mtconnect.org/#_Version_2.1")]
 		FOLLOWING_ERROR,
 		/// <summary>
-		﻿/// <see cref="SampleEnum.FOLLOWING_ERROR_ANGULAR" />
+		﻿/// angular difference between the commanded encoder/resolver position and the actual encoder/resolver position at any specified point in time during a motion.
 		/// </summary>
 		/// <remarks>
 		/// <list type="bullet">
@@ -981,7 +973,7 @@ namespace Mtconnect.AdapterInterface.DataItemTypes
 		[MtconnectVersion(MtconnectVersions.V_2_1_0, "https://model.mtconnect.org/#_Version_2.1")]
 		FOLLOWING_ERROR_ANGULAR,
 		/// <summary>
-		﻿/// <see cref="SampleEnum.FOLLOWING_ERROR_LINEAR" />
+		﻿/// difference between the commanded encoder/resolver position and the actual encoder/resolver position at any specified point in time during a motion.
 		/// </summary>
 		/// <remarks>
 		/// <list type="bullet">
@@ -993,7 +985,7 @@ namespace Mtconnect.AdapterInterface.DataItemTypes
 		[MtconnectVersion(MtconnectVersions.V_2_1_0, "https://model.mtconnect.org/#_Version_2.1")]
 		FOLLOWING_ERROR_LINEAR,
 		/// <summary>
-		﻿/// <see cref="SampleEnum.DISPLACEMENT_LINEAR" />  > Note: The displacement vector <b>MAY</b> be defined by the motion of the owning <see cref="component">component</see>.
+		﻿/// absolute value of the change in position along a vector.
 		/// </summary>
 		/// <remarks>
 		/// <list type="bullet">
@@ -1003,7 +995,7 @@ namespace Mtconnect.AdapterInterface.DataItemTypes
 		[MtconnectVersion(MtconnectVersions.V_2_1_0, "https://model.mtconnect.org/#_Version_2.1")]
 		DISPLACEMENT_LINEAR,
 		/// <summary>
-		﻿/// <see cref="SampleEnum.DISPLACEMENT_ANGULAR" />  > Note: The displacement vector <b>MAY</b> be defined by the motion of the owning <see cref="component">component</see>.
+		﻿/// absolute value of the change in angular position around a vector
 		/// </summary>
 		/// <remarks>
 		/// <list type="bullet">
@@ -1013,14 +1005,16 @@ namespace Mtconnect.AdapterInterface.DataItemTypes
 		[MtconnectVersion(MtconnectVersions.V_2_1_0, "https://model.mtconnect.org/#_Version_2.1")]
 		DISPLACEMENT_ANGULAR,
 		/// <summary>
-		﻿/// <see cref="SampleEnum.POSITION_CARTESIAN" />
+		﻿/// position of a control point associated with a <see cref="Controller">Controller</see> or a <see cref="Path">Path</see>.
 		/// </summary>
 		/// <remarks>
 		/// <list type="bullet">
-		/// <item><b>Introduced</b>: <see href="https://model.mtconnect.org/#_Version_2.1">v2.1</see></item>
+		/// <item><b>Sub-Type</b>: <see cref="PathPositionSubTypes" /></item>
+		/// <item><b>Introduced</b>: <see href="https://model.mtconnect.org/#_Version_1.1">v1.1</see></item>
 		/// </list>
 		/// </remarks>
-		[MtconnectVersion(MtconnectVersions.V_2_1_0, "https://model.mtconnect.org/#_Version_2.1")]
-		POSITION_CARTESIAN,
+		[ObservationalSubType(typeof(PathPositionSubTypes))]
+		[MtconnectVersion(MtconnectVersions.V_1_1_0, "https://model.mtconnect.org/#_Version_1.1")]
+		PATH_POSITION,
 	}
 }

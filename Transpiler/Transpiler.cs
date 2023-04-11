@@ -46,6 +46,9 @@ namespace AdapterTranspiler
 
             string[] categories = new string[] { "Sample", "Event", "Condition" };
 
+            var modelEnumSubTypes = model.JumpToPackage(MTConnectHelper.PackageNavigationTree.Profile.DataTypes)
+                    .Enumerations
+                    .FirstOrDefault(o => o.Name == $"DataItemSubTypeEnum");
             foreach (string category in categories)
             {
                 // Get the UmlPackage for the category (ie. Samples, Events, Conditions).
@@ -61,10 +64,12 @@ namespace AdapterTranspiler
                     ?.Where(o => o != null)
                     ?? Enumerable.Empty<UmlClass>();
                 // Filter to get just the Type references
-                var types = (allTypes
+                var modelTypes = (allTypes
                     ?.Where(o => !o!.Name.Contains('.')))
                     ?? throw new NullReferenceException($"Cannot find {category} root types");
-
+                var modelEnumTypes = model.JumpToPackage(MTConnectHelper.PackageNavigationTree.Profile.DataTypes)
+                        .Enumerations
+                        .FirstOrDefault(o => o.Name == $"{category}Enum");
                 // Filter and group each SubType by the relevant Type reference
                 var subTypes = (allTypes
                     ?.Where(o => o!.Name.Contains('.'))
@@ -78,18 +83,24 @@ namespace AdapterTranspiler
                 var dataTypesPackage = MTConnectHelper
                     .JumpToPackage(model!, MTConnectHelper.PackageNavigationTree.Profile.DataTypes);
 
-                foreach (UmlClass type in types)
+                foreach (UmlClass modelType in modelTypes)
                 {
+                    var modelTypeEnumId = (modelType.Properties?.FirstOrDefault(o => o.Name == "type")?.DefaultValue as UmlInstanceValue)
+                        ?.Instance;
+                    var modelTypeEnum = modelEnumTypes
+                        ?.Items
+                        ?.FirstOrDefault(o => o.Id == modelTypeEnumId);
+
                     AdapterEnum typeValuesEnum;
                     AdapterValueType typeValues = null;
 
                     // Add type to CATEGORY enum
-                    categoryEnum.Add(model, type);
+                    categoryEnum.Add(model, modelTypeEnum);
 
                     string? valueType = null;
 
                     // Find the value type for the observational type
-                    var typeResult = type?.Properties?.FirstOrDefault(o => o.Name.Equals("result", StringComparison.OrdinalIgnoreCase));
+                    var typeResult = modelType?.Properties?.FirstOrDefault(o => o.Name.Equals("result", StringComparison.OrdinalIgnoreCase));
                     if (!string.IsNullOrEmpty(typeResult?.PropertyType))
                     {
                         // Attempt to find a UmlEnumeration as the value type
@@ -110,7 +121,7 @@ namespace AdapterTranspiler
                             typeValues = new AdapterEventValueType(model!, typeValuesSysEnum)
                             {
                                 Namespace = DataItemValueNamespace,
-                                Name = $"{type!.Name}",
+                                Name = $"{modelType!.Name}",
                                 ReferenceId = typeValuesSysEnum.Id
                             };
 
@@ -118,7 +129,7 @@ namespace AdapterTranspiler
                             typeValuesEnum = new AdapterEnum(model!, typeValuesSysEnum)
                             {
                                 Namespace = DataItemValueNamespace,
-                                Name = $"{type!.Name}Values",
+                                Name = $"{modelType!.Name}Values",
                                 ReferenceId = typeValuesSysEnum.Id
                             };
                             // Cleanup Enum names
@@ -126,8 +137,8 @@ namespace AdapterTranspiler
                                 value.Name = value.SysML_Name;
 
                             // Add value type reference
-                            if (!categoryEnum.ValueTypes.ContainsKey(type.Name))
-                                categoryEnum.ValueTypes.Add(ScribanHelperMethods.ToUpperSnakeCode(type.Name), $"{type.Name}Values");
+                            if (!categoryEnum.ValueTypes.ContainsKey(modelType.Name))
+                                categoryEnum.ValueTypes.Add(ScribanHelperMethods.ToUpperSnakeCode(modelType.Name), $"{modelType.Name}Values");
 
 
                             valueEnums.Add(typeValuesEnum);
@@ -152,16 +163,16 @@ namespace AdapterTranspiler
                             category,
                             valueType,
                             model!,
-                            type!)
+                            modelType!)
                         {
                             Namespace = DataItemValueNamespace,
                             Category = category,
-                            ReferenceId = type!.Properties.FirstOrDefault(o => o.Name.Equals("result", StringComparison.OrdinalIgnoreCase))?.PropertyType
+                            ReferenceId = modelType!.Properties.FirstOrDefault(o => o.Name.Equals("result", StringComparison.OrdinalIgnoreCase))?.PropertyType
                         };
 
                     // Attempt to add native units
                     string? expectedUnits = null;
-                    var unitsAttribute = type!.Properties.FirstOrDefault(o => o.Name.Equals("units", StringComparison.OrdinalIgnoreCase));
+                    var unitsAttribute = modelType!.Properties.FirstOrDefault(o => o.Name.Equals("units", StringComparison.OrdinalIgnoreCase));
                     if (unitsAttribute != null)
                     {
                         if (unitsAttribute.DefaultValue is UmlInstanceValue)
@@ -189,7 +200,7 @@ namespace AdapterTranspiler
                         }
 
                         if (!string.IsNullOrEmpty(expectedUnits))
-                            unitHelper.TypeLookup.TryAdd(ScribanHelperMethods.ToUpperSnakeCode(type.Name!), expectedUnits);
+                            unitHelper.TypeLookup.TryAdd(ScribanHelperMethods.ToUpperSnakeCode(modelType.Name!), expectedUnits);
                     }
 
                     if (typeValues != null)
@@ -207,30 +218,45 @@ namespace AdapterTranspiler
                     }
 
                     // Add subType as enum
-                    if (subTypes.ContainsKey(type.Name!))
+                    if (subTypes.ContainsKey(modelType.Name!))
                     {
                         // Register type as having a subType in the CATEGORY enum
-                        if (!categoryEnum.SubTypes.ContainsKey(type.Name!)) categoryEnum.SubTypes.Add(ScribanHelperMethods.ToUpperSnakeCode(type.Name), $"{type.Name}SubTypes");
+                        if (!categoryEnum.SubTypes.ContainsKey(modelType.Name!)) categoryEnum.SubTypes.Add(ScribanHelperMethods.ToUpperSnakeCode(modelType.Name), $"{modelType.Name}SubTypes");
 
-                        AdapterEnum subTypeEnum = new(model!, type, $"{type.Name}SubTypes")
+                        AdapterEnum subTypeEnum = new(model!, modelType, $"{modelType.Name}SubTypes")
                         {
                             Namespace = DataItemNamespace,
-                            ReferenceId = type.Id
+                            ReferenceId = modelType.Id
                         };
 
-                        List<UmlClass?>? typeSubTypes = subTypes[type.Name!];
-                        subTypeEnum.AddRange(model, typeSubTypes);
+                        List<UmlClass?>? typeSubTypes = subTypes[modelType.Name!];
+                        foreach (var typeSubType in typeSubTypes)
+                        {
+                            var modelSubTypeEnumId = (typeSubType.Properties?.FirstOrDefault(o => o.Name == "subType")?.DefaultValue as UmlInstanceValue)
+                                ?.Instance;
+                            var modelSubTypeEnum = modelEnumSubTypes
+                                ?.Items
+                                ?.FirstOrDefault(o => o.Id == modelSubTypeEnumId);
 
+                            subTypeEnum.Add(model, typeSubType);
+                            if (modelSubTypeEnum != null)
+                            {
+                                subTypeEnum.Items.Last().Name = modelSubTypeEnum.Name;
+                            }
+                        }
                         // Cleanup Enum names
                         foreach (EnumItem item in subTypeEnum.Items)
                         {
-                            if (!item.Name.Contains('.')) continue;
-                            item.Name = ScribanHelperMethods.ToUpperSnakeCode(item.Name[(item.Name.IndexOf(".") + 1)..]);
+                            if (item.Name.Contains('.'))
+                            {
+                                item.Name = ScribanHelperMethods.ToUpperSnakeCode(item.Name[(item.Name.IndexOf(".") + 1)..]);
+                            }
 
                             // Register type as having a subType in the Value Type class
                             if (typeValues != null && !typeValues.SubTypes.Contains(item.Name))
                                 typeValues.SubTypes.Add(item.Name);
                         }
+
 
                         // Register the DataItem SubType Enum
                         dataItemTypeEnums.Add(subTypeEnum);
@@ -240,7 +266,7 @@ namespace AdapterTranspiler
                 // Cleanup Enum names
                 foreach (EnumItem item in categoryEnum.Items)
                 {
-                    item.Name = ScribanHelperMethods.ToUpperSnakeCode(item.Name);
+                    item.Name = item.SysML_Name;
                 }
 
                 // Register the DataItem Category Enum (ie. Samples, Events, Conditions)

@@ -42,7 +42,7 @@ namespace Mtconnect.AdapterInterface.DataItemTypes
 		/// </list>
 		/// </remarks>
 		[MtconnectVersion(MtconnectVersions.V_1_7_0, "https://model.mtconnect.org/#_Version_1.7")]
-		I_S_O_STEP_EXECUTABLE,
+		ISO_STEP_EXECUTABLE,
 		/// <summary>
 		﻿/// word or set of words by which a process being executed (process occurrence) by the device is known, addressed, or referred to. 
 		/// </summary>

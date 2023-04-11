@@ -70,10 +70,10 @@ namespace Mtconnect.AdapterInterface.DataItemValues
 		public partial class ISOSTEPEXECUTABLE : ProcessKindId
 		{
 			/// <inheritdoc />
-            public override string ObservationalSubType => nameof(DataItemTypes.ProcessKindIdSubTypes.I_S_O_STEP_EXECUTABLE);
+            public override string ObservationalSubType => nameof(DataItemTypes.ProcessKindIdSubTypes.ISO_STEP_EXECUTABLE);
 
 			/// <summary>
-			/// Constructs a new value type for I_S_O_STEP_EXECUTABLE.
+			/// Constructs a new value type for ISO_STEP_EXECUTABLE.
 			/// </summary>
             public ISOSTEPEXECUTABLE(string value) : base(value) { }
 			

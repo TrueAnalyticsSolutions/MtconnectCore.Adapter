@@ -48,10 +48,10 @@ namespace Mtconnect.AdapterInterface.DataItemValues
 		public partial class IPV4ADDRESS : Network
 		{
 			/// <inheritdoc />
-            public override string ObservationalSubType => nameof(DataItemTypes.NetworkSubTypes.I_PV4_ADDRESS);
+            public override string ObservationalSubType => nameof(DataItemTypes.NetworkSubTypes.IPV4_ADDRESS);
 
 			/// <summary>
-			/// Constructs a new value type for I_PV4_ADDRESS.
+			/// Constructs a new value type for IPV4_ADDRESS.
 			/// </summary>
             public IPV4ADDRESS(string value) : base(value) { }
 			
@@ -70,10 +70,10 @@ namespace Mtconnect.AdapterInterface.DataItemValues
 		public partial class IPV6ADDRESS : Network
 		{
 			/// <inheritdoc />
-            public override string ObservationalSubType => nameof(DataItemTypes.NetworkSubTypes.I_PV6_ADDRESS);
+            public override string ObservationalSubType => nameof(DataItemTypes.NetworkSubTypes.IPV6_ADDRESS);
 
 			/// <summary>
-			/// Constructs a new value type for I_PV6_ADDRESS.
+			/// Constructs a new value type for IPV6_ADDRESS.
 			/// </summary>
             public IPV6ADDRESS(string value) : base(value) { }
 			
@@ -136,10 +136,10 @@ namespace Mtconnect.AdapterInterface.DataItemValues
 		public partial class VLANID : Network
 		{
 			/// <inheritdoc />
-            public override string ObservationalSubType => nameof(DataItemTypes.NetworkSubTypes.V_LAN_ID);
+            public override string ObservationalSubType => nameof(DataItemTypes.NetworkSubTypes.VLAN_ID);
 
 			/// <summary>
-			/// Constructs a new value type for V_LAN_ID.
+			/// Constructs a new value type for VLAN_ID.
 			/// </summary>
             public VLANID(string value) : base(value) { }
 			

@@ -32,7 +32,7 @@ namespace Mtconnect.AdapterInterface.DataItemTypes
 		/// </list>
 		/// </remarks>
 		[MtconnectVersion(MtconnectVersions.V_1_6_0, "https://model.mtconnect.org/#_Version_1.6")]
-		I_PV4_ADDRESS,
+		IPV4_ADDRESS,
 		/// <summary>
 		﻿/// IPV6 network address of the component. 
 		/// </summary>
@@ -42,7 +42,7 @@ namespace Mtconnect.AdapterInterface.DataItemTypes
 		/// </list>
 		/// </remarks>
 		[MtconnectVersion(MtconnectVersions.V_1_6_0, "https://model.mtconnect.org/#_Version_1.6")]
-		I_PV6_ADDRESS,
+		IPV6_ADDRESS,
 		/// <summary>
 		﻿/// Gateway for the component network.
 		/// </summary>
@@ -72,7 +72,7 @@ namespace Mtconnect.AdapterInterface.DataItemTypes
 		/// </list>
 		/// </remarks>
 		[MtconnectVersion(MtconnectVersions.V_1_6_0, "https://model.mtconnect.org/#_Version_1.6")]
-		V_LAN_ID,
+		VLAN_ID,
 		/// <summary>
 		﻿/// Media Access Control Address.   The unique physical address of the network hardware. 
 		/// </summary>

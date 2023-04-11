@@ -19,7 +19,7 @@ namespace Mtconnect.AdapterInterface.DataItemTypes
 		/// </summary>
 		STANDARD_EXTENSION = -1,
 		/// <summary>
-		﻿/// <see cref="ConditionEnum.ACTUATOR" />
+		﻿/// indication of a fault associated with an actuator.
 		/// </summary>
 		/// <remarks>
 		/// <list type="bullet">
@@ -29,7 +29,7 @@ namespace Mtconnect.AdapterInterface.DataItemTypes
 		[MtconnectVersion(MtconnectVersions.V_1_1_0, "https://model.mtconnect.org/#_Version_1.1")]
 		ACTUATOR,
 		/// <summary>
-		﻿/// <see cref="ConditionEnum.COMMUNICATIONS" />
+		﻿/// indication that the piece of equipment has experienced a communications failure.
 		/// </summary>
 		/// <remarks>
 		/// <list type="bullet">
@@ -39,7 +39,7 @@ namespace Mtconnect.AdapterInterface.DataItemTypes
 		[MtconnectVersion(MtconnectVersions.V_1_1_0, "https://model.mtconnect.org/#_Version_1.1")]
 		COMMUNICATIONS,
 		/// <summary>
-		﻿/// <see cref="ConditionEnum.DATA_RANGE" />
+		﻿/// indication that the value of the data associated with a measured value or a calculation is outside of an expected range.
 		/// </summary>
 		/// <remarks>
 		/// <list type="bullet">
@@ -49,7 +49,7 @@ namespace Mtconnect.AdapterInterface.DataItemTypes
 		[MtconnectVersion(MtconnectVersions.V_1_2_0, "https://model.mtconnect.org/#_Version_1.2")]
 		DATA_RANGE,
 		/// <summary>
-		﻿/// <see cref="ConditionEnum.LOGIC_PROGRAM" />
+		﻿/// indication that an error occurred in the logic program or programmable logic controller (PLC) associated with a piece of equipment.
 		/// </summary>
 		/// <remarks>
 		/// <list type="bullet">
@@ -59,7 +59,7 @@ namespace Mtconnect.AdapterInterface.DataItemTypes
 		[MtconnectVersion(MtconnectVersions.V_1_1_0, "https://model.mtconnect.org/#_Version_1.1")]
 		LOGIC_PROGRAM,
 		/// <summary>
-		﻿/// <see cref="ConditionEnum.MOTION_PROGRAM" />
+		﻿/// indication that an error occurred in the motion program associated with a piece of equipment.
 		/// </summary>
 		/// <remarks>
 		/// <list type="bullet">
@@ -69,7 +69,7 @@ namespace Mtconnect.AdapterInterface.DataItemTypes
 		[MtconnectVersion(MtconnectVersions.V_1_1_0, "https://model.mtconnect.org/#_Version_1.1")]
 		MOTION_PROGRAM,
 		/// <summary>
-		﻿/// <see cref="ConditionEnum.SYSTEM" />
+		﻿/// general purpose indication associated with an electronic component of a piece of equipment or a controller that represents a fault that is not associated with the operator, program, or hardware.
 		/// </summary>
 		/// <remarks>
 		/// <list type="bullet">
