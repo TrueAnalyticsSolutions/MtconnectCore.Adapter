@@ -27,7 +27,7 @@ jobs:
       run: dotnet build "${{ env.VS_PROJECT }}\AdapterSdk.csproj" --configuration Release
       
     - name: Pack Mtconnect.Adapter
-      run: dotnet pack "${{ env.VS_PROJECT }}\AdapterSdk.csproj" --configuration Release -o finalpackage --no-build
+      run: dotnet pack "${{ env.VS_PROJECT }}\AdapterSdk.csproj" --configuration Release -o finalpackage --no-build --include-symbols
       
     - name: Publish Artifact
       uses: actions/upload-artifact@master
