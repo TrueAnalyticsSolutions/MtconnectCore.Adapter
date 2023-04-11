@@ -28,7 +28,7 @@ namespace Mtconnect.AdapterInterface.DataItems
         /// <summary>
         /// Reference to the type of source model (see <see cref="IAdapterDataModel"/>) this DataItem was constructed from.
         /// </summary>
-        public PropertyInfo ModelType { get; internal set; } = null;
+        public string ModelPath { get; internal set; } = null;
 
         /// <summary>
         /// Refers to the category for the MTConnect observational type.

@@ -75,13 +75,15 @@ namespace Mtconnect
                 typeof(Message),
                 typeof(TimeSeries)
         };
-        private static bool TryAddDataItems(this Adapter adapter, object model, string dataItemNamePrefix = "", string dataItemDescriptionPrefix = "")
+        private static bool TryAddDataItems(this Adapter adapter, object model, string typePath = "", string dataItemNamePrefix = "", string dataItemDescriptionPrefix = "")
         {
             bool isCached = true;
             bool allDataItemsAdded = true;
             lock (_dataItemProperties)
             {
                 Type dataModelType = model.GetType();
+                if (string.IsNullOrEmpty(typePath))
+                    typePath = dataModelType.FullName;
 
                 Dictionary<string, PropertyInfo> timestampPropertyLookup;
                 // Try to get the PropertyInfo for the DataItem Timestamp override, if it exists
@@ -144,7 +146,7 @@ namespace Mtconnect
                             switch (dataItemAttribute)
                             {
                                 case DataItemPartialAttribute _:
-                                    dataItemAdded = adapter.TryAddDataItems(property.GetValue(model), dataItemName, dataItemDescription);
+                                    dataItemAdded = adapter.TryAddDataItems(property.GetValue(model), $"{typePath}[{property.Name}]", dataItemName, dataItemDescription);
                                     break;
                                 case EventAttribute _:
                                     dataItem = new Event(dataItemName, dataItemType, dataItemSubType, dataItemDescription);
@@ -199,7 +201,7 @@ namespace Mtconnect
                         // Now add the DataItem if it was constructed
                         if (dataItem != null)
                         {
-                            dataItem.ModelType = property;
+                            dataItem.ModelPath = typePath;
                             if (timestampProperty != null)
                             {
                                 dataItem.HasTimestampOverride = true;

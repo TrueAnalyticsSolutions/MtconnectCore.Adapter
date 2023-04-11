@@ -100,7 +100,7 @@ namespace Mtconnect.AdapterInterface.DeviceConfiguration
                 {
                     foreach (var modelType in dataModelTypes)
                     {
-                        AddComponents(xDevice, modelType, adapter);
+                        AddComponents(xDevice, modelType, adapter, modelType.FullName);
                     }
                 } else
                 {
@@ -112,7 +112,7 @@ namespace Mtconnect.AdapterInterface.DeviceConfiguration
 
             return xDoc;
         }
-        private void AddComponents(XmlElement parentElement, Type type, Adapter adapter, string prefix = null)
+        private void AddComponents(XmlElement parentElement, Type type, Adapter adapter, string modelPath, string componentPrefix = null)
         {
             var dataItemsElement = parentElement.OwnerDocument.CreateElement("DataItems");
             var componentsElement = parentElement.OwnerDocument.CreateElement("Components");
@@ -125,17 +125,17 @@ namespace Mtconnect.AdapterInterface.DeviceConfiguration
                 // NOTE: IComponentModel is first because IComponentModel implements IAdapterDataModel
                 if (typeof(IComponentModel).IsAssignableFrom(property.PropertyType))
                 {
-                    hasComponents = ProcessComponentModel(parentElement, adapter, prefix, componentsElement, property, dataItemAttribute);
+                    hasComponents = ProcessComponentModel(parentElement, adapter, $"{modelPath}[{property.Name}]", componentPrefix, componentsElement, property, dataItemAttribute);
                 }
                 else if (typeof(IAdapterDataModel).IsAssignableFrom(property.PropertyType))
                 {
-                    AddComponents(parentElement, property.PropertyType, adapter, dataItemAttribute?.Name ?? $"{prefix}{property.Name}_");
+                    AddComponents(parentElement, property.PropertyType, adapter, $"{modelPath}[{property.Name}]", dataItemAttribute?.Name ?? $"{componentPrefix}{property.Name}_");
                 }
                 else if (typeof(DataItem).IsAssignableFrom(property.PropertyType) ||
                     dataItemAttribute != null ||
                     typeof(IDataItemValue).IsAssignableFrom(property.PropertyType))
                 {
-                    hasDataItems = ProcessDataItem(parentElement, adapter, prefix, dataItemsElement, property, dataItemAttribute);
+                    hasDataItems = ProcessDataItem(parentElement, adapter, $"{modelPath}[{property.Name}]", dataItemsElement, property, dataItemAttribute);
                 }
             }
 
@@ -145,7 +145,7 @@ namespace Mtconnect.AdapterInterface.DeviceConfiguration
                 parentElement.AppendChild(componentsElement);
         }
 
-        private static bool ProcessDataItem(XmlElement parentElement, Adapter adapter, string prefix, XmlElement dataItemsElement, PropertyInfo property, DataItemAttribute dataItemAttribute)
+        private static bool ProcessDataItem(XmlElement parentElement, Adapter adapter, string modelPath, XmlElement dataItemsElement, PropertyInfo property, DataItemAttribute dataItemAttribute)
         {
             bool hasDataItems = true;
             // TODO: Handle property that meets the conditions
@@ -156,7 +156,7 @@ namespace Mtconnect.AdapterInterface.DeviceConfiguration
             {
                 // Lookup DataItem from adapter
                 // TODO: Getting the DataItem from the Adapter based on the PropertyInfo seems to half work. Need to improve comparison of PropertyInfo beyond defaults.
-                var dataItem = FindDataItem(adapter, property);
+                var dataItem = adapter.DataItems.FirstOrDefault(o => o.ModelPath == modelPath);
                 if (dataItem != null)
                 {
                     dataItemValues.Category = dataItem.Category;
@@ -181,7 +181,7 @@ namespace Mtconnect.AdapterInterface.DeviceConfiguration
 
             if (typeof(DataItem).IsAssignableFrom(property.PropertyType))
             {
-                var dataItem = FindDataItem(adapter, property);
+                var dataItem = adapter.DataItems.FirstOrDefault(o => o.ModelPath == modelPath);
                 // QUESTION: Is dataItem.Name an appropriate id?
                 if (dataItem != null)
                 {
@@ -207,14 +207,14 @@ namespace Mtconnect.AdapterInterface.DeviceConfiguration
             }
 
             dataItemElement = CreateDataItemElement(parentElement.OwnerDocument, dataItemValues.Category, dataItemValues.Type, dataItemValues.SubType, dataItemValues.Name, dataItemValues.Units);
-            dataItemElement.AppendChild(parentElement.OwnerDocument.CreateCDataSection($"PropertyInfo: {property.DeclaringType.FullName}.{property.Name}\rn\nDataItem.Name: {dataItemValues.Name}"));
+            dataItemElement.AppendChild(parentElement.OwnerDocument.CreateCDataSection($"PropertyInfo: {property.DeclaringType.FullName}.{property.Name}\rn\nDataItem.Name: {dataItemValues.Name}\r\nModel Path: {modelPath}"));
 
             if (dataItemElement != null)
                 dataItemsElement.AppendChild(dataItemElement);
             return hasDataItems;
         }
 
-        private bool ProcessComponentModel(XmlElement parentElement, Adapter adapter, string prefix, XmlElement componentsElement, PropertyInfo property, DataItemAttribute dataItemAttribute)
+        private bool ProcessComponentModel(XmlElement parentElement, Adapter adapter, string modelPath, string componentPath, XmlElement componentsElement, PropertyInfo property, DataItemAttribute dataItemAttribute)
         {
             bool hasComponents = true;
             var componentModelType = GetNearestComponentModelType(property.PropertyType);
@@ -231,7 +231,7 @@ namespace Mtconnect.AdapterInterface.DeviceConfiguration
 
             componentsElement.AppendChild(componentElement);
 
-            AddComponents(componentElement, property.PropertyType, adapter, dataItemAttribute?.Name ?? $"{prefix}{property.Name}_");
+            AddComponents(componentElement, property.PropertyType, adapter, modelPath, dataItemAttribute?.Name ?? $"{componentPath}{property.Name}_");
             return hasComponents;
         }
 
@@ -247,15 +247,6 @@ namespace Mtconnect.AdapterInterface.DeviceConfiguration
                 currentType = currentType.BaseType;
             }
             return null;
-        }
-
-        private static DataItem FindDataItem(Adapter adapter, PropertyInfo property)
-        {
-            return adapter.DataItems
-                .FirstOrDefault(o =>
-                    o.ModelType?.DeclaringType == property.DeclaringType
-                    && o.ModelType?.Name == property.Name
-                );
         }
 
         private static void AddDataItems(XmlNode xDataItems, IEnumerable<DataItem> dataItems)
