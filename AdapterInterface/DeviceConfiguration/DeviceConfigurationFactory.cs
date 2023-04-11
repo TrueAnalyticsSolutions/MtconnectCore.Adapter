@@ -288,17 +288,17 @@ namespace Mtconnect.AdapterInterface.DeviceConfiguration
                     } else if (Enum.TryParse<SampleTypes>(type, true, out var sampleConditionType))
                     {
                         isDefined = true;
-                        version = conditionType.GetType().GetCustomAttribute<MtconnectVersionAttribute>()?.MinimumVersion;
+                        version = sampleConditionType.GetType().GetCustomAttribute<MtconnectVersionAttribute>()?.MinimumVersion;
                     } else if (Enum.TryParse<EventTypes>(type, true, out var eventConditionType))
                     {
                         isDefined = true;
-                        version = conditionType.GetType().GetCustomAttribute<MtconnectVersionAttribute>()?.MinimumVersion;
+                        version = eventConditionType.GetType().GetCustomAttribute<MtconnectVersionAttribute>()?.MinimumVersion;
                     }
                     break;
                 default:
                     break;
             }
-            if (version > MaximumVersion)
+            if ((int)version > (int)MaximumVersion)
                 MaximumVersion = version.Value;
             xDataItem.SetAttribute("type", isDefined && !type.StartsWith("x:") ? type : $"x:{type ?? id}");
 
