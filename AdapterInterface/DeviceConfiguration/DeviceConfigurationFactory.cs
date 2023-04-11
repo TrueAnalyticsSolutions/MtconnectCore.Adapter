@@ -298,7 +298,7 @@ namespace Mtconnect.AdapterInterface.DeviceConfiguration
                 default:
                     break;
             }
-            if ((int)version > (int)MaximumVersion)
+            if (version != null && (int)version > (int)MaximumVersion)
                 MaximumVersion = version.Value;
             xDataItem.SetAttribute("type", isDefined && !type.StartsWith("x:") ? type : $"x:{type ?? id}");
 
