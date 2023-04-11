@@ -50,10 +50,10 @@ namespace Mtconnect.AdapterInterface.DataItemValues
 		public partial class MAXIMUM : Line
 		{
 			/// <inheritdoc />
-            public override string ObservationalSubType => nameof(DataItemTypes.LineSubTypes._MAXIMUM);
+            public override string ObservationalSubType => nameof(DataItemTypes.LineSubTypes.MAXIMUM);
 
 			/// <summary>
-			/// Constructs a new value type for _MAXIMUM.
+			/// Constructs a new value type for MAXIMUM.
 			/// </summary>
             public MAXIMUM(string value) : base(value) { }
 			
@@ -72,10 +72,10 @@ namespace Mtconnect.AdapterInterface.DataItemValues
 		public partial class MINIMUM : Line
 		{
 			/// <inheritdoc />
-            public override string ObservationalSubType => nameof(DataItemTypes.LineSubTypes._MINIMUM);
+            public override string ObservationalSubType => nameof(DataItemTypes.LineSubTypes.MINIMUM);
 
 			/// <summary>
-			/// Constructs a new value type for _MINIMUM.
+			/// Constructs a new value type for MINIMUM.
 			/// </summary>
             public MINIMUM(string value) : base(value) { }
 			

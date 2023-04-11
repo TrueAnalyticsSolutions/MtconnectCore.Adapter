@@ -49,10 +49,10 @@ namespace Mtconnect.AdapterInterface.DataItemValues
 		public partial class ACTUAL : PathPosition
 		{
 			/// <inheritdoc />
-            public override string ObservationalSubType => nameof(DataItemTypes.PathPositionSubTypes._ACTUAL);
+            public override string ObservationalSubType => nameof(DataItemTypes.PathPositionSubTypes.ACTUAL);
 
 			/// <summary>
-			/// Constructs a new value type for _ACTUAL.
+			/// Constructs a new value type for ACTUAL.
 			/// </summary>
             public ACTUAL(float[] value) : base(value) { }
 			
@@ -71,10 +71,10 @@ namespace Mtconnect.AdapterInterface.DataItemValues
 		public partial class COMMANDED : PathPosition
 		{
 			/// <inheritdoc />
-            public override string ObservationalSubType => nameof(DataItemTypes.PathPositionSubTypes._COMMANDED);
+            public override string ObservationalSubType => nameof(DataItemTypes.PathPositionSubTypes.COMMANDED);
 
 			/// <summary>
-			/// Constructs a new value type for _COMMANDED.
+			/// Constructs a new value type for COMMANDED.
 			/// </summary>
             public COMMANDED(float[] value) : base(value) { }
 			
@@ -93,10 +93,10 @@ namespace Mtconnect.AdapterInterface.DataItemValues
 		public partial class TARGET : PathPosition
 		{
 			/// <inheritdoc />
-            public override string ObservationalSubType => nameof(DataItemTypes.PathPositionSubTypes._TARGET);
+            public override string ObservationalSubType => nameof(DataItemTypes.PathPositionSubTypes.TARGET);
 
 			/// <summary>
-			/// Constructs a new value type for _TARGET.
+			/// Constructs a new value type for TARGET.
 			/// </summary>
             public TARGET(float[] value) : base(value) { }
 			
@@ -115,10 +115,10 @@ namespace Mtconnect.AdapterInterface.DataItemValues
 		public partial class PROBE : PathPosition
 		{
 			/// <inheritdoc />
-            public override string ObservationalSubType => nameof(DataItemTypes.PathPositionSubTypes._PROBE);
+            public override string ObservationalSubType => nameof(DataItemTypes.PathPositionSubTypes.PROBE);
 
 			/// <summary>
-			/// Constructs a new value type for _PROBE.
+			/// Constructs a new value type for PROBE.
 			/// </summary>
             public PROBE(float[] value) : base(value) { }
 			

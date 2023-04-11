@@ -49,10 +49,10 @@ namespace Mtconnect.AdapterInterface.DataItemValues
 		public partial class ACTUAL : VolumeSpatial
 		{
 			/// <inheritdoc />
-            public override string ObservationalSubType => nameof(DataItemTypes.VolumeSpatialSubTypes._ACTUAL);
+            public override string ObservationalSubType => nameof(DataItemTypes.VolumeSpatialSubTypes.ACTUAL);
 
 			/// <summary>
-			/// Constructs a new value type for _ACTUAL.
+			/// Constructs a new value type for ACTUAL.
 			/// </summary>
             public ACTUAL(float value) : base(value) { }
 			
@@ -71,10 +71,10 @@ namespace Mtconnect.AdapterInterface.DataItemValues
 		public partial class CONSUMED : VolumeSpatial
 		{
 			/// <inheritdoc />
-            public override string ObservationalSubType => nameof(DataItemTypes.VolumeSpatialSubTypes._CONSUMED);
+            public override string ObservationalSubType => nameof(DataItemTypes.VolumeSpatialSubTypes.CONSUMED);
 
 			/// <summary>
-			/// Constructs a new value type for _CONSUMED.
+			/// Constructs a new value type for CONSUMED.
 			/// </summary>
             public CONSUMED(float value) : base(value) { }
 			

@@ -48,10 +48,10 @@ namespace Mtconnect.AdapterInterface.DataItemValues
 		public partial class JOG : PathFeedrateOverride
 		{
 			/// <inheritdoc />
-            public override string ObservationalSubType => nameof(DataItemTypes.PathFeedrateOverrideSubTypes._JOG);
+            public override string ObservationalSubType => nameof(DataItemTypes.PathFeedrateOverrideSubTypes.JOG);
 
 			/// <summary>
-			/// Constructs a new value type for _JOG.
+			/// Constructs a new value type for JOG.
 			/// </summary>
             public JOG(Single value) : base(value) { }
 			
@@ -70,10 +70,10 @@ namespace Mtconnect.AdapterInterface.DataItemValues
 		public partial class PROGRAMMED : PathFeedrateOverride
 		{
 			/// <inheritdoc />
-            public override string ObservationalSubType => nameof(DataItemTypes.PathFeedrateOverrideSubTypes._PROGRAMMED);
+            public override string ObservationalSubType => nameof(DataItemTypes.PathFeedrateOverrideSubTypes.PROGRAMMED);
 
 			/// <summary>
-			/// Constructs a new value type for _PROGRAMMED.
+			/// Constructs a new value type for PROGRAMMED.
 			/// </summary>
             public PROGRAMMED(Single value) : base(value) { }
 			
@@ -92,10 +92,10 @@ namespace Mtconnect.AdapterInterface.DataItemValues
 		public partial class RAPID : PathFeedrateOverride
 		{
 			/// <inheritdoc />
-            public override string ObservationalSubType => nameof(DataItemTypes.PathFeedrateOverrideSubTypes._RAPID);
+            public override string ObservationalSubType => nameof(DataItemTypes.PathFeedrateOverrideSubTypes.RAPID);
 
 			/// <summary>
-			/// Constructs a new value type for _RAPID.
+			/// Constructs a new value type for RAPID.
 			/// </summary>
             public RAPID(Single value) : base(value) { }
 			

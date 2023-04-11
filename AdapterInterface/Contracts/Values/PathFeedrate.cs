@@ -49,10 +49,10 @@ namespace Mtconnect.AdapterInterface.DataItemValues
 		public partial class ACTUAL : PathFeedrate
 		{
 			/// <inheritdoc />
-            public override string ObservationalSubType => nameof(DataItemTypes.PathFeedrateSubTypes._ACTUAL);
+            public override string ObservationalSubType => nameof(DataItemTypes.PathFeedrateSubTypes.ACTUAL);
 
 			/// <summary>
-			/// Constructs a new value type for _ACTUAL.
+			/// Constructs a new value type for ACTUAL.
 			/// </summary>
             public ACTUAL(float value) : base(value) { }
 			
@@ -71,10 +71,10 @@ namespace Mtconnect.AdapterInterface.DataItemValues
 		public partial class COMMANDED : PathFeedrate
 		{
 			/// <inheritdoc />
-            public override string ObservationalSubType => nameof(DataItemTypes.PathFeedrateSubTypes._COMMANDED);
+            public override string ObservationalSubType => nameof(DataItemTypes.PathFeedrateSubTypes.COMMANDED);
 
 			/// <summary>
-			/// Constructs a new value type for _COMMANDED.
+			/// Constructs a new value type for COMMANDED.
 			/// </summary>
             public COMMANDED(float value) : base(value) { }
 			
@@ -93,10 +93,10 @@ namespace Mtconnect.AdapterInterface.DataItemValues
 		public partial class JOG : PathFeedrate
 		{
 			/// <inheritdoc />
-            public override string ObservationalSubType => nameof(DataItemTypes.PathFeedrateSubTypes._JOG);
+            public override string ObservationalSubType => nameof(DataItemTypes.PathFeedrateSubTypes.JOG);
 
 			/// <summary>
-			/// Constructs a new value type for _JOG.
+			/// Constructs a new value type for JOG.
 			/// </summary>
             public JOG(float value) : base(value) { }
 			
@@ -115,10 +115,10 @@ namespace Mtconnect.AdapterInterface.DataItemValues
 		public partial class PROGRAMMED : PathFeedrate
 		{
 			/// <inheritdoc />
-            public override string ObservationalSubType => nameof(DataItemTypes.PathFeedrateSubTypes._PROGRAMMED);
+            public override string ObservationalSubType => nameof(DataItemTypes.PathFeedrateSubTypes.PROGRAMMED);
 
 			/// <summary>
-			/// Constructs a new value type for _PROGRAMMED.
+			/// Constructs a new value type for PROGRAMMED.
 			/// </summary>
             public PROGRAMMED(float value) : base(value) { }
 			
@@ -137,10 +137,10 @@ namespace Mtconnect.AdapterInterface.DataItemValues
 		public partial class RAPID : PathFeedrate
 		{
 			/// <inheritdoc />
-            public override string ObservationalSubType => nameof(DataItemTypes.PathFeedrateSubTypes._RAPID);
+            public override string ObservationalSubType => nameof(DataItemTypes.PathFeedrateSubTypes.RAPID);
 
 			/// <summary>
-			/// Constructs a new value type for _RAPID.
+			/// Constructs a new value type for RAPID.
 			/// </summary>
             public RAPID(float value) : base(value) { }
 			
@@ -159,10 +159,10 @@ namespace Mtconnect.AdapterInterface.DataItemValues
 		public partial class OVERRIDE : PathFeedrate
 		{
 			/// <inheritdoc />
-            public override string ObservationalSubType => nameof(DataItemTypes.PathFeedrateSubTypes._OVERRIDE);
+            public override string ObservationalSubType => nameof(DataItemTypes.PathFeedrateSubTypes.OVERRIDE);
 
 			/// <summary>
-			/// Constructs a new value type for _OVERRIDE.
+			/// Constructs a new value type for OVERRIDE.
 			/// </summary>
             public OVERRIDE(float value) : base(value) { }
 			

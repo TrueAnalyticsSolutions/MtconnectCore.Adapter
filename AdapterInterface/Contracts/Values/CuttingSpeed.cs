@@ -49,10 +49,10 @@ namespace Mtconnect.AdapterInterface.DataItemValues
 		public partial class ACTUAL : CuttingSpeed
 		{
 			/// <inheritdoc />
-            public override string ObservationalSubType => nameof(DataItemTypes.CuttingSpeedSubTypes._ACTUAL);
+            public override string ObservationalSubType => nameof(DataItemTypes.CuttingSpeedSubTypes.ACTUAL);
 
 			/// <summary>
-			/// Constructs a new value type for _ACTUAL.
+			/// Constructs a new value type for ACTUAL.
 			/// </summary>
             public ACTUAL(float value) : base(value) { }
 			
@@ -71,10 +71,10 @@ namespace Mtconnect.AdapterInterface.DataItemValues
 		public partial class COMMANDED : CuttingSpeed
 		{
 			/// <inheritdoc />
-            public override string ObservationalSubType => nameof(DataItemTypes.CuttingSpeedSubTypes._COMMANDED);
+            public override string ObservationalSubType => nameof(DataItemTypes.CuttingSpeedSubTypes.COMMANDED);
 
 			/// <summary>
-			/// Constructs a new value type for _COMMANDED.
+			/// Constructs a new value type for COMMANDED.
 			/// </summary>
             public COMMANDED(float value) : base(value) { }
 			
@@ -93,10 +93,10 @@ namespace Mtconnect.AdapterInterface.DataItemValues
 		public partial class PROGRAMMED : CuttingSpeed
 		{
 			/// <inheritdoc />
-            public override string ObservationalSubType => nameof(DataItemTypes.CuttingSpeedSubTypes._PROGRAMMED);
+            public override string ObservationalSubType => nameof(DataItemTypes.CuttingSpeedSubTypes.PROGRAMMED);
 
 			/// <summary>
-			/// Constructs a new value type for _PROGRAMMED.
+			/// Constructs a new value type for PROGRAMMED.
 			/// </summary>
             public PROGRAMMED(float value) : base(value) { }
 			

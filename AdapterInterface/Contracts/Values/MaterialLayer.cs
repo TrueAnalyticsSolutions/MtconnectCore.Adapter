@@ -48,10 +48,10 @@ namespace Mtconnect.AdapterInterface.DataItemValues
 		public partial class ACTUAL : MaterialLayer
 		{
 			/// <inheritdoc />
-            public override string ObservationalSubType => nameof(DataItemTypes.MaterialLayerSubTypes._ACTUAL);
+            public override string ObservationalSubType => nameof(DataItemTypes.MaterialLayerSubTypes.ACTUAL);
 
 			/// <summary>
-			/// Constructs a new value type for _ACTUAL.
+			/// Constructs a new value type for ACTUAL.
 			/// </summary>
             public ACTUAL(Int32 value) : base(value) { }
 			
@@ -70,10 +70,10 @@ namespace Mtconnect.AdapterInterface.DataItemValues
 		public partial class TARGET : MaterialLayer
 		{
 			/// <inheritdoc />
-            public override string ObservationalSubType => nameof(DataItemTypes.MaterialLayerSubTypes._TARGET);
+            public override string ObservationalSubType => nameof(DataItemTypes.MaterialLayerSubTypes.TARGET);
 
 			/// <summary>
-			/// Constructs a new value type for _TARGET.
+			/// Constructs a new value type for TARGET.
 			/// </summary>
             public TARGET(Int32 value) : base(value) { }
 			

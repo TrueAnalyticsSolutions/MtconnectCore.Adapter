@@ -32,7 +32,7 @@ namespace Mtconnect.AdapterInterface.DataItemTypes
 		/// </list>
 		/// </remarks>
 		[MtconnectVersion(MtconnectVersions.V_1_0_1, "https://model.mtconnect.org/#_Version_1.0")]
-		_ALL,
+		ALL,
 		/// <summary>
 		﻿/// accumulation of actions, items, or activities being counted that conform to specification or expectation.
 		/// </summary>
@@ -42,7 +42,7 @@ namespace Mtconnect.AdapterInterface.DataItemTypes
 		/// </list>
 		/// </remarks>
 		[MtconnectVersion(MtconnectVersions.V_1_0_1, "https://model.mtconnect.org/#_Version_1.0")]
-		_GOOD,
+		GOOD,
 		/// <summary>
 		﻿/// accumulation of actions, items, or activities being counted that do not conform to specification or expectation.
 		/// </summary>
@@ -52,7 +52,7 @@ namespace Mtconnect.AdapterInterface.DataItemTypes
 		/// </list>
 		/// </remarks>
 		[MtconnectVersion(MtconnectVersions.V_1_0_1, "https://model.mtconnect.org/#_Version_1.0")]
-		_BAD,
+		BAD,
 		/// <summary>
 		﻿/// goal of the operation or process.
 		/// </summary>
@@ -62,7 +62,7 @@ namespace Mtconnect.AdapterInterface.DataItemTypes
 		/// </list>
 		/// </remarks>
 		[MtconnectVersion(MtconnectVersions.V_1_3_0, "https://model.mtconnect.org/#_Version_1.3")]
-		_TARGET,
+		TARGET,
 		/// <summary>
 		﻿/// accumulation of actions, items, or activities yet to be counted.
 		/// </summary>
@@ -72,7 +72,7 @@ namespace Mtconnect.AdapterInterface.DataItemTypes
 		/// </list>
 		/// </remarks>
 		[MtconnectVersion(MtconnectVersions.V_1_3_0, "https://model.mtconnect.org/#_Version_1.3")]
-		_REMAINING,
+		REMAINING,
 		/// <summary>
 		﻿/// accumulation of actions, items, or activities that have been completed, independent of the outcome.
 		/// </summary>

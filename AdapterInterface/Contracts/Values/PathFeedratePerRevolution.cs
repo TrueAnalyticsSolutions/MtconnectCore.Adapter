@@ -49,10 +49,10 @@ namespace Mtconnect.AdapterInterface.DataItemValues
 		public partial class ACTUAL : PathFeedratePerRevolution
 		{
 			/// <inheritdoc />
-            public override string ObservationalSubType => nameof(DataItemTypes.PathFeedratePerRevolutionSubTypes._ACTUAL);
+            public override string ObservationalSubType => nameof(DataItemTypes.PathFeedratePerRevolutionSubTypes.ACTUAL);
 
 			/// <summary>
-			/// Constructs a new value type for _ACTUAL.
+			/// Constructs a new value type for ACTUAL.
 			/// </summary>
             public ACTUAL(float value) : base(value) { }
 			
@@ -71,10 +71,10 @@ namespace Mtconnect.AdapterInterface.DataItemValues
 		public partial class COMMANDED : PathFeedratePerRevolution
 		{
 			/// <inheritdoc />
-            public override string ObservationalSubType => nameof(DataItemTypes.PathFeedratePerRevolutionSubTypes._COMMANDED);
+            public override string ObservationalSubType => nameof(DataItemTypes.PathFeedratePerRevolutionSubTypes.COMMANDED);
 
 			/// <summary>
-			/// Constructs a new value type for _COMMANDED.
+			/// Constructs a new value type for COMMANDED.
 			/// </summary>
             public COMMANDED(float value) : base(value) { }
 			
@@ -93,10 +93,10 @@ namespace Mtconnect.AdapterInterface.DataItemValues
 		public partial class PROGRAMMED : PathFeedratePerRevolution
 		{
 			/// <inheritdoc />
-            public override string ObservationalSubType => nameof(DataItemTypes.PathFeedratePerRevolutionSubTypes._PROGRAMMED);
+            public override string ObservationalSubType => nameof(DataItemTypes.PathFeedratePerRevolutionSubTypes.PROGRAMMED);
 
 			/// <summary>
-			/// Constructs a new value type for _PROGRAMMED.
+			/// Constructs a new value type for PROGRAMMED.
 			/// </summary>
             public PROGRAMMED(float value) : base(value) { }
 			

@@ -49,10 +49,10 @@ namespace Mtconnect.AdapterInterface.DataItemValues
 		public partial class NOSCALE : SoundLevel
 		{
 			/// <inheritdoc />
-            public override string ObservationalSubType => nameof(DataItemTypes.SoundLevelSubTypes._NO_SCALE);
+            public override string ObservationalSubType => nameof(DataItemTypes.SoundLevelSubTypes.NO_SCALE);
 
 			/// <summary>
-			/// Constructs a new value type for _NO_SCALE.
+			/// Constructs a new value type for NO_SCALE.
 			/// </summary>
             public NOSCALE(float value) : base(value) { }
 			
@@ -71,10 +71,10 @@ namespace Mtconnect.AdapterInterface.DataItemValues
 		public partial class ASCALE : SoundLevel
 		{
 			/// <inheritdoc />
-            public override string ObservationalSubType => nameof(DataItemTypes.SoundLevelSubTypes._A_SCALE);
+            public override string ObservationalSubType => nameof(DataItemTypes.SoundLevelSubTypes.A_SCALE);
 
 			/// <summary>
-			/// Constructs a new value type for _A_SCALE.
+			/// Constructs a new value type for A_SCALE.
 			/// </summary>
             public ASCALE(float value) : base(value) { }
 			
@@ -93,10 +93,10 @@ namespace Mtconnect.AdapterInterface.DataItemValues
 		public partial class BSCALE : SoundLevel
 		{
 			/// <inheritdoc />
-            public override string ObservationalSubType => nameof(DataItemTypes.SoundLevelSubTypes._B_SCALE);
+            public override string ObservationalSubType => nameof(DataItemTypes.SoundLevelSubTypes.B_SCALE);
 
 			/// <summary>
-			/// Constructs a new value type for _B_SCALE.
+			/// Constructs a new value type for B_SCALE.
 			/// </summary>
             public BSCALE(float value) : base(value) { }
 			
@@ -115,10 +115,10 @@ namespace Mtconnect.AdapterInterface.DataItemValues
 		public partial class CSCALE : SoundLevel
 		{
 			/// <inheritdoc />
-            public override string ObservationalSubType => nameof(DataItemTypes.SoundLevelSubTypes._C_SCALE);
+            public override string ObservationalSubType => nameof(DataItemTypes.SoundLevelSubTypes.C_SCALE);
 
 			/// <summary>
-			/// Constructs a new value type for _C_SCALE.
+			/// Constructs a new value type for C_SCALE.
 			/// </summary>
             public CSCALE(float value) : base(value) { }
 			
@@ -137,10 +137,10 @@ namespace Mtconnect.AdapterInterface.DataItemValues
 		public partial class DSCALE : SoundLevel
 		{
 			/// <inheritdoc />
-            public override string ObservationalSubType => nameof(DataItemTypes.SoundLevelSubTypes._D_SCALE);
+            public override string ObservationalSubType => nameof(DataItemTypes.SoundLevelSubTypes.D_SCALE);
 
 			/// <summary>
-			/// Constructs a new value type for _D_SCALE.
+			/// Constructs a new value type for D_SCALE.
 			/// </summary>
             public DSCALE(float value) : base(value) { }
 			

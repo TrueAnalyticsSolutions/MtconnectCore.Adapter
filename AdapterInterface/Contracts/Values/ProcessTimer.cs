@@ -49,10 +49,10 @@ namespace Mtconnect.AdapterInterface.DataItemValues
 		public partial class PROCESS : ProcessTimer
 		{
 			/// <inheritdoc />
-            public override string ObservationalSubType => nameof(DataItemTypes.ProcessTimerSubTypes._PROCESS);
+            public override string ObservationalSubType => nameof(DataItemTypes.ProcessTimerSubTypes.PROCESS);
 
 			/// <summary>
-			/// Constructs a new value type for _PROCESS.
+			/// Constructs a new value type for PROCESS.
 			/// </summary>
             public PROCESS(float value) : base(value) { }
 			
@@ -71,10 +71,10 @@ namespace Mtconnect.AdapterInterface.DataItemValues
 		public partial class DELAY : ProcessTimer
 		{
 			/// <inheritdoc />
-            public override string ObservationalSubType => nameof(DataItemTypes.ProcessTimerSubTypes._DELAY);
+            public override string ObservationalSubType => nameof(DataItemTypes.ProcessTimerSubTypes.DELAY);
 
 			/// <summary>
-			/// Constructs a new value type for _DELAY.
+			/// Constructs a new value type for DELAY.
 			/// </summary>
             public DELAY(float value) : base(value) { }
 			

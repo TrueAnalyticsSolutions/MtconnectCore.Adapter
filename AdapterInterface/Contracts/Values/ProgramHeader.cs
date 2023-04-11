@@ -48,10 +48,10 @@ namespace Mtconnect.AdapterInterface.DataItemValues
 		public partial class MAIN : ProgramHeader
 		{
 			/// <inheritdoc />
-            public override string ObservationalSubType => nameof(DataItemTypes.ProgramHeaderSubTypes._MAIN);
+            public override string ObservationalSubType => nameof(DataItemTypes.ProgramHeaderSubTypes.MAIN);
 
 			/// <summary>
-			/// Constructs a new value type for _MAIN.
+			/// Constructs a new value type for MAIN.
 			/// </summary>
             public MAIN(string value) : base(value) { }
 			
@@ -70,10 +70,10 @@ namespace Mtconnect.AdapterInterface.DataItemValues
 		public partial class SCHEDULE : ProgramHeader
 		{
 			/// <inheritdoc />
-            public override string ObservationalSubType => nameof(DataItemTypes.ProgramHeaderSubTypes._SCHEDULE);
+            public override string ObservationalSubType => nameof(DataItemTypes.ProgramHeaderSubTypes.SCHEDULE);
 
 			/// <summary>
-			/// Constructs a new value type for _SCHEDULE.
+			/// Constructs a new value type for SCHEDULE.
 			/// </summary>
             public SCHEDULE(string value) : base(value) { }
 			
@@ -92,10 +92,10 @@ namespace Mtconnect.AdapterInterface.DataItemValues
 		public partial class ACTIVE : ProgramHeader
 		{
 			/// <inheritdoc />
-            public override string ObservationalSubType => nameof(DataItemTypes.ProgramHeaderSubTypes._ACTIVE);
+            public override string ObservationalSubType => nameof(DataItemTypes.ProgramHeaderSubTypes.ACTIVE);
 
 			/// <summary>
-			/// Constructs a new value type for _ACTIVE.
+			/// Constructs a new value type for ACTIVE.
 			/// </summary>
             public ACTIVE(string value) : base(value) { }
 			

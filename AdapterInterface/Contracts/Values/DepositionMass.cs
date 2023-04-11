@@ -49,10 +49,10 @@ namespace Mtconnect.AdapterInterface.DataItemValues
 		public partial class ACTUAL : DepositionMass
 		{
 			/// <inheritdoc />
-            public override string ObservationalSubType => nameof(DataItemTypes.DepositionMassSubTypes._ACTUAL);
+            public override string ObservationalSubType => nameof(DataItemTypes.DepositionMassSubTypes.ACTUAL);
 
 			/// <summary>
-			/// Constructs a new value type for _ACTUAL.
+			/// Constructs a new value type for ACTUAL.
 			/// </summary>
             public ACTUAL(float value) : base(value) { }
 			
@@ -71,10 +71,10 @@ namespace Mtconnect.AdapterInterface.DataItemValues
 		public partial class COMMANDED : DepositionMass
 		{
 			/// <inheritdoc />
-            public override string ObservationalSubType => nameof(DataItemTypes.DepositionMassSubTypes._COMMANDED);
+            public override string ObservationalSubType => nameof(DataItemTypes.DepositionMassSubTypes.COMMANDED);
 
 			/// <summary>
-			/// Constructs a new value type for _COMMANDED.
+			/// Constructs a new value type for COMMANDED.
 			/// </summary>
             public COMMANDED(float value) : base(value) { }
 			

@@ -240,17 +240,13 @@ namespace AdapterTranspiler
 
                             subTypeEnum.Add(model, typeSubType);
                             if (modelSubTypeEnum != null)
-                            {
                                 subTypeEnum.Items.Last().Name = modelSubTypeEnum.Name;
-                            }
                         }
                         // Cleanup Enum names
                         foreach (EnumItem item in subTypeEnum.Items)
                         {
                             if (item.Name.Contains('.'))
-                            {
-                                item.Name = ScribanHelperMethods.ToUpperSnakeCode(item.Name[(item.Name.IndexOf(".") + 1)..]);
-                            }
+                                item.Name = ScribanHelperMethods.ToUpperSnakeCode(item.SysML_Name[(item.SysML_Name.IndexOf(".") + 1)..]);
 
                             // Register type as having a subType in the Value Type class
                             if (typeValues != null && !typeValues.SubTypes.Contains(item.Name))

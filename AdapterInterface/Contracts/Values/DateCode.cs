@@ -48,10 +48,10 @@ namespace Mtconnect.AdapterInterface.DataItemValues
 		public partial class MANUFACTURE : DateCode
 		{
 			/// <inheritdoc />
-            public override string ObservationalSubType => nameof(DataItemTypes.DateCodeSubTypes._MANUFACTURE);
+            public override string ObservationalSubType => nameof(DataItemTypes.DateCodeSubTypes.MANUFACTURE);
 
 			/// <summary>
-			/// Constructs a new value type for _MANUFACTURE.
+			/// Constructs a new value type for MANUFACTURE.
 			/// </summary>
             public MANUFACTURE(DateTime value) : base(value) { }
 			
@@ -70,10 +70,10 @@ namespace Mtconnect.AdapterInterface.DataItemValues
 		public partial class EXPIRATION : DateCode
 		{
 			/// <inheritdoc />
-            public override string ObservationalSubType => nameof(DataItemTypes.DateCodeSubTypes._EXPIRATION);
+            public override string ObservationalSubType => nameof(DataItemTypes.DateCodeSubTypes.EXPIRATION);
 
 			/// <summary>
-			/// Constructs a new value type for _EXPIRATION.
+			/// Constructs a new value type for EXPIRATION.
 			/// </summary>
             public EXPIRATION(DateTime value) : base(value) { }
 			
@@ -92,10 +92,10 @@ namespace Mtconnect.AdapterInterface.DataItemValues
 		public partial class FIRSTUSE : DateCode
 		{
 			/// <inheritdoc />
-            public override string ObservationalSubType => nameof(DataItemTypes.DateCodeSubTypes._FIRST_USE);
+            public override string ObservationalSubType => nameof(DataItemTypes.DateCodeSubTypes.FIRST_USE);
 
 			/// <summary>
-			/// Constructs a new value type for _FIRST_USE.
+			/// Constructs a new value type for FIRST_USE.
 			/// </summary>
             public FIRSTUSE(DateTime value) : base(value) { }
 			

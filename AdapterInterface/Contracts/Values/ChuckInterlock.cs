@@ -68,10 +68,10 @@ namespace Mtconnect.AdapterInterface.DataItemValues
 		public partial class MANUALUNCLAMP : ChuckInterlock
 		{
 			/// <inheritdoc />
-            public override string ObservationalSubType => nameof(DataItemTypes.ChuckInterlockSubTypes._MANUAL_UNCLAMP);
+            public override string ObservationalSubType => nameof(DataItemTypes.ChuckInterlockSubTypes.MANUAL_UNCLAMP);
 
 			/// <summary>
-			/// Constructs a new value type for _MANUAL_UNCLAMP.
+			/// Constructs a new value type for MANUAL_UNCLAMP.
 			/// </summary>
             public MANUALUNCLAMP(string value) : base(value) { }
 			

@@ -32,7 +32,7 @@ namespace Mtconnect.AdapterInterface.DataItemTypes
 		/// </list>
 		/// </remarks>
 		[MtconnectVersion(MtconnectVersions.V_1_5_0, "https://model.mtconnect.org/#_Version_1.5")]
-		_ACTUAL,
+		ACTUAL,
 		/// <summary>
 		﻿/// reported or measured value of the amount used in the manufacturing process.
 		/// </summary>
@@ -42,7 +42,7 @@ namespace Mtconnect.AdapterInterface.DataItemTypes
 		/// </list>
 		/// </remarks>
 		[MtconnectVersion(MtconnectVersions.V_1_5_0, "https://model.mtconnect.org/#_Version_1.5")]
-		_CONSUMED,
+		CONSUMED,
 		/// <summary>
 		﻿/// reported or measured value of amount included in the <i>part</i>.
 		/// </summary>

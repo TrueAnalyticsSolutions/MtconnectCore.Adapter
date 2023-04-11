@@ -51,10 +51,10 @@ namespace Mtconnect.AdapterInterface.DataItemValues
 		public partial class ACTUAL : SpindleSpeed
 		{
 			/// <inheritdoc />
-            public override string ObservationalSubType => nameof(DataItemTypes.SpindleSpeedSubTypes._ACTUAL);
+            public override string ObservationalSubType => nameof(DataItemTypes.SpindleSpeedSubTypes.ACTUAL);
 
 			/// <summary>
-			/// Constructs a new value type for _ACTUAL.
+			/// Constructs a new value type for ACTUAL.
 			/// </summary>
             public ACTUAL(float value) : base(value) { }
 			
@@ -73,10 +73,10 @@ namespace Mtconnect.AdapterInterface.DataItemValues
 		public partial class COMMANDED : SpindleSpeed
 		{
 			/// <inheritdoc />
-            public override string ObservationalSubType => nameof(DataItemTypes.SpindleSpeedSubTypes._COMMANDED);
+            public override string ObservationalSubType => nameof(DataItemTypes.SpindleSpeedSubTypes.COMMANDED);
 
 			/// <summary>
-			/// Constructs a new value type for _COMMANDED.
+			/// Constructs a new value type for COMMANDED.
 			/// </summary>
             public COMMANDED(float value) : base(value) { }
 			
@@ -95,10 +95,10 @@ namespace Mtconnect.AdapterInterface.DataItemValues
 		public partial class OVERRIDE : SpindleSpeed
 		{
 			/// <inheritdoc />
-            public override string ObservationalSubType => nameof(DataItemTypes.SpindleSpeedSubTypes._OVERRIDE);
+            public override string ObservationalSubType => nameof(DataItemTypes.SpindleSpeedSubTypes.OVERRIDE);
 
 			/// <summary>
-			/// Constructs a new value type for _OVERRIDE.
+			/// Constructs a new value type for OVERRIDE.
 			/// </summary>
             public OVERRIDE(float value) : base(value) { }
 			

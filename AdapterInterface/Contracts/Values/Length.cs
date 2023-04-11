@@ -49,10 +49,10 @@ namespace Mtconnect.AdapterInterface.DataItemValues
 		public partial class STANDARD : Length
 		{
 			/// <inheritdoc />
-            public override string ObservationalSubType => nameof(DataItemTypes.LengthSubTypes._STANDARD);
+            public override string ObservationalSubType => nameof(DataItemTypes.LengthSubTypes.STANDARD);
 
 			/// <summary>
-			/// Constructs a new value type for _STANDARD.
+			/// Constructs a new value type for STANDARD.
 			/// </summary>
             public STANDARD(float value) : base(value) { }
 			
@@ -71,10 +71,10 @@ namespace Mtconnect.AdapterInterface.DataItemValues
 		public partial class REMAINING : Length
 		{
 			/// <inheritdoc />
-            public override string ObservationalSubType => nameof(DataItemTypes.LengthSubTypes._REMAINING);
+            public override string ObservationalSubType => nameof(DataItemTypes.LengthSubTypes.REMAINING);
 
 			/// <summary>
-			/// Constructs a new value type for _REMAINING.
+			/// Constructs a new value type for REMAINING.
 			/// </summary>
             public REMAINING(float value) : base(value) { }
 			
@@ -93,10 +93,10 @@ namespace Mtconnect.AdapterInterface.DataItemValues
 		public partial class USEABLE : Length
 		{
 			/// <inheritdoc />
-            public override string ObservationalSubType => nameof(DataItemTypes.LengthSubTypes._USEABLE);
+            public override string ObservationalSubType => nameof(DataItemTypes.LengthSubTypes.USEABLE);
 
 			/// <summary>
-			/// Constructs a new value type for _USEABLE.
+			/// Constructs a new value type for USEABLE.
 			/// </summary>
             public USEABLE(float value) : base(value) { }
 			

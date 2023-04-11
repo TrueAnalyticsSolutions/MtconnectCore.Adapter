@@ -48,10 +48,10 @@ namespace Mtconnect.AdapterInterface.DataItemValues
 		public partial class ALL : PartCount
 		{
 			/// <inheritdoc />
-            public override string ObservationalSubType => nameof(DataItemTypes.PartCountSubTypes._ALL);
+            public override string ObservationalSubType => nameof(DataItemTypes.PartCountSubTypes.ALL);
 
 			/// <summary>
-			/// Constructs a new value type for _ALL.
+			/// Constructs a new value type for ALL.
 			/// </summary>
             public ALL(Int32 value) : base(value) { }
 			
@@ -70,10 +70,10 @@ namespace Mtconnect.AdapterInterface.DataItemValues
 		public partial class GOOD : PartCount
 		{
 			/// <inheritdoc />
-            public override string ObservationalSubType => nameof(DataItemTypes.PartCountSubTypes._GOOD);
+            public override string ObservationalSubType => nameof(DataItemTypes.PartCountSubTypes.GOOD);
 
 			/// <summary>
-			/// Constructs a new value type for _GOOD.
+			/// Constructs a new value type for GOOD.
 			/// </summary>
             public GOOD(Int32 value) : base(value) { }
 			
@@ -92,10 +92,10 @@ namespace Mtconnect.AdapterInterface.DataItemValues
 		public partial class BAD : PartCount
 		{
 			/// <inheritdoc />
-            public override string ObservationalSubType => nameof(DataItemTypes.PartCountSubTypes._BAD);
+            public override string ObservationalSubType => nameof(DataItemTypes.PartCountSubTypes.BAD);
 
 			/// <summary>
-			/// Constructs a new value type for _BAD.
+			/// Constructs a new value type for BAD.
 			/// </summary>
             public BAD(Int32 value) : base(value) { }
 			
@@ -114,10 +114,10 @@ namespace Mtconnect.AdapterInterface.DataItemValues
 		public partial class TARGET : PartCount
 		{
 			/// <inheritdoc />
-            public override string ObservationalSubType => nameof(DataItemTypes.PartCountSubTypes._TARGET);
+            public override string ObservationalSubType => nameof(DataItemTypes.PartCountSubTypes.TARGET);
 
 			/// <summary>
-			/// Constructs a new value type for _TARGET.
+			/// Constructs a new value type for TARGET.
 			/// </summary>
             public TARGET(Int32 value) : base(value) { }
 			
@@ -136,10 +136,10 @@ namespace Mtconnect.AdapterInterface.DataItemValues
 		public partial class REMAINING : PartCount
 		{
 			/// <inheritdoc />
-            public override string ObservationalSubType => nameof(DataItemTypes.PartCountSubTypes._REMAINING);
+            public override string ObservationalSubType => nameof(DataItemTypes.PartCountSubTypes.REMAINING);
 
 			/// <summary>
-			/// Constructs a new value type for _REMAINING.
+			/// Constructs a new value type for REMAINING.
 			/// </summary>
             public REMAINING(Int32 value) : base(value) { }
 			

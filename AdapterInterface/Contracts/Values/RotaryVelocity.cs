@@ -49,10 +49,10 @@ namespace Mtconnect.AdapterInterface.DataItemValues
 		public partial class ACTUAL : RotaryVelocity
 		{
 			/// <inheritdoc />
-            public override string ObservationalSubType => nameof(DataItemTypes.RotaryVelocitySubTypes._ACTUAL);
+            public override string ObservationalSubType => nameof(DataItemTypes.RotaryVelocitySubTypes.ACTUAL);
 
 			/// <summary>
-			/// Constructs a new value type for _ACTUAL.
+			/// Constructs a new value type for ACTUAL.
 			/// </summary>
             public ACTUAL(float value) : base(value) { }
 			
@@ -71,10 +71,10 @@ namespace Mtconnect.AdapterInterface.DataItemValues
 		public partial class COMMANDED : RotaryVelocity
 		{
 			/// <inheritdoc />
-            public override string ObservationalSubType => nameof(DataItemTypes.RotaryVelocitySubTypes._COMMANDED);
+            public override string ObservationalSubType => nameof(DataItemTypes.RotaryVelocitySubTypes.COMMANDED);
 
 			/// <summary>
-			/// Constructs a new value type for _COMMANDED.
+			/// Constructs a new value type for COMMANDED.
 			/// </summary>
             public COMMANDED(float value) : base(value) { }
 			
@@ -93,10 +93,10 @@ namespace Mtconnect.AdapterInterface.DataItemValues
 		public partial class PROGRAMMED : RotaryVelocity
 		{
 			/// <inheritdoc />
-            public override string ObservationalSubType => nameof(DataItemTypes.RotaryVelocitySubTypes._PROGRAMMED);
+            public override string ObservationalSubType => nameof(DataItemTypes.RotaryVelocitySubTypes.PROGRAMMED);
 
 			/// <summary>
-			/// Constructs a new value type for _PROGRAMMED.
+			/// Constructs a new value type for PROGRAMMED.
 			/// </summary>
             public PROGRAMMED(float value) : base(value) { }
 			
@@ -115,10 +115,10 @@ namespace Mtconnect.AdapterInterface.DataItemValues
 		public partial class OVERRIDE : RotaryVelocity
 		{
 			/// <inheritdoc />
-            public override string ObservationalSubType => nameof(DataItemTypes.RotaryVelocitySubTypes._OVERRIDE);
+            public override string ObservationalSubType => nameof(DataItemTypes.RotaryVelocitySubTypes.OVERRIDE);
 
 			/// <summary>
-			/// Constructs a new value type for _OVERRIDE.
+			/// Constructs a new value type for OVERRIDE.
 			/// </summary>
             public OVERRIDE(float value) : base(value) { }
 			

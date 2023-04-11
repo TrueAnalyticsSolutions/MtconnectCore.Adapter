@@ -32,7 +32,7 @@ namespace Mtconnect.AdapterInterface.DataItemTypes
 		/// </list>
 		/// </remarks>
 		[MtconnectVersion(MtconnectVersions.V_1_2_0, "https://model.mtconnect.org/#_Version_1.2")]
-		_NO_SCALE,
+		NO_SCALE,
 		/// <summary>
 		﻿/// A Scale weighting factor.   This is the default weighting factor if no factor is specified
 		/// </summary>
@@ -42,7 +42,7 @@ namespace Mtconnect.AdapterInterface.DataItemTypes
 		/// </list>
 		/// </remarks>
 		[MtconnectVersion(MtconnectVersions.V_1_2_0, "https://model.mtconnect.org/#_Version_1.2")]
-		_A_SCALE,
+		A_SCALE,
 		/// <summary>
 		﻿/// B Scale weighting factor
 		/// </summary>
@@ -52,7 +52,7 @@ namespace Mtconnect.AdapterInterface.DataItemTypes
 		/// </list>
 		/// </remarks>
 		[MtconnectVersion(MtconnectVersions.V_1_2_0, "https://model.mtconnect.org/#_Version_1.2")]
-		_B_SCALE,
+		B_SCALE,
 		/// <summary>
 		﻿/// C Scale weighting factor
 		/// </summary>
@@ -62,7 +62,7 @@ namespace Mtconnect.AdapterInterface.DataItemTypes
 		/// </list>
 		/// </remarks>
 		[MtconnectVersion(MtconnectVersions.V_1_2_0, "https://model.mtconnect.org/#_Version_1.2")]
-		_C_SCALE,
+		C_SCALE,
 		/// <summary>
 		﻿/// D Scale weighting factor
 		/// </summary>
@@ -72,6 +72,6 @@ namespace Mtconnect.AdapterInterface.DataItemTypes
 		/// </list>
 		/// </remarks>
 		[MtconnectVersion(MtconnectVersions.V_1_2_0, "https://model.mtconnect.org/#_Version_1.2")]
-		_D_SCALE,
+		D_SCALE,
 	}
 }

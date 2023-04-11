@@ -36,7 +36,7 @@ namespace Mtconnect.AdapterInterface.DataItemTypes
 		/// </remarks>
 		[Obsolete("Deprecated in v1.4 according to https://model.mtconnect.org/#_Version_1.4")]
 		[MtconnectVersion(MtconnectVersions.V_1_1_0, "https://model.mtconnect.org/#_Version_1.1", MtconnectVersions.V_1_4_0)]
-		_MAXIMUM,
+		MAXIMUM,
 		/// <summary>
 		﻿/// minimum line number of the code being executed.
 		/// </summary>
@@ -48,6 +48,6 @@ namespace Mtconnect.AdapterInterface.DataItemTypes
 		/// </remarks>
 		[Obsolete("Deprecated in v1.4 according to https://model.mtconnect.org/#_Version_1.4")]
 		[MtconnectVersion(MtconnectVersions.V_1_1_0, "https://model.mtconnect.org/#_Version_1.1", MtconnectVersions.V_1_4_0)]
-		_MINIMUM,
+		MINIMUM,
 	}
 }

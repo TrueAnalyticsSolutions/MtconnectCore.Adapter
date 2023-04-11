@@ -48,10 +48,10 @@ namespace Mtconnect.AdapterInterface.DataItemValues
 		public partial class ACTION : CompositionState
 		{
 			/// <inheritdoc />
-            public override string ObservationalSubType => nameof(DataItemTypes.CompositionStateSubTypes._ACTION);
+            public override string ObservationalSubType => nameof(DataItemTypes.CompositionStateSubTypes.ACTION);
 
 			/// <summary>
-			/// Constructs a new value type for _ACTION.
+			/// Constructs a new value type for ACTION.
 			/// </summary>
             public ACTION(string value) : base(value) { }
 			
@@ -70,10 +70,10 @@ namespace Mtconnect.AdapterInterface.DataItemValues
 		public partial class LATERAL : CompositionState
 		{
 			/// <inheritdoc />
-            public override string ObservationalSubType => nameof(DataItemTypes.CompositionStateSubTypes._LATERAL);
+            public override string ObservationalSubType => nameof(DataItemTypes.CompositionStateSubTypes.LATERAL);
 
 			/// <summary>
-			/// Constructs a new value type for _LATERAL.
+			/// Constructs a new value type for LATERAL.
 			/// </summary>
             public LATERAL(string value) : base(value) { }
 			
@@ -92,10 +92,10 @@ namespace Mtconnect.AdapterInterface.DataItemValues
 		public partial class MOTION : CompositionState
 		{
 			/// <inheritdoc />
-            public override string ObservationalSubType => nameof(DataItemTypes.CompositionStateSubTypes._MOTION);
+            public override string ObservationalSubType => nameof(DataItemTypes.CompositionStateSubTypes.MOTION);
 
 			/// <summary>
-			/// Constructs a new value type for _MOTION.
+			/// Constructs a new value type for MOTION.
 			/// </summary>
             public MOTION(string value) : base(value) { }
 			
@@ -114,10 +114,10 @@ namespace Mtconnect.AdapterInterface.DataItemValues
 		public partial class SWITCHED : CompositionState
 		{
 			/// <inheritdoc />
-            public override string ObservationalSubType => nameof(DataItemTypes.CompositionStateSubTypes._SWITCHED);
+            public override string ObservationalSubType => nameof(DataItemTypes.CompositionStateSubTypes.SWITCHED);
 
 			/// <summary>
-			/// Constructs a new value type for _SWITCHED.
+			/// Constructs a new value type for SWITCHED.
 			/// </summary>
             public SWITCHED(string value) : base(value) { }
 			
@@ -136,10 +136,10 @@ namespace Mtconnect.AdapterInterface.DataItemValues
 		public partial class VERTICAL : CompositionState
 		{
 			/// <inheritdoc />
-            public override string ObservationalSubType => nameof(DataItemTypes.CompositionStateSubTypes._VERTICAL);
+            public override string ObservationalSubType => nameof(DataItemTypes.CompositionStateSubTypes.VERTICAL);
 
 			/// <summary>
-			/// Constructs a new value type for _VERTICAL.
+			/// Constructs a new value type for VERTICAL.
 			/// </summary>
             public VERTICAL(string value) : base(value) { }
 			

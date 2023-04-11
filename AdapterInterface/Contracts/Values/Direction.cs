@@ -96,10 +96,10 @@ namespace Mtconnect.AdapterInterface.DataItemValues
 		public partial class ROTARY : Direction
 		{
 			/// <inheritdoc />
-            public override string ObservationalSubType => nameof(DataItemTypes.DirectionSubTypes._ROTARY);
+            public override string ObservationalSubType => nameof(DataItemTypes.DirectionSubTypes.ROTARY);
 
 			/// <summary>
-			/// Constructs a new value type for _ROTARY.
+			/// Constructs a new value type for ROTARY.
 			/// </summary>
             public ROTARY(string value) : base(value) { }
 			
@@ -118,10 +118,10 @@ namespace Mtconnect.AdapterInterface.DataItemValues
 		public partial class LINEAR : Direction
 		{
 			/// <inheritdoc />
-            public override string ObservationalSubType => nameof(DataItemTypes.DirectionSubTypes._LINEAR);
+            public override string ObservationalSubType => nameof(DataItemTypes.DirectionSubTypes.LINEAR);
 
 			/// <summary>
-			/// Constructs a new value type for _LINEAR.
+			/// Constructs a new value type for LINEAR.
 			/// </summary>
             public LINEAR(string value) : base(value) { }
 			

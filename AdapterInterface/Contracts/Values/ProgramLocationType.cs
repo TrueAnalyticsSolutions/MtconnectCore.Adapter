@@ -68,10 +68,10 @@ namespace Mtconnect.AdapterInterface.DataItemValues
 		public partial class SCHEDULE : ProgramLocationType
 		{
 			/// <inheritdoc />
-            public override string ObservationalSubType => nameof(DataItemTypes.ProgramLocationTypeSubTypes._SCHEDULE);
+            public override string ObservationalSubType => nameof(DataItemTypes.ProgramLocationTypeSubTypes.SCHEDULE);
 
 			/// <summary>
-			/// Constructs a new value type for _SCHEDULE.
+			/// Constructs a new value type for SCHEDULE.
 			/// </summary>
             public SCHEDULE(string value) : base(value) { }
 			
@@ -90,10 +90,10 @@ namespace Mtconnect.AdapterInterface.DataItemValues
 		public partial class MAIN : ProgramLocationType
 		{
 			/// <inheritdoc />
-            public override string ObservationalSubType => nameof(DataItemTypes.ProgramLocationTypeSubTypes._MAIN);
+            public override string ObservationalSubType => nameof(DataItemTypes.ProgramLocationTypeSubTypes.MAIN);
 
 			/// <summary>
-			/// Constructs a new value type for _MAIN.
+			/// Constructs a new value type for MAIN.
 			/// </summary>
             public MAIN(string value) : base(value) { }
 			
@@ -112,10 +112,10 @@ namespace Mtconnect.AdapterInterface.DataItemValues
 		public partial class ACTIVE : ProgramLocationType
 		{
 			/// <inheritdoc />
-            public override string ObservationalSubType => nameof(DataItemTypes.ProgramLocationTypeSubTypes._ACTIVE);
+            public override string ObservationalSubType => nameof(DataItemTypes.ProgramLocationTypeSubTypes.ACTIVE);
 
 			/// <summary>
-			/// Constructs a new value type for _ACTIVE.
+			/// Constructs a new value type for ACTIVE.
 			/// </summary>
             public ACTIVE(string value) : base(value) { }
 			

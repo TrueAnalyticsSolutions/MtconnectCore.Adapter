@@ -48,10 +48,10 @@ namespace Mtconnect.AdapterInterface.DataItemValues
 		public partial class START : ProcessTime
 		{
 			/// <inheritdoc />
-            public override string ObservationalSubType => nameof(DataItemTypes.ProcessTimeSubTypes._START);
+            public override string ObservationalSubType => nameof(DataItemTypes.ProcessTimeSubTypes.START);
 
 			/// <summary>
-			/// Constructs a new value type for _START.
+			/// Constructs a new value type for START.
 			/// </summary>
             public START(string value) : base(value) { }
 			
@@ -70,10 +70,10 @@ namespace Mtconnect.AdapterInterface.DataItemValues
 		public partial class COMPLETE : ProcessTime
 		{
 			/// <inheritdoc />
-            public override string ObservationalSubType => nameof(DataItemTypes.ProcessTimeSubTypes._COMPLETE);
+            public override string ObservationalSubType => nameof(DataItemTypes.ProcessTimeSubTypes.COMPLETE);
 
 			/// <summary>
-			/// Constructs a new value type for _COMPLETE.
+			/// Constructs a new value type for COMPLETE.
 			/// </summary>
             public COMPLETE(string value) : base(value) { }
 			
@@ -92,10 +92,10 @@ namespace Mtconnect.AdapterInterface.DataItemValues
 		public partial class TARGETCOMPLETION : ProcessTime
 		{
 			/// <inheritdoc />
-            public override string ObservationalSubType => nameof(DataItemTypes.ProcessTimeSubTypes._TARGET_COMPLETION);
+            public override string ObservationalSubType => nameof(DataItemTypes.ProcessTimeSubTypes.TARGET_COMPLETION);
 
 			/// <summary>
-			/// Constructs a new value type for _TARGET_COMPLETION.
+			/// Constructs a new value type for TARGET_COMPLETION.
 			/// </summary>
             public TARGETCOMPLETION(string value) : base(value) { }
 			

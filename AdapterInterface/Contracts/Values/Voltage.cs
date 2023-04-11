@@ -51,10 +51,10 @@ namespace Mtconnect.AdapterInterface.DataItemValues
 		public partial class ALTERNATING : Voltage
 		{
 			/// <inheritdoc />
-            public override string ObservationalSubType => nameof(DataItemTypes.VoltageSubTypes._ALTERNATING);
+            public override string ObservationalSubType => nameof(DataItemTypes.VoltageSubTypes.ALTERNATING);
 
 			/// <summary>
-			/// Constructs a new value type for _ALTERNATING.
+			/// Constructs a new value type for ALTERNATING.
 			/// </summary>
             public ALTERNATING(float value) : base(value) { }
 			
@@ -73,10 +73,10 @@ namespace Mtconnect.AdapterInterface.DataItemValues
 		public partial class DIRECT : Voltage
 		{
 			/// <inheritdoc />
-            public override string ObservationalSubType => nameof(DataItemTypes.VoltageSubTypes._DIRECT);
+            public override string ObservationalSubType => nameof(DataItemTypes.VoltageSubTypes.DIRECT);
 
 			/// <summary>
-			/// Constructs a new value type for _DIRECT.
+			/// Constructs a new value type for DIRECT.
 			/// </summary>
             public DIRECT(float value) : base(value) { }
 			
@@ -95,10 +95,10 @@ namespace Mtconnect.AdapterInterface.DataItemValues
 		public partial class ACTUAL : Voltage
 		{
 			/// <inheritdoc />
-            public override string ObservationalSubType => nameof(DataItemTypes.VoltageSubTypes._ACTUAL);
+            public override string ObservationalSubType => nameof(DataItemTypes.VoltageSubTypes.ACTUAL);
 
 			/// <summary>
-			/// Constructs a new value type for _ACTUAL.
+			/// Constructs a new value type for ACTUAL.
 			/// </summary>
             public ACTUAL(float value) : base(value) { }
 			
@@ -117,10 +117,10 @@ namespace Mtconnect.AdapterInterface.DataItemValues
 		public partial class TARGET : Voltage
 		{
 			/// <inheritdoc />
-            public override string ObservationalSubType => nameof(DataItemTypes.VoltageSubTypes._TARGET);
+            public override string ObservationalSubType => nameof(DataItemTypes.VoltageSubTypes.TARGET);
 
 			/// <summary>
-			/// Constructs a new value type for _TARGET.
+			/// Constructs a new value type for TARGET.
 			/// </summary>
             public TARGET(float value) : base(value) { }
 			

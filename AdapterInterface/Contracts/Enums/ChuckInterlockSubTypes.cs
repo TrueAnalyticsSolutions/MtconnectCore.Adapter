@@ -32,6 +32,6 @@ namespace Mtconnect.AdapterInterface.DataItemTypes
 		/// </list>
 		/// </remarks>
 		[MtconnectVersion(MtconnectVersions.V_1_3_0, "https://model.mtconnect.org/#_Version_1.3")]
-		_MANUAL_UNCLAMP,
+		MANUAL_UNCLAMP,
 	}
 }

@@ -32,7 +32,7 @@ namespace Mtconnect.AdapterInterface.DataItemTypes
 		/// </list>
 		/// </remarks>
 		[MtconnectVersion(MtconnectVersions.V_1_4_0, "https://model.mtconnect.org/#_Version_1.4")]
-		_ROCKWELL,
+		ROCKWELL,
 		/// <summary>
 		﻿/// scale to measure the resistance to deformation of a surface.
 		/// </summary>
@@ -42,7 +42,7 @@ namespace Mtconnect.AdapterInterface.DataItemTypes
 		/// </list>
 		/// </remarks>
 		[MtconnectVersion(MtconnectVersions.V_1_4_0, "https://model.mtconnect.org/#_Version_1.4")]
-		_VICKERS,
+		VICKERS,
 		/// <summary>
 		﻿/// scale to measure the resistance to deformation of a surface.
 		/// </summary>
@@ -52,7 +52,7 @@ namespace Mtconnect.AdapterInterface.DataItemTypes
 		/// </list>
 		/// </remarks>
 		[MtconnectVersion(MtconnectVersions.V_1_4_0, "https://model.mtconnect.org/#_Version_1.4")]
-		_SHORE,
+		SHORE,
 		/// <summary>
 		﻿/// scale to measure the resistance to deformation of a surface.
 		/// </summary>
@@ -62,7 +62,7 @@ namespace Mtconnect.AdapterInterface.DataItemTypes
 		/// </list>
 		/// </remarks>
 		[MtconnectVersion(MtconnectVersions.V_1_4_0, "https://model.mtconnect.org/#_Version_1.4")]
-		_BRINELL,
+		BRINELL,
 		/// <summary>
 		﻿/// scale to measure the elasticity of a surface.
 		/// </summary>
@@ -72,7 +72,7 @@ namespace Mtconnect.AdapterInterface.DataItemTypes
 		/// </list>
 		/// </remarks>
 		[MtconnectVersion(MtconnectVersions.V_1_4_0, "https://model.mtconnect.org/#_Version_1.4")]
-		_LEEB,
+		LEEB,
 		/// <summary>
 		﻿/// scale to measure the resistance to scratching of a surface.
 		/// </summary>
@@ -82,6 +82,6 @@ namespace Mtconnect.AdapterInterface.DataItemTypes
 		/// </list>
 		/// </remarks>
 		[MtconnectVersion(MtconnectVersions.V_1_4_0, "https://model.mtconnect.org/#_Version_1.4")]
-		_MOHS,
+		MOHS,
 	}
 }

@@ -49,10 +49,10 @@ namespace Mtconnect.AdapterInterface.DataItemValues
 		public partial class ACTUAL : AxisFeedrate
 		{
 			/// <inheritdoc />
-            public override string ObservationalSubType => nameof(DataItemTypes.AxisFeedrateSubTypes._ACTUAL);
+            public override string ObservationalSubType => nameof(DataItemTypes.AxisFeedrateSubTypes.ACTUAL);
 
 			/// <summary>
-			/// Constructs a new value type for _ACTUAL.
+			/// Constructs a new value type for ACTUAL.
 			/// </summary>
             public ACTUAL(float value) : base(value) { }
 			
@@ -71,10 +71,10 @@ namespace Mtconnect.AdapterInterface.DataItemValues
 		public partial class COMMANDED : AxisFeedrate
 		{
 			/// <inheritdoc />
-            public override string ObservationalSubType => nameof(DataItemTypes.AxisFeedrateSubTypes._COMMANDED);
+            public override string ObservationalSubType => nameof(DataItemTypes.AxisFeedrateSubTypes.COMMANDED);
 
 			/// <summary>
-			/// Constructs a new value type for _COMMANDED.
+			/// Constructs a new value type for COMMANDED.
 			/// </summary>
             public COMMANDED(float value) : base(value) { }
 			
@@ -93,10 +93,10 @@ namespace Mtconnect.AdapterInterface.DataItemValues
 		public partial class JOG : AxisFeedrate
 		{
 			/// <inheritdoc />
-            public override string ObservationalSubType => nameof(DataItemTypes.AxisFeedrateSubTypes._JOG);
+            public override string ObservationalSubType => nameof(DataItemTypes.AxisFeedrateSubTypes.JOG);
 
 			/// <summary>
-			/// Constructs a new value type for _JOG.
+			/// Constructs a new value type for JOG.
 			/// </summary>
             public JOG(float value) : base(value) { }
 			
@@ -115,10 +115,10 @@ namespace Mtconnect.AdapterInterface.DataItemValues
 		public partial class PROGRAMMED : AxisFeedrate
 		{
 			/// <inheritdoc />
-            public override string ObservationalSubType => nameof(DataItemTypes.AxisFeedrateSubTypes._PROGRAMMED);
+            public override string ObservationalSubType => nameof(DataItemTypes.AxisFeedrateSubTypes.PROGRAMMED);
 
 			/// <summary>
-			/// Constructs a new value type for _PROGRAMMED.
+			/// Constructs a new value type for PROGRAMMED.
 			/// </summary>
             public PROGRAMMED(float value) : base(value) { }
 			
@@ -137,10 +137,10 @@ namespace Mtconnect.AdapterInterface.DataItemValues
 		public partial class RAPID : AxisFeedrate
 		{
 			/// <inheritdoc />
-            public override string ObservationalSubType => nameof(DataItemTypes.AxisFeedrateSubTypes._RAPID);
+            public override string ObservationalSubType => nameof(DataItemTypes.AxisFeedrateSubTypes.RAPID);
 
 			/// <summary>
-			/// Constructs a new value type for _RAPID.
+			/// Constructs a new value type for RAPID.
 			/// </summary>
             public RAPID(float value) : base(value) { }
 			
@@ -159,10 +159,10 @@ namespace Mtconnect.AdapterInterface.DataItemValues
 		public partial class OVERRIDE : AxisFeedrate
 		{
 			/// <inheritdoc />
-            public override string ObservationalSubType => nameof(DataItemTypes.AxisFeedrateSubTypes._OVERRIDE);
+            public override string ObservationalSubType => nameof(DataItemTypes.AxisFeedrateSubTypes.OVERRIDE);
 
 			/// <summary>
-			/// Constructs a new value type for _OVERRIDE.
+			/// Constructs a new value type for OVERRIDE.
 			/// </summary>
             public OVERRIDE(float value) : base(value) { }
 			

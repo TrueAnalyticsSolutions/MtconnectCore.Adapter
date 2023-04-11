@@ -68,10 +68,10 @@ namespace Mtconnect.AdapterInterface.DataItemValues
 		public partial class LINE : PowerState
 		{
 			/// <inheritdoc />
-            public override string ObservationalSubType => nameof(DataItemTypes.PowerStateSubTypes._LINE);
+            public override string ObservationalSubType => nameof(DataItemTypes.PowerStateSubTypes.LINE);
 
 			/// <summary>
-			/// Constructs a new value type for _LINE.
+			/// Constructs a new value type for LINE.
 			/// </summary>
             public LINE(string value) : base(value) { }
 			
@@ -90,10 +90,10 @@ namespace Mtconnect.AdapterInterface.DataItemValues
 		public partial class CONTROL : PowerState
 		{
 			/// <inheritdoc />
-            public override string ObservationalSubType => nameof(DataItemTypes.PowerStateSubTypes._CONTROL);
+            public override string ObservationalSubType => nameof(DataItemTypes.PowerStateSubTypes.CONTROL);
 
 			/// <summary>
-			/// Constructs a new value type for _CONTROL.
+			/// Constructs a new value type for CONTROL.
 			/// </summary>
             public CONTROL(string value) : base(value) { }
 			
