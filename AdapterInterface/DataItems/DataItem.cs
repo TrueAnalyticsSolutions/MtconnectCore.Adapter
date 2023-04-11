@@ -38,16 +38,16 @@ namespace Mtconnect.AdapterInterface.DataItems
         /// <summary>
         /// A <see cref="System.Type"/> reference to the <see cref="Enum"/> according the MTConnect Standard. See <see cref="EventTypes"/>, <see cref="SampleTypes"/>, and <see cref="ConditionTypes"/> for examples.
         /// </summary>
-        protected internal Enum TypeEnum { get; set; }
+        public Enum TypeEnum { get; protected set; }
         /// <summary>
         /// A <see cref="System.Type"/> reference to the <see cref="Enum"/> according to the MTConnect Standard and the provided <see cref="TypeEnum"/> if it is decorated with <see cref="ObservationalSubTypeAttribute"/>.
         /// </summary>
-        protected internal Enum SubTypeEnum { get; set; }
+        public Enum SubTypeEnum { get; protected set; }
 
         /// <summary>
         /// A flag for whether or not the <see cref="ObservationalType"/> has been validated against the MTConnect Standard.
         /// </summary>
-        protected bool TypeValidated { get; set; } = false;
+        public bool TypeValidated { get; protected set; } = false;
         /// <summary>
         /// The protected value for <see cref="ObservationalType"/>.
         /// </summary>

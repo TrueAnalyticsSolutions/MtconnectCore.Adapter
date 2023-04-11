@@ -34,7 +34,6 @@ namespace TcpTerminal
         private static async void SaveDevices(TcpAdapter adapter)
         {
             System.Threading.Thread.Sleep(5000);
-
             var dcf = new DeviceConfigurationFactory();
             var doc = dcf.Create(adapter);
             string filename = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments), "Devices.xml");
