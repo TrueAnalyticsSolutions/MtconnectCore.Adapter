@@ -26,6 +26,8 @@ namespace Mtconnect.AdapterInterface.DeviceConfiguration
         const string XmlNs = "urn:mtconnect.org:MTConnectDevices:{{ version }}";
         const string XsiSchemaLocation = "urn:mtconnect.org:MTConnectDevices:{{ version }} http://www.mtconnect.org/schemas/MTConnectDevices_{{ version }}.xsd";
 
+        private MtconnectVersions MaximumVersion = MtconnectVersions.V_1_0_1;
+
         /// <summary>
         /// Creates a valid MTConnect <c>MTConnectDevices</c> Response Document based on the configuration of the Adapter.
         /// </summary>
@@ -35,17 +37,17 @@ namespace Mtconnect.AdapterInterface.DeviceConfiguration
         public XmlDocument Create(Adapter adapter, string devicePrefix = null)
         {
             // Get the Adapter Version, used to set namespaces
-            string adapterVersion = GetMaximumMtconnectVersion(adapter);
+            //string adapterVersion = GetMaximumMtconnectVersion(adapter);
 
             // cache the type of IComponentModel
             Type componentModelType = typeof(IComponentModel);
 
             // Build namespaces
             XmlDocument xDoc = new XmlDocument();
-            string xmlns_m = XmlNs_M.Replace("{{ version }}", adapterVersion);
-            string xmlns_xsi = XmlNs_Xsi.Replace("{{ version }}", adapterVersion);
-            string xmlns = XmlNs.Replace("{{ version }}", adapterVersion);
-            string xsi_schemaLocation = XsiSchemaLocation.Replace("{{ version }}", adapterVersion);
+            string xmlns_m = XmlNs_M;//.Replace("{{ version }}", adapterVersion);
+            string xmlns_xsi = XmlNs_Xsi;//.Replace("{{ version }}", adapterVersion);
+            string xmlns = XmlNs;//.Replace("{{ version }}", adapterVersion);
+            string xsi_schemaLocation = XsiSchemaLocation;//.Replace("{{ version }}", adapterVersion);
 
             XmlNamespaceManager nsmgr = new XmlNamespaceManager(xDoc.NameTable);
             nsmgr.AddNamespace("m", xmlns_m);
@@ -67,7 +69,7 @@ namespace Mtconnect.AdapterInterface.DeviceConfiguration
             xHeader.Attributes.Append(xDoc.CreateAttribute("sender")).Value = AppDomain.CurrentDomain.FriendlyName;
             xHeader.Attributes.Append(xDoc.CreateAttribute("instanceId")).Value = "1";
             xHeader.Attributes.Append(xDoc.CreateAttribute("bufferSize")).Value = "1";
-            xHeader.Attributes.Append(xDoc.CreateAttribute("version")).Value = adapterVersion;
+            xHeader.Attributes.Append(xDoc.CreateAttribute("version")).Value = "{{ version }}";
             xHeader.Attributes.Append(xDoc.CreateAttribute("assetBufferSize")).Value = "1"; // QUESTION: Should this be based on the memory allocation for the Adapter?
             xHeader.Attributes.Append(xDoc.CreateAttribute("assetCount")).Value = "0"; // QUESTION: Should this be based on the memory allocation for the Adapter?
 
@@ -108,7 +110,7 @@ namespace Mtconnect.AdapterInterface.DeviceConfiguration
                     AddDataItems(xDataItems, deviceDataItems.Value);
                 }
             }
-
+            xDoc.InnerXml = xDoc.InnerXml.Replace("{{ version }}", GetMaximumMtconnectVersion(adapter));
             return xDoc;
         }
         private void AddComponents(XmlElement parentElement, Type type, Adapter adapter, string modelPath, string componentPrefix = null)
@@ -144,7 +146,7 @@ namespace Mtconnect.AdapterInterface.DeviceConfiguration
                 parentElement.AppendChild(componentsElement);
         }
 
-        private static bool ProcessDataItem(XmlElement parentElement, Adapter adapter, string modelPath, XmlElement dataItemsElement, PropertyInfo property, DataItemAttribute dataItemAttribute)
+        private bool ProcessDataItem(XmlElement parentElement, Adapter adapter, string modelPath, XmlElement dataItemsElement, PropertyInfo property, DataItemAttribute dataItemAttribute)
         {
             bool hasDataItems = true;
             // TODO: Handle property that meets the conditions
@@ -235,7 +237,7 @@ namespace Mtconnect.AdapterInterface.DeviceConfiguration
             return hasComponents;
         }
 
-        public static Type GetNearestComponentModelType(Type type)
+        public Type GetNearestComponentModelType(Type type)
         {
             Type currentType = type.BaseType;
             while (currentType != null)
@@ -249,7 +251,7 @@ namespace Mtconnect.AdapterInterface.DeviceConfiguration
             return null;
         }
 
-        private static void AddDataItems(XmlNode xDataItems, IEnumerable<DataItem> dataItems)
+        private void AddDataItems(XmlNode xDataItems, IEnumerable<DataItem> dataItems)
         {
             foreach (var deviceDataItem in dataItems)
             {
@@ -258,29 +260,46 @@ namespace Mtconnect.AdapterInterface.DeviceConfiguration
             }
         }
 
-        private static XmlElement CreateDataItemElement(XmlDocument xDoc, string category, string type, string subType, string id, string nativeUnits = null, string description = null)
+        private XmlElement CreateDataItemElement(XmlDocument xDoc, string category, string type, string subType, string id, string nativeUnits = null, string description = null)
         {
             var xDataItem = xDoc.CreateElement("DataItem");
 
             xDataItem.SetAttribute("category", category.ToUpper());
 
+            MtconnectVersions? version = MtconnectVersions.V_1_0_1;
             bool isDefined = false;
             switch (category.ToUpper())
             {
                 case "SAMPLE":
-                    isDefined = Enum.TryParse<SampleTypes>(type, true, out var _);
+                    isDefined = Enum.TryParse<SampleTypes>(type, true, out SampleTypes sampleType);
+                    if (isDefined)
+                        version = sampleType.GetType().GetCustomAttribute<MtconnectVersionAttribute>()?.MinimumVersion;
                     break;
                 case "EVENT":
-                    isDefined = Enum.TryParse<EventTypes>(type, true, out var _);
+                    isDefined = Enum.TryParse<EventTypes>(type, true, out var eventType);
+                    if (isDefined)
+                        version = eventType.GetType().GetCustomAttribute<MtconnectVersionAttribute>()?.MinimumVersion;
                     break;
                 case "CONDITION":
-                    isDefined = Enum.TryParse<ConditionTypes>(type, true, out var _)
-                        || Enum.TryParse<SampleTypes>(type, true, out var _)
-                        || Enum.TryParse<EventTypes>(type, true, out var _);
+                    if (Enum.TryParse<ConditionTypes>(type, true, out var conditionType))
+                    {
+                        isDefined = true;
+                        version = conditionType.GetType().GetCustomAttribute<MtconnectVersionAttribute>()?.MinimumVersion;
+                    } else if (Enum.TryParse<SampleTypes>(type, true, out var sampleConditionType))
+                    {
+                        isDefined = true;
+                        version = conditionType.GetType().GetCustomAttribute<MtconnectVersionAttribute>()?.MinimumVersion;
+                    } else if (Enum.TryParse<EventTypes>(type, true, out var eventConditionType))
+                    {
+                        isDefined = true;
+                        version = conditionType.GetType().GetCustomAttribute<MtconnectVersionAttribute>()?.MinimumVersion;
+                    }
                     break;
                 default:
                     break;
             }
+            if (version > MaximumVersion)
+                MaximumVersion = version.Value;
             xDataItem.SetAttribute("type", isDefined && !type.StartsWith("x:") ? type : $"x:{type ?? id}");
 
             if (!string.IsNullOrEmpty(subType))
@@ -309,12 +328,13 @@ namespace Mtconnect.AdapterInterface.DeviceConfiguration
         // TODO: Update DataItem to internally manage the "Introduced" and "Deprecated" properties according to the Type/SubType
         private string GetMaximumMtconnectVersion(Adapter adapter)
         {
-            var maxVersion = adapter.DataItems.Select(o => o.TypeEnum?.GetType()?.GetCustomAttribute<MtconnectVersionAttribute>())
-                .Where(o => o != null)
-                .Select(o => o.MinimumVersion)
-                .Distinct()
-                .DefaultIfEmpty(MtconnectVersions.V_1_0_1)
-                .Max();
+            //var maxVersion = adapter.DataItems.Select(o => o.TypeEnum?.GetType()?.GetCustomAttribute<MtconnectVersionAttribute>())
+            //    .Where(o => o != null)
+            //    .Select(o => o.MinimumVersion)
+            //    .Distinct()
+            //    .DefaultIfEmpty(MtconnectVersions.V_1_0_1)
+            //    .Max();
+            var maxVersion = MaximumVersion;
             string result = maxVersion.ToString();
             result = result.Substring(result.IndexOf("_") + 1);// Remove 'V_'
             result = result.Substring(0 ,result.IndexOf("_", 2)); // Take everything up to the next '_'
