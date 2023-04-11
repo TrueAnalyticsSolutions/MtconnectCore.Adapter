@@ -207,6 +207,7 @@ namespace Mtconnect.AdapterInterface.DeviceConfiguration
             }
 
             dataItemElement = CreateDataItemElement(parentElement.OwnerDocument, dataItemValues.Category, dataItemValues.Type, dataItemValues.SubType, dataItemValues.Name, dataItemValues.Units);
+            dataItemElement.AppendChild(parentElement.OwnerDocument.CreateCDataSection($"PropertyInfo: {property.DeclaringType.FullName}.{property.Name}\rn\nDataItem.Name: {dataItemValues.Name}"));
 
             if (dataItemElement != null)
                 dataItemsElement.AppendChild(dataItemElement);
