@@ -317,7 +317,7 @@ namespace Mtconnect.AdapterInterface.DeviceConfiguration
                 .Max();
             string result = maxVersion.ToString();
             result = result.Substring(result.IndexOf("_") + 1);// Remove 'V_'
-            result = result.Substring(0 ,result.IndexOf("_", 2) - 1); // Take everything up to the next '_'
+            result = result.Substring(0 ,result.IndexOf("_", 2)); // Take everything up to the next '_'
             return result.Replace("_", ".");
         }
 
