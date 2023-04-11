@@ -35,7 +35,7 @@ namespace Mtconnect
         /// <summary>
         /// Reference to the expected format for DateTime strings
         /// </summary>
-        protected string DATE_TIME_FORMAT => Constants.DATE_TIME_FORMAT;
+        protected internal string DATE_TIME_FORMAT => Constants.DATE_TIME_FORMAT;
 
         /// <summary>
         /// Reference to a logging service.

@@ -1,4 +1,6 @@
-﻿namespace Mtconnect.AdapterInterface.Contracts.Attributes
+﻿using System;
+
+namespace Mtconnect.AdapterInterface.Contracts.Attributes
 {
     /// <summary>
     /// A decorative attribute for indicating a property intended to go thru an Adapter stream as an Condition.

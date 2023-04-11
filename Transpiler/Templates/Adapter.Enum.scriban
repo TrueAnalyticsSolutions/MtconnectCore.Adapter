@@ -30,6 +30,7 @@ namespace {{ to_pascal_code source.namespace }}
 	{{~ if dversion_slim != "" ~}}
 	[Obsolete("Deprecated in v{{ dversion_slim }} according to https://model.mtconnect.org/#_Version_{{ dversion_slim }}")]
 	{{~ end ~}}
+	{{ include 'MtconnectVersion.scriban' source }}
 	[GeneratedCode("MtconnectTranspiler.Sinks.CSharp.Adapter", "{{ version }}")]
 	public enum {{ to_pascal_case source.name }}
 	{
@@ -70,6 +71,7 @@ d_item_version_slim = (item?.deprecated_version | string.slice 20 3) | string.re
 		{{~ if category_contains_value source item ~}}
 		[ObservationalValue(typeof({{ source?.value_types[item.name] }}))]
 {{ end ~}}
+		{{ include 'MtconnectVersion.scriban' source }}
 		{{ item.name }},
 	{{~ end ~}}
 	}
