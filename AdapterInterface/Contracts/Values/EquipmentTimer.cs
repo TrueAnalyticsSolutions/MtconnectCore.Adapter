@@ -19,7 +19,7 @@ namespace Mtconnect.AdapterInterface.DataItemValues
 	/// <item><b>Units</b>: <see cref="MtconnectUnit.SECOND" /></item>
 	/// </list>
 	/// </remarks>
-	[GeneratedCode("MtconnectTranspiler.Sinks.CSharp.Adapter", "1.0.7.0")]
+	[GeneratedCode("MtconnectTranspiler.Sinks.CSharp.Adapter", "1.0.12.0")]
 	public partial class EquipmentTimer : SampleValue
     {
         /// <inheritdoc />
@@ -49,10 +49,10 @@ namespace Mtconnect.AdapterInterface.DataItemValues
 		public partial class LOADED : EquipmentTimer
 		{
 			/// <inheritdoc />
-            public override string ObservationalSubType => nameof(DataItemTypes.EquipmentTimerSubTypes.LOADED);
+            public override string ObservationalSubType => nameof(DataItemTypes.EquipmentTimerSubTypes._LOADED);
 
 			/// <summary>
-			/// Constructs a new value type for LOADED.
+			/// Constructs a new value type for _LOADED.
 			/// </summary>
             public LOADED(float value) : base(value) { }
 			
@@ -71,10 +71,10 @@ namespace Mtconnect.AdapterInterface.DataItemValues
 		public partial class WORKING : EquipmentTimer
 		{
 			/// <inheritdoc />
-            public override string ObservationalSubType => nameof(DataItemTypes.EquipmentTimerSubTypes.WORKING);
+            public override string ObservationalSubType => nameof(DataItemTypes.EquipmentTimerSubTypes._WORKING);
 
 			/// <summary>
-			/// Constructs a new value type for WORKING.
+			/// Constructs a new value type for _WORKING.
 			/// </summary>
             public WORKING(float value) : base(value) { }
 			
@@ -93,10 +93,10 @@ namespace Mtconnect.AdapterInterface.DataItemValues
 		public partial class OPERATING : EquipmentTimer
 		{
 			/// <inheritdoc />
-            public override string ObservationalSubType => nameof(DataItemTypes.EquipmentTimerSubTypes.OPERATING);
+            public override string ObservationalSubType => nameof(DataItemTypes.EquipmentTimerSubTypes._OPERATING);
 
 			/// <summary>
-			/// Constructs a new value type for OPERATING.
+			/// Constructs a new value type for _OPERATING.
 			/// </summary>
             public OPERATING(float value) : base(value) { }
 			
@@ -115,10 +115,10 @@ namespace Mtconnect.AdapterInterface.DataItemValues
 		public partial class POWERED : EquipmentTimer
 		{
 			/// <inheritdoc />
-            public override string ObservationalSubType => nameof(DataItemTypes.EquipmentTimerSubTypes.POWERED);
+            public override string ObservationalSubType => nameof(DataItemTypes.EquipmentTimerSubTypes._POWERED);
 
 			/// <summary>
-			/// Constructs a new value type for POWERED.
+			/// Constructs a new value type for _POWERED.
 			/// </summary>
             public POWERED(float value) : base(value) { }
 			
@@ -137,10 +137,10 @@ namespace Mtconnect.AdapterInterface.DataItemValues
 		public partial class DELAY : EquipmentTimer
 		{
 			/// <inheritdoc />
-            public override string ObservationalSubType => nameof(DataItemTypes.EquipmentTimerSubTypes.DELAY);
+            public override string ObservationalSubType => nameof(DataItemTypes.EquipmentTimerSubTypes._DELAY);
 
 			/// <summary>
-			/// Constructs a new value type for DELAY.
+			/// Constructs a new value type for _DELAY.
 			/// </summary>
             public DELAY(float value) : base(value) { }
 			

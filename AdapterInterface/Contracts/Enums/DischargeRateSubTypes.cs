@@ -16,7 +16,7 @@ namespace Mtconnect.AdapterInterface.DataItemTypes
 	/// </list>
 	/// </remarks>
 	[MtconnectVersion(MtconnectVersions.V_2_1_0, "https://model.mtconnect.org/#_Version_2.1")]
-	[GeneratedCode("MtconnectTranspiler.Sinks.CSharp.Adapter", "1.0.7.0")]
+	[GeneratedCode("MtconnectTranspiler.Sinks.CSharp.Adapter", "1.0.12.0")]
 	public enum DischargeRateSubTypes
 	{
 		/// <summary>

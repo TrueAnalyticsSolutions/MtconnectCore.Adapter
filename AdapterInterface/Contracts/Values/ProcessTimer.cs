@@ -19,7 +19,7 @@ namespace Mtconnect.AdapterInterface.DataItemValues
 	/// <item><b>Units</b>: <see cref="MtconnectUnit.SECOND" /></item>
 	/// </list>
 	/// </remarks>
-	[GeneratedCode("MtconnectTranspiler.Sinks.CSharp.Adapter", "1.0.7.0")]
+	[GeneratedCode("MtconnectTranspiler.Sinks.CSharp.Adapter", "1.0.12.0")]
 	public partial class ProcessTimer : SampleValue
     {
         /// <inheritdoc />
@@ -49,10 +49,10 @@ namespace Mtconnect.AdapterInterface.DataItemValues
 		public partial class PROCESS : ProcessTimer
 		{
 			/// <inheritdoc />
-            public override string ObservationalSubType => nameof(DataItemTypes.ProcessTimerSubTypes.PROCESS);
+            public override string ObservationalSubType => nameof(DataItemTypes.ProcessTimerSubTypes._PROCESS);
 
 			/// <summary>
-			/// Constructs a new value type for PROCESS.
+			/// Constructs a new value type for _PROCESS.
 			/// </summary>
             public PROCESS(float value) : base(value) { }
 			
@@ -71,10 +71,10 @@ namespace Mtconnect.AdapterInterface.DataItemValues
 		public partial class DELAY : ProcessTimer
 		{
 			/// <inheritdoc />
-            public override string ObservationalSubType => nameof(DataItemTypes.ProcessTimerSubTypes.DELAY);
+            public override string ObservationalSubType => nameof(DataItemTypes.ProcessTimerSubTypes._DELAY);
 
 			/// <summary>
-			/// Constructs a new value type for DELAY.
+			/// Constructs a new value type for _DELAY.
 			/// </summary>
             public DELAY(float value) : base(value) { }
 			

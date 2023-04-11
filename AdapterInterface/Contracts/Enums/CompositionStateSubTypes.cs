@@ -16,7 +16,7 @@ namespace Mtconnect.AdapterInterface.DataItemTypes
 	/// </list>
 	/// </remarks>
 	[MtconnectVersion(MtconnectVersions.V_1_4_0, "https://model.mtconnect.org/#_Version_1.4")]
-	[GeneratedCode("MtconnectTranspiler.Sinks.CSharp.Adapter", "1.0.7.0")]
+	[GeneratedCode("MtconnectTranspiler.Sinks.CSharp.Adapter", "1.0.12.0")]
 	public enum CompositionStateSubTypes
 	{
 		/// <summary>
@@ -32,7 +32,7 @@ namespace Mtconnect.AdapterInterface.DataItemTypes
 		/// </list>
 		/// </remarks>
 		[MtconnectVersion(MtconnectVersions.V_1_4_0, "https://model.mtconnect.org/#_Version_1.4")]
-		ACTION,
+		_ACTION,
 		/// <summary>
 		﻿/// indication of the position of a mechanism that may move in a lateral direction.   
 		/// </summary>
@@ -42,7 +42,7 @@ namespace Mtconnect.AdapterInterface.DataItemTypes
 		/// </list>
 		/// </remarks>
 		[MtconnectVersion(MtconnectVersions.V_1_4_0, "https://model.mtconnect.org/#_Version_1.4")]
-		LATERAL,
+		_LATERAL,
 		/// <summary>
 		﻿/// indication of the open or closed state of a mechanism. 
 		/// </summary>
@@ -52,7 +52,7 @@ namespace Mtconnect.AdapterInterface.DataItemTypes
 		/// </list>
 		/// </remarks>
 		[MtconnectVersion(MtconnectVersions.V_1_4_0, "https://model.mtconnect.org/#_Version_1.4")]
-		MOTION,
+		_MOTION,
 		/// <summary>
 		﻿/// indication of the activation state of a mechanism.
 		/// </summary>
@@ -62,7 +62,7 @@ namespace Mtconnect.AdapterInterface.DataItemTypes
 		/// </list>
 		/// </remarks>
 		[MtconnectVersion(MtconnectVersions.V_1_4_0, "https://model.mtconnect.org/#_Version_1.4")]
-		SWITCHED,
+		_SWITCHED,
 		/// <summary>
 		﻿/// indication of the position of a mechanism that may move in a vertical direction.
 		/// </summary>
@@ -72,6 +72,6 @@ namespace Mtconnect.AdapterInterface.DataItemTypes
 		/// </list>
 		/// </remarks>
 		[MtconnectVersion(MtconnectVersions.V_1_4_0, "https://model.mtconnect.org/#_Version_1.4")]
-		VERTICAL,
+		_VERTICAL,
 	}
 }

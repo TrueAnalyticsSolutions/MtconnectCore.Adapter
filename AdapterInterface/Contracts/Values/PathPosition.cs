@@ -19,7 +19,7 @@ namespace Mtconnect.AdapterInterface.DataItemValues
 	/// <item><b>Units</b>: <see cref="MtconnectUnit.MILLIMETER_3D" /></item>
 	/// </list>
 	/// </remarks>
-	[GeneratedCode("MtconnectTranspiler.Sinks.CSharp.Adapter", "1.0.7.0")]
+	[GeneratedCode("MtconnectTranspiler.Sinks.CSharp.Adapter", "1.0.12.0")]
 	public partial class PathPosition : Sample3DValue
     {
         /// <inheritdoc />
@@ -49,10 +49,10 @@ namespace Mtconnect.AdapterInterface.DataItemValues
 		public partial class ACTUAL : PathPosition
 		{
 			/// <inheritdoc />
-            public override string ObservationalSubType => nameof(DataItemTypes.PathPositionSubTypes.ACTUAL);
+            public override string ObservationalSubType => nameof(DataItemTypes.PathPositionSubTypes._ACTUAL);
 
 			/// <summary>
-			/// Constructs a new value type for ACTUAL.
+			/// Constructs a new value type for _ACTUAL.
 			/// </summary>
             public ACTUAL(float[] value) : base(value) { }
 			
@@ -71,10 +71,10 @@ namespace Mtconnect.AdapterInterface.DataItemValues
 		public partial class COMMANDED : PathPosition
 		{
 			/// <inheritdoc />
-            public override string ObservationalSubType => nameof(DataItemTypes.PathPositionSubTypes.COMMANDED);
+            public override string ObservationalSubType => nameof(DataItemTypes.PathPositionSubTypes._COMMANDED);
 
 			/// <summary>
-			/// Constructs a new value type for COMMANDED.
+			/// Constructs a new value type for _COMMANDED.
 			/// </summary>
             public COMMANDED(float[] value) : base(value) { }
 			
@@ -93,10 +93,10 @@ namespace Mtconnect.AdapterInterface.DataItemValues
 		public partial class TARGET : PathPosition
 		{
 			/// <inheritdoc />
-            public override string ObservationalSubType => nameof(DataItemTypes.PathPositionSubTypes.TARGET);
+            public override string ObservationalSubType => nameof(DataItemTypes.PathPositionSubTypes._TARGET);
 
 			/// <summary>
-			/// Constructs a new value type for TARGET.
+			/// Constructs a new value type for _TARGET.
 			/// </summary>
             public TARGET(float[] value) : base(value) { }
 			
@@ -115,10 +115,10 @@ namespace Mtconnect.AdapterInterface.DataItemValues
 		public partial class PROBE : PathPosition
 		{
 			/// <inheritdoc />
-            public override string ObservationalSubType => nameof(DataItemTypes.PathPositionSubTypes.PROBE);
+            public override string ObservationalSubType => nameof(DataItemTypes.PathPositionSubTypes._PROBE);
 
 			/// <summary>
-			/// Constructs a new value type for PROBE.
+			/// Constructs a new value type for _PROBE.
 			/// </summary>
             public PROBE(float[] value) : base(value) { }
 			

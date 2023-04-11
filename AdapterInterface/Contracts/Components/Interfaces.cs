@@ -10,7 +10,7 @@ namespace Mtconnect.AdapterInterface.DataItemTypes {
 	/// <see cref="Component">Component</see> that <i>organize</i>s <see cref="Interface">Interface</see> types. 
 	/// </summary>
 	/// <remarks>Introduced in <see href="https://model.mtconnect.org/#_Version_1.3">v1.3</see>.</remarks>
-	[GeneratedCode("MtconnectTranspiler.Sinks.CSharp.Adapter", "1.0.7.0")]
+	[GeneratedCode("MtconnectTranspiler.Sinks.CSharp.Adapter", "1.0.12.0")]
 	public class Interfaces : IAdapterDataModel, IComponentModel {
 	}
 }

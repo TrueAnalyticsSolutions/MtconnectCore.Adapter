@@ -6,7 +6,7 @@ namespace Mtconnect.AdapterInterface.Units {
 	/// <summary>
 	/// Helper resources for Unit usage within the MTConnect Standard
 	/// </summary>
-	[GeneratedCode("MtconnectTranspiler.Sinks.CSharp.Adapter", "1.0.7.0")]
+	[GeneratedCode("MtconnectTranspiler.Sinks.CSharp.Adapter", "1.0.12.0")]
 	public static class UnitHelper {
 		/// <summary>
 		/// A lookup relating observational types to their respective unit. See <see cref="Mtconnect.AdapterInterface.DataItemTypes.SampleTypes" />, <see cref="Mtconnect.AdapterInterface.DataItemTypes.EventTypes" />, and <see cref="Mtconnect.AdapterInterface.DataItemTypes.ConditionTypes" /> for keys. <b>NOTE</b>: this collection only contains observational types, not sub-types.
@@ -79,7 +79,7 @@ namespace Mtconnect.AdapterInterface.Units {
 
 			{ "PATH_POSITION", MtconnectUnit.MILLIMETER_3D },
 
-			{ "P_H", MtconnectUnit.PH },
+			{ "PH", MtconnectUnit.PH },
 
 			{ "POSITION", MtconnectUnit.MILLIMETER },
 
@@ -123,13 +123,13 @@ namespace Mtconnect.AdapterInterface.Units {
 
 			{ "WATTAGE", MtconnectUnit.WATT },
 
-			{ "AMPERAGE_D_C", MtconnectUnit.AMPERE },
+			{ "AMPERAGE_DC", MtconnectUnit.AMPERE },
 
-			{ "AMPERAGE_A_C", MtconnectUnit.AMPERE },
+			{ "AMPERAGE_AC", MtconnectUnit.AMPERE },
 
-			{ "VOLTAGE_A_C", MtconnectUnit.VOLT },
+			{ "VOLTAGE_AC", MtconnectUnit.VOLT },
 
-			{ "VOLTAGE_D_C", MtconnectUnit.VOLT },
+			{ "VOLTAGE_DC", MtconnectUnit.VOLT },
 
 			{ "X_DIMENSION", MtconnectUnit.MILLIMETER },
 

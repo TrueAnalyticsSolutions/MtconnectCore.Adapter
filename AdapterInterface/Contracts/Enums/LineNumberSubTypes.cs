@@ -16,7 +16,7 @@ namespace Mtconnect.AdapterInterface.DataItemTypes
 	/// </list>
 	/// </remarks>
 	[MtconnectVersion(MtconnectVersions.V_1_4_0, "https://model.mtconnect.org/#_Version_1.4")]
-	[GeneratedCode("MtconnectTranspiler.Sinks.CSharp.Adapter", "1.0.7.0")]
+	[GeneratedCode("MtconnectTranspiler.Sinks.CSharp.Adapter", "1.0.12.0")]
 	public enum LineNumberSubTypes
 	{
 		/// <summary>
@@ -32,7 +32,7 @@ namespace Mtconnect.AdapterInterface.DataItemTypes
 		/// </list>
 		/// </remarks>
 		[MtconnectVersion(MtconnectVersions.V_1_4_0, "https://model.mtconnect.org/#_Version_1.4")]
-		ABSOLUTE,
+		_ABSOLUTE,
 		/// <summary>
 		﻿/// position of a block of program code relative to the occurrence of the last <see cref="LineLabel">LineLabel</see> encountered in the control program.
 		/// </summary>
@@ -42,6 +42,6 @@ namespace Mtconnect.AdapterInterface.DataItemTypes
 		/// </list>
 		/// </remarks>
 		[MtconnectVersion(MtconnectVersions.V_1_4_0, "https://model.mtconnect.org/#_Version_1.4")]
-		INCREMENTAL,
+		_INCREMENTAL,
 	}
 }

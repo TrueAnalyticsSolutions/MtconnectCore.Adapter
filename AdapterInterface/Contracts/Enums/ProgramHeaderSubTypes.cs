@@ -16,7 +16,7 @@ namespace Mtconnect.AdapterInterface.DataItemTypes
 	/// </list>
 	/// </remarks>
 	[MtconnectVersion(MtconnectVersions.V_1_3_0, "https://model.mtconnect.org/#_Version_1.3")]
-	[GeneratedCode("MtconnectTranspiler.Sinks.CSharp.Adapter", "1.0.7.0")]
+	[GeneratedCode("MtconnectTranspiler.Sinks.CSharp.Adapter", "1.0.12.0")]
 	public enum ProgramHeaderSubTypes
 	{
 		/// <summary>
@@ -32,7 +32,7 @@ namespace Mtconnect.AdapterInterface.DataItemTypes
 		/// </list>
 		/// </remarks>
 		[MtconnectVersion(MtconnectVersions.V_1_5_0, "https://model.mtconnect.org/#_Version_1.5")]
-		MAIN,
+		_MAIN,
 		/// <summary>
 		﻿/// identity of a control program that is used to specify the order of execution of other programs.
 		/// </summary>
@@ -42,7 +42,7 @@ namespace Mtconnect.AdapterInterface.DataItemTypes
 		/// </list>
 		/// </remarks>
 		[MtconnectVersion(MtconnectVersions.V_1_5_0, "https://model.mtconnect.org/#_Version_1.5")]
-		SCHEDULE,
+		_SCHEDULE,
 		/// <summary>
 		﻿/// identity of the logic or motion program currently executing.
 		/// </summary>
@@ -52,6 +52,6 @@ namespace Mtconnect.AdapterInterface.DataItemTypes
 		/// </list>
 		/// </remarks>
 		[MtconnectVersion(MtconnectVersions.V_1_5_0, "https://model.mtconnect.org/#_Version_1.5")]
-		ACTIVE,
+		_ACTIVE,
 	}
 }

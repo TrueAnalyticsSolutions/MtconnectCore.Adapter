@@ -18,7 +18,7 @@ namespace Mtconnect.AdapterInterface.DataItemValues
 	/// <item><b>Introduced</b>: <see href="https://model.mtconnect.org/#_Version_1.5">v1.5</see></item>
 	/// </list>
 	/// </remarks>
-	[GeneratedCode("MtconnectTranspiler.Sinks.CSharp.Adapter", "1.0.7.0")]
+	[GeneratedCode("MtconnectTranspiler.Sinks.CSharp.Adapter", "1.0.12.0")]
 	public partial class DateCode : EventValue
     {
         /// <inheritdoc />
@@ -48,10 +48,10 @@ namespace Mtconnect.AdapterInterface.DataItemValues
 		public partial class MANUFACTURE : DateCode
 		{
 			/// <inheritdoc />
-            public override string ObservationalSubType => nameof(DataItemTypes.DateCodeSubTypes.MANUFACTURE);
+            public override string ObservationalSubType => nameof(DataItemTypes.DateCodeSubTypes._MANUFACTURE);
 
 			/// <summary>
-			/// Constructs a new value type for MANUFACTURE.
+			/// Constructs a new value type for _MANUFACTURE.
 			/// </summary>
             public MANUFACTURE(DateTime value) : base(value) { }
 			
@@ -70,10 +70,10 @@ namespace Mtconnect.AdapterInterface.DataItemValues
 		public partial class EXPIRATION : DateCode
 		{
 			/// <inheritdoc />
-            public override string ObservationalSubType => nameof(DataItemTypes.DateCodeSubTypes.EXPIRATION);
+            public override string ObservationalSubType => nameof(DataItemTypes.DateCodeSubTypes._EXPIRATION);
 
 			/// <summary>
-			/// Constructs a new value type for EXPIRATION.
+			/// Constructs a new value type for _EXPIRATION.
 			/// </summary>
             public EXPIRATION(DateTime value) : base(value) { }
 			
@@ -92,10 +92,10 @@ namespace Mtconnect.AdapterInterface.DataItemValues
 		public partial class FIRSTUSE : DateCode
 		{
 			/// <inheritdoc />
-            public override string ObservationalSubType => nameof(DataItemTypes.DateCodeSubTypes.FIRST_USE);
+            public override string ObservationalSubType => nameof(DataItemTypes.DateCodeSubTypes._FIRST_USE);
 
 			/// <summary>
-			/// Constructs a new value type for FIRST_USE.
+			/// Constructs a new value type for _FIRST_USE.
 			/// </summary>
             public FIRSTUSE(DateTime value) : base(value) { }
 			

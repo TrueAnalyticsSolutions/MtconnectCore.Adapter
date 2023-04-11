@@ -10,7 +10,7 @@ namespace Mtconnect.AdapterInterface.DataItemTypes {
 	/// leaf <see cref="Component">Component</see> that transforms electric energy from a source to a secondary circuit.
 	/// </summary>
 	/// <remarks>Introduced in <see href="https://model.mtconnect.org/#_Version_1.5">v1.5</see>.</remarks>
-	[GeneratedCode("MtconnectTranspiler.Sinks.CSharp.Adapter", "1.0.7.0")]
+	[GeneratedCode("MtconnectTranspiler.Sinks.CSharp.Adapter", "1.0.12.0")]
 	public class Transformer : IAdapterDataModel, IComponentModel {
 	}
 }

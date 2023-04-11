@@ -19,11 +19,11 @@ namespace Mtconnect.AdapterInterface.DataItemValues
 	/// <item><b>Units</b>: <see cref="MtconnectUnit.PH" /></item>
 	/// </list>
 	/// </remarks>
-	[GeneratedCode("MtconnectTranspiler.Sinks.CSharp.Adapter", "1.0.7.0")]
+	[GeneratedCode("MtconnectTranspiler.Sinks.CSharp.Adapter", "1.0.12.0")]
 	public partial class PH : SampleValue
     {
         /// <inheritdoc />
-        public override string ObservationalType => nameof(DataItemTypes.SampleTypes.P_H);
+        public override string ObservationalType => nameof(DataItemTypes.SampleTypes.PH);
 
 		/// <inheritdoc />
         public override string ObservationalSubType => null;

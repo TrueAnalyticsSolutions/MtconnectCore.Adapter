@@ -10,7 +10,7 @@ namespace Mtconnect.AdapterInterface.DataItemTypes {
 	/// <see cref="Component Types::Axis">Component Types::Axis</see> that provides rotation about a fixed axis.
 	/// </summary>
 	/// <remarks>Introduced in <see href="https://model.mtconnect.org/#_Version_1.0">v1.0</see>.</remarks>
-	[GeneratedCode("MtconnectTranspiler.Sinks.CSharp.Adapter", "1.0.7.0")]
+	[GeneratedCode("MtconnectTranspiler.Sinks.CSharp.Adapter", "1.0.12.0")]
 	public class Rotary : Axis, IAdapterDataModel, IComponentModel {
 	}
 }

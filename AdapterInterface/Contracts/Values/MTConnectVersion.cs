@@ -18,11 +18,11 @@ namespace Mtconnect.AdapterInterface.DataItemValues
 	/// <item><b>Introduced</b>: <see href="https://model.mtconnect.org/#_Version_1.7">v1.7</see></item>
 	/// </list>
 	/// </remarks>
-	[GeneratedCode("MtconnectTranspiler.Sinks.CSharp.Adapter", "1.0.7.0")]
+	[GeneratedCode("MtconnectTranspiler.Sinks.CSharp.Adapter", "1.0.12.0")]
 	public partial class MTConnectVersion : EventValue
     {
         /// <inheritdoc />
-        public override string ObservationalType => nameof(DataItemTypes.EventTypes.M_T_CONNECT_VERSION);
+        public override string ObservationalType => nameof(DataItemTypes.EventTypes.MTCONNECT_VERSION);
 
 		/// <inheritdoc />
         public override string ObservationalSubType => null;

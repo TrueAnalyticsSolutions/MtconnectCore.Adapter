@@ -18,7 +18,7 @@ namespace Mtconnect.AdapterInterface.DataItemValues
 	/// <item><b>Introduced</b>: <see href="https://model.mtconnect.org/#_Version_1.4">v1.4</see></item>
 	/// </list>
 	/// </remarks>
-	[GeneratedCode("MtconnectTranspiler.Sinks.CSharp.Adapter", "1.0.7.0")]
+	[GeneratedCode("MtconnectTranspiler.Sinks.CSharp.Adapter", "1.0.12.0")]
 	public partial class User : EventValue
     {
         /// <inheritdoc />
@@ -48,10 +48,10 @@ namespace Mtconnect.AdapterInterface.DataItemValues
 		public partial class OPERATOR : User
 		{
 			/// <inheritdoc />
-            public override string ObservationalSubType => nameof(DataItemTypes.UserSubTypes.OPERATOR);
+            public override string ObservationalSubType => nameof(DataItemTypes.UserSubTypes._OPERATOR);
 
 			/// <summary>
-			/// Constructs a new value type for OPERATOR.
+			/// Constructs a new value type for _OPERATOR.
 			/// </summary>
             public OPERATOR(string value) : base(value) { }
 			
@@ -70,10 +70,10 @@ namespace Mtconnect.AdapterInterface.DataItemValues
 		public partial class MAINTENANCE : User
 		{
 			/// <inheritdoc />
-            public override string ObservationalSubType => nameof(DataItemTypes.UserSubTypes.MAINTENANCE);
+            public override string ObservationalSubType => nameof(DataItemTypes.UserSubTypes._MAINTENANCE);
 
 			/// <summary>
-			/// Constructs a new value type for MAINTENANCE.
+			/// Constructs a new value type for _MAINTENANCE.
 			/// </summary>
             public MAINTENANCE(string value) : base(value) { }
 			
@@ -92,10 +92,10 @@ namespace Mtconnect.AdapterInterface.DataItemValues
 		public partial class SETUP : User
 		{
 			/// <inheritdoc />
-            public override string ObservationalSubType => nameof(DataItemTypes.UserSubTypes.SET_UP);
+            public override string ObservationalSubType => nameof(DataItemTypes.UserSubTypes._SET_UP);
 
 			/// <summary>
-			/// Constructs a new value type for SET_UP.
+			/// Constructs a new value type for _SET_UP.
 			/// </summary>
             public SETUP(string value) : base(value) { }
 			

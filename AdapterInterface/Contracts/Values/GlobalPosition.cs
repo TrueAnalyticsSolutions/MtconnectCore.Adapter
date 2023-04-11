@@ -21,7 +21,7 @@ namespace Mtconnect.AdapterInterface.DataItemValues
 	/// </list>
 	/// </remarks>
 	[Obsolete("Deprecated in v1.1 according to https://model.mtconnect.org/#_Version_1.1")]
-	[GeneratedCode("MtconnectTranspiler.Sinks.CSharp.Adapter", "1.0.7.0")]
+	[GeneratedCode("MtconnectTranspiler.Sinks.CSharp.Adapter", "1.0.12.0")]
 	public partial class GlobalPosition : SampleValue
     {
         /// <inheritdoc />

@@ -18,7 +18,7 @@ namespace Mtconnect.AdapterInterface.DataItemValues
 	/// <item><b>Introduced</b>: <see href="https://model.mtconnect.org/#_Version_1.3">v1.3</see></item>
 	/// </list>
 	/// </remarks>
-	[GeneratedCode("MtconnectTranspiler.Sinks.CSharp.Adapter", "1.0.7.0")]
+	[GeneratedCode("MtconnectTranspiler.Sinks.CSharp.Adapter", "1.0.12.0")]
 	public partial class EndOfBar : EventValue
     {
         /// <inheritdoc />
@@ -68,10 +68,10 @@ namespace Mtconnect.AdapterInterface.DataItemValues
 		public partial class PRIMARY : EndOfBar
 		{
 			/// <inheritdoc />
-            public override string ObservationalSubType => nameof(DataItemTypes.EndOfBarSubTypes.PRIMARY);
+            public override string ObservationalSubType => nameof(DataItemTypes.EndOfBarSubTypes._PRIMARY);
 
 			/// <summary>
-			/// Constructs a new value type for PRIMARY.
+			/// Constructs a new value type for _PRIMARY.
 			/// </summary>
             public PRIMARY(string value) : base(value) { }
 			
@@ -90,10 +90,10 @@ namespace Mtconnect.AdapterInterface.DataItemValues
 		public partial class AUXILIARY : EndOfBar
 		{
 			/// <inheritdoc />
-            public override string ObservationalSubType => nameof(DataItemTypes.EndOfBarSubTypes.AUXILIARY);
+            public override string ObservationalSubType => nameof(DataItemTypes.EndOfBarSubTypes._AUXILIARY);
 
 			/// <summary>
-			/// Constructs a new value type for AUXILIARY.
+			/// Constructs a new value type for _AUXILIARY.
 			/// </summary>
             public AUXILIARY(string value) : base(value) { }
 			

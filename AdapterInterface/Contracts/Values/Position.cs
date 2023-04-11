@@ -19,7 +19,7 @@ namespace Mtconnect.AdapterInterface.DataItemValues
 	/// <item><b>Units</b>: <see cref="MtconnectUnit.MILLIMETER" /></item>
 	/// </list>
 	/// </remarks>
-	[GeneratedCode("MtconnectTranspiler.Sinks.CSharp.Adapter", "1.0.7.0")]
+	[GeneratedCode("MtconnectTranspiler.Sinks.CSharp.Adapter", "1.0.12.0")]
 	public partial class Position : SampleValue
     {
         /// <inheritdoc />
@@ -49,10 +49,10 @@ namespace Mtconnect.AdapterInterface.DataItemValues
 		public partial class ACTUAL : Position
 		{
 			/// <inheritdoc />
-            public override string ObservationalSubType => nameof(DataItemTypes.PositionSubTypes.ACTUAL);
+            public override string ObservationalSubType => nameof(DataItemTypes.PositionSubTypes._ACTUAL);
 
 			/// <summary>
-			/// Constructs a new value type for ACTUAL.
+			/// Constructs a new value type for _ACTUAL.
 			/// </summary>
             public ACTUAL(float value) : base(value) { }
 			
@@ -71,10 +71,10 @@ namespace Mtconnect.AdapterInterface.DataItemValues
 		public partial class COMMANDED : Position
 		{
 			/// <inheritdoc />
-            public override string ObservationalSubType => nameof(DataItemTypes.PositionSubTypes.COMMANDED);
+            public override string ObservationalSubType => nameof(DataItemTypes.PositionSubTypes._COMMANDED);
 
 			/// <summary>
-			/// Constructs a new value type for COMMANDED.
+			/// Constructs a new value type for _COMMANDED.
 			/// </summary>
             public COMMANDED(float value) : base(value) { }
 			
@@ -93,10 +93,10 @@ namespace Mtconnect.AdapterInterface.DataItemValues
 		public partial class PROGRAMMED : Position
 		{
 			/// <inheritdoc />
-            public override string ObservationalSubType => nameof(DataItemTypes.PositionSubTypes.PROGRAMMED);
+            public override string ObservationalSubType => nameof(DataItemTypes.PositionSubTypes._PROGRAMMED);
 
 			/// <summary>
-			/// Constructs a new value type for PROGRAMMED.
+			/// Constructs a new value type for _PROGRAMMED.
 			/// </summary>
             public PROGRAMMED(float value) : base(value) { }
 			
@@ -115,10 +115,10 @@ namespace Mtconnect.AdapterInterface.DataItemValues
 		public partial class TARGET : Position
 		{
 			/// <inheritdoc />
-            public override string ObservationalSubType => nameof(DataItemTypes.PositionSubTypes.TARGET);
+            public override string ObservationalSubType => nameof(DataItemTypes.PositionSubTypes._TARGET);
 
 			/// <summary>
-			/// Constructs a new value type for TARGET.
+			/// Constructs a new value type for _TARGET.
 			/// </summary>
             public TARGET(float value) : base(value) { }
 			

@@ -18,7 +18,7 @@ namespace Mtconnect.AdapterInterface.DataItemValues
 	/// <item><b>Introduced</b>: <see href="https://model.mtconnect.org/#_Version_1.1">v1.1</see></item>
 	/// </list>
 	/// </remarks>
-	[GeneratedCode("MtconnectTranspiler.Sinks.CSharp.Adapter", "1.0.7.0")]
+	[GeneratedCode("MtconnectTranspiler.Sinks.CSharp.Adapter", "1.0.12.0")]
 	public partial class PowerState : EventValue
     {
         /// <inheritdoc />
@@ -68,10 +68,10 @@ namespace Mtconnect.AdapterInterface.DataItemValues
 		public partial class LINE : PowerState
 		{
 			/// <inheritdoc />
-            public override string ObservationalSubType => nameof(DataItemTypes.PowerStateSubTypes.LINE);
+            public override string ObservationalSubType => nameof(DataItemTypes.PowerStateSubTypes._LINE);
 
 			/// <summary>
-			/// Constructs a new value type for LINE.
+			/// Constructs a new value type for _LINE.
 			/// </summary>
             public LINE(string value) : base(value) { }
 			
@@ -90,10 +90,10 @@ namespace Mtconnect.AdapterInterface.DataItemValues
 		public partial class CONTROL : PowerState
 		{
 			/// <inheritdoc />
-            public override string ObservationalSubType => nameof(DataItemTypes.PowerStateSubTypes.CONTROL);
+            public override string ObservationalSubType => nameof(DataItemTypes.PowerStateSubTypes._CONTROL);
 
 			/// <summary>
-			/// Constructs a new value type for CONTROL.
+			/// Constructs a new value type for _CONTROL.
 			/// </summary>
             public CONTROL(string value) : base(value) { }
 			

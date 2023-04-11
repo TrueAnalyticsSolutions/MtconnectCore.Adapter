@@ -18,7 +18,7 @@ namespace Mtconnect.AdapterInterface.DataItemValues
 	/// <item><b>Introduced</b>: <see href="https://model.mtconnect.org/#_Version_1.4">v1.4</see></item>
 	/// </list>
 	/// </remarks>
-	[GeneratedCode("MtconnectTranspiler.Sinks.CSharp.Adapter", "1.0.7.0")]
+	[GeneratedCode("MtconnectTranspiler.Sinks.CSharp.Adapter", "1.0.12.0")]
 	public partial class ToolOffset : EventValue
     {
         /// <inheritdoc />
@@ -48,10 +48,10 @@ namespace Mtconnect.AdapterInterface.DataItemValues
 		public partial class RADIAL : ToolOffset
 		{
 			/// <inheritdoc />
-            public override string ObservationalSubType => nameof(DataItemTypes.ToolOffsetSubTypes.RADIAL);
+            public override string ObservationalSubType => nameof(DataItemTypes.ToolOffsetSubTypes._RADIAL);
 
 			/// <summary>
-			/// Constructs a new value type for RADIAL.
+			/// Constructs a new value type for _RADIAL.
 			/// </summary>
             public RADIAL(Single value) : base(value) { }
 			
@@ -70,10 +70,10 @@ namespace Mtconnect.AdapterInterface.DataItemValues
 		public partial class LENGTH : ToolOffset
 		{
 			/// <inheritdoc />
-            public override string ObservationalSubType => nameof(DataItemTypes.ToolOffsetSubTypes.LENGTH);
+            public override string ObservationalSubType => nameof(DataItemTypes.ToolOffsetSubTypes._LENGTH);
 
 			/// <summary>
-			/// Constructs a new value type for LENGTH.
+			/// Constructs a new value type for _LENGTH.
 			/// </summary>
             public LENGTH(Single value) : base(value) { }
 			

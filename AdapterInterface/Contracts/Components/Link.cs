@@ -10,7 +10,7 @@ namespace Mtconnect.AdapterInterface.DataItemTypes {
 	/// <see cref="Structure">Structure</see> that provides a connection between <see cref="Component">Component</see> entities.
 	/// </summary>
 	/// <remarks>Introduced in <see href="https://model.mtconnect.org/#_Version_1.7">v1.7</see>.</remarks>
-	[GeneratedCode("MtconnectTranspiler.Sinks.CSharp.Adapter", "1.0.7.0")]
+	[GeneratedCode("MtconnectTranspiler.Sinks.CSharp.Adapter", "1.0.12.0")]
 	public class Link : Structure, IAdapterDataModel, IComponentModel {
 	}
 }

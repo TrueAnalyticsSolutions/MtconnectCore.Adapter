@@ -19,7 +19,7 @@ namespace Mtconnect.AdapterInterface.DataItemValues
 	/// <item><b>Units</b>: <see cref="MtconnectUnit.MILLIMETER" /></item>
 	/// </list>
 	/// </remarks>
-	[GeneratedCode("MtconnectTranspiler.Sinks.CSharp.Adapter", "1.0.7.0")]
+	[GeneratedCode("MtconnectTranspiler.Sinks.CSharp.Adapter", "1.0.12.0")]
 	public partial class Length : SampleValue
     {
         /// <inheritdoc />
@@ -49,10 +49,10 @@ namespace Mtconnect.AdapterInterface.DataItemValues
 		public partial class STANDARD : Length
 		{
 			/// <inheritdoc />
-            public override string ObservationalSubType => nameof(DataItemTypes.LengthSubTypes.STANDARD);
+            public override string ObservationalSubType => nameof(DataItemTypes.LengthSubTypes._STANDARD);
 
 			/// <summary>
-			/// Constructs a new value type for STANDARD.
+			/// Constructs a new value type for _STANDARD.
 			/// </summary>
             public STANDARD(float value) : base(value) { }
 			
@@ -71,10 +71,10 @@ namespace Mtconnect.AdapterInterface.DataItemValues
 		public partial class REMAINING : Length
 		{
 			/// <inheritdoc />
-            public override string ObservationalSubType => nameof(DataItemTypes.LengthSubTypes.REMAINING);
+            public override string ObservationalSubType => nameof(DataItemTypes.LengthSubTypes._REMAINING);
 
 			/// <summary>
-			/// Constructs a new value type for REMAINING.
+			/// Constructs a new value type for _REMAINING.
 			/// </summary>
             public REMAINING(float value) : base(value) { }
 			
@@ -93,10 +93,10 @@ namespace Mtconnect.AdapterInterface.DataItemValues
 		public partial class USEABLE : Length
 		{
 			/// <inheritdoc />
-            public override string ObservationalSubType => nameof(DataItemTypes.LengthSubTypes.USEABLE);
+            public override string ObservationalSubType => nameof(DataItemTypes.LengthSubTypes._USEABLE);
 
 			/// <summary>
-			/// Constructs a new value type for USEABLE.
+			/// Constructs a new value type for _USEABLE.
 			/// </summary>
             public USEABLE(float value) : base(value) { }
 			

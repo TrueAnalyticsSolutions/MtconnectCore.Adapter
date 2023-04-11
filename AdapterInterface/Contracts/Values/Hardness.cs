@@ -18,7 +18,7 @@ namespace Mtconnect.AdapterInterface.DataItemValues
 	/// <item><b>Introduced</b>: <see href="https://model.mtconnect.org/#_Version_1.4">v1.4</see></item>
 	/// </list>
 	/// </remarks>
-	[GeneratedCode("MtconnectTranspiler.Sinks.CSharp.Adapter", "1.0.7.0")]
+	[GeneratedCode("MtconnectTranspiler.Sinks.CSharp.Adapter", "1.0.12.0")]
 	public partial class Hardness : EventValue
     {
         /// <inheritdoc />
@@ -48,10 +48,10 @@ namespace Mtconnect.AdapterInterface.DataItemValues
 		public partial class ROCKWELL : Hardness
 		{
 			/// <inheritdoc />
-            public override string ObservationalSubType => nameof(DataItemTypes.HardnessSubTypes.ROCKWELL);
+            public override string ObservationalSubType => nameof(DataItemTypes.HardnessSubTypes._ROCKWELL);
 
 			/// <summary>
-			/// Constructs a new value type for ROCKWELL.
+			/// Constructs a new value type for _ROCKWELL.
 			/// </summary>
             public ROCKWELL(Single value) : base(value) { }
 			
@@ -70,10 +70,10 @@ namespace Mtconnect.AdapterInterface.DataItemValues
 		public partial class VICKERS : Hardness
 		{
 			/// <inheritdoc />
-            public override string ObservationalSubType => nameof(DataItemTypes.HardnessSubTypes.VICKERS);
+            public override string ObservationalSubType => nameof(DataItemTypes.HardnessSubTypes._VICKERS);
 
 			/// <summary>
-			/// Constructs a new value type for VICKERS.
+			/// Constructs a new value type for _VICKERS.
 			/// </summary>
             public VICKERS(Single value) : base(value) { }
 			
@@ -92,10 +92,10 @@ namespace Mtconnect.AdapterInterface.DataItemValues
 		public partial class SHORE : Hardness
 		{
 			/// <inheritdoc />
-            public override string ObservationalSubType => nameof(DataItemTypes.HardnessSubTypes.SHORE);
+            public override string ObservationalSubType => nameof(DataItemTypes.HardnessSubTypes._SHORE);
 
 			/// <summary>
-			/// Constructs a new value type for SHORE.
+			/// Constructs a new value type for _SHORE.
 			/// </summary>
             public SHORE(Single value) : base(value) { }
 			
@@ -114,10 +114,10 @@ namespace Mtconnect.AdapterInterface.DataItemValues
 		public partial class BRINELL : Hardness
 		{
 			/// <inheritdoc />
-            public override string ObservationalSubType => nameof(DataItemTypes.HardnessSubTypes.BRINELL);
+            public override string ObservationalSubType => nameof(DataItemTypes.HardnessSubTypes._BRINELL);
 
 			/// <summary>
-			/// Constructs a new value type for BRINELL.
+			/// Constructs a new value type for _BRINELL.
 			/// </summary>
             public BRINELL(Single value) : base(value) { }
 			
@@ -136,10 +136,10 @@ namespace Mtconnect.AdapterInterface.DataItemValues
 		public partial class LEEB : Hardness
 		{
 			/// <inheritdoc />
-            public override string ObservationalSubType => nameof(DataItemTypes.HardnessSubTypes.LEEB);
+            public override string ObservationalSubType => nameof(DataItemTypes.HardnessSubTypes._LEEB);
 
 			/// <summary>
-			/// Constructs a new value type for LEEB.
+			/// Constructs a new value type for _LEEB.
 			/// </summary>
             public LEEB(Single value) : base(value) { }
 			
@@ -158,10 +158,10 @@ namespace Mtconnect.AdapterInterface.DataItemValues
 		public partial class MOHS : Hardness
 		{
 			/// <inheritdoc />
-            public override string ObservationalSubType => nameof(DataItemTypes.HardnessSubTypes.MOHS);
+            public override string ObservationalSubType => nameof(DataItemTypes.HardnessSubTypes._MOHS);
 
 			/// <summary>
-			/// Constructs a new value type for MOHS.
+			/// Constructs a new value type for _MOHS.
 			/// </summary>
             public MOHS(Single value) : base(value) { }
 			

@@ -20,7 +20,7 @@ namespace Mtconnect.AdapterInterface.DataItemValues
 	/// </list>
 	/// </remarks>
 	[Obsolete("Deprecated in v1.4 according to https://model.mtconnect.org/#_Version_1.4")]
-	[GeneratedCode("MtconnectTranspiler.Sinks.CSharp.Adapter", "1.0.7.0")]
+	[GeneratedCode("MtconnectTranspiler.Sinks.CSharp.Adapter", "1.0.12.0")]
 	public partial class Direction : EventValue
     {
         /// <inheritdoc />
@@ -96,10 +96,10 @@ namespace Mtconnect.AdapterInterface.DataItemValues
 		public partial class ROTARY : Direction
 		{
 			/// <inheritdoc />
-            public override string ObservationalSubType => nameof(DataItemTypes.DirectionSubTypes.ROTARY);
+            public override string ObservationalSubType => nameof(DataItemTypes.DirectionSubTypes._ROTARY);
 
 			/// <summary>
-			/// Constructs a new value type for ROTARY.
+			/// Constructs a new value type for _ROTARY.
 			/// </summary>
             public ROTARY(string value) : base(value) { }
 			
@@ -118,10 +118,10 @@ namespace Mtconnect.AdapterInterface.DataItemValues
 		public partial class LINEAR : Direction
 		{
 			/// <inheritdoc />
-            public override string ObservationalSubType => nameof(DataItemTypes.DirectionSubTypes.LINEAR);
+            public override string ObservationalSubType => nameof(DataItemTypes.DirectionSubTypes._LINEAR);
 
 			/// <summary>
-			/// Constructs a new value type for LINEAR.
+			/// Constructs a new value type for _LINEAR.
 			/// </summary>
             public LINEAR(string value) : base(value) { }
 			

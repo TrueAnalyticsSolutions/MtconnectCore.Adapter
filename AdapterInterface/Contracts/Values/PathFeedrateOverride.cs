@@ -18,7 +18,7 @@ namespace Mtconnect.AdapterInterface.DataItemValues
 	/// <item><b>Introduced</b>: <see href="https://model.mtconnect.org/#_Version_1.3">v1.3</see></item>
 	/// </list>
 	/// </remarks>
-	[GeneratedCode("MtconnectTranspiler.Sinks.CSharp.Adapter", "1.0.7.0")]
+	[GeneratedCode("MtconnectTranspiler.Sinks.CSharp.Adapter", "1.0.12.0")]
 	public partial class PathFeedrateOverride : EventValue
     {
         /// <inheritdoc />
@@ -48,10 +48,10 @@ namespace Mtconnect.AdapterInterface.DataItemValues
 		public partial class JOG : PathFeedrateOverride
 		{
 			/// <inheritdoc />
-            public override string ObservationalSubType => nameof(DataItemTypes.PathFeedrateOverrideSubTypes.JOG);
+            public override string ObservationalSubType => nameof(DataItemTypes.PathFeedrateOverrideSubTypes._JOG);
 
 			/// <summary>
-			/// Constructs a new value type for JOG.
+			/// Constructs a new value type for _JOG.
 			/// </summary>
             public JOG(Single value) : base(value) { }
 			
@@ -70,10 +70,10 @@ namespace Mtconnect.AdapterInterface.DataItemValues
 		public partial class PROGRAMMED : PathFeedrateOverride
 		{
 			/// <inheritdoc />
-            public override string ObservationalSubType => nameof(DataItemTypes.PathFeedrateOverrideSubTypes.PROGRAMMED);
+            public override string ObservationalSubType => nameof(DataItemTypes.PathFeedrateOverrideSubTypes._PROGRAMMED);
 
 			/// <summary>
-			/// Constructs a new value type for PROGRAMMED.
+			/// Constructs a new value type for _PROGRAMMED.
 			/// </summary>
             public PROGRAMMED(Single value) : base(value) { }
 			
@@ -92,10 +92,10 @@ namespace Mtconnect.AdapterInterface.DataItemValues
 		public partial class RAPID : PathFeedrateOverride
 		{
 			/// <inheritdoc />
-            public override string ObservationalSubType => nameof(DataItemTypes.PathFeedrateOverrideSubTypes.RAPID);
+            public override string ObservationalSubType => nameof(DataItemTypes.PathFeedrateOverrideSubTypes._RAPID);
 
 			/// <summary>
-			/// Constructs a new value type for RAPID.
+			/// Constructs a new value type for _RAPID.
 			/// </summary>
             public RAPID(Single value) : base(value) { }
 			

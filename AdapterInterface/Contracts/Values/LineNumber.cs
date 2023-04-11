@@ -18,7 +18,7 @@ namespace Mtconnect.AdapterInterface.DataItemValues
 	/// <item><b>Introduced</b>: <see href="https://model.mtconnect.org/#_Version_1.4">v1.4</see></item>
 	/// </list>
 	/// </remarks>
-	[GeneratedCode("MtconnectTranspiler.Sinks.CSharp.Adapter", "1.0.7.0")]
+	[GeneratedCode("MtconnectTranspiler.Sinks.CSharp.Adapter", "1.0.12.0")]
 	public partial class LineNumber : EventValue
     {
         /// <inheritdoc />
@@ -48,10 +48,10 @@ namespace Mtconnect.AdapterInterface.DataItemValues
 		public partial class ABSOLUTE : LineNumber
 		{
 			/// <inheritdoc />
-            public override string ObservationalSubType => nameof(DataItemTypes.LineNumberSubTypes.ABSOLUTE);
+            public override string ObservationalSubType => nameof(DataItemTypes.LineNumberSubTypes._ABSOLUTE);
 
 			/// <summary>
-			/// Constructs a new value type for ABSOLUTE.
+			/// Constructs a new value type for _ABSOLUTE.
 			/// </summary>
             public ABSOLUTE(Int32 value) : base(value) { }
 			
@@ -70,10 +70,10 @@ namespace Mtconnect.AdapterInterface.DataItemValues
 		public partial class INCREMENTAL : LineNumber
 		{
 			/// <inheritdoc />
-            public override string ObservationalSubType => nameof(DataItemTypes.LineNumberSubTypes.INCREMENTAL);
+            public override string ObservationalSubType => nameof(DataItemTypes.LineNumberSubTypes._INCREMENTAL);
 
 			/// <summary>
-			/// Constructs a new value type for INCREMENTAL.
+			/// Constructs a new value type for _INCREMENTAL.
 			/// </summary>
             public INCREMENTAL(Int32 value) : base(value) { }
 			

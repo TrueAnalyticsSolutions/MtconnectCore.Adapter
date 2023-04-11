@@ -19,7 +19,7 @@ namespace Mtconnect.AdapterInterface.DataItemValues
 	/// <item><b>Units</b>: <see cref="MtconnectUnit.CUBIC_MILLIMETER" /></item>
 	/// </list>
 	/// </remarks>
-	[GeneratedCode("MtconnectTranspiler.Sinks.CSharp.Adapter", "1.0.7.0")]
+	[GeneratedCode("MtconnectTranspiler.Sinks.CSharp.Adapter", "1.0.12.0")]
 	public partial class VolumeSpatial : SampleValue
     {
         /// <inheritdoc />
@@ -49,10 +49,10 @@ namespace Mtconnect.AdapterInterface.DataItemValues
 		public partial class ACTUAL : VolumeSpatial
 		{
 			/// <inheritdoc />
-            public override string ObservationalSubType => nameof(DataItemTypes.VolumeSpatialSubTypes.ACTUAL);
+            public override string ObservationalSubType => nameof(DataItemTypes.VolumeSpatialSubTypes._ACTUAL);
 
 			/// <summary>
-			/// Constructs a new value type for ACTUAL.
+			/// Constructs a new value type for _ACTUAL.
 			/// </summary>
             public ACTUAL(float value) : base(value) { }
 			
@@ -71,10 +71,10 @@ namespace Mtconnect.AdapterInterface.DataItemValues
 		public partial class CONSUMED : VolumeSpatial
 		{
 			/// <inheritdoc />
-            public override string ObservationalSubType => nameof(DataItemTypes.VolumeSpatialSubTypes.CONSUMED);
+            public override string ObservationalSubType => nameof(DataItemTypes.VolumeSpatialSubTypes._CONSUMED);
 
 			/// <summary>
-			/// Constructs a new value type for CONSUMED.
+			/// Constructs a new value type for _CONSUMED.
 			/// </summary>
             public CONSUMED(float value) : base(value) { }
 			

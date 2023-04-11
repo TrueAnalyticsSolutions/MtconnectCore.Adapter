@@ -18,7 +18,7 @@ namespace Mtconnect.AdapterInterface.DataItemValues
 	/// <item><b>Introduced</b>: <see href="https://model.mtconnect.org/#_Version_1.4">v1.4</see></item>
 	/// </list>
 	/// </remarks>
-	[GeneratedCode("MtconnectTranspiler.Sinks.CSharp.Adapter", "1.0.7.0")]
+	[GeneratedCode("MtconnectTranspiler.Sinks.CSharp.Adapter", "1.0.12.0")]
 	public partial class EquipmentMode : EventValue
     {
         /// <inheritdoc />
@@ -68,10 +68,10 @@ namespace Mtconnect.AdapterInterface.DataItemValues
 		public partial class LOADED : EquipmentMode
 		{
 			/// <inheritdoc />
-            public override string ObservationalSubType => nameof(DataItemTypes.EquipmentModeSubTypes.LOADED);
+            public override string ObservationalSubType => nameof(DataItemTypes.EquipmentModeSubTypes._LOADED);
 
 			/// <summary>
-			/// Constructs a new value type for LOADED.
+			/// Constructs a new value type for _LOADED.
 			/// </summary>
             public LOADED(string value) : base(value) { }
 			
@@ -90,10 +90,10 @@ namespace Mtconnect.AdapterInterface.DataItemValues
 		public partial class WORKING : EquipmentMode
 		{
 			/// <inheritdoc />
-            public override string ObservationalSubType => nameof(DataItemTypes.EquipmentModeSubTypes.WORKING);
+            public override string ObservationalSubType => nameof(DataItemTypes.EquipmentModeSubTypes._WORKING);
 
 			/// <summary>
-			/// Constructs a new value type for WORKING.
+			/// Constructs a new value type for _WORKING.
 			/// </summary>
             public WORKING(string value) : base(value) { }
 			
@@ -112,10 +112,10 @@ namespace Mtconnect.AdapterInterface.DataItemValues
 		public partial class OPERATING : EquipmentMode
 		{
 			/// <inheritdoc />
-            public override string ObservationalSubType => nameof(DataItemTypes.EquipmentModeSubTypes.OPERATING);
+            public override string ObservationalSubType => nameof(DataItemTypes.EquipmentModeSubTypes._OPERATING);
 
 			/// <summary>
-			/// Constructs a new value type for OPERATING.
+			/// Constructs a new value type for _OPERATING.
 			/// </summary>
             public OPERATING(string value) : base(value) { }
 			
@@ -134,10 +134,10 @@ namespace Mtconnect.AdapterInterface.DataItemValues
 		public partial class POWERED : EquipmentMode
 		{
 			/// <inheritdoc />
-            public override string ObservationalSubType => nameof(DataItemTypes.EquipmentModeSubTypes.POWERED);
+            public override string ObservationalSubType => nameof(DataItemTypes.EquipmentModeSubTypes._POWERED);
 
 			/// <summary>
-			/// Constructs a new value type for POWERED.
+			/// Constructs a new value type for _POWERED.
 			/// </summary>
             public POWERED(string value) : base(value) { }
 			
@@ -156,10 +156,10 @@ namespace Mtconnect.AdapterInterface.DataItemValues
 		public partial class DELAY : EquipmentMode
 		{
 			/// <inheritdoc />
-            public override string ObservationalSubType => nameof(DataItemTypes.EquipmentModeSubTypes.DELAY);
+            public override string ObservationalSubType => nameof(DataItemTypes.EquipmentModeSubTypes._DELAY);
 
 			/// <summary>
-			/// Constructs a new value type for DELAY.
+			/// Constructs a new value type for _DELAY.
 			/// </summary>
             public DELAY(string value) : base(value) { }
 			

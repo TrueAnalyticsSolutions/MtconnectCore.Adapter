@@ -19,7 +19,7 @@ namespace Mtconnect.AdapterInterface.DataItemValues
 	/// <item><b>Units</b>: <see cref="MtconnectUnit.CUBIC_MILLIMETER_PER_SECOND" /></item>
 	/// </list>
 	/// </remarks>
-	[GeneratedCode("MtconnectTranspiler.Sinks.CSharp.Adapter", "1.0.7.0")]
+	[GeneratedCode("MtconnectTranspiler.Sinks.CSharp.Adapter", "1.0.12.0")]
 	public partial class DepositionRateVolumetric : SampleValue
     {
         /// <inheritdoc />
@@ -49,10 +49,10 @@ namespace Mtconnect.AdapterInterface.DataItemValues
 		public partial class ACTUAL : DepositionRateVolumetric
 		{
 			/// <inheritdoc />
-            public override string ObservationalSubType => nameof(DataItemTypes.DepositionRateVolumetricSubTypes.ACTUAL);
+            public override string ObservationalSubType => nameof(DataItemTypes.DepositionRateVolumetricSubTypes._ACTUAL);
 
 			/// <summary>
-			/// Constructs a new value type for ACTUAL.
+			/// Constructs a new value type for _ACTUAL.
 			/// </summary>
             public ACTUAL(float value) : base(value) { }
 			
@@ -71,10 +71,10 @@ namespace Mtconnect.AdapterInterface.DataItemValues
 		public partial class COMMANDED : DepositionRateVolumetric
 		{
 			/// <inheritdoc />
-            public override string ObservationalSubType => nameof(DataItemTypes.DepositionRateVolumetricSubTypes.COMMANDED);
+            public override string ObservationalSubType => nameof(DataItemTypes.DepositionRateVolumetricSubTypes._COMMANDED);
 
 			/// <summary>
-			/// Constructs a new value type for COMMANDED.
+			/// Constructs a new value type for _COMMANDED.
 			/// </summary>
             public COMMANDED(float value) : base(value) { }
 			

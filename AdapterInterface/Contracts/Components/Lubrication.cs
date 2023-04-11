@@ -10,7 +10,7 @@ namespace Mtconnect.AdapterInterface.DataItemTypes {
 	/// <see cref="System">System</see> that provides distribution and management of fluids used to lubricate portions of the piece of equipment.
 	/// </summary>
 	/// <remarks>Introduced in <see href="https://model.mtconnect.org/#_Version_1.1">v1.1</see>.</remarks>
-	[GeneratedCode("MtconnectTranspiler.Sinks.CSharp.Adapter", "1.0.7.0")]
+	[GeneratedCode("MtconnectTranspiler.Sinks.CSharp.Adapter", "1.0.12.0")]
 	public class Lubrication : System, IAdapterDataModel, IComponentModel {
 	}
 }

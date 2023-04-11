@@ -11,7 +11,7 @@ namespace Mtconnect.AdapterInterface.DataItemTypes
 	/// View in the MTConnect Model browser <seealso href="https://model.mtconnect.org/#Enumeration___19_0_3_45f01b9_1580309868367_570061_44359">model.mtconnect.org</seealso>
 	﻿	/// </summary>
 	
-	[GeneratedCode("MtconnectTranspiler.Sinks.CSharp.Adapter", "1.0.7.0")]
+	[GeneratedCode("MtconnectTranspiler.Sinks.CSharp.Adapter", "1.0.12.0")]
 	public enum SampleTypes
 	{
 		/// <summary>
@@ -635,9 +635,11 @@ namespace Mtconnect.AdapterInterface.DataItemTypes
 		/// </summary>
 		/// <remarks>
 		/// <list type="bullet">
+		/// <item><b>Sub-Type</b>: <see cref="AmperageDCSubTypes" /></item>
 		/// <item><b>Introduced</b>: <see href="https://model.mtconnect.org/#_Version_1.6">v1.6</see></item>
 		/// </list>
 		/// </remarks>
+		[ObservationalSubType(typeof(AmperageDCSubTypes))]
 		[MtconnectVersion(MtconnectVersions.V_1_6_0, "https://model.mtconnect.org/#_Version_1.6")]
 		AMPERAGE_DC,
 		/// <summary>
@@ -645,9 +647,11 @@ namespace Mtconnect.AdapterInterface.DataItemTypes
 		/// </summary>
 		/// <remarks>
 		/// <list type="bullet">
+		/// <item><b>Sub-Type</b>: <see cref="AmperageACSubTypes" /></item>
 		/// <item><b>Introduced</b>: <see href="https://model.mtconnect.org/#_Version_1.6">v1.6</see></item>
 		/// </list>
 		/// </remarks>
+		[ObservationalSubType(typeof(AmperageACSubTypes))]
 		[MtconnectVersion(MtconnectVersions.V_1_6_0, "https://model.mtconnect.org/#_Version_1.6")]
 		AMPERAGE_AC,
 		/// <summary>
@@ -655,9 +659,11 @@ namespace Mtconnect.AdapterInterface.DataItemTypes
 		/// </summary>
 		/// <remarks>
 		/// <list type="bullet">
+		/// <item><b>Sub-Type</b>: <see cref="VoltageACSubTypes" /></item>
 		/// <item><b>Introduced</b>: <see href="https://model.mtconnect.org/#_Version_1.6">v1.6</see></item>
 		/// </list>
 		/// </remarks>
+		[ObservationalSubType(typeof(VoltageACSubTypes))]
 		[MtconnectVersion(MtconnectVersions.V_1_6_0, "https://model.mtconnect.org/#_Version_1.6")]
 		VOLTAGE_AC,
 		/// <summary>
@@ -665,9 +671,11 @@ namespace Mtconnect.AdapterInterface.DataItemTypes
 		/// </summary>
 		/// <remarks>
 		/// <list type="bullet">
+		/// <item><b>Sub-Type</b>: <see cref="VoltageDCSubTypes" /></item>
 		/// <item><b>Introduced</b>: <see href="https://model.mtconnect.org/#_Version_1.6">v1.6</see></item>
 		/// </list>
 		/// </remarks>
+		[ObservationalSubType(typeof(VoltageDCSubTypes))]
 		[MtconnectVersion(MtconnectVersions.V_1_6_0, "https://model.mtconnect.org/#_Version_1.6")]
 		VOLTAGE_DC,
 		/// <summary>
@@ -1004,15 +1012,15 @@ namespace Mtconnect.AdapterInterface.DataItemTypes
 		/// </remarks>
 		[MtconnectVersion(MtconnectVersions.V_2_1_0, "https://model.mtconnect.org/#_Version_2.1")]
 		DISPLACEMENT_ANGULAR,
-        /// <summary>
-        ﻿/// point in a cartesian coordinate system.
-        /// </summary>
-        /// <remarks>
-        /// <list type="bullet">
-        /// <item><b>Introduced</b>: <see href="https://model.mtconnect.org/#_Version_2.1">v2.1</see></item>
-        /// </list>
-        /// </remarks>
-        [MtconnectVersion(MtconnectVersions.V_2_1_0, "https://model.mtconnect.org/#_Version_2.1")]
+		/// <summary>
+		﻿/// point in a <i>cartesian coordinate system</i>.
+		/// </summary>
+		/// <remarks>
+		/// <list type="bullet">
+		/// <item><b>Introduced</b>: <see href="https://model.mtconnect.org/#_Version_2.1">v2.1</see></item>
+		/// </list>
+		/// </remarks>
+		[MtconnectVersion(MtconnectVersions.V_2_1_0, "https://model.mtconnect.org/#_Version_2.1")]
 		POSITION_CARTESIAN,
 	}
 }

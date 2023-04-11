@@ -19,11 +19,11 @@ namespace Mtconnect.AdapterInterface.DataItemValues
 	/// <item><b>Units</b>: <see cref="MtconnectUnit.AMPERE" /></item>
 	/// </list>
 	/// </remarks>
-	[GeneratedCode("MtconnectTranspiler.Sinks.CSharp.Adapter", "1.0.7.0")]
+	[GeneratedCode("MtconnectTranspiler.Sinks.CSharp.Adapter", "1.0.12.0")]
 	public partial class AmperageAC : SampleValue
     {
         /// <inheritdoc />
-        public override string ObservationalType => nameof(DataItemTypes.SampleTypes.AMPERAGE_A_C);
+        public override string ObservationalType => nameof(DataItemTypes.SampleTypes.AMPERAGE_AC);
 
 		/// <inheritdoc />
         public override string ObservationalSubType => null;

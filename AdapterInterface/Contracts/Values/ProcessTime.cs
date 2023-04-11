@@ -18,7 +18,7 @@ namespace Mtconnect.AdapterInterface.DataItemValues
 	/// <item><b>Introduced</b>: <see href="https://model.mtconnect.org/#_Version_1.5">v1.5</see></item>
 	/// </list>
 	/// </remarks>
-	[GeneratedCode("MtconnectTranspiler.Sinks.CSharp.Adapter", "1.0.7.0")]
+	[GeneratedCode("MtconnectTranspiler.Sinks.CSharp.Adapter", "1.0.12.0")]
 	public partial class ProcessTime : EventValue
     {
         /// <inheritdoc />
@@ -48,10 +48,10 @@ namespace Mtconnect.AdapterInterface.DataItemValues
 		public partial class START : ProcessTime
 		{
 			/// <inheritdoc />
-            public override string ObservationalSubType => nameof(DataItemTypes.ProcessTimeSubTypes.START);
+            public override string ObservationalSubType => nameof(DataItemTypes.ProcessTimeSubTypes._START);
 
 			/// <summary>
-			/// Constructs a new value type for START.
+			/// Constructs a new value type for _START.
 			/// </summary>
             public START(string value) : base(value) { }
 			
@@ -70,10 +70,10 @@ namespace Mtconnect.AdapterInterface.DataItemValues
 		public partial class COMPLETE : ProcessTime
 		{
 			/// <inheritdoc />
-            public override string ObservationalSubType => nameof(DataItemTypes.ProcessTimeSubTypes.COMPLETE);
+            public override string ObservationalSubType => nameof(DataItemTypes.ProcessTimeSubTypes._COMPLETE);
 
 			/// <summary>
-			/// Constructs a new value type for COMPLETE.
+			/// Constructs a new value type for _COMPLETE.
 			/// </summary>
             public COMPLETE(string value) : base(value) { }
 			
@@ -92,10 +92,10 @@ namespace Mtconnect.AdapterInterface.DataItemValues
 		public partial class TARGETCOMPLETION : ProcessTime
 		{
 			/// <inheritdoc />
-            public override string ObservationalSubType => nameof(DataItemTypes.ProcessTimeSubTypes.TARGET_COMPLETION);
+            public override string ObservationalSubType => nameof(DataItemTypes.ProcessTimeSubTypes._TARGET_COMPLETION);
 
 			/// <summary>
-			/// Constructs a new value type for TARGET_COMPLETION.
+			/// Constructs a new value type for _TARGET_COMPLETION.
 			/// </summary>
             public TARGETCOMPLETION(string value) : base(value) { }
 			

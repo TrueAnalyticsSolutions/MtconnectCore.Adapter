@@ -18,7 +18,7 @@ namespace Mtconnect.AdapterInterface.DataItemValues
 	/// <item><b>Introduced</b>: <see href="https://model.mtconnect.org/#_Version_1.3">v1.3</see></item>
 	/// </list>
 	/// </remarks>
-	[GeneratedCode("MtconnectTranspiler.Sinks.CSharp.Adapter", "1.0.7.0")]
+	[GeneratedCode("MtconnectTranspiler.Sinks.CSharp.Adapter", "1.0.12.0")]
 	public partial class ProgramHeader : EventValue
     {
         /// <inheritdoc />
@@ -48,10 +48,10 @@ namespace Mtconnect.AdapterInterface.DataItemValues
 		public partial class MAIN : ProgramHeader
 		{
 			/// <inheritdoc />
-            public override string ObservationalSubType => nameof(DataItemTypes.ProgramHeaderSubTypes.MAIN);
+            public override string ObservationalSubType => nameof(DataItemTypes.ProgramHeaderSubTypes._MAIN);
 
 			/// <summary>
-			/// Constructs a new value type for MAIN.
+			/// Constructs a new value type for _MAIN.
 			/// </summary>
             public MAIN(string value) : base(value) { }
 			
@@ -70,10 +70,10 @@ namespace Mtconnect.AdapterInterface.DataItemValues
 		public partial class SCHEDULE : ProgramHeader
 		{
 			/// <inheritdoc />
-            public override string ObservationalSubType => nameof(DataItemTypes.ProgramHeaderSubTypes.SCHEDULE);
+            public override string ObservationalSubType => nameof(DataItemTypes.ProgramHeaderSubTypes._SCHEDULE);
 
 			/// <summary>
-			/// Constructs a new value type for SCHEDULE.
+			/// Constructs a new value type for _SCHEDULE.
 			/// </summary>
             public SCHEDULE(string value) : base(value) { }
 			
@@ -92,10 +92,10 @@ namespace Mtconnect.AdapterInterface.DataItemValues
 		public partial class ACTIVE : ProgramHeader
 		{
 			/// <inheritdoc />
-            public override string ObservationalSubType => nameof(DataItemTypes.ProgramHeaderSubTypes.ACTIVE);
+            public override string ObservationalSubType => nameof(DataItemTypes.ProgramHeaderSubTypes._ACTIVE);
 
 			/// <summary>
-			/// Constructs a new value type for ACTIVE.
+			/// Constructs a new value type for _ACTIVE.
 			/// </summary>
             public ACTIVE(string value) : base(value) { }
 			

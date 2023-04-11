@@ -18,7 +18,7 @@ namespace Mtconnect.AdapterInterface.DataItemValues
 	/// <item><b>Introduced</b>: <see href="https://model.mtconnect.org/#_Version_1.3">v1.3</see></item>
 	/// </list>
 	/// </remarks>
-	[GeneratedCode("MtconnectTranspiler.Sinks.CSharp.Adapter", "1.0.7.0")]
+	[GeneratedCode("MtconnectTranspiler.Sinks.CSharp.Adapter", "1.0.12.0")]
 	public partial class ChuckInterlock : EventValue
     {
         /// <inheritdoc />
@@ -68,10 +68,10 @@ namespace Mtconnect.AdapterInterface.DataItemValues
 		public partial class MANUALUNCLAMP : ChuckInterlock
 		{
 			/// <inheritdoc />
-            public override string ObservationalSubType => nameof(DataItemTypes.ChuckInterlockSubTypes.MANUAL_UNCLAMP);
+            public override string ObservationalSubType => nameof(DataItemTypes.ChuckInterlockSubTypes._MANUAL_UNCLAMP);
 
 			/// <summary>
-			/// Constructs a new value type for MANUAL_UNCLAMP.
+			/// Constructs a new value type for _MANUAL_UNCLAMP.
 			/// </summary>
             public MANUALUNCLAMP(string value) : base(value) { }
 			

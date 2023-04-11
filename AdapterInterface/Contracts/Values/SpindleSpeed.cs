@@ -21,7 +21,7 @@ namespace Mtconnect.AdapterInterface.DataItemValues
 	/// </list>
 	/// </remarks>
 	[Obsolete("Deprecated in v1.2 according to https://model.mtconnect.org/#_Version_1.2")]
-	[GeneratedCode("MtconnectTranspiler.Sinks.CSharp.Adapter", "1.0.7.0")]
+	[GeneratedCode("MtconnectTranspiler.Sinks.CSharp.Adapter", "1.0.12.0")]
 	public partial class SpindleSpeed : SampleValue
     {
         /// <inheritdoc />
@@ -51,10 +51,10 @@ namespace Mtconnect.AdapterInterface.DataItemValues
 		public partial class ACTUAL : SpindleSpeed
 		{
 			/// <inheritdoc />
-            public override string ObservationalSubType => nameof(DataItemTypes.SpindleSpeedSubTypes.ACTUAL);
+            public override string ObservationalSubType => nameof(DataItemTypes.SpindleSpeedSubTypes._ACTUAL);
 
 			/// <summary>
-			/// Constructs a new value type for ACTUAL.
+			/// Constructs a new value type for _ACTUAL.
 			/// </summary>
             public ACTUAL(float value) : base(value) { }
 			
@@ -73,10 +73,10 @@ namespace Mtconnect.AdapterInterface.DataItemValues
 		public partial class COMMANDED : SpindleSpeed
 		{
 			/// <inheritdoc />
-            public override string ObservationalSubType => nameof(DataItemTypes.SpindleSpeedSubTypes.COMMANDED);
+            public override string ObservationalSubType => nameof(DataItemTypes.SpindleSpeedSubTypes._COMMANDED);
 
 			/// <summary>
-			/// Constructs a new value type for COMMANDED.
+			/// Constructs a new value type for _COMMANDED.
 			/// </summary>
             public COMMANDED(float value) : base(value) { }
 			
@@ -95,10 +95,10 @@ namespace Mtconnect.AdapterInterface.DataItemValues
 		public partial class OVERRIDE : SpindleSpeed
 		{
 			/// <inheritdoc />
-            public override string ObservationalSubType => nameof(DataItemTypes.SpindleSpeedSubTypes.OVERRIDE);
+            public override string ObservationalSubType => nameof(DataItemTypes.SpindleSpeedSubTypes._OVERRIDE);
 
 			/// <summary>
-			/// Constructs a new value type for OVERRIDE.
+			/// Constructs a new value type for _OVERRIDE.
 			/// </summary>
             public OVERRIDE(float value) : base(value) { }
 			

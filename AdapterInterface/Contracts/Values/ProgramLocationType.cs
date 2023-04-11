@@ -18,7 +18,7 @@ namespace Mtconnect.AdapterInterface.DataItemValues
 	/// <item><b>Introduced</b>: <see href="https://model.mtconnect.org/#_Version_1.5">v1.5</see></item>
 	/// </list>
 	/// </remarks>
-	[GeneratedCode("MtconnectTranspiler.Sinks.CSharp.Adapter", "1.0.7.0")]
+	[GeneratedCode("MtconnectTranspiler.Sinks.CSharp.Adapter", "1.0.12.0")]
 	public partial class ProgramLocationType : EventValue
     {
         /// <inheritdoc />
@@ -68,10 +68,10 @@ namespace Mtconnect.AdapterInterface.DataItemValues
 		public partial class SCHEDULE : ProgramLocationType
 		{
 			/// <inheritdoc />
-            public override string ObservationalSubType => nameof(DataItemTypes.ProgramLocationTypeSubTypes.SCHEDULE);
+            public override string ObservationalSubType => nameof(DataItemTypes.ProgramLocationTypeSubTypes._SCHEDULE);
 
 			/// <summary>
-			/// Constructs a new value type for SCHEDULE.
+			/// Constructs a new value type for _SCHEDULE.
 			/// </summary>
             public SCHEDULE(string value) : base(value) { }
 			
@@ -90,10 +90,10 @@ namespace Mtconnect.AdapterInterface.DataItemValues
 		public partial class MAIN : ProgramLocationType
 		{
 			/// <inheritdoc />
-            public override string ObservationalSubType => nameof(DataItemTypes.ProgramLocationTypeSubTypes.MAIN);
+            public override string ObservationalSubType => nameof(DataItemTypes.ProgramLocationTypeSubTypes._MAIN);
 
 			/// <summary>
-			/// Constructs a new value type for MAIN.
+			/// Constructs a new value type for _MAIN.
 			/// </summary>
             public MAIN(string value) : base(value) { }
 			
@@ -112,10 +112,10 @@ namespace Mtconnect.AdapterInterface.DataItemValues
 		public partial class ACTIVE : ProgramLocationType
 		{
 			/// <inheritdoc />
-            public override string ObservationalSubType => nameof(DataItemTypes.ProgramLocationTypeSubTypes.ACTIVE);
+            public override string ObservationalSubType => nameof(DataItemTypes.ProgramLocationTypeSubTypes._ACTIVE);
 
 			/// <summary>
-			/// Constructs a new value type for ACTIVE.
+			/// Constructs a new value type for _ACTIVE.
 			/// </summary>
             public ACTIVE(string value) : base(value) { }
 			

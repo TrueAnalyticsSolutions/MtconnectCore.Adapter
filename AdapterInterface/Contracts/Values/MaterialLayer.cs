@@ -18,7 +18,7 @@ namespace Mtconnect.AdapterInterface.DataItemValues
 	/// <item><b>Introduced</b>: <see href="https://model.mtconnect.org/#_Version_1.5">v1.5</see></item>
 	/// </list>
 	/// </remarks>
-	[GeneratedCode("MtconnectTranspiler.Sinks.CSharp.Adapter", "1.0.7.0")]
+	[GeneratedCode("MtconnectTranspiler.Sinks.CSharp.Adapter", "1.0.12.0")]
 	public partial class MaterialLayer : EventValue
     {
         /// <inheritdoc />
@@ -48,10 +48,10 @@ namespace Mtconnect.AdapterInterface.DataItemValues
 		public partial class ACTUAL : MaterialLayer
 		{
 			/// <inheritdoc />
-            public override string ObservationalSubType => nameof(DataItemTypes.MaterialLayerSubTypes.ACTUAL);
+            public override string ObservationalSubType => nameof(DataItemTypes.MaterialLayerSubTypes._ACTUAL);
 
 			/// <summary>
-			/// Constructs a new value type for ACTUAL.
+			/// Constructs a new value type for _ACTUAL.
 			/// </summary>
             public ACTUAL(Int32 value) : base(value) { }
 			
@@ -70,10 +70,10 @@ namespace Mtconnect.AdapterInterface.DataItemValues
 		public partial class TARGET : MaterialLayer
 		{
 			/// <inheritdoc />
-            public override string ObservationalSubType => nameof(DataItemTypes.MaterialLayerSubTypes.TARGET);
+            public override string ObservationalSubType => nameof(DataItemTypes.MaterialLayerSubTypes._TARGET);
 
 			/// <summary>
-			/// Constructs a new value type for TARGET.
+			/// Constructs a new value type for _TARGET.
 			/// </summary>
             public TARGET(Int32 value) : base(value) { }
 			

@@ -19,7 +19,7 @@ namespace Mtconnect.AdapterInterface.DataItemValues
 	/// <item><b>Units</b>: <see cref="MtconnectUnit.MILLIMETER_PER_SECOND" /></item>
 	/// </list>
 	/// </remarks>
-	[GeneratedCode("MtconnectTranspiler.Sinks.CSharp.Adapter", "1.0.7.0")]
+	[GeneratedCode("MtconnectTranspiler.Sinks.CSharp.Adapter", "1.0.12.0")]
 	public partial class CuttingSpeed : SampleValue
     {
         /// <inheritdoc />
@@ -49,10 +49,10 @@ namespace Mtconnect.AdapterInterface.DataItemValues
 		public partial class ACTUAL : CuttingSpeed
 		{
 			/// <inheritdoc />
-            public override string ObservationalSubType => nameof(DataItemTypes.CuttingSpeedSubTypes.ACTUAL);
+            public override string ObservationalSubType => nameof(DataItemTypes.CuttingSpeedSubTypes._ACTUAL);
 
 			/// <summary>
-			/// Constructs a new value type for ACTUAL.
+			/// Constructs a new value type for _ACTUAL.
 			/// </summary>
             public ACTUAL(float value) : base(value) { }
 			
@@ -71,10 +71,10 @@ namespace Mtconnect.AdapterInterface.DataItemValues
 		public partial class COMMANDED : CuttingSpeed
 		{
 			/// <inheritdoc />
-            public override string ObservationalSubType => nameof(DataItemTypes.CuttingSpeedSubTypes.COMMANDED);
+            public override string ObservationalSubType => nameof(DataItemTypes.CuttingSpeedSubTypes._COMMANDED);
 
 			/// <summary>
-			/// Constructs a new value type for COMMANDED.
+			/// Constructs a new value type for _COMMANDED.
 			/// </summary>
             public COMMANDED(float value) : base(value) { }
 			
@@ -93,10 +93,10 @@ namespace Mtconnect.AdapterInterface.DataItemValues
 		public partial class PROGRAMMED : CuttingSpeed
 		{
 			/// <inheritdoc />
-            public override string ObservationalSubType => nameof(DataItemTypes.CuttingSpeedSubTypes.PROGRAMMED);
+            public override string ObservationalSubType => nameof(DataItemTypes.CuttingSpeedSubTypes._PROGRAMMED);
 
 			/// <summary>
-			/// Constructs a new value type for PROGRAMMED.
+			/// Constructs a new value type for _PROGRAMMED.
 			/// </summary>
             public PROGRAMMED(float value) : base(value) { }
 			

@@ -21,7 +21,7 @@ namespace Mtconnect.AdapterInterface.DataItemValues
 	/// </list>
 	/// </remarks>
 	[Obsolete("Deprecated in v1.6 according to https://model.mtconnect.org/#_Version_1.6")]
-	[GeneratedCode("MtconnectTranspiler.Sinks.CSharp.Adapter", "1.0.7.0")]
+	[GeneratedCode("MtconnectTranspiler.Sinks.CSharp.Adapter", "1.0.12.0")]
 	public partial class Voltage : SampleValue
     {
         /// <inheritdoc />
@@ -51,10 +51,10 @@ namespace Mtconnect.AdapterInterface.DataItemValues
 		public partial class ALTERNATING : Voltage
 		{
 			/// <inheritdoc />
-            public override string ObservationalSubType => nameof(DataItemTypes.VoltageSubTypes.ALTERNATING);
+            public override string ObservationalSubType => nameof(DataItemTypes.VoltageSubTypes._ALTERNATING);
 
 			/// <summary>
-			/// Constructs a new value type for ALTERNATING.
+			/// Constructs a new value type for _ALTERNATING.
 			/// </summary>
             public ALTERNATING(float value) : base(value) { }
 			
@@ -73,10 +73,10 @@ namespace Mtconnect.AdapterInterface.DataItemValues
 		public partial class DIRECT : Voltage
 		{
 			/// <inheritdoc />
-            public override string ObservationalSubType => nameof(DataItemTypes.VoltageSubTypes.DIRECT);
+            public override string ObservationalSubType => nameof(DataItemTypes.VoltageSubTypes._DIRECT);
 
 			/// <summary>
-			/// Constructs a new value type for DIRECT.
+			/// Constructs a new value type for _DIRECT.
 			/// </summary>
             public DIRECT(float value) : base(value) { }
 			
@@ -95,10 +95,10 @@ namespace Mtconnect.AdapterInterface.DataItemValues
 		public partial class ACTUAL : Voltage
 		{
 			/// <inheritdoc />
-            public override string ObservationalSubType => nameof(DataItemTypes.VoltageSubTypes.ACTUAL);
+            public override string ObservationalSubType => nameof(DataItemTypes.VoltageSubTypes._ACTUAL);
 
 			/// <summary>
-			/// Constructs a new value type for ACTUAL.
+			/// Constructs a new value type for _ACTUAL.
 			/// </summary>
             public ACTUAL(float value) : base(value) { }
 			
@@ -117,10 +117,10 @@ namespace Mtconnect.AdapterInterface.DataItemValues
 		public partial class TARGET : Voltage
 		{
 			/// <inheritdoc />
-            public override string ObservationalSubType => nameof(DataItemTypes.VoltageSubTypes.TARGET);
+            public override string ObservationalSubType => nameof(DataItemTypes.VoltageSubTypes._TARGET);
 
 			/// <summary>
-			/// Constructs a new value type for TARGET.
+			/// Constructs a new value type for _TARGET.
 			/// </summary>
             public TARGET(float value) : base(value) { }
 			

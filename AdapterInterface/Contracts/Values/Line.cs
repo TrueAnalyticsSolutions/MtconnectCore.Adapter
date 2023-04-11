@@ -20,7 +20,7 @@ namespace Mtconnect.AdapterInterface.DataItemValues
 	/// </list>
 	/// </remarks>
 	[Obsolete("Deprecated in v1.4 according to https://model.mtconnect.org/#_Version_1.4")]
-	[GeneratedCode("MtconnectTranspiler.Sinks.CSharp.Adapter", "1.0.7.0")]
+	[GeneratedCode("MtconnectTranspiler.Sinks.CSharp.Adapter", "1.0.12.0")]
 	public partial class Line : EventValue
     {
         /// <inheritdoc />
@@ -50,10 +50,10 @@ namespace Mtconnect.AdapterInterface.DataItemValues
 		public partial class MAXIMUM : Line
 		{
 			/// <inheritdoc />
-            public override string ObservationalSubType => nameof(DataItemTypes.LineSubTypes.MAXIMUM);
+            public override string ObservationalSubType => nameof(DataItemTypes.LineSubTypes._MAXIMUM);
 
 			/// <summary>
-			/// Constructs a new value type for MAXIMUM.
+			/// Constructs a new value type for _MAXIMUM.
 			/// </summary>
             public MAXIMUM(string value) : base(value) { }
 			
@@ -72,10 +72,10 @@ namespace Mtconnect.AdapterInterface.DataItemValues
 		public partial class MINIMUM : Line
 		{
 			/// <inheritdoc />
-            public override string ObservationalSubType => nameof(DataItemTypes.LineSubTypes.MINIMUM);
+            public override string ObservationalSubType => nameof(DataItemTypes.LineSubTypes._MINIMUM);
 
 			/// <summary>
-			/// Constructs a new value type for MINIMUM.
+			/// Constructs a new value type for _MINIMUM.
 			/// </summary>
             public MINIMUM(string value) : base(value) { }
 			

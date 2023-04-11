@@ -18,7 +18,7 @@ namespace Mtconnect.AdapterInterface.DataItemValues
 	/// <item><b>Introduced</b>: <see href="https://model.mtconnect.org/#_Version_1.4">v1.4</see></item>
 	/// </list>
 	/// </remarks>
-	[GeneratedCode("MtconnectTranspiler.Sinks.CSharp.Adapter", "1.0.7.0")]
+	[GeneratedCode("MtconnectTranspiler.Sinks.CSharp.Adapter", "1.0.12.0")]
 	public partial class ControllerModeOverride : EventValue
     {
         /// <inheritdoc />
@@ -68,10 +68,10 @@ namespace Mtconnect.AdapterInterface.DataItemValues
 		public partial class DRYRUN : ControllerModeOverride
 		{
 			/// <inheritdoc />
-            public override string ObservationalSubType => nameof(DataItemTypes.ControllerModeOverrideSubTypes.DRY_RUN);
+            public override string ObservationalSubType => nameof(DataItemTypes.ControllerModeOverrideSubTypes._DRY_RUN);
 
 			/// <summary>
-			/// Constructs a new value type for DRY_RUN.
+			/// Constructs a new value type for _DRY_RUN.
 			/// </summary>
             public DRYRUN(string value) : base(value) { }
 			
@@ -90,10 +90,10 @@ namespace Mtconnect.AdapterInterface.DataItemValues
 		public partial class SINGLEBLOCK : ControllerModeOverride
 		{
 			/// <inheritdoc />
-            public override string ObservationalSubType => nameof(DataItemTypes.ControllerModeOverrideSubTypes.SINGLE_BLOCK);
+            public override string ObservationalSubType => nameof(DataItemTypes.ControllerModeOverrideSubTypes._SINGLE_BLOCK);
 
 			/// <summary>
-			/// Constructs a new value type for SINGLE_BLOCK.
+			/// Constructs a new value type for _SINGLE_BLOCK.
 			/// </summary>
             public SINGLEBLOCK(string value) : base(value) { }
 			
@@ -112,10 +112,10 @@ namespace Mtconnect.AdapterInterface.DataItemValues
 		public partial class MACHINEAXISLOCK : ControllerModeOverride
 		{
 			/// <inheritdoc />
-            public override string ObservationalSubType => nameof(DataItemTypes.ControllerModeOverrideSubTypes.MACHINE_AXIS_LOCK);
+            public override string ObservationalSubType => nameof(DataItemTypes.ControllerModeOverrideSubTypes._MACHINE_AXIS_LOCK);
 
 			/// <summary>
-			/// Constructs a new value type for MACHINE_AXIS_LOCK.
+			/// Constructs a new value type for _MACHINE_AXIS_LOCK.
 			/// </summary>
             public MACHINEAXISLOCK(string value) : base(value) { }
 			
@@ -134,10 +134,10 @@ namespace Mtconnect.AdapterInterface.DataItemValues
 		public partial class OPTIONALSTOP : ControllerModeOverride
 		{
 			/// <inheritdoc />
-            public override string ObservationalSubType => nameof(DataItemTypes.ControllerModeOverrideSubTypes.OPTIONAL_STOP);
+            public override string ObservationalSubType => nameof(DataItemTypes.ControllerModeOverrideSubTypes._OPTIONAL_STOP);
 
 			/// <summary>
-			/// Constructs a new value type for OPTIONAL_STOP.
+			/// Constructs a new value type for _OPTIONAL_STOP.
 			/// </summary>
             public OPTIONALSTOP(string value) : base(value) { }
 			
@@ -156,10 +156,10 @@ namespace Mtconnect.AdapterInterface.DataItemValues
 		public partial class TOOLCHANGESTOP : ControllerModeOverride
 		{
 			/// <inheritdoc />
-            public override string ObservationalSubType => nameof(DataItemTypes.ControllerModeOverrideSubTypes.TOOL_CHANGE_STOP);
+            public override string ObservationalSubType => nameof(DataItemTypes.ControllerModeOverrideSubTypes._TOOL_CHANGE_STOP);
 
 			/// <summary>
-			/// Constructs a new value type for TOOL_CHANGE_STOP.
+			/// Constructs a new value type for _TOOL_CHANGE_STOP.
 			/// </summary>
             public TOOLCHANGESTOP(string value) : base(value) { }
 			
