@@ -1,14 +1,12 @@
 ﻿using Microsoft.Extensions.Logging;
 using Mtconnect.UPnP;
 using System;
-using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using System.Net;
 using System.Net.Sockets;
 using System.Reflection;
 using System.Text;
-using System.Text.Json;
 using System.Threading;
 using System.Threading.Tasks;
 using System.Xml;
@@ -101,6 +99,8 @@ namespace Mtconnect.AdapterInterface.UPnP
         private bool _busy { get; set; } = false;
         /// <inheritdoc />
         public bool IsBusy => _busy;
+
+        private Task _listenerThread;
 
         /// <summary>
         /// Constructs a new instance of a UPnP broadcast service.
@@ -238,11 +238,11 @@ namespace Mtconnect.AdapterInterface.UPnP
         /// <summary>
         /// Listens for HTTP requests and responds to dedicated UPnP endpoints
         /// </summary>
-        private void _runUPnPServer()
+        private async Task _runUPnPServer()
         {
             while (_httpListener.IsListening)
             {
-                var context = _httpListener.GetContext();
+                var context = await _httpListener.GetContextAsync();
                 var response = context.Response;
                 byte[] buffer = null;
                 switch (context.Request.Url.LocalPath)
@@ -308,7 +308,12 @@ namespace Mtconnect.AdapterInterface.UPnP
             try
             {
                 _httpListener.Start();
-                Task.Run(() => _runUPnPServer(), cancellationToken);
+                _listenerThread = Task.Factory.StartNew(
+                    _runUPnPServer,
+                    cancellationToken,
+                    TaskCreationOptions.LongRunning,
+                    TaskScheduler.Default
+                );
             }
             catch (Exception ex)
             {
@@ -323,8 +328,8 @@ namespace Mtconnect.AdapterInterface.UPnP
         public void Stop()
         {
             _timer.Stop();
-
             _httpListener?.Stop();
+            _listenerThread?.Dispose();
 
             _busy = false;
             _adapterStartTime = null;

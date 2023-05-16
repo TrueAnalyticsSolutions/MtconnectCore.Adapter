@@ -13,7 +13,7 @@
     <Company>True Analytics Manufacturing Solutions</Company>
     <Product>MTConnect</Product>
     <Description>An interface library for connecting other libraries into the MtconnectCore.Adapter.</Description>
-    <Copyright>True Analytics Manufacturing Solutions, LLC 2022</Copyright>
+    <Copyright>True Analytics Manufacturing Solutions, LLC 2023</Copyright>
     <PackageIcon>icon.jpg</PackageIcon>
     <RepositoryType>git</RepositoryType>
     <PackageTags>MTConnect;Adapter;Interface</PackageTags>
@@ -21,7 +21,7 @@
     <ApplicationIcon>icon.ico</ApplicationIcon>
     <PackageProjectUrl>https://github.com/TrueAnalyticsSolutions/MtconnectCore.Adapter</PackageProjectUrl>
     <RepositoryUrl>$(ProjectUrl)</RepositoryUrl>
-    <Version>2.0.0-beta.36</Version>
+    <Version>2.0.0-beta.37</Version>
     <IncludeSymbols>True</IncludeSymbols>
     <SymbolPackageFormat>snupkg</SymbolPackageFormat>
 	<DebugSymbols>true</DebugSymbols>
