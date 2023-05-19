@@ -123,7 +123,7 @@ namespace Mtconnect
 
         public static string DeviceModel(Adapter adapter)
         {
-            var dcf = new DeviceConfigurationFactory();
+            var dcf = new DeviceModelFactory();
             var doc = dcf.Create(adapter);
             return ThrowOrDebug("* deviceModel: --multiline--AAAAA\r(" + doc.OuterXml + ")");
         }

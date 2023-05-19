@@ -19,8 +19,9 @@ namespace Mtconnect.AdapterInterface.DeviceConfiguration
     /// <summary>
     /// A factory for generating <c>Devices.xml</c> configuration files for MTConnect Agent(s).
     /// </summary>
-    public class DeviceConfigurationFactory
+    public class DeviceModelFactory
     {
+
         const string XmlNs_M = "urn:mtconnect.org:MTConnectDevices:{{ version }}";
         const string XmlNs_Xsi = "http://www.w3.org/2001/XMLSchema-instance";
         const string XmlNs = "urn:mtconnect.org:MTConnectDevices:{{ version }}";
@@ -83,16 +84,20 @@ namespace Mtconnect.AdapterInterface.DeviceConfiguration
                 if (!string.IsNullOrEmpty(devicePrefix) && !devicePrefix.Equals(deviceDataItems.Key, StringComparison.OrdinalIgnoreCase))
                     continue;
 
+                string deviceName = !string.IsNullOrEmpty(deviceDataItems.Key)
+                    ? deviceDataItems.Key
+                    : adapter.DeviceUUID;
+
                 // Build Device element
                 XmlElement xDevice = xDoc.CreateElement("Device");
                 xDevices.AppendChild(xDevice);
-                xDevice.Attributes.Append(xDoc.CreateAttribute("id")).Value = deviceDataItems.Key;
+                xDevice.Attributes.Append(xDoc.CreateAttribute("id")).Value = deviceName;
                 // QUESTION: iso841Class was deprecated, but perhaps we should still include it in case a v1.0 Adapter is created?
                 xDevice.Attributes.Append(xDoc.CreateAttribute("iso841Class")).Value = "1";
                 // TODO: Add sampleInterval as a property within the Adapter or IAdapterSource.
                 xDevice.Attributes.Append(xDoc.CreateAttribute("sampleInterval")).Value = "50";
                 xDevice.Attributes.Append(xDoc.CreateAttribute("uuid")).Value = Guid.NewGuid().ToString();
-                xDevice.Attributes.Append(xDoc.CreateAttribute("name")).Value = deviceDataItems.Key;
+                xDevice.Attributes.Append(xDoc.CreateAttribute("name")).Value = deviceName;
 
                 // TODO: Source manufacturer information for the Description element
 

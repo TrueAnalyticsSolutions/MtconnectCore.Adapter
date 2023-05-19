@@ -23,6 +23,11 @@ namespace Mtconnect
     public abstract class Adapter
     {
         /// <summary>
+        /// Occurs when the Adapter receives a new <see cref="IAdapterDataModel"/>.
+        /// </summary>
+        public event AdapterDataModelReceivedHandler OnDataModelRecieved;
+
+        /// <summary>
         /// Occurs when the Adapter starts.
         /// </summary>
         public event AdapterStartedHandler OnStarted;
@@ -452,7 +457,10 @@ namespace Mtconnect
             _logger?.LogTrace("Adapter received data model update from {DataModelType}", data.GetType().FullName);
 
             if (!DataModelTypes.Contains(data.GetType()))
+            {
                 DataModelTypes.Add(data.GetType());
+                OnDataModelRecieved?.Invoke(this, new AdapterDataModelReceivedEventArgs(data));
+            }
 
             bool dataItemsAdded = this.TryAddDataItems(data);
             if (dataItemsAdded && (_ = this.TryUpdateValues(data)))
