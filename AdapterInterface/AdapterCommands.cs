@@ -22,7 +22,7 @@ namespace Mtconnect
             const string GET_DATAITEMS = "* dataItems";
             const string GET_DATAITEM_VALUE = "* dataItem: ";
             const string GET_DATAITEM_DESCRIPTION = "* dataItemDescription: ";
-            const string GET_CONFIGURATION = "* configuration";
+            const string GET_DEVICE_MODEL = "* deviceModel";
 
             message = message?.Trim();
             if (message.StartsWith(PING, StringComparison.OrdinalIgnoreCase))
@@ -40,9 +40,9 @@ namespace Mtconnect
             else if (message.StartsWith(GET_DATAITEM_VALUE, StringComparison.OrdinalIgnoreCase))
             {
                 return AdapterCommands.DataItem(adapter, message);
-            } else if (message.StartsWith(GET_CONFIGURATION, StringComparison.OrdinalIgnoreCase))
+            } else if (message.StartsWith(GET_DEVICE_MODEL, StringComparison.OrdinalIgnoreCase))
             {
-                return AdapterCommands.Configuration(adapter, message);
+                return AdapterCommands.DeviceModel(adapter, message);
             }
 
             return string.Empty;
@@ -102,15 +102,13 @@ namespace Mtconnect
         /// <param name="adapter">Reference to the Adapter</param>
         /// <param name="message">Optional name of the device to scope the configuration to.</param>
         /// <returns>Provides the Agent with a <c>MTConnectDevices</c> Response Document for the DataItem defined in the Adapter.</returns>
-        public static string Configuration(Adapter adapter, string message)
+        public static string DeviceModel(Adapter adapter, string message)
         {
             string deviceName = null;
             if (message.Contains(":"))
                 deviceName = message.Remove(0, message.LastIndexOf(':') + 1).Trim();
 
-            var configFactory = new DeviceConfigurationFactory();
-            var xDoc = configFactory.Create(adapter, deviceName);
-            return $"* configuration: {deviceName} {xDoc.OuterXml}";
+            return AgentCommands.DeviceModel(adapter);
         }
     }
 }

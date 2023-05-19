@@ -1,4 +1,6 @@
-﻿using System;
+﻿using Mtconnect.AdapterInterface.DeviceConfiguration;
+using System;
+using System.IO;
 using System.Reflection;
 
 namespace Mtconnect
@@ -118,6 +120,13 @@ namespace Mtconnect
         /// <exception cref="NotImplementedException"></exception>
         public static string Station()
             => ThrowOrDebug("* station: STATION01");
+
+        public static string DeviceModel(Adapter adapter)
+        {
+            var dcf = new DeviceConfigurationFactory();
+            var doc = dcf.Create(adapter);
+            return ThrowOrDebug("* deviceModel: --multiline--AAAAA\r(" + doc.OuterXml + ")");
+        }
 
         /// <summary>
         /// Formats an error message to be sent to the Agent.
