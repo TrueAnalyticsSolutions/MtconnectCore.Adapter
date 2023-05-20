@@ -125,7 +125,7 @@ namespace Mtconnect
         {
             var dcf = new DeviceModelFactory();
             var doc = dcf.Create(adapter);
-            return "* deviceModel: --multiline--ABC1234\r(" + doc.OuterXml + ")";
+            return "* deviceModel: --multiline--24A417C3\r(" + doc.OuterXml + ")\r--multiline--24A417C3";
         }
 
         /// <summary>
