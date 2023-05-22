@@ -1,4 +1,5 @@
-﻿using Mtconnect.AdapterInterface.DeviceConfiguration;
+﻿using Microsoft.Extensions.Logging;
+using Mtconnect.AdapterInterface.DeviceConfiguration;
 using System;
 using System.IO;
 using System.Reflection;
@@ -131,7 +132,7 @@ namespace Mtconnect
             {
                 return "* deviceModel: --multiline--AAAAA\n" + device.OuterXml + "\n--multiline--AAAAA";
             }
-            adapter?._logger?.Log(Microsoft.Extensions.Logging.LogLevel.Warning, null, "Failed to retrieve Device node from XML", null, null);
+            adapter?._logger?.LogWarning("Failed to retrieve Device node from XML");//.Log(Microsoft.Extensions.Logging.LogLevel.Warning, null, "Failed to retrieve Device node from XML", null, null);
             return string.Empty;
         }
 
