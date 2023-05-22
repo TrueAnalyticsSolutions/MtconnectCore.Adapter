@@ -125,7 +125,8 @@ namespace Mtconnect
         {
             var dcf = new DeviceModelFactory();
             var doc = dcf.Create(adapter);
-            return "* deviceModel: --multiline--AAAAA\n" + doc.OuterXml + "\n--multiline--AAAAA";
+            var device = doc.SelectSingleNode("//Device");
+            return "* deviceModel: --multiline--AAAAA\n" + device.OuterXml + "\n--multiline--AAAAA";
         }
 
         /// <summary>
