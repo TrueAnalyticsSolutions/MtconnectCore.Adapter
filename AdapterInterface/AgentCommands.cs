@@ -125,7 +125,8 @@ namespace Mtconnect
         {
             var dcf = new DeviceModelFactory();
             var doc = dcf.Create(adapter);
-            var device = doc.SelectSingleNode("//Device");
+            // Navigate to MTConnectDevices, skip Header to get Devices, then get the first Device in the collection
+            var device = doc.DocumentElement.LastChild.FirstChild;
             return "* deviceModel: --multiline--AAAAA\n" + device.OuterXml + "\n--multiline--AAAAA";
         }
 
