@@ -1,10 +1,12 @@
-﻿using Mtconnect.AdapterInterface.Contracts;
+﻿using Microsoft.Extensions.Logging;
+using Mtconnect.AdapterInterface.Contracts;
 using Mtconnect.AdapterInterface.Contracts.Attributes;
 using Mtconnect.AdapterInterface.DataItems;
 using Mtconnect.AdapterInterface.DataItemTypes;
 using Mtconnect.AdapterInterface.Units;
 using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Reflection;
 using System.Reflection.Emit;
@@ -353,6 +355,49 @@ namespace Mtconnect.AdapterInterface.DeviceConfiguration
             return result.Replace("_", ".");
         }
 
+        /// <summary>
+        /// Writes generated XML into a string. Optionally, you can specify a XPath of which part of the generated document you want stringified.
+        /// </summary>
+        /// <param name="adapter">Reference to the adapter to reverse engineer.</param>
+        /// <param name="devicePrefix">Reference to the specific device data item(s) you want represented in the generated XML.</param>
+        /// <param name="xpath">Optional XPath for the stringified XML</param>
+        /// <returns>Stringified XML. Returns <c>null</c> when there is no <see cref="XmlNode"/> result from generation or from XPath.</returns>
+        public static string ToString(Adapter adapter, string devicePrefix = null, string xpath = null)
+        {
+            using (var stringWriter = new StringWriter())
+            using(var writer = new XmlNamespaceIgnorantWriter(stringWriter))
+            {
+                var factory = new DeviceModelFactory();
+                var xDoc = factory.Create(adapter, devicePrefix);
+                var nsmgr = new XmlNamespaceManager(xDoc.NameTable);
+                XmlNode xNode = xDoc.DocumentElement;
+                if (!string.IsNullOrEmpty(xpath))
+                {
+                    try
+                    {
+                        xNode = xDoc.SelectSingleNode(xpath, nsmgr);
+                    }
+                    catch (Exception ex)
+                    {
+                        adapter?._logger?.LogError(ex, "Failed to get node from XPath '{XPath}' due to error: {ErrorMessage}", xpath, ex.ToString());
+                        return null;
+                    }
+                }
+
+                if (xNode != null)
+                {
+                    xNode.WriteTo(writer);
+                } else
+                {
+                    var nrException = new NullReferenceException("Cannot write Device Model from null reference");
+                    adapter?._logger?.LogError(nrException, nrException.ToString());
+                    return null;
+                }
+
+                return stringWriter.ToString();
+            }
+        }
+
         private class DataItemValues
         {
             // Compiler improvements
@@ -412,6 +457,22 @@ namespace Mtconnect.AdapterInterface.DeviceConfiguration
                     return;
 
                 _values[key] = value;
+            }
+        }
+
+
+        private class XmlNamespaceIgnorantWriter : XmlTextWriter
+        {
+            public XmlNamespaceIgnorantWriter(TextWriter writer) : base(writer) {
+                base.Settings.Indent = true;
+                base.Settings.ConformanceLevel = ConformanceLevel.Fragment;
+                base.Settings.IndentChars = "\t";
+                base.Settings.NewLineChars = "\n";
+            }
+
+            public override void WriteStartElement(string prefix, string localName, string ns)
+            {
+                base.WriteStartElement(null, localName, null);
             }
         }
     }

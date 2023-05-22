@@ -3,6 +3,7 @@ using Mtconnect.AdapterInterface.DeviceConfiguration;
 using System;
 using System.IO;
 using System.Reflection;
+using System.Xml;
 
 namespace Mtconnect
 {
@@ -122,18 +123,10 @@ namespace Mtconnect
         public static string Station()
             => ThrowOrDebug("* station: STATION01");
 
-        public static string DeviceModel(Adapter adapter)
+        public static string DeviceModel(Adapter adapter, string devicePrefix = null)
         {
-            var dcf = new DeviceModelFactory();
-            var doc = dcf.Create(adapter);
-            // Navigate to MTConnectDevices, skip Header to get Devices, then get the first Device in the collection
-            var device = doc.DocumentElement?.LastChild?.FirstChild;
-            if (device != null)
-            {
-                return "* deviceModel: --multiline--AAAAA\n" + device.OuterXml + "\n--multiline--AAAAA";
-            }
-            adapter?._logger?.LogWarning("Failed to retrieve Device node from XML");//.Log(Microsoft.Extensions.Logging.LogLevel.Warning, null, "Failed to retrieve Device node from XML", null, null);
-            return string.Empty;
+            string xml = DeviceModelFactory.ToString(adapter, devicePrefix, "//Device");
+            return "* deviceModel: --multiline--AAAAA\n" + xml + "\n--multiline--AAAAA";
         }
 
         /// <summary>
@@ -152,4 +145,5 @@ namespace Mtconnect
 #endif
         }
     }
+
 }
