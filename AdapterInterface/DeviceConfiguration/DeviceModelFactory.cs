@@ -117,7 +117,7 @@ namespace Mtconnect.AdapterInterface.DeviceConfiguration
                     AddDataItems(xDataItems, deviceDataItems.Value);
                 }
             }
-            xDoc.InnerXml = xDoc.InnerXml.Replace("{{ version }}", GetMaximumMtconnectVersion(adapter));
+            xDoc.InnerXml = xDoc.InnerXml.Replace("{{ version }}", GetMaximumMtconnectVersion());
             return xDoc;
         }
         private void AddComponents(XmlElement parentElement, Type type, Adapter adapter, string modelPath, string componentPrefix = null)
@@ -346,10 +346,13 @@ namespace Mtconnect.AdapterInterface.DeviceConfiguration
             // Need to generate XML in order to navigate through data items and update the MaximumVersion
             var xDoc = factory.Create(adapter, devicePrefix);
 
-            var maxVersion = factory.MaximumVersion;
-            string result = maxVersion.ToString();
+            return factory.GetMaximumMtconnectVersion();
+        }
+        protected string GetMaximumMtconnectVersion()
+        {
+            string result = MaximumVersion.ToString();
             result = result.Substring(result.IndexOf("_") + 1);// Remove 'V_'
-            result = result.Substring(0 ,result.IndexOf("_", 2)); // Take everything up to the next '_'
+            result = result.Substring(0, result.IndexOf("_", 2)); // Take everything up to the next '_'
             return result.Replace("_", ".");
         }
 
