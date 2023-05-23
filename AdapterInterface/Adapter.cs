@@ -53,6 +53,21 @@ namespace Mtconnect
         public string DeviceUUID { get; set; }
 
         /// <summary>
+        /// An identifier for known location of the device. For example, this could be a reference to the workstation. The default options set this to the computer name where the adapter is deployed.
+        /// </summary>
+        public string StationId { get; set; }
+
+        /// <summary>
+        /// A reference to the device's serial number, if applicable.
+        /// </summary>
+        public string SerialNumber { get; set; } = null;
+
+        /// <summary>
+        /// A reference to the manufacturer of the device.
+        /// </summary>
+        public string Manufacturer { get; set; } = null;
+
+        /// <summary>
         /// Internal collection of <see cref="DataItem"/>s being tracked.
         /// </summary>
         protected DataItemLookup _dataItems = new DataItemLookup();
@@ -142,6 +157,9 @@ namespace Mtconnect
         {
             Options = options;
             DeviceUUID = options.DeviceUUID;
+            StationId = options.StationId;
+            SerialNumber = options.SerialNumber;
+            Manufacturer = options.Manufacturer;
             Heartbeat = options.Heartbeat;
             CanEnqueueDataItems = options.CanEnqueueDataItems;
             CanValidateDataItems = options.CanValidateDataItems;

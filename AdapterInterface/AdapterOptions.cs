@@ -16,6 +16,15 @@ namespace Mtconnect.AdapterInterface
         /// <inheritdoc cref="Adapter.DeviceUUID"/>
         public string DeviceUUID { get; protected set; } = Guid.NewGuid().ToString();
 
+        /// <inheritdoc cref="Adapter.StationId"/>
+        public string StationId { get; protected set; } = Environment.MachineName;
+
+        /// <inheritdoc cref="Adapter.SerialNumber"/>
+        public string SerialNumber { get; protected set; }
+
+        /// <inheritdoc cref="Adapter.Manufacturer"/>
+        public string Manufacturer { get; protected set; }
+
         /// <inheritdoc cref="Adapter.Heartbeat"/>
         public double Heartbeat { get; protected set; }
 
@@ -141,6 +150,20 @@ namespace Mtconnect.AdapterInterface
                 {
                     DeviceUUID= Convert.ToString(kvp.Value);
                     logger?.LogDebug("Recognizing adapter option for the device UUID");
+                } else if (kvp.Key.StartsWith("stationId", StringComparison.OrdinalIgnoreCase))
+                {
+                    StationId= Convert.ToString(kvp.Value);
+                    logger?.LogDebug("Recognizing adapter option for the station Id");
+                }
+                else if (kvp.Key.StartsWith("serialNumber", StringComparison.OrdinalIgnoreCase))
+                {
+                    SerialNumber = Convert.ToString(kvp.Value);
+                    logger?.LogDebug("Recognizing adapter option for the serial number");
+                }
+                else if (kvp.Key.StartsWith("manufacturer", StringComparison.OrdinalIgnoreCase))
+                {
+                    Manufacturer = Convert.ToString(kvp.Value);
+                    logger?.LogDebug("Recognizing adapter option for the device manufacturer");
                 }
                 // TODO: Reflect on the properties and automatically assign values.
             }

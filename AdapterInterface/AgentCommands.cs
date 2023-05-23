@@ -48,9 +48,10 @@ namespace Mtconnect
         /// Handles the "<c>* device: &lt;uuid|name&gt;</c>" command to the MTConnect Agent
         /// </summary>
         /// <returns>Specify the default device for this adapter. The device can be specified as either the device name or UUID</returns>
-        /// <exception cref="NotImplementedException"></exception>
-        public static string Device()
-            => ThrowOrDebug($"* device: {Guid.NewGuid()}");
+        public static string Device(Adapter adapter, string devicePrefix = null)
+        {
+            return "* device: " + (devicePrefix ?? adapter?.DeviceUUID ?? Guid.NewGuid().ToString());
+        }
 
         /// <summary>
         /// Handles the "<c>* description: XXX</c>" command to the MTConnect Agent
@@ -64,17 +65,31 @@ namespace Mtconnect
         /// Handles the "<c>* manufacturer: XXX</c>" command to the MTConnect Agent
         /// </summary>
         /// <returns>Set the manufacturer in the device header of the associated device</returns>
-        /// <exception cref="NotImplementedException"></exception>
-        public static string Manufacturer()
-            => ThrowOrDebug("* manufacturer: \"True Analytics Manufacturing Solutions, LLC\"");
+        public static string Manufacturer(Adapter adapter)
+            => !string.IsNullOrEmpty(adapter?.Manufacturer)
+                ? "* manufacturer: " + adapter.Manufacturer
+                : null;
 
         /// <summary>
         /// Handles the "<c>* mtconnectVersion: &lt;version&gt;</c>" command to the MTConnect Agent
         /// </summary>
         /// <returns>Specify the MTConnect Version the adapter supports</returns>
-        /// <exception cref="NotImplementedException"></exception>
-        public static string MtconnectVersion()
-            => ThrowOrDebug("* mtconnectVersion: 2.0");
+        public static string MtconnectVersion(Adapter adapter, string devicePrefix = null)
+        {
+            if (adapter == null)
+            {
+                var nrException = new ArgumentNullException("Adapter cannot be null when trying to generate a device configuration");
+                adapter?._logger?.LogError(nrException, nrException.ToString());
+                return null;
+            }
+
+            string version = DeviceModelFactory.GetMaximumMtconnectVersion(adapter, devicePrefix);
+            if (!string.IsNullOrEmpty(version))
+            {
+                return "* mtconnectVersion: " + version;
+            }
+            return null;
+        }
 
         /// <summary>
         /// Handles the "<c>* nativeName: XXX</c>" command to the MTConnect Agent
@@ -103,9 +118,10 @@ namespace Mtconnect
         /// Handles the "<c>* serialNumber: XXX</c>" command to the MTConnect Agent
         /// </summary>
         /// <returns>Set the serialNumber in the device header of the associated device</returns>
-        /// <exception cref="NotImplementedException"></exception>
-        public static string SerialNumber()
-            => ThrowOrDebug($"* serialNumber: {Environment.MachineName}");
+        public static string SerialNumber(Adapter adapter)
+            => !string.IsNullOrEmpty(adapter?.SerialNumber)
+                ? "* serialNumber: " + adapter.SerialNumber
+                : null;
 
         /// <summary>
         /// Handles the "<c>* shdrVersion: &lt;version&gt;</c>" command to the MTConnect Agent
@@ -116,15 +132,29 @@ namespace Mtconnect
             => ThrowOrDebug("* shdrVersion: 1");
 
         /// <summary>
-        /// Handles the "<c>* station: XXX</c>" command to the MTConnect Agent
+        /// Handles the "<c>* station: XXX</c>" command to the MTConnect Agent. Set the station in the device header of the associated device.
         /// </summary>
-        /// <returns>Set the station in the device header of the associated device</returns>
-        /// <exception cref="NotImplementedException"></exception>
-        public static string Station()
-            => ThrowOrDebug("* station: STATION01");
+        /// <returns>Formatted string for the Agent command</returns>
+        public static string Station(Adapter adapter)
+            => !string.IsNullOrEmpty(adapter?.StationId)
+                ? "* station: " + adapter.StationId
+                : null;
 
+        /// <summary>
+        /// Handles the "<c>* deviceModel: --multiline--AAAAAA{XML}--multiline--AAAAA</c>" command to the MTConnect Agent
+        /// </summary>
+        /// <param name="adapter">Reference to the adapter expected to send the command</param>
+        /// <param name="devicePrefix">Optional scope for a specific device prefix, if different than <see cref="Adapter.DeviceUUID"/></param>
+        /// <returns>Formatted string for the Agent command. Returns null if method fails.</returns>
         public static string DeviceModel(Adapter adapter, string devicePrefix = null)
         {
+            if (adapter == null)
+            {
+                var nrException = new ArgumentNullException("Adapter cannot be null when trying to generate a device configuration");
+                adapter?._logger?.LogError(nrException, nrException.ToString());
+                return null;
+            }
+
             // XPath = /MTConnectDevices/Devices/Device[1]
             string xml = DeviceModelFactory.ToString(adapter, devicePrefix, "//*[local-name()='Device']");
             if (!string.IsNullOrEmpty(xml))

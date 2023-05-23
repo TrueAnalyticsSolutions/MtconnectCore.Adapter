@@ -340,15 +340,13 @@ namespace Mtconnect.AdapterInterface.DeviceConfiguration
 
         // TODO: Update DataItem to yield the enum of Type and SubType.
         // TODO: Update DataItem to internally manage the "Introduced" and "Deprecated" properties according to the Type/SubType
-        private string GetMaximumMtconnectVersion(Adapter adapter)
+        public static string GetMaximumMtconnectVersion(Adapter adapter, string devicePrefix = null)
         {
-            //var maxVersion = adapter.DataItems.Select(o => o.TypeEnum?.GetType()?.GetCustomAttribute<MtconnectVersionAttribute>())
-            //    .Where(o => o != null)
-            //    .Select(o => o.MinimumVersion)
-            //    .Distinct()
-            //    .DefaultIfEmpty(MtconnectVersions.V_1_0_1)
-            //    .Max();
-            var maxVersion = MaximumVersion;
+            var factory = new DeviceModelFactory();
+            // Need to generate XML in order to navigate through data items and update the MaximumVersion
+            var xDoc = factory.Create(adapter, devicePrefix);
+
+            var maxVersion = factory.MaximumVersion;
             string result = maxVersion.ToString();
             result = result.Substring(result.IndexOf("_") + 1);// Remove 'V_'
             result = result.Substring(0 ,result.IndexOf("_", 2)); // Take everything up to the next '_'
