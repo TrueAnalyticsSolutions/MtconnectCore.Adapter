@@ -6,6 +6,7 @@ using Mtconnect.AdapterSdk.DataItemTypes;
 using Mtconnect.AdapterSdk.Units;
 using System;
 using System.Collections.Generic;
+using System.ComponentModel;
 using System.IO;
 using System.Linq;
 using System.Reflection;
@@ -173,6 +174,8 @@ namespace Mtconnect.AdapterSdk.DeviceConfiguration
                     dataItemValues.SubType = dataItem.ObservationalSubType;
                     dataItemValues.Name = dataItem.Name;
                     dataItemValues.Units = dataItem.Units;
+                    dataItemValues.Description = dataItem.Description
+                        ?? property.GetCustomAttribute<DescriptionAttribute>()?.Description;
                 }
                 // QUESTION: Is dataItemAttribute.Name an appropriate id?
                 dataItemValues.Category = dataItemAttribute is EventAttribute
@@ -186,6 +189,8 @@ namespace Mtconnect.AdapterSdk.DeviceConfiguration
                 dataItemValues.SubType = dataItemAttribute.SubType;
                 dataItemValues.Name = dataItemAttribute.Name;
                 dataItemValues.Units = dataItemAttribute.Units;
+                dataItemValues.Description = dataItemAttribute.Description
+                    ?? property.GetCustomAttribute<DescriptionAttribute>()?.Description;
             }
 
             if (typeof(DataItem).IsAssignableFrom(property.PropertyType))
@@ -200,6 +205,8 @@ namespace Mtconnect.AdapterSdk.DeviceConfiguration
                     dataItemValues.SubType = dataItem.ObservationalSubType;
                     dataItemValues.Name = dataItem.Name;
                     dataItemValues.Units = dataItem.Units;
+                    dataItemValues.Description = property.GetCustomAttribute<DataItemAttribute>()?.Description
+                        ?? property.GetCustomAttribute<DescriptionAttribute>()?.Description;
                 }
             }
             else if (typeof(IDataItemValue).IsAssignableFrom(property.PropertyType))
@@ -213,10 +220,12 @@ namespace Mtconnect.AdapterSdk.DeviceConfiguration
                     dataItemValues.SubType = instance.ObservationalSubType;
                     dataItemValues.Name = property.Name;
                     dataItemValues.Units = null;
+                    dataItemValues.Description = property.GetCustomAttribute<DataItemAttribute>()?.Description
+                        ?? property.GetCustomAttribute<DescriptionAttribute>()?.Description;
                 }
             }
 
-            dataItemElement = CreateDataItemElement(parentElement.OwnerDocument, dataItemValues.Category, dataItemValues.Type, dataItemValues.SubType, dataItemValues.Name, dataItemValues.Units);
+            dataItemElement = CreateDataItemElement(parentElement.OwnerDocument, dataItemValues.Category, dataItemValues.Type, dataItemValues.SubType, dataItemValues.Name, dataItemValues.Units, dataItemValues.Description);
 
             if (dataItemElement != null)
                 dataItemsElement.AppendChild(dataItemElement);
@@ -263,7 +272,7 @@ namespace Mtconnect.AdapterSdk.DeviceConfiguration
             foreach (var deviceDataItem in dataItems)
             {
                 // Build DataItem element
-                xDataItems.AppendChild(CreateDataItemElement(xDataItems.OwnerDocument, deviceDataItem.Category, deviceDataItem.ObservationalType, deviceDataItem.ObservationalSubType, deviceDataItem.Name, deviceDataItem.Units));
+                xDataItems.AppendChild(CreateDataItemElement(xDataItems.OwnerDocument, deviceDataItem.Category, deviceDataItem.ObservationalType, deviceDataItem.ObservationalSubType, deviceDataItem.Name, deviceDataItem.Units, deviceDataItem.Description));
             }
         }
 

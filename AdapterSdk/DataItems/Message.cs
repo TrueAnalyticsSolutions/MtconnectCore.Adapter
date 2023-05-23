@@ -37,7 +37,7 @@ namespace Mtconnect.AdapterSdk.DataItems
         /// <param name="description"><inheritdoc cref="DataItem.DataItem(string, string, string, string)" path="/param[@name='description']"/></param>
         /// <param name="type"><inheritdoc cref="DataItem.DataItem(string, string, string, string)" path="/param[@name='type']"/></param>
         /// <param name="subType"><inheritdoc cref="DataItem.DataItem(string, string, string, string)" path="/param[@name='subType']"/></param>
-        public Message(string name, string description = null, string type = null, string subType = null) : base(name, description, type, subType)
+        public Message(string name, string description = null, string type = null, string subType = null) : base(name, type, subType, description)
         {
             HasNewLine = true;
         }

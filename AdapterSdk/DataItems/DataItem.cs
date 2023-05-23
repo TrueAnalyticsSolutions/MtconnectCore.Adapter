@@ -228,8 +228,6 @@ namespace Mtconnect.AdapterSdk.DataItems
         /// </summary>
         /// <param name="name"><inheritdoc cref="DataItem.Name" path="/summary"/></param>
         /// <param name="description"><inheritdoc cref="DataItem.Description" path="/summary"/></param>
-        /// <param name="type"><inheritdoc cref="DataItem.ObservationalType" path="/summary"/></param>
-        /// <param name="subType"><inheritdoc cref="DataItem.ObservationalSubType" path="/summary"/></param>
         public DataItem(string name, string description = null)
         {
             Name = name;

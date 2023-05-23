@@ -51,7 +51,7 @@ namespace Mtconnect.AdapterSdk.DataItems
         /// <param name="rate"><inheritdoc cref="Rate" path="/summary"/></param>
         /// <param name="type"><inheritdoc cref="DataItem.DataItem(string, string, string, string)" path="/param[@name='type']"/></param>
         /// <param name="subType"><inheritdoc cref="DataItem.DataItem(string, string, string, string)" path="/param[@name='subType']"/></param>
-        public TimeSeries(string name, string description = null, double rate = 0.0, string type = null, string subType = null) : base(name, description, type, subType)
+        public TimeSeries(string name, string description = null, double rate = 0.0, string type = null, string subType = null) : base(name, type, subType, description)
         {
             HasNewLine = true;
             Rate = rate;
