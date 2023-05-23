@@ -9,6 +9,14 @@ namespace Mtconnect.AdapterSourceTemplate
     /// </summary>
     public class BasicAdapterDataModelSource : IAdapterSource, IDisposable
     {
+        public string DeviceUuid => throw new NotImplementedException();
+
+        public string StationId => throw new NotImplementedException();
+
+        public string SerialNumber => throw new NotImplementedException();
+
+        public string Manufacturer => throw new NotImplementedException();
+
         /// <inheritdoc />
         public event DataReceivedHandler OnDataReceived;
         /// <inheritdoc />
@@ -58,7 +66,7 @@ namespace Mtconnect.AdapterSourceTemplate
             Model.Axes.Z.CommandedPosition = (float)Model.Axes.Z.ActualPosition;
             Model.Axes.Z.Load = Rng.Next(0, 100);
 
-            OnDataReceived?.Invoke(Model, new DataReceivedEventArgs());
+            OnDataReceived?.Invoke(this, new DataReceivedEventArgs(Model));
         }
 
         /// <inheritdoc />

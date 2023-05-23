@@ -10,6 +10,14 @@ namespace Mtconnect.AdapterSourceTemplate
     /// </summary>
     public class AdvancedAdapterDataModelSource : IAdapterSource, IDisposable
     {
+        public string DeviceUuid => throw new NotImplementedException();
+
+        public string StationId => throw new NotImplementedException();
+
+        public string SerialNumber => throw new NotImplementedException();
+
+        public string Manufacturer => throw new NotImplementedException();
+
         /// <inheritdoc />
         public event DataReceivedHandler OnDataReceived;
         /// <inheritdoc />
@@ -42,7 +50,7 @@ namespace Mtconnect.AdapterSourceTemplate
             // TODO: Continue updating the Model with information.
             // NOTE: The underlying Adapter will determine whether a value has changed, so no need to check for updated information.
 
-            OnDataReceived?.Invoke(Model, new DataReceivedEventArgs());
+            OnDataReceived?.Invoke(this, new DataReceivedEventArgs(Model));
         }
 
         /// <inheritdoc />
