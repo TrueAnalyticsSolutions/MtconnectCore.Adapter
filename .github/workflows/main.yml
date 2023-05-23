@@ -10,7 +10,7 @@ env:
   GH_NUGET_REGISTRY: https://nuget.pkg.github.com/
   GH_NUGET_NAMESPACE: trueanalyticssolutions
   GH_NUGET_API_KEY: ${{ secrets.GITHUB_TOKEN }}
-  VS_PROJECT: AdapterInterface
+  VS_PROJECT: AdapterSdk
   
 jobs:
   build:
