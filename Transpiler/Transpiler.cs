@@ -35,8 +35,8 @@ namespace AdapterTranspiler
 
             TemplateContext.PushGlobal(new CategoryFunctions());
 
-            const string DataItemNamespace = "Mtconnect.AdapterInterface.DataItemTypes";
-            const string DataItemValueNamespace = "Mtconnect.AdapterInterface.DataItemValues";
+            const string DataItemNamespace = "Mtconnect.AdapterSdk.DataItemTypes";
+            const string DataItemValueNamespace = "Mtconnect.AdapterSdk.DataItemValues";
 
             // Process DataItem Types/Sub-Types
             var dataItemTypeEnums = new List<AdapterEnum>();

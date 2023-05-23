@@ -2,7 +2,7 @@
   "profiles": {
     "Transpiler": {
       "commandName": "Project",
-      "commandLineArgs": "\"../../../../AdapterInterface/Contracts\""
+      "commandLineArgs": "\"../../../../AdapterSdk/Contracts\""
     }
   }
 }

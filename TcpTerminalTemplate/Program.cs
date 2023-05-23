@@ -1,7 +1,7 @@
 ﻿using ConsoulLibrary;
 using Microsoft.Extensions.Logging;
 using Mtconnect;
-using Mtconnect.AdapterInterface.DeviceConfiguration;
+using Mtconnect.AdapterSdk.DeviceConfiguration;
 using Mtconnect.AdapterSourceTemplate;
 
 namespace TcpTerminal

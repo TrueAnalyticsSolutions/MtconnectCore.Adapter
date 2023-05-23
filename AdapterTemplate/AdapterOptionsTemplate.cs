@@ -1,5 +1,5 @@
 ﻿using Microsoft.Extensions.Logging;
-using Mtconnect.AdapterInterface;
+using Mtconnect.AdapterSdk;
 using System.Collections.Generic;
 
 namespace Mtconnect.AdapterTemplate

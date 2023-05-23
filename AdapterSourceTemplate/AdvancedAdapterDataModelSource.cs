@@ -1,4 +1,4 @@
-﻿using Mtconnect.AdapterInterface.DataItemValues;
+﻿using Mtconnect.AdapterSdk.DataItemValues;
 using Mtconnect.AdapterSourceTemplate.Models;
 using System;
 using System.Threading;

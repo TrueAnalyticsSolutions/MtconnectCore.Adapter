@@ -1,8 +1,8 @@
 ﻿using System;
 using System.Threading;
 using Microsoft.Extensions.Logging;
-using Mtconnect.AdapterInterface.Contracts;
-using Mtconnect.AdapterInterface.DataItems;
+using Mtconnect.AdapterSdk.Contracts;
+using Mtconnect.AdapterSdk.DataItems;
 
 namespace Mtconnect.AdapterTemplate
 {

@@ -1,7 +1,7 @@
 {{~ nversion_slim = (source?.normative_version | string.slice 20 3) | string.replace "_" "."
 dversion_slim = (source?.deprecated_version | string.slice 20 3) | string.replace "_" "." ~}}
-using Mtconnect.AdapterInterface.Contracts;
-using Mtconnect.AdapterInterface.DataItemValues;
+using Mtconnect.AdapterSdk.Contracts;
+using Mtconnect.AdapterSdk.DataItemValues;
 using System;
 using System.CodeDom.Compiler;
 using System.Collections.Generic;
@@ -45,7 +45,7 @@ namespace {{ to_pascal_code source.namespace }} {
 	{{~ end ~}}
 	{{~ for data_item in source.data_items ~}}
 
-		/// <inheritdoc cref="Mtconnect.AdapterInterface.DataItemValues.{{ data_item.name }}" />
+		/// <inheritdoc cref="Mtconnect.AdapterSdk.DataItemValues.{{ data_item.name }}" />
 		public virtual {{ data_item.name }} {{ data_item.name }} { get; set; }
 	{{~ end ~}}
 	}

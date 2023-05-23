@@ -3,14 +3,13 @@ using MtconnectTranspiler.Xmi;
 using MtconnectTranspiler.Contracts;
 using MtconnectTranspiler.Sinks.CSharp.Models;
 using MtconnectTranspiler.Sinks.CSharp.Attributes;
-using MtconnectTranspiler.Sinks.CSharp;
 
 namespace AdapterTranspiler.Models
 {
     [ScribanTemplate("Adapter.UnitStaticHelper.scriban")]
     public class AdapterUnitHelper : CsharpType, IFileSource
     {
-        const string UnitNamespace = "Mtconnect.AdapterInterface.Units";
+        const string UnitNamespace = "Mtconnect.AdapterSdk.Units";
 
         /// <summary>
         /// Internal reference to the class filename.

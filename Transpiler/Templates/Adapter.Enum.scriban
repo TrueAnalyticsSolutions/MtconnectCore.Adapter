@@ -4,10 +4,10 @@ dversion_slim = (source?.deprecated_version | string.slice 20 3) | string.replac
 #pragma warning disable 1574
 using System;
 using System.CodeDom.Compiler;
-using Mtconnect.AdapterInterface.Contracts;
-using Mtconnect.AdapterInterface.Contracts.Attributes;
+using Mtconnect.AdapterSdk.Contracts;
+using Mtconnect.AdapterSdk.Contracts.Attributes;
 {{~ if enum_has_values source ~}}
-using Mtconnect.AdapterInterface.DataItemValues;
+using Mtconnect.AdapterSdk.DataItemValues;
 {{ end ~}}
 
 namespace {{ to_pascal_code source.namespace }}

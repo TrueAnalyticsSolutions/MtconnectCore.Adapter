@@ -1,6 +1,6 @@
-﻿using Mtconnect.AdapterInterface.Contracts.Attributes;
-using Mtconnect.AdapterInterface.DataItemTypes;
-using Mtconnect.AdapterInterface.DataItemValues;
+﻿using Mtconnect.AdapterSdk.Contracts.Attributes;
+using Mtconnect.AdapterSdk.DataItemTypes;
+using Mtconnect.AdapterSdk.DataItemValues;
 
 namespace Mtconnect.AdapterSourceTemplate.Models
 {

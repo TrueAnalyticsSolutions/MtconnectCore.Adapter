@@ -19,7 +19,7 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "AdapterSourceTemplate", "Ad
 		{3574E405-181D-465D-9F51-477CA8313071} = {3574E405-181D-465D-9F51-477CA8313071}
 	EndProjectSection
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "AdapterSdk", "AdapterInterface\AdapterSdk.csproj", "{3574E405-181D-465D-9F51-477CA8313071}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "AdapterSdk", "AdapterSdk\AdapterSdk.csproj", "{3574E405-181D-465D-9F51-477CA8313071}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "TcpTerminalTemplate", "TcpTerminalTemplate\TcpTerminalTemplate.csproj", "{A5B4A375-C312-443D-BE1F-CF9C6265DF22}"
 EndProject
