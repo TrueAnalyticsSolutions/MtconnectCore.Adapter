@@ -125,8 +125,13 @@ namespace Mtconnect
 
         public static string DeviceModel(Adapter adapter, string devicePrefix = null)
         {
-            string xml = DeviceModelFactory.ToString(adapter, devicePrefix, "//Device");
-            return "* deviceModel: --multiline--AAAAA\n" + xml + "\n--multiline--AAAAA";
+            // XPath = /MTConnectDevices/Devices/Device[1]
+            string xml = DeviceModelFactory.ToString(adapter, devicePrefix, "//*[local-name()='Device']");
+            if (!string.IsNullOrEmpty(xml))
+            {
+                return "* deviceModel: --multiline--AAAAA\n" + xml + "\n--multiline--AAAAA";
+            }
+            return null;
         }
 
         /// <summary>

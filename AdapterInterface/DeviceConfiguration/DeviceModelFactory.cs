@@ -364,37 +364,56 @@ namespace Mtconnect.AdapterInterface.DeviceConfiguration
         /// <returns>Stringified XML. Returns <c>null</c> when there is no <see cref="XmlNode"/> result from generation or from XPath.</returns>
         public static string ToString(Adapter adapter, string devicePrefix = null, string xpath = null)
         {
-            using (var stringWriter = new StringWriter())
-            using(var writer = new XmlNamespaceIgnorantWriter(stringWriter))
+            if (adapter == null)
             {
-                var factory = new DeviceModelFactory();
-                var xDoc = factory.Create(adapter, devicePrefix);
-                var nsmgr = new XmlNamespaceManager(xDoc.NameTable);
-                XmlNode xNode = xDoc.DocumentElement;
-                if (!string.IsNullOrEmpty(xpath))
+                var nrException = new ArgumentNullException("Adapter cannot be null when trying to generate a device configuration");
+                adapter?._logger?.LogError(nrException, nrException.ToString());
+                return null;
+            }
+
+            using (var stringWriter = new StringWriter())
+            {
+                using (var writer = XmlNamespaceIgnorantWriter.Create(stringWriter, new XmlWriterSettings() { Indent = false, IndentChars = "\t", NewLineChars = "\n", Encoding = Encoding.UTF8, ConformanceLevel = ConformanceLevel.Fragment }))
                 {
-                    try
+                    var factory = new DeviceModelFactory();
+                    var xDoc = factory.Create(adapter, devicePrefix);
+
+                    var nsmgr = new XmlNamespaceManager(xDoc.NameTable);
+
+                    XmlNode xNode = xDoc.DocumentElement;
+
+                    if (!string.IsNullOrEmpty(xpath))
                     {
-                        xNode = xDoc.SelectSingleNode(xpath, nsmgr);
+                        try
+                        {
+                            adapter?._logger?.LogInformation("Using default namespace to perform XPath: NS='{Namespace}'", xDoc.DocumentElement.NamespaceURI);
+                            xNode = xDoc.SelectSingleNode(xpath, nsmgr);
+                        }
+                        catch (Exception ex)
+                        {
+                            adapter?._logger?.LogError(ex, "Failed to get node from XPath '{XPath}' due to error: {ErrorMessage}", xpath, ex.ToString());
+                            return null;
+                        }
                     }
-                    catch (Exception ex)
+
+                    if (xNode != null)
                     {
-                        adapter?._logger?.LogError(ex, "Failed to get node from XPath '{XPath}' due to error: {ErrorMessage}", xpath, ex.ToString());
+                        xNode.WriteTo(writer);
+                    }
+                    else
+                    {
+                        var nrException = new NullReferenceException("Cannot write Device Model from null reference");
+                        adapter?._logger?.LogError(nrException, nrException.ToString());
                         return null;
                     }
-                }
 
-                if (xNode != null)
-                {
-                    xNode.WriteTo(writer);
-                } else
-                {
-                    var nrException = new NullReferenceException("Cannot write Device Model from null reference");
-                    adapter?._logger?.LogError(nrException, nrException.ToString());
-                    return null;
-                }
+                    writer.Flush();
 
-                return stringWriter.ToString();
+                    var sb = stringWriter.GetStringBuilder();
+                    sb = sb.Replace("xmlns=\"" + xDoc.DocumentElement.NamespaceURI + "\"", string.Empty);
+
+                    return sb.ToString();
+                }
             }
         }
 
@@ -463,12 +482,7 @@ namespace Mtconnect.AdapterInterface.DeviceConfiguration
 
         private class XmlNamespaceIgnorantWriter : XmlTextWriter
         {
-            public XmlNamespaceIgnorantWriter(TextWriter writer) : base(writer) {
-                base.Settings.Indent = true;
-                base.Settings.ConformanceLevel = ConformanceLevel.Fragment;
-                base.Settings.IndentChars = "\t";
-                base.Settings.NewLineChars = "\n";
-            }
+            public XmlNamespaceIgnorantWriter(TextWriter writer) : base(writer) { }
 
             public override void WriteStartElement(string prefix, string localName, string ns)
             {
