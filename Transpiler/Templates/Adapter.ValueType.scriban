@@ -48,7 +48,7 @@ namespace {{ to_pascal_code source.namespace }}
 		/// </summary>
         public {{ to_pascal_case source.name }}({{ source.value_type }} value) : base(value) { }
 
-		{{~ if source.items.count > 0 ~}}
+		{{~ if source.items.size > 0 ~}}
 		public {{ to_pascal_case source.name }}({{ source.name }}Values value) : this(value.ToString()) { };
 
 		{{~ for item in source.items ~}}
