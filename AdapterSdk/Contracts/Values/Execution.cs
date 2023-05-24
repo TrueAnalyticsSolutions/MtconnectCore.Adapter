@@ -32,6 +32,8 @@ namespace Mtconnect.AdapterSdk.DataItemValues
 		/// </summary>
         public Execution(string value) : base(value) { }
 
+		public Execution(ExecutionValues value) : this(value.ToString()) { }
+
         /// <summary>
 		﻿/// <see cref="Component">Component</see> is ready to execute instructions.  It is currently idle.
         /// </summary>
@@ -41,7 +43,7 @@ namespace Mtconnect.AdapterSdk.DataItemValues
 		/// </list>
 		/// </remarks>
 		[ObservationalValue(typeof(ExecutionValues))]
-        public static Execution READY => new Execution(nameof(ExecutionValues.READY));
+        public static Execution READY => new Execution(ExecutionValues.READY);
         /// <summary>
 		﻿/// <see cref="Component">Component</see> is actively executing an instruction.
         /// </summary>
@@ -51,7 +53,7 @@ namespace Mtconnect.AdapterSdk.DataItemValues
 		/// </list>
 		/// </remarks>
 		[ObservationalValue(typeof(ExecutionValues))]
-        public static Execution ACTIVE => new Execution(nameof(ExecutionValues.ACTIVE));
+        public static Execution ACTIVE => new Execution(ExecutionValues.ACTIVE);
         /// <summary>
 		﻿/// <see cref="Component">Component</see> suspends the execution of the program due to an external signal.  Action is required to resume execution.
         /// </summary>
@@ -61,7 +63,7 @@ namespace Mtconnect.AdapterSdk.DataItemValues
 		/// </list>
 		/// </remarks>
 		[ObservationalValue(typeof(ExecutionValues))]
-        public static Execution INTERRUPTED => new Execution(nameof(ExecutionValues.INTERRUPTED));
+        public static Execution INTERRUPTED => new Execution(ExecutionValues.INTERRUPTED);
         /// <summary>
 		﻿/// motion of the active axes are commanded to stop at their current position.
         /// </summary>
@@ -71,7 +73,7 @@ namespace Mtconnect.AdapterSdk.DataItemValues
 		/// </list>
 		/// </remarks>
 		[ObservationalValue(typeof(ExecutionValues))]
-        public static Execution FEED_HOLD => new Execution(nameof(ExecutionValues.FEED_HOLD));
+        public static Execution FEED_HOLD => new Execution(ExecutionValues.FEED_HOLD);
         /// <summary>
 		﻿/// <see cref="Component">Component</see> program is not <c>READY</c> to execute.
         /// </summary>
@@ -81,7 +83,7 @@ namespace Mtconnect.AdapterSdk.DataItemValues
 		/// </list>
 		/// </remarks>
 		[ObservationalValue(typeof(ExecutionValues))]
-        public static Execution STOPPED => new Execution(nameof(ExecutionValues.STOPPED));
+        public static Execution STOPPED => new Execution(ExecutionValues.STOPPED);
         /// <summary>
 		﻿/// command from the program has intentionally interrupted execution.  The <see cref="Component">Component</see> <b>MAY</b> have another state that indicates if the execution is interrupted or the execution ignores the interrupt instruction.
         /// </summary>
@@ -91,7 +93,7 @@ namespace Mtconnect.AdapterSdk.DataItemValues
 		/// </list>
 		/// </remarks>
 		[ObservationalValue(typeof(ExecutionValues))]
-        public static Execution OPTIONAL_STOP => new Execution(nameof(ExecutionValues.OPTIONAL_STOP));
+        public static Execution OPTIONAL_STOP => new Execution(ExecutionValues.OPTIONAL_STOP);
         /// <summary>
 		﻿/// command from the program has intentionally interrupted execution.  Action is required to resume execution.
         /// </summary>
@@ -101,7 +103,7 @@ namespace Mtconnect.AdapterSdk.DataItemValues
 		/// </list>
 		/// </remarks>
 		[ObservationalValue(typeof(ExecutionValues))]
-        public static Execution PROGRAM_STOPPED => new Execution(nameof(ExecutionValues.PROGRAM_STOPPED));
+        public static Execution PROGRAM_STOPPED => new Execution(ExecutionValues.PROGRAM_STOPPED);
         /// <summary>
 		﻿/// program completed execution.
         /// </summary>
@@ -111,7 +113,7 @@ namespace Mtconnect.AdapterSdk.DataItemValues
 		/// </list>
 		/// </remarks>
 		[ObservationalValue(typeof(ExecutionValues))]
-        public static Execution PROGRAM_COMPLETED => new Execution(nameof(ExecutionValues.PROGRAM_COMPLETED));
+        public static Execution PROGRAM_COMPLETED => new Execution(ExecutionValues.PROGRAM_COMPLETED);
         /// <summary>
 		﻿/// <see cref="Component">Component</see> suspends execution while a secondary operation executes.  Execution resumes automatically once the secondary operation completes.
         /// </summary>
@@ -121,7 +123,16 @@ namespace Mtconnect.AdapterSdk.DataItemValues
 		/// </list>
 		/// </remarks>
 		[ObservationalValue(typeof(ExecutionValues))]
-        public static Execution WAIT => new Execution(nameof(ExecutionValues.WAIT));
+        public static Execution WAIT => new Execution(ExecutionValues.WAIT);
+
+        /// <summary>
+        /// Implicitly converts the specified <see cref="ExecutionValues" /> to an <see cref="Execution"/> value.
+        /// The <see cref="ExecutionValues" /> is converted to a string and used to initialize the <see cref="Execution"/> value.
+        /// </summary>
+        /// <param name="value">The <see cref="ExecutionValues" /> to convert.</param>
+        /// <returns>An <see cref="Execution"/> value initialized with the specified string in uppercase.</returns>
+        public static implicit operator Execution(ExecutionValues value)
+            => new Execution(value);
 		
         /// <summary>
         /// Implicitly converts the specified string to an <see cref="Execution"/> value.

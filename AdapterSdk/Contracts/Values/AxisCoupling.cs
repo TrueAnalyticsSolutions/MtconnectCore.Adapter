@@ -32,6 +32,8 @@ namespace Mtconnect.AdapterSdk.DataItemValues
 		/// </summary>
         public AxisCoupling(string value) : base(value) { }
 
+		public AxisCoupling(AxisCouplingValues value) : this(value.ToString()) { }
+
         /// <summary>
 		﻿/// axes are physically connected to each other and operate as a single unit.
         /// </summary>
@@ -41,7 +43,7 @@ namespace Mtconnect.AdapterSdk.DataItemValues
 		/// </list>
 		/// </remarks>
 		[ObservationalValue(typeof(AxisCouplingValues))]
-        public static AxisCoupling TANDEM => new AxisCoupling(nameof(AxisCouplingValues.TANDEM));
+        public static AxisCoupling TANDEM => new AxisCoupling(AxisCouplingValues.TANDEM);
         /// <summary>
 		﻿/// axes are not physically connected to each other but are operating together in lockstep.
         /// </summary>
@@ -51,7 +53,7 @@ namespace Mtconnect.AdapterSdk.DataItemValues
 		/// </list>
 		/// </remarks>
 		[ObservationalValue(typeof(AxisCouplingValues))]
-        public static AxisCoupling SYNCHRONOUS => new AxisCoupling(nameof(AxisCouplingValues.SYNCHRONOUS));
+        public static AxisCoupling SYNCHRONOUS => new AxisCoupling(AxisCouplingValues.SYNCHRONOUS);
         /// <summary>
 		﻿/// axis is the master of the <see cref="CoupledAxes">CoupledAxes</see>.
         /// </summary>
@@ -61,7 +63,7 @@ namespace Mtconnect.AdapterSdk.DataItemValues
 		/// </list>
 		/// </remarks>
 		[ObservationalValue(typeof(AxisCouplingValues))]
-        public static AxisCoupling MASTER => new AxisCoupling(nameof(AxisCouplingValues.MASTER));
+        public static AxisCoupling MASTER => new AxisCoupling(AxisCouplingValues.MASTER);
         /// <summary>
 		﻿/// axis is a slave to the <see cref="CoupledAxes">CoupledAxes</see>.
         /// </summary>
@@ -71,7 +73,16 @@ namespace Mtconnect.AdapterSdk.DataItemValues
 		/// </list>
 		/// </remarks>
 		[ObservationalValue(typeof(AxisCouplingValues))]
-        public static AxisCoupling SLAVE => new AxisCoupling(nameof(AxisCouplingValues.SLAVE));
+        public static AxisCoupling SLAVE => new AxisCoupling(AxisCouplingValues.SLAVE);
+
+        /// <summary>
+        /// Implicitly converts the specified <see cref="AxisCouplingValues" /> to an <see cref="AxisCoupling"/> value.
+        /// The <see cref="AxisCouplingValues" /> is converted to a string and used to initialize the <see cref="AxisCoupling"/> value.
+        /// </summary>
+        /// <param name="value">The <see cref="AxisCouplingValues" /> to convert.</param>
+        /// <returns>An <see cref="AxisCoupling"/> value initialized with the specified string in uppercase.</returns>
+        public static implicit operator AxisCoupling(AxisCouplingValues value)
+            => new AxisCoupling(value);
 		
         /// <summary>
         /// Implicitly converts the specified string to an <see cref="AxisCoupling"/> value.

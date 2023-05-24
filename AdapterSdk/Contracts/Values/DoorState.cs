@@ -32,6 +32,8 @@ namespace Mtconnect.AdapterSdk.DataItemValues
 		/// </summary>
         public DoorState(string value) : base(value) { }
 
+		public DoorState(DoorStateValues value) : this(value.ToString()) { }
+
         /// <summary>
 		﻿/// <see cref="Door">Door</see> is open to the point of a positive confirmation.
         /// </summary>
@@ -41,7 +43,7 @@ namespace Mtconnect.AdapterSdk.DataItemValues
 		/// </list>
 		/// </remarks>
 		[ObservationalValue(typeof(DoorStateValues))]
-        public static DoorState OPEN => new DoorState(nameof(DoorStateValues.OPEN));
+        public static DoorState OPEN => new DoorState(DoorStateValues.OPEN);
         /// <summary>
 		﻿/// <see cref="Door">Door</see> is closed to the point of a positive confirmation.
         /// </summary>
@@ -51,7 +53,7 @@ namespace Mtconnect.AdapterSdk.DataItemValues
 		/// </list>
 		/// </remarks>
 		[ObservationalValue(typeof(DoorStateValues))]
-        public static DoorState CLOSED => new DoorState(nameof(DoorStateValues.CLOSED));
+        public static DoorState CLOSED => new DoorState(DoorStateValues.CLOSED);
         /// <summary>
 		﻿/// <see cref="Door">Door</see> is not closed to the point of a positive confirmation and not open to the point of a positive confirmation.   It is in an intermediate position.
         /// </summary>
@@ -61,7 +63,16 @@ namespace Mtconnect.AdapterSdk.DataItemValues
 		/// </list>
 		/// </remarks>
 		[ObservationalValue(typeof(DoorStateValues))]
-        public static DoorState UNLATCHED => new DoorState(nameof(DoorStateValues.UNLATCHED));
+        public static DoorState UNLATCHED => new DoorState(DoorStateValues.UNLATCHED);
+
+        /// <summary>
+        /// Implicitly converts the specified <see cref="DoorStateValues" /> to an <see cref="DoorState"/> value.
+        /// The <see cref="DoorStateValues" /> is converted to a string and used to initialize the <see cref="DoorState"/> value.
+        /// </summary>
+        /// <param name="value">The <see cref="DoorStateValues" /> to convert.</param>
+        /// <returns>An <see cref="DoorState"/> value initialized with the specified string in uppercase.</returns>
+        public static implicit operator DoorState(DoorStateValues value)
+            => new DoorState(value);
 		
         /// <summary>
         /// Implicitly converts the specified string to an <see cref="DoorState"/> value.

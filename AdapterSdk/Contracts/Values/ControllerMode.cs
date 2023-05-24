@@ -32,6 +32,8 @@ namespace Mtconnect.AdapterSdk.DataItemValues
 		/// </summary>
         public ControllerMode(string value) : base(value) { }
 
+		public ControllerMode(ControllerModeValues value) : this(value.ToString()) { }
+
         /// <summary>
 		﻿/// <see cref="Controller">Controller</see> is configured to automatically execute a program.
         /// </summary>
@@ -41,7 +43,7 @@ namespace Mtconnect.AdapterSdk.DataItemValues
 		/// </list>
 		/// </remarks>
 		[ObservationalValue(typeof(ControllerModeValues))]
-        public static ControllerMode AUTOMATIC => new ControllerMode(nameof(ControllerModeValues.AUTOMATIC));
+        public static ControllerMode AUTOMATIC => new ControllerMode(ControllerModeValues.AUTOMATIC);
         /// <summary>
 		﻿/// <see cref="Controller">Controller</see> is not executing an active program.   It is capable of receiving instructions from an external source – typically an operator. The <see cref="Controller">Controller</see> executes operations based on the instructions received from the external source.
         /// </summary>
@@ -51,7 +53,7 @@ namespace Mtconnect.AdapterSdk.DataItemValues
 		/// </list>
 		/// </remarks>
 		[ObservationalValue(typeof(ControllerModeValues))]
-        public static ControllerMode MANUAL => new ControllerMode(nameof(ControllerModeValues.MANUAL));
+        public static ControllerMode MANUAL => new ControllerMode(ControllerModeValues.MANUAL);
         /// <summary>
 		﻿/// operator can enter a series of operations for the <see cref="Controller">Controller</see> to perform.  The <see cref="Controller">Controller</see> will execute this specific series of operations and then stop.
         /// </summary>
@@ -61,7 +63,7 @@ namespace Mtconnect.AdapterSdk.DataItemValues
 		/// </list>
 		/// </remarks>
 		[ObservationalValue(typeof(ControllerModeValues))]
-        public static ControllerMode MANUAL_DATA_INPUT => new ControllerMode(nameof(ControllerModeValues.MANUAL_DATA_INPUT));
+        public static ControllerMode MANUAL_DATA_INPUT => new ControllerMode(ControllerModeValues.MANUAL_DATA_INPUT);
         /// <summary>
 		﻿/// <see cref="Controller">Controller</see> is operating in a mode that restricts the active program from processing its next process step without operator intervention.
         /// </summary>
@@ -71,7 +73,7 @@ namespace Mtconnect.AdapterSdk.DataItemValues
 		/// </list>
 		/// </remarks>
 		[ObservationalValue(typeof(ControllerModeValues))]
-        public static ControllerMode SEMI_AUTOMATIC => new ControllerMode(nameof(ControllerModeValues.SEMI_AUTOMATIC));
+        public static ControllerMode SEMI_AUTOMATIC => new ControllerMode(ControllerModeValues.SEMI_AUTOMATIC);
         /// <summary>
 		﻿/// <see cref="Controller">Controller</see> is currently functioning as a programming device and is not capable of executing an active program.
         /// </summary>
@@ -81,7 +83,7 @@ namespace Mtconnect.AdapterSdk.DataItemValues
 		/// </list>
 		/// </remarks>
 		[ObservationalValue(typeof(ControllerModeValues))]
-        public static ControllerMode EDIT => new ControllerMode(nameof(ControllerModeValues.EDIT));
+        public static ControllerMode EDIT => new ControllerMode(ControllerModeValues.EDIT);
         /// <summary>
 		﻿/// axes of the device are commanded to stop, but the spindle continues to function.
         /// </summary>
@@ -93,7 +95,16 @@ namespace Mtconnect.AdapterSdk.DataItemValues
 		/// </remarks>
 		[Obsolete("Deprecated in v1.3 according to https://model.mtconnect.org/#_Version_1.3")]
 		[ObservationalValue(typeof(ControllerModeValues))]
-        public static ControllerMode FEED_HOLD => new ControllerMode(nameof(ControllerModeValues.FEED_HOLD));
+        public static ControllerMode FEED_HOLD => new ControllerMode(ControllerModeValues.FEED_HOLD);
+
+        /// <summary>
+        /// Implicitly converts the specified <see cref="ControllerModeValues" /> to an <see cref="ControllerMode"/> value.
+        /// The <see cref="ControllerModeValues" /> is converted to a string and used to initialize the <see cref="ControllerMode"/> value.
+        /// </summary>
+        /// <param name="value">The <see cref="ControllerModeValues" /> to convert.</param>
+        /// <returns>An <see cref="ControllerMode"/> value initialized with the specified string in uppercase.</returns>
+        public static implicit operator ControllerMode(ControllerModeValues value)
+            => new ControllerMode(value);
 		
         /// <summary>
         /// Implicitly converts the specified string to an <see cref="ControllerMode"/> value.

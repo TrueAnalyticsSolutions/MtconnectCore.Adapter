@@ -32,6 +32,8 @@ namespace Mtconnect.AdapterSdk.DataItemValues
 		/// </summary>
         public ProgramEdit(string value) : base(value) { }
 
+		public ProgramEdit(ProgramEditValues value) : this(value.ToString()) { }
+
         /// <summary>
 		﻿/// <see cref="Controller">Controller</see> is in the program edit mode.
         /// </summary>
@@ -41,7 +43,7 @@ namespace Mtconnect.AdapterSdk.DataItemValues
 		/// </list>
 		/// </remarks>
 		[ObservationalValue(typeof(ProgramEditValues))]
-        public static ProgramEdit ACTIVE => new ProgramEdit(nameof(ProgramEditValues.ACTIVE));
+        public static ProgramEdit ACTIVE => new ProgramEdit(ProgramEditValues.ACTIVE);
         /// <summary>
 		﻿/// <see cref="Controller">Controller</see> is capable of entering the program edit mode and no function is inhibiting a change to that mode.
         /// </summary>
@@ -51,7 +53,7 @@ namespace Mtconnect.AdapterSdk.DataItemValues
 		/// </list>
 		/// </remarks>
 		[ObservationalValue(typeof(ProgramEditValues))]
-        public static ProgramEdit READY => new ProgramEdit(nameof(ProgramEditValues.READY));
+        public static ProgramEdit READY => new ProgramEdit(ProgramEditValues.READY);
         /// <summary>
 		﻿/// <see cref="Controller">Controller</see> is being inhibited by a function from entering the program edit mode.
         /// </summary>
@@ -61,7 +63,16 @@ namespace Mtconnect.AdapterSdk.DataItemValues
 		/// </list>
 		/// </remarks>
 		[ObservationalValue(typeof(ProgramEditValues))]
-        public static ProgramEdit NOT_READY => new ProgramEdit(nameof(ProgramEditValues.NOT_READY));
+        public static ProgramEdit NOT_READY => new ProgramEdit(ProgramEditValues.NOT_READY);
+
+        /// <summary>
+        /// Implicitly converts the specified <see cref="ProgramEditValues" /> to an <see cref="ProgramEdit"/> value.
+        /// The <see cref="ProgramEditValues" /> is converted to a string and used to initialize the <see cref="ProgramEdit"/> value.
+        /// </summary>
+        /// <param name="value">The <see cref="ProgramEditValues" /> to convert.</param>
+        /// <returns>An <see cref="ProgramEdit"/> value initialized with the specified string in uppercase.</returns>
+        public static implicit operator ProgramEdit(ProgramEditValues value)
+            => new ProgramEdit(value);
 		
         /// <summary>
         /// Implicitly converts the specified string to an <see cref="ProgramEdit"/> value.

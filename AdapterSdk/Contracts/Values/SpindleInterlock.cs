@@ -32,6 +32,8 @@ namespace Mtconnect.AdapterSdk.DataItemValues
 		/// </summary>
         public SpindleInterlock(string value) : base(value) { }
 
+		public SpindleInterlock(SpindleInterlockValues value) : this(value.ToString()) { }
+
         /// <summary>
 		﻿/// power has been removed and the spindle cannot be operated.
         /// </summary>
@@ -41,7 +43,7 @@ namespace Mtconnect.AdapterSdk.DataItemValues
 		/// </list>
 		/// </remarks>
 		[ObservationalValue(typeof(SpindleInterlockValues))]
-        public static SpindleInterlock ACTIVE => new SpindleInterlock(nameof(SpindleInterlockValues.ACTIVE));
+        public static SpindleInterlock ACTIVE => new SpindleInterlock(SpindleInterlockValues.ACTIVE);
         /// <summary>
 		﻿/// spindle has not been deactivated.
         /// </summary>
@@ -51,7 +53,16 @@ namespace Mtconnect.AdapterSdk.DataItemValues
 		/// </list>
 		/// </remarks>
 		[ObservationalValue(typeof(SpindleInterlockValues))]
-        public static SpindleInterlock INACTIVE => new SpindleInterlock(nameof(SpindleInterlockValues.INACTIVE));
+        public static SpindleInterlock INACTIVE => new SpindleInterlock(SpindleInterlockValues.INACTIVE);
+
+        /// <summary>
+        /// Implicitly converts the specified <see cref="SpindleInterlockValues" /> to an <see cref="SpindleInterlock"/> value.
+        /// The <see cref="SpindleInterlockValues" /> is converted to a string and used to initialize the <see cref="SpindleInterlock"/> value.
+        /// </summary>
+        /// <param name="value">The <see cref="SpindleInterlockValues" /> to convert.</param>
+        /// <returns>An <see cref="SpindleInterlock"/> value initialized with the specified string in uppercase.</returns>
+        public static implicit operator SpindleInterlock(SpindleInterlockValues value)
+            => new SpindleInterlock(value);
 		
         /// <summary>
         /// Implicitly converts the specified string to an <see cref="SpindleInterlock"/> value.

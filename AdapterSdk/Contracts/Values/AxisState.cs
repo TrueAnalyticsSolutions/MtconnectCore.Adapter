@@ -32,6 +32,8 @@ namespace Mtconnect.AdapterSdk.DataItemValues
 		/// </summary>
         public AxisState(string value) : base(value) { }
 
+		public AxisState(AxisStateValues value) : this(value.ToString()) { }
+
         /// <summary>
 		﻿/// axis is in its home position.
         /// </summary>
@@ -41,7 +43,7 @@ namespace Mtconnect.AdapterSdk.DataItemValues
 		/// </list>
 		/// </remarks>
 		[ObservationalValue(typeof(AxisStateValues))]
-        public static AxisState HOME => new AxisState(nameof(AxisStateValues.HOME));
+        public static AxisState HOME => new AxisState(AxisStateValues.HOME);
         /// <summary>
 		﻿/// axis is in motion.
         /// </summary>
@@ -51,7 +53,7 @@ namespace Mtconnect.AdapterSdk.DataItemValues
 		/// </list>
 		/// </remarks>
 		[ObservationalValue(typeof(AxisStateValues))]
-        public static AxisState TRAVEL => new AxisState(nameof(AxisStateValues.TRAVEL));
+        public static AxisState TRAVEL => new AxisState(AxisStateValues.TRAVEL);
         /// <summary>
 		﻿/// axis has been moved to a fixed position and is being maintained in that position either electrically or mechanically.   Action is required to release the axis from this position.
         /// </summary>
@@ -61,7 +63,7 @@ namespace Mtconnect.AdapterSdk.DataItemValues
 		/// </list>
 		/// </remarks>
 		[ObservationalValue(typeof(AxisStateValues))]
-        public static AxisState PARKED => new AxisState(nameof(AxisStateValues.PARKED));
+        public static AxisState PARKED => new AxisState(AxisStateValues.PARKED);
         /// <summary>
 		﻿/// axis is stopped.
         /// </summary>
@@ -71,7 +73,16 @@ namespace Mtconnect.AdapterSdk.DataItemValues
 		/// </list>
 		/// </remarks>
 		[ObservationalValue(typeof(AxisStateValues))]
-        public static AxisState STOPPED => new AxisState(nameof(AxisStateValues.STOPPED));
+        public static AxisState STOPPED => new AxisState(AxisStateValues.STOPPED);
+
+        /// <summary>
+        /// Implicitly converts the specified <see cref="AxisStateValues" /> to an <see cref="AxisState"/> value.
+        /// The <see cref="AxisStateValues" /> is converted to a string and used to initialize the <see cref="AxisState"/> value.
+        /// </summary>
+        /// <param name="value">The <see cref="AxisStateValues" /> to convert.</param>
+        /// <returns>An <see cref="AxisState"/> value initialized with the specified string in uppercase.</returns>
+        public static implicit operator AxisState(AxisStateValues value)
+            => new AxisState(value);
 		
         /// <summary>
         /// Implicitly converts the specified string to an <see cref="AxisState"/> value.

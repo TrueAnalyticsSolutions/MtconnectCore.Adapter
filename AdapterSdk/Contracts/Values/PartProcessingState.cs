@@ -32,6 +32,8 @@ namespace Mtconnect.AdapterSdk.DataItemValues
 		/// </summary>
         public PartProcessingState(string value) : base(value) { }
 
+		public PartProcessingState(PartProcessingStateValues value) : this(value.ToString()) { }
+
         /// <summary>
 		﻿/// part occurrence is not actively being processed, but the processing has not ended.   Processing requirements exist that have not yet been fulfilled. This is the default entry state when the part occurrence is originally received. In some cases, the part occurrence may return to this state while it waits for additional processing to be performed.
         /// </summary>
@@ -41,7 +43,7 @@ namespace Mtconnect.AdapterSdk.DataItemValues
 		/// </list>
 		/// </remarks>
 		[ObservationalValue(typeof(PartProcessingStateValues))]
-        public static PartProcessingState NEEDS_PROCESSING => new PartProcessingState(nameof(PartProcessingStateValues.NEEDS_PROCESSING));
+        public static PartProcessingState NEEDS_PROCESSING => new PartProcessingState(PartProcessingStateValues.NEEDS_PROCESSING);
         /// <summary>
 		﻿/// part occurrence is actively being processed.
         /// </summary>
@@ -51,7 +53,7 @@ namespace Mtconnect.AdapterSdk.DataItemValues
 		/// </list>
 		/// </remarks>
 		[ObservationalValue(typeof(PartProcessingStateValues))]
-        public static PartProcessingState IN_PROCESS => new PartProcessingState(nameof(PartProcessingStateValues.IN_PROCESS));
+        public static PartProcessingState IN_PROCESS => new PartProcessingState(PartProcessingStateValues.IN_PROCESS);
         /// <summary>
 		﻿/// part occurrence is no longer being processed.   A general state when the reason for termination is unknown.
         /// </summary>
@@ -61,7 +63,7 @@ namespace Mtconnect.AdapterSdk.DataItemValues
 		/// </list>
 		/// </remarks>
 		[ObservationalValue(typeof(PartProcessingStateValues))]
-        public static PartProcessingState PROCESSING_ENDED => new PartProcessingState(nameof(PartProcessingStateValues.PROCESSING_ENDED));
+        public static PartProcessingState PROCESSING_ENDED => new PartProcessingState(PartProcessingStateValues.PROCESSING_ENDED);
         /// <summary>
 		﻿/// part occurrence has completed processing successfully.
         /// </summary>
@@ -71,7 +73,7 @@ namespace Mtconnect.AdapterSdk.DataItemValues
 		/// </list>
 		/// </remarks>
 		[ObservationalValue(typeof(PartProcessingStateValues))]
-        public static PartProcessingState PROCESSING_ENDED_COMPLETE => new PartProcessingState(nameof(PartProcessingStateValues.PROCESSING_ENDED_COMPLETE));
+        public static PartProcessingState PROCESSING_ENDED_COMPLETE => new PartProcessingState(PartProcessingStateValues.PROCESSING_ENDED_COMPLETE);
         /// <summary>
 		﻿/// process has been stopped during the processing.   The part occurrence will require special treatment.
         /// </summary>
@@ -81,7 +83,7 @@ namespace Mtconnect.AdapterSdk.DataItemValues
 		/// </list>
 		/// </remarks>
 		[ObservationalValue(typeof(PartProcessingStateValues))]
-        public static PartProcessingState PROCESSING_ENDED_STOPPED => new PartProcessingState(nameof(PartProcessingStateValues.PROCESSING_ENDED_STOPPED));
+        public static PartProcessingState PROCESSING_ENDED_STOPPED => new PartProcessingState(PartProcessingStateValues.PROCESSING_ENDED_STOPPED);
         /// <summary>
 		﻿/// processing of the part occurrence has come to a premature end.
         /// </summary>
@@ -91,7 +93,7 @@ namespace Mtconnect.AdapterSdk.DataItemValues
 		/// </list>
 		/// </remarks>
 		[ObservationalValue(typeof(PartProcessingStateValues))]
-        public static PartProcessingState PROCESSING_ENDED_ABORTED => new PartProcessingState(nameof(PartProcessingStateValues.PROCESSING_ENDED_ABORTED));
+        public static PartProcessingState PROCESSING_ENDED_ABORTED => new PartProcessingState(PartProcessingStateValues.PROCESSING_ENDED_ABORTED);
         /// <summary>
 		﻿/// terminal state when the part occurrence has been removed from the equipment by an external entity and it no longer exists at the equipment.
         /// </summary>
@@ -101,7 +103,7 @@ namespace Mtconnect.AdapterSdk.DataItemValues
 		/// </list>
 		/// </remarks>
 		[ObservationalValue(typeof(PartProcessingStateValues))]
-        public static PartProcessingState PROCESSING_ENDED_LOST => new PartProcessingState(nameof(PartProcessingStateValues.PROCESSING_ENDED_LOST));
+        public static PartProcessingState PROCESSING_ENDED_LOST => new PartProcessingState(PartProcessingStateValues.PROCESSING_ENDED_LOST);
         /// <summary>
 		﻿/// part occurrence has been skipped for processing on the piece of equipment.
         /// </summary>
@@ -111,7 +113,7 @@ namespace Mtconnect.AdapterSdk.DataItemValues
 		/// </list>
 		/// </remarks>
 		[ObservationalValue(typeof(PartProcessingStateValues))]
-        public static PartProcessingState PROCESSING_ENDED_SKIPPED => new PartProcessingState(nameof(PartProcessingStateValues.PROCESSING_ENDED_SKIPPED));
+        public static PartProcessingState PROCESSING_ENDED_SKIPPED => new PartProcessingState(PartProcessingStateValues.PROCESSING_ENDED_SKIPPED);
         /// <summary>
 		﻿/// part occurrence has been processed completely. However, the processing may have a problem.
         /// </summary>
@@ -121,7 +123,7 @@ namespace Mtconnect.AdapterSdk.DataItemValues
 		/// </list>
 		/// </remarks>
 		[ObservationalValue(typeof(PartProcessingStateValues))]
-        public static PartProcessingState PROCESSING_ENDED_REJECTED => new PartProcessingState(nameof(PartProcessingStateValues.PROCESSING_ENDED_REJECTED));
+        public static PartProcessingState PROCESSING_ENDED_REJECTED => new PartProcessingState(PartProcessingStateValues.PROCESSING_ENDED_REJECTED);
         /// <summary>
 		﻿/// part occurrence is waiting for transit.
         /// </summary>
@@ -131,7 +133,7 @@ namespace Mtconnect.AdapterSdk.DataItemValues
 		/// </list>
 		/// </remarks>
 		[ObservationalValue(typeof(PartProcessingStateValues))]
-        public static PartProcessingState WAITING_FOR_TRANSIT => new PartProcessingState(nameof(PartProcessingStateValues.WAITING_FOR_TRANSIT));
+        public static PartProcessingState WAITING_FOR_TRANSIT => new PartProcessingState(PartProcessingStateValues.WAITING_FOR_TRANSIT);
         /// <summary>
 		﻿/// part occurrence is being transported to its destination.
         /// </summary>
@@ -141,7 +143,7 @@ namespace Mtconnect.AdapterSdk.DataItemValues
 		/// </list>
 		/// </remarks>
 		[ObservationalValue(typeof(PartProcessingStateValues))]
-        public static PartProcessingState IN_TRANSIT => new PartProcessingState(nameof(PartProcessingStateValues.IN_TRANSIT));
+        public static PartProcessingState IN_TRANSIT => new PartProcessingState(PartProcessingStateValues.IN_TRANSIT);
         /// <summary>
 		﻿/// part occurrence has been placed at its designated destination.
         /// </summary>
@@ -151,7 +153,16 @@ namespace Mtconnect.AdapterSdk.DataItemValues
 		/// </list>
 		/// </remarks>
 		[ObservationalValue(typeof(PartProcessingStateValues))]
-        public static PartProcessingState TRANSIT_COMPLETE => new PartProcessingState(nameof(PartProcessingStateValues.TRANSIT_COMPLETE));
+        public static PartProcessingState TRANSIT_COMPLETE => new PartProcessingState(PartProcessingStateValues.TRANSIT_COMPLETE);
+
+        /// <summary>
+        /// Implicitly converts the specified <see cref="PartProcessingStateValues" /> to an <see cref="PartProcessingState"/> value.
+        /// The <see cref="PartProcessingStateValues" /> is converted to a string and used to initialize the <see cref="PartProcessingState"/> value.
+        /// </summary>
+        /// <param name="value">The <see cref="PartProcessingStateValues" /> to convert.</param>
+        /// <returns>An <see cref="PartProcessingState"/> value initialized with the specified string in uppercase.</returns>
+        public static implicit operator PartProcessingState(PartProcessingStateValues value)
+            => new PartProcessingState(value);
 		
         /// <summary>
         /// Implicitly converts the specified string to an <see cref="PartProcessingState"/> value.

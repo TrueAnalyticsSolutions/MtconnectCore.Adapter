@@ -32,6 +32,8 @@ namespace Mtconnect.AdapterSdk.DataItemValues
 		/// </summary>
         public OperatingMode(string value) : base(value) { }
 
+		public OperatingMode(OperatingModeValues value) : this(value.ToString()) { }
+
         /// <summary>
 		﻿/// automatically execute instructions from a recipe or program.  > Note: Setpoint comes from a recipe.
         /// </summary>
@@ -41,7 +43,7 @@ namespace Mtconnect.AdapterSdk.DataItemValues
 		/// </list>
 		/// </remarks>
 		[ObservationalValue(typeof(OperatingModeValues))]
-        public static OperatingMode AUTOMATIC => new OperatingMode(nameof(OperatingModeValues.AUTOMATIC));
+        public static OperatingMode AUTOMATIC => new OperatingMode(OperatingModeValues.AUTOMATIC);
         /// <summary>
 		﻿/// execute instructions from an external agent or person.  > Note 1 to entry: Valve or switch is manipulated by an agent/person.  > Note 2 to entry: Direct control of the PID output. % of the range: A user manually sets the % output, not the setpoint.
         /// </summary>
@@ -51,7 +53,7 @@ namespace Mtconnect.AdapterSdk.DataItemValues
 		/// </list>
 		/// </remarks>
 		[ObservationalValue(typeof(OperatingModeValues))]
-        public static OperatingMode MANUAL => new OperatingMode(nameof(OperatingModeValues.MANUAL));
+        public static OperatingMode MANUAL => new OperatingMode(OperatingModeValues.MANUAL);
         /// <summary>
 		﻿/// executes a single instruction from a recipe or program.  > Note 1 to entry: Setpoint is entered and fixed, but the PID is controlling.  > Note 2 to entry: Still goes through the PID control system.  > Note 3 to entry: Manual fixed entry from a recipe.
         /// </summary>
@@ -61,7 +63,16 @@ namespace Mtconnect.AdapterSdk.DataItemValues
 		/// </list>
 		/// </remarks>
 		[ObservationalValue(typeof(OperatingModeValues))]
-        public static OperatingMode SEMI_AUTOMATIC => new OperatingMode(nameof(OperatingModeValues.SEMI_AUTOMATIC));
+        public static OperatingMode SEMI_AUTOMATIC => new OperatingMode(OperatingModeValues.SEMI_AUTOMATIC);
+
+        /// <summary>
+        /// Implicitly converts the specified <see cref="OperatingModeValues" /> to an <see cref="OperatingMode"/> value.
+        /// The <see cref="OperatingModeValues" /> is converted to a string and used to initialize the <see cref="OperatingMode"/> value.
+        /// </summary>
+        /// <param name="value">The <see cref="OperatingModeValues" /> to convert.</param>
+        /// <returns>An <see cref="OperatingMode"/> value initialized with the specified string in uppercase.</returns>
+        public static implicit operator OperatingMode(OperatingModeValues value)
+            => new OperatingMode(value);
 		
         /// <summary>
         /// Implicitly converts the specified string to an <see cref="OperatingMode"/> value.

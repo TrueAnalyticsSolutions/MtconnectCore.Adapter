@@ -32,6 +32,8 @@ namespace Mtconnect.AdapterSdk.DataItemValues
 		/// </summary>
         public PartStatus(string value) : base(value) { }
 
+		public PartStatus(PartStatusValues value) : this(value.ToString()) { }
+
         /// <summary>
 		﻿/// part conforms to given requirements.
         /// </summary>
@@ -41,7 +43,7 @@ namespace Mtconnect.AdapterSdk.DataItemValues
 		/// </list>
 		/// </remarks>
 		[ObservationalValue(typeof(PartStatusValues))]
-        public static PartStatus PASS => new PartStatus(nameof(PartStatusValues.PASS));
+        public static PartStatus PASS => new PartStatus(PartStatusValues.PASS);
         /// <summary>
 		﻿/// part does not conform to some given requirements.
         /// </summary>
@@ -51,7 +53,16 @@ namespace Mtconnect.AdapterSdk.DataItemValues
 		/// </list>
 		/// </remarks>
 		[ObservationalValue(typeof(PartStatusValues))]
-        public static PartStatus FAIL => new PartStatus(nameof(PartStatusValues.FAIL));
+        public static PartStatus FAIL => new PartStatus(PartStatusValues.FAIL);
+
+        /// <summary>
+        /// Implicitly converts the specified <see cref="PartStatusValues" /> to an <see cref="PartStatus"/> value.
+        /// The <see cref="PartStatusValues" /> is converted to a string and used to initialize the <see cref="PartStatus"/> value.
+        /// </summary>
+        /// <param name="value">The <see cref="PartStatusValues" /> to convert.</param>
+        /// <returns>An <see cref="PartStatus"/> value initialized with the specified string in uppercase.</returns>
+        public static implicit operator PartStatus(PartStatusValues value)
+            => new PartStatus(value);
 		
         /// <summary>
         /// Implicitly converts the specified string to an <see cref="PartStatus"/> value.

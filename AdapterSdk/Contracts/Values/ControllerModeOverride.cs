@@ -32,6 +32,8 @@ namespace Mtconnect.AdapterSdk.DataItemValues
 		/// </summary>
         public ControllerModeOverride(string value) : base(value) { }
 
+		public ControllerModeOverride(ControllerModeOverrideValues value) : this(value.ToString()) { }
+
         /// <summary>
 		﻿/// <see cref="ControllerModeOverride">ControllerModeOverride</see> is in the <c>ON</c> state and the mode override is active.
         /// </summary>
@@ -41,7 +43,7 @@ namespace Mtconnect.AdapterSdk.DataItemValues
 		/// </list>
 		/// </remarks>
 		[ObservationalValue(typeof(ControllerModeOverrideValues))]
-        public static ControllerModeOverride ON => new ControllerModeOverride(nameof(ControllerModeOverrideValues.ON));
+        public static ControllerModeOverride ON => new ControllerModeOverride(ControllerModeOverrideValues.ON);
         /// <summary>
 		﻿/// <see cref="ControllerModeOverride">ControllerModeOverride</see> is in the <c>OFF</c> state and the mode override is inactive.
         /// </summary>
@@ -51,7 +53,16 @@ namespace Mtconnect.AdapterSdk.DataItemValues
 		/// </list>
 		/// </remarks>
 		[ObservationalValue(typeof(ControllerModeOverrideValues))]
-        public static ControllerModeOverride OFF => new ControllerModeOverride(nameof(ControllerModeOverrideValues.OFF));
+        public static ControllerModeOverride OFF => new ControllerModeOverride(ControllerModeOverrideValues.OFF);
+
+        /// <summary>
+        /// Implicitly converts the specified <see cref="ControllerModeOverrideValues" /> to an <see cref="ControllerModeOverride"/> value.
+        /// The <see cref="ControllerModeOverrideValues" /> is converted to a string and used to initialize the <see cref="ControllerModeOverride"/> value.
+        /// </summary>
+        /// <param name="value">The <see cref="ControllerModeOverrideValues" /> to convert.</param>
+        /// <returns>An <see cref="ControllerModeOverride"/> value initialized with the specified string in uppercase.</returns>
+        public static implicit operator ControllerModeOverride(ControllerModeOverrideValues value)
+            => new ControllerModeOverride(value);
 		
         /// <summary>
         /// Implicitly converts the specified string to an <see cref="ControllerModeOverride"/> value.

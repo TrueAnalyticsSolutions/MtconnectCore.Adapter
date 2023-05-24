@@ -32,6 +32,8 @@ namespace Mtconnect.AdapterSdk.DataItemValues
 		/// </summary>
         public EndOfBar(string value) : base(value) { }
 
+		public EndOfBar(EndOfBarValues value) : this(value.ToString()) { }
+
         /// <summary>
 		﻿/// <see cref="EndOfBar">EndOfBar</see> has been reached.
         /// </summary>
@@ -41,7 +43,7 @@ namespace Mtconnect.AdapterSdk.DataItemValues
 		/// </list>
 		/// </remarks>
 		[ObservationalValue(typeof(EndOfBarValues))]
-        public static EndOfBar YES => new EndOfBar(nameof(EndOfBarValues.YES));
+        public static EndOfBar YES => new EndOfBar(EndOfBarValues.YES);
         /// <summary>
 		﻿/// <see cref="EndOfBar">EndOfBar</see> has not been reached.
         /// </summary>
@@ -51,7 +53,16 @@ namespace Mtconnect.AdapterSdk.DataItemValues
 		/// </list>
 		/// </remarks>
 		[ObservationalValue(typeof(EndOfBarValues))]
-        public static EndOfBar NO => new EndOfBar(nameof(EndOfBarValues.NO));
+        public static EndOfBar NO => new EndOfBar(EndOfBarValues.NO);
+
+        /// <summary>
+        /// Implicitly converts the specified <see cref="EndOfBarValues" /> to an <see cref="EndOfBar"/> value.
+        /// The <see cref="EndOfBarValues" /> is converted to a string and used to initialize the <see cref="EndOfBar"/> value.
+        /// </summary>
+        /// <param name="value">The <see cref="EndOfBarValues" /> to convert.</param>
+        /// <returns>An <see cref="EndOfBar"/> value initialized with the specified string in uppercase.</returns>
+        public static implicit operator EndOfBar(EndOfBarValues value)
+            => new EndOfBar(value);
 		
         /// <summary>
         /// Implicitly converts the specified string to an <see cref="EndOfBar"/> value.

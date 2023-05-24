@@ -32,6 +32,8 @@ namespace Mtconnect.AdapterSdk.DataItemValues
 		/// </summary>
         public ValveState(string value) : base(value) { }
 
+		public ValveState(ValveStateValues value) : this(value.ToString()) { }
+
         /// <summary>
 		﻿/// <see cref="ValveState">ValveState</see> where flow is allowed and the aperture is static.  > Note: For a binary value, <c>OPEN</c> indicates the valve has the maximum possible aperture.
         /// </summary>
@@ -41,7 +43,7 @@ namespace Mtconnect.AdapterSdk.DataItemValues
 		/// </list>
 		/// </remarks>
 		[ObservationalValue(typeof(ValveStateValues))]
-        public static ValveState OPEN => new ValveState(nameof(ValveStateValues.OPEN));
+        public static ValveState OPEN => new ValveState(ValveStateValues.OPEN);
         /// <summary>
 		﻿/// valve is transitioning from a <c>CLOSED</c> state to an <c>OPEN</c> state.
         /// </summary>
@@ -51,7 +53,7 @@ namespace Mtconnect.AdapterSdk.DataItemValues
 		/// </list>
 		/// </remarks>
 		[ObservationalValue(typeof(ValveStateValues))]
-        public static ValveState OPENING => new ValveState(nameof(ValveStateValues.OPENING));
+        public static ValveState OPENING => new ValveState(ValveStateValues.OPENING);
         /// <summary>
 		﻿/// <see cref="ValveState">ValveState</see> where flow is not possible, the aperture is static, and the valve is completely shut.
         /// </summary>
@@ -61,7 +63,7 @@ namespace Mtconnect.AdapterSdk.DataItemValues
 		/// </list>
 		/// </remarks>
 		[ObservationalValue(typeof(ValveStateValues))]
-        public static ValveState CLOSED => new ValveState(nameof(ValveStateValues.CLOSED));
+        public static ValveState CLOSED => new ValveState(ValveStateValues.CLOSED);
         /// <summary>
 		﻿/// valve is transitioning from an <c>OPEN</c> state to a <c>CLOSED</c> state.
         /// </summary>
@@ -71,7 +73,16 @@ namespace Mtconnect.AdapterSdk.DataItemValues
 		/// </list>
 		/// </remarks>
 		[ObservationalValue(typeof(ValveStateValues))]
-        public static ValveState CLOSING => new ValveState(nameof(ValveStateValues.CLOSING));
+        public static ValveState CLOSING => new ValveState(ValveStateValues.CLOSING);
+
+        /// <summary>
+        /// Implicitly converts the specified <see cref="ValveStateValues" /> to an <see cref="ValveState"/> value.
+        /// The <see cref="ValveStateValues" /> is converted to a string and used to initialize the <see cref="ValveState"/> value.
+        /// </summary>
+        /// <param name="value">The <see cref="ValveStateValues" /> to convert.</param>
+        /// <returns>An <see cref="ValveState"/> value initialized with the specified string in uppercase.</returns>
+        public static implicit operator ValveState(ValveStateValues value)
+            => new ValveState(value);
 		
         /// <summary>
         /// Implicitly converts the specified string to an <see cref="ValveState"/> value.

@@ -32,6 +32,8 @@ namespace Mtconnect.AdapterSdk.DataItemValues
 		/// </summary>
         public PowerState(string value) : base(value) { }
 
+		public PowerState(PowerStateValues value) : this(value.ToString()) { }
+
         /// <summary>
 		﻿/// source of energy for an entity or the enabling signal providing permission for the entity to perform its function(s) is present and active.
         /// </summary>
@@ -41,7 +43,7 @@ namespace Mtconnect.AdapterSdk.DataItemValues
 		/// </list>
 		/// </remarks>
 		[ObservationalValue(typeof(PowerStateValues))]
-        public static PowerState ON => new PowerState(nameof(PowerStateValues.ON));
+        public static PowerState ON => new PowerState(PowerStateValues.ON);
         /// <summary>
 		﻿/// source of energy for an entity or the enabling signal providing permission for the entity to perform its function(s) is not present or is disconnected.
         /// </summary>
@@ -51,7 +53,16 @@ namespace Mtconnect.AdapterSdk.DataItemValues
 		/// </list>
 		/// </remarks>
 		[ObservationalValue(typeof(PowerStateValues))]
-        public static PowerState OFF => new PowerState(nameof(PowerStateValues.OFF));
+        public static PowerState OFF => new PowerState(PowerStateValues.OFF);
+
+        /// <summary>
+        /// Implicitly converts the specified <see cref="PowerStateValues" /> to an <see cref="PowerState"/> value.
+        /// The <see cref="PowerStateValues" /> is converted to a string and used to initialize the <see cref="PowerState"/> value.
+        /// </summary>
+        /// <param name="value">The <see cref="PowerStateValues" /> to convert.</param>
+        /// <returns>An <see cref="PowerState"/> value initialized with the specified string in uppercase.</returns>
+        public static implicit operator PowerState(PowerStateValues value)
+            => new PowerState(value);
 		
         /// <summary>
         /// Implicitly converts the specified string to an <see cref="PowerState"/> value.

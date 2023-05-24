@@ -32,6 +32,8 @@ namespace Mtconnect.AdapterSdk.DataItemValues
 		/// </summary>
         public AxisInterlock(string value) : base(value) { }
 
+		public AxisInterlock(AxisInterlockValues value) : this(value.ToString()) { }
+
         /// <summary>
 		﻿/// axis lockout function is activated, power has been removed from the axis, and the axis is allowed to move freely.
         /// </summary>
@@ -41,7 +43,7 @@ namespace Mtconnect.AdapterSdk.DataItemValues
 		/// </list>
 		/// </remarks>
 		[ObservationalValue(typeof(AxisInterlockValues))]
-        public static AxisInterlock ACTIVE => new AxisInterlock(nameof(AxisInterlockValues.ACTIVE));
+        public static AxisInterlock ACTIVE => new AxisInterlock(AxisInterlockValues.ACTIVE);
         /// <summary>
 		﻿/// axis lockout function has not been activated, the axis may be powered, and the axis is capable of being controlled by another component.
         /// </summary>
@@ -51,7 +53,16 @@ namespace Mtconnect.AdapterSdk.DataItemValues
 		/// </list>
 		/// </remarks>
 		[ObservationalValue(typeof(AxisInterlockValues))]
-        public static AxisInterlock INACTIVE => new AxisInterlock(nameof(AxisInterlockValues.INACTIVE));
+        public static AxisInterlock INACTIVE => new AxisInterlock(AxisInterlockValues.INACTIVE);
+
+        /// <summary>
+        /// Implicitly converts the specified <see cref="AxisInterlockValues" /> to an <see cref="AxisInterlock"/> value.
+        /// The <see cref="AxisInterlockValues" /> is converted to a string and used to initialize the <see cref="AxisInterlock"/> value.
+        /// </summary>
+        /// <param name="value">The <see cref="AxisInterlockValues" /> to convert.</param>
+        /// <returns>An <see cref="AxisInterlock"/> value initialized with the specified string in uppercase.</returns>
+        public static implicit operator AxisInterlock(AxisInterlockValues value)
+            => new AxisInterlock(value);
 		
         /// <summary>
         /// Implicitly converts the specified string to an <see cref="AxisInterlock"/> value.

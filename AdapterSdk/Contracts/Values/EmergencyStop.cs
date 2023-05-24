@@ -32,6 +32,8 @@ namespace Mtconnect.AdapterSdk.DataItemValues
 		/// </summary>
         public EmergencyStop(string value) : base(value) { }
 
+		public EmergencyStop(EmergencyStopValues value) : this(value.ToString()) { }
+
         /// <summary>
 		﻿/// emergency stop circuit is complete and the piece of equipment, component, or composition is allowed to operate. 
         /// </summary>
@@ -41,7 +43,7 @@ namespace Mtconnect.AdapterSdk.DataItemValues
 		/// </list>
 		/// </remarks>
 		[ObservationalValue(typeof(EmergencyStopValues))]
-        public static EmergencyStop ARMED => new EmergencyStop(nameof(EmergencyStopValues.ARMED));
+        public static EmergencyStop ARMED => new EmergencyStop(EmergencyStopValues.ARMED);
         /// <summary>
 		﻿/// operation of the piece of equipment, component, or composition is inhibited.
         /// </summary>
@@ -51,7 +53,16 @@ namespace Mtconnect.AdapterSdk.DataItemValues
 		/// </list>
 		/// </remarks>
 		[ObservationalValue(typeof(EmergencyStopValues))]
-        public static EmergencyStop TRIGGERED => new EmergencyStop(nameof(EmergencyStopValues.TRIGGERED));
+        public static EmergencyStop TRIGGERED => new EmergencyStop(EmergencyStopValues.TRIGGERED);
+
+        /// <summary>
+        /// Implicitly converts the specified <see cref="EmergencyStopValues" /> to an <see cref="EmergencyStop"/> value.
+        /// The <see cref="EmergencyStopValues" /> is converted to a string and used to initialize the <see cref="EmergencyStop"/> value.
+        /// </summary>
+        /// <param name="value">The <see cref="EmergencyStopValues" /> to convert.</param>
+        /// <returns>An <see cref="EmergencyStop"/> value initialized with the specified string in uppercase.</returns>
+        public static implicit operator EmergencyStop(EmergencyStopValues value)
+            => new EmergencyStop(value);
 		
         /// <summary>
         /// Implicitly converts the specified string to an <see cref="EmergencyStop"/> value.

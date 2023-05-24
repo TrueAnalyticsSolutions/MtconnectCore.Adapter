@@ -32,6 +32,8 @@ namespace Mtconnect.AdapterSdk.DataItemValues
 		/// </summary>
         public ProcessState(string value) : base(value) { }
 
+		public ProcessState(ProcessStateValues value) : this(value.ToString()) { }
+
         /// <summary>
 		﻿/// device is preparing to execute the process occurrence.
         /// </summary>
@@ -41,7 +43,7 @@ namespace Mtconnect.AdapterSdk.DataItemValues
 		/// </list>
 		/// </remarks>
 		[ObservationalValue(typeof(ProcessStateValues))]
-        public static ProcessState INITIALIZING => new ProcessState(nameof(ProcessStateValues.INITIALIZING));
+        public static ProcessState INITIALIZING => new ProcessState(ProcessStateValues.INITIALIZING);
         /// <summary>
 		﻿/// process occurrence is ready to be executed.
         /// </summary>
@@ -51,7 +53,7 @@ namespace Mtconnect.AdapterSdk.DataItemValues
 		/// </list>
 		/// </remarks>
 		[ObservationalValue(typeof(ProcessStateValues))]
-        public static ProcessState READY => new ProcessState(nameof(ProcessStateValues.READY));
+        public static ProcessState READY => new ProcessState(ProcessStateValues.READY);
         /// <summary>
 		﻿/// process occurrence is actively executing.
         /// </summary>
@@ -61,7 +63,7 @@ namespace Mtconnect.AdapterSdk.DataItemValues
 		/// </list>
 		/// </remarks>
 		[ObservationalValue(typeof(ProcessStateValues))]
-        public static ProcessState ACTIVE => new ProcessState(nameof(ProcessStateValues.ACTIVE));
+        public static ProcessState ACTIVE => new ProcessState(ProcessStateValues.ACTIVE);
         /// <summary>
 		﻿/// process occurrence is now finished.
         /// </summary>
@@ -71,7 +73,7 @@ namespace Mtconnect.AdapterSdk.DataItemValues
 		/// </list>
 		/// </remarks>
 		[ObservationalValue(typeof(ProcessStateValues))]
-        public static ProcessState COMPLETE => new ProcessState(nameof(ProcessStateValues.COMPLETE));
+        public static ProcessState COMPLETE => new ProcessState(ProcessStateValues.COMPLETE);
         /// <summary>
 		﻿/// process occurrence has been stopped and may be resumed.
         /// </summary>
@@ -81,7 +83,7 @@ namespace Mtconnect.AdapterSdk.DataItemValues
 		/// </list>
 		/// </remarks>
 		[ObservationalValue(typeof(ProcessStateValues))]
-        public static ProcessState INTERRUPTED => new ProcessState(nameof(ProcessStateValues.INTERRUPTED));
+        public static ProcessState INTERRUPTED => new ProcessState(ProcessStateValues.INTERRUPTED);
         /// <summary>
 		﻿/// process occurrence has come to a premature end and cannot be resumed.
         /// </summary>
@@ -91,7 +93,16 @@ namespace Mtconnect.AdapterSdk.DataItemValues
 		/// </list>
 		/// </remarks>
 		[ObservationalValue(typeof(ProcessStateValues))]
-        public static ProcessState ABORTED => new ProcessState(nameof(ProcessStateValues.ABORTED));
+        public static ProcessState ABORTED => new ProcessState(ProcessStateValues.ABORTED);
+
+        /// <summary>
+        /// Implicitly converts the specified <see cref="ProcessStateValues" /> to an <see cref="ProcessState"/> value.
+        /// The <see cref="ProcessStateValues" /> is converted to a string and used to initialize the <see cref="ProcessState"/> value.
+        /// </summary>
+        /// <param name="value">The <see cref="ProcessStateValues" /> to convert.</param>
+        /// <returns>An <see cref="ProcessState"/> value initialized with the specified string in uppercase.</returns>
+        public static implicit operator ProcessState(ProcessStateValues value)
+            => new ProcessState(value);
 		
         /// <summary>
         /// Implicitly converts the specified string to an <see cref="ProcessState"/> value.

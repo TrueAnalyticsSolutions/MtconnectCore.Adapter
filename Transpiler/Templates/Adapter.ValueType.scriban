@@ -75,6 +75,7 @@ d_item_version_slim = (item?.deprecated_version | string.slice 20 3) | string.re
 		[ObservationalValue(typeof({{ to_pascal_case source.name }}Values))]
         public static {{ to_pascal_case source.name }} {{ item.name }} => new {{ to_pascal_case source.name }}({{ to_pascal_case source.name }}Values.{{ item.name }});
 		{{~ end ~}}
+
         /// <summary>
         /// Implicitly converts the specified <see cref="{{ to_pascal_case source.name }}Values" /> to an <see cref="{{ to_pascal_case source.name }}"/> value.
         /// The <see cref="{{ to_pascal_case source.name }}Values" /> is converted to a string and used to initialize the <see cref="{{ to_pascal_case source.name }}"/> value.

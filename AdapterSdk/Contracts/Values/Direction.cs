@@ -34,6 +34,8 @@ namespace Mtconnect.AdapterSdk.DataItemValues
 		/// </summary>
         public Direction(string value) : base(value) { }
 
+		public Direction(DirectionValues value) : this(value.ToString()) { }
+
         /// <summary>
 		﻿/// clockwise rotation using the right-hand rule.
         /// </summary>
@@ -45,7 +47,7 @@ namespace Mtconnect.AdapterSdk.DataItemValues
 		/// </remarks>
 		[Obsolete("Deprecated in v1.4 according to https://model.mtconnect.org/#_Version_1.4")]
 		[ObservationalValue(typeof(DirectionValues))]
-        public static Direction CLOCKWISE => new Direction(nameof(DirectionValues.CLOCKWISE));
+        public static Direction CLOCKWISE => new Direction(DirectionValues.CLOCKWISE);
         /// <summary>
 		﻿/// counter-clockwise rotation using the right-hand rule.
         /// </summary>
@@ -57,7 +59,7 @@ namespace Mtconnect.AdapterSdk.DataItemValues
 		/// </remarks>
 		[Obsolete("Deprecated in v1.4 according to https://model.mtconnect.org/#_Version_1.4")]
 		[ObservationalValue(typeof(DirectionValues))]
-        public static Direction COUNTER_CLOCKWISE => new Direction(nameof(DirectionValues.COUNTER_CLOCKWISE));
+        public static Direction COUNTER_CLOCKWISE => new Direction(DirectionValues.COUNTER_CLOCKWISE);
         /// <summary>
 		﻿        /// </summary>
 		/// <remarks>
@@ -68,7 +70,7 @@ namespace Mtconnect.AdapterSdk.DataItemValues
 		/// </remarks>
 		[Obsolete("Deprecated in v1.4 according to https://model.mtconnect.org/#_Version_1.4")]
 		[ObservationalValue(typeof(DirectionValues))]
-        public static Direction POSITIVE => new Direction(nameof(DirectionValues.POSITIVE));
+        public static Direction POSITIVE => new Direction(DirectionValues.POSITIVE);
         /// <summary>
 		﻿        /// </summary>
 		/// <remarks>
@@ -79,7 +81,16 @@ namespace Mtconnect.AdapterSdk.DataItemValues
 		/// </remarks>
 		[Obsolete("Deprecated in v1.4 according to https://model.mtconnect.org/#_Version_1.4")]
 		[ObservationalValue(typeof(DirectionValues))]
-        public static Direction NEGATIVE => new Direction(nameof(DirectionValues.NEGATIVE));
+        public static Direction NEGATIVE => new Direction(DirectionValues.NEGATIVE);
+
+        /// <summary>
+        /// Implicitly converts the specified <see cref="DirectionValues" /> to an <see cref="Direction"/> value.
+        /// The <see cref="DirectionValues" /> is converted to a string and used to initialize the <see cref="Direction"/> value.
+        /// </summary>
+        /// <param name="value">The <see cref="DirectionValues" /> to convert.</param>
+        /// <returns>An <see cref="Direction"/> value initialized with the specified string in uppercase.</returns>
+        public static implicit operator Direction(DirectionValues value)
+            => new Direction(value);
 		
         /// <summary>
         /// Implicitly converts the specified string to an <see cref="Direction"/> value.

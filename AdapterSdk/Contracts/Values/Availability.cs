@@ -32,6 +32,8 @@ namespace Mtconnect.AdapterSdk.DataItemValues
 		/// </summary>
         public Availability(string value) : base(value) { }
 
+		public Availability(AvailabilityValues value) : this(value.ToString()) { }
+
         /// <summary>
 		﻿/// data source is active and capable of providing data.
         /// </summary>
@@ -41,7 +43,7 @@ namespace Mtconnect.AdapterSdk.DataItemValues
 		/// </list>
 		/// </remarks>
 		[ObservationalValue(typeof(AvailabilityValues))]
-        public static Availability AVAILABLE => new Availability(nameof(AvailabilityValues.AVAILABLE));
+        public static Availability AVAILABLE => new Availability(AvailabilityValues.AVAILABLE);
         /// <summary>
 		﻿/// data source is either inactive or not capable of providing data.
         /// </summary>
@@ -51,7 +53,16 @@ namespace Mtconnect.AdapterSdk.DataItemValues
 		/// </list>
 		/// </remarks>
 		[ObservationalValue(typeof(AvailabilityValues))]
-        public static Availability UNAVAILABLE => new Availability(nameof(AvailabilityValues.UNAVAILABLE));
+        public static Availability UNAVAILABLE => new Availability(AvailabilityValues.UNAVAILABLE);
+
+        /// <summary>
+        /// Implicitly converts the specified <see cref="AvailabilityValues" /> to an <see cref="Availability"/> value.
+        /// The <see cref="AvailabilityValues" /> is converted to a string and used to initialize the <see cref="Availability"/> value.
+        /// </summary>
+        /// <param name="value">The <see cref="AvailabilityValues" /> to convert.</param>
+        /// <returns>An <see cref="Availability"/> value initialized with the specified string in uppercase.</returns>
+        public static implicit operator Availability(AvailabilityValues value)
+            => new Availability(value);
 		
         /// <summary>
         /// Implicitly converts the specified string to an <see cref="Availability"/> value.

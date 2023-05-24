@@ -32,6 +32,8 @@ namespace Mtconnect.AdapterSdk.DataItemValues
 		/// </summary>
         public ChuckState(string value) : base(value) { }
 
+		public ChuckState(ChuckStateValues value) : this(value.ToString()) { }
+
         /// <summary>
 		﻿/// <see cref="Chuck">Chuck</see> is open to the point of a positive confirmation.
         /// </summary>
@@ -41,7 +43,7 @@ namespace Mtconnect.AdapterSdk.DataItemValues
 		/// </list>
 		/// </remarks>
 		[ObservationalValue(typeof(ChuckStateValues))]
-        public static ChuckState OPEN => new ChuckState(nameof(ChuckStateValues.OPEN));
+        public static ChuckState OPEN => new ChuckState(ChuckStateValues.OPEN);
         /// <summary>
 		﻿/// <see cref="Chuck">Chuck</see> is closed to the point of a positive confirmation.
         /// </summary>
@@ -51,7 +53,7 @@ namespace Mtconnect.AdapterSdk.DataItemValues
 		/// </list>
 		/// </remarks>
 		[ObservationalValue(typeof(ChuckStateValues))]
-        public static ChuckState CLOSED => new ChuckState(nameof(ChuckStateValues.CLOSED));
+        public static ChuckState CLOSED => new ChuckState(ChuckStateValues.CLOSED);
         /// <summary>
 		﻿/// <see cref="Chuck">Chuck</see> is not closed to the point of a positive confirmation and not open to the point of a positive confirmation.   It is in an intermediate position.
         /// </summary>
@@ -61,7 +63,16 @@ namespace Mtconnect.AdapterSdk.DataItemValues
 		/// </list>
 		/// </remarks>
 		[ObservationalValue(typeof(ChuckStateValues))]
-        public static ChuckState UNLATCHED => new ChuckState(nameof(ChuckStateValues.UNLATCHED));
+        public static ChuckState UNLATCHED => new ChuckState(ChuckStateValues.UNLATCHED);
+
+        /// <summary>
+        /// Implicitly converts the specified <see cref="ChuckStateValues" /> to an <see cref="ChuckState"/> value.
+        /// The <see cref="ChuckStateValues" /> is converted to a string and used to initialize the <see cref="ChuckState"/> value.
+        /// </summary>
+        /// <param name="value">The <see cref="ChuckStateValues" /> to convert.</param>
+        /// <returns>An <see cref="ChuckState"/> value initialized with the specified string in uppercase.</returns>
+        public static implicit operator ChuckState(ChuckStateValues value)
+            => new ChuckState(value);
 		
         /// <summary>
         /// Implicitly converts the specified string to an <see cref="ChuckState"/> value.

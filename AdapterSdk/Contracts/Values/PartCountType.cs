@@ -32,6 +32,8 @@ namespace Mtconnect.AdapterSdk.DataItemValues
 		/// </summary>
         public PartCountType(string value) : base(value) { }
 
+		public PartCountType(PartCountTypeValues value) : this(value.ToString()) { }
+
         /// <summary>
 		﻿/// count is of individual items.
         /// </summary>
@@ -41,7 +43,7 @@ namespace Mtconnect.AdapterSdk.DataItemValues
 		/// </list>
 		/// </remarks>
 		[ObservationalValue(typeof(PartCountTypeValues))]
-        public static PartCountType EACH => new PartCountType(nameof(PartCountTypeValues.EACH));
+        public static PartCountType EACH => new PartCountType(PartCountTypeValues.EACH);
         /// <summary>
 		﻿/// pre-specified group of items.
         /// </summary>
@@ -51,7 +53,16 @@ namespace Mtconnect.AdapterSdk.DataItemValues
 		/// </list>
 		/// </remarks>
 		[ObservationalValue(typeof(PartCountTypeValues))]
-        public static PartCountType BATCH => new PartCountType(nameof(PartCountTypeValues.BATCH));
+        public static PartCountType BATCH => new PartCountType(PartCountTypeValues.BATCH);
+
+        /// <summary>
+        /// Implicitly converts the specified <see cref="PartCountTypeValues" /> to an <see cref="PartCountType"/> value.
+        /// The <see cref="PartCountTypeValues" /> is converted to a string and used to initialize the <see cref="PartCountType"/> value.
+        /// </summary>
+        /// <param name="value">The <see cref="PartCountTypeValues" /> to convert.</param>
+        /// <returns>An <see cref="PartCountType"/> value initialized with the specified string in uppercase.</returns>
+        public static implicit operator PartCountType(PartCountTypeValues value)
+            => new PartCountType(value);
 		
         /// <summary>
         /// Implicitly converts the specified string to an <see cref="PartCountType"/> value.

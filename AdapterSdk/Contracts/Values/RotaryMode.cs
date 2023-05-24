@@ -32,6 +32,8 @@ namespace Mtconnect.AdapterSdk.DataItemValues
 		/// </summary>
         public RotaryMode(string value) : base(value) { }
 
+		public RotaryMode(RotaryModeValues value) : this(value.ToString()) { }
+
         /// <summary>
 		﻿/// axis is functioning as a spindle.
         /// </summary>
@@ -41,7 +43,7 @@ namespace Mtconnect.AdapterSdk.DataItemValues
 		/// </list>
 		/// </remarks>
 		[ObservationalValue(typeof(RotaryModeValues))]
-        public static RotaryMode SPINDLE => new RotaryMode(nameof(RotaryModeValues.SPINDLE));
+        public static RotaryMode SPINDLE => new RotaryMode(RotaryModeValues.SPINDLE);
         /// <summary>
 		﻿/// axis is configured to index.
         /// </summary>
@@ -51,7 +53,7 @@ namespace Mtconnect.AdapterSdk.DataItemValues
 		/// </list>
 		/// </remarks>
 		[ObservationalValue(typeof(RotaryModeValues))]
-        public static RotaryMode INDEX => new RotaryMode(nameof(RotaryModeValues.INDEX));
+        public static RotaryMode INDEX => new RotaryMode(RotaryModeValues.INDEX);
         /// <summary>
 		﻿/// position of the axis is being interpolated.
         /// </summary>
@@ -61,7 +63,16 @@ namespace Mtconnect.AdapterSdk.DataItemValues
 		/// </list>
 		/// </remarks>
 		[ObservationalValue(typeof(RotaryModeValues))]
-        public static RotaryMode CONTOUR => new RotaryMode(nameof(RotaryModeValues.CONTOUR));
+        public static RotaryMode CONTOUR => new RotaryMode(RotaryModeValues.CONTOUR);
+
+        /// <summary>
+        /// Implicitly converts the specified <see cref="RotaryModeValues" /> to an <see cref="RotaryMode"/> value.
+        /// The <see cref="RotaryModeValues" /> is converted to a string and used to initialize the <see cref="RotaryMode"/> value.
+        /// </summary>
+        /// <param name="value">The <see cref="RotaryModeValues" /> to convert.</param>
+        /// <returns>An <see cref="RotaryMode"/> value initialized with the specified string in uppercase.</returns>
+        public static implicit operator RotaryMode(RotaryModeValues value)
+            => new RotaryMode(value);
 		
         /// <summary>
         /// Implicitly converts the specified string to an <see cref="RotaryMode"/> value.

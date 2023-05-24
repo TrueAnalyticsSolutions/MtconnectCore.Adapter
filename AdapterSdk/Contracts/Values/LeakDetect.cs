@@ -32,6 +32,8 @@ namespace Mtconnect.AdapterSdk.DataItemValues
 		/// </summary>
         public LeakDetect(string value) : base(value) { }
 
+		public LeakDetect(LeakDetectValues value) : this(value.ToString()) { }
+
         /// <summary>
 		﻿/// leak is currently being detected.
         /// </summary>
@@ -41,7 +43,7 @@ namespace Mtconnect.AdapterSdk.DataItemValues
 		/// </list>
 		/// </remarks>
 		[ObservationalValue(typeof(LeakDetectValues))]
-        public static LeakDetect DETECTED => new LeakDetect(nameof(LeakDetectValues.DETECTED));
+        public static LeakDetect DETECTED => new LeakDetect(LeakDetectValues.DETECTED);
         /// <summary>
 		﻿/// leak is currently not being detected.
         /// </summary>
@@ -51,7 +53,16 @@ namespace Mtconnect.AdapterSdk.DataItemValues
 		/// </list>
 		/// </remarks>
 		[ObservationalValue(typeof(LeakDetectValues))]
-        public static LeakDetect NOT_DETECTED => new LeakDetect(nameof(LeakDetectValues.NOT_DETECTED));
+        public static LeakDetect NOT_DETECTED => new LeakDetect(LeakDetectValues.NOT_DETECTED);
+
+        /// <summary>
+        /// Implicitly converts the specified <see cref="LeakDetectValues" /> to an <see cref="LeakDetect"/> value.
+        /// The <see cref="LeakDetectValues" /> is converted to a string and used to initialize the <see cref="LeakDetect"/> value.
+        /// </summary>
+        /// <param name="value">The <see cref="LeakDetectValues" /> to convert.</param>
+        /// <returns>An <see cref="LeakDetect"/> value initialized with the specified string in uppercase.</returns>
+        public static implicit operator LeakDetect(LeakDetectValues value)
+            => new LeakDetect(value);
 		
         /// <summary>
         /// Implicitly converts the specified string to an <see cref="LeakDetect"/> value.

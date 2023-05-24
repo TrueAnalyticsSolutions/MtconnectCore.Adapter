@@ -32,6 +32,8 @@ namespace Mtconnect.AdapterSdk.DataItemValues
 		/// </summary>
         public ChuckInterlock(string value) : base(value) { }
 
+		public ChuckInterlock(ChuckInterlockValues value) : this(value.ToString()) { }
+
         /// <summary>
 		﻿/// chuck cannot be unclamped.
         /// </summary>
@@ -41,7 +43,7 @@ namespace Mtconnect.AdapterSdk.DataItemValues
 		/// </list>
 		/// </remarks>
 		[ObservationalValue(typeof(ChuckInterlockValues))]
-        public static ChuckInterlock ACTIVE => new ChuckInterlock(nameof(ChuckInterlockValues.ACTIVE));
+        public static ChuckInterlock ACTIVE => new ChuckInterlock(ChuckInterlockValues.ACTIVE);
         /// <summary>
 		﻿/// chuck can be unclamped.
         /// </summary>
@@ -51,7 +53,16 @@ namespace Mtconnect.AdapterSdk.DataItemValues
 		/// </list>
 		/// </remarks>
 		[ObservationalValue(typeof(ChuckInterlockValues))]
-        public static ChuckInterlock INACTIVE => new ChuckInterlock(nameof(ChuckInterlockValues.INACTIVE));
+        public static ChuckInterlock INACTIVE => new ChuckInterlock(ChuckInterlockValues.INACTIVE);
+
+        /// <summary>
+        /// Implicitly converts the specified <see cref="ChuckInterlockValues" /> to an <see cref="ChuckInterlock"/> value.
+        /// The <see cref="ChuckInterlockValues" /> is converted to a string and used to initialize the <see cref="ChuckInterlock"/> value.
+        /// </summary>
+        /// <param name="value">The <see cref="ChuckInterlockValues" /> to convert.</param>
+        /// <returns>An <see cref="ChuckInterlock"/> value initialized with the specified string in uppercase.</returns>
+        public static implicit operator ChuckInterlock(ChuckInterlockValues value)
+            => new ChuckInterlock(value);
 		
         /// <summary>
         /// Implicitly converts the specified string to an <see cref="ChuckInterlock"/> value.

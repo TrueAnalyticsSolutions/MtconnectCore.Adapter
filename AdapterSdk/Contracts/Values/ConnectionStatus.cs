@@ -32,6 +32,8 @@ namespace Mtconnect.AdapterSdk.DataItemValues
 		/// </summary>
         public ConnectionStatus(string value) : base(value) { }
 
+		public ConnectionStatus(ConnectionStatusValues value) : this(value.ToString()) { }
+
         /// <summary>
 		﻿/// no connection at all.
         /// </summary>
@@ -41,7 +43,7 @@ namespace Mtconnect.AdapterSdk.DataItemValues
 		/// </list>
 		/// </remarks>
 		[ObservationalValue(typeof(ConnectionStatusValues))]
-        public static ConnectionStatus CLOSED => new ConnectionStatus(nameof(ConnectionStatusValues.CLOSED));
+        public static ConnectionStatus CLOSED => new ConnectionStatus(ConnectionStatusValues.CLOSED);
         /// <summary>
 		﻿/// <i>agent</i> is waiting for a connection request from an <i>adapter</i>.
         /// </summary>
@@ -51,7 +53,7 @@ namespace Mtconnect.AdapterSdk.DataItemValues
 		/// </list>
 		/// </remarks>
 		[ObservationalValue(typeof(ConnectionStatusValues))]
-        public static ConnectionStatus LISTEN => new ConnectionStatus(nameof(ConnectionStatusValues.LISTEN));
+        public static ConnectionStatus LISTEN => new ConnectionStatus(ConnectionStatusValues.LISTEN);
         /// <summary>
 		﻿/// open connection.  The normal state for the data transfer phase of the connection.
         /// </summary>
@@ -61,7 +63,16 @@ namespace Mtconnect.AdapterSdk.DataItemValues
 		/// </list>
 		/// </remarks>
 		[ObservationalValue(typeof(ConnectionStatusValues))]
-        public static ConnectionStatus ESTABLISHED => new ConnectionStatus(nameof(ConnectionStatusValues.ESTABLISHED));
+        public static ConnectionStatus ESTABLISHED => new ConnectionStatus(ConnectionStatusValues.ESTABLISHED);
+
+        /// <summary>
+        /// Implicitly converts the specified <see cref="ConnectionStatusValues" /> to an <see cref="ConnectionStatus"/> value.
+        /// The <see cref="ConnectionStatusValues" /> is converted to a string and used to initialize the <see cref="ConnectionStatus"/> value.
+        /// </summary>
+        /// <param name="value">The <see cref="ConnectionStatusValues" /> to convert.</param>
+        /// <returns>An <see cref="ConnectionStatus"/> value initialized with the specified string in uppercase.</returns>
+        public static implicit operator ConnectionStatus(ConnectionStatusValues value)
+            => new ConnectionStatus(value);
 		
         /// <summary>
         /// Implicitly converts the specified string to an <see cref="ConnectionStatus"/> value.

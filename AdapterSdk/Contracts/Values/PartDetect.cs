@@ -32,6 +32,8 @@ namespace Mtconnect.AdapterSdk.DataItemValues
 		/// </summary>
         public PartDetect(string value) : base(value) { }
 
+		public PartDetect(PartDetectValues value) : this(value.ToString()) { }
+
         /// <summary>
 		﻿/// part or work piece is detected or is present.
         /// </summary>
@@ -41,7 +43,7 @@ namespace Mtconnect.AdapterSdk.DataItemValues
 		/// </list>
 		/// </remarks>
 		[ObservationalValue(typeof(PartDetectValues))]
-        public static PartDetect PRESENT => new PartDetect(nameof(PartDetectValues.PRESENT));
+        public static PartDetect PRESENT => new PartDetect(PartDetectValues.PRESENT);
         /// <summary>
 		﻿/// part or work piece is not detected or is not present.
         /// </summary>
@@ -51,7 +53,16 @@ namespace Mtconnect.AdapterSdk.DataItemValues
 		/// </list>
 		/// </remarks>
 		[ObservationalValue(typeof(PartDetectValues))]
-        public static PartDetect NOT_PRESENT => new PartDetect(nameof(PartDetectValues.NOT_PRESENT));
+        public static PartDetect NOT_PRESENT => new PartDetect(PartDetectValues.NOT_PRESENT);
+
+        /// <summary>
+        /// Implicitly converts the specified <see cref="PartDetectValues" /> to an <see cref="PartDetect"/> value.
+        /// The <see cref="PartDetectValues" /> is converted to a string and used to initialize the <see cref="PartDetect"/> value.
+        /// </summary>
+        /// <param name="value">The <see cref="PartDetectValues" /> to convert.</param>
+        /// <returns>An <see cref="PartDetect"/> value initialized with the specified string in uppercase.</returns>
+        public static implicit operator PartDetect(PartDetectValues value)
+            => new PartDetect(value);
 		
         /// <summary>
         /// Implicitly converts the specified string to an <see cref="PartDetect"/> value.

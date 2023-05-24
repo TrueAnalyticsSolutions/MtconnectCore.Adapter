@@ -32,6 +32,8 @@ namespace Mtconnect.AdapterSdk.DataItemValues
 		/// </summary>
         public EquipmentMode(string value) : base(value) { }
 
+		public EquipmentMode(EquipmentModeValues value) : this(value.ToString()) { }
+
         /// <summary>
 		﻿/// equipment is functioning in the mode designated by the <c>subType</c>.
         /// </summary>
@@ -41,7 +43,7 @@ namespace Mtconnect.AdapterSdk.DataItemValues
 		/// </list>
 		/// </remarks>
 		[ObservationalValue(typeof(EquipmentModeValues))]
-        public static EquipmentMode ON => new EquipmentMode(nameof(EquipmentModeValues.ON));
+        public static EquipmentMode ON => new EquipmentMode(EquipmentModeValues.ON);
         /// <summary>
 		﻿/// equipment is not functioning in the mode designated by the <c>subType</c>.
         /// </summary>
@@ -51,7 +53,16 @@ namespace Mtconnect.AdapterSdk.DataItemValues
 		/// </list>
 		/// </remarks>
 		[ObservationalValue(typeof(EquipmentModeValues))]
-        public static EquipmentMode OFF => new EquipmentMode(nameof(EquipmentModeValues.OFF));
+        public static EquipmentMode OFF => new EquipmentMode(EquipmentModeValues.OFF);
+
+        /// <summary>
+        /// Implicitly converts the specified <see cref="EquipmentModeValues" /> to an <see cref="EquipmentMode"/> value.
+        /// The <see cref="EquipmentModeValues" /> is converted to a string and used to initialize the <see cref="EquipmentMode"/> value.
+        /// </summary>
+        /// <param name="value">The <see cref="EquipmentModeValues" /> to convert.</param>
+        /// <returns>An <see cref="EquipmentMode"/> value initialized with the specified string in uppercase.</returns>
+        public static implicit operator EquipmentMode(EquipmentModeValues value)
+            => new EquipmentMode(value);
 		
         /// <summary>
         /// Implicitly converts the specified string to an <see cref="EquipmentMode"/> value.

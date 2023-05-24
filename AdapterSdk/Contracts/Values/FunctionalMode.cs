@@ -32,6 +32,8 @@ namespace Mtconnect.AdapterSdk.DataItemValues
 		/// </summary>
         public FunctionalMode(string value) : base(value) { }
 
+		public FunctionalMode(FunctionalModeValues value) : this(value.ToString()) { }
+
         /// <summary>
 		﻿/// <see cref="Component">Component</see> is currently producing product, ready to produce product, or its current intended use is to be producing product.
         /// </summary>
@@ -41,7 +43,7 @@ namespace Mtconnect.AdapterSdk.DataItemValues
 		/// </list>
 		/// </remarks>
 		[ObservationalValue(typeof(FunctionalModeValues))]
-        public static FunctionalMode PRODUCTION => new FunctionalMode(nameof(FunctionalModeValues.PRODUCTION));
+        public static FunctionalMode PRODUCTION => new FunctionalMode(FunctionalModeValues.PRODUCTION);
         /// <summary>
 		﻿/// <see cref="Component">Component</see> is not currently producing product.   It is being prepared or modified to begin production of product.
         /// </summary>
@@ -51,7 +53,7 @@ namespace Mtconnect.AdapterSdk.DataItemValues
 		/// </list>
 		/// </remarks>
 		[ObservationalValue(typeof(FunctionalModeValues))]
-        public static FunctionalMode SETUP => new FunctionalMode(nameof(FunctionalModeValues.SETUP));
+        public static FunctionalMode SETUP => new FunctionalMode(FunctionalModeValues.SETUP);
         /// <summary>
 		﻿/// <see cref="Component">Component</see> is not currently producing product.  Typically, it has completed the production of a product and is being modified or returned to a neutral state such that it may then be prepared to begin production of a different product.
         /// </summary>
@@ -61,7 +63,7 @@ namespace Mtconnect.AdapterSdk.DataItemValues
 		/// </list>
 		/// </remarks>
 		[ObservationalValue(typeof(FunctionalModeValues))]
-        public static FunctionalMode TEARDOWN => new FunctionalMode(nameof(FunctionalModeValues.TEARDOWN));
+        public static FunctionalMode TEARDOWN => new FunctionalMode(FunctionalModeValues.TEARDOWN);
         /// <summary>
 		﻿/// <see cref="Component">Component</see> is not currently producing product.  It is currently being repaired, waiting to be repaired, or has not yet been returned to a normal production status after maintenance has been performed.
         /// </summary>
@@ -71,7 +73,7 @@ namespace Mtconnect.AdapterSdk.DataItemValues
 		/// </list>
 		/// </remarks>
 		[ObservationalValue(typeof(FunctionalModeValues))]
-        public static FunctionalMode MAINTENANCE => new FunctionalMode(nameof(FunctionalModeValues.MAINTENANCE));
+        public static FunctionalMode MAINTENANCE => new FunctionalMode(FunctionalModeValues.MAINTENANCE);
         /// <summary>
 		﻿/// <see cref="Component">Component</see> is being used to prove-out a new process, testing of equipment or processes, or any other active use that does not result in the production of product.
         /// </summary>
@@ -81,7 +83,16 @@ namespace Mtconnect.AdapterSdk.DataItemValues
 		/// </list>
 		/// </remarks>
 		[ObservationalValue(typeof(FunctionalModeValues))]
-        public static FunctionalMode PROCESS_DEVELOPMENT => new FunctionalMode(nameof(FunctionalModeValues.PROCESS_DEVELOPMENT));
+        public static FunctionalMode PROCESS_DEVELOPMENT => new FunctionalMode(FunctionalModeValues.PROCESS_DEVELOPMENT);
+
+        /// <summary>
+        /// Implicitly converts the specified <see cref="FunctionalModeValues" /> to an <see cref="FunctionalMode"/> value.
+        /// The <see cref="FunctionalModeValues" /> is converted to a string and used to initialize the <see cref="FunctionalMode"/> value.
+        /// </summary>
+        /// <param name="value">The <see cref="FunctionalModeValues" /> to convert.</param>
+        /// <returns>An <see cref="FunctionalMode"/> value initialized with the specified string in uppercase.</returns>
+        public static implicit operator FunctionalMode(FunctionalModeValues value)
+            => new FunctionalMode(value);
 		
         /// <summary>
         /// Implicitly converts the specified string to an <see cref="FunctionalMode"/> value.

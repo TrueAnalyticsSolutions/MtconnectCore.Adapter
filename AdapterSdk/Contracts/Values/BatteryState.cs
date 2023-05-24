@@ -32,6 +32,8 @@ namespace Mtconnect.AdapterSdk.DataItemValues
 		/// </summary>
         public BatteryState(string value) : base(value) { }
 
+		public BatteryState(BatteryStateValues value) : this(value.ToString()) { }
+
         /// <summary>
 		﻿/// <see cref="Component">Component</see> is at it's maximum rated charge level.
         /// </summary>
@@ -41,7 +43,7 @@ namespace Mtconnect.AdapterSdk.DataItemValues
 		/// </list>
 		/// </remarks>
 		[ObservationalValue(typeof(BatteryStateValues))]
-        public static BatteryState CHARGED => new BatteryState(nameof(BatteryStateValues.CHARGED));
+        public static BatteryState CHARGED => new BatteryState(BatteryStateValues.CHARGED);
         /// <summary>
 		﻿/// <see cref="Component">Component</see>'s charge is increasing.
         /// </summary>
@@ -51,7 +53,7 @@ namespace Mtconnect.AdapterSdk.DataItemValues
 		/// </list>
 		/// </remarks>
 		[ObservationalValue(typeof(BatteryStateValues))]
-        public static BatteryState CHARGING => new BatteryState(nameof(BatteryStateValues.CHARGING));
+        public static BatteryState CHARGING => new BatteryState(BatteryStateValues.CHARGING);
         /// <summary>
 		﻿/// <see cref="Component">Component</see>'s charge is decreasing.
         /// </summary>
@@ -61,7 +63,7 @@ namespace Mtconnect.AdapterSdk.DataItemValues
 		/// </list>
 		/// </remarks>
 		[ObservationalValue(typeof(BatteryStateValues))]
-        public static BatteryState DISCHARGING => new BatteryState(nameof(BatteryStateValues.DISCHARGING));
+        public static BatteryState DISCHARGING => new BatteryState(BatteryStateValues.DISCHARGING);
         /// <summary>
 		﻿/// <see cref="Component">Component</see> is at it's minimum charge level.
         /// </summary>
@@ -71,7 +73,16 @@ namespace Mtconnect.AdapterSdk.DataItemValues
 		/// </list>
 		/// </remarks>
 		[ObservationalValue(typeof(BatteryStateValues))]
-        public static BatteryState DISCHARGED => new BatteryState(nameof(BatteryStateValues.DISCHARGED));
+        public static BatteryState DISCHARGED => new BatteryState(BatteryStateValues.DISCHARGED);
+
+        /// <summary>
+        /// Implicitly converts the specified <see cref="BatteryStateValues" /> to an <see cref="BatteryState"/> value.
+        /// The <see cref="BatteryStateValues" /> is converted to a string and used to initialize the <see cref="BatteryState"/> value.
+        /// </summary>
+        /// <param name="value">The <see cref="BatteryStateValues" /> to convert.</param>
+        /// <returns>An <see cref="BatteryState"/> value initialized with the specified string in uppercase.</returns>
+        public static implicit operator BatteryState(BatteryStateValues value)
+            => new BatteryState(value);
 		
         /// <summary>
         /// Implicitly converts the specified string to an <see cref="BatteryState"/> value.

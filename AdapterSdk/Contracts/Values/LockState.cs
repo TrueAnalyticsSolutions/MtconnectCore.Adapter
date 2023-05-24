@@ -32,6 +32,8 @@ namespace Mtconnect.AdapterSdk.DataItemValues
 		/// </summary>
         public LockState(string value) : base(value) { }
 
+		public LockState(LockStateValues value) : this(value.ToString()) { }
+
         /// <summary>
 		﻿/// mechanism is engaged and preventing the associated <see cref="Component">Component</see> from being opened or operated.
         /// </summary>
@@ -41,7 +43,7 @@ namespace Mtconnect.AdapterSdk.DataItemValues
 		/// </list>
 		/// </remarks>
 		[ObservationalValue(typeof(LockStateValues))]
-        public static LockState LOCKED => new LockState(nameof(LockStateValues.LOCKED));
+        public static LockState LOCKED => new LockState(LockStateValues.LOCKED);
         /// <summary>
 		﻿/// mechanism is disengaged and the associated <see cref="Component">Component</see> is able to be opened or operated.
         /// </summary>
@@ -51,7 +53,16 @@ namespace Mtconnect.AdapterSdk.DataItemValues
 		/// </list>
 		/// </remarks>
 		[ObservationalValue(typeof(LockStateValues))]
-        public static LockState UNLOCKED => new LockState(nameof(LockStateValues.UNLOCKED));
+        public static LockState UNLOCKED => new LockState(LockStateValues.UNLOCKED);
+
+        /// <summary>
+        /// Implicitly converts the specified <see cref="LockStateValues" /> to an <see cref="LockState"/> value.
+        /// The <see cref="LockStateValues" /> is converted to a string and used to initialize the <see cref="LockState"/> value.
+        /// </summary>
+        /// <param name="value">The <see cref="LockStateValues" /> to convert.</param>
+        /// <returns>An <see cref="LockState"/> value initialized with the specified string in uppercase.</returns>
+        public static implicit operator LockState(LockStateValues value)
+            => new LockState(value);
 		
         /// <summary>
         /// Implicitly converts the specified string to an <see cref="LockState"/> value.

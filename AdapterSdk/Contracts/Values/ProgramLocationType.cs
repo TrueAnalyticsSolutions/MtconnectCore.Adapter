@@ -32,6 +32,8 @@ namespace Mtconnect.AdapterSdk.DataItemValues
 		/// </summary>
         public ProgramLocationType(string value) : base(value) { }
 
+		public ProgramLocationType(ProgramLocationTypeValues value) : this(value.ToString()) { }
+
         /// <summary>
 		﻿/// managed by the controller.
         /// </summary>
@@ -41,7 +43,7 @@ namespace Mtconnect.AdapterSdk.DataItemValues
 		/// </list>
 		/// </remarks>
 		[ObservationalValue(typeof(ProgramLocationTypeValues))]
-        public static ProgramLocationType LOCAL => new ProgramLocationType(nameof(ProgramLocationTypeValues.LOCAL));
+        public static ProgramLocationType LOCAL => new ProgramLocationType(ProgramLocationTypeValues.LOCAL);
         /// <summary>
 		﻿/// not managed by the controller.
         /// </summary>
@@ -51,7 +53,16 @@ namespace Mtconnect.AdapterSdk.DataItemValues
 		/// </list>
 		/// </remarks>
 		[ObservationalValue(typeof(ProgramLocationTypeValues))]
-        public static ProgramLocationType EXTERNAL => new ProgramLocationType(nameof(ProgramLocationTypeValues.EXTERNAL));
+        public static ProgramLocationType EXTERNAL => new ProgramLocationType(ProgramLocationTypeValues.EXTERNAL);
+
+        /// <summary>
+        /// Implicitly converts the specified <see cref="ProgramLocationTypeValues" /> to an <see cref="ProgramLocationType"/> value.
+        /// The <see cref="ProgramLocationTypeValues" /> is converted to a string and used to initialize the <see cref="ProgramLocationType"/> value.
+        /// </summary>
+        /// <param name="value">The <see cref="ProgramLocationTypeValues" /> to convert.</param>
+        /// <returns>An <see cref="ProgramLocationType"/> value initialized with the specified string in uppercase.</returns>
+        public static implicit operator ProgramLocationType(ProgramLocationTypeValues value)
+            => new ProgramLocationType(value);
 		
         /// <summary>
         /// Implicitly converts the specified string to an <see cref="ProgramLocationType"/> value.

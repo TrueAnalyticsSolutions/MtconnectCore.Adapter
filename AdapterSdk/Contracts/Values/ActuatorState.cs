@@ -32,6 +32,8 @@ namespace Mtconnect.AdapterSdk.DataItemValues
 		/// </summary>
         public ActuatorState(string value) : base(value) { }
 
+		public ActuatorState(ActuatorStateValues value) : this(value.ToString()) { }
+
         /// <summary>
 		﻿/// <see cref="Actuator">Actuator</see> is operating.
         /// </summary>
@@ -41,7 +43,7 @@ namespace Mtconnect.AdapterSdk.DataItemValues
 		/// </list>
 		/// </remarks>
 		[ObservationalValue(typeof(ActuatorStateValues))]
-        public static ActuatorState ACTIVE => new ActuatorState(nameof(ActuatorStateValues.ACTIVE));
+        public static ActuatorState ACTIVE => new ActuatorState(ActuatorStateValues.ACTIVE);
         /// <summary>
 		﻿/// <see cref="Actuator">Actuator</see> is not operating.
         /// </summary>
@@ -51,7 +53,16 @@ namespace Mtconnect.AdapterSdk.DataItemValues
 		/// </list>
 		/// </remarks>
 		[ObservationalValue(typeof(ActuatorStateValues))]
-        public static ActuatorState INACTIVE => new ActuatorState(nameof(ActuatorStateValues.INACTIVE));
+        public static ActuatorState INACTIVE => new ActuatorState(ActuatorStateValues.INACTIVE);
+
+        /// <summary>
+        /// Implicitly converts the specified <see cref="ActuatorStateValues" /> to an <see cref="ActuatorState"/> value.
+        /// The <see cref="ActuatorStateValues" /> is converted to a string and used to initialize the <see cref="ActuatorState"/> value.
+        /// </summary>
+        /// <param name="value">The <see cref="ActuatorStateValues" /> to convert.</param>
+        /// <returns>An <see cref="ActuatorState"/> value initialized with the specified string in uppercase.</returns>
+        public static implicit operator ActuatorState(ActuatorStateValues value)
+            => new ActuatorState(value);
 		
         /// <summary>
         /// Implicitly converts the specified string to an <see cref="ActuatorState"/> value.

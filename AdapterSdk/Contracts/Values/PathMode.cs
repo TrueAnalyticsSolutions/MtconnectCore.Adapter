@@ -32,6 +32,8 @@ namespace Mtconnect.AdapterSdk.DataItemValues
 		/// </summary>
         public PathMode(string value) : base(value) { }
 
+		public PathMode(PathModeValues value) : this(value.ToString()) { }
+
         /// <summary>
 		﻿/// path is operating independently and without the influence of another path.
         /// </summary>
@@ -41,7 +43,7 @@ namespace Mtconnect.AdapterSdk.DataItemValues
 		/// </list>
 		/// </remarks>
 		[ObservationalValue(typeof(PathModeValues))]
-        public static PathMode INDEPENDENT => new PathMode(nameof(PathModeValues.INDEPENDENT));
+        public static PathMode INDEPENDENT => new PathMode(PathModeValues.INDEPENDENT);
         /// <summary>
 		﻿/// path provides information or state values that influences the operation of other <see cref="DataItem">DataItem</see> of similar type.
         /// </summary>
@@ -51,7 +53,7 @@ namespace Mtconnect.AdapterSdk.DataItemValues
 		/// </list>
 		/// </remarks>
 		[ObservationalValue(typeof(PathModeValues))]
-        public static PathMode MASTER => new PathMode(nameof(PathModeValues.MASTER));
+        public static PathMode MASTER => new PathMode(PathModeValues.MASTER);
         /// <summary>
 		﻿/// physical or logical parts which are not physically connected to each other but are operating together.
         /// </summary>
@@ -61,7 +63,7 @@ namespace Mtconnect.AdapterSdk.DataItemValues
 		/// </list>
 		/// </remarks>
 		[ObservationalValue(typeof(PathModeValues))]
-        public static PathMode SYNCHRONOUS => new PathMode(nameof(PathModeValues.SYNCHRONOUS));
+        public static PathMode SYNCHRONOUS => new PathMode(PathModeValues.SYNCHRONOUS);
         /// <summary>
 		﻿/// axes associated with the path are mirroring the motion of the <c>MASTER</c> path.
         /// </summary>
@@ -71,7 +73,16 @@ namespace Mtconnect.AdapterSdk.DataItemValues
 		/// </list>
 		/// </remarks>
 		[ObservationalValue(typeof(PathModeValues))]
-        public static PathMode MIRROR => new PathMode(nameof(PathModeValues.MIRROR));
+        public static PathMode MIRROR => new PathMode(PathModeValues.MIRROR);
+
+        /// <summary>
+        /// Implicitly converts the specified <see cref="PathModeValues" /> to an <see cref="PathMode"/> value.
+        /// The <see cref="PathModeValues" /> is converted to a string and used to initialize the <see cref="PathMode"/> value.
+        /// </summary>
+        /// <param name="value">The <see cref="PathModeValues" /> to convert.</param>
+        /// <returns>An <see cref="PathMode"/> value initialized with the specified string in uppercase.</returns>
+        public static implicit operator PathMode(PathModeValues value)
+            => new PathMode(value);
 		
         /// <summary>
         /// Implicitly converts the specified string to an <see cref="PathMode"/> value.
