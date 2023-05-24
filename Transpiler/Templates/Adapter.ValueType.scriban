@@ -112,6 +112,18 @@ d_item_version_slim = (item?.deprecated_version | string.slice 20 3) | string.re
 			/// Constructs a new value type for {{ subtype }}.
 			/// </summary>
             public {{ to_pascal_case subtype }}({{ source.value_type }} value) : base(value) { }
+			{{~ if source.items.size > 0 ~}}
+			public {{ to_pascal_case subtype }}({{ to_pascal_case source.name }}Values value) : base(value) { }
+			
+			/// <summary>
+			/// Implicitly converts the specified <see cref="{{ to_pascal_case source.name }}Values" /> to an <see cref="{{ to_pascal_case source.name }}"/> value.
+			/// The <see cref="{{ to_pascal_case source.name }}Values" /> is converted to a string and used to initialize the <see cref="{{ to_pascal_case source.name }}"/> value.
+			/// </summary>
+			/// <param name="value">The <see cref="{{ to_pascal_case source.name }}Values" /> to convert.</param>
+			/// <returns>An <see cref="{{ to_pascal_case source.name }}"/> value initialized with the specified string in uppercase.</returns>
+			public static implicit operator {{ to_pascal_case subtype }}({{ to_pascal_case source.name }}Values value)
+				=> new {{ to_pascal_case subtype }}(value);
+			{{~ end ~}}
 			
 			/// <summary>
 			/// Implicitly converts the specified {{ source.value_type }} to an <see cref="{{ to_pascal_case subtype }}"/> value.
