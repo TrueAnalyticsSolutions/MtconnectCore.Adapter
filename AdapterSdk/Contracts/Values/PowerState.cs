@@ -34,24 +34,10 @@ namespace Mtconnect.AdapterSdk.DataItemValues
 
 		public PowerState(PowerStateValues value) : this(value.ToString()) { }
 
-        /// <summary>
-		﻿/// source of energy for an entity or the enabling signal providing permission for the entity to perform its function(s) is present and active.
-        /// </summary>
-		/// <remarks>
-		/// <list type="bullet">
-		/// <item><b>Introduced</b>: <see href="https://model.mtconnect.org/#_Version_1.1">v1.1</see></item>
-		/// </list>
-		/// </remarks>
+		/// <inheritdoc cref="PowerStateValues.ON" />
 		[ObservationalValue(typeof(PowerStateValues))]
         public static PowerState ON => new PowerState(PowerStateValues.ON);
-        /// <summary>
-		﻿/// source of energy for an entity or the enabling signal providing permission for the entity to perform its function(s) is not present or is disconnected.
-        /// </summary>
-		/// <remarks>
-		/// <list type="bullet">
-		/// <item><b>Introduced</b>: <see href="https://model.mtconnect.org/#_Version_1.1">v1.1</see></item>
-		/// </list>
-		/// </remarks>
+		/// <inheritdoc cref="PowerStateValues.OFF" />
 		[ObservationalValue(typeof(PowerStateValues))]
         public static PowerState OFF => new PowerState(PowerStateValues.OFF);
 

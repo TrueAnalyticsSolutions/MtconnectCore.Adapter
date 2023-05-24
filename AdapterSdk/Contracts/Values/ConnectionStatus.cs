@@ -34,34 +34,13 @@ namespace Mtconnect.AdapterSdk.DataItemValues
 
 		public ConnectionStatus(ConnectionStatusValues value) : this(value.ToString()) { }
 
-        /// <summary>
-		﻿/// no connection at all.
-        /// </summary>
-		/// <remarks>
-		/// <list type="bullet">
-		/// <item><b>Introduced</b>: <see href="https://model.mtconnect.org/#_Version_1.7">v1.7</see></item>
-		/// </list>
-		/// </remarks>
+		/// <inheritdoc cref="ConnectionStatusValues.CLOSED" />
 		[ObservationalValue(typeof(ConnectionStatusValues))]
         public static ConnectionStatus CLOSED => new ConnectionStatus(ConnectionStatusValues.CLOSED);
-        /// <summary>
-		﻿/// <i>agent</i> is waiting for a connection request from an <i>adapter</i>.
-        /// </summary>
-		/// <remarks>
-		/// <list type="bullet">
-		/// <item><b>Introduced</b>: <see href="https://model.mtconnect.org/#_Version_1.7">v1.7</see></item>
-		/// </list>
-		/// </remarks>
+		/// <inheritdoc cref="ConnectionStatusValues.LISTEN" />
 		[ObservationalValue(typeof(ConnectionStatusValues))]
         public static ConnectionStatus LISTEN => new ConnectionStatus(ConnectionStatusValues.LISTEN);
-        /// <summary>
-		﻿/// open connection.  The normal state for the data transfer phase of the connection.
-        /// </summary>
-		/// <remarks>
-		/// <list type="bullet">
-		/// <item><b>Introduced</b>: <see href="https://model.mtconnect.org/#_Version_1.7">v1.7</see></item>
-		/// </list>
-		/// </remarks>
+		/// <inheritdoc cref="ConnectionStatusValues.ESTABLISHED" />
 		[ObservationalValue(typeof(ConnectionStatusValues))]
         public static ConnectionStatus ESTABLISHED => new ConnectionStatus(ConnectionStatusValues.ESTABLISHED);
 

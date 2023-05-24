@@ -34,24 +34,10 @@ namespace Mtconnect.AdapterSdk.DataItemValues
 
 		public LeakDetect(LeakDetectValues value) : this(value.ToString()) { }
 
-        /// <summary>
-		﻿/// leak is currently being detected.
-        /// </summary>
-		/// <remarks>
-		/// <list type="bullet">
-		/// <item><b>Introduced</b>: <see href="https://model.mtconnect.org/#_Version_2.1">v2.1</see></item>
-		/// </list>
-		/// </remarks>
+		/// <inheritdoc cref="LeakDetectValues.DETECTED" />
 		[ObservationalValue(typeof(LeakDetectValues))]
         public static LeakDetect DETECTED => new LeakDetect(LeakDetectValues.DETECTED);
-        /// <summary>
-		﻿/// leak is currently not being detected.
-        /// </summary>
-		/// <remarks>
-		/// <list type="bullet">
-		/// <item><b>Introduced</b>: <see href="https://model.mtconnect.org/#_Version_2.1">v2.1</see></item>
-		/// </list>
-		/// </remarks>
+		/// <inheritdoc cref="LeakDetectValues.NOT_DETECTED" />
 		[ObservationalValue(typeof(LeakDetectValues))]
         public static LeakDetect NOT_DETECTED => new LeakDetect(LeakDetectValues.NOT_DETECTED);
 

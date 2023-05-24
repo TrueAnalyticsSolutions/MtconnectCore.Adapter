@@ -34,24 +34,10 @@ namespace Mtconnect.AdapterSdk.DataItemValues
 
 		public ProgramLocationType(ProgramLocationTypeValues value) : this(value.ToString()) { }
 
-        /// <summary>
-		﻿/// managed by the controller.
-        /// </summary>
-		/// <remarks>
-		/// <list type="bullet">
-		/// <item><b>Introduced</b>: <see href="https://model.mtconnect.org/#_Version_1.5">v1.5</see></item>
-		/// </list>
-		/// </remarks>
+		/// <inheritdoc cref="ProgramLocationTypeValues.LOCAL" />
 		[ObservationalValue(typeof(ProgramLocationTypeValues))]
         public static ProgramLocationType LOCAL => new ProgramLocationType(ProgramLocationTypeValues.LOCAL);
-        /// <summary>
-		﻿/// not managed by the controller.
-        /// </summary>
-		/// <remarks>
-		/// <list type="bullet">
-		/// <item><b>Introduced</b>: <see href="https://model.mtconnect.org/#_Version_1.5">v1.5</see></item>
-		/// </list>
-		/// </remarks>
+		/// <inheritdoc cref="ProgramLocationTypeValues.EXTERNAL" />
 		[ObservationalValue(typeof(ProgramLocationTypeValues))]
         public static ProgramLocationType EXTERNAL => new ProgramLocationType(ProgramLocationTypeValues.EXTERNAL);
 

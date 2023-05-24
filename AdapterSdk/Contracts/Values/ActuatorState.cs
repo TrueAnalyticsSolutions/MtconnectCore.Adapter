@@ -34,24 +34,10 @@ namespace Mtconnect.AdapterSdk.DataItemValues
 
 		public ActuatorState(ActuatorStateValues value) : this(value.ToString()) { }
 
-        /// <summary>
-		﻿/// <see cref="Actuator">Actuator</see> is operating.
-        /// </summary>
-		/// <remarks>
-		/// <list type="bullet">
-		/// <item><b>Introduced</b>: <see href="https://model.mtconnect.org/#_Version_1.2">v1.2</see></item>
-		/// </list>
-		/// </remarks>
+		/// <inheritdoc cref="ActuatorStateValues.ACTIVE" />
 		[ObservationalValue(typeof(ActuatorStateValues))]
         public static ActuatorState ACTIVE => new ActuatorState(ActuatorStateValues.ACTIVE);
-        /// <summary>
-		﻿/// <see cref="Actuator">Actuator</see> is not operating.
-        /// </summary>
-		/// <remarks>
-		/// <list type="bullet">
-		/// <item><b>Introduced</b>: <see href="https://model.mtconnect.org/#_Version_1.2">v1.2</see></item>
-		/// </list>
-		/// </remarks>
+		/// <inheritdoc cref="ActuatorStateValues.INACTIVE" />
 		[ObservationalValue(typeof(ActuatorStateValues))]
         public static ActuatorState INACTIVE => new ActuatorState(ActuatorStateValues.INACTIVE);
 

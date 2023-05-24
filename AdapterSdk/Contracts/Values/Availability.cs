@@ -34,24 +34,10 @@ namespace Mtconnect.AdapterSdk.DataItemValues
 
 		public Availability(AvailabilityValues value) : this(value.ToString()) { }
 
-        /// <summary>
-		﻿/// data source is active and capable of providing data.
-        /// </summary>
-		/// <remarks>
-		/// <list type="bullet">
-		/// <item><b>Introduced</b>: <see href="https://model.mtconnect.org/#_Version_1.1">v1.1</see></item>
-		/// </list>
-		/// </remarks>
+		/// <inheritdoc cref="AvailabilityValues.AVAILABLE" />
 		[ObservationalValue(typeof(AvailabilityValues))]
         public static Availability AVAILABLE => new Availability(AvailabilityValues.AVAILABLE);
-        /// <summary>
-		﻿/// data source is either inactive or not capable of providing data.
-        /// </summary>
-		/// <remarks>
-		/// <list type="bullet">
-		/// <item><b>Introduced</b>: <see href="https://model.mtconnect.org/#_Version_1.1">v1.1</see></item>
-		/// </list>
-		/// </remarks>
+		/// <inheritdoc cref="AvailabilityValues.UNAVAILABLE" />
 		[ObservationalValue(typeof(AvailabilityValues))]
         public static Availability UNAVAILABLE => new Availability(AvailabilityValues.UNAVAILABLE);
 

@@ -34,44 +34,16 @@ namespace Mtconnect.AdapterSdk.DataItemValues
 
 		public AxisState(AxisStateValues value) : this(value.ToString()) { }
 
-        /// <summary>
-		﻿/// axis is in its home position.
-        /// </summary>
-		/// <remarks>
-		/// <list type="bullet">
-		/// <item><b>Introduced</b>: <see href="https://model.mtconnect.org/#_Version_1.3">v1.3</see></item>
-		/// </list>
-		/// </remarks>
+		/// <inheritdoc cref="AxisStateValues.HOME" />
 		[ObservationalValue(typeof(AxisStateValues))]
         public static AxisState HOME => new AxisState(AxisStateValues.HOME);
-        /// <summary>
-		﻿/// axis is in motion.
-        /// </summary>
-		/// <remarks>
-		/// <list type="bullet">
-		/// <item><b>Introduced</b>: <see href="https://model.mtconnect.org/#_Version_1.3">v1.3</see></item>
-		/// </list>
-		/// </remarks>
+		/// <inheritdoc cref="AxisStateValues.TRAVEL" />
 		[ObservationalValue(typeof(AxisStateValues))]
         public static AxisState TRAVEL => new AxisState(AxisStateValues.TRAVEL);
-        /// <summary>
-		﻿/// axis has been moved to a fixed position and is being maintained in that position either electrically or mechanically.   Action is required to release the axis from this position.
-        /// </summary>
-		/// <remarks>
-		/// <list type="bullet">
-		/// <item><b>Introduced</b>: <see href="https://model.mtconnect.org/#_Version_1.3">v1.3</see></item>
-		/// </list>
-		/// </remarks>
+		/// <inheritdoc cref="AxisStateValues.PARKED" />
 		[ObservationalValue(typeof(AxisStateValues))]
         public static AxisState PARKED => new AxisState(AxisStateValues.PARKED);
-        /// <summary>
-		﻿/// axis is stopped.
-        /// </summary>
-		/// <remarks>
-		/// <list type="bullet">
-		/// <item><b>Introduced</b>: <see href="https://model.mtconnect.org/#_Version_1.3">v1.3</see></item>
-		/// </list>
-		/// </remarks>
+		/// <inheritdoc cref="AxisStateValues.STOPPED" />
 		[ObservationalValue(typeof(AxisStateValues))]
         public static AxisState STOPPED => new AxisState(AxisStateValues.STOPPED);
 

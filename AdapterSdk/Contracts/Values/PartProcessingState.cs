@@ -34,124 +34,40 @@ namespace Mtconnect.AdapterSdk.DataItemValues
 
 		public PartProcessingState(PartProcessingStateValues value) : this(value.ToString()) { }
 
-        /// <summary>
-		﻿/// part occurrence is not actively being processed, but the processing has not ended.   Processing requirements exist that have not yet been fulfilled. This is the default entry state when the part occurrence is originally received. In some cases, the part occurrence may return to this state while it waits for additional processing to be performed.
-        /// </summary>
-		/// <remarks>
-		/// <list type="bullet">
-		/// <item><b>Introduced</b>: <see href="https://model.mtconnect.org/#_Version_1.8">v1.8</see></item>
-		/// </list>
-		/// </remarks>
+		/// <inheritdoc cref="PartProcessingStateValues.NEEDS_PROCESSING" />
 		[ObservationalValue(typeof(PartProcessingStateValues))]
         public static PartProcessingState NEEDS_PROCESSING => new PartProcessingState(PartProcessingStateValues.NEEDS_PROCESSING);
-        /// <summary>
-		﻿/// part occurrence is actively being processed.
-        /// </summary>
-		/// <remarks>
-		/// <list type="bullet">
-		/// <item><b>Introduced</b>: <see href="https://model.mtconnect.org/#_Version_1.8">v1.8</see></item>
-		/// </list>
-		/// </remarks>
+		/// <inheritdoc cref="PartProcessingStateValues.IN_PROCESS" />
 		[ObservationalValue(typeof(PartProcessingStateValues))]
         public static PartProcessingState IN_PROCESS => new PartProcessingState(PartProcessingStateValues.IN_PROCESS);
-        /// <summary>
-		﻿/// part occurrence is no longer being processed.   A general state when the reason for termination is unknown.
-        /// </summary>
-		/// <remarks>
-		/// <list type="bullet">
-		/// <item><b>Introduced</b>: <see href="https://model.mtconnect.org/#_Version_1.8">v1.8</see></item>
-		/// </list>
-		/// </remarks>
+		/// <inheritdoc cref="PartProcessingStateValues.PROCESSING_ENDED" />
 		[ObservationalValue(typeof(PartProcessingStateValues))]
         public static PartProcessingState PROCESSING_ENDED => new PartProcessingState(PartProcessingStateValues.PROCESSING_ENDED);
-        /// <summary>
-		﻿/// part occurrence has completed processing successfully.
-        /// </summary>
-		/// <remarks>
-		/// <list type="bullet">
-		/// <item><b>Introduced</b>: <see href="https://model.mtconnect.org/#_Version_1.8">v1.8</see></item>
-		/// </list>
-		/// </remarks>
+		/// <inheritdoc cref="PartProcessingStateValues.PROCESSING_ENDED_COMPLETE" />
 		[ObservationalValue(typeof(PartProcessingStateValues))]
         public static PartProcessingState PROCESSING_ENDED_COMPLETE => new PartProcessingState(PartProcessingStateValues.PROCESSING_ENDED_COMPLETE);
-        /// <summary>
-		﻿/// process has been stopped during the processing.   The part occurrence will require special treatment.
-        /// </summary>
-		/// <remarks>
-		/// <list type="bullet">
-		/// <item><b>Introduced</b>: <see href="https://model.mtconnect.org/#_Version_1.8">v1.8</see></item>
-		/// </list>
-		/// </remarks>
+		/// <inheritdoc cref="PartProcessingStateValues.PROCESSING_ENDED_STOPPED" />
 		[ObservationalValue(typeof(PartProcessingStateValues))]
         public static PartProcessingState PROCESSING_ENDED_STOPPED => new PartProcessingState(PartProcessingStateValues.PROCESSING_ENDED_STOPPED);
-        /// <summary>
-		﻿/// processing of the part occurrence has come to a premature end.
-        /// </summary>
-		/// <remarks>
-		/// <list type="bullet">
-		/// <item><b>Introduced</b>: <see href="https://model.mtconnect.org/#_Version_1.8">v1.8</see></item>
-		/// </list>
-		/// </remarks>
+		/// <inheritdoc cref="PartProcessingStateValues.PROCESSING_ENDED_ABORTED" />
 		[ObservationalValue(typeof(PartProcessingStateValues))]
         public static PartProcessingState PROCESSING_ENDED_ABORTED => new PartProcessingState(PartProcessingStateValues.PROCESSING_ENDED_ABORTED);
-        /// <summary>
-		﻿/// terminal state when the part occurrence has been removed from the equipment by an external entity and it no longer exists at the equipment.
-        /// </summary>
-		/// <remarks>
-		/// <list type="bullet">
-		/// <item><b>Introduced</b>: <see href="https://model.mtconnect.org/#_Version_1.8">v1.8</see></item>
-		/// </list>
-		/// </remarks>
+		/// <inheritdoc cref="PartProcessingStateValues.PROCESSING_ENDED_LOST" />
 		[ObservationalValue(typeof(PartProcessingStateValues))]
         public static PartProcessingState PROCESSING_ENDED_LOST => new PartProcessingState(PartProcessingStateValues.PROCESSING_ENDED_LOST);
-        /// <summary>
-		﻿/// part occurrence has been skipped for processing on the piece of equipment.
-        /// </summary>
-		/// <remarks>
-		/// <list type="bullet">
-		/// <item><b>Introduced</b>: <see href="https://model.mtconnect.org/#_Version_1.8">v1.8</see></item>
-		/// </list>
-		/// </remarks>
+		/// <inheritdoc cref="PartProcessingStateValues.PROCESSING_ENDED_SKIPPED" />
 		[ObservationalValue(typeof(PartProcessingStateValues))]
         public static PartProcessingState PROCESSING_ENDED_SKIPPED => new PartProcessingState(PartProcessingStateValues.PROCESSING_ENDED_SKIPPED);
-        /// <summary>
-		﻿/// part occurrence has been processed completely. However, the processing may have a problem.
-        /// </summary>
-		/// <remarks>
-		/// <list type="bullet">
-		/// <item><b>Introduced</b>: <see href="https://model.mtconnect.org/#_Version_1.8">v1.8</see></item>
-		/// </list>
-		/// </remarks>
+		/// <inheritdoc cref="PartProcessingStateValues.PROCESSING_ENDED_REJECTED" />
 		[ObservationalValue(typeof(PartProcessingStateValues))]
         public static PartProcessingState PROCESSING_ENDED_REJECTED => new PartProcessingState(PartProcessingStateValues.PROCESSING_ENDED_REJECTED);
-        /// <summary>
-		﻿/// part occurrence is waiting for transit.
-        /// </summary>
-		/// <remarks>
-		/// <list type="bullet">
-		/// <item><b>Introduced</b>: <see href="https://model.mtconnect.org/#_Version_1.8">v1.8</see></item>
-		/// </list>
-		/// </remarks>
+		/// <inheritdoc cref="PartProcessingStateValues.WAITING_FOR_TRANSIT" />
 		[ObservationalValue(typeof(PartProcessingStateValues))]
         public static PartProcessingState WAITING_FOR_TRANSIT => new PartProcessingState(PartProcessingStateValues.WAITING_FOR_TRANSIT);
-        /// <summary>
-		﻿/// part occurrence is being transported to its destination.
-        /// </summary>
-		/// <remarks>
-		/// <list type="bullet">
-		/// <item><b>Introduced</b>: <see href="https://model.mtconnect.org/#_Version_1.8">v1.8</see></item>
-		/// </list>
-		/// </remarks>
+		/// <inheritdoc cref="PartProcessingStateValues.IN_TRANSIT" />
 		[ObservationalValue(typeof(PartProcessingStateValues))]
         public static PartProcessingState IN_TRANSIT => new PartProcessingState(PartProcessingStateValues.IN_TRANSIT);
-        /// <summary>
-		﻿/// part occurrence has been placed at its designated destination.
-        /// </summary>
-		/// <remarks>
-		/// <list type="bullet">
-		/// <item><b>Introduced</b>: <see href="https://model.mtconnect.org/#_Version_1.8">v1.8</see></item>
-		/// </list>
-		/// </remarks>
+		/// <inheritdoc cref="PartProcessingStateValues.TRANSIT_COMPLETE" />
 		[ObservationalValue(typeof(PartProcessingStateValues))]
         public static PartProcessingState TRANSIT_COMPLETE => new PartProcessingState(PartProcessingStateValues.TRANSIT_COMPLETE);
 

@@ -34,24 +34,10 @@ namespace Mtconnect.AdapterSdk.DataItemValues
 
 		public AxisInterlock(AxisInterlockValues value) : this(value.ToString()) { }
 
-        /// <summary>
-		﻿/// axis lockout function is activated, power has been removed from the axis, and the axis is allowed to move freely.
-        /// </summary>
-		/// <remarks>
-		/// <list type="bullet">
-		/// <item><b>Introduced</b>: <see href="https://model.mtconnect.org/#_Version_1.3">v1.3</see></item>
-		/// </list>
-		/// </remarks>
+		/// <inheritdoc cref="AxisInterlockValues.ACTIVE" />
 		[ObservationalValue(typeof(AxisInterlockValues))]
         public static AxisInterlock ACTIVE => new AxisInterlock(AxisInterlockValues.ACTIVE);
-        /// <summary>
-		﻿/// axis lockout function has not been activated, the axis may be powered, and the axis is capable of being controlled by another component.
-        /// </summary>
-		/// <remarks>
-		/// <list type="bullet">
-		/// <item><b>Introduced</b>: <see href="https://model.mtconnect.org/#_Version_1.3">v1.3</see></item>
-		/// </list>
-		/// </remarks>
+		/// <inheritdoc cref="AxisInterlockValues.INACTIVE" />
 		[ObservationalValue(typeof(AxisInterlockValues))]
         public static AxisInterlock INACTIVE => new AxisInterlock(AxisInterlockValues.INACTIVE);
 

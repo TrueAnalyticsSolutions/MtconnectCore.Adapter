@@ -34,44 +34,16 @@ namespace Mtconnect.AdapterSdk.DataItemValues
 
 		public AxisCoupling(AxisCouplingValues value) : this(value.ToString()) { }
 
-        /// <summary>
-		﻿/// axes are physically connected to each other and operate as a single unit.
-        /// </summary>
-		/// <remarks>
-		/// <list type="bullet">
-		/// <item><b>Introduced</b>: <see href="https://model.mtconnect.org/#_Version_1.1">v1.1</see></item>
-		/// </list>
-		/// </remarks>
+		/// <inheritdoc cref="AxisCouplingValues.TANDEM" />
 		[ObservationalValue(typeof(AxisCouplingValues))]
         public static AxisCoupling TANDEM => new AxisCoupling(AxisCouplingValues.TANDEM);
-        /// <summary>
-		﻿/// axes are not physically connected to each other but are operating together in lockstep.
-        /// </summary>
-		/// <remarks>
-		/// <list type="bullet">
-		/// <item><b>Introduced</b>: <see href="https://model.mtconnect.org/#_Version_1.1">v1.1</see></item>
-		/// </list>
-		/// </remarks>
+		/// <inheritdoc cref="AxisCouplingValues.SYNCHRONOUS" />
 		[ObservationalValue(typeof(AxisCouplingValues))]
         public static AxisCoupling SYNCHRONOUS => new AxisCoupling(AxisCouplingValues.SYNCHRONOUS);
-        /// <summary>
-		﻿/// axis is the master of the <see cref="CoupledAxes">CoupledAxes</see>.
-        /// </summary>
-		/// <remarks>
-		/// <list type="bullet">
-		/// <item><b>Introduced</b>: <see href="https://model.mtconnect.org/#_Version_1.1">v1.1</see></item>
-		/// </list>
-		/// </remarks>
+		/// <inheritdoc cref="AxisCouplingValues.MASTER" />
 		[ObservationalValue(typeof(AxisCouplingValues))]
         public static AxisCoupling MASTER => new AxisCoupling(AxisCouplingValues.MASTER);
-        /// <summary>
-		﻿/// axis is a slave to the <see cref="CoupledAxes">CoupledAxes</see>.
-        /// </summary>
-		/// <remarks>
-		/// <list type="bullet">
-		/// <item><b>Introduced</b>: <see href="https://model.mtconnect.org/#_Version_1.1">v1.1</see></item>
-		/// </list>
-		/// </remarks>
+		/// <inheritdoc cref="AxisCouplingValues.SLAVE" />
 		[ObservationalValue(typeof(AxisCouplingValues))]
         public static AxisCoupling SLAVE => new AxisCoupling(AxisCouplingValues.SLAVE);
 

@@ -34,24 +34,10 @@ namespace Mtconnect.AdapterSdk.DataItemValues
 
 		public PartDetect(PartDetectValues value) : this(value.ToString()) { }
 
-        /// <summary>
-		﻿/// part or work piece is detected or is present.
-        /// </summary>
-		/// <remarks>
-		/// <list type="bullet">
-		/// <item><b>Introduced</b>: <see href="https://model.mtconnect.org/#_Version_1.5">v1.5</see></item>
-		/// </list>
-		/// </remarks>
+		/// <inheritdoc cref="PartDetectValues.PRESENT" />
 		[ObservationalValue(typeof(PartDetectValues))]
         public static PartDetect PRESENT => new PartDetect(PartDetectValues.PRESENT);
-        /// <summary>
-		﻿/// part or work piece is not detected or is not present.
-        /// </summary>
-		/// <remarks>
-		/// <list type="bullet">
-		/// <item><b>Introduced</b>: <see href="https://model.mtconnect.org/#_Version_1.5">v1.5</see></item>
-		/// </list>
-		/// </remarks>
+		/// <inheritdoc cref="PartDetectValues.NOT_PRESENT" />
 		[ObservationalValue(typeof(PartDetectValues))]
         public static PartDetect NOT_PRESENT => new PartDetect(PartDetectValues.NOT_PRESENT);
 

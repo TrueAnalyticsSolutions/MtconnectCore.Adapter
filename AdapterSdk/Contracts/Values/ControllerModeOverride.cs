@@ -34,24 +34,10 @@ namespace Mtconnect.AdapterSdk.DataItemValues
 
 		public ControllerModeOverride(ControllerModeOverrideValues value) : this(value.ToString()) { }
 
-        /// <summary>
-		﻿/// <see cref="ControllerModeOverride">ControllerModeOverride</see> is in the <c>ON</c> state and the mode override is active.
-        /// </summary>
-		/// <remarks>
-		/// <list type="bullet">
-		/// <item><b>Introduced</b>: <see href="https://model.mtconnect.org/#_Version_1.4">v1.4</see></item>
-		/// </list>
-		/// </remarks>
+		/// <inheritdoc cref="ControllerModeOverrideValues.ON" />
 		[ObservationalValue(typeof(ControllerModeOverrideValues))]
         public static ControllerModeOverride ON => new ControllerModeOverride(ControllerModeOverrideValues.ON);
-        /// <summary>
-		﻿/// <see cref="ControllerModeOverride">ControllerModeOverride</see> is in the <c>OFF</c> state and the mode override is inactive.
-        /// </summary>
-		/// <remarks>
-		/// <list type="bullet">
-		/// <item><b>Introduced</b>: <see href="https://model.mtconnect.org/#_Version_1.4">v1.4</see></item>
-		/// </list>
-		/// </remarks>
+		/// <inheritdoc cref="ControllerModeOverrideValues.OFF" />
 		[ObservationalValue(typeof(ControllerModeOverrideValues))]
         public static ControllerModeOverride OFF => new ControllerModeOverride(ControllerModeOverrideValues.OFF);
 

@@ -34,44 +34,16 @@ namespace Mtconnect.AdapterSdk.DataItemValues
 
 		public PathMode(PathModeValues value) : this(value.ToString()) { }
 
-        /// <summary>
-		﻿/// path is operating independently and without the influence of another path.
-        /// </summary>
-		/// <remarks>
-		/// <list type="bullet">
-		/// <item><b>Introduced</b>: <see href="https://model.mtconnect.org/#_Version_1.1">v1.1</see></item>
-		/// </list>
-		/// </remarks>
+		/// <inheritdoc cref="PathModeValues.INDEPENDENT" />
 		[ObservationalValue(typeof(PathModeValues))]
         public static PathMode INDEPENDENT => new PathMode(PathModeValues.INDEPENDENT);
-        /// <summary>
-		﻿/// path provides information or state values that influences the operation of other <see cref="DataItem">DataItem</see> of similar type.
-        /// </summary>
-		/// <remarks>
-		/// <list type="bullet">
-		/// <item><b>Introduced</b>: <see href="https://model.mtconnect.org/#_Version_1.2">v1.2</see></item>
-		/// </list>
-		/// </remarks>
+		/// <inheritdoc cref="PathModeValues.MASTER" />
 		[ObservationalValue(typeof(PathModeValues))]
         public static PathMode MASTER => new PathMode(PathModeValues.MASTER);
-        /// <summary>
-		﻿/// physical or logical parts which are not physically connected to each other but are operating together.
-        /// </summary>
-		/// <remarks>
-		/// <list type="bullet">
-		/// <item><b>Introduced</b>: <see href="https://model.mtconnect.org/#_Version_1.1">v1.1</see></item>
-		/// </list>
-		/// </remarks>
+		/// <inheritdoc cref="PathModeValues.SYNCHRONOUS" />
 		[ObservationalValue(typeof(PathModeValues))]
         public static PathMode SYNCHRONOUS => new PathMode(PathModeValues.SYNCHRONOUS);
-        /// <summary>
-		﻿/// axes associated with the path are mirroring the motion of the <c>MASTER</c> path.
-        /// </summary>
-		/// <remarks>
-		/// <list type="bullet">
-		/// <item><b>Introduced</b>: <see href="https://model.mtconnect.org/#_Version_1.1">v1.1</see></item>
-		/// </list>
-		/// </remarks>
+		/// <inheritdoc cref="PathModeValues.MIRROR" />
 		[ObservationalValue(typeof(PathModeValues))]
         public static PathMode MIRROR => new PathMode(PathModeValues.MIRROR);
 

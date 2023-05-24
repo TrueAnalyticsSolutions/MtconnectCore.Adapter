@@ -34,34 +34,13 @@ namespace Mtconnect.AdapterSdk.DataItemValues
 
 		public ChuckState(ChuckStateValues value) : this(value.ToString()) { }
 
-        /// <summary>
-		﻿/// <see cref="Chuck">Chuck</see> is open to the point of a positive confirmation.
-        /// </summary>
-		/// <remarks>
-		/// <list type="bullet">
-		/// <item><b>Introduced</b>: <see href="https://model.mtconnect.org/#_Version_1.3">v1.3</see></item>
-		/// </list>
-		/// </remarks>
+		/// <inheritdoc cref="ChuckStateValues.OPEN" />
 		[ObservationalValue(typeof(ChuckStateValues))]
         public static ChuckState OPEN => new ChuckState(ChuckStateValues.OPEN);
-        /// <summary>
-		﻿/// <see cref="Chuck">Chuck</see> is closed to the point of a positive confirmation.
-        /// </summary>
-		/// <remarks>
-		/// <list type="bullet">
-		/// <item><b>Introduced</b>: <see href="https://model.mtconnect.org/#_Version_1.3">v1.3</see></item>
-		/// </list>
-		/// </remarks>
+		/// <inheritdoc cref="ChuckStateValues.CLOSED" />
 		[ObservationalValue(typeof(ChuckStateValues))]
         public static ChuckState CLOSED => new ChuckState(ChuckStateValues.CLOSED);
-        /// <summary>
-		﻿/// <see cref="Chuck">Chuck</see> is not closed to the point of a positive confirmation and not open to the point of a positive confirmation.   It is in an intermediate position.
-        /// </summary>
-		/// <remarks>
-		/// <list type="bullet">
-		/// <item><b>Introduced</b>: <see href="https://model.mtconnect.org/#_Version_1.3">v1.3</see></item>
-		/// </list>
-		/// </remarks>
+		/// <inheritdoc cref="ChuckStateValues.UNLATCHED" />
 		[ObservationalValue(typeof(ChuckStateValues))]
         public static ChuckState UNLATCHED => new ChuckState(ChuckStateValues.UNLATCHED);
 

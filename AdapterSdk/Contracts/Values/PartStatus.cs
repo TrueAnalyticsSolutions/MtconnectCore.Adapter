@@ -34,24 +34,10 @@ namespace Mtconnect.AdapterSdk.DataItemValues
 
 		public PartStatus(PartStatusValues value) : this(value.ToString()) { }
 
-        /// <summary>
-		﻿/// part conforms to given requirements.
-        /// </summary>
-		/// <remarks>
-		/// <list type="bullet">
-		/// <item><b>Introduced</b>: <see href="https://model.mtconnect.org/#_Version_1.7">v1.7</see></item>
-		/// </list>
-		/// </remarks>
+		/// <inheritdoc cref="PartStatusValues.PASS" />
 		[ObservationalValue(typeof(PartStatusValues))]
         public static PartStatus PASS => new PartStatus(PartStatusValues.PASS);
-        /// <summary>
-		﻿/// part does not conform to some given requirements.
-        /// </summary>
-		/// <remarks>
-		/// <list type="bullet">
-		/// <item><b>Introduced</b>: <see href="https://model.mtconnect.org/#_Version_1.7">v1.7</see></item>
-		/// </list>
-		/// </remarks>
+		/// <inheritdoc cref="PartStatusValues.FAIL" />
 		[ObservationalValue(typeof(PartStatusValues))]
         public static PartStatus FAIL => new PartStatus(PartStatusValues.FAIL);
 

@@ -34,24 +34,10 @@ namespace Mtconnect.AdapterSdk.DataItemValues
 
 		public LockState(LockStateValues value) : this(value.ToString()) { }
 
-        /// <summary>
-		﻿/// mechanism is engaged and preventing the associated <see cref="Component">Component</see> from being opened or operated.
-        /// </summary>
-		/// <remarks>
-		/// <list type="bullet">
-		/// <item><b>Introduced</b>: <see href="https://model.mtconnect.org/#_Version_1.8">v1.8</see></item>
-		/// </list>
-		/// </remarks>
+		/// <inheritdoc cref="LockStateValues.LOCKED" />
 		[ObservationalValue(typeof(LockStateValues))]
         public static LockState LOCKED => new LockState(LockStateValues.LOCKED);
-        /// <summary>
-		﻿/// mechanism is disengaged and the associated <see cref="Component">Component</see> is able to be opened or operated.
-        /// </summary>
-		/// <remarks>
-		/// <list type="bullet">
-		/// <item><b>Introduced</b>: <see href="https://model.mtconnect.org/#_Version_1.8">v1.8</see></item>
-		/// </list>
-		/// </remarks>
+		/// <inheritdoc cref="LockStateValues.UNLOCKED" />
 		[ObservationalValue(typeof(LockStateValues))]
         public static LockState UNLOCKED => new LockState(LockStateValues.UNLOCKED);
 

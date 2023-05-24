@@ -34,24 +34,10 @@ namespace Mtconnect.AdapterSdk.DataItemValues
 
 		public SpindleInterlock(SpindleInterlockValues value) : this(value.ToString()) { }
 
-        /// <summary>
-		﻿/// power has been removed and the spindle cannot be operated.
-        /// </summary>
-		/// <remarks>
-		/// <list type="bullet">
-		/// <item><b>Introduced</b>: <see href="https://model.mtconnect.org/#_Version_1.3">v1.3</see></item>
-		/// </list>
-		/// </remarks>
+		/// <inheritdoc cref="SpindleInterlockValues.ACTIVE" />
 		[ObservationalValue(typeof(SpindleInterlockValues))]
         public static SpindleInterlock ACTIVE => new SpindleInterlock(SpindleInterlockValues.ACTIVE);
-        /// <summary>
-		﻿/// spindle has not been deactivated.
-        /// </summary>
-		/// <remarks>
-		/// <list type="bullet">
-		/// <item><b>Introduced</b>: <see href="https://model.mtconnect.org/#_Version_1.3">v1.3</see></item>
-		/// </list>
-		/// </remarks>
+		/// <inheritdoc cref="SpindleInterlockValues.INACTIVE" />
 		[ObservationalValue(typeof(SpindleInterlockValues))]
         public static SpindleInterlock INACTIVE => new SpindleInterlock(SpindleInterlockValues.INACTIVE);
 

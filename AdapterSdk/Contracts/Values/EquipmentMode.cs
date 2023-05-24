@@ -34,24 +34,10 @@ namespace Mtconnect.AdapterSdk.DataItemValues
 
 		public EquipmentMode(EquipmentModeValues value) : this(value.ToString()) { }
 
-        /// <summary>
-		﻿/// equipment is functioning in the mode designated by the <c>subType</c>.
-        /// </summary>
-		/// <remarks>
-		/// <list type="bullet">
-		/// <item><b>Introduced</b>: <see href="https://model.mtconnect.org/#_Version_1.4">v1.4</see></item>
-		/// </list>
-		/// </remarks>
+		/// <inheritdoc cref="EquipmentModeValues.ON" />
 		[ObservationalValue(typeof(EquipmentModeValues))]
         public static EquipmentMode ON => new EquipmentMode(EquipmentModeValues.ON);
-        /// <summary>
-		﻿/// equipment is not functioning in the mode designated by the <c>subType</c>.
-        /// </summary>
-		/// <remarks>
-		/// <list type="bullet">
-		/// <item><b>Introduced</b>: <see href="https://model.mtconnect.org/#_Version_1.4">v1.4</see></item>
-		/// </list>
-		/// </remarks>
+		/// <inheritdoc cref="EquipmentModeValues.OFF" />
 		[ObservationalValue(typeof(EquipmentModeValues))]
         public static EquipmentMode OFF => new EquipmentMode(EquipmentModeValues.OFF);
 

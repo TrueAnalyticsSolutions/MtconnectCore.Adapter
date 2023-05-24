@@ -34,34 +34,13 @@ namespace Mtconnect.AdapterSdk.DataItemValues
 
 		public RotaryMode(RotaryModeValues value) : this(value.ToString()) { }
 
-        /// <summary>
-		﻿/// axis is functioning as a spindle.
-        /// </summary>
-		/// <remarks>
-		/// <list type="bullet">
-		/// <item><b>Introduced</b>: <see href="https://model.mtconnect.org/#_Version_1.1">v1.1</see></item>
-		/// </list>
-		/// </remarks>
+		/// <inheritdoc cref="RotaryModeValues.SPINDLE" />
 		[ObservationalValue(typeof(RotaryModeValues))]
         public static RotaryMode SPINDLE => new RotaryMode(RotaryModeValues.SPINDLE);
-        /// <summary>
-		﻿/// axis is configured to index.
-        /// </summary>
-		/// <remarks>
-		/// <list type="bullet">
-		/// <item><b>Introduced</b>: <see href="https://model.mtconnect.org/#_Version_1.1">v1.1</see></item>
-		/// </list>
-		/// </remarks>
+		/// <inheritdoc cref="RotaryModeValues.INDEX" />
 		[ObservationalValue(typeof(RotaryModeValues))]
         public static RotaryMode INDEX => new RotaryMode(RotaryModeValues.INDEX);
-        /// <summary>
-		﻿/// position of the axis is being interpolated.
-        /// </summary>
-		/// <remarks>
-		/// <list type="bullet">
-		/// <item><b>Introduced</b>: <see href="https://model.mtconnect.org/#_Version_1.1">v1.1</see></item>
-		/// </list>
-		/// </remarks>
+		/// <inheritdoc cref="RotaryModeValues.CONTOUR" />
 		[ObservationalValue(typeof(RotaryModeValues))]
         public static RotaryMode CONTOUR => new RotaryMode(RotaryModeValues.CONTOUR);
 

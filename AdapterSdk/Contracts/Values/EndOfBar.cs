@@ -34,24 +34,10 @@ namespace Mtconnect.AdapterSdk.DataItemValues
 
 		public EndOfBar(EndOfBarValues value) : this(value.ToString()) { }
 
-        /// <summary>
-		﻿/// <see cref="EndOfBar">EndOfBar</see> has been reached.
-        /// </summary>
-		/// <remarks>
-		/// <list type="bullet">
-		/// <item><b>Introduced</b>: <see href="https://model.mtconnect.org/#_Version_1.3">v1.3</see></item>
-		/// </list>
-		/// </remarks>
+		/// <inheritdoc cref="EndOfBarValues.YES" />
 		[ObservationalValue(typeof(EndOfBarValues))]
         public static EndOfBar YES => new EndOfBar(EndOfBarValues.YES);
-        /// <summary>
-		﻿/// <see cref="EndOfBar">EndOfBar</see> has not been reached.
-        /// </summary>
-		/// <remarks>
-		/// <list type="bullet">
-		/// <item><b>Introduced</b>: <see href="https://model.mtconnect.org/#_Version_1.3">v1.3</see></item>
-		/// </list>
-		/// </remarks>
+		/// <inheritdoc cref="EndOfBarValues.NO" />
 		[ObservationalValue(typeof(EndOfBarValues))]
         public static EndOfBar NO => new EndOfBar(EndOfBarValues.NO);
 

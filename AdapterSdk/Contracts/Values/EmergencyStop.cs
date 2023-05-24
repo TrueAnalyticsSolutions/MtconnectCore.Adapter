@@ -34,24 +34,10 @@ namespace Mtconnect.AdapterSdk.DataItemValues
 
 		public EmergencyStop(EmergencyStopValues value) : this(value.ToString()) { }
 
-        /// <summary>
-		﻿/// emergency stop circuit is complete and the piece of equipment, component, or composition is allowed to operate. 
-        /// </summary>
-		/// <remarks>
-		/// <list type="bullet">
-		/// <item><b>Introduced</b>: <see href="https://model.mtconnect.org/#_Version_1.1">v1.1</see></item>
-		/// </list>
-		/// </remarks>
+		/// <inheritdoc cref="EmergencyStopValues.ARMED" />
 		[ObservationalValue(typeof(EmergencyStopValues))]
         public static EmergencyStop ARMED => new EmergencyStop(EmergencyStopValues.ARMED);
-        /// <summary>
-		﻿/// operation of the piece of equipment, component, or composition is inhibited.
-        /// </summary>
-		/// <remarks>
-		/// <list type="bullet">
-		/// <item><b>Introduced</b>: <see href="https://model.mtconnect.org/#_Version_1.1">v1.1</see></item>
-		/// </list>
-		/// </remarks>
+		/// <inheritdoc cref="EmergencyStopValues.TRIGGERED" />
 		[ObservationalValue(typeof(EmergencyStopValues))]
         public static EmergencyStop TRIGGERED => new EmergencyStop(EmergencyStopValues.TRIGGERED);
 

@@ -36,49 +36,19 @@ namespace Mtconnect.AdapterSdk.DataItemValues
 
 		public Direction(DirectionValues value) : this(value.ToString()) { }
 
-        /// <summary>
-		﻿/// clockwise rotation using the right-hand rule.
-        /// </summary>
-		/// <remarks>
-		/// <list type="bullet">
-		/// <item><b>Introduced</b>: <see href="https://model.mtconnect.org/#_Version_1.0">v1.0</see></item>
-		/// <item><b>Deprecated</b>: <see href="https://model.mtconnect.org/#_Version_1.4">v1.4</see></item>
-		/// </list>
-		/// </remarks>
+		/// <inheritdoc cref="DirectionValues.CLOCKWISE" />
 		[Obsolete("Deprecated in v1.4 according to https://model.mtconnect.org/#_Version_1.4")]
 		[ObservationalValue(typeof(DirectionValues))]
         public static Direction CLOCKWISE => new Direction(DirectionValues.CLOCKWISE);
-        /// <summary>
-		﻿/// counter-clockwise rotation using the right-hand rule.
-        /// </summary>
-		/// <remarks>
-		/// <list type="bullet">
-		/// <item><b>Introduced</b>: <see href="https://model.mtconnect.org/#_Version_1.0">v1.0</see></item>
-		/// <item><b>Deprecated</b>: <see href="https://model.mtconnect.org/#_Version_1.4">v1.4</see></item>
-		/// </list>
-		/// </remarks>
+		/// <inheritdoc cref="DirectionValues.COUNTER_CLOCKWISE" />
 		[Obsolete("Deprecated in v1.4 according to https://model.mtconnect.org/#_Version_1.4")]
 		[ObservationalValue(typeof(DirectionValues))]
         public static Direction COUNTER_CLOCKWISE => new Direction(DirectionValues.COUNTER_CLOCKWISE);
-        /// <summary>
-		﻿        /// </summary>
-		/// <remarks>
-		/// <list type="bullet">
-		/// <item><b>Introduced</b>: <see href="https://model.mtconnect.org/#_Version_1.2">v1.2</see></item>
-		/// <item><b>Deprecated</b>: <see href="https://model.mtconnect.org/#_Version_1.4">v1.4</see></item>
-		/// </list>
-		/// </remarks>
+		/// <inheritdoc cref="DirectionValues.POSITIVE" />
 		[Obsolete("Deprecated in v1.4 according to https://model.mtconnect.org/#_Version_1.4")]
 		[ObservationalValue(typeof(DirectionValues))]
         public static Direction POSITIVE => new Direction(DirectionValues.POSITIVE);
-        /// <summary>
-		﻿        /// </summary>
-		/// <remarks>
-		/// <list type="bullet">
-		/// <item><b>Introduced</b>: <see href="https://model.mtconnect.org/#_Version_1.2">v1.2</see></item>
-		/// <item><b>Deprecated</b>: <see href="https://model.mtconnect.org/#_Version_1.4">v1.4</see></item>
-		/// </list>
-		/// </remarks>
+		/// <inheritdoc cref="DirectionValues.NEGATIVE" />
 		[Obsolete("Deprecated in v1.4 according to https://model.mtconnect.org/#_Version_1.4")]
 		[ObservationalValue(typeof(DirectionValues))]
         public static Direction NEGATIVE => new Direction(DirectionValues.NEGATIVE);

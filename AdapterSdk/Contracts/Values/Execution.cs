@@ -34,94 +34,31 @@ namespace Mtconnect.AdapterSdk.DataItemValues
 
 		public Execution(ExecutionValues value) : this(value.ToString()) { }
 
-        /// <summary>
-		﻿/// <see cref="Component">Component</see> is ready to execute instructions.  It is currently idle.
-        /// </summary>
-		/// <remarks>
-		/// <list type="bullet">
-		/// <item><b>Introduced</b>: <see href="https://model.mtconnect.org/#_Version_1.0">v1.0</see></item>
-		/// </list>
-		/// </remarks>
+		/// <inheritdoc cref="ExecutionValues.READY" />
 		[ObservationalValue(typeof(ExecutionValues))]
         public static Execution READY => new Execution(ExecutionValues.READY);
-        /// <summary>
-		﻿/// <see cref="Component">Component</see> is actively executing an instruction.
-        /// </summary>
-		/// <remarks>
-		/// <list type="bullet">
-		/// <item><b>Introduced</b>: <see href="https://model.mtconnect.org/#_Version_1.0">v1.0</see></item>
-		/// </list>
-		/// </remarks>
+		/// <inheritdoc cref="ExecutionValues.ACTIVE" />
 		[ObservationalValue(typeof(ExecutionValues))]
         public static Execution ACTIVE => new Execution(ExecutionValues.ACTIVE);
-        /// <summary>
-		﻿/// <see cref="Component">Component</see> suspends the execution of the program due to an external signal.  Action is required to resume execution.
-        /// </summary>
-		/// <remarks>
-		/// <list type="bullet">
-		/// <item><b>Introduced</b>: <see href="https://model.mtconnect.org/#_Version_1.0">v1.0</see></item>
-		/// </list>
-		/// </remarks>
+		/// <inheritdoc cref="ExecutionValues.INTERRUPTED" />
 		[ObservationalValue(typeof(ExecutionValues))]
         public static Execution INTERRUPTED => new Execution(ExecutionValues.INTERRUPTED);
-        /// <summary>
-		﻿/// motion of the active axes are commanded to stop at their current position.
-        /// </summary>
-		/// <remarks>
-		/// <list type="bullet">
-		/// <item><b>Introduced</b>: <see href="https://model.mtconnect.org/#_Version_1.3">v1.3</see></item>
-		/// </list>
-		/// </remarks>
+		/// <inheritdoc cref="ExecutionValues.FEED_HOLD" />
 		[ObservationalValue(typeof(ExecutionValues))]
         public static Execution FEED_HOLD => new Execution(ExecutionValues.FEED_HOLD);
-        /// <summary>
-		﻿/// <see cref="Component">Component</see> program is not <c>READY</c> to execute.
-        /// </summary>
-		/// <remarks>
-		/// <list type="bullet">
-		/// <item><b>Introduced</b>: <see href="https://model.mtconnect.org/#_Version_1.0">v1.0</see></item>
-		/// </list>
-		/// </remarks>
+		/// <inheritdoc cref="ExecutionValues.STOPPED" />
 		[ObservationalValue(typeof(ExecutionValues))]
         public static Execution STOPPED => new Execution(ExecutionValues.STOPPED);
-        /// <summary>
-		﻿/// command from the program has intentionally interrupted execution.  The <see cref="Component">Component</see> <b>MAY</b> have another state that indicates if the execution is interrupted or the execution ignores the interrupt instruction.
-        /// </summary>
-		/// <remarks>
-		/// <list type="bullet">
-		/// <item><b>Introduced</b>: <see href="https://model.mtconnect.org/#_Version_1.3">v1.3</see></item>
-		/// </list>
-		/// </remarks>
+		/// <inheritdoc cref="ExecutionValues.OPTIONAL_STOP" />
 		[ObservationalValue(typeof(ExecutionValues))]
         public static Execution OPTIONAL_STOP => new Execution(ExecutionValues.OPTIONAL_STOP);
-        /// <summary>
-		﻿/// command from the program has intentionally interrupted execution.  Action is required to resume execution.
-        /// </summary>
-		/// <remarks>
-		/// <list type="bullet">
-		/// <item><b>Introduced</b>: <see href="https://model.mtconnect.org/#_Version_1.3">v1.3</see></item>
-		/// </list>
-		/// </remarks>
+		/// <inheritdoc cref="ExecutionValues.PROGRAM_STOPPED" />
 		[ObservationalValue(typeof(ExecutionValues))]
         public static Execution PROGRAM_STOPPED => new Execution(ExecutionValues.PROGRAM_STOPPED);
-        /// <summary>
-		﻿/// program completed execution.
-        /// </summary>
-		/// <remarks>
-		/// <list type="bullet">
-		/// <item><b>Introduced</b>: <see href="https://model.mtconnect.org/#_Version_1.3">v1.3</see></item>
-		/// </list>
-		/// </remarks>
+		/// <inheritdoc cref="ExecutionValues.PROGRAM_COMPLETED" />
 		[ObservationalValue(typeof(ExecutionValues))]
         public static Execution PROGRAM_COMPLETED => new Execution(ExecutionValues.PROGRAM_COMPLETED);
-        /// <summary>
-		﻿/// <see cref="Component">Component</see> suspends execution while a secondary operation executes.  Execution resumes automatically once the secondary operation completes.
-        /// </summary>
-		/// <remarks>
-		/// <list type="bullet">
-		/// <item><b>Introduced</b>: <see href="https://model.mtconnect.org/#_Version_1.5">v1.5</see></item>
-		/// </list>
-		/// </remarks>
+		/// <inheritdoc cref="ExecutionValues.WAIT" />
 		[ObservationalValue(typeof(ExecutionValues))]
         public static Execution WAIT => new Execution(ExecutionValues.WAIT);
 

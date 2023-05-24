@@ -34,34 +34,13 @@ namespace Mtconnect.AdapterSdk.DataItemValues
 
 		public ProgramEdit(ProgramEditValues value) : this(value.ToString()) { }
 
-        /// <summary>
-		﻿/// <see cref="Controller">Controller</see> is in the program edit mode.
-        /// </summary>
-		/// <remarks>
-		/// <list type="bullet">
-		/// <item><b>Introduced</b>: <see href="https://model.mtconnect.org/#_Version_1.3">v1.3</see></item>
-		/// </list>
-		/// </remarks>
+		/// <inheritdoc cref="ProgramEditValues.ACTIVE" />
 		[ObservationalValue(typeof(ProgramEditValues))]
         public static ProgramEdit ACTIVE => new ProgramEdit(ProgramEditValues.ACTIVE);
-        /// <summary>
-		﻿/// <see cref="Controller">Controller</see> is capable of entering the program edit mode and no function is inhibiting a change to that mode.
-        /// </summary>
-		/// <remarks>
-		/// <list type="bullet">
-		/// <item><b>Introduced</b>: <see href="https://model.mtconnect.org/#_Version_1.3">v1.3</see></item>
-		/// </list>
-		/// </remarks>
+		/// <inheritdoc cref="ProgramEditValues.READY" />
 		[ObservationalValue(typeof(ProgramEditValues))]
         public static ProgramEdit READY => new ProgramEdit(ProgramEditValues.READY);
-        /// <summary>
-		﻿/// <see cref="Controller">Controller</see> is being inhibited by a function from entering the program edit mode.
-        /// </summary>
-		/// <remarks>
-		/// <list type="bullet">
-		/// <item><b>Introduced</b>: <see href="https://model.mtconnect.org/#_Version_1.3">v1.3</see></item>
-		/// </list>
-		/// </remarks>
+		/// <inheritdoc cref="ProgramEditValues.NOT_READY" />
 		[ObservationalValue(typeof(ProgramEditValues))]
         public static ProgramEdit NOT_READY => new ProgramEdit(ProgramEditValues.NOT_READY);
 

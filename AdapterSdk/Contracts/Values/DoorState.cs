@@ -34,34 +34,13 @@ namespace Mtconnect.AdapterSdk.DataItemValues
 
 		public DoorState(DoorStateValues value) : this(value.ToString()) { }
 
-        /// <summary>
-		﻿/// <see cref="Door">Door</see> is open to the point of a positive confirmation.
-        /// </summary>
-		/// <remarks>
-		/// <list type="bullet">
-		/// <item><b>Introduced</b>: <see href="https://model.mtconnect.org/#_Version_1.1">v1.1</see></item>
-		/// </list>
-		/// </remarks>
+		/// <inheritdoc cref="DoorStateValues.OPEN" />
 		[ObservationalValue(typeof(DoorStateValues))]
         public static DoorState OPEN => new DoorState(DoorStateValues.OPEN);
-        /// <summary>
-		﻿/// <see cref="Door">Door</see> is closed to the point of a positive confirmation.
-        /// </summary>
-		/// <remarks>
-		/// <list type="bullet">
-		/// <item><b>Introduced</b>: <see href="https://model.mtconnect.org/#_Version_1.1">v1.1</see></item>
-		/// </list>
-		/// </remarks>
+		/// <inheritdoc cref="DoorStateValues.CLOSED" />
 		[ObservationalValue(typeof(DoorStateValues))]
         public static DoorState CLOSED => new DoorState(DoorStateValues.CLOSED);
-        /// <summary>
-		﻿/// <see cref="Door">Door</see> is not closed to the point of a positive confirmation and not open to the point of a positive confirmation.   It is in an intermediate position.
-        /// </summary>
-		/// <remarks>
-		/// <list type="bullet">
-		/// <item><b>Introduced</b>: <see href="https://model.mtconnect.org/#_Version_1.2">v1.2</see></item>
-		/// </list>
-		/// </remarks>
+		/// <inheritdoc cref="DoorStateValues.UNLATCHED" />
 		[ObservationalValue(typeof(DoorStateValues))]
         public static DoorState UNLATCHED => new DoorState(DoorStateValues.UNLATCHED);
 

@@ -34,54 +34,19 @@ namespace Mtconnect.AdapterSdk.DataItemValues
 
 		public FunctionalMode(FunctionalModeValues value) : this(value.ToString()) { }
 
-        /// <summary>
-		﻿/// <see cref="Component">Component</see> is currently producing product, ready to produce product, or its current intended use is to be producing product.
-        /// </summary>
-		/// <remarks>
-		/// <list type="bullet">
-		/// <item><b>Introduced</b>: <see href="https://model.mtconnect.org/#_Version_1.3">v1.3</see></item>
-		/// </list>
-		/// </remarks>
+		/// <inheritdoc cref="FunctionalModeValues.PRODUCTION" />
 		[ObservationalValue(typeof(FunctionalModeValues))]
         public static FunctionalMode PRODUCTION => new FunctionalMode(FunctionalModeValues.PRODUCTION);
-        /// <summary>
-		﻿/// <see cref="Component">Component</see> is not currently producing product.   It is being prepared or modified to begin production of product.
-        /// </summary>
-		/// <remarks>
-		/// <list type="bullet">
-		/// <item><b>Introduced</b>: <see href="https://model.mtconnect.org/#_Version_1.3">v1.3</see></item>
-		/// </list>
-		/// </remarks>
+		/// <inheritdoc cref="FunctionalModeValues.SETUP" />
 		[ObservationalValue(typeof(FunctionalModeValues))]
         public static FunctionalMode SETUP => new FunctionalMode(FunctionalModeValues.SETUP);
-        /// <summary>
-		﻿/// <see cref="Component">Component</see> is not currently producing product.  Typically, it has completed the production of a product and is being modified or returned to a neutral state such that it may then be prepared to begin production of a different product.
-        /// </summary>
-		/// <remarks>
-		/// <list type="bullet">
-		/// <item><b>Introduced</b>: <see href="https://model.mtconnect.org/#_Version_1.3">v1.3</see></item>
-		/// </list>
-		/// </remarks>
+		/// <inheritdoc cref="FunctionalModeValues.TEARDOWN" />
 		[ObservationalValue(typeof(FunctionalModeValues))]
         public static FunctionalMode TEARDOWN => new FunctionalMode(FunctionalModeValues.TEARDOWN);
-        /// <summary>
-		﻿/// <see cref="Component">Component</see> is not currently producing product.  It is currently being repaired, waiting to be repaired, or has not yet been returned to a normal production status after maintenance has been performed.
-        /// </summary>
-		/// <remarks>
-		/// <list type="bullet">
-		/// <item><b>Introduced</b>: <see href="https://model.mtconnect.org/#_Version_1.3">v1.3</see></item>
-		/// </list>
-		/// </remarks>
+		/// <inheritdoc cref="FunctionalModeValues.MAINTENANCE" />
 		[ObservationalValue(typeof(FunctionalModeValues))]
         public static FunctionalMode MAINTENANCE => new FunctionalMode(FunctionalModeValues.MAINTENANCE);
-        /// <summary>
-		﻿/// <see cref="Component">Component</see> is being used to prove-out a new process, testing of equipment or processes, or any other active use that does not result in the production of product.
-        /// </summary>
-		/// <remarks>
-		/// <list type="bullet">
-		/// <item><b>Introduced</b>: <see href="https://model.mtconnect.org/#_Version_1.3">v1.3</see></item>
-		/// </list>
-		/// </remarks>
+		/// <inheritdoc cref="FunctionalModeValues.PROCESS_DEVELOPMENT" />
 		[ObservationalValue(typeof(FunctionalModeValues))]
         public static FunctionalMode PROCESS_DEVELOPMENT => new FunctionalMode(FunctionalModeValues.PROCESS_DEVELOPMENT);
 

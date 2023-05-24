@@ -34,34 +34,13 @@ namespace Mtconnect.AdapterSdk.DataItemValues
 
 		public OperatingMode(OperatingModeValues value) : this(value.ToString()) { }
 
-        /// <summary>
-		﻿/// automatically execute instructions from a recipe or program.  > Note: Setpoint comes from a recipe.
-        /// </summary>
-		/// <remarks>
-		/// <list type="bullet">
-		/// <item><b>Introduced</b>: <see href="https://model.mtconnect.org/#_Version_2.0">v2.0</see></item>
-		/// </list>
-		/// </remarks>
+		/// <inheritdoc cref="OperatingModeValues.AUTOMATIC" />
 		[ObservationalValue(typeof(OperatingModeValues))]
         public static OperatingMode AUTOMATIC => new OperatingMode(OperatingModeValues.AUTOMATIC);
-        /// <summary>
-		﻿/// execute instructions from an external agent or person.  > Note 1 to entry: Valve or switch is manipulated by an agent/person.  > Note 2 to entry: Direct control of the PID output. % of the range: A user manually sets the % output, not the setpoint.
-        /// </summary>
-		/// <remarks>
-		/// <list type="bullet">
-		/// <item><b>Introduced</b>: <see href="https://model.mtconnect.org/#_Version_2.0">v2.0</see></item>
-		/// </list>
-		/// </remarks>
+		/// <inheritdoc cref="OperatingModeValues.MANUAL" />
 		[ObservationalValue(typeof(OperatingModeValues))]
         public static OperatingMode MANUAL => new OperatingMode(OperatingModeValues.MANUAL);
-        /// <summary>
-		﻿/// executes a single instruction from a recipe or program.  > Note 1 to entry: Setpoint is entered and fixed, but the PID is controlling.  > Note 2 to entry: Still goes through the PID control system.  > Note 3 to entry: Manual fixed entry from a recipe.
-        /// </summary>
-		/// <remarks>
-		/// <list type="bullet">
-		/// <item><b>Introduced</b>: <see href="https://model.mtconnect.org/#_Version_2.0">v2.0</see></item>
-		/// </list>
-		/// </remarks>
+		/// <inheritdoc cref="OperatingModeValues.SEMI_AUTOMATIC" />
 		[ObservationalValue(typeof(OperatingModeValues))]
         public static OperatingMode SEMI_AUTOMATIC => new OperatingMode(OperatingModeValues.SEMI_AUTOMATIC);
 

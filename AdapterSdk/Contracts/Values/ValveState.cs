@@ -34,44 +34,16 @@ namespace Mtconnect.AdapterSdk.DataItemValues
 
 		public ValveState(ValveStateValues value) : this(value.ToString()) { }
 
-        /// <summary>
-		﻿/// <see cref="ValveState">ValveState</see> where flow is allowed and the aperture is static.  > Note: For a binary value, <c>OPEN</c> indicates the valve has the maximum possible aperture.
-        /// </summary>
-		/// <remarks>
-		/// <list type="bullet">
-		/// <item><b>Introduced</b>: <see href="https://model.mtconnect.org/#_Version_1.8">v1.8</see></item>
-		/// </list>
-		/// </remarks>
+		/// <inheritdoc cref="ValveStateValues.OPEN" />
 		[ObservationalValue(typeof(ValveStateValues))]
         public static ValveState OPEN => new ValveState(ValveStateValues.OPEN);
-        /// <summary>
-		﻿/// valve is transitioning from a <c>CLOSED</c> state to an <c>OPEN</c> state.
-        /// </summary>
-		/// <remarks>
-		/// <list type="bullet">
-		/// <item><b>Introduced</b>: <see href="https://model.mtconnect.org/#_Version_1.8">v1.8</see></item>
-		/// </list>
-		/// </remarks>
+		/// <inheritdoc cref="ValveStateValues.OPENING" />
 		[ObservationalValue(typeof(ValveStateValues))]
         public static ValveState OPENING => new ValveState(ValveStateValues.OPENING);
-        /// <summary>
-		﻿/// <see cref="ValveState">ValveState</see> where flow is not possible, the aperture is static, and the valve is completely shut.
-        /// </summary>
-		/// <remarks>
-		/// <list type="bullet">
-		/// <item><b>Introduced</b>: <see href="https://model.mtconnect.org/#_Version_1.8">v1.8</see></item>
-		/// </list>
-		/// </remarks>
+		/// <inheritdoc cref="ValveStateValues.CLOSED" />
 		[ObservationalValue(typeof(ValveStateValues))]
         public static ValveState CLOSED => new ValveState(ValveStateValues.CLOSED);
-        /// <summary>
-		﻿/// valve is transitioning from an <c>OPEN</c> state to a <c>CLOSED</c> state.
-        /// </summary>
-		/// <remarks>
-		/// <list type="bullet">
-		/// <item><b>Introduced</b>: <see href="https://model.mtconnect.org/#_Version_1.8">v1.8</see></item>
-		/// </list>
-		/// </remarks>
+		/// <inheritdoc cref="ValveStateValues.CLOSING" />
 		[ObservationalValue(typeof(ValveStateValues))]
         public static ValveState CLOSING => new ValveState(ValveStateValues.CLOSING);
 

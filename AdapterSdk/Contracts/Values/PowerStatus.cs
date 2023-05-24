@@ -36,25 +36,11 @@ namespace Mtconnect.AdapterSdk.DataItemValues
 
 		public PowerStatus(PowerStatusValues value) : this(value.ToString()) { }
 
-        /// <summary>
-		﻿        /// </summary>
-		/// <remarks>
-		/// <list type="bullet">
-		/// <item><b>Introduced</b>: <see href="https://model.mtconnect.org/#_Version_1.0">v1.0</see></item>
-		/// <item><b>Deprecated</b>: <see href="https://model.mtconnect.org/#_Version_1.1">v1.1</see></item>
-		/// </list>
-		/// </remarks>
+		/// <inheritdoc cref="PowerStatusValues.ON" />
 		[Obsolete("Deprecated in v1.1 according to https://model.mtconnect.org/#_Version_1.1")]
 		[ObservationalValue(typeof(PowerStatusValues))]
         public static PowerStatus ON => new PowerStatus(PowerStatusValues.ON);
-        /// <summary>
-		﻿        /// </summary>
-		/// <remarks>
-		/// <list type="bullet">
-		/// <item><b>Introduced</b>: <see href="https://model.mtconnect.org/#_Version_1.0">v1.0</see></item>
-		/// <item><b>Deprecated</b>: <see href="https://model.mtconnect.org/#_Version_1.1">v1.1</see></item>
-		/// </list>
-		/// </remarks>
+		/// <inheritdoc cref="PowerStatusValues.OFF" />
 		[Obsolete("Deprecated in v1.1 according to https://model.mtconnect.org/#_Version_1.1")]
 		[ObservationalValue(typeof(PowerStatusValues))]
         public static PowerStatus OFF => new PowerStatus(PowerStatusValues.OFF);

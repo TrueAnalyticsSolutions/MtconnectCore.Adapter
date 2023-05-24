@@ -34,64 +34,22 @@ namespace Mtconnect.AdapterSdk.DataItemValues
 
 		public ProcessState(ProcessStateValues value) : this(value.ToString()) { }
 
-        /// <summary>
-		﻿/// device is preparing to execute the process occurrence.
-        /// </summary>
-		/// <remarks>
-		/// <list type="bullet">
-		/// <item><b>Introduced</b>: <see href="https://model.mtconnect.org/#_Version_1.8">v1.8</see></item>
-		/// </list>
-		/// </remarks>
+		/// <inheritdoc cref="ProcessStateValues.INITIALIZING" />
 		[ObservationalValue(typeof(ProcessStateValues))]
         public static ProcessState INITIALIZING => new ProcessState(ProcessStateValues.INITIALIZING);
-        /// <summary>
-		﻿/// process occurrence is ready to be executed.
-        /// </summary>
-		/// <remarks>
-		/// <list type="bullet">
-		/// <item><b>Introduced</b>: <see href="https://model.mtconnect.org/#_Version_1.8">v1.8</see></item>
-		/// </list>
-		/// </remarks>
+		/// <inheritdoc cref="ProcessStateValues.READY" />
 		[ObservationalValue(typeof(ProcessStateValues))]
         public static ProcessState READY => new ProcessState(ProcessStateValues.READY);
-        /// <summary>
-		﻿/// process occurrence is actively executing.
-        /// </summary>
-		/// <remarks>
-		/// <list type="bullet">
-		/// <item><b>Introduced</b>: <see href="https://model.mtconnect.org/#_Version_1.8">v1.8</see></item>
-		/// </list>
-		/// </remarks>
+		/// <inheritdoc cref="ProcessStateValues.ACTIVE" />
 		[ObservationalValue(typeof(ProcessStateValues))]
         public static ProcessState ACTIVE => new ProcessState(ProcessStateValues.ACTIVE);
-        /// <summary>
-		﻿/// process occurrence is now finished.
-        /// </summary>
-		/// <remarks>
-		/// <list type="bullet">
-		/// <item><b>Introduced</b>: <see href="https://model.mtconnect.org/#_Version_1.8">v1.8</see></item>
-		/// </list>
-		/// </remarks>
+		/// <inheritdoc cref="ProcessStateValues.COMPLETE" />
 		[ObservationalValue(typeof(ProcessStateValues))]
         public static ProcessState COMPLETE => new ProcessState(ProcessStateValues.COMPLETE);
-        /// <summary>
-		﻿/// process occurrence has been stopped and may be resumed.
-        /// </summary>
-		/// <remarks>
-		/// <list type="bullet">
-		/// <item><b>Introduced</b>: <see href="https://model.mtconnect.org/#_Version_1.8">v1.8</see></item>
-		/// </list>
-		/// </remarks>
+		/// <inheritdoc cref="ProcessStateValues.INTERRUPTED" />
 		[ObservationalValue(typeof(ProcessStateValues))]
         public static ProcessState INTERRUPTED => new ProcessState(ProcessStateValues.INTERRUPTED);
-        /// <summary>
-		﻿/// process occurrence has come to a premature end and cannot be resumed.
-        /// </summary>
-		/// <remarks>
-		/// <list type="bullet">
-		/// <item><b>Introduced</b>: <see href="https://model.mtconnect.org/#_Version_1.8">v1.8</see></item>
-		/// </list>
-		/// </remarks>
+		/// <inheritdoc cref="ProcessStateValues.ABORTED" />
 		[ObservationalValue(typeof(ProcessStateValues))]
         public static ProcessState ABORTED => new ProcessState(ProcessStateValues.ABORTED);
 

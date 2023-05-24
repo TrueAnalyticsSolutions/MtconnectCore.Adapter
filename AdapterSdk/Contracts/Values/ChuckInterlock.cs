@@ -34,24 +34,10 @@ namespace Mtconnect.AdapterSdk.DataItemValues
 
 		public ChuckInterlock(ChuckInterlockValues value) : this(value.ToString()) { }
 
-        /// <summary>
-		﻿/// chuck cannot be unclamped.
-        /// </summary>
-		/// <remarks>
-		/// <list type="bullet">
-		/// <item><b>Introduced</b>: <see href="https://model.mtconnect.org/#_Version_1.3">v1.3</see></item>
-		/// </list>
-		/// </remarks>
+		/// <inheritdoc cref="ChuckInterlockValues.ACTIVE" />
 		[ObservationalValue(typeof(ChuckInterlockValues))]
         public static ChuckInterlock ACTIVE => new ChuckInterlock(ChuckInterlockValues.ACTIVE);
-        /// <summary>
-		﻿/// chuck can be unclamped.
-        /// </summary>
-		/// <remarks>
-		/// <list type="bullet">
-		/// <item><b>Introduced</b>: <see href="https://model.mtconnect.org/#_Version_1.3">v1.3</see></item>
-		/// </list>
-		/// </remarks>
+		/// <inheritdoc cref="ChuckInterlockValues.INACTIVE" />
 		[ObservationalValue(typeof(ChuckInterlockValues))]
         public static ChuckInterlock INACTIVE => new ChuckInterlock(ChuckInterlockValues.INACTIVE);
 

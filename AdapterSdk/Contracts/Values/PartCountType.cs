@@ -34,24 +34,10 @@ namespace Mtconnect.AdapterSdk.DataItemValues
 
 		public PartCountType(PartCountTypeValues value) : this(value.ToString()) { }
 
-        /// <summary>
-		﻿/// count is of individual items.
-        /// </summary>
-		/// <remarks>
-		/// <list type="bullet">
-		/// <item><b>Introduced</b>: <see href="https://model.mtconnect.org/#_Version_2.0">v2.0</see></item>
-		/// </list>
-		/// </remarks>
+		/// <inheritdoc cref="PartCountTypeValues.EACH" />
 		[ObservationalValue(typeof(PartCountTypeValues))]
         public static PartCountType EACH => new PartCountType(PartCountTypeValues.EACH);
-        /// <summary>
-		﻿/// pre-specified group of items.
-        /// </summary>
-		/// <remarks>
-		/// <list type="bullet">
-		/// <item><b>Introduced</b>: <see href="https://model.mtconnect.org/#_Version_2.0">v2.0</see></item>
-		/// </list>
-		/// </remarks>
+		/// <inheritdoc cref="PartCountTypeValues.BATCH" />
 		[ObservationalValue(typeof(PartCountTypeValues))]
         public static PartCountType BATCH => new PartCountType(PartCountTypeValues.BATCH);
 

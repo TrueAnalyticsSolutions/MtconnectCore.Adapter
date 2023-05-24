@@ -34,44 +34,16 @@ namespace Mtconnect.AdapterSdk.DataItemValues
 
 		public BatteryState(BatteryStateValues value) : this(value.ToString()) { }
 
-        /// <summary>
-		﻿/// <see cref="Component">Component</see> is at it's maximum rated charge level.
-        /// </summary>
-		/// <remarks>
-		/// <list type="bullet">
-		/// <item><b>Introduced</b>: <see href="https://model.mtconnect.org/#_Version_2.1">v2.1</see></item>
-		/// </list>
-		/// </remarks>
+		/// <inheritdoc cref="BatteryStateValues.CHARGED" />
 		[ObservationalValue(typeof(BatteryStateValues))]
         public static BatteryState CHARGED => new BatteryState(BatteryStateValues.CHARGED);
-        /// <summary>
-		﻿/// <see cref="Component">Component</see>'s charge is increasing.
-        /// </summary>
-		/// <remarks>
-		/// <list type="bullet">
-		/// <item><b>Introduced</b>: <see href="https://model.mtconnect.org/#_Version_2.1">v2.1</see></item>
-		/// </list>
-		/// </remarks>
+		/// <inheritdoc cref="BatteryStateValues.CHARGING" />
 		[ObservationalValue(typeof(BatteryStateValues))]
         public static BatteryState CHARGING => new BatteryState(BatteryStateValues.CHARGING);
-        /// <summary>
-		﻿/// <see cref="Component">Component</see>'s charge is decreasing.
-        /// </summary>
-		/// <remarks>
-		/// <list type="bullet">
-		/// <item><b>Introduced</b>: <see href="https://model.mtconnect.org/#_Version_2.1">v2.1</see></item>
-		/// </list>
-		/// </remarks>
+		/// <inheritdoc cref="BatteryStateValues.DISCHARGING" />
 		[ObservationalValue(typeof(BatteryStateValues))]
         public static BatteryState DISCHARGING => new BatteryState(BatteryStateValues.DISCHARGING);
-        /// <summary>
-		﻿/// <see cref="Component">Component</see> is at it's minimum charge level.
-        /// </summary>
-		/// <remarks>
-		/// <list type="bullet">
-		/// <item><b>Introduced</b>: <see href="https://model.mtconnect.org/#_Version_2.1">v2.1</see></item>
-		/// </list>
-		/// </remarks>
+		/// <inheritdoc cref="BatteryStateValues.DISCHARGED" />
 		[ObservationalValue(typeof(BatteryStateValues))]
         public static BatteryState DISCHARGED => new BatteryState(BatteryStateValues.DISCHARGED);
 
