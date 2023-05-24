@@ -113,6 +113,16 @@ namespace Mtconnect.AdapterSdk.DataItemValues
 			/// Constructs a new value type for ROTARY.
 			/// </summary>
             public ROTARY(string value) : base(value) { }
+			public ROTARY(DirectionValues value) : base(value) { }
+			
+			/// <summary>
+			/// Implicitly converts the specified <see cref="DirectionValues" /> to an <see cref="Direction"/> value.
+			/// The <see cref="DirectionValues" /> is converted to a string and used to initialize the <see cref="Direction"/> value.
+			/// </summary>
+			/// <param name="value">The <see cref="DirectionValues" /> to convert.</param>
+			/// <returns>An <see cref="Direction"/> value initialized with the specified string in uppercase.</returns>
+			public static implicit operator ROTARY(DirectionValues value)
+				=> new ROTARY(value);
 			
 			/// <summary>
 			/// Implicitly converts the specified string to an <see cref="ROTARY"/> value.
@@ -135,6 +145,16 @@ namespace Mtconnect.AdapterSdk.DataItemValues
 			/// Constructs a new value type for LINEAR.
 			/// </summary>
             public LINEAR(string value) : base(value) { }
+			public LINEAR(DirectionValues value) : base(value) { }
+			
+			/// <summary>
+			/// Implicitly converts the specified <see cref="DirectionValues" /> to an <see cref="Direction"/> value.
+			/// The <see cref="DirectionValues" /> is converted to a string and used to initialize the <see cref="Direction"/> value.
+			/// </summary>
+			/// <param name="value">The <see cref="DirectionValues" /> to convert.</param>
+			/// <returns>An <see cref="Direction"/> value initialized with the specified string in uppercase.</returns>
+			public static implicit operator LINEAR(DirectionValues value)
+				=> new LINEAR(value);
 			
 			/// <summary>
 			/// Implicitly converts the specified string to an <see cref="LINEAR"/> value.

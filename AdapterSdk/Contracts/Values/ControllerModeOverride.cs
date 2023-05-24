@@ -85,6 +85,16 @@ namespace Mtconnect.AdapterSdk.DataItemValues
 			/// Constructs a new value type for DRY_RUN.
 			/// </summary>
             public DRYRUN(string value) : base(value) { }
+			public DRYRUN(ControllerModeOverrideValues value) : base(value) { }
+			
+			/// <summary>
+			/// Implicitly converts the specified <see cref="ControllerModeOverrideValues" /> to an <see cref="ControllerModeOverride"/> value.
+			/// The <see cref="ControllerModeOverrideValues" /> is converted to a string and used to initialize the <see cref="ControllerModeOverride"/> value.
+			/// </summary>
+			/// <param name="value">The <see cref="ControllerModeOverrideValues" /> to convert.</param>
+			/// <returns>An <see cref="ControllerModeOverride"/> value initialized with the specified string in uppercase.</returns>
+			public static implicit operator DRYRUN(ControllerModeOverrideValues value)
+				=> new DRYRUN(value);
 			
 			/// <summary>
 			/// Implicitly converts the specified string to an <see cref="DRYRUN"/> value.
@@ -107,6 +117,16 @@ namespace Mtconnect.AdapterSdk.DataItemValues
 			/// Constructs a new value type for SINGLE_BLOCK.
 			/// </summary>
             public SINGLEBLOCK(string value) : base(value) { }
+			public SINGLEBLOCK(ControllerModeOverrideValues value) : base(value) { }
+			
+			/// <summary>
+			/// Implicitly converts the specified <see cref="ControllerModeOverrideValues" /> to an <see cref="ControllerModeOverride"/> value.
+			/// The <see cref="ControllerModeOverrideValues" /> is converted to a string and used to initialize the <see cref="ControllerModeOverride"/> value.
+			/// </summary>
+			/// <param name="value">The <see cref="ControllerModeOverrideValues" /> to convert.</param>
+			/// <returns>An <see cref="ControllerModeOverride"/> value initialized with the specified string in uppercase.</returns>
+			public static implicit operator SINGLEBLOCK(ControllerModeOverrideValues value)
+				=> new SINGLEBLOCK(value);
 			
 			/// <summary>
 			/// Implicitly converts the specified string to an <see cref="SINGLEBLOCK"/> value.
@@ -129,6 +149,16 @@ namespace Mtconnect.AdapterSdk.DataItemValues
 			/// Constructs a new value type for MACHINE_AXIS_LOCK.
 			/// </summary>
             public MACHINEAXISLOCK(string value) : base(value) { }
+			public MACHINEAXISLOCK(ControllerModeOverrideValues value) : base(value) { }
+			
+			/// <summary>
+			/// Implicitly converts the specified <see cref="ControllerModeOverrideValues" /> to an <see cref="ControllerModeOverride"/> value.
+			/// The <see cref="ControllerModeOverrideValues" /> is converted to a string and used to initialize the <see cref="ControllerModeOverride"/> value.
+			/// </summary>
+			/// <param name="value">The <see cref="ControllerModeOverrideValues" /> to convert.</param>
+			/// <returns>An <see cref="ControllerModeOverride"/> value initialized with the specified string in uppercase.</returns>
+			public static implicit operator MACHINEAXISLOCK(ControllerModeOverrideValues value)
+				=> new MACHINEAXISLOCK(value);
 			
 			/// <summary>
 			/// Implicitly converts the specified string to an <see cref="MACHINEAXISLOCK"/> value.
@@ -151,6 +181,16 @@ namespace Mtconnect.AdapterSdk.DataItemValues
 			/// Constructs a new value type for OPTIONAL_STOP.
 			/// </summary>
             public OPTIONALSTOP(string value) : base(value) { }
+			public OPTIONALSTOP(ControllerModeOverrideValues value) : base(value) { }
+			
+			/// <summary>
+			/// Implicitly converts the specified <see cref="ControllerModeOverrideValues" /> to an <see cref="ControllerModeOverride"/> value.
+			/// The <see cref="ControllerModeOverrideValues" /> is converted to a string and used to initialize the <see cref="ControllerModeOverride"/> value.
+			/// </summary>
+			/// <param name="value">The <see cref="ControllerModeOverrideValues" /> to convert.</param>
+			/// <returns>An <see cref="ControllerModeOverride"/> value initialized with the specified string in uppercase.</returns>
+			public static implicit operator OPTIONALSTOP(ControllerModeOverrideValues value)
+				=> new OPTIONALSTOP(value);
 			
 			/// <summary>
 			/// Implicitly converts the specified string to an <see cref="OPTIONALSTOP"/> value.
@@ -173,6 +213,16 @@ namespace Mtconnect.AdapterSdk.DataItemValues
 			/// Constructs a new value type for TOOL_CHANGE_STOP.
 			/// </summary>
             public TOOLCHANGESTOP(string value) : base(value) { }
+			public TOOLCHANGESTOP(ControllerModeOverrideValues value) : base(value) { }
+			
+			/// <summary>
+			/// Implicitly converts the specified <see cref="ControllerModeOverrideValues" /> to an <see cref="ControllerModeOverride"/> value.
+			/// The <see cref="ControllerModeOverrideValues" /> is converted to a string and used to initialize the <see cref="ControllerModeOverride"/> value.
+			/// </summary>
+			/// <param name="value">The <see cref="ControllerModeOverrideValues" /> to convert.</param>
+			/// <returns>An <see cref="ControllerModeOverride"/> value initialized with the specified string in uppercase.</returns>
+			public static implicit operator TOOLCHANGESTOP(ControllerModeOverrideValues value)
+				=> new TOOLCHANGESTOP(value);
 			
 			/// <summary>
 			/// Implicitly converts the specified string to an <see cref="TOOLCHANGESTOP"/> value.

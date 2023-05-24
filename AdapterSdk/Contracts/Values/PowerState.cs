@@ -85,6 +85,16 @@ namespace Mtconnect.AdapterSdk.DataItemValues
 			/// Constructs a new value type for LINE.
 			/// </summary>
             public LINE(string value) : base(value) { }
+			public LINE(PowerStateValues value) : base(value) { }
+			
+			/// <summary>
+			/// Implicitly converts the specified <see cref="PowerStateValues" /> to an <see cref="PowerState"/> value.
+			/// The <see cref="PowerStateValues" /> is converted to a string and used to initialize the <see cref="PowerState"/> value.
+			/// </summary>
+			/// <param name="value">The <see cref="PowerStateValues" /> to convert.</param>
+			/// <returns>An <see cref="PowerState"/> value initialized with the specified string in uppercase.</returns>
+			public static implicit operator LINE(PowerStateValues value)
+				=> new LINE(value);
 			
 			/// <summary>
 			/// Implicitly converts the specified string to an <see cref="LINE"/> value.
@@ -107,6 +117,16 @@ namespace Mtconnect.AdapterSdk.DataItemValues
 			/// Constructs a new value type for CONTROL.
 			/// </summary>
             public CONTROL(string value) : base(value) { }
+			public CONTROL(PowerStateValues value) : base(value) { }
+			
+			/// <summary>
+			/// Implicitly converts the specified <see cref="PowerStateValues" /> to an <see cref="PowerState"/> value.
+			/// The <see cref="PowerStateValues" /> is converted to a string and used to initialize the <see cref="PowerState"/> value.
+			/// </summary>
+			/// <param name="value">The <see cref="PowerStateValues" /> to convert.</param>
+			/// <returns>An <see cref="PowerState"/> value initialized with the specified string in uppercase.</returns>
+			public static implicit operator CONTROL(PowerStateValues value)
+				=> new CONTROL(value);
 			
 			/// <summary>
 			/// Implicitly converts the specified string to an <see cref="CONTROL"/> value.

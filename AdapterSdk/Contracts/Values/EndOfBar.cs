@@ -85,6 +85,16 @@ namespace Mtconnect.AdapterSdk.DataItemValues
 			/// Constructs a new value type for PRIMARY.
 			/// </summary>
             public PRIMARY(string value) : base(value) { }
+			public PRIMARY(EndOfBarValues value) : base(value) { }
+			
+			/// <summary>
+			/// Implicitly converts the specified <see cref="EndOfBarValues" /> to an <see cref="EndOfBar"/> value.
+			/// The <see cref="EndOfBarValues" /> is converted to a string and used to initialize the <see cref="EndOfBar"/> value.
+			/// </summary>
+			/// <param name="value">The <see cref="EndOfBarValues" /> to convert.</param>
+			/// <returns>An <see cref="EndOfBar"/> value initialized with the specified string in uppercase.</returns>
+			public static implicit operator PRIMARY(EndOfBarValues value)
+				=> new PRIMARY(value);
 			
 			/// <summary>
 			/// Implicitly converts the specified string to an <see cref="PRIMARY"/> value.
@@ -107,6 +117,16 @@ namespace Mtconnect.AdapterSdk.DataItemValues
 			/// Constructs a new value type for AUXILIARY.
 			/// </summary>
             public AUXILIARY(string value) : base(value) { }
+			public AUXILIARY(EndOfBarValues value) : base(value) { }
+			
+			/// <summary>
+			/// Implicitly converts the specified <see cref="EndOfBarValues" /> to an <see cref="EndOfBar"/> value.
+			/// The <see cref="EndOfBarValues" /> is converted to a string and used to initialize the <see cref="EndOfBar"/> value.
+			/// </summary>
+			/// <param name="value">The <see cref="EndOfBarValues" /> to convert.</param>
+			/// <returns>An <see cref="EndOfBar"/> value initialized with the specified string in uppercase.</returns>
+			public static implicit operator AUXILIARY(EndOfBarValues value)
+				=> new AUXILIARY(value);
 			
 			/// <summary>
 			/// Implicitly converts the specified string to an <see cref="AUXILIARY"/> value.

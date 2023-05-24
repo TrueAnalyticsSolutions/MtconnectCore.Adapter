@@ -105,6 +105,16 @@ namespace Mtconnect.AdapterSdk.DataItemValues
 			/// Constructs a new value type for ACTUAL.
 			/// </summary>
             public ACTUAL(string value) : base(value) { }
+			public ACTUAL(ValveStateValues value) : base(value) { }
+			
+			/// <summary>
+			/// Implicitly converts the specified <see cref="ValveStateValues" /> to an <see cref="ValveState"/> value.
+			/// The <see cref="ValveStateValues" /> is converted to a string and used to initialize the <see cref="ValveState"/> value.
+			/// </summary>
+			/// <param name="value">The <see cref="ValveStateValues" /> to convert.</param>
+			/// <returns>An <see cref="ValveState"/> value initialized with the specified string in uppercase.</returns>
+			public static implicit operator ACTUAL(ValveStateValues value)
+				=> new ACTUAL(value);
 			
 			/// <summary>
 			/// Implicitly converts the specified string to an <see cref="ACTUAL"/> value.
@@ -127,6 +137,16 @@ namespace Mtconnect.AdapterSdk.DataItemValues
 			/// Constructs a new value type for PROGRAMMED.
 			/// </summary>
             public PROGRAMMED(string value) : base(value) { }
+			public PROGRAMMED(ValveStateValues value) : base(value) { }
+			
+			/// <summary>
+			/// Implicitly converts the specified <see cref="ValveStateValues" /> to an <see cref="ValveState"/> value.
+			/// The <see cref="ValveStateValues" /> is converted to a string and used to initialize the <see cref="ValveState"/> value.
+			/// </summary>
+			/// <param name="value">The <see cref="ValveStateValues" /> to convert.</param>
+			/// <returns>An <see cref="ValveState"/> value initialized with the specified string in uppercase.</returns>
+			public static implicit operator PROGRAMMED(ValveStateValues value)
+				=> new PROGRAMMED(value);
 			
 			/// <summary>
 			/// Implicitly converts the specified string to an <see cref="PROGRAMMED"/> value.

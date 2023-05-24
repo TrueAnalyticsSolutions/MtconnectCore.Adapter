@@ -85,6 +85,16 @@ namespace Mtconnect.AdapterSdk.DataItemValues
 			/// Constructs a new value type for MANUAL_UNCLAMP.
 			/// </summary>
             public MANUALUNCLAMP(string value) : base(value) { }
+			public MANUALUNCLAMP(ChuckInterlockValues value) : base(value) { }
+			
+			/// <summary>
+			/// Implicitly converts the specified <see cref="ChuckInterlockValues" /> to an <see cref="ChuckInterlock"/> value.
+			/// The <see cref="ChuckInterlockValues" /> is converted to a string and used to initialize the <see cref="ChuckInterlock"/> value.
+			/// </summary>
+			/// <param name="value">The <see cref="ChuckInterlockValues" /> to convert.</param>
+			/// <returns>An <see cref="ChuckInterlock"/> value initialized with the specified string in uppercase.</returns>
+			public static implicit operator MANUALUNCLAMP(ChuckInterlockValues value)
+				=> new MANUALUNCLAMP(value);
 			
 			/// <summary>
 			/// Implicitly converts the specified string to an <see cref="MANUALUNCLAMP"/> value.

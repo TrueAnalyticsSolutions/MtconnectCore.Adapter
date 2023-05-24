@@ -85,6 +85,16 @@ namespace Mtconnect.AdapterSdk.DataItemValues
 			/// Constructs a new value type for LOADED.
 			/// </summary>
             public LOADED(string value) : base(value) { }
+			public LOADED(EquipmentModeValues value) : base(value) { }
+			
+			/// <summary>
+			/// Implicitly converts the specified <see cref="EquipmentModeValues" /> to an <see cref="EquipmentMode"/> value.
+			/// The <see cref="EquipmentModeValues" /> is converted to a string and used to initialize the <see cref="EquipmentMode"/> value.
+			/// </summary>
+			/// <param name="value">The <see cref="EquipmentModeValues" /> to convert.</param>
+			/// <returns>An <see cref="EquipmentMode"/> value initialized with the specified string in uppercase.</returns>
+			public static implicit operator LOADED(EquipmentModeValues value)
+				=> new LOADED(value);
 			
 			/// <summary>
 			/// Implicitly converts the specified string to an <see cref="LOADED"/> value.
@@ -107,6 +117,16 @@ namespace Mtconnect.AdapterSdk.DataItemValues
 			/// Constructs a new value type for WORKING.
 			/// </summary>
             public WORKING(string value) : base(value) { }
+			public WORKING(EquipmentModeValues value) : base(value) { }
+			
+			/// <summary>
+			/// Implicitly converts the specified <see cref="EquipmentModeValues" /> to an <see cref="EquipmentMode"/> value.
+			/// The <see cref="EquipmentModeValues" /> is converted to a string and used to initialize the <see cref="EquipmentMode"/> value.
+			/// </summary>
+			/// <param name="value">The <see cref="EquipmentModeValues" /> to convert.</param>
+			/// <returns>An <see cref="EquipmentMode"/> value initialized with the specified string in uppercase.</returns>
+			public static implicit operator WORKING(EquipmentModeValues value)
+				=> new WORKING(value);
 			
 			/// <summary>
 			/// Implicitly converts the specified string to an <see cref="WORKING"/> value.
@@ -129,6 +149,16 @@ namespace Mtconnect.AdapterSdk.DataItemValues
 			/// Constructs a new value type for OPERATING.
 			/// </summary>
             public OPERATING(string value) : base(value) { }
+			public OPERATING(EquipmentModeValues value) : base(value) { }
+			
+			/// <summary>
+			/// Implicitly converts the specified <see cref="EquipmentModeValues" /> to an <see cref="EquipmentMode"/> value.
+			/// The <see cref="EquipmentModeValues" /> is converted to a string and used to initialize the <see cref="EquipmentMode"/> value.
+			/// </summary>
+			/// <param name="value">The <see cref="EquipmentModeValues" /> to convert.</param>
+			/// <returns>An <see cref="EquipmentMode"/> value initialized with the specified string in uppercase.</returns>
+			public static implicit operator OPERATING(EquipmentModeValues value)
+				=> new OPERATING(value);
 			
 			/// <summary>
 			/// Implicitly converts the specified string to an <see cref="OPERATING"/> value.
@@ -151,6 +181,16 @@ namespace Mtconnect.AdapterSdk.DataItemValues
 			/// Constructs a new value type for POWERED.
 			/// </summary>
             public POWERED(string value) : base(value) { }
+			public POWERED(EquipmentModeValues value) : base(value) { }
+			
+			/// <summary>
+			/// Implicitly converts the specified <see cref="EquipmentModeValues" /> to an <see cref="EquipmentMode"/> value.
+			/// The <see cref="EquipmentModeValues" /> is converted to a string and used to initialize the <see cref="EquipmentMode"/> value.
+			/// </summary>
+			/// <param name="value">The <see cref="EquipmentModeValues" /> to convert.</param>
+			/// <returns>An <see cref="EquipmentMode"/> value initialized with the specified string in uppercase.</returns>
+			public static implicit operator POWERED(EquipmentModeValues value)
+				=> new POWERED(value);
 			
 			/// <summary>
 			/// Implicitly converts the specified string to an <see cref="POWERED"/> value.
@@ -173,6 +213,16 @@ namespace Mtconnect.AdapterSdk.DataItemValues
 			/// Constructs a new value type for DELAY.
 			/// </summary>
             public DELAY(string value) : base(value) { }
+			public DELAY(EquipmentModeValues value) : base(value) { }
+			
+			/// <summary>
+			/// Implicitly converts the specified <see cref="EquipmentModeValues" /> to an <see cref="EquipmentMode"/> value.
+			/// The <see cref="EquipmentModeValues" /> is converted to a string and used to initialize the <see cref="EquipmentMode"/> value.
+			/// </summary>
+			/// <param name="value">The <see cref="EquipmentModeValues" /> to convert.</param>
+			/// <returns>An <see cref="EquipmentMode"/> value initialized with the specified string in uppercase.</returns>
+			public static implicit operator DELAY(EquipmentModeValues value)
+				=> new DELAY(value);
 			
 			/// <summary>
 			/// Implicitly converts the specified string to an <see cref="DELAY"/> value.

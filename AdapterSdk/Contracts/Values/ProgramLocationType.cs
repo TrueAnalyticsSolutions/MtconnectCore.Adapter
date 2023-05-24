@@ -85,6 +85,16 @@ namespace Mtconnect.AdapterSdk.DataItemValues
 			/// Constructs a new value type for SCHEDULE.
 			/// </summary>
             public SCHEDULE(string value) : base(value) { }
+			public SCHEDULE(ProgramLocationTypeValues value) : base(value) { }
+			
+			/// <summary>
+			/// Implicitly converts the specified <see cref="ProgramLocationTypeValues" /> to an <see cref="ProgramLocationType"/> value.
+			/// The <see cref="ProgramLocationTypeValues" /> is converted to a string and used to initialize the <see cref="ProgramLocationType"/> value.
+			/// </summary>
+			/// <param name="value">The <see cref="ProgramLocationTypeValues" /> to convert.</param>
+			/// <returns>An <see cref="ProgramLocationType"/> value initialized with the specified string in uppercase.</returns>
+			public static implicit operator SCHEDULE(ProgramLocationTypeValues value)
+				=> new SCHEDULE(value);
 			
 			/// <summary>
 			/// Implicitly converts the specified string to an <see cref="SCHEDULE"/> value.
@@ -107,6 +117,16 @@ namespace Mtconnect.AdapterSdk.DataItemValues
 			/// Constructs a new value type for MAIN.
 			/// </summary>
             public MAIN(string value) : base(value) { }
+			public MAIN(ProgramLocationTypeValues value) : base(value) { }
+			
+			/// <summary>
+			/// Implicitly converts the specified <see cref="ProgramLocationTypeValues" /> to an <see cref="ProgramLocationType"/> value.
+			/// The <see cref="ProgramLocationTypeValues" /> is converted to a string and used to initialize the <see cref="ProgramLocationType"/> value.
+			/// </summary>
+			/// <param name="value">The <see cref="ProgramLocationTypeValues" /> to convert.</param>
+			/// <returns>An <see cref="ProgramLocationType"/> value initialized with the specified string in uppercase.</returns>
+			public static implicit operator MAIN(ProgramLocationTypeValues value)
+				=> new MAIN(value);
 			
 			/// <summary>
 			/// Implicitly converts the specified string to an <see cref="MAIN"/> value.
@@ -129,6 +149,16 @@ namespace Mtconnect.AdapterSdk.DataItemValues
 			/// Constructs a new value type for ACTIVE.
 			/// </summary>
             public ACTIVE(string value) : base(value) { }
+			public ACTIVE(ProgramLocationTypeValues value) : base(value) { }
+			
+			/// <summary>
+			/// Implicitly converts the specified <see cref="ProgramLocationTypeValues" /> to an <see cref="ProgramLocationType"/> value.
+			/// The <see cref="ProgramLocationTypeValues" /> is converted to a string and used to initialize the <see cref="ProgramLocationType"/> value.
+			/// </summary>
+			/// <param name="value">The <see cref="ProgramLocationTypeValues" /> to convert.</param>
+			/// <returns>An <see cref="ProgramLocationType"/> value initialized with the specified string in uppercase.</returns>
+			public static implicit operator ACTIVE(ProgramLocationTypeValues value)
+				=> new ACTIVE(value);
 			
 			/// <summary>
 			/// Implicitly converts the specified string to an <see cref="ACTIVE"/> value.
