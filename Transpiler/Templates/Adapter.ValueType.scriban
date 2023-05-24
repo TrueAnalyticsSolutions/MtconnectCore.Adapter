@@ -48,6 +48,9 @@ namespace {{ to_pascal_code source.namespace }}
 		/// </summary>
         public {{ to_pascal_case source.name }}({{ source.value_type }} value) : base(value) { }
 
+		{{~ if source.items.count > 0 ~}}
+		public {{ to_pascal_case source.name }}({{ source.name }}Values value) : this(value.ToString()) { };
+
 		{{~ for item in source.items ~}}
 {{~ n_item_version_slim = (item?.normative_version | string.slice 20 3) | string.replace "_" "."
 d_item_version_slim = (item?.deprecated_version | string.slice 20 3) | string.replace "_" "." ~}}
@@ -71,6 +74,7 @@ d_item_version_slim = (item?.deprecated_version | string.slice 20 3) | string.re
 		{{~ end ~}}
 		[ObservationalValue(typeof({{ to_pascal_case source.name }}Values))]
         public static {{ to_pascal_case source.name }} {{ item.name }} => new {{ to_pascal_case source.name }}(nameof({{ to_pascal_case source.name }}Values.{{ item.name }}));
+		{{~ end ~}}
 		{{~ end ~}}
 		
         /// <summary>
