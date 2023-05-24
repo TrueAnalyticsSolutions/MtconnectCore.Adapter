@@ -54,21 +54,7 @@ namespace {{ to_pascal_code source.namespace }}
 		{{~ for item in source.items ~}}
 {{~ n_item_version_slim = (item?.normative_version | string.slice 20 3) | string.replace "_" "."
 d_item_version_slim = (item?.deprecated_version | string.slice 20 3) | string.replace "_" "." ~}}
-        /// <summary>
-		{{ include 'UmlCommentsSummaryContent.scriban' item?.summary ~}}
-        /// </summary>
-		{{~ if n_item_version_slim != "" || d_item_version_slim != "" ~}}
-		/// <remarks>
-		/// <list type="bullet">
-		{{~ if n_item_version_slim != "" ~}}
-		/// <item><b>Introduced</b>: <see href="https://model.mtconnect.org/#_Version_{{ n_item_version_slim }}">v{{ n_item_version_slim }}</see></item>
-		{{~ end ~}}
-		{{~ if d_item_version_slim != "" ~}}
-		/// <item><b>Deprecated</b>: <see href="https://model.mtconnect.org/#_Version_{{ d_item_version_slim }}">v{{ d_item_version_slim }}</see></item>
-		{{~ end ~}}
-		/// </list>
-		/// </remarks>
-		{{~ end ~}}
+		/// <inheritdoc cref="{{ to_pascal_case source.name }}Values.{{ item.name }}" />
 		{{~ if d_item_version_slim != "" ~}}
 		[Obsolete("Deprecated in v{{ d_item_version_slim }} according to https://model.mtconnect.org/#_Version_{{ d_item_version_slim }}")]
 		{{~ end ~}}
