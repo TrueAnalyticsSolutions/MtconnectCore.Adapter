@@ -31,16 +31,16 @@ namespace Mtconnect.AdapterSdk.DataItemValues
 		/// <summary>
 		/// Constructs a new value type for the DisplacementLinear EVENT Data Item.
 		/// </summary>
-        public DisplacementLinear(float value) : base(value) { }
+        public DisplacementLinear(float? value) : base(value) { }
 
 		
         /// <summary>
-        /// Implicitly converts the specified float to an <see cref="DisplacementLinear"/> value.
-        /// The float is converted to uppercase and used to initialize the <see cref="DisplacementLinear"/> value.
+        /// Implicitly converts the specified float? to an <see cref="DisplacementLinear"/> value.
+        /// The float? is converted to uppercase and used to initialize the <see cref="DisplacementLinear"/> value.
         /// </summary>
-        /// <param name="value">The float to convert.</param>
+        /// <param name="value">The float? to convert.</param>
         /// <returns>An <see cref="DisplacementLinear"/> value initialized with the specified string in uppercase.</returns>
-        public static implicit operator DisplacementLinear(float value)
+        public static implicit operator DisplacementLinear(float? value)
             => new DisplacementLinear(value);
 		
     }

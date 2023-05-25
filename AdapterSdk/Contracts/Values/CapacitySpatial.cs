@@ -31,16 +31,16 @@ namespace Mtconnect.AdapterSdk.DataItemValues
 		/// <summary>
 		/// Constructs a new value type for the CapacitySpatial EVENT Data Item.
 		/// </summary>
-        public CapacitySpatial(float value) : base(value) { }
+        public CapacitySpatial(float? value) : base(value) { }
 
 		
         /// <summary>
-        /// Implicitly converts the specified float to an <see cref="CapacitySpatial"/> value.
-        /// The float is converted to uppercase and used to initialize the <see cref="CapacitySpatial"/> value.
+        /// Implicitly converts the specified float? to an <see cref="CapacitySpatial"/> value.
+        /// The float? is converted to uppercase and used to initialize the <see cref="CapacitySpatial"/> value.
         /// </summary>
-        /// <param name="value">The float to convert.</param>
+        /// <param name="value">The float? to convert.</param>
         /// <returns>An <see cref="CapacitySpatial"/> value initialized with the specified string in uppercase.</returns>
-        public static implicit operator CapacitySpatial(float value)
+        public static implicit operator CapacitySpatial(float? value)
             => new CapacitySpatial(value);
 		
     }

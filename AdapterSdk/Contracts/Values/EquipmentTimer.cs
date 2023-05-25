@@ -31,16 +31,16 @@ namespace Mtconnect.AdapterSdk.DataItemValues
 		/// <summary>
 		/// Constructs a new value type for the EquipmentTimer EVENT Data Item.
 		/// </summary>
-        public EquipmentTimer(float value) : base(value) { }
+        public EquipmentTimer(float? value) : base(value) { }
 
 		
         /// <summary>
-        /// Implicitly converts the specified float to an <see cref="EquipmentTimer"/> value.
-        /// The float is converted to uppercase and used to initialize the <see cref="EquipmentTimer"/> value.
+        /// Implicitly converts the specified float? to an <see cref="EquipmentTimer"/> value.
+        /// The float? is converted to uppercase and used to initialize the <see cref="EquipmentTimer"/> value.
         /// </summary>
-        /// <param name="value">The float to convert.</param>
+        /// <param name="value">The float? to convert.</param>
         /// <returns>An <see cref="EquipmentTimer"/> value initialized with the specified string in uppercase.</returns>
-        public static implicit operator EquipmentTimer(float value)
+        public static implicit operator EquipmentTimer(float? value)
             => new EquipmentTimer(value);
 		
 		/// <summary>
@@ -54,15 +54,15 @@ namespace Mtconnect.AdapterSdk.DataItemValues
 			/// <summary>
 			/// Constructs a new value type for LOADED.
 			/// </summary>
-            public LOADED(float value) : base(value) { }
+            public LOADED(float? value) : base(value) { }
 			
 			/// <summary>
-			/// Implicitly converts the specified float to an <see cref="LOADED"/> value.
-			/// The float is converted to uppercase and used to initialize the <see cref="LOADED"/> value.
+			/// Implicitly converts the specified float? to an <see cref="LOADED"/> value.
+			/// The float? is converted to uppercase and used to initialize the <see cref="LOADED"/> value.
 			/// </summary>
-			/// <param name="value">The float to convert.</param>
+			/// <param name="value">The float? to convert.</param>
 			/// <returns>An <see cref="LOADED"/> value initialized with the specified string in uppercase.</returns>
-			public static implicit operator LOADED(float value)
+			public static implicit operator LOADED(float? value)
 				=> new LOADED(value);
 		}
 		/// <summary>
@@ -76,15 +76,15 @@ namespace Mtconnect.AdapterSdk.DataItemValues
 			/// <summary>
 			/// Constructs a new value type for WORKING.
 			/// </summary>
-            public WORKING(float value) : base(value) { }
+            public WORKING(float? value) : base(value) { }
 			
 			/// <summary>
-			/// Implicitly converts the specified float to an <see cref="WORKING"/> value.
-			/// The float is converted to uppercase and used to initialize the <see cref="WORKING"/> value.
+			/// Implicitly converts the specified float? to an <see cref="WORKING"/> value.
+			/// The float? is converted to uppercase and used to initialize the <see cref="WORKING"/> value.
 			/// </summary>
-			/// <param name="value">The float to convert.</param>
+			/// <param name="value">The float? to convert.</param>
 			/// <returns>An <see cref="WORKING"/> value initialized with the specified string in uppercase.</returns>
-			public static implicit operator WORKING(float value)
+			public static implicit operator WORKING(float? value)
 				=> new WORKING(value);
 		}
 		/// <summary>
@@ -98,15 +98,15 @@ namespace Mtconnect.AdapterSdk.DataItemValues
 			/// <summary>
 			/// Constructs a new value type for OPERATING.
 			/// </summary>
-            public OPERATING(float value) : base(value) { }
+            public OPERATING(float? value) : base(value) { }
 			
 			/// <summary>
-			/// Implicitly converts the specified float to an <see cref="OPERATING"/> value.
-			/// The float is converted to uppercase and used to initialize the <see cref="OPERATING"/> value.
+			/// Implicitly converts the specified float? to an <see cref="OPERATING"/> value.
+			/// The float? is converted to uppercase and used to initialize the <see cref="OPERATING"/> value.
 			/// </summary>
-			/// <param name="value">The float to convert.</param>
+			/// <param name="value">The float? to convert.</param>
 			/// <returns>An <see cref="OPERATING"/> value initialized with the specified string in uppercase.</returns>
-			public static implicit operator OPERATING(float value)
+			public static implicit operator OPERATING(float? value)
 				=> new OPERATING(value);
 		}
 		/// <summary>
@@ -120,15 +120,15 @@ namespace Mtconnect.AdapterSdk.DataItemValues
 			/// <summary>
 			/// Constructs a new value type for POWERED.
 			/// </summary>
-            public POWERED(float value) : base(value) { }
+            public POWERED(float? value) : base(value) { }
 			
 			/// <summary>
-			/// Implicitly converts the specified float to an <see cref="POWERED"/> value.
-			/// The float is converted to uppercase and used to initialize the <see cref="POWERED"/> value.
+			/// Implicitly converts the specified float? to an <see cref="POWERED"/> value.
+			/// The float? is converted to uppercase and used to initialize the <see cref="POWERED"/> value.
 			/// </summary>
-			/// <param name="value">The float to convert.</param>
+			/// <param name="value">The float? to convert.</param>
 			/// <returns>An <see cref="POWERED"/> value initialized with the specified string in uppercase.</returns>
-			public static implicit operator POWERED(float value)
+			public static implicit operator POWERED(float? value)
 				=> new POWERED(value);
 		}
 		/// <summary>
@@ -142,15 +142,15 @@ namespace Mtconnect.AdapterSdk.DataItemValues
 			/// <summary>
 			/// Constructs a new value type for DELAY.
 			/// </summary>
-            public DELAY(float value) : base(value) { }
+            public DELAY(float? value) : base(value) { }
 			
 			/// <summary>
-			/// Implicitly converts the specified float to an <see cref="DELAY"/> value.
-			/// The float is converted to uppercase and used to initialize the <see cref="DELAY"/> value.
+			/// Implicitly converts the specified float? to an <see cref="DELAY"/> value.
+			/// The float? is converted to uppercase and used to initialize the <see cref="DELAY"/> value.
 			/// </summary>
-			/// <param name="value">The float to convert.</param>
+			/// <param name="value">The float? to convert.</param>
 			/// <returns>An <see cref="DELAY"/> value initialized with the specified string in uppercase.</returns>
-			public static implicit operator DELAY(float value)
+			public static implicit operator DELAY(float? value)
 				=> new DELAY(value);
 		}
     }

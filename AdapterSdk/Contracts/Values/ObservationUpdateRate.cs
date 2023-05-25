@@ -31,16 +31,16 @@ namespace Mtconnect.AdapterSdk.DataItemValues
 		/// <summary>
 		/// Constructs a new value type for the ObservationUpdateRate EVENT Data Item.
 		/// </summary>
-        public ObservationUpdateRate(float value) : base(value) { }
+        public ObservationUpdateRate(float? value) : base(value) { }
 
 		
         /// <summary>
-        /// Implicitly converts the specified float to an <see cref="ObservationUpdateRate"/> value.
-        /// The float is converted to uppercase and used to initialize the <see cref="ObservationUpdateRate"/> value.
+        /// Implicitly converts the specified float? to an <see cref="ObservationUpdateRate"/> value.
+        /// The float? is converted to uppercase and used to initialize the <see cref="ObservationUpdateRate"/> value.
         /// </summary>
-        /// <param name="value">The float to convert.</param>
+        /// <param name="value">The float? to convert.</param>
         /// <returns>An <see cref="ObservationUpdateRate"/> value initialized with the specified string in uppercase.</returns>
-        public static implicit operator ObservationUpdateRate(float value)
+        public static implicit operator ObservationUpdateRate(float? value)
             => new ObservationUpdateRate(value);
 		
     }

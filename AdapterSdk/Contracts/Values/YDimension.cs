@@ -31,16 +31,16 @@ namespace Mtconnect.AdapterSdk.DataItemValues
 		/// <summary>
 		/// Constructs a new value type for the YDimension EVENT Data Item.
 		/// </summary>
-        public YDimension(float value) : base(value) { }
+        public YDimension(float? value) : base(value) { }
 
 		
         /// <summary>
-        /// Implicitly converts the specified float to an <see cref="YDimension"/> value.
-        /// The float is converted to uppercase and used to initialize the <see cref="YDimension"/> value.
+        /// Implicitly converts the specified float? to an <see cref="YDimension"/> value.
+        /// The float? is converted to uppercase and used to initialize the <see cref="YDimension"/> value.
         /// </summary>
-        /// <param name="value">The float to convert.</param>
+        /// <param name="value">The float? to convert.</param>
         /// <returns>An <see cref="YDimension"/> value initialized with the specified string in uppercase.</returns>
-        public static implicit operator YDimension(float value)
+        public static implicit operator YDimension(float? value)
             => new YDimension(value);
 		
     }

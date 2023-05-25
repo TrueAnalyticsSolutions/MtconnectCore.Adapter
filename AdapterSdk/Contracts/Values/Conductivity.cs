@@ -31,16 +31,16 @@ namespace Mtconnect.AdapterSdk.DataItemValues
 		/// <summary>
 		/// Constructs a new value type for the Conductivity EVENT Data Item.
 		/// </summary>
-        public Conductivity(float value) : base(value) { }
+        public Conductivity(float? value) : base(value) { }
 
 		
         /// <summary>
-        /// Implicitly converts the specified float to an <see cref="Conductivity"/> value.
-        /// The float is converted to uppercase and used to initialize the <see cref="Conductivity"/> value.
+        /// Implicitly converts the specified float? to an <see cref="Conductivity"/> value.
+        /// The float? is converted to uppercase and used to initialize the <see cref="Conductivity"/> value.
         /// </summary>
-        /// <param name="value">The float to convert.</param>
+        /// <param name="value">The float? to convert.</param>
         /// <returns>An <see cref="Conductivity"/> value initialized with the specified string in uppercase.</returns>
-        public static implicit operator Conductivity(float value)
+        public static implicit operator Conductivity(float? value)
             => new Conductivity(value);
 		
     }

@@ -31,16 +31,16 @@ namespace Mtconnect.AdapterSdk.DataItemValues
 		/// <summary>
 		/// Constructs a new value type for the AssetUpdateRate EVENT Data Item.
 		/// </summary>
-        public AssetUpdateRate(float value) : base(value) { }
+        public AssetUpdateRate(float? value) : base(value) { }
 
 		
         /// <summary>
-        /// Implicitly converts the specified float to an <see cref="AssetUpdateRate"/> value.
-        /// The float is converted to uppercase and used to initialize the <see cref="AssetUpdateRate"/> value.
+        /// Implicitly converts the specified float? to an <see cref="AssetUpdateRate"/> value.
+        /// The float? is converted to uppercase and used to initialize the <see cref="AssetUpdateRate"/> value.
         /// </summary>
-        /// <param name="value">The float to convert.</param>
+        /// <param name="value">The float? to convert.</param>
         /// <returns>An <see cref="AssetUpdateRate"/> value initialized with the specified string in uppercase.</returns>
-        public static implicit operator AssetUpdateRate(float value)
+        public static implicit operator AssetUpdateRate(float? value)
             => new AssetUpdateRate(value);
 		
     }

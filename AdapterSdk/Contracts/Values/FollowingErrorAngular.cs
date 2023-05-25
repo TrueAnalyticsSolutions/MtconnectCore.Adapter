@@ -31,16 +31,16 @@ namespace Mtconnect.AdapterSdk.DataItemValues
 		/// <summary>
 		/// Constructs a new value type for the FollowingErrorAngular EVENT Data Item.
 		/// </summary>
-        public FollowingErrorAngular(float value) : base(value) { }
+        public FollowingErrorAngular(float? value) : base(value) { }
 
 		
         /// <summary>
-        /// Implicitly converts the specified float to an <see cref="FollowingErrorAngular"/> value.
-        /// The float is converted to uppercase and used to initialize the <see cref="FollowingErrorAngular"/> value.
+        /// Implicitly converts the specified float? to an <see cref="FollowingErrorAngular"/> value.
+        /// The float? is converted to uppercase and used to initialize the <see cref="FollowingErrorAngular"/> value.
         /// </summary>
-        /// <param name="value">The float to convert.</param>
+        /// <param name="value">The float? to convert.</param>
         /// <returns>An <see cref="FollowingErrorAngular"/> value initialized with the specified string in uppercase.</returns>
-        public static implicit operator FollowingErrorAngular(float value)
+        public static implicit operator FollowingErrorAngular(float? value)
             => new FollowingErrorAngular(value);
 		
 		/// <summary>
@@ -54,15 +54,15 @@ namespace Mtconnect.AdapterSdk.DataItemValues
 			/// <summary>
 			/// Constructs a new value type for ACTUAL.
 			/// </summary>
-            public ACTUAL(float value) : base(value) { }
+            public ACTUAL(float? value) : base(value) { }
 			
 			/// <summary>
-			/// Implicitly converts the specified float to an <see cref="ACTUAL"/> value.
-			/// The float is converted to uppercase and used to initialize the <see cref="ACTUAL"/> value.
+			/// Implicitly converts the specified float? to an <see cref="ACTUAL"/> value.
+			/// The float? is converted to uppercase and used to initialize the <see cref="ACTUAL"/> value.
 			/// </summary>
-			/// <param name="value">The float to convert.</param>
+			/// <param name="value">The float? to convert.</param>
 			/// <returns>An <see cref="ACTUAL"/> value initialized with the specified string in uppercase.</returns>
-			public static implicit operator ACTUAL(float value)
+			public static implicit operator ACTUAL(float? value)
 				=> new ACTUAL(value);
 		}
     }

@@ -33,16 +33,16 @@ namespace Mtconnect.AdapterSdk.DataItemValues
 		/// <summary>
 		/// Constructs a new value type for the Level EVENT Data Item.
 		/// </summary>
-        public Level(float value) : base(value) { }
+        public Level(float? value) : base(value) { }
 
 		
         /// <summary>
-        /// Implicitly converts the specified float to an <see cref="Level"/> value.
-        /// The float is converted to uppercase and used to initialize the <see cref="Level"/> value.
+        /// Implicitly converts the specified float? to an <see cref="Level"/> value.
+        /// The float? is converted to uppercase and used to initialize the <see cref="Level"/> value.
         /// </summary>
-        /// <param name="value">The float to convert.</param>
+        /// <param name="value">The float? to convert.</param>
         /// <returns>An <see cref="Level"/> value initialized with the specified string in uppercase.</returns>
-        public static implicit operator Level(float value)
+        public static implicit operator Level(float? value)
             => new Level(value);
 		
     }

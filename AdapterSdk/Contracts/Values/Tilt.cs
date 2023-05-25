@@ -31,16 +31,16 @@ namespace Mtconnect.AdapterSdk.DataItemValues
 		/// <summary>
 		/// Constructs a new value type for the Tilt EVENT Data Item.
 		/// </summary>
-        public Tilt(float value) : base(value) { }
+        public Tilt(float? value) : base(value) { }
 
 		
         /// <summary>
-        /// Implicitly converts the specified float to an <see cref="Tilt"/> value.
-        /// The float is converted to uppercase and used to initialize the <see cref="Tilt"/> value.
+        /// Implicitly converts the specified float? to an <see cref="Tilt"/> value.
+        /// The float? is converted to uppercase and used to initialize the <see cref="Tilt"/> value.
         /// </summary>
-        /// <param name="value">The float to convert.</param>
+        /// <param name="value">The float? to convert.</param>
         /// <returns>An <see cref="Tilt"/> value initialized with the specified string in uppercase.</returns>
-        public static implicit operator Tilt(float value)
+        public static implicit operator Tilt(float? value)
             => new Tilt(value);
 		
     }

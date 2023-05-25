@@ -31,16 +31,16 @@ namespace Mtconnect.AdapterSdk.DataItemValues
 		/// <summary>
 		/// Constructs a new value type for the PH EVENT Data Item.
 		/// </summary>
-        public PH(float value) : base(value) { }
+        public PH(float? value) : base(value) { }
 
 		
         /// <summary>
-        /// Implicitly converts the specified float to an <see cref="PH"/> value.
-        /// The float is converted to uppercase and used to initialize the <see cref="PH"/> value.
+        /// Implicitly converts the specified float? to an <see cref="PH"/> value.
+        /// The float? is converted to uppercase and used to initialize the <see cref="PH"/> value.
         /// </summary>
-        /// <param name="value">The float to convert.</param>
+        /// <param name="value">The float? to convert.</param>
         /// <returns>An <see cref="PH"/> value initialized with the specified string in uppercase.</returns>
-        public static implicit operator PH(float value)
+        public static implicit operator PH(float? value)
             => new PH(value);
 		
     }

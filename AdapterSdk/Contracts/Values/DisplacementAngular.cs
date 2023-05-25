@@ -31,16 +31,16 @@ namespace Mtconnect.AdapterSdk.DataItemValues
 		/// <summary>
 		/// Constructs a new value type for the DisplacementAngular EVENT Data Item.
 		/// </summary>
-        public DisplacementAngular(float value) : base(value) { }
+        public DisplacementAngular(float? value) : base(value) { }
 
 		
         /// <summary>
-        /// Implicitly converts the specified float to an <see cref="DisplacementAngular"/> value.
-        /// The float is converted to uppercase and used to initialize the <see cref="DisplacementAngular"/> value.
+        /// Implicitly converts the specified float? to an <see cref="DisplacementAngular"/> value.
+        /// The float? is converted to uppercase and used to initialize the <see cref="DisplacementAngular"/> value.
         /// </summary>
-        /// <param name="value">The float to convert.</param>
+        /// <param name="value">The float? to convert.</param>
         /// <returns>An <see cref="DisplacementAngular"/> value initialized with the specified string in uppercase.</returns>
-        public static implicit operator DisplacementAngular(float value)
+        public static implicit operator DisplacementAngular(float? value)
             => new DisplacementAngular(value);
 		
     }

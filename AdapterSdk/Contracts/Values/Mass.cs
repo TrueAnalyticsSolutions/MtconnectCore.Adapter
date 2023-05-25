@@ -31,16 +31,16 @@ namespace Mtconnect.AdapterSdk.DataItemValues
 		/// <summary>
 		/// Constructs a new value type for the Mass EVENT Data Item.
 		/// </summary>
-        public Mass(float value) : base(value) { }
+        public Mass(float? value) : base(value) { }
 
 		
         /// <summary>
-        /// Implicitly converts the specified float to an <see cref="Mass"/> value.
-        /// The float is converted to uppercase and used to initialize the <see cref="Mass"/> value.
+        /// Implicitly converts the specified float? to an <see cref="Mass"/> value.
+        /// The float? is converted to uppercase and used to initialize the <see cref="Mass"/> value.
         /// </summary>
-        /// <param name="value">The float to convert.</param>
+        /// <param name="value">The float? to convert.</param>
         /// <returns>An <see cref="Mass"/> value initialized with the specified string in uppercase.</returns>
-        public static implicit operator Mass(float value)
+        public static implicit operator Mass(float? value)
             => new Mass(value);
 		
     }

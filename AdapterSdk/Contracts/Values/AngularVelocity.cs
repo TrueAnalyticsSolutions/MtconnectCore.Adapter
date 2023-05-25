@@ -31,16 +31,16 @@ namespace Mtconnect.AdapterSdk.DataItemValues
 		/// <summary>
 		/// Constructs a new value type for the AngularVelocity EVENT Data Item.
 		/// </summary>
-        public AngularVelocity(float value) : base(value) { }
+        public AngularVelocity(float? value) : base(value) { }
 
 		
         /// <summary>
-        /// Implicitly converts the specified float to an <see cref="AngularVelocity"/> value.
-        /// The float is converted to uppercase and used to initialize the <see cref="AngularVelocity"/> value.
+        /// Implicitly converts the specified float? to an <see cref="AngularVelocity"/> value.
+        /// The float? is converted to uppercase and used to initialize the <see cref="AngularVelocity"/> value.
         /// </summary>
-        /// <param name="value">The float to convert.</param>
+        /// <param name="value">The float? to convert.</param>
         /// <returns>An <see cref="AngularVelocity"/> value initialized with the specified string in uppercase.</returns>
-        public static implicit operator AngularVelocity(float value)
+        public static implicit operator AngularVelocity(float? value)
             => new AngularVelocity(value);
 		
     }

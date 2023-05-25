@@ -31,16 +31,16 @@ namespace Mtconnect.AdapterSdk.DataItemValues
 		/// <summary>
 		/// Constructs a new value type for the Temperature EVENT Data Item.
 		/// </summary>
-        public Temperature(float value) : base(value) { }
+        public Temperature(float? value) : base(value) { }
 
 		
         /// <summary>
-        /// Implicitly converts the specified float to an <see cref="Temperature"/> value.
-        /// The float is converted to uppercase and used to initialize the <see cref="Temperature"/> value.
+        /// Implicitly converts the specified float? to an <see cref="Temperature"/> value.
+        /// The float? is converted to uppercase and used to initialize the <see cref="Temperature"/> value.
         /// </summary>
-        /// <param name="value">The float to convert.</param>
+        /// <param name="value">The float? to convert.</param>
         /// <returns>An <see cref="Temperature"/> value initialized with the specified string in uppercase.</returns>
-        public static implicit operator Temperature(float value)
+        public static implicit operator Temperature(float? value)
             => new Temperature(value);
 		
     }

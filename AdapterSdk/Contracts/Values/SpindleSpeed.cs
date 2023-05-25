@@ -33,16 +33,16 @@ namespace Mtconnect.AdapterSdk.DataItemValues
 		/// <summary>
 		/// Constructs a new value type for the SpindleSpeed EVENT Data Item.
 		/// </summary>
-        public SpindleSpeed(float value) : base(value) { }
+        public SpindleSpeed(float? value) : base(value) { }
 
 		
         /// <summary>
-        /// Implicitly converts the specified float to an <see cref="SpindleSpeed"/> value.
-        /// The float is converted to uppercase and used to initialize the <see cref="SpindleSpeed"/> value.
+        /// Implicitly converts the specified float? to an <see cref="SpindleSpeed"/> value.
+        /// The float? is converted to uppercase and used to initialize the <see cref="SpindleSpeed"/> value.
         /// </summary>
-        /// <param name="value">The float to convert.</param>
+        /// <param name="value">The float? to convert.</param>
         /// <returns>An <see cref="SpindleSpeed"/> value initialized with the specified string in uppercase.</returns>
-        public static implicit operator SpindleSpeed(float value)
+        public static implicit operator SpindleSpeed(float? value)
             => new SpindleSpeed(value);
 		
 		/// <summary>
@@ -56,15 +56,15 @@ namespace Mtconnect.AdapterSdk.DataItemValues
 			/// <summary>
 			/// Constructs a new value type for ACTUAL.
 			/// </summary>
-            public ACTUAL(float value) : base(value) { }
+            public ACTUAL(float? value) : base(value) { }
 			
 			/// <summary>
-			/// Implicitly converts the specified float to an <see cref="ACTUAL"/> value.
-			/// The float is converted to uppercase and used to initialize the <see cref="ACTUAL"/> value.
+			/// Implicitly converts the specified float? to an <see cref="ACTUAL"/> value.
+			/// The float? is converted to uppercase and used to initialize the <see cref="ACTUAL"/> value.
 			/// </summary>
-			/// <param name="value">The float to convert.</param>
+			/// <param name="value">The float? to convert.</param>
 			/// <returns>An <see cref="ACTUAL"/> value initialized with the specified string in uppercase.</returns>
-			public static implicit operator ACTUAL(float value)
+			public static implicit operator ACTUAL(float? value)
 				=> new ACTUAL(value);
 		}
 		/// <summary>
@@ -78,15 +78,15 @@ namespace Mtconnect.AdapterSdk.DataItemValues
 			/// <summary>
 			/// Constructs a new value type for COMMANDED.
 			/// </summary>
-            public COMMANDED(float value) : base(value) { }
+            public COMMANDED(float? value) : base(value) { }
 			
 			/// <summary>
-			/// Implicitly converts the specified float to an <see cref="COMMANDED"/> value.
-			/// The float is converted to uppercase and used to initialize the <see cref="COMMANDED"/> value.
+			/// Implicitly converts the specified float? to an <see cref="COMMANDED"/> value.
+			/// The float? is converted to uppercase and used to initialize the <see cref="COMMANDED"/> value.
 			/// </summary>
-			/// <param name="value">The float to convert.</param>
+			/// <param name="value">The float? to convert.</param>
 			/// <returns>An <see cref="COMMANDED"/> value initialized with the specified string in uppercase.</returns>
-			public static implicit operator COMMANDED(float value)
+			public static implicit operator COMMANDED(float? value)
 				=> new COMMANDED(value);
 		}
 		/// <summary>
@@ -100,15 +100,15 @@ namespace Mtconnect.AdapterSdk.DataItemValues
 			/// <summary>
 			/// Constructs a new value type for OVERRIDE.
 			/// </summary>
-            public OVERRIDE(float value) : base(value) { }
+            public OVERRIDE(float? value) : base(value) { }
 			
 			/// <summary>
-			/// Implicitly converts the specified float to an <see cref="OVERRIDE"/> value.
-			/// The float is converted to uppercase and used to initialize the <see cref="OVERRIDE"/> value.
+			/// Implicitly converts the specified float? to an <see cref="OVERRIDE"/> value.
+			/// The float? is converted to uppercase and used to initialize the <see cref="OVERRIDE"/> value.
 			/// </summary>
-			/// <param name="value">The float to convert.</param>
+			/// <param name="value">The float? to convert.</param>
 			/// <returns>An <see cref="OVERRIDE"/> value initialized with the specified string in uppercase.</returns>
-			public static implicit operator OVERRIDE(float value)
+			public static implicit operator OVERRIDE(float? value)
 				=> new OVERRIDE(value);
 		}
     }

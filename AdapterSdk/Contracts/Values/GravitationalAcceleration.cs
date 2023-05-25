@@ -30,16 +30,16 @@ namespace Mtconnect.AdapterSdk.DataItemValues
 		/// <summary>
 		/// Constructs a new value type for the GravitationalAcceleration EVENT Data Item.
 		/// </summary>
-        public GravitationalAcceleration(float value) : base(value) { }
+        public GravitationalAcceleration(float? value) : base(value) { }
 
 		
         /// <summary>
-        /// Implicitly converts the specified float to an <see cref="GravitationalAcceleration"/> value.
-        /// The float is converted to uppercase and used to initialize the <see cref="GravitationalAcceleration"/> value.
+        /// Implicitly converts the specified float? to an <see cref="GravitationalAcceleration"/> value.
+        /// The float? is converted to uppercase and used to initialize the <see cref="GravitationalAcceleration"/> value.
         /// </summary>
-        /// <param name="value">The float to convert.</param>
+        /// <param name="value">The float? to convert.</param>
         /// <returns>An <see cref="GravitationalAcceleration"/> value initialized with the specified string in uppercase.</returns>
-        public static implicit operator GravitationalAcceleration(float value)
+        public static implicit operator GravitationalAcceleration(float? value)
             => new GravitationalAcceleration(value);
 		
     }

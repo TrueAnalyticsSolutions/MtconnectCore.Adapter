@@ -31,16 +31,16 @@ namespace Mtconnect.AdapterSdk.DataItemValues
 		/// <summary>
 		/// Constructs a new value type for the Viscosity EVENT Data Item.
 		/// </summary>
-        public Viscosity(float value) : base(value) { }
+        public Viscosity(float? value) : base(value) { }
 
 		
         /// <summary>
-        /// Implicitly converts the specified float to an <see cref="Viscosity"/> value.
-        /// The float is converted to uppercase and used to initialize the <see cref="Viscosity"/> value.
+        /// Implicitly converts the specified float? to an <see cref="Viscosity"/> value.
+        /// The float? is converted to uppercase and used to initialize the <see cref="Viscosity"/> value.
         /// </summary>
-        /// <param name="value">The float to convert.</param>
+        /// <param name="value">The float? to convert.</param>
         /// <returns>An <see cref="Viscosity"/> value initialized with the specified string in uppercase.</returns>
-        public static implicit operator Viscosity(float value)
+        public static implicit operator Viscosity(float? value)
             => new Viscosity(value);
 		
     }

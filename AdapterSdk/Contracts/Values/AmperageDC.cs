@@ -31,16 +31,16 @@ namespace Mtconnect.AdapterSdk.DataItemValues
 		/// <summary>
 		/// Constructs a new value type for the AmperageDC EVENT Data Item.
 		/// </summary>
-        public AmperageDC(float value) : base(value) { }
+        public AmperageDC(float? value) : base(value) { }
 
 		
         /// <summary>
-        /// Implicitly converts the specified float to an <see cref="AmperageDC"/> value.
-        /// The float is converted to uppercase and used to initialize the <see cref="AmperageDC"/> value.
+        /// Implicitly converts the specified float? to an <see cref="AmperageDC"/> value.
+        /// The float? is converted to uppercase and used to initialize the <see cref="AmperageDC"/> value.
         /// </summary>
-        /// <param name="value">The float to convert.</param>
+        /// <param name="value">The float? to convert.</param>
         /// <returns>An <see cref="AmperageDC"/> value initialized with the specified string in uppercase.</returns>
-        public static implicit operator AmperageDC(float value)
+        public static implicit operator AmperageDC(float? value)
             => new AmperageDC(value);
 		
 		/// <summary>
@@ -54,15 +54,15 @@ namespace Mtconnect.AdapterSdk.DataItemValues
 			/// <summary>
 			/// Constructs a new value type for ACTUAL.
 			/// </summary>
-            public ACTUAL(float value) : base(value) { }
+            public ACTUAL(float? value) : base(value) { }
 			
 			/// <summary>
-			/// Implicitly converts the specified float to an <see cref="ACTUAL"/> value.
-			/// The float is converted to uppercase and used to initialize the <see cref="ACTUAL"/> value.
+			/// Implicitly converts the specified float? to an <see cref="ACTUAL"/> value.
+			/// The float? is converted to uppercase and used to initialize the <see cref="ACTUAL"/> value.
 			/// </summary>
-			/// <param name="value">The float to convert.</param>
+			/// <param name="value">The float? to convert.</param>
 			/// <returns>An <see cref="ACTUAL"/> value initialized with the specified string in uppercase.</returns>
-			public static implicit operator ACTUAL(float value)
+			public static implicit operator ACTUAL(float? value)
 				=> new ACTUAL(value);
 		}
 		/// <summary>
@@ -76,15 +76,15 @@ namespace Mtconnect.AdapterSdk.DataItemValues
 			/// <summary>
 			/// Constructs a new value type for COMMANDED.
 			/// </summary>
-            public COMMANDED(float value) : base(value) { }
+            public COMMANDED(float? value) : base(value) { }
 			
 			/// <summary>
-			/// Implicitly converts the specified float to an <see cref="COMMANDED"/> value.
-			/// The float is converted to uppercase and used to initialize the <see cref="COMMANDED"/> value.
+			/// Implicitly converts the specified float? to an <see cref="COMMANDED"/> value.
+			/// The float? is converted to uppercase and used to initialize the <see cref="COMMANDED"/> value.
 			/// </summary>
-			/// <param name="value">The float to convert.</param>
+			/// <param name="value">The float? to convert.</param>
 			/// <returns>An <see cref="COMMANDED"/> value initialized with the specified string in uppercase.</returns>
-			public static implicit operator COMMANDED(float value)
+			public static implicit operator COMMANDED(float? value)
 				=> new COMMANDED(value);
 		}
 		/// <summary>
@@ -98,15 +98,15 @@ namespace Mtconnect.AdapterSdk.DataItemValues
 			/// <summary>
 			/// Constructs a new value type for PROGRAMMED.
 			/// </summary>
-            public PROGRAMMED(float value) : base(value) { }
+            public PROGRAMMED(float? value) : base(value) { }
 			
 			/// <summary>
-			/// Implicitly converts the specified float to an <see cref="PROGRAMMED"/> value.
-			/// The float is converted to uppercase and used to initialize the <see cref="PROGRAMMED"/> value.
+			/// Implicitly converts the specified float? to an <see cref="PROGRAMMED"/> value.
+			/// The float? is converted to uppercase and used to initialize the <see cref="PROGRAMMED"/> value.
 			/// </summary>
-			/// <param name="value">The float to convert.</param>
+			/// <param name="value">The float? to convert.</param>
 			/// <returns>An <see cref="PROGRAMMED"/> value initialized with the specified string in uppercase.</returns>
-			public static implicit operator PROGRAMMED(float value)
+			public static implicit operator PROGRAMMED(float? value)
 				=> new PROGRAMMED(value);
 		}
     }

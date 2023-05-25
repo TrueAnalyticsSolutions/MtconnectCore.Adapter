@@ -31,16 +31,16 @@ namespace Mtconnect.AdapterSdk.DataItemValues
 		/// <summary>
 		/// Constructs a new value type for the Concentration EVENT Data Item.
 		/// </summary>
-        public Concentration(float value) : base(value) { }
+        public Concentration(float? value) : base(value) { }
 
 		
         /// <summary>
-        /// Implicitly converts the specified float to an <see cref="Concentration"/> value.
-        /// The float is converted to uppercase and used to initialize the <see cref="Concentration"/> value.
+        /// Implicitly converts the specified float? to an <see cref="Concentration"/> value.
+        /// The float? is converted to uppercase and used to initialize the <see cref="Concentration"/> value.
         /// </summary>
-        /// <param name="value">The float to convert.</param>
+        /// <param name="value">The float? to convert.</param>
         /// <returns>An <see cref="Concentration"/> value initialized with the specified string in uppercase.</returns>
-        public static implicit operator Concentration(float value)
+        public static implicit operator Concentration(float? value)
             => new Concentration(value);
 		
     }

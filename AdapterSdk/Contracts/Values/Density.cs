@@ -31,16 +31,16 @@ namespace Mtconnect.AdapterSdk.DataItemValues
 		/// <summary>
 		/// Constructs a new value type for the Density EVENT Data Item.
 		/// </summary>
-        public Density(float value) : base(value) { }
+        public Density(float? value) : base(value) { }
 
 		
         /// <summary>
-        /// Implicitly converts the specified float to an <see cref="Density"/> value.
-        /// The float is converted to uppercase and used to initialize the <see cref="Density"/> value.
+        /// Implicitly converts the specified float? to an <see cref="Density"/> value.
+        /// The float? is converted to uppercase and used to initialize the <see cref="Density"/> value.
         /// </summary>
-        /// <param name="value">The float to convert.</param>
+        /// <param name="value">The float? to convert.</param>
         /// <returns>An <see cref="Density"/> value initialized with the specified string in uppercase.</returns>
-        public static implicit operator Density(float value)
+        public static implicit operator Density(float? value)
             => new Density(value);
 		
     }

@@ -31,16 +31,16 @@ namespace Mtconnect.AdapterSdk.DataItemValues
 		/// <summary>
 		/// Constructs a new value type for the PressureAbsolute EVENT Data Item.
 		/// </summary>
-        public PressureAbsolute(float value) : base(value) { }
+        public PressureAbsolute(float? value) : base(value) { }
 
 		
         /// <summary>
-        /// Implicitly converts the specified float to an <see cref="PressureAbsolute"/> value.
-        /// The float is converted to uppercase and used to initialize the <see cref="PressureAbsolute"/> value.
+        /// Implicitly converts the specified float? to an <see cref="PressureAbsolute"/> value.
+        /// The float? is converted to uppercase and used to initialize the <see cref="PressureAbsolute"/> value.
         /// </summary>
-        /// <param name="value">The float to convert.</param>
+        /// <param name="value">The float? to convert.</param>
         /// <returns>An <see cref="PressureAbsolute"/> value initialized with the specified string in uppercase.</returns>
-        public static implicit operator PressureAbsolute(float value)
+        public static implicit operator PressureAbsolute(float? value)
             => new PressureAbsolute(value);
 		
     }

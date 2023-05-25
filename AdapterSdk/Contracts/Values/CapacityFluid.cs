@@ -31,16 +31,16 @@ namespace Mtconnect.AdapterSdk.DataItemValues
 		/// <summary>
 		/// Constructs a new value type for the CapacityFluid EVENT Data Item.
 		/// </summary>
-        public CapacityFluid(float value) : base(value) { }
+        public CapacityFluid(float? value) : base(value) { }
 
 		
         /// <summary>
-        /// Implicitly converts the specified float to an <see cref="CapacityFluid"/> value.
-        /// The float is converted to uppercase and used to initialize the <see cref="CapacityFluid"/> value.
+        /// Implicitly converts the specified float? to an <see cref="CapacityFluid"/> value.
+        /// The float? is converted to uppercase and used to initialize the <see cref="CapacityFluid"/> value.
         /// </summary>
-        /// <param name="value">The float to convert.</param>
+        /// <param name="value">The float? to convert.</param>
         /// <returns>An <see cref="CapacityFluid"/> value initialized with the specified string in uppercase.</returns>
-        public static implicit operator CapacityFluid(float value)
+        public static implicit operator CapacityFluid(float? value)
             => new CapacityFluid(value);
 		
     }

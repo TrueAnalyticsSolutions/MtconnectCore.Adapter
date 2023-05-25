@@ -31,16 +31,16 @@ namespace Mtconnect.AdapterSdk.DataItemValues
 		/// <summary>
 		/// Constructs a new value type for the BatteryCharge EVENT Data Item.
 		/// </summary>
-        public BatteryCharge(float value) : base(value) { }
+        public BatteryCharge(float? value) : base(value) { }
 
 		
         /// <summary>
-        /// Implicitly converts the specified float to an <see cref="BatteryCharge"/> value.
-        /// The float is converted to uppercase and used to initialize the <see cref="BatteryCharge"/> value.
+        /// Implicitly converts the specified float? to an <see cref="BatteryCharge"/> value.
+        /// The float? is converted to uppercase and used to initialize the <see cref="BatteryCharge"/> value.
         /// </summary>
-        /// <param name="value">The float to convert.</param>
+        /// <param name="value">The float? to convert.</param>
         /// <returns>An <see cref="BatteryCharge"/> value initialized with the specified string in uppercase.</returns>
-        public static implicit operator BatteryCharge(float value)
+        public static implicit operator BatteryCharge(float? value)
             => new BatteryCharge(value);
 		
 		/// <summary>
@@ -54,15 +54,15 @@ namespace Mtconnect.AdapterSdk.DataItemValues
 			/// <summary>
 			/// Constructs a new value type for ACTUAL.
 			/// </summary>
-            public ACTUAL(float value) : base(value) { }
+            public ACTUAL(float? value) : base(value) { }
 			
 			/// <summary>
-			/// Implicitly converts the specified float to an <see cref="ACTUAL"/> value.
-			/// The float is converted to uppercase and used to initialize the <see cref="ACTUAL"/> value.
+			/// Implicitly converts the specified float? to an <see cref="ACTUAL"/> value.
+			/// The float? is converted to uppercase and used to initialize the <see cref="ACTUAL"/> value.
 			/// </summary>
-			/// <param name="value">The float to convert.</param>
+			/// <param name="value">The float? to convert.</param>
 			/// <returns>An <see cref="ACTUAL"/> value initialized with the specified string in uppercase.</returns>
-			public static implicit operator ACTUAL(float value)
+			public static implicit operator ACTUAL(float? value)
 				=> new ACTUAL(value);
 		}
 		/// <summary>
@@ -76,15 +76,15 @@ namespace Mtconnect.AdapterSdk.DataItemValues
 			/// <summary>
 			/// Constructs a new value type for TARGET.
 			/// </summary>
-            public TARGET(float value) : base(value) { }
+            public TARGET(float? value) : base(value) { }
 			
 			/// <summary>
-			/// Implicitly converts the specified float to an <see cref="TARGET"/> value.
-			/// The float is converted to uppercase and used to initialize the <see cref="TARGET"/> value.
+			/// Implicitly converts the specified float? to an <see cref="TARGET"/> value.
+			/// The float? is converted to uppercase and used to initialize the <see cref="TARGET"/> value.
 			/// </summary>
-			/// <param name="value">The float to convert.</param>
+			/// <param name="value">The float? to convert.</param>
 			/// <returns>An <see cref="TARGET"/> value initialized with the specified string in uppercase.</returns>
-			public static implicit operator TARGET(float value)
+			public static implicit operator TARGET(float? value)
 				=> new TARGET(value);
 		}
     }

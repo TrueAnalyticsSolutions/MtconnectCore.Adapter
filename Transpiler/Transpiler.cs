@@ -151,7 +151,7 @@ namespace AdapterTranspiler
                     if (string.IsNullOrEmpty(valueType))
                     {
                         valueType = category == "Sample"
-                            ? "float"
+                            ? "float?"
                             : category == "Condition"
                                 ? "Condition"
                                 : "string";
@@ -210,7 +210,7 @@ namespace AdapterTranspiler
                         if (category == "Sample" && expectedUnits?.Contains("3D") == true)
                         {
                             typeValues.Category = "Sample3D";
-                            typeValues.ValueType = "float[]";
+                            typeValues.ValueType = "float?[]";
                         }
                         foreach (var value in typeValues.Items)
                             value.Name = value.SysML_Name;

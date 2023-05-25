@@ -31,16 +31,16 @@ namespace Mtconnect.AdapterSdk.DataItemValues
 		/// <summary>
 		/// Constructs a new value type for the Openness EVENT Data Item.
 		/// </summary>
-        public Openness(float value) : base(value) { }
+        public Openness(float? value) : base(value) { }
 
 		
         /// <summary>
-        /// Implicitly converts the specified float to an <see cref="Openness"/> value.
-        /// The float is converted to uppercase and used to initialize the <see cref="Openness"/> value.
+        /// Implicitly converts the specified float? to an <see cref="Openness"/> value.
+        /// The float? is converted to uppercase and used to initialize the <see cref="Openness"/> value.
         /// </summary>
-        /// <param name="value">The float to convert.</param>
+        /// <param name="value">The float? to convert.</param>
         /// <returns>An <see cref="Openness"/> value initialized with the specified string in uppercase.</returns>
-        public static implicit operator Openness(float value)
+        public static implicit operator Openness(float? value)
             => new Openness(value);
 		
     }

@@ -8,7 +8,7 @@ namespace Mtconnect.AdapterSdk.Contracts
     /// <typeparam name="T">Generic reference type to the underlying value type.</typeparam>
     public abstract class DataItemValue<T> : IDataItemValue
     {
-        private T _value;
+        protected T _value;
 
         /// <inheritdoc />
         public abstract string Category { get; }
@@ -70,6 +70,11 @@ namespace Mtconnect.AdapterSdk.Contracts
         public static bool operator !=(DataItemValue<T> left, DataItemValue<T> right)
         {
             return !(left == right);
+        }
+
+        public virtual void Unavailable()
+        {
+            _value = default(T);
         }
     }
 }

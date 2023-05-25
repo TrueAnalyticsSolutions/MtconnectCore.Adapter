@@ -31,16 +31,16 @@ namespace Mtconnect.AdapterSdk.DataItemValues
 		/// <summary>
 		/// Constructs a new value type for the Frequency EVENT Data Item.
 		/// </summary>
-        public Frequency(float value) : base(value) { }
+        public Frequency(float? value) : base(value) { }
 
 		
         /// <summary>
-        /// Implicitly converts the specified float to an <see cref="Frequency"/> value.
-        /// The float is converted to uppercase and used to initialize the <see cref="Frequency"/> value.
+        /// Implicitly converts the specified float? to an <see cref="Frequency"/> value.
+        /// The float? is converted to uppercase and used to initialize the <see cref="Frequency"/> value.
         /// </summary>
-        /// <param name="value">The float to convert.</param>
+        /// <param name="value">The float? to convert.</param>
         /// <returns>An <see cref="Frequency"/> value initialized with the specified string in uppercase.</returns>
-        public static implicit operator Frequency(float value)
+        public static implicit operator Frequency(float? value)
             => new Frequency(value);
 		
     }

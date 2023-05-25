@@ -31,16 +31,16 @@ namespace Mtconnect.AdapterSdk.DataItemValues
 		/// <summary>
 		/// Constructs a new value type for the Velocity EVENT Data Item.
 		/// </summary>
-        public Velocity(float value) : base(value) { }
+        public Velocity(float? value) : base(value) { }
 
 		
         /// <summary>
-        /// Implicitly converts the specified float to an <see cref="Velocity"/> value.
-        /// The float is converted to uppercase and used to initialize the <see cref="Velocity"/> value.
+        /// Implicitly converts the specified float? to an <see cref="Velocity"/> value.
+        /// The float? is converted to uppercase and used to initialize the <see cref="Velocity"/> value.
         /// </summary>
-        /// <param name="value">The float to convert.</param>
+        /// <param name="value">The float? to convert.</param>
         /// <returns>An <see cref="Velocity"/> value initialized with the specified string in uppercase.</returns>
-        public static implicit operator Velocity(float value)
+        public static implicit operator Velocity(float? value)
             => new Velocity(value);
 		
     }

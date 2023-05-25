@@ -31,16 +31,16 @@ namespace Mtconnect.AdapterSdk.DataItemValues
 		/// <summary>
 		/// Constructs a new value type for the VoltAmpere EVENT Data Item.
 		/// </summary>
-        public VoltAmpere(float value) : base(value) { }
+        public VoltAmpere(float? value) : base(value) { }
 
 		
         /// <summary>
-        /// Implicitly converts the specified float to an <see cref="VoltAmpere"/> value.
-        /// The float is converted to uppercase and used to initialize the <see cref="VoltAmpere"/> value.
+        /// Implicitly converts the specified float? to an <see cref="VoltAmpere"/> value.
+        /// The float? is converted to uppercase and used to initialize the <see cref="VoltAmpere"/> value.
         /// </summary>
-        /// <param name="value">The float to convert.</param>
+        /// <param name="value">The float? to convert.</param>
         /// <returns>An <see cref="VoltAmpere"/> value initialized with the specified string in uppercase.</returns>
-        public static implicit operator VoltAmpere(float value)
+        public static implicit operator VoltAmpere(float? value)
             => new VoltAmpere(value);
 		
     }

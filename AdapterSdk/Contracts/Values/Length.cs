@@ -31,16 +31,16 @@ namespace Mtconnect.AdapterSdk.DataItemValues
 		/// <summary>
 		/// Constructs a new value type for the Length EVENT Data Item.
 		/// </summary>
-        public Length(float value) : base(value) { }
+        public Length(float? value) : base(value) { }
 
 		
         /// <summary>
-        /// Implicitly converts the specified float to an <see cref="Length"/> value.
-        /// The float is converted to uppercase and used to initialize the <see cref="Length"/> value.
+        /// Implicitly converts the specified float? to an <see cref="Length"/> value.
+        /// The float? is converted to uppercase and used to initialize the <see cref="Length"/> value.
         /// </summary>
-        /// <param name="value">The float to convert.</param>
+        /// <param name="value">The float? to convert.</param>
         /// <returns>An <see cref="Length"/> value initialized with the specified string in uppercase.</returns>
-        public static implicit operator Length(float value)
+        public static implicit operator Length(float? value)
             => new Length(value);
 		
 		/// <summary>
@@ -54,15 +54,15 @@ namespace Mtconnect.AdapterSdk.DataItemValues
 			/// <summary>
 			/// Constructs a new value type for STANDARD.
 			/// </summary>
-            public STANDARD(float value) : base(value) { }
+            public STANDARD(float? value) : base(value) { }
 			
 			/// <summary>
-			/// Implicitly converts the specified float to an <see cref="STANDARD"/> value.
-			/// The float is converted to uppercase and used to initialize the <see cref="STANDARD"/> value.
+			/// Implicitly converts the specified float? to an <see cref="STANDARD"/> value.
+			/// The float? is converted to uppercase and used to initialize the <see cref="STANDARD"/> value.
 			/// </summary>
-			/// <param name="value">The float to convert.</param>
+			/// <param name="value">The float? to convert.</param>
 			/// <returns>An <see cref="STANDARD"/> value initialized with the specified string in uppercase.</returns>
-			public static implicit operator STANDARD(float value)
+			public static implicit operator STANDARD(float? value)
 				=> new STANDARD(value);
 		}
 		/// <summary>
@@ -76,15 +76,15 @@ namespace Mtconnect.AdapterSdk.DataItemValues
 			/// <summary>
 			/// Constructs a new value type for REMAINING.
 			/// </summary>
-            public REMAINING(float value) : base(value) { }
+            public REMAINING(float? value) : base(value) { }
 			
 			/// <summary>
-			/// Implicitly converts the specified float to an <see cref="REMAINING"/> value.
-			/// The float is converted to uppercase and used to initialize the <see cref="REMAINING"/> value.
+			/// Implicitly converts the specified float? to an <see cref="REMAINING"/> value.
+			/// The float? is converted to uppercase and used to initialize the <see cref="REMAINING"/> value.
 			/// </summary>
-			/// <param name="value">The float to convert.</param>
+			/// <param name="value">The float? to convert.</param>
 			/// <returns>An <see cref="REMAINING"/> value initialized with the specified string in uppercase.</returns>
-			public static implicit operator REMAINING(float value)
+			public static implicit operator REMAINING(float? value)
 				=> new REMAINING(value);
 		}
 		/// <summary>
@@ -98,15 +98,15 @@ namespace Mtconnect.AdapterSdk.DataItemValues
 			/// <summary>
 			/// Constructs a new value type for USEABLE.
 			/// </summary>
-            public USEABLE(float value) : base(value) { }
+            public USEABLE(float? value) : base(value) { }
 			
 			/// <summary>
-			/// Implicitly converts the specified float to an <see cref="USEABLE"/> value.
-			/// The float is converted to uppercase and used to initialize the <see cref="USEABLE"/> value.
+			/// Implicitly converts the specified float? to an <see cref="USEABLE"/> value.
+			/// The float? is converted to uppercase and used to initialize the <see cref="USEABLE"/> value.
 			/// </summary>
-			/// <param name="value">The float to convert.</param>
+			/// <param name="value">The float? to convert.</param>
 			/// <returns>An <see cref="USEABLE"/> value initialized with the specified string in uppercase.</returns>
-			public static implicit operator USEABLE(float value)
+			public static implicit operator USEABLE(float? value)
 				=> new USEABLE(value);
 		}
     }
