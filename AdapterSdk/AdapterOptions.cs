@@ -16,6 +16,9 @@ namespace Mtconnect.AdapterSdk
         /// <inheritdoc cref="Adapter.DeviceUUID"/>
         public string DeviceUUID { get; protected set; } = Guid.NewGuid().ToString();
 
+        /// <inheritdoc cref="Adapter.DeviceName"/>
+        public string DeviceName { get; protected set; }
+
         /// <inheritdoc cref="Adapter.StationId"/>
         public string StationId { get; protected set; } = Environment.MachineName;
 
@@ -150,6 +153,10 @@ namespace Mtconnect.AdapterSdk
                 {
                     DeviceUUID= Convert.ToString(kvp.Value);
                     logger?.LogDebug("Recognizing adapter option for the device UUID");
+                } else if (kvp.Key.StartsWith("deviceName", StringComparison.OrdinalIgnoreCase))
+                {
+                    DeviceName = Convert.ToString(kvp.Value);
+                    logger?.LogDebug("Recognizing adapter option for the device name");
                 } else if (kvp.Key.StartsWith("stationId", StringComparison.OrdinalIgnoreCase))
                 {
                     StationId= Convert.ToString(kvp.Value);

@@ -53,6 +53,11 @@ namespace Mtconnect
         public string DeviceUUID { get; set; }
 
         /// <summary>
+        /// The name of the deivce.
+        /// </summary>
+        public string DeviceName { get; set; }
+
+        /// <summary>
         /// An identifier for known location of the device. For example, this could be a reference to the workstation. The default options set this to the computer name where the adapter is deployed.
         /// </summary>
         public string StationId { get; set; }

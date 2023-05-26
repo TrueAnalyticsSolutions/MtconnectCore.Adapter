@@ -65,11 +65,16 @@ namespace Mtconnect
         /// See <seealso href="https://mtcup.org/en/Protocol#commands">MTCup</seealso> site.
         /// </remarks>
         /// <param name="adapter">Reference to the adapter expected to send the command</param>
-        /// <param name="devicePrefix">Optional scope for a specific device prefix, if different than <see cref="Adapter.DeviceUUID"/></param>
         /// <returns>(<c>string</c>) MTConnect Agent Command</returns>
-        public static string Device(Adapter adapter, string devicePrefix = null)
+        public static string DeviceUuid(Adapter adapter)
         {
-            return "* device: " + (devicePrefix ?? adapter?.DeviceUUID ?? Guid.NewGuid().ToString());
+            return "* device: " + adapter?.DeviceUUID ?? Guid.NewGuid().ToString();
+        }
+
+        /// <inheritdoc cref="DeviceUuid(Adapter)"/>
+        public static string DeviceName(Adapter adapter, string devicePrefix = null)
+        {
+            return "* device: " + devicePrefix ?? adapter?.DeviceName;
         }
 
         /// <summary>
