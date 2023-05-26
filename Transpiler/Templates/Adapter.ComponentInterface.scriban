@@ -43,12 +43,12 @@ namespace {{ to_pascal_code source.namespace }} {
 			return (T{{ sub_component.name }}){{ sub_component.name }}Components[propertyName];
 		}
 	{{~ end ~}}
+	{{~ if source.data_items.size > 0 ~}}
 	{{~ for data_item in source.data_items ~}}
 
 		/// <inheritdoc cref="Mtconnect.AdapterSdk.DataItemValues.{{ data_item.name }}" />
 		public virtual {{ data_item.name }} {{ data_item.name }} { get; set; }
 	{{~ end ~}}
-		
 		/// <summary>
 		/// Sets all data items to <c>UNAVAILABLE</c> by setting the properties to <c>default</c>.
 		/// </summary>
@@ -57,5 +57,6 @@ namespace {{ to_pascal_code source.namespace }} {
 			{{ data_item.name }}?.Unavailable();
 		{{~ end ~}}
 		}
+	{{~ end ~}}
 	}
 }
