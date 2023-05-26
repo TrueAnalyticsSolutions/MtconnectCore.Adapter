@@ -39,5 +39,19 @@ namespace Mtconnect.AdapterSdk.DataItemTypes {
 
 		/// <inheritdoc cref="Mtconnect.AdapterSdk.DataItemValues.User" />
 		public virtual User User { get; set; }
+		/// <summary>
+		/// Sets all data items to <c>UNAVAILABLE</c> by setting the properties to <c>default</c>.
+		/// </summary>
+		public override void Unavailable() {
+			PartId?.Unavailable();
+			PartUniqueId?.Unavailable();
+			PartGroupId?.Unavailable();
+			PartKindId?.Unavailable();
+			PartCount?.Unavailable();
+			PartStatus?.Unavailable();
+			ProcessOccurrenceId?.Unavailable();
+			ProcessTime?.Unavailable();
+			User?.Unavailable();
+		}
 	}
 }

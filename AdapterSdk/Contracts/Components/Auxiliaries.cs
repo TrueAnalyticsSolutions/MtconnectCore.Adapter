@@ -33,5 +33,10 @@ namespace Mtconnect.AdapterSdk.DataItemTypes {
 				AuxiliaryComponents.Add(propertyName, (TAuxiliary)Activator.CreateInstance(typeof(TAuxiliary)));
 			return (TAuxiliary)AuxiliaryComponents[propertyName];
 		}
+		/// <summary>
+		/// Sets all data items to <c>UNAVAILABLE</c> by setting the properties to <c>default</c>.
+		/// </summary>
+		public virtual void Unavailable() {
+		}
 	}
 }

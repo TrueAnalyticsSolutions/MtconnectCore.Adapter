@@ -33,5 +33,17 @@ namespace Mtconnect.AdapterSdk.DataItemTypes {
 
 		/// <inheritdoc cref="Mtconnect.AdapterSdk.DataItemValues.PartUniqueId" />
 		public virtual PartUniqueId PartUniqueId { get; set; }
+		/// <summary>
+		/// Sets all data items to <c>UNAVAILABLE</c> by setting the properties to <c>default</c>.
+		/// </summary>
+		public override void Unavailable() {
+			ProcessOccurrenceId?.Unavailable();
+			ProcessAggregateId?.Unavailable();
+			ProcessTime?.Unavailable();
+			ProcessKindId?.Unavailable();
+			User?.Unavailable();
+			Program?.Unavailable();
+			PartUniqueId?.Unavailable();
+		}
 	}
 }

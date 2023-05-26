@@ -285,5 +285,10 @@ namespace Mtconnect.AdapterSdk.DataItemTypes {
 				WorkEnvelopeComponents.Add(propertyName, (TWorkEnvelope)Activator.CreateInstance(typeof(TWorkEnvelope)));
 			return (TWorkEnvelope)WorkEnvelopeComponents[propertyName];
 		}
+		/// <summary>
+		/// Sets all data items to <c>UNAVAILABLE</c> by setting the properties to <c>default</c>.
+		/// </summary>
+		public virtual void Unavailable() {
+		}
 	}
 }

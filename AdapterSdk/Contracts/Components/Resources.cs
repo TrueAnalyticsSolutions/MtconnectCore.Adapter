@@ -54,5 +54,10 @@ namespace Mtconnect.AdapterSdk.DataItemTypes {
 				MaterialComponents.Add(propertyName, (TMaterial)Activator.CreateInstance(typeof(TMaterial)));
 			return (TMaterial)MaterialComponents[propertyName];
 		}
+		/// <summary>
+		/// Sets all data items to <c>UNAVAILABLE</c> by setting the properties to <c>default</c>.
+		/// </summary>
+		public virtual void Unavailable() {
+		}
 	}
 }

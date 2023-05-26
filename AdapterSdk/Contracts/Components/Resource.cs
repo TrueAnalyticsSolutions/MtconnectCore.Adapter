@@ -54,5 +54,10 @@ namespace Mtconnect.AdapterSdk.DataItemTypes {
 				PersonnelComponents.Add(propertyName, (TPersonnel)Activator.CreateInstance(typeof(TPersonnel)));
 			return (TPersonnel)PersonnelComponents[propertyName];
 		}
+		/// <summary>
+		/// Sets all data items to <c>UNAVAILABLE</c> by setting the properties to <c>default</c>.
+		/// </summary>
+		public virtual void Unavailable() {
+		}
 	}
 }

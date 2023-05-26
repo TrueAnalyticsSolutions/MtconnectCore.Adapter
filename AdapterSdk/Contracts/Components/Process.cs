@@ -33,5 +33,10 @@ namespace Mtconnect.AdapterSdk.DataItemTypes {
 				ProcessOccurrenceComponents.Add(propertyName, (TProcessOccurrence)Activator.CreateInstance(typeof(TProcessOccurrence)));
 			return (TProcessOccurrence)ProcessOccurrenceComponents[propertyName];
 		}
+		/// <summary>
+		/// Sets all data items to <c>UNAVAILABLE</c> by setting the properties to <c>default</c>.
+		/// </summary>
+		public virtual void Unavailable() {
+		}
 	}
 }

@@ -54,5 +54,10 @@ namespace Mtconnect.AdapterSdk.DataItemTypes {
 				VibrationComponents.Add(propertyName, (TVibration)Activator.CreateInstance(typeof(TVibration)));
 			return (TVibration)VibrationComponents[propertyName];
 		}
+		/// <summary>
+		/// Sets all data items to <c>UNAVAILABLE</c> by setting the properties to <c>default</c>.
+		/// </summary>
+		public virtual void Unavailable() {
+		}
 	}
 }

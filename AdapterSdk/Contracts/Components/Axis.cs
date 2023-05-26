@@ -75,5 +75,10 @@ namespace Mtconnect.AdapterSdk.DataItemTypes {
 				SpindleComponents.Add(propertyName, (TSpindle)Activator.CreateInstance(typeof(TSpindle)));
 			return (TSpindle)SpindleComponents[propertyName];
 		}
+		/// <summary>
+		/// Sets all data items to <c>UNAVAILABLE</c> by setting the properties to <c>default</c>.
+		/// </summary>
+		public virtual void Unavailable() {
+		}
 	}
 }
