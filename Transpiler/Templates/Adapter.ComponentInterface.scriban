@@ -52,7 +52,7 @@ namespace {{ to_pascal_code source.namespace }} {
 		/// <summary>
 		/// Sets all data items to <c>UNAVAILABLE</c> by setting the properties to <c>default</c>.
 		/// </summary>
-		public virtual void Unavailable() {
+		public {{ if source.parent_component != null }}override{{ else }}virtual{{ end }} void Unavailable() {
 		{{~ for data_item in source.data_items ~}}
 			{{ data_item.name }}?.Unavailable();
 		{{~ end ~}}
