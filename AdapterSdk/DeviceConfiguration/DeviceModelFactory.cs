@@ -89,17 +89,17 @@ namespace Mtconnect.AdapterSdk.DeviceConfiguration
 
                 string deviceName = !string.IsNullOrEmpty(deviceDataItems.Key)
                     ? deviceDataItems.Key
-                    : adapter.DeviceUUID;
+                    : adapter.DeviceName ?? adapter.DeviceUUID;
 
                 // Build Device element
                 XmlElement xDevice = xDoc.CreateElement("Device");
                 xDevices.AppendChild(xDevice);
-                xDevice.Attributes.Append(xDoc.CreateAttribute("id")).Value = deviceName;
+                xDevice.Attributes.Append(xDoc.CreateAttribute("id")).Value = adapter.DeviceUUID;
                 // QUESTION: iso841Class was deprecated, but perhaps we should still include it in case a v1.0 Adapter is created?
                 xDevice.Attributes.Append(xDoc.CreateAttribute("iso841Class")).Value = "1";
                 // TODO: Add sampleInterval as a property within the Adapter or IAdapterSource.
                 xDevice.Attributes.Append(xDoc.CreateAttribute("sampleInterval")).Value = "50";
-                xDevice.Attributes.Append(xDoc.CreateAttribute("uuid")).Value = Guid.NewGuid().ToString();
+                xDevice.Attributes.Append(xDoc.CreateAttribute("uuid")).Value = adapter.DeviceUUID;
                 xDevice.Attributes.Append(xDoc.CreateAttribute("name")).Value = deviceName;
 
                 // TODO: Source manufacturer information for the Description element

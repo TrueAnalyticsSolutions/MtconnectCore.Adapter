@@ -11,6 +11,8 @@ namespace Mtconnect.AdapterSourceTemplate
     {
         public string DeviceUuid => throw new NotImplementedException();
 
+        public string DeviceName => throw new NotImplementedException();
+
         public string StationId => throw new NotImplementedException();
 
         public string SerialNumber => throw new NotImplementedException();

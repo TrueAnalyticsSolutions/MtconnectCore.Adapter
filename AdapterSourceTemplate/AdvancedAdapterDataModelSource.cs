@@ -12,6 +12,8 @@ namespace Mtconnect.AdapterSourceTemplate
     {
         public string DeviceUuid => throw new NotImplementedException();
 
+        public string DeviceName => throw new NotImplementedException();
+
         public string StationId => throw new NotImplementedException();
 
         public string SerialNumber => throw new NotImplementedException();
@@ -27,6 +29,7 @@ namespace Mtconnect.AdapterSourceTemplate
 
         /// TODO: Change the type to your data model or implement some other form of managing a IAdapterDataModel
         public AdvancedAdapterDataModel Model { get; private set; } = new AdvancedAdapterDataModel();
+
 
         private System.Timers.Timer Timer = new System.Timers.Timer();
 
