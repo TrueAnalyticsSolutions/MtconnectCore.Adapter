@@ -43,7 +43,7 @@ namespace {{ to_pascal_code source.namespace }} {
 			return (T{{ sub_component.name }}){{ sub_component.name }}Components[propertyName];
 		}
 	{{~ end ~}}
-	{{~ if source.data_items.size > 0 ~}}
+	{{~ if source.data_items.size > 0 || source.parent_component == null ~}}
 	{{~ for data_item in source.data_items ~}}
 
 		/// <inheritdoc cref="Mtconnect.AdapterSdk.DataItemValues.{{ data_item.name }}" />
