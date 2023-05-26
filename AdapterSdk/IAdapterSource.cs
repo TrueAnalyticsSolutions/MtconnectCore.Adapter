@@ -11,6 +11,9 @@ namespace Mtconnect
         /// <inheritdoc cref="Adapter.DeviceUUID"/>
         string DeviceUuid { get; }
 
+        /// <inheritdoc cref="Adapter.DeviceName"/>
+        string DeviceName { get; }
+
         /// <inheritdoc cref="Adapter.StationId"/>
         string StationId { get; }
 
