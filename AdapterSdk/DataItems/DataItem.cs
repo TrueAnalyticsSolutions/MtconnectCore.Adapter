@@ -156,7 +156,7 @@ namespace Mtconnect.AdapterSdk.DataItems
             {
                 var updatedValue = value;
                 if (updatedValue is IDataItemValue)
-                    updatedValue = updatedValue.ToString();
+                    updatedValue = updatedValue?.ToString();
                 if (FormatValue != null) updatedValue = FormatValue(updatedValue);
 
                 if (IsReadyToUpdate(updatedValue)
