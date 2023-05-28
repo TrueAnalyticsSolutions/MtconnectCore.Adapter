@@ -43,7 +43,7 @@ namespace Mtconnect.AdapterSdk.Contracts
         /// <inheritdoc />
         public override string ToString()
         {
-            return _value.ToString();
+            return _value?.ToString();
         }
 
         /// <inheritdoc />
