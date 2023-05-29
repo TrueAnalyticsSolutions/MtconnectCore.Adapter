@@ -1,0 +1,62 @@
+{{~ nversion_slim = (source?.normative_version | string.slice 20 3) | string.replace "_" "."
+dversion_slim = (source?.deprecated_version | string.slice 20 3) | string.replace "_" "." ~}}
+using Mtconnect.AdapterSdk.Contracts;
+using Mtconnect.AdapterSdk.DataItemValues;
+using System;
+using System.CodeDom.Compiler;
+using System.Collections.Generic;
+
+namespace {{ to_pascal_code source.namespace }} {
+	/// <summary>
+	/// View in the MTConnect Model browser <seealso href="https://model.mtconnect.org/#Structure__{{ source.reference_id }}">model.mtconnect.org</seealso>
+	{{ source?.summary }}
+	/// </summary>
+	{{~ if nversion_slim != "" ~}}
+	/// <remarks>Introduced in <see href="https://model.mtconnect.org/#_Version_{{ nversion_slim }}">v{{ nversion_slim }}</see>.</remarks>
+	{{~ end ~}}
+	{{~ if dversion_slim != "" ~}}
+	/// <remarks>Deprecated in <see href="https://model.mtconnect.org/#_Version_{{ dversion_slim }}">v{{ dversion_slim }}</see>.</remarks>
+	[Obsolete("Deprecated in v{{ dversion_slim }} according to https://model.mtconnect.org/#_Version_{{ dversion_slim }}")]
+	{{~ end ~}}
+	[GeneratedCode("MtconnectTranspiler.Sinks.CSharp.Adapter", "{{ version }}")]
+	public class {{ source.name }} :{{ if source.parent_component != null }} {{ source.parent_component.name }},{{ end }} IAdapterDataModel, IComponentModel {
+	{{~ for sub_component in source.sub_components ~}}
+
+		/// <summary>
+		/// Internal collection of <see cref="{{ sub_component.name }}" /> to be maintained by the implementer. The dictionary key is recommended to be the names of any hard-coded properties
+		/// </summary>
+		private Dictionary<string, {{ sub_component.name }}> {{ sub_component.name }}Components { get; set; } = new Dictionary<string, {{ sub_component.name }}>();
+		/// <summary>
+		/// Gets the instance of a <see cref="{{ sub_component.name }}" /> by name. <b>NOTE</b>: The <paramref name="propertyName"/> should usually be the name of a property within the class.
+		/// <br /><example>
+		/// Expected use:
+		/// <code>
+		/// public {{ sub_component.name }} Example{{ sub_component.name }} =&gt; GetOrAdd{{ sub_component.name }}&lt;{{ sub_component.name }}&gt;(nameof(Example{{ sub_component.name }}));
+		/// </code>
+		/// </example>
+		/// </summary>
+		/// <param name="propertyName">Reference to the name of the property that is the entry point for this <see cref="{{ sub_component.name }}" /> component</param>
+		protected T{{ sub_component.name }} GetOrAdd{{ sub_component.name }}<T{{ sub_component.name }}>(string propertyName) where T{{ sub_component.name }} : {{ sub_component.name }}
+		{
+			if (!{{ sub_component.name }}Components.ContainsKey(propertyName))
+				{{ sub_component.name }}Components.Add(propertyName, (T{{ sub_component.name }})Activator.CreateInstance(typeof(T{{ sub_component.name }})));
+			return (T{{ sub_component.name }}){{ sub_component.name }}Components[propertyName];
+		}
+	{{~ end ~}}
+	{{~ if source.data_items.size > 0 || source.parent_component == null ~}}
+	{{~ for data_item in source.data_items ~}}
+
+		/// <inheritdoc cref="Mtconnect.AdapterSdk.DataItemValues.{{ data_item.name }}" />
+		public virtual {{ data_item.name }} {{ data_item.name }} { get; set; }
+	{{~ end ~}}
+		/// <summary>
+		/// Sets all data items to <c>UNAVAILABLE</c> by setting the properties to <c>default</c>.
+		/// </summary>
+		public {{ if source.parent_component != null }}override{{ else }}virtual{{ end }} void Unavailable() {
+		{{~ for data_item in source.data_items ~}}
+			{{ data_item.name }}?.Unavailable();
+		{{~ end ~}}
+		}
+	{{~ end ~}}
+	}
+}

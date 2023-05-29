@@ -1,17 +1,21 @@
 ﻿
-namespace Mtconnect.AdapterInterface
+namespace Mtconnect.AdapterSdk
 {
-    internal static class Constants
+    public static class Constants
     {
         /// <summary>
         /// The standard, indeterminate state for MTConnect.
         /// </summary>
-        internal const string UNAVAILABLE = "UNAVAILABLE";
+        public const string UNAVAILABLE = "UNAVAILABLE";
+
+        internal const string EVENT = "EVENT";
+        internal const string CONDITION = "CONDITION";
+        internal const string SAMPLE = "SAMPLE";
 
         /// <summary>
         /// The W3C ISO 8601 format for timestamps.
         /// </summary>
-        internal const string DATE_TIME_FORMAT = "yyyy-MM-dd\\THH:mm:ss.fffffffK";
+        public const string DATE_TIME_FORMAT = "yyyy-MM-dd\\THH:mm:ss.fffffffK";
 
     }
 }

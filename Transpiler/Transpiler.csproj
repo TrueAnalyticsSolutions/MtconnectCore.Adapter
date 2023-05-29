@@ -1,0 +1,49 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <OutputType>Exe</OutputType>
+    <TargetFramework>net6.0</TargetFramework>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <Nullable>enable</Nullable>
+	  <StartupObject>Program</StartupObject>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <None Remove="Templates\Adapter.ComponentInterface.scriban" />
+    <None Remove="Templates\Adapter.UnitStaticHelper.scriban" />
+    <None Remove="Templates\Adapter.ValueType.scriban" />
+    <None Remove="Templates\MtconnectVersion.scriban" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Consoul" Version="1.6.3" />
+    <PackageReference Include="MtconnectTranspiler" Version="1.0.7" />
+    <PackageReference Include="MtconnectTranspiler.Sinks.CSharp" Version="1.0.12" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Content Include="Templates\Adapter.UnitStaticHelper.scriban">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Templates\Adapter.ComponentInterface.scriban">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Templates\Adapter.Class.scriban">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Templates\Adapter.Enum.scriban">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Templates\Adapter.ValueType.scriban">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Templates\MtconnectVersion.scriban">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Templates\UmlCommentsSummaryContent.scriban" />
+    <Content Update="Templates\UmlCommentsSummaryContent.scriban">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+  </ItemGroup>
+
+</Project>

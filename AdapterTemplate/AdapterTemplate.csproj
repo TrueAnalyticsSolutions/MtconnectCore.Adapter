@@ -22,7 +22,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <PackageReference Include="Mtconnect.AdapterInterface" Version="1.0.19" />
+    <ProjectReference Include="..\AdapterSdk\AdapterSdk.csproj" />
   </ItemGroup>
 
 </Project>

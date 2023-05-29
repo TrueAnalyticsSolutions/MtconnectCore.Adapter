@@ -1,0 +1,94 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+	<TargetFrameworks>netcoreapp3.1;netstandard2.1;net461;</TargetFrameworks>
+    <BaseOutputPath>bin\</BaseOutputPath>
+    <GenerateDocumentationFile>True</GenerateDocumentationFile>
+    <NeutralLanguage>en-US</NeutralLanguage>
+    <RootNamespace>Mtconnect.AdapterInterface</RootNamespace>
+    <GeneratePackageOnBuild>True</GeneratePackageOnBuild>
+    <PackageId>Mtconnect.AdapterSdk</PackageId>
+    <Title>MTConnect Adapter SDK</Title>
+    <Authors>tbm0115</Authors>
+    <Company>True Analytics Manufacturing Solutions</Company>
+    <Product>MTConnect</Product>
+    <Description>An interface library for connecting other libraries into the MtconnectCore.Adapter.</Description>
+    <Copyright>True Analytics Manufacturing Solutions, LLC 2023</Copyright>
+    <PackageIcon>icon.jpg</PackageIcon>
+    <RepositoryType>git</RepositoryType>
+    <PackageTags>MTConnect;Adapter;Interface</PackageTags>
+    <PackageReleaseNotes>Added support for device model configuration with a MTConnect Agent.</PackageReleaseNotes>
+    <ApplicationIcon>icon.ico</ApplicationIcon>
+    <PackageProjectUrl>https://github.com/TrueAnalyticsSolutions/MtconnectCore.Adapter</PackageProjectUrl>
+    <RepositoryUrl>$(ProjectUrl)</RepositoryUrl>
+    <Version>2.0.0</Version>
+    <IncludeSymbols>True</IncludeSymbols>
+    <SymbolPackageFormat>snupkg</SymbolPackageFormat>
+	<DebugSymbols>true</DebugSymbols>
+	<EmbedAllSources>true</EmbedAllSources>
+	<DebugType>portable</DebugType>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <None Remove="icon.jpg" />
+    <None Remove="logo_v2.0.jpg" />
+    <None Remove="MTConnect_8-bit.png" />
+    <None Remove="Sandbox\Readme.md" />
+    <None Remove="Sandbox\Sandbox.ps1" />
+    <None Remove="UPnP-Description.xml" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Compile Include="..\Constants.cs" Link="Constants.cs" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Content Include="MTConnect_8-bit.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="icon.ico" Link="icon.ico">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="icon.jpg">
+      <Pack>True</Pack>
+      <PackagePath>\</PackagePath>
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="logo_v2.0.jpg">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Sandbox\Readme.md">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Sandbox\Sandbox.ps1">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="UPnP-Description.xml">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+	  <None Include="README.md">
+		  <Pack>True</Pack>
+		  <PackagePath>\</PackagePath>
+	  </None>
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Microsoft.CodeAnalysis.CSharp.Scripting" Version="4.5.0" />
+    <PackageReference Include="Microsoft.Extensions.Logging.Abstractions" Version="7.0.0" />
+    <PackageReference Include="System.Configuration.ConfigurationManager" Version="7.0.0" />
+    <PackageReference Include="System.Text.Json" Version="7.0.2" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Update="Readme.md">
+      <Pack>True</Pack>
+      <PackagePath>\</PackagePath>
+    </None>
+  </ItemGroup>
+
+  <ItemGroup>
+    <Folder Include="Contracts\Components\" />
+    <Folder Include="Contracts\Units\" />
+  </ItemGroup>
+
+</Project>

@@ -1,6 +1,7 @@
 ﻿using ConsoulLibrary;
 using Microsoft.Extensions.Logging;
 using Mtconnect;
+using Mtconnect.AdapterSdk.DeviceConfiguration;
 using Mtconnect.AdapterSourceTemplate;
 
 namespace TcpTerminal
@@ -16,8 +17,10 @@ namespace TcpTerminal
 
             using(var adapter = new TcpAdapter(options, loggerFactory))
             {
-                adapter.Start(new AdapterSource());
+                adapter.Start(new BasicAdapterDataModelSource());
 
+                Task.Run(() => SaveDevices(adapter));
+                
                 Consoul.Write($"Adapter running @ http://*:{adapter.Port}");
 
                 if (File.Exists(PUTTY_EXE) && Consoul.Ask("Would you like to run PuTTY?"))
@@ -27,6 +30,14 @@ namespace TcpTerminal
 
                 adapter.Stop();
             }
+        }
+        private static async void SaveDevices(TcpAdapter adapter)
+        {
+            System.Threading.Thread.Sleep(5000);
+            var dcf = new DeviceModelFactory();
+            var doc = dcf.Create(adapter);
+            string filename = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments), "Devices.xml");
+            doc.Save(filename);
         }
 
         private const string PUTTY_EXE = "C:\\Program Files\\PuTTY\\putty.exe";

@@ -1,15 +1,16 @@
 ﻿using System;
 using System.Threading;
 using Microsoft.Extensions.Logging;
-using Mtconnect.AdapterInterface.Contracts;
-using Mtconnect.AdapterInterface.DataItems;
+using Mtconnect.AdapterSdk.Contracts;
+using Mtconnect.AdapterSdk.DataItems;
 
 namespace Mtconnect.AdapterTemplate
 {
     /// <summary>
     /// TODO: Explain the method or protocol for which MTConnect data is published.
     /// </summary>
-    public sealed class AdapterTemplate : Adapter
+    public sealed class AdapterTemplate
+        : Adapter
     {
         /// <summary>
         /// Constructs a new <see cref="AdapterTemplate"/>.
@@ -42,7 +43,7 @@ namespace Mtconnect.AdapterTemplate
 
             if (State > AdapterStates.NotStarted)
             {
-                _logger?.LogInformation("Stopping TcpAdapter");
+                _logger?.LogInformation("Stopping Adapter");
                 State = AdapterStates.Stopping;
 
                 // TODO: Begin closing connections

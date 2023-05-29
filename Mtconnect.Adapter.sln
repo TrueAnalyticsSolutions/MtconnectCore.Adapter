@@ -19,11 +19,13 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "AdapterSourceTemplate", "Ad
 		{3574E405-181D-465D-9F51-477CA8313071} = {3574E405-181D-465D-9F51-477CA8313071}
 	EndProjectSection
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "AdapterSdk", "AdapterInterface\AdapterSdk.csproj", "{3574E405-181D-465D-9F51-477CA8313071}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "AdapterSdk", "AdapterSdk\AdapterSdk.csproj", "{3574E405-181D-465D-9F51-477CA8313071}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "TcpTerminalTemplate", "TcpTerminalTemplate\TcpTerminalTemplate.csproj", "{A5B4A375-C312-443D-BE1F-CF9C6265DF22}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "AdapterTemplate", "AdapterTemplate\AdapterTemplate.csproj", "{41A19D0A-BC40-493E-85E6-3338F6DE4690}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Transpiler", "Transpiler\Transpiler.csproj", "{7E48BDC3-E803-4CA0-AF04-1AB145140126}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -83,6 +85,18 @@ Global
 		{41A19D0A-BC40-493E-85E6-3338F6DE4690}.Release|arm64.Build.0 = Release|Any CPU
 		{41A19D0A-BC40-493E-85E6-3338F6DE4690}.Release|x86.ActiveCfg = Release|Any CPU
 		{41A19D0A-BC40-493E-85E6-3338F6DE4690}.Release|x86.Build.0 = Release|Any CPU
+		{7E48BDC3-E803-4CA0-AF04-1AB145140126}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{7E48BDC3-E803-4CA0-AF04-1AB145140126}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{7E48BDC3-E803-4CA0-AF04-1AB145140126}.Debug|arm64.ActiveCfg = Debug|Any CPU
+		{7E48BDC3-E803-4CA0-AF04-1AB145140126}.Debug|arm64.Build.0 = Debug|Any CPU
+		{7E48BDC3-E803-4CA0-AF04-1AB145140126}.Debug|x86.ActiveCfg = Debug|Any CPU
+		{7E48BDC3-E803-4CA0-AF04-1AB145140126}.Debug|x86.Build.0 = Debug|Any CPU
+		{7E48BDC3-E803-4CA0-AF04-1AB145140126}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{7E48BDC3-E803-4CA0-AF04-1AB145140126}.Release|Any CPU.Build.0 = Release|Any CPU
+		{7E48BDC3-E803-4CA0-AF04-1AB145140126}.Release|arm64.ActiveCfg = Release|Any CPU
+		{7E48BDC3-E803-4CA0-AF04-1AB145140126}.Release|arm64.Build.0 = Release|Any CPU
+		{7E48BDC3-E803-4CA0-AF04-1AB145140126}.Release|x86.ActiveCfg = Release|Any CPU
+		{7E48BDC3-E803-4CA0-AF04-1AB145140126}.Release|x86.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

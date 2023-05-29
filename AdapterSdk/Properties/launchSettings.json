@@ -1,0 +1,8 @@
+{
+  "profiles": {
+    "AdapterSdk": {
+      "commandName": "Project",
+      "nativeDebugging": true
+    }
+  }
+}

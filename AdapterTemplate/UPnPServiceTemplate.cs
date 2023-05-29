@@ -1,5 +1,5 @@
 ﻿using Microsoft.Extensions.Logging;
-using Mtconnect.AdapterInterface.UPnP;
+using Mtconnect.AdapterSdk.UPnP;
 using Mtconnect.UPnP;
 
 namespace Mtconnect.AdapterTemplate
