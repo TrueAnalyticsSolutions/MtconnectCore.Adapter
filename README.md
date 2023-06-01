@@ -33,7 +33,7 @@ This Adapter library provides some configuration options to alter the behavior o
 #### DataItem Options
 Individual DataItem configuration is also available, giving you more control over how each DataItem is processed before sending to the client(s).
  - `name` allows you to override the DataItem name that is sent to the client(s).
- - `format` allows you to override the value that is sent to the client(s). NOTE: This option MUST be encrypted for security purposes.
+ - `format` allows you to override the value that is sent to the client(s). **NOTE**: This option MUST be encrypted for security purposes. Additionally the use of this feature should be in coordination with any network and security policies.
  
 #### TCP Options
 When communicating with clients via TCP, here are some options for setting up those connections:
@@ -48,11 +48,13 @@ Adapters can optionally make themselves discoverable using UPnP by adding the `U
    - `broadcastRate` is the rate (in milliseconds) at which the service will publish a (`ssdp:update`) notification on the network. The default is essentially 24hrs.
    - `address` is the intended IP Address to host the HTTP server. The default is `localhost`
    - `port` is the intended port number to host the HTTP servre. The default is `7879`. This value must be unique on the machine
+
+**NOTE**: UPnP should be tested and evaluated for security concerns in coordination with any network and security policies.
  
 ### API
 In order to stay compliant with the reference MTConnect C++ Agent, there are some commands that must be issued to the Agent. This Adapter library expands on this concept by allowing the TCP clients to issue commands to retrieve this information on-demand.
 
-#### Agent Commands
+#### Agent SHDR Commands
 These are commands that can be issued to the client(s) (aka Agent):
  - `* PONG <heartbeat>`
  - `* adapterVersion: <version>`
@@ -68,6 +70,7 @@ These are commands that can be issued to the client(s) (aka Agent):
  - `* serialNumber: XXX`
  - `* shdrVersion: <version>`
  - `* station: XXX`
+ - `* deviceModel: <XML>`
  
 #### Adapter Commands
 These are commands that can be issued to the Adapter from the client(s):
