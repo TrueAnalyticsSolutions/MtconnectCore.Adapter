@@ -459,21 +459,28 @@ namespace Mtconnect
             const string failedAccess = "Failed to get device information";
             Exception innerException = null;
 
-            if (string.IsNullOrEmpty(DeviceUUID = TryGetDeviceInformation(sender, (e) => e.DeviceUuid, out innerException)) || innerException != null)
+            if (string.IsNullOrEmpty(DeviceUUID = TryGetDeviceInformation(sender, (e) => e?.DeviceUuid, out innerException)) || innerException != null)
                 _logger?.LogError(new Exception(failedAccess, innerException), innerException.ToString());
 
-            if (string.IsNullOrEmpty(StationId = TryGetDeviceInformation(sender, (e) => e.StationId, out innerException)) || innerException != null)
+            if (string.IsNullOrEmpty(StationId = TryGetDeviceInformation(sender, (e) => e?.StationId, out innerException)) || innerException != null)
                 _logger?.LogError(new Exception(failedAccess, innerException), innerException.ToString());
 
-            if (string.IsNullOrEmpty(SerialNumber = TryGetDeviceInformation(sender, (e) => e.SerialNumber, out innerException)) || innerException != null)
+            if (string.IsNullOrEmpty(SerialNumber = TryGetDeviceInformation(sender, (e) => e?.SerialNumber, out innerException)) || innerException != null)
                 _logger?.LogError(new Exception(failedAccess, innerException), innerException.ToString());
 
-            if (string.IsNullOrEmpty(Manufacturer = TryGetDeviceInformation(sender, (e) => e.Manufacturer, out innerException)) || innerException != null)
+            if (string.IsNullOrEmpty(Manufacturer = TryGetDeviceInformation(sender, (e) => e?.Manufacturer, out innerException)) || innerException != null)
                 _logger?.LogError(new Exception(failedAccess, innerException), innerException.ToString());
         }
         private T TryGetDeviceInformation<T>(IAdapterSource sender, Func<IAdapterSource, T> getter, out Exception exception)
         {
             exception = null;
+
+            if (sender == null)
+                return default(T);
+
+            if (getter == null)
+                return default(T);
+
             try
             {
                 return getter(sender);
