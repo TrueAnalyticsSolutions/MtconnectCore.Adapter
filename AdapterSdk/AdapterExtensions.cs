@@ -2,6 +2,7 @@
 using Mtconnect.AdapterSdk.Contracts.Attributes;
 using Mtconnect.AdapterSdk.DataItems;
 using System;
+using System.Collections;
 using System.Collections.Concurrent;
 using System.Collections.Generic;
 using System.Linq;
@@ -147,6 +148,42 @@ namespace Mtconnect
                             {
                                 case DataItemPartialAttribute _:
                                     dataItemAdded = adapter.TryAddDataItems(property.GetValue(model), $"{modelPath}[{property.Name}]", dataItemName, dataItemDescription);
+
+                                    // Process property for collections
+                                    if (property.PropertyType.IsGenericType)
+                                    {
+                                        var genericType = property.PropertyType.GetGenericTypeDefinition();
+                                        if (genericType == typeof(Dictionary<,>) && property.PropertyType.GetGenericArguments()[0] == typeof(string))
+                                        {
+                                            // Dictionary<string, T>
+                                            var dictionary = property.GetValue(model) as IDictionary;
+                                            foreach (DictionaryEntry entry in dictionary)
+                                            {
+                                                string dataItemSuffix = (string)entry.Key;
+                                                var dataItemValue = entry.Value;
+                                                dataItemAdded = adapter.TryAddDataItems(dataItemValue, dataItemName + dataItemSuffix);
+                                            }
+                                        }
+                                        else if (genericType == typeof(List<>))
+                                        {
+                                            // List<T>
+                                            var list = property.GetValue(model) as IList;
+                                            for (int i = 0; i < list.Count; i++)
+                                            {
+                                                dataItemAdded = adapter.TryAddDataItems(list[i], dataItemName + i.ToString());
+                                            }
+                                        }
+                                        else
+                                        {
+                                            // Unknown generic type
+                                            dataItemAdded = adapter.TryAddDataItems(property.GetValue(model), dataItemName);
+                                        }
+                                    }
+                                    else
+                                    {
+                                        // Non-generic type
+                                        dataItemAdded = adapter.TryAddDataItems(property.GetValue(model), dataItemName);
+                                    }
                                     break;
                                 case EventAttribute _:
                                     dataItem = new Event(dataItemName, dataItemType, dataItemSubType, dataItemDescription);
@@ -201,15 +238,61 @@ namespace Mtconnect
                         // Now add the DataItem if it was constructed
                         if (dataItem != null)
                         {
-                            dataItem.ModelPath = $"{modelPath}[{property.Name}]";
-                            if (timestampProperty != null)
+                            Func<DataItem, string, bool> addDataItem = (DataItem di, string mp) =>
                             {
-                                dataItem.HasTimestampOverride = true;
-                            } else
+                                di.ModelPath = mp;// $"{modelPath}[{property.Name}]";
+                                if (timestampProperty != null)
+                                {
+                                    di.HasTimestampOverride = true;
+                                }
+                                else
+                                {
+                                    di.LastChanged = TimeHelper.GetNow();
+                                }
+                                return adapter.TryAddDataItem(di, !isCached);
+                            };
+
+                            // Process property for collections
+                            if (property.PropertyType.IsGenericType)
                             {
-                                dataItem.LastChanged = TimeHelper.GetNow();
+                                var genericType = property.PropertyType.GetGenericTypeDefinition();
+                                if (genericType == typeof(Dictionary<,>) && property.PropertyType.GetGenericArguments()[0] == typeof(string))
+                                {
+                                    // Dictionary<string, T>
+                                    var dictionary = property.GetValue(model) as IDictionary;
+                                    foreach (DictionaryEntry entry in dictionary)
+                                    {
+                                        string dataItemSuffix = (string)entry.Key;
+                                        var dataItemValue = entry.Value;
+                                        // Copy DataItem instance
+                                        var copy = dataItem.Copy();
+                                        copy.Name += dataItemSuffix;
+                                        dataItemAdded = addDataItem(copy, $"{modelPath}[{property.Name}][{dataItemSuffix}]");
+                                    }
+                                }
+                                else if (genericType == typeof(List<>))
+                                {
+                                    // List<T>
+                                    var list = property.GetValue(model) as IList;
+                                    for (int i = 0; i < list.Count; i++)
+                                    {
+                                        // Copy DataItem instance // var entryDataItem = dataItem.
+                                        var copy = dataItem.Copy();
+                                        copy.Name += i.ToString();
+                                        dataItemAdded = addDataItem(copy, $"{modelPath}[{property.Name}][{i}]");
+                                    }
+                                }
+                                else
+                                {
+                                    // Unknown generic type
+                                    dataItemAdded = addDataItem(dataItem, $"{modelPath}[{property.Name}]");
+                                }
                             }
-                            dataItemAdded = adapter.TryAddDataItem(dataItem, !isCached);
+                            else
+                            {
+                                // Non-generic type
+                                dataItemAdded = addDataItem(dataItem, $"{modelPath}[{property.Name}]");
+                            }
                         }
                     }
                     catch (Exception ex)
@@ -258,14 +341,79 @@ namespace Mtconnect
                 switch (dataItemAttribute)
                 {
                     case DataItemPartialAttribute _:
-                        dataItemUpdated = adapter.TryUpdateValues(property.GetValue(model), dataItemName);
+                        // Process property for collections
+                        if (property.PropertyType.IsGenericType)
+                        {
+                            var genericType = property.PropertyType.GetGenericTypeDefinition();
+                            if (genericType == typeof(Dictionary<,>) && property.PropertyType.GetGenericArguments()[0] == typeof(string))
+                            {
+                                // Dictionary<string, T>
+                                var dictionary = property.GetValue(model) as IDictionary;
+                                foreach (DictionaryEntry entry in dictionary)
+                                {
+                                    string dataItemSuffix = (string)entry.Key;
+                                    var dataItemValue = entry.Value;
+                                    dataItemUpdated = adapter.TryUpdateValues(dataItemValue, dataItemName + dataItemSuffix);
+                                }
+                            }
+                            else if (genericType == typeof(List<>))
+                            {
+                                // List<T>
+                                var list = property.GetValue(model) as IList;
+                                for (int i = 0; i < list.Count; i++)
+                                {
+                                    dataItemUpdated = adapter.TryUpdateValues(list[i], dataItemName + i.ToString());
+                                }
+                            }
+                            else
+                            {
+                                // Unknown generic type
+                                dataItemUpdated = adapter.TryUpdateValues(property.GetValue(model), dataItemName);
+                            }
+                        }
+                        else
+                        {
+                            // Non-generic type
+                            dataItemUpdated = adapter.TryUpdateValues(property.GetValue(model), dataItemName);
+                        }
                         break;
                     case EventAttribute _:
                     case SampleAttribute _:
                     case ConditionAttribute _:
                     case TimeSeriesAttribute _:
                     case MessageAttribute _:
-                        adapter[dataItemName].Value = property.GetValue(model);
+                        // Process property for collections
+                        if (property.PropertyType.IsGenericType)
+                        {
+                            var genericType = property.PropertyType.GetGenericTypeDefinition();
+                            if (genericType == typeof(Dictionary<,>) && property.PropertyType.GetGenericArguments()[0] == typeof(string))
+                            {
+                                // Dictionary<string, T>
+                                var dictionary = property.GetValue(model) as IDictionary;
+                                foreach (DictionaryEntry entry in dictionary)
+                                {
+                                    string dataItemSuffix = (string)entry.Key;
+                                    var dataItemValue = entry.Value;
+                                    adapter[dataItemName + dataItemSuffix].Value = dataItemValue;
+                                }
+                            } else if (genericType == typeof(List<>))
+                            {
+                                // List<T>
+                                var list = property.GetValue(model) as IList;
+                                for (int i = 0; i < list.Count; i++)
+                                {
+                                    adapter[dataItemName + i.ToString()].Value = list[i];
+                                }
+                            } else
+                            {
+                                // Unknown generic type
+                                adapter[dataItemName].Value = property.GetValue(model);
+                            }
+                        } else
+                        {
+                            // Non-generic type
+                            adapter[dataItemName].Value = property.GetValue(model);
+                        }
                         break;
                     default:
                         dataItemUpdated = false;

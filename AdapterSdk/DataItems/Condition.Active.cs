@@ -124,6 +124,18 @@ namespace Mtconnect.AdapterSdk.DataItems
                 // TODO: Determine what needs to be validated from the Adapter
                 return true;
             }
+
+            /// <inheritdoc />
+            public override DataItem Copy()
+            {
+                var copy = new Active(this.Name, this.Level, this.Description, this.Text, this.NativeCode, this.Qualifier, this.NativeSeverity);
+                copy.FormatValue = this.FormatValue;
+                copy.ModelPath = this.ModelPath;
+                copy.Units = this.Units;
+                copy.HasTimestampOverride = this.HasTimestampOverride;
+
+                return copy;
+            }
         }
     }
 }

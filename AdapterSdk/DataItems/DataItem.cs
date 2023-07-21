@@ -426,5 +426,12 @@ namespace Mtconnect.AdapterSdk.DataItems
             hashCode = hashCode * -1521134295 + EqualityComparer<object>.Default.GetHashCode(Value);
             return hashCode;
         }
+
+        /// <summary>
+        /// Copies the current DataItem into a new object.
+        /// </summary>
+        /// <typeparam name="T"></typeparam>
+        /// <returns></returns>
+        public abstract DataItem Copy();
     }
 }
