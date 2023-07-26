@@ -5,6 +5,7 @@ using Mtconnect.AdapterSdk.DataItems;
 using Mtconnect.AdapterSdk.DataItemTypes;
 using Mtconnect.AdapterSdk.Units;
 using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.IO;
@@ -156,6 +157,9 @@ namespace Mtconnect.AdapterSdk.DeviceConfiguration
 
         private bool ProcessDataItem(XmlElement parentElement, Adapter adapter, string modelPath, XmlElement dataItemsElement, PropertyInfo property, DataItemAttribute dataItemAttribute)
         {
+            if (parentElement == null)
+                return false;
+
             bool hasDataItems = true;
             // TODO: Handle property that meets the conditions
             XmlElement dataItemElement = null;
@@ -223,6 +227,13 @@ namespace Mtconnect.AdapterSdk.DeviceConfiguration
                     dataItemValues.Description = property.GetCustomAttribute<DataItemAttribute>()?.Description
                         ?? property.GetCustomAttribute<DescriptionAttribute>()?.Description;
                 }
+            } else if (property.PropertyType.IsGenericType)
+            {
+                var nestedDataItems = adapter.DataItems.Where(o => o.ModelPath.StartsWith(modelPath));
+                if (nestedDataItems != null)
+                {
+                    AddDataItems(dataItemsElement, nestedDataItems);
+                }
             }
 
             dataItemElement = CreateDataItemElement(parentElement.OwnerDocument, dataItemValues.Category, dataItemValues.Type, dataItemValues.SubType, dataItemValues.Name, dataItemValues.Units, dataItemValues.Description);
@@ -272,12 +283,23 @@ namespace Mtconnect.AdapterSdk.DeviceConfiguration
             foreach (var deviceDataItem in dataItems)
             {
                 // Build DataItem element
-                xDataItems.AppendChild(CreateDataItemElement(xDataItems.OwnerDocument, deviceDataItem.Category, deviceDataItem.ObservationalType, deviceDataItem.ObservationalSubType, deviceDataItem.Name, deviceDataItem.Units, deviceDataItem.Description));
+                var xDataItem = CreateDataItemElement(xDataItems.OwnerDocument, deviceDataItem.Category, deviceDataItem.ObservationalType, deviceDataItem.ObservationalSubType, deviceDataItem.Name, deviceDataItem.Units, deviceDataItem.Description);
+                if (xDataItem != null)
+                {
+                    xDataItems.AppendChild(xDataItem);
+                }
             }
         }
 
         private XmlElement CreateDataItemElement(XmlDocument xDoc, string category, string type, string subType, string id, string nativeUnits = null, string description = null)
         {
+            if (string.IsNullOrEmpty(category))
+                return null;
+            if (string.IsNullOrEmpty(type))
+                return null;
+            if (string.IsNullOrEmpty(id))
+                return null;
+
             var xDataItem = xDoc.CreateElement("DataItem");
 
             xDataItem.SetAttribute("category", category.ToUpper());

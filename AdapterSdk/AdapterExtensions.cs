@@ -1,4 +1,5 @@
 ﻿using Microsoft.Extensions.Logging;
+using Mtconnect.AdapterSdk.Contracts;
 using Mtconnect.AdapterSdk.Contracts.Attributes;
 using Mtconnect.AdapterSdk.DataItems;
 using System;
@@ -116,24 +117,41 @@ namespace Mtconnect
                     isCached = false;
                 }
 
+                // Iterate through PropertyInfo[] of current layer of the model
                 foreach (var property in dataItemProperties)
                 {
                     bool dataItemAdded = false;
                     try
                     {
+                        var propertyValue = property.GetValue(model);
+
                         string dataItemName = string.Empty;
                         string dataItemDescription = string.Empty;
                         string dataItemType = string.Empty;
                         string dataItemSubType = string.Empty;
 
+                        // Process DataItemAttribute
                         var dataItemAttribute = property.GetCustomAttribute<DataItemAttribute>();
-
                         if (dataItemAttribute != null)
                         {
                             dataItemName = dataItemNamePrefix + dataItemAttribute.Name;
                             dataItemDescription = dataItemDescriptionPrefix + dataItemAttribute.Description;
                             dataItemType = dataItemAttribute.Type;
                             dataItemSubType = dataItemAttribute.SubType;
+                        }
+
+                        // Process IDataItemValue
+                        if (typeof(IDataItemValue).IsAssignableFrom(property.PropertyType))
+                        {
+                            if (string.IsNullOrEmpty(dataItemType))
+                            {
+                                dataItemType = (propertyValue as IDataItemValue).ObservationalType;
+                            }
+
+                            if (string.IsNullOrEmpty(dataItemSubType))
+                            {
+                                dataItemSubType = (propertyValue as IDataItemValue).ObservationalSubType;
+                            }
                         }
 
                         PropertyInfo timestampProperty = null;
@@ -147,7 +165,7 @@ namespace Mtconnect
                             switch (dataItemAttribute)
                             {
                                 case DataItemPartialAttribute _:
-                                    dataItemAdded = adapter.TryAddDataItems(property.GetValue(model), $"{modelPath}[{property.Name}]", dataItemName, dataItemDescription);
+                                    dataItemAdded = adapter.TryAddDataItems(propertyValue, $"{modelPath}[{property.Name}]", dataItemName, dataItemDescription);
 
                                     // Process property for collections
                                     if (property.PropertyType.IsGenericType)
@@ -156,33 +174,33 @@ namespace Mtconnect
                                         if (genericType == typeof(Dictionary<,>) && property.PropertyType.GetGenericArguments()[0] == typeof(string))
                                         {
                                             // Dictionary<string, T>
-                                            var dictionary = property.GetValue(model) as IDictionary;
+                                            var dictionary = propertyValue as IDictionary;
                                             foreach (DictionaryEntry entry in dictionary)
                                             {
                                                 string dataItemSuffix = (string)entry.Key;
                                                 var dataItemValue = entry.Value;
-                                                dataItemAdded = adapter.TryAddDataItems(dataItemValue, dataItemName + dataItemSuffix);
+                                                dataItemAdded = adapter.TryAddDataItems(dataItemValue, $"{modelPath}[{property.Name}][{dataItemSuffix}]", $"{dataItemName}{dataItemSuffix}");
                                             }
                                         }
                                         else if (genericType == typeof(List<>))
                                         {
                                             // List<T>
-                                            var list = property.GetValue(model) as IList;
+                                            var list = propertyValue as IList;
                                             for (int i = 0; i < list.Count; i++)
                                             {
-                                                dataItemAdded = adapter.TryAddDataItems(list[i], dataItemName + i.ToString());
+                                                dataItemAdded = adapter.TryAddDataItems(list[i], $"{modelPath}[{property.Name}][{i}]", $"{dataItemName}{i}");
                                             }
                                         }
                                         else
                                         {
                                             // Unknown generic type
-                                            dataItemAdded = adapter.TryAddDataItems(property.GetValue(model), dataItemName);
+                                            dataItemAdded = adapter.TryAddDataItems(propertyValue, $"{modelPath}[{property.Name}]", dataItemName);
                                         }
                                     }
                                     else
                                     {
                                         // Non-generic type
-                                        dataItemAdded = adapter.TryAddDataItems(property.GetValue(model), dataItemName);
+                                        dataItemAdded = adapter.TryAddDataItems(propertyValue, $"{modelPath}[{property.Name}]", dataItemName);
                                     }
                                     break;
                                 case EventAttribute _:
@@ -207,7 +225,7 @@ namespace Mtconnect
                         } else if (_dataItemTypes.Contains(property.PropertyType))
                         {
                             // Since the property is "DataItem" type already, just add it directly as a reference without creating a new DataItem instance
-                            var dataItemProperty = property.GetValue(model);
+                            var dataItemProperty = propertyValue;
                             if (dataItemProperty == null)
                             {
                                 adapter._logger?.LogError("Data model property {PropertyName} is null and cannot be added until instantiated", property.Name, property.PropertyType);
@@ -240,7 +258,7 @@ namespace Mtconnect
                         {
                             Func<DataItem, string, bool> addDataItem = (DataItem di, string mp) =>
                             {
-                                di.ModelPath = mp;// $"{modelPath}[{property.Name}]";
+                                di.ModelPath += mp;// $"{modelPath}[{property.Name}]";
                                 if (timestampProperty != null)
                                 {
                                     di.HasTimestampOverride = true;
@@ -259,7 +277,7 @@ namespace Mtconnect
                                 if (genericType == typeof(Dictionary<,>) && property.PropertyType.GetGenericArguments()[0] == typeof(string))
                                 {
                                     // Dictionary<string, T>
-                                    var dictionary = property.GetValue(model) as IDictionary;
+                                    var dictionary = propertyValue as IDictionary;
                                     foreach (DictionaryEntry entry in dictionary)
                                     {
                                         string dataItemSuffix = (string)entry.Key;
@@ -273,7 +291,7 @@ namespace Mtconnect
                                 else if (genericType == typeof(List<>))
                                 {
                                     // List<T>
-                                    var list = property.GetValue(model) as IList;
+                                    var list = propertyValue as IList;
                                     for (int i = 0; i < list.Count; i++)
                                     {
                                         // Copy DataItem instance // var entryDataItem = dataItem.
