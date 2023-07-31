@@ -1,6 +1,7 @@
 ﻿using Mtconnect.AdapterSdk.Contracts.Attributes;
 using Mtconnect.AdapterSdk.DataItemTypes;
 using Mtconnect.AdapterSdk.DataItemValues;
+using System.Collections.Generic;
 
 namespace Mtconnect.AdapterSourceTemplate.Models
 {
@@ -12,6 +13,11 @@ namespace Mtconnect.AdapterSourceTemplate.Models
         [Event("avail")]
         public Availability Availability { get; set; }
 
+        [DataItemPartial("path")]
+        public Dictionary<string, Path> Paths { get; set; } = new Dictionary<string, Path>();
+    }
+    public sealed class Path : IAdapterDataModel
+    {
         [Event("exec")]
         public Execution Execution { get; set; }
     }

@@ -55,5 +55,17 @@ namespace Mtconnect.AdapterSdk.DataItems
             };
             return true;
         }
+
+        /// <inheritdoc />
+        public override DataItem Copy()
+        {
+            var copy = new Sample(this.Name, this.ObservationalType, this.ObservationalSubType, this.Description);
+            copy.FormatValue = this.FormatValue;
+            copy.ModelPath = this.ModelPath;
+            copy.Units = this.Units;
+            copy.HasTimestampOverride = this.HasTimestampOverride;
+
+            return copy;
+        }
     }
 }

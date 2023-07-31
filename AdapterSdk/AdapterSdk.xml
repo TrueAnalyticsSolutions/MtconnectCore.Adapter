@@ -25826,6 +25826,9 @@
         <member name="M:Mtconnect.AdapterSdk.DataItems.Condition.Active.Validate(Mtconnect.AdapterSdk.Contracts.ValidationResult@)">
             <inheritdoc />
         </member>
+        <member name="M:Mtconnect.AdapterSdk.DataItems.Condition.Active.Copy">
+            <inheritdoc />
+        </member>
         <member name="P:Mtconnect.AdapterSdk.DataItems.Condition.Category">
             <inheritdoc />
         </member>
@@ -25908,6 +25911,9 @@
             <returns>A list of activations (also DataItems)</returns>
         </member>
         <member name="M:Mtconnect.AdapterSdk.DataItems.Condition.Validate(Mtconnect.AdapterSdk.Contracts.ValidationResult@)">
+            <inheritdoc />
+        </member>
+        <member name="M:Mtconnect.AdapterSdk.DataItems.Condition.Copy">
             <inheritdoc />
         </member>
         <member name="T:Mtconnect.AdapterSdk.DataItems.Condition.Level">
@@ -26145,6 +26151,13 @@
         <member name="M:Mtconnect.AdapterSdk.DataItems.DataItem.GetHashCode">
             <inheritdoc />
         </member>
+        <member name="M:Mtconnect.AdapterSdk.DataItems.DataItem.Copy">
+            <summary>
+            Copies the current DataItem into a new object.
+            </summary>
+            <typeparam name="T"></typeparam>
+            <returns></returns>
+        </member>
         <member name="T:Mtconnect.AdapterSdk.DataItems.Event">
             <summary>
             Event is just an alias for DataItem
@@ -26163,6 +26176,9 @@
             <param name="subType"><inheritdoc cref="M:Mtconnect.AdapterSdk.DataItems.DataItem.#ctor(System.String,System.String,System.String,System.String)" path="/param[@name='subType']"/></param>
         </member>
         <member name="M:Mtconnect.AdapterSdk.DataItems.Event.Validate(Mtconnect.AdapterSdk.Contracts.ValidationResult@)">
+            <inheritdoc />
+        </member>
+        <member name="M:Mtconnect.AdapterSdk.DataItems.Event.Copy">
             <inheritdoc />
         </member>
         <member name="T:Mtconnect.AdapterSdk.DataItems.Message">
@@ -26195,6 +26211,9 @@
             <returns>A text representation</returns>
         </member>
         <member name="M:Mtconnect.AdapterSdk.DataItems.Message.Validate(Mtconnect.AdapterSdk.Contracts.ValidationResult@)">
+            <inheritdoc />
+        </member>
+        <member name="M:Mtconnect.AdapterSdk.DataItems.Message.Copy">
             <inheritdoc />
         </member>
         <member name="T:Mtconnect.AdapterSdk.DataItems.ReportedValue">
@@ -26248,6 +26267,9 @@
         <member name="M:Mtconnect.AdapterSdk.DataItems.Sample.Validate(Mtconnect.AdapterSdk.Contracts.ValidationResult@)">
             <inheritdoc />
         </member>
+        <member name="M:Mtconnect.AdapterSdk.DataItems.Sample.Copy">
+            <inheritdoc />
+        </member>
         <member name="T:Mtconnect.AdapterSdk.DataItems.TimeSeries">
             <summary>
             Represents data that is collected at a high rate.
@@ -26283,6 +26305,9 @@
             <returns>A text representation</returns>
         </member>
         <member name="M:Mtconnect.AdapterSdk.DataItems.TimeSeries.Validate(Mtconnect.AdapterSdk.Contracts.ValidationResult@)">
+            <inheritdoc />
+        </member>
+        <member name="M:Mtconnect.AdapterSdk.DataItems.TimeSeries.Copy">
             <inheritdoc />
         </member>
         <member name="T:Mtconnect.AdapterSdk.Units.MtconnectUnit">

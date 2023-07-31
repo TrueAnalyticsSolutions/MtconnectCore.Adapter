@@ -3,6 +3,10 @@
     "Transpiler": {
       "commandName": "Project",
       "commandLineArgs": "\"../../../../AdapterSdk/Contracts\""
+    },
+    "WSL": {
+      "commandName": "WSL2",
+      "distributionName": ""
     }
   }
 }
