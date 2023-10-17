@@ -30,7 +30,7 @@ namespace Mtconnect.AdapterSdk.DataItemValues
 		/// <summary>
 		/// Constructs a new value type for the ToolOffset EVENT Data Item.
 		/// </summary>
-        public ToolOffset(Single value) : base(value) { }
+        public ToolOffset(Single? value) : base(value) { }
 
 		
         /// <summary>
@@ -39,7 +39,7 @@ namespace Mtconnect.AdapterSdk.DataItemValues
         /// </summary>
         /// <param name="value">The Single to convert.</param>
         /// <returns>An <see cref="ToolOffset"/> value initialized with the specified string in uppercase.</returns>
-        public static implicit operator ToolOffset(Single value)
+        public static implicit operator ToolOffset(Single? value)
             => new ToolOffset(value);
 		
 		/// <summary>
@@ -53,7 +53,7 @@ namespace Mtconnect.AdapterSdk.DataItemValues
 			/// <summary>
 			/// Constructs a new value type for RADIAL.
 			/// </summary>
-            public RADIAL(Single value) : base(value) { }
+            public RADIAL(Single? value) : base(value) { }
 			
 			/// <summary>
 			/// Implicitly converts the specified Single to an <see cref="RADIAL"/> value.
@@ -61,7 +61,7 @@ namespace Mtconnect.AdapterSdk.DataItemValues
 			/// </summary>
 			/// <param name="value">The Single to convert.</param>
 			/// <returns>An <see cref="RADIAL"/> value initialized with the specified string in uppercase.</returns>
-			public static implicit operator RADIAL(Single value)
+			public static implicit operator RADIAL(Single? value)
 				=> new RADIAL(value);
 		}
 		/// <summary>
@@ -75,7 +75,7 @@ namespace Mtconnect.AdapterSdk.DataItemValues
 			/// <summary>
 			/// Constructs a new value type for LENGTH.
 			/// </summary>
-            public LENGTH(Single value) : base(value) { }
+            public LENGTH(Single? value) : base(value) { }
 			
 			/// <summary>
 			/// Implicitly converts the specified Single to an <see cref="LENGTH"/> value.
@@ -83,7 +83,7 @@ namespace Mtconnect.AdapterSdk.DataItemValues
 			/// </summary>
 			/// <param name="value">The Single to convert.</param>
 			/// <returns>An <see cref="LENGTH"/> value initialized with the specified string in uppercase.</returns>
-			public static implicit operator LENGTH(Single value)
+			public static implicit operator LENGTH(Single? value)
 				=> new LENGTH(value);
 		}
     }

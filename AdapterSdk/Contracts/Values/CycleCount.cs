@@ -30,7 +30,7 @@ namespace Mtconnect.AdapterSdk.DataItemValues
 		/// <summary>
 		/// Constructs a new value type for the CycleCount EVENT Data Item.
 		/// </summary>
-        public CycleCount(Int32 value) : base(value) { }
+        public CycleCount(Int32? value) : base(value) { }
 
 		
         /// <summary>
@@ -39,7 +39,7 @@ namespace Mtconnect.AdapterSdk.DataItemValues
         /// </summary>
         /// <param name="value">The Int32 to convert.</param>
         /// <returns>An <see cref="CycleCount"/> value initialized with the specified string in uppercase.</returns>
-        public static implicit operator CycleCount(Int32 value)
+        public static implicit operator CycleCount(Int32? value)
             => new CycleCount(value);
 		
 		/// <summary>
@@ -53,7 +53,7 @@ namespace Mtconnect.AdapterSdk.DataItemValues
 			/// <summary>
 			/// Constructs a new value type for GOOD.
 			/// </summary>
-            public GOOD(Int32 value) : base(value) { }
+            public GOOD(Int32? value) : base(value) { }
 			
 			/// <summary>
 			/// Implicitly converts the specified Int32 to an <see cref="GOOD"/> value.
@@ -61,7 +61,7 @@ namespace Mtconnect.AdapterSdk.DataItemValues
 			/// </summary>
 			/// <param name="value">The Int32 to convert.</param>
 			/// <returns>An <see cref="GOOD"/> value initialized with the specified string in uppercase.</returns>
-			public static implicit operator GOOD(Int32 value)
+			public static implicit operator GOOD(Int32? value)
 				=> new GOOD(value);
 		}
 		/// <summary>
@@ -75,7 +75,7 @@ namespace Mtconnect.AdapterSdk.DataItemValues
 			/// <summary>
 			/// Constructs a new value type for REMAINING.
 			/// </summary>
-            public REMAINING(Int32 value) : base(value) { }
+            public REMAINING(Int32? value) : base(value) { }
 			
 			/// <summary>
 			/// Implicitly converts the specified Int32 to an <see cref="REMAINING"/> value.
@@ -83,7 +83,7 @@ namespace Mtconnect.AdapterSdk.DataItemValues
 			/// </summary>
 			/// <param name="value">The Int32 to convert.</param>
 			/// <returns>An <see cref="REMAINING"/> value initialized with the specified string in uppercase.</returns>
-			public static implicit operator REMAINING(Int32 value)
+			public static implicit operator REMAINING(Int32? value)
 				=> new REMAINING(value);
 		}
 		/// <summary>
@@ -97,7 +97,7 @@ namespace Mtconnect.AdapterSdk.DataItemValues
 			/// <summary>
 			/// Constructs a new value type for COMPLETE.
 			/// </summary>
-            public COMPLETE(Int32 value) : base(value) { }
+            public COMPLETE(Int32? value) : base(value) { }
 			
 			/// <summary>
 			/// Implicitly converts the specified Int32 to an <see cref="COMPLETE"/> value.
@@ -105,7 +105,7 @@ namespace Mtconnect.AdapterSdk.DataItemValues
 			/// </summary>
 			/// <param name="value">The Int32 to convert.</param>
 			/// <returns>An <see cref="COMPLETE"/> value initialized with the specified string in uppercase.</returns>
-			public static implicit operator COMPLETE(Int32 value)
+			public static implicit operator COMPLETE(Int32? value)
 				=> new COMPLETE(value);
 		}
 		/// <summary>
@@ -119,7 +119,7 @@ namespace Mtconnect.AdapterSdk.DataItemValues
 			/// <summary>
 			/// Constructs a new value type for ABORTED.
 			/// </summary>
-            public ABORTED(Int32 value) : base(value) { }
+            public ABORTED(Int32? value) : base(value) { }
 			
 			/// <summary>
 			/// Implicitly converts the specified Int32 to an <see cref="ABORTED"/> value.
@@ -127,7 +127,7 @@ namespace Mtconnect.AdapterSdk.DataItemValues
 			/// </summary>
 			/// <param name="value">The Int32 to convert.</param>
 			/// <returns>An <see cref="ABORTED"/> value initialized with the specified string in uppercase.</returns>
-			public static implicit operator ABORTED(Int32 value)
+			public static implicit operator ABORTED(Int32? value)
 				=> new ABORTED(value);
 		}
 		/// <summary>
@@ -141,7 +141,7 @@ namespace Mtconnect.AdapterSdk.DataItemValues
 			/// <summary>
 			/// Constructs a new value type for BAD.
 			/// </summary>
-            public BAD(Int32 value) : base(value) { }
+            public BAD(Int32? value) : base(value) { }
 			
 			/// <summary>
 			/// Implicitly converts the specified Int32 to an <see cref="BAD"/> value.
@@ -149,7 +149,7 @@ namespace Mtconnect.AdapterSdk.DataItemValues
 			/// </summary>
 			/// <param name="value">The Int32 to convert.</param>
 			/// <returns>An <see cref="BAD"/> value initialized with the specified string in uppercase.</returns>
-			public static implicit operator BAD(Int32 value)
+			public static implicit operator BAD(Int32? value)
 				=> new BAD(value);
 		}
 		/// <summary>
@@ -163,7 +163,7 @@ namespace Mtconnect.AdapterSdk.DataItemValues
 			/// <summary>
 			/// Constructs a new value type for FAILED.
 			/// </summary>
-            public FAILED(Int32 value) : base(value) { }
+            public FAILED(Int32? value) : base(value) { }
 			
 			/// <summary>
 			/// Implicitly converts the specified Int32 to an <see cref="FAILED"/> value.
@@ -171,7 +171,7 @@ namespace Mtconnect.AdapterSdk.DataItemValues
 			/// </summary>
 			/// <param name="value">The Int32 to convert.</param>
 			/// <returns>An <see cref="FAILED"/> value initialized with the specified string in uppercase.</returns>
-			public static implicit operator FAILED(Int32 value)
+			public static implicit operator FAILED(Int32? value)
 				=> new FAILED(value);
 		}
 		/// <summary>
@@ -185,7 +185,7 @@ namespace Mtconnect.AdapterSdk.DataItemValues
 			/// <summary>
 			/// Constructs a new value type for TARGET.
 			/// </summary>
-            public TARGET(Int32 value) : base(value) { }
+            public TARGET(Int32? value) : base(value) { }
 			
 			/// <summary>
 			/// Implicitly converts the specified Int32 to an <see cref="TARGET"/> value.
@@ -193,7 +193,7 @@ namespace Mtconnect.AdapterSdk.DataItemValues
 			/// </summary>
 			/// <param name="value">The Int32 to convert.</param>
 			/// <returns>An <see cref="TARGET"/> value initialized with the specified string in uppercase.</returns>
-			public static implicit operator TARGET(Int32 value)
+			public static implicit operator TARGET(Int32? value)
 				=> new TARGET(value);
 		}
 		/// <summary>
@@ -207,7 +207,7 @@ namespace Mtconnect.AdapterSdk.DataItemValues
 			/// <summary>
 			/// Constructs a new value type for ALL.
 			/// </summary>
-            public ALL(Int32 value) : base(value) { }
+            public ALL(Int32? value) : base(value) { }
 			
 			/// <summary>
 			/// Implicitly converts the specified Int32 to an <see cref="ALL"/> value.
@@ -215,7 +215,7 @@ namespace Mtconnect.AdapterSdk.DataItemValues
 			/// </summary>
 			/// <param name="value">The Int32 to convert.</param>
 			/// <returns>An <see cref="ALL"/> value initialized with the specified string in uppercase.</returns>
-			public static implicit operator ALL(Int32 value)
+			public static implicit operator ALL(Int32? value)
 				=> new ALL(value);
 		}
     }

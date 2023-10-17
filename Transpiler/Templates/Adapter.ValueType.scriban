@@ -46,7 +46,7 @@ namespace {{ to_pascal_code source.namespace }}
 		/// <summary>
 		/// Constructs a new value type for the {{ to_pascal_case source.name }} EVENT Data Item.
 		/// </summary>
-        public {{ to_pascal_case source.name }}({{ source.value_type }} value) : base(value) { }
+        public {{ to_pascal_case source.name }}({{ source.value_type }}{{~ if (string.downcase source.value_type) != "string" && (string.downcase source.value_type) != "condition" && !string.contains(source.value_type, "?") ~}}?{{~ end }} value) : base(value) { }
 
 		{{~ if source.items.size > 0 ~}}
 		public {{ to_pascal_case source.name }}({{ source.name }}Values value) : this(value.ToString()) { }
@@ -78,7 +78,7 @@ d_item_version_slim = (item?.deprecated_version | string.slice 20 3) | string.re
         /// </summary>
         /// <param name="value">The {{ source.value_type }} to convert.</param>
         /// <returns>An <see cref="{{ to_pascal_case source.name }}"/> value initialized with the specified string in uppercase.</returns>
-        public static implicit operator {{ to_pascal_case source.name }}({{ source.value_type }} value)
+        public static implicit operator {{ to_pascal_case source.name }}({{ source.value_type }}{{~ if (string.downcase source.value_type) != "string" && (string.downcase source.value_type) != "condition" && !string.contains(source.value_type, "?") ~}}?{{~ end }} value)
 			{{~ if source.value_type == "string" ~}}
             => new {{ to_pascal_case source.name }}(value.ToUpperInvariant());
 			{{~ else ~}}
@@ -97,7 +97,7 @@ d_item_version_slim = (item?.deprecated_version | string.slice 20 3) | string.re
 			/// <summary>
 			/// Constructs a new value type for {{ subtype }}.
 			/// </summary>
-            public {{ to_pascal_case subtype }}({{ source.value_type }} value) : base(value) { }
+            public {{ to_pascal_case subtype }}({{ source.value_type }}{{~ if (string.downcase source.value_type) != "string" && (string.downcase source.value_type) != "condition" && !string.contains(source.value_type, "?") ~}}?{{~ end }} value) : base(value) { }
 			{{~ if source.items.size > 0 ~}}
 			public {{ to_pascal_case subtype }}({{ to_pascal_case source.name }}Values value) : base(value) { }
 			
@@ -117,7 +117,7 @@ d_item_version_slim = (item?.deprecated_version | string.slice 20 3) | string.re
 			/// </summary>
 			/// <param name="value">The {{ source.value_type }} to convert.</param>
 			/// <returns>An <see cref="{{ to_pascal_case subtype }}"/> value initialized with the specified string in uppercase.</returns>
-			public static implicit operator {{ to_pascal_case subtype }}({{ source.value_type }} value)
+			public static implicit operator {{ to_pascal_case subtype }}({{ source.value_type }}{{~ if (string.downcase source.value_type) != "string" && (string.downcase source.value_type) != "condition" && !string.contains(source.value_type, "?") ~}}?{{~ end }} value)
 				{{~ if source.value_type == "string" ~}}
 				=> new {{ to_pascal_case subtype }}(value.ToUpperInvariant());
 				{{~ else ~}}

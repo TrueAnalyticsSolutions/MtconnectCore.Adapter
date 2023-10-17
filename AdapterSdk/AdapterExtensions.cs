@@ -145,6 +145,12 @@ namespace Mtconnect
                         // Process IDataItemValue
                         if (typeof(IDataItemValue).IsAssignableFrom(property.PropertyType))
                         {
+                            if (propertyValue == null)
+                            {
+                                adapter._logger?.LogError("Data model property {PropertyName} is null and cannot be added until instantiated", property.Name, property.PropertyType);
+                                continue;
+                            }
+
                             if (string.IsNullOrEmpty(dataItemType))
                             {
                                 dataItemType = (propertyValue as IDataItemValue).ObservationalType;
@@ -167,6 +173,11 @@ namespace Mtconnect
                             switch (dataItemAttribute)
                             {
                                 case DataItemPartialAttribute _:
+                                    if (propertyValue == null)
+                                    {
+                                        adapter._logger?.LogError("Data model property {PropertyName} is null and cannot be added until instantiated", property.Name, property.PropertyType);
+                                        continue;
+                                    }
                                     dataItemAdded = adapter.TryAddDataItems(propertyValue, $"{modelPath}[{property.Name}]", dataItemName, dataItemDescription);
 
                                     // Process property for collections
@@ -227,19 +238,18 @@ namespace Mtconnect
                         } else if (_dataItemTypes.Contains(property.PropertyType))
                         {
                             // Since the property is "DataItem" type already, just add it directly as a reference without creating a new DataItem instance
-                            var dataItemProperty = propertyValue;
-                            if (dataItemProperty == null)
+                            if (propertyValue == null)
                             {
                                 adapter._logger?.LogError("Data model property {PropertyName} is null and cannot be added until instantiated", property.Name, property.PropertyType);
                                 continue;
-                            } else if ((dataItemProperty as DataItem) == null)
+                            } else if ((propertyValue as DataItem) == null)
                             {
                                 var castException = new InvalidCastException("Could not cast data model property to DataItem");
                                 adapter._logger?.LogError(castException, "Could not cast data model property {PropertyName} to DataItem", property.Name);
                                 continue;
                             }
 
-                            dataItem = dataItemProperty as DataItem;
+                            dataItem = propertyValue as DataItem;
 
                             if (dataItemAttribute != null)
                             {
@@ -278,6 +288,11 @@ namespace Mtconnect
                                 var genericType = property.PropertyType.GetGenericTypeDefinition();
                                 if (genericType == typeof(Dictionary<,>) && property.PropertyType.GetGenericArguments()[0] == typeof(string))
                                 {
+                                    if (propertyValue == null)
+                                    {
+                                        adapter._logger?.LogError("Data model property {PropertyName} is null and cannot be added until instantiated", property.Name, property.PropertyType);
+                                        continue;
+                                    }
                                     // Dictionary<string, T>
                                     var dictionary = propertyValue as IDictionary;
                                     foreach (DictionaryEntry entry in dictionary)
@@ -292,6 +307,11 @@ namespace Mtconnect
                                 }
                                 else if (genericType == typeof(List<>))
                                 {
+                                    if (propertyValue == null)
+                                    {
+                                        adapter._logger?.LogError("Data model property {PropertyName} is null and cannot be added until instantiated", property.Name, property.PropertyType);
+                                        continue;
+                                    }
                                     // List<T>
                                     var list = propertyValue as IList;
                                     for (int i = 0; i < list.Count; i++)

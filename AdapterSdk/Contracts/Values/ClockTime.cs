@@ -30,7 +30,7 @@ namespace Mtconnect.AdapterSdk.DataItemValues
 		/// <summary>
 		/// Constructs a new value type for the ClockTime EVENT Data Item.
 		/// </summary>
-        public ClockTime(DateTime value) : base(value) { }
+        public ClockTime(DateTime? value) : base(value) { }
 
 		
         /// <summary>
@@ -39,7 +39,7 @@ namespace Mtconnect.AdapterSdk.DataItemValues
         /// </summary>
         /// <param name="value">The DateTime to convert.</param>
         /// <returns>An <see cref="ClockTime"/> value initialized with the specified string in uppercase.</returns>
-        public static implicit operator ClockTime(DateTime value)
+        public static implicit operator ClockTime(DateTime? value)
             => new ClockTime(value);
 		
     }

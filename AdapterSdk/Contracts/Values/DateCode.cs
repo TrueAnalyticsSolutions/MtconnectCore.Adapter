@@ -30,7 +30,7 @@ namespace Mtconnect.AdapterSdk.DataItemValues
 		/// <summary>
 		/// Constructs a new value type for the DateCode EVENT Data Item.
 		/// </summary>
-        public DateCode(DateTime value) : base(value) { }
+        public DateCode(DateTime? value) : base(value) { }
 
 		
         /// <summary>
@@ -39,7 +39,7 @@ namespace Mtconnect.AdapterSdk.DataItemValues
         /// </summary>
         /// <param name="value">The DateTime to convert.</param>
         /// <returns>An <see cref="DateCode"/> value initialized with the specified string in uppercase.</returns>
-        public static implicit operator DateCode(DateTime value)
+        public static implicit operator DateCode(DateTime? value)
             => new DateCode(value);
 		
 		/// <summary>
@@ -53,7 +53,7 @@ namespace Mtconnect.AdapterSdk.DataItemValues
 			/// <summary>
 			/// Constructs a new value type for MANUFACTURE.
 			/// </summary>
-            public MANUFACTURE(DateTime value) : base(value) { }
+            public MANUFACTURE(DateTime? value) : base(value) { }
 			
 			/// <summary>
 			/// Implicitly converts the specified DateTime to an <see cref="MANUFACTURE"/> value.
@@ -61,7 +61,7 @@ namespace Mtconnect.AdapterSdk.DataItemValues
 			/// </summary>
 			/// <param name="value">The DateTime to convert.</param>
 			/// <returns>An <see cref="MANUFACTURE"/> value initialized with the specified string in uppercase.</returns>
-			public static implicit operator MANUFACTURE(DateTime value)
+			public static implicit operator MANUFACTURE(DateTime? value)
 				=> new MANUFACTURE(value);
 		}
 		/// <summary>
@@ -75,7 +75,7 @@ namespace Mtconnect.AdapterSdk.DataItemValues
 			/// <summary>
 			/// Constructs a new value type for EXPIRATION.
 			/// </summary>
-            public EXPIRATION(DateTime value) : base(value) { }
+            public EXPIRATION(DateTime? value) : base(value) { }
 			
 			/// <summary>
 			/// Implicitly converts the specified DateTime to an <see cref="EXPIRATION"/> value.
@@ -83,7 +83,7 @@ namespace Mtconnect.AdapterSdk.DataItemValues
 			/// </summary>
 			/// <param name="value">The DateTime to convert.</param>
 			/// <returns>An <see cref="EXPIRATION"/> value initialized with the specified string in uppercase.</returns>
-			public static implicit operator EXPIRATION(DateTime value)
+			public static implicit operator EXPIRATION(DateTime? value)
 				=> new EXPIRATION(value);
 		}
 		/// <summary>
@@ -97,7 +97,7 @@ namespace Mtconnect.AdapterSdk.DataItemValues
 			/// <summary>
 			/// Constructs a new value type for FIRST_USE.
 			/// </summary>
-            public FIRSTUSE(DateTime value) : base(value) { }
+            public FIRSTUSE(DateTime? value) : base(value) { }
 			
 			/// <summary>
 			/// Implicitly converts the specified DateTime to an <see cref="FIRSTUSE"/> value.
@@ -105,7 +105,7 @@ namespace Mtconnect.AdapterSdk.DataItemValues
 			/// </summary>
 			/// <param name="value">The DateTime to convert.</param>
 			/// <returns>An <see cref="FIRSTUSE"/> value initialized with the specified string in uppercase.</returns>
-			public static implicit operator FIRSTUSE(DateTime value)
+			public static implicit operator FIRSTUSE(DateTime? value)
 				=> new FIRSTUSE(value);
 		}
     }

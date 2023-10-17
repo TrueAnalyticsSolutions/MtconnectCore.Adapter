@@ -30,7 +30,7 @@ namespace Mtconnect.AdapterSdk.DataItemValues
 		/// <summary>
 		/// Constructs a new value type for the Hardness EVENT Data Item.
 		/// </summary>
-        public Hardness(Single value) : base(value) { }
+        public Hardness(Single? value) : base(value) { }
 
 		
         /// <summary>
@@ -39,7 +39,7 @@ namespace Mtconnect.AdapterSdk.DataItemValues
         /// </summary>
         /// <param name="value">The Single to convert.</param>
         /// <returns>An <see cref="Hardness"/> value initialized with the specified string in uppercase.</returns>
-        public static implicit operator Hardness(Single value)
+        public static implicit operator Hardness(Single? value)
             => new Hardness(value);
 		
 		/// <summary>
@@ -53,7 +53,7 @@ namespace Mtconnect.AdapterSdk.DataItemValues
 			/// <summary>
 			/// Constructs a new value type for ROCKWELL.
 			/// </summary>
-            public ROCKWELL(Single value) : base(value) { }
+            public ROCKWELL(Single? value) : base(value) { }
 			
 			/// <summary>
 			/// Implicitly converts the specified Single to an <see cref="ROCKWELL"/> value.
@@ -61,7 +61,7 @@ namespace Mtconnect.AdapterSdk.DataItemValues
 			/// </summary>
 			/// <param name="value">The Single to convert.</param>
 			/// <returns>An <see cref="ROCKWELL"/> value initialized with the specified string in uppercase.</returns>
-			public static implicit operator ROCKWELL(Single value)
+			public static implicit operator ROCKWELL(Single? value)
 				=> new ROCKWELL(value);
 		}
 		/// <summary>
@@ -75,7 +75,7 @@ namespace Mtconnect.AdapterSdk.DataItemValues
 			/// <summary>
 			/// Constructs a new value type for VICKERS.
 			/// </summary>
-            public VICKERS(Single value) : base(value) { }
+            public VICKERS(Single? value) : base(value) { }
 			
 			/// <summary>
 			/// Implicitly converts the specified Single to an <see cref="VICKERS"/> value.
@@ -83,7 +83,7 @@ namespace Mtconnect.AdapterSdk.DataItemValues
 			/// </summary>
 			/// <param name="value">The Single to convert.</param>
 			/// <returns>An <see cref="VICKERS"/> value initialized with the specified string in uppercase.</returns>
-			public static implicit operator VICKERS(Single value)
+			public static implicit operator VICKERS(Single? value)
 				=> new VICKERS(value);
 		}
 		/// <summary>
@@ -97,7 +97,7 @@ namespace Mtconnect.AdapterSdk.DataItemValues
 			/// <summary>
 			/// Constructs a new value type for SHORE.
 			/// </summary>
-            public SHORE(Single value) : base(value) { }
+            public SHORE(Single? value) : base(value) { }
 			
 			/// <summary>
 			/// Implicitly converts the specified Single to an <see cref="SHORE"/> value.
@@ -105,7 +105,7 @@ namespace Mtconnect.AdapterSdk.DataItemValues
 			/// </summary>
 			/// <param name="value">The Single to convert.</param>
 			/// <returns>An <see cref="SHORE"/> value initialized with the specified string in uppercase.</returns>
-			public static implicit operator SHORE(Single value)
+			public static implicit operator SHORE(Single? value)
 				=> new SHORE(value);
 		}
 		/// <summary>
@@ -119,7 +119,7 @@ namespace Mtconnect.AdapterSdk.DataItemValues
 			/// <summary>
 			/// Constructs a new value type for BRINELL.
 			/// </summary>
-            public BRINELL(Single value) : base(value) { }
+            public BRINELL(Single? value) : base(value) { }
 			
 			/// <summary>
 			/// Implicitly converts the specified Single to an <see cref="BRINELL"/> value.
@@ -127,7 +127,7 @@ namespace Mtconnect.AdapterSdk.DataItemValues
 			/// </summary>
 			/// <param name="value">The Single to convert.</param>
 			/// <returns>An <see cref="BRINELL"/> value initialized with the specified string in uppercase.</returns>
-			public static implicit operator BRINELL(Single value)
+			public static implicit operator BRINELL(Single? value)
 				=> new BRINELL(value);
 		}
 		/// <summary>
@@ -141,7 +141,7 @@ namespace Mtconnect.AdapterSdk.DataItemValues
 			/// <summary>
 			/// Constructs a new value type for LEEB.
 			/// </summary>
-            public LEEB(Single value) : base(value) { }
+            public LEEB(Single? value) : base(value) { }
 			
 			/// <summary>
 			/// Implicitly converts the specified Single to an <see cref="LEEB"/> value.
@@ -149,7 +149,7 @@ namespace Mtconnect.AdapterSdk.DataItemValues
 			/// </summary>
 			/// <param name="value">The Single to convert.</param>
 			/// <returns>An <see cref="LEEB"/> value initialized with the specified string in uppercase.</returns>
-			public static implicit operator LEEB(Single value)
+			public static implicit operator LEEB(Single? value)
 				=> new LEEB(value);
 		}
 		/// <summary>
@@ -163,7 +163,7 @@ namespace Mtconnect.AdapterSdk.DataItemValues
 			/// <summary>
 			/// Constructs a new value type for MOHS.
 			/// </summary>
-            public MOHS(Single value) : base(value) { }
+            public MOHS(Single? value) : base(value) { }
 			
 			/// <summary>
 			/// Implicitly converts the specified Single to an <see cref="MOHS"/> value.
@@ -171,7 +171,7 @@ namespace Mtconnect.AdapterSdk.DataItemValues
 			/// </summary>
 			/// <param name="value">The Single to convert.</param>
 			/// <returns>An <see cref="MOHS"/> value initialized with the specified string in uppercase.</returns>
-			public static implicit operator MOHS(Single value)
+			public static implicit operator MOHS(Single? value)
 				=> new MOHS(value);
 		}
     }

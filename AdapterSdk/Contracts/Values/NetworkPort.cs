@@ -30,7 +30,7 @@ namespace Mtconnect.AdapterSdk.DataItemValues
 		/// <summary>
 		/// Constructs a new value type for the NetworkPort EVENT Data Item.
 		/// </summary>
-        public NetworkPort(Int32 value) : base(value) { }
+        public NetworkPort(Int32? value) : base(value) { }
 
 		
         /// <summary>
@@ -39,7 +39,7 @@ namespace Mtconnect.AdapterSdk.DataItemValues
         /// </summary>
         /// <param name="value">The Int32 to convert.</param>
         /// <returns>An <see cref="NetworkPort"/> value initialized with the specified string in uppercase.</returns>
-        public static implicit operator NetworkPort(Int32 value)
+        public static implicit operator NetworkPort(Int32? value)
             => new NetworkPort(value);
 		
     }

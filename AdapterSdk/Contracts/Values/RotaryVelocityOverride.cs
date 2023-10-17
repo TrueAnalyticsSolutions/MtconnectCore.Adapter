@@ -30,7 +30,7 @@ namespace Mtconnect.AdapterSdk.DataItemValues
 		/// <summary>
 		/// Constructs a new value type for the RotaryVelocityOverride EVENT Data Item.
 		/// </summary>
-        public RotaryVelocityOverride(Single value) : base(value) { }
+        public RotaryVelocityOverride(Single? value) : base(value) { }
 
 		
         /// <summary>
@@ -39,7 +39,7 @@ namespace Mtconnect.AdapterSdk.DataItemValues
         /// </summary>
         /// <param name="value">The Single to convert.</param>
         /// <returns>An <see cref="RotaryVelocityOverride"/> value initialized with the specified string in uppercase.</returns>
-        public static implicit operator RotaryVelocityOverride(Single value)
+        public static implicit operator RotaryVelocityOverride(Single? value)
             => new RotaryVelocityOverride(value);
 		
     }

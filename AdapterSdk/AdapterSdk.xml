@@ -12185,12 +12185,12 @@
         <member name="P:Mtconnect.AdapterSdk.DataItemValues.ActivationCount.ObservationalSubType">
             <inheritdoc />
         </member>
-        <member name="M:Mtconnect.AdapterSdk.DataItemValues.ActivationCount.#ctor(System.Int32)">
+        <member name="M:Mtconnect.AdapterSdk.DataItemValues.ActivationCount.#ctor(System.Nullable{System.Int32})">
             <summary>
             Constructs a new value type for the ActivationCount EVENT Data Item.
             </summary>
         </member>
-        <member name="M:Mtconnect.AdapterSdk.DataItemValues.ActivationCount.op_Implicit(System.Int32)~Mtconnect.AdapterSdk.DataItemValues.ActivationCount">
+        <member name="M:Mtconnect.AdapterSdk.DataItemValues.ActivationCount.op_Implicit(System.Nullable{System.Int32})~Mtconnect.AdapterSdk.DataItemValues.ActivationCount">
             <summary>
             Implicitly converts the specified Int32 to an <see cref="T:Mtconnect.AdapterSdk.DataItemValues.ActivationCount"/> value.
             The Int32 is converted to uppercase and used to initialize the <see cref="T:Mtconnect.AdapterSdk.DataItemValues.ActivationCount"/> value.
@@ -12206,12 +12206,12 @@
         <member name="P:Mtconnect.AdapterSdk.DataItemValues.ActivationCount.TARGET.ObservationalSubType">
             <inheritdoc />
         </member>
-        <member name="M:Mtconnect.AdapterSdk.DataItemValues.ActivationCount.TARGET.#ctor(System.Int32)">
+        <member name="M:Mtconnect.AdapterSdk.DataItemValues.ActivationCount.TARGET.#ctor(System.Nullable{System.Int32})">
             <summary>
             Constructs a new value type for TARGET.
             </summary>
         </member>
-        <member name="M:Mtconnect.AdapterSdk.DataItemValues.ActivationCount.TARGET.op_Implicit(System.Int32)~Mtconnect.AdapterSdk.DataItemValues.ActivationCount.TARGET">
+        <member name="M:Mtconnect.AdapterSdk.DataItemValues.ActivationCount.TARGET.op_Implicit(System.Nullable{System.Int32})~Mtconnect.AdapterSdk.DataItemValues.ActivationCount.TARGET">
             <summary>
             Implicitly converts the specified Int32 to an <see cref="T:Mtconnect.AdapterSdk.DataItemValues.ActivationCount.TARGET"/> value.
             The Int32 is converted to uppercase and used to initialize the <see cref="T:Mtconnect.AdapterSdk.DataItemValues.ActivationCount.TARGET"/> value.
@@ -12227,12 +12227,12 @@
         <member name="P:Mtconnect.AdapterSdk.DataItemValues.ActivationCount.GOOD.ObservationalSubType">
             <inheritdoc />
         </member>
-        <member name="M:Mtconnect.AdapterSdk.DataItemValues.ActivationCount.GOOD.#ctor(System.Int32)">
+        <member name="M:Mtconnect.AdapterSdk.DataItemValues.ActivationCount.GOOD.#ctor(System.Nullable{System.Int32})">
             <summary>
             Constructs a new value type for GOOD.
             </summary>
         </member>
-        <member name="M:Mtconnect.AdapterSdk.DataItemValues.ActivationCount.GOOD.op_Implicit(System.Int32)~Mtconnect.AdapterSdk.DataItemValues.ActivationCount.GOOD">
+        <member name="M:Mtconnect.AdapterSdk.DataItemValues.ActivationCount.GOOD.op_Implicit(System.Nullable{System.Int32})~Mtconnect.AdapterSdk.DataItemValues.ActivationCount.GOOD">
             <summary>
             Implicitly converts the specified Int32 to an <see cref="T:Mtconnect.AdapterSdk.DataItemValues.ActivationCount.GOOD"/> value.
             The Int32 is converted to uppercase and used to initialize the <see cref="T:Mtconnect.AdapterSdk.DataItemValues.ActivationCount.GOOD"/> value.
@@ -12248,12 +12248,12 @@
         <member name="P:Mtconnect.AdapterSdk.DataItemValues.ActivationCount.BAD.ObservationalSubType">
             <inheritdoc />
         </member>
-        <member name="M:Mtconnect.AdapterSdk.DataItemValues.ActivationCount.BAD.#ctor(System.Int32)">
+        <member name="M:Mtconnect.AdapterSdk.DataItemValues.ActivationCount.BAD.#ctor(System.Nullable{System.Int32})">
             <summary>
             Constructs a new value type for BAD.
             </summary>
         </member>
-        <member name="M:Mtconnect.AdapterSdk.DataItemValues.ActivationCount.BAD.op_Implicit(System.Int32)~Mtconnect.AdapterSdk.DataItemValues.ActivationCount.BAD">
+        <member name="M:Mtconnect.AdapterSdk.DataItemValues.ActivationCount.BAD.op_Implicit(System.Nullable{System.Int32})~Mtconnect.AdapterSdk.DataItemValues.ActivationCount.BAD">
             <summary>
             Implicitly converts the specified Int32 to an <see cref="T:Mtconnect.AdapterSdk.DataItemValues.ActivationCount.BAD"/> value.
             The Int32 is converted to uppercase and used to initialize the <see cref="T:Mtconnect.AdapterSdk.DataItemValues.ActivationCount.BAD"/> value.
@@ -12269,12 +12269,12 @@
         <member name="P:Mtconnect.AdapterSdk.DataItemValues.ActivationCount.REMAINING.ObservationalSubType">
             <inheritdoc />
         </member>
-        <member name="M:Mtconnect.AdapterSdk.DataItemValues.ActivationCount.REMAINING.#ctor(System.Int32)">
+        <member name="M:Mtconnect.AdapterSdk.DataItemValues.ActivationCount.REMAINING.#ctor(System.Nullable{System.Int32})">
             <summary>
             Constructs a new value type for REMAINING.
             </summary>
         </member>
-        <member name="M:Mtconnect.AdapterSdk.DataItemValues.ActivationCount.REMAINING.op_Implicit(System.Int32)~Mtconnect.AdapterSdk.DataItemValues.ActivationCount.REMAINING">
+        <member name="M:Mtconnect.AdapterSdk.DataItemValues.ActivationCount.REMAINING.op_Implicit(System.Nullable{System.Int32})~Mtconnect.AdapterSdk.DataItemValues.ActivationCount.REMAINING">
             <summary>
             Implicitly converts the specified Int32 to an <see cref="T:Mtconnect.AdapterSdk.DataItemValues.ActivationCount.REMAINING"/> value.
             The Int32 is converted to uppercase and used to initialize the <see cref="T:Mtconnect.AdapterSdk.DataItemValues.ActivationCount.REMAINING"/> value.
@@ -12290,12 +12290,12 @@
         <member name="P:Mtconnect.AdapterSdk.DataItemValues.ActivationCount.ABORTED.ObservationalSubType">
             <inheritdoc />
         </member>
-        <member name="M:Mtconnect.AdapterSdk.DataItemValues.ActivationCount.ABORTED.#ctor(System.Int32)">
+        <member name="M:Mtconnect.AdapterSdk.DataItemValues.ActivationCount.ABORTED.#ctor(System.Nullable{System.Int32})">
             <summary>
             Constructs a new value type for ABORTED.
             </summary>
         </member>
-        <member name="M:Mtconnect.AdapterSdk.DataItemValues.ActivationCount.ABORTED.op_Implicit(System.Int32)~Mtconnect.AdapterSdk.DataItemValues.ActivationCount.ABORTED">
+        <member name="M:Mtconnect.AdapterSdk.DataItemValues.ActivationCount.ABORTED.op_Implicit(System.Nullable{System.Int32})~Mtconnect.AdapterSdk.DataItemValues.ActivationCount.ABORTED">
             <summary>
             Implicitly converts the specified Int32 to an <see cref="T:Mtconnect.AdapterSdk.DataItemValues.ActivationCount.ABORTED"/> value.
             The Int32 is converted to uppercase and used to initialize the <see cref="T:Mtconnect.AdapterSdk.DataItemValues.ActivationCount.ABORTED"/> value.
@@ -12311,12 +12311,12 @@
         <member name="P:Mtconnect.AdapterSdk.DataItemValues.ActivationCount.FAILED.ObservationalSubType">
             <inheritdoc />
         </member>
-        <member name="M:Mtconnect.AdapterSdk.DataItemValues.ActivationCount.FAILED.#ctor(System.Int32)">
+        <member name="M:Mtconnect.AdapterSdk.DataItemValues.ActivationCount.FAILED.#ctor(System.Nullable{System.Int32})">
             <summary>
             Constructs a new value type for FAILED.
             </summary>
         </member>
-        <member name="M:Mtconnect.AdapterSdk.DataItemValues.ActivationCount.FAILED.op_Implicit(System.Int32)~Mtconnect.AdapterSdk.DataItemValues.ActivationCount.FAILED">
+        <member name="M:Mtconnect.AdapterSdk.DataItemValues.ActivationCount.FAILED.op_Implicit(System.Nullable{System.Int32})~Mtconnect.AdapterSdk.DataItemValues.ActivationCount.FAILED">
             <summary>
             Implicitly converts the specified Int32 to an <see cref="T:Mtconnect.AdapterSdk.DataItemValues.ActivationCount.FAILED"/> value.
             The Int32 is converted to uppercase and used to initialize the <see cref="T:Mtconnect.AdapterSdk.DataItemValues.ActivationCount.FAILED"/> value.
@@ -12332,12 +12332,12 @@
         <member name="P:Mtconnect.AdapterSdk.DataItemValues.ActivationCount.COMPLETE.ObservationalSubType">
             <inheritdoc />
         </member>
-        <member name="M:Mtconnect.AdapterSdk.DataItemValues.ActivationCount.COMPLETE.#ctor(System.Int32)">
+        <member name="M:Mtconnect.AdapterSdk.DataItemValues.ActivationCount.COMPLETE.#ctor(System.Nullable{System.Int32})">
             <summary>
             Constructs a new value type for COMPLETE.
             </summary>
         </member>
-        <member name="M:Mtconnect.AdapterSdk.DataItemValues.ActivationCount.COMPLETE.op_Implicit(System.Int32)~Mtconnect.AdapterSdk.DataItemValues.ActivationCount.COMPLETE">
+        <member name="M:Mtconnect.AdapterSdk.DataItemValues.ActivationCount.COMPLETE.op_Implicit(System.Nullable{System.Int32})~Mtconnect.AdapterSdk.DataItemValues.ActivationCount.COMPLETE">
             <summary>
             Implicitly converts the specified Int32 to an <see cref="T:Mtconnect.AdapterSdk.DataItemValues.ActivationCount.COMPLETE"/> value.
             The Int32 is converted to uppercase and used to initialize the <see cref="T:Mtconnect.AdapterSdk.DataItemValues.ActivationCount.COMPLETE"/> value.
@@ -12353,12 +12353,12 @@
         <member name="P:Mtconnect.AdapterSdk.DataItemValues.ActivationCount.ALL.ObservationalSubType">
             <inheritdoc />
         </member>
-        <member name="M:Mtconnect.AdapterSdk.DataItemValues.ActivationCount.ALL.#ctor(System.Int32)">
+        <member name="M:Mtconnect.AdapterSdk.DataItemValues.ActivationCount.ALL.#ctor(System.Nullable{System.Int32})">
             <summary>
             Constructs a new value type for ALL.
             </summary>
         </member>
-        <member name="M:Mtconnect.AdapterSdk.DataItemValues.ActivationCount.ALL.op_Implicit(System.Int32)~Mtconnect.AdapterSdk.DataItemValues.ActivationCount.ALL">
+        <member name="M:Mtconnect.AdapterSdk.DataItemValues.ActivationCount.ALL.op_Implicit(System.Nullable{System.Int32})~Mtconnect.AdapterSdk.DataItemValues.ActivationCount.ALL">
             <summary>
             Implicitly converts the specified Int32 to an <see cref="T:Mtconnect.AdapterSdk.DataItemValues.ActivationCount.ALL"/> value.
             The Int32 is converted to uppercase and used to initialize the <see cref="T:Mtconnect.AdapterSdk.DataItemValues.ActivationCount.ALL"/> value.
@@ -13352,12 +13352,12 @@
         <member name="P:Mtconnect.AdapterSdk.DataItemValues.AssetCount.ObservationalSubType">
             <inheritdoc />
         </member>
-        <member name="M:Mtconnect.AdapterSdk.DataItemValues.AssetCount.#ctor(System.Int32)">
+        <member name="M:Mtconnect.AdapterSdk.DataItemValues.AssetCount.#ctor(System.Nullable{System.Int32})">
             <summary>
             Constructs a new value type for the AssetCount EVENT Data Item.
             </summary>
         </member>
-        <member name="M:Mtconnect.AdapterSdk.DataItemValues.AssetCount.op_Implicit(System.Int32)~Mtconnect.AdapterSdk.DataItemValues.AssetCount">
+        <member name="M:Mtconnect.AdapterSdk.DataItemValues.AssetCount.op_Implicit(System.Nullable{System.Int32})~Mtconnect.AdapterSdk.DataItemValues.AssetCount">
             <summary>
             Implicitly converts the specified Int32 to an <see cref="T:Mtconnect.AdapterSdk.DataItemValues.AssetCount"/> value.
             The Int32 is converted to uppercase and used to initialize the <see cref="T:Mtconnect.AdapterSdk.DataItemValues.AssetCount"/> value.
@@ -13688,12 +13688,12 @@
         <member name="P:Mtconnect.AdapterSdk.DataItemValues.AxisFeedrateOverride.ObservationalSubType">
             <inheritdoc />
         </member>
-        <member name="M:Mtconnect.AdapterSdk.DataItemValues.AxisFeedrateOverride.#ctor(System.Single)">
+        <member name="M:Mtconnect.AdapterSdk.DataItemValues.AxisFeedrateOverride.#ctor(System.Nullable{System.Single})">
             <summary>
             Constructs a new value type for the AxisFeedrateOverride EVENT Data Item.
             </summary>
         </member>
-        <member name="M:Mtconnect.AdapterSdk.DataItemValues.AxisFeedrateOverride.op_Implicit(System.Single)~Mtconnect.AdapterSdk.DataItemValues.AxisFeedrateOverride">
+        <member name="M:Mtconnect.AdapterSdk.DataItemValues.AxisFeedrateOverride.op_Implicit(System.Nullable{System.Single})~Mtconnect.AdapterSdk.DataItemValues.AxisFeedrateOverride">
             <summary>
             Implicitly converts the specified Single to an <see cref="T:Mtconnect.AdapterSdk.DataItemValues.AxisFeedrateOverride"/> value.
             The Single is converted to uppercase and used to initialize the <see cref="T:Mtconnect.AdapterSdk.DataItemValues.AxisFeedrateOverride"/> value.
@@ -13709,12 +13709,12 @@
         <member name="P:Mtconnect.AdapterSdk.DataItemValues.AxisFeedrateOverride.JOG.ObservationalSubType">
             <inheritdoc />
         </member>
-        <member name="M:Mtconnect.AdapterSdk.DataItemValues.AxisFeedrateOverride.JOG.#ctor(System.Single)">
+        <member name="M:Mtconnect.AdapterSdk.DataItemValues.AxisFeedrateOverride.JOG.#ctor(System.Nullable{System.Single})">
             <summary>
             Constructs a new value type for JOG.
             </summary>
         </member>
-        <member name="M:Mtconnect.AdapterSdk.DataItemValues.AxisFeedrateOverride.JOG.op_Implicit(System.Single)~Mtconnect.AdapterSdk.DataItemValues.AxisFeedrateOverride.JOG">
+        <member name="M:Mtconnect.AdapterSdk.DataItemValues.AxisFeedrateOverride.JOG.op_Implicit(System.Nullable{System.Single})~Mtconnect.AdapterSdk.DataItemValues.AxisFeedrateOverride.JOG">
             <summary>
             Implicitly converts the specified Single to an <see cref="T:Mtconnect.AdapterSdk.DataItemValues.AxisFeedrateOverride.JOG"/> value.
             The Single is converted to uppercase and used to initialize the <see cref="T:Mtconnect.AdapterSdk.DataItemValues.AxisFeedrateOverride.JOG"/> value.
@@ -13730,12 +13730,12 @@
         <member name="P:Mtconnect.AdapterSdk.DataItemValues.AxisFeedrateOverride.PROGRAMMED.ObservationalSubType">
             <inheritdoc />
         </member>
-        <member name="M:Mtconnect.AdapterSdk.DataItemValues.AxisFeedrateOverride.PROGRAMMED.#ctor(System.Single)">
+        <member name="M:Mtconnect.AdapterSdk.DataItemValues.AxisFeedrateOverride.PROGRAMMED.#ctor(System.Nullable{System.Single})">
             <summary>
             Constructs a new value type for PROGRAMMED.
             </summary>
         </member>
-        <member name="M:Mtconnect.AdapterSdk.DataItemValues.AxisFeedrateOverride.PROGRAMMED.op_Implicit(System.Single)~Mtconnect.AdapterSdk.DataItemValues.AxisFeedrateOverride.PROGRAMMED">
+        <member name="M:Mtconnect.AdapterSdk.DataItemValues.AxisFeedrateOverride.PROGRAMMED.op_Implicit(System.Nullable{System.Single})~Mtconnect.AdapterSdk.DataItemValues.AxisFeedrateOverride.PROGRAMMED">
             <summary>
             Implicitly converts the specified Single to an <see cref="T:Mtconnect.AdapterSdk.DataItemValues.AxisFeedrateOverride.PROGRAMMED"/> value.
             The Single is converted to uppercase and used to initialize the <see cref="T:Mtconnect.AdapterSdk.DataItemValues.AxisFeedrateOverride.PROGRAMMED"/> value.
@@ -13751,12 +13751,12 @@
         <member name="P:Mtconnect.AdapterSdk.DataItemValues.AxisFeedrateOverride.RAPID.ObservationalSubType">
             <inheritdoc />
         </member>
-        <member name="M:Mtconnect.AdapterSdk.DataItemValues.AxisFeedrateOverride.RAPID.#ctor(System.Single)">
+        <member name="M:Mtconnect.AdapterSdk.DataItemValues.AxisFeedrateOverride.RAPID.#ctor(System.Nullable{System.Single})">
             <summary>
             Constructs a new value type for RAPID.
             </summary>
         </member>
-        <member name="M:Mtconnect.AdapterSdk.DataItemValues.AxisFeedrateOverride.RAPID.op_Implicit(System.Single)~Mtconnect.AdapterSdk.DataItemValues.AxisFeedrateOverride.RAPID">
+        <member name="M:Mtconnect.AdapterSdk.DataItemValues.AxisFeedrateOverride.RAPID.op_Implicit(System.Nullable{System.Single})~Mtconnect.AdapterSdk.DataItemValues.AxisFeedrateOverride.RAPID">
             <summary>
             Implicitly converts the specified Single to an <see cref="T:Mtconnect.AdapterSdk.DataItemValues.AxisFeedrateOverride.RAPID"/> value.
             The Single is converted to uppercase and used to initialize the <see cref="T:Mtconnect.AdapterSdk.DataItemValues.AxisFeedrateOverride.RAPID"/> value.
@@ -14094,12 +14094,12 @@
         <member name="P:Mtconnect.AdapterSdk.DataItemValues.BlockCount.ObservationalSubType">
             <inheritdoc />
         </member>
-        <member name="M:Mtconnect.AdapterSdk.DataItemValues.BlockCount.#ctor(System.Int32)">
+        <member name="M:Mtconnect.AdapterSdk.DataItemValues.BlockCount.#ctor(System.Nullable{System.Int32})">
             <summary>
             Constructs a new value type for the BlockCount EVENT Data Item.
             </summary>
         </member>
-        <member name="M:Mtconnect.AdapterSdk.DataItemValues.BlockCount.op_Implicit(System.Int32)~Mtconnect.AdapterSdk.DataItemValues.BlockCount">
+        <member name="M:Mtconnect.AdapterSdk.DataItemValues.BlockCount.op_Implicit(System.Nullable{System.Int32})~Mtconnect.AdapterSdk.DataItemValues.BlockCount">
             <summary>
             Implicitly converts the specified Int32 to an <see cref="T:Mtconnect.AdapterSdk.DataItemValues.BlockCount"/> value.
             The Int32 is converted to uppercase and used to initialize the <see cref="T:Mtconnect.AdapterSdk.DataItemValues.BlockCount"/> value.
@@ -14373,12 +14373,12 @@
         <member name="P:Mtconnect.AdapterSdk.DataItemValues.ClockTime.ObservationalSubType">
             <inheritdoc />
         </member>
-        <member name="M:Mtconnect.AdapterSdk.DataItemValues.ClockTime.#ctor(System.DateTime)">
+        <member name="M:Mtconnect.AdapterSdk.DataItemValues.ClockTime.#ctor(System.Nullable{System.DateTime})">
             <summary>
             Constructs a new value type for the ClockTime EVENT Data Item.
             </summary>
         </member>
-        <member name="M:Mtconnect.AdapterSdk.DataItemValues.ClockTime.op_Implicit(System.DateTime)~Mtconnect.AdapterSdk.DataItemValues.ClockTime">
+        <member name="M:Mtconnect.AdapterSdk.DataItemValues.ClockTime.op_Implicit(System.Nullable{System.DateTime})~Mtconnect.AdapterSdk.DataItemValues.ClockTime">
             <summary>
             Implicitly converts the specified DateTime to an <see cref="T:Mtconnect.AdapterSdk.DataItemValues.ClockTime"/> value.
             The DateTime is converted to uppercase and used to initialize the <see cref="T:Mtconnect.AdapterSdk.DataItemValues.ClockTime"/> value.
@@ -15095,12 +15095,12 @@
         <member name="P:Mtconnect.AdapterSdk.DataItemValues.CycleCount.ObservationalSubType">
             <inheritdoc />
         </member>
-        <member name="M:Mtconnect.AdapterSdk.DataItemValues.CycleCount.#ctor(System.Int32)">
+        <member name="M:Mtconnect.AdapterSdk.DataItemValues.CycleCount.#ctor(System.Nullable{System.Int32})">
             <summary>
             Constructs a new value type for the CycleCount EVENT Data Item.
             </summary>
         </member>
-        <member name="M:Mtconnect.AdapterSdk.DataItemValues.CycleCount.op_Implicit(System.Int32)~Mtconnect.AdapterSdk.DataItemValues.CycleCount">
+        <member name="M:Mtconnect.AdapterSdk.DataItemValues.CycleCount.op_Implicit(System.Nullable{System.Int32})~Mtconnect.AdapterSdk.DataItemValues.CycleCount">
             <summary>
             Implicitly converts the specified Int32 to an <see cref="T:Mtconnect.AdapterSdk.DataItemValues.CycleCount"/> value.
             The Int32 is converted to uppercase and used to initialize the <see cref="T:Mtconnect.AdapterSdk.DataItemValues.CycleCount"/> value.
@@ -15116,12 +15116,12 @@
         <member name="P:Mtconnect.AdapterSdk.DataItemValues.CycleCount.GOOD.ObservationalSubType">
             <inheritdoc />
         </member>
-        <member name="M:Mtconnect.AdapterSdk.DataItemValues.CycleCount.GOOD.#ctor(System.Int32)">
+        <member name="M:Mtconnect.AdapterSdk.DataItemValues.CycleCount.GOOD.#ctor(System.Nullable{System.Int32})">
             <summary>
             Constructs a new value type for GOOD.
             </summary>
         </member>
-        <member name="M:Mtconnect.AdapterSdk.DataItemValues.CycleCount.GOOD.op_Implicit(System.Int32)~Mtconnect.AdapterSdk.DataItemValues.CycleCount.GOOD">
+        <member name="M:Mtconnect.AdapterSdk.DataItemValues.CycleCount.GOOD.op_Implicit(System.Nullable{System.Int32})~Mtconnect.AdapterSdk.DataItemValues.CycleCount.GOOD">
             <summary>
             Implicitly converts the specified Int32 to an <see cref="T:Mtconnect.AdapterSdk.DataItemValues.CycleCount.GOOD"/> value.
             The Int32 is converted to uppercase and used to initialize the <see cref="T:Mtconnect.AdapterSdk.DataItemValues.CycleCount.GOOD"/> value.
@@ -15137,12 +15137,12 @@
         <member name="P:Mtconnect.AdapterSdk.DataItemValues.CycleCount.REMAINING.ObservationalSubType">
             <inheritdoc />
         </member>
-        <member name="M:Mtconnect.AdapterSdk.DataItemValues.CycleCount.REMAINING.#ctor(System.Int32)">
+        <member name="M:Mtconnect.AdapterSdk.DataItemValues.CycleCount.REMAINING.#ctor(System.Nullable{System.Int32})">
             <summary>
             Constructs a new value type for REMAINING.
             </summary>
         </member>
-        <member name="M:Mtconnect.AdapterSdk.DataItemValues.CycleCount.REMAINING.op_Implicit(System.Int32)~Mtconnect.AdapterSdk.DataItemValues.CycleCount.REMAINING">
+        <member name="M:Mtconnect.AdapterSdk.DataItemValues.CycleCount.REMAINING.op_Implicit(System.Nullable{System.Int32})~Mtconnect.AdapterSdk.DataItemValues.CycleCount.REMAINING">
             <summary>
             Implicitly converts the specified Int32 to an <see cref="T:Mtconnect.AdapterSdk.DataItemValues.CycleCount.REMAINING"/> value.
             The Int32 is converted to uppercase and used to initialize the <see cref="T:Mtconnect.AdapterSdk.DataItemValues.CycleCount.REMAINING"/> value.
@@ -15158,12 +15158,12 @@
         <member name="P:Mtconnect.AdapterSdk.DataItemValues.CycleCount.COMPLETE.ObservationalSubType">
             <inheritdoc />
         </member>
-        <member name="M:Mtconnect.AdapterSdk.DataItemValues.CycleCount.COMPLETE.#ctor(System.Int32)">
+        <member name="M:Mtconnect.AdapterSdk.DataItemValues.CycleCount.COMPLETE.#ctor(System.Nullable{System.Int32})">
             <summary>
             Constructs a new value type for COMPLETE.
             </summary>
         </member>
-        <member name="M:Mtconnect.AdapterSdk.DataItemValues.CycleCount.COMPLETE.op_Implicit(System.Int32)~Mtconnect.AdapterSdk.DataItemValues.CycleCount.COMPLETE">
+        <member name="M:Mtconnect.AdapterSdk.DataItemValues.CycleCount.COMPLETE.op_Implicit(System.Nullable{System.Int32})~Mtconnect.AdapterSdk.DataItemValues.CycleCount.COMPLETE">
             <summary>
             Implicitly converts the specified Int32 to an <see cref="T:Mtconnect.AdapterSdk.DataItemValues.CycleCount.COMPLETE"/> value.
             The Int32 is converted to uppercase and used to initialize the <see cref="T:Mtconnect.AdapterSdk.DataItemValues.CycleCount.COMPLETE"/> value.
@@ -15179,12 +15179,12 @@
         <member name="P:Mtconnect.AdapterSdk.DataItemValues.CycleCount.ABORTED.ObservationalSubType">
             <inheritdoc />
         </member>
-        <member name="M:Mtconnect.AdapterSdk.DataItemValues.CycleCount.ABORTED.#ctor(System.Int32)">
+        <member name="M:Mtconnect.AdapterSdk.DataItemValues.CycleCount.ABORTED.#ctor(System.Nullable{System.Int32})">
             <summary>
             Constructs a new value type for ABORTED.
             </summary>
         </member>
-        <member name="M:Mtconnect.AdapterSdk.DataItemValues.CycleCount.ABORTED.op_Implicit(System.Int32)~Mtconnect.AdapterSdk.DataItemValues.CycleCount.ABORTED">
+        <member name="M:Mtconnect.AdapterSdk.DataItemValues.CycleCount.ABORTED.op_Implicit(System.Nullable{System.Int32})~Mtconnect.AdapterSdk.DataItemValues.CycleCount.ABORTED">
             <summary>
             Implicitly converts the specified Int32 to an <see cref="T:Mtconnect.AdapterSdk.DataItemValues.CycleCount.ABORTED"/> value.
             The Int32 is converted to uppercase and used to initialize the <see cref="T:Mtconnect.AdapterSdk.DataItemValues.CycleCount.ABORTED"/> value.
@@ -15200,12 +15200,12 @@
         <member name="P:Mtconnect.AdapterSdk.DataItemValues.CycleCount.BAD.ObservationalSubType">
             <inheritdoc />
         </member>
-        <member name="M:Mtconnect.AdapterSdk.DataItemValues.CycleCount.BAD.#ctor(System.Int32)">
+        <member name="M:Mtconnect.AdapterSdk.DataItemValues.CycleCount.BAD.#ctor(System.Nullable{System.Int32})">
             <summary>
             Constructs a new value type for BAD.
             </summary>
         </member>
-        <member name="M:Mtconnect.AdapterSdk.DataItemValues.CycleCount.BAD.op_Implicit(System.Int32)~Mtconnect.AdapterSdk.DataItemValues.CycleCount.BAD">
+        <member name="M:Mtconnect.AdapterSdk.DataItemValues.CycleCount.BAD.op_Implicit(System.Nullable{System.Int32})~Mtconnect.AdapterSdk.DataItemValues.CycleCount.BAD">
             <summary>
             Implicitly converts the specified Int32 to an <see cref="T:Mtconnect.AdapterSdk.DataItemValues.CycleCount.BAD"/> value.
             The Int32 is converted to uppercase and used to initialize the <see cref="T:Mtconnect.AdapterSdk.DataItemValues.CycleCount.BAD"/> value.
@@ -15221,12 +15221,12 @@
         <member name="P:Mtconnect.AdapterSdk.DataItemValues.CycleCount.FAILED.ObservationalSubType">
             <inheritdoc />
         </member>
-        <member name="M:Mtconnect.AdapterSdk.DataItemValues.CycleCount.FAILED.#ctor(System.Int32)">
+        <member name="M:Mtconnect.AdapterSdk.DataItemValues.CycleCount.FAILED.#ctor(System.Nullable{System.Int32})">
             <summary>
             Constructs a new value type for FAILED.
             </summary>
         </member>
-        <member name="M:Mtconnect.AdapterSdk.DataItemValues.CycleCount.FAILED.op_Implicit(System.Int32)~Mtconnect.AdapterSdk.DataItemValues.CycleCount.FAILED">
+        <member name="M:Mtconnect.AdapterSdk.DataItemValues.CycleCount.FAILED.op_Implicit(System.Nullable{System.Int32})~Mtconnect.AdapterSdk.DataItemValues.CycleCount.FAILED">
             <summary>
             Implicitly converts the specified Int32 to an <see cref="T:Mtconnect.AdapterSdk.DataItemValues.CycleCount.FAILED"/> value.
             The Int32 is converted to uppercase and used to initialize the <see cref="T:Mtconnect.AdapterSdk.DataItemValues.CycleCount.FAILED"/> value.
@@ -15242,12 +15242,12 @@
         <member name="P:Mtconnect.AdapterSdk.DataItemValues.CycleCount.TARGET.ObservationalSubType">
             <inheritdoc />
         </member>
-        <member name="M:Mtconnect.AdapterSdk.DataItemValues.CycleCount.TARGET.#ctor(System.Int32)">
+        <member name="M:Mtconnect.AdapterSdk.DataItemValues.CycleCount.TARGET.#ctor(System.Nullable{System.Int32})">
             <summary>
             Constructs a new value type for TARGET.
             </summary>
         </member>
-        <member name="M:Mtconnect.AdapterSdk.DataItemValues.CycleCount.TARGET.op_Implicit(System.Int32)~Mtconnect.AdapterSdk.DataItemValues.CycleCount.TARGET">
+        <member name="M:Mtconnect.AdapterSdk.DataItemValues.CycleCount.TARGET.op_Implicit(System.Nullable{System.Int32})~Mtconnect.AdapterSdk.DataItemValues.CycleCount.TARGET">
             <summary>
             Implicitly converts the specified Int32 to an <see cref="T:Mtconnect.AdapterSdk.DataItemValues.CycleCount.TARGET"/> value.
             The Int32 is converted to uppercase and used to initialize the <see cref="T:Mtconnect.AdapterSdk.DataItemValues.CycleCount.TARGET"/> value.
@@ -15263,12 +15263,12 @@
         <member name="P:Mtconnect.AdapterSdk.DataItemValues.CycleCount.ALL.ObservationalSubType">
             <inheritdoc />
         </member>
-        <member name="M:Mtconnect.AdapterSdk.DataItemValues.CycleCount.ALL.#ctor(System.Int32)">
+        <member name="M:Mtconnect.AdapterSdk.DataItemValues.CycleCount.ALL.#ctor(System.Nullable{System.Int32})">
             <summary>
             Constructs a new value type for ALL.
             </summary>
         </member>
-        <member name="M:Mtconnect.AdapterSdk.DataItemValues.CycleCount.ALL.op_Implicit(System.Int32)~Mtconnect.AdapterSdk.DataItemValues.CycleCount.ALL">
+        <member name="M:Mtconnect.AdapterSdk.DataItemValues.CycleCount.ALL.op_Implicit(System.Nullable{System.Int32})~Mtconnect.AdapterSdk.DataItemValues.CycleCount.ALL">
             <summary>
             Implicitly converts the specified Int32 to an <see cref="T:Mtconnect.AdapterSdk.DataItemValues.CycleCount.ALL"/> value.
             The Int32 is converted to uppercase and used to initialize the <see cref="T:Mtconnect.AdapterSdk.DataItemValues.CycleCount.ALL"/> value.
@@ -15321,12 +15321,12 @@
         <member name="P:Mtconnect.AdapterSdk.DataItemValues.DateCode.ObservationalSubType">
             <inheritdoc />
         </member>
-        <member name="M:Mtconnect.AdapterSdk.DataItemValues.DateCode.#ctor(System.DateTime)">
+        <member name="M:Mtconnect.AdapterSdk.DataItemValues.DateCode.#ctor(System.Nullable{System.DateTime})">
             <summary>
             Constructs a new value type for the DateCode EVENT Data Item.
             </summary>
         </member>
-        <member name="M:Mtconnect.AdapterSdk.DataItemValues.DateCode.op_Implicit(System.DateTime)~Mtconnect.AdapterSdk.DataItemValues.DateCode">
+        <member name="M:Mtconnect.AdapterSdk.DataItemValues.DateCode.op_Implicit(System.Nullable{System.DateTime})~Mtconnect.AdapterSdk.DataItemValues.DateCode">
             <summary>
             Implicitly converts the specified DateTime to an <see cref="T:Mtconnect.AdapterSdk.DataItemValues.DateCode"/> value.
             The DateTime is converted to uppercase and used to initialize the <see cref="T:Mtconnect.AdapterSdk.DataItemValues.DateCode"/> value.
@@ -15342,12 +15342,12 @@
         <member name="P:Mtconnect.AdapterSdk.DataItemValues.DateCode.MANUFACTURE.ObservationalSubType">
             <inheritdoc />
         </member>
-        <member name="M:Mtconnect.AdapterSdk.DataItemValues.DateCode.MANUFACTURE.#ctor(System.DateTime)">
+        <member name="M:Mtconnect.AdapterSdk.DataItemValues.DateCode.MANUFACTURE.#ctor(System.Nullable{System.DateTime})">
             <summary>
             Constructs a new value type for MANUFACTURE.
             </summary>
         </member>
-        <member name="M:Mtconnect.AdapterSdk.DataItemValues.DateCode.MANUFACTURE.op_Implicit(System.DateTime)~Mtconnect.AdapterSdk.DataItemValues.DateCode.MANUFACTURE">
+        <member name="M:Mtconnect.AdapterSdk.DataItemValues.DateCode.MANUFACTURE.op_Implicit(System.Nullable{System.DateTime})~Mtconnect.AdapterSdk.DataItemValues.DateCode.MANUFACTURE">
             <summary>
             Implicitly converts the specified DateTime to an <see cref="T:Mtconnect.AdapterSdk.DataItemValues.DateCode.MANUFACTURE"/> value.
             The DateTime is converted to uppercase and used to initialize the <see cref="T:Mtconnect.AdapterSdk.DataItemValues.DateCode.MANUFACTURE"/> value.
@@ -15363,12 +15363,12 @@
         <member name="P:Mtconnect.AdapterSdk.DataItemValues.DateCode.EXPIRATION.ObservationalSubType">
             <inheritdoc />
         </member>
-        <member name="M:Mtconnect.AdapterSdk.DataItemValues.DateCode.EXPIRATION.#ctor(System.DateTime)">
+        <member name="M:Mtconnect.AdapterSdk.DataItemValues.DateCode.EXPIRATION.#ctor(System.Nullable{System.DateTime})">
             <summary>
             Constructs a new value type for EXPIRATION.
             </summary>
         </member>
-        <member name="M:Mtconnect.AdapterSdk.DataItemValues.DateCode.EXPIRATION.op_Implicit(System.DateTime)~Mtconnect.AdapterSdk.DataItemValues.DateCode.EXPIRATION">
+        <member name="M:Mtconnect.AdapterSdk.DataItemValues.DateCode.EXPIRATION.op_Implicit(System.Nullable{System.DateTime})~Mtconnect.AdapterSdk.DataItemValues.DateCode.EXPIRATION">
             <summary>
             Implicitly converts the specified DateTime to an <see cref="T:Mtconnect.AdapterSdk.DataItemValues.DateCode.EXPIRATION"/> value.
             The DateTime is converted to uppercase and used to initialize the <see cref="T:Mtconnect.AdapterSdk.DataItemValues.DateCode.EXPIRATION"/> value.
@@ -15384,12 +15384,12 @@
         <member name="P:Mtconnect.AdapterSdk.DataItemValues.DateCode.FIRSTUSE.ObservationalSubType">
             <inheritdoc />
         </member>
-        <member name="M:Mtconnect.AdapterSdk.DataItemValues.DateCode.FIRSTUSE.#ctor(System.DateTime)">
+        <member name="M:Mtconnect.AdapterSdk.DataItemValues.DateCode.FIRSTUSE.#ctor(System.Nullable{System.DateTime})">
             <summary>
             Constructs a new value type for FIRST_USE.
             </summary>
         </member>
-        <member name="M:Mtconnect.AdapterSdk.DataItemValues.DateCode.FIRSTUSE.op_Implicit(System.DateTime)~Mtconnect.AdapterSdk.DataItemValues.DateCode.FIRSTUSE">
+        <member name="M:Mtconnect.AdapterSdk.DataItemValues.DateCode.FIRSTUSE.op_Implicit(System.Nullable{System.DateTime})~Mtconnect.AdapterSdk.DataItemValues.DateCode.FIRSTUSE">
             <summary>
             Implicitly converts the specified DateTime to an <see cref="T:Mtconnect.AdapterSdk.DataItemValues.DateCode.FIRSTUSE"/> value.
             The DateTime is converted to uppercase and used to initialize the <see cref="T:Mtconnect.AdapterSdk.DataItemValues.DateCode.FIRSTUSE"/> value.
@@ -15413,12 +15413,12 @@
         <member name="P:Mtconnect.AdapterSdk.DataItemValues.DeactivationCount.ObservationalSubType">
             <inheritdoc />
         </member>
-        <member name="M:Mtconnect.AdapterSdk.DataItemValues.DeactivationCount.#ctor(System.Int32)">
+        <member name="M:Mtconnect.AdapterSdk.DataItemValues.DeactivationCount.#ctor(System.Nullable{System.Int32})">
             <summary>
             Constructs a new value type for the DeactivationCount EVENT Data Item.
             </summary>
         </member>
-        <member name="M:Mtconnect.AdapterSdk.DataItemValues.DeactivationCount.op_Implicit(System.Int32)~Mtconnect.AdapterSdk.DataItemValues.DeactivationCount">
+        <member name="M:Mtconnect.AdapterSdk.DataItemValues.DeactivationCount.op_Implicit(System.Nullable{System.Int32})~Mtconnect.AdapterSdk.DataItemValues.DeactivationCount">
             <summary>
             Implicitly converts the specified Int32 to an <see cref="T:Mtconnect.AdapterSdk.DataItemValues.DeactivationCount"/> value.
             The Int32 is converted to uppercase and used to initialize the <see cref="T:Mtconnect.AdapterSdk.DataItemValues.DeactivationCount"/> value.
@@ -15434,12 +15434,12 @@
         <member name="P:Mtconnect.AdapterSdk.DataItemValues.DeactivationCount.BAD.ObservationalSubType">
             <inheritdoc />
         </member>
-        <member name="M:Mtconnect.AdapterSdk.DataItemValues.DeactivationCount.BAD.#ctor(System.Int32)">
+        <member name="M:Mtconnect.AdapterSdk.DataItemValues.DeactivationCount.BAD.#ctor(System.Nullable{System.Int32})">
             <summary>
             Constructs a new value type for BAD.
             </summary>
         </member>
-        <member name="M:Mtconnect.AdapterSdk.DataItemValues.DeactivationCount.BAD.op_Implicit(System.Int32)~Mtconnect.AdapterSdk.DataItemValues.DeactivationCount.BAD">
+        <member name="M:Mtconnect.AdapterSdk.DataItemValues.DeactivationCount.BAD.op_Implicit(System.Nullable{System.Int32})~Mtconnect.AdapterSdk.DataItemValues.DeactivationCount.BAD">
             <summary>
             Implicitly converts the specified Int32 to an <see cref="T:Mtconnect.AdapterSdk.DataItemValues.DeactivationCount.BAD"/> value.
             The Int32 is converted to uppercase and used to initialize the <see cref="T:Mtconnect.AdapterSdk.DataItemValues.DeactivationCount.BAD"/> value.
@@ -15455,12 +15455,12 @@
         <member name="P:Mtconnect.AdapterSdk.DataItemValues.DeactivationCount.FAILED.ObservationalSubType">
             <inheritdoc />
         </member>
-        <member name="M:Mtconnect.AdapterSdk.DataItemValues.DeactivationCount.FAILED.#ctor(System.Int32)">
+        <member name="M:Mtconnect.AdapterSdk.DataItemValues.DeactivationCount.FAILED.#ctor(System.Nullable{System.Int32})">
             <summary>
             Constructs a new value type for FAILED.
             </summary>
         </member>
-        <member name="M:Mtconnect.AdapterSdk.DataItemValues.DeactivationCount.FAILED.op_Implicit(System.Int32)~Mtconnect.AdapterSdk.DataItemValues.DeactivationCount.FAILED">
+        <member name="M:Mtconnect.AdapterSdk.DataItemValues.DeactivationCount.FAILED.op_Implicit(System.Nullable{System.Int32})~Mtconnect.AdapterSdk.DataItemValues.DeactivationCount.FAILED">
             <summary>
             Implicitly converts the specified Int32 to an <see cref="T:Mtconnect.AdapterSdk.DataItemValues.DeactivationCount.FAILED"/> value.
             The Int32 is converted to uppercase and used to initialize the <see cref="T:Mtconnect.AdapterSdk.DataItemValues.DeactivationCount.FAILED"/> value.
@@ -15476,12 +15476,12 @@
         <member name="P:Mtconnect.AdapterSdk.DataItemValues.DeactivationCount.TARGET.ObservationalSubType">
             <inheritdoc />
         </member>
-        <member name="M:Mtconnect.AdapterSdk.DataItemValues.DeactivationCount.TARGET.#ctor(System.Int32)">
+        <member name="M:Mtconnect.AdapterSdk.DataItemValues.DeactivationCount.TARGET.#ctor(System.Nullable{System.Int32})">
             <summary>
             Constructs a new value type for TARGET.
             </summary>
         </member>
-        <member name="M:Mtconnect.AdapterSdk.DataItemValues.DeactivationCount.TARGET.op_Implicit(System.Int32)~Mtconnect.AdapterSdk.DataItemValues.DeactivationCount.TARGET">
+        <member name="M:Mtconnect.AdapterSdk.DataItemValues.DeactivationCount.TARGET.op_Implicit(System.Nullable{System.Int32})~Mtconnect.AdapterSdk.DataItemValues.DeactivationCount.TARGET">
             <summary>
             Implicitly converts the specified Int32 to an <see cref="T:Mtconnect.AdapterSdk.DataItemValues.DeactivationCount.TARGET"/> value.
             The Int32 is converted to uppercase and used to initialize the <see cref="T:Mtconnect.AdapterSdk.DataItemValues.DeactivationCount.TARGET"/> value.
@@ -15497,12 +15497,12 @@
         <member name="P:Mtconnect.AdapterSdk.DataItemValues.DeactivationCount.COMPLETE.ObservationalSubType">
             <inheritdoc />
         </member>
-        <member name="M:Mtconnect.AdapterSdk.DataItemValues.DeactivationCount.COMPLETE.#ctor(System.Int32)">
+        <member name="M:Mtconnect.AdapterSdk.DataItemValues.DeactivationCount.COMPLETE.#ctor(System.Nullable{System.Int32})">
             <summary>
             Constructs a new value type for COMPLETE.
             </summary>
         </member>
-        <member name="M:Mtconnect.AdapterSdk.DataItemValues.DeactivationCount.COMPLETE.op_Implicit(System.Int32)~Mtconnect.AdapterSdk.DataItemValues.DeactivationCount.COMPLETE">
+        <member name="M:Mtconnect.AdapterSdk.DataItemValues.DeactivationCount.COMPLETE.op_Implicit(System.Nullable{System.Int32})~Mtconnect.AdapterSdk.DataItemValues.DeactivationCount.COMPLETE">
             <summary>
             Implicitly converts the specified Int32 to an <see cref="T:Mtconnect.AdapterSdk.DataItemValues.DeactivationCount.COMPLETE"/> value.
             The Int32 is converted to uppercase and used to initialize the <see cref="T:Mtconnect.AdapterSdk.DataItemValues.DeactivationCount.COMPLETE"/> value.
@@ -15518,12 +15518,12 @@
         <member name="P:Mtconnect.AdapterSdk.DataItemValues.DeactivationCount.REMAINING.ObservationalSubType">
             <inheritdoc />
         </member>
-        <member name="M:Mtconnect.AdapterSdk.DataItemValues.DeactivationCount.REMAINING.#ctor(System.Int32)">
+        <member name="M:Mtconnect.AdapterSdk.DataItemValues.DeactivationCount.REMAINING.#ctor(System.Nullable{System.Int32})">
             <summary>
             Constructs a new value type for REMAINING.
             </summary>
         </member>
-        <member name="M:Mtconnect.AdapterSdk.DataItemValues.DeactivationCount.REMAINING.op_Implicit(System.Int32)~Mtconnect.AdapterSdk.DataItemValues.DeactivationCount.REMAINING">
+        <member name="M:Mtconnect.AdapterSdk.DataItemValues.DeactivationCount.REMAINING.op_Implicit(System.Nullable{System.Int32})~Mtconnect.AdapterSdk.DataItemValues.DeactivationCount.REMAINING">
             <summary>
             Implicitly converts the specified Int32 to an <see cref="T:Mtconnect.AdapterSdk.DataItemValues.DeactivationCount.REMAINING"/> value.
             The Int32 is converted to uppercase and used to initialize the <see cref="T:Mtconnect.AdapterSdk.DataItemValues.DeactivationCount.REMAINING"/> value.
@@ -15539,12 +15539,12 @@
         <member name="P:Mtconnect.AdapterSdk.DataItemValues.DeactivationCount.ALL.ObservationalSubType">
             <inheritdoc />
         </member>
-        <member name="M:Mtconnect.AdapterSdk.DataItemValues.DeactivationCount.ALL.#ctor(System.Int32)">
+        <member name="M:Mtconnect.AdapterSdk.DataItemValues.DeactivationCount.ALL.#ctor(System.Nullable{System.Int32})">
             <summary>
             Constructs a new value type for ALL.
             </summary>
         </member>
-        <member name="M:Mtconnect.AdapterSdk.DataItemValues.DeactivationCount.ALL.op_Implicit(System.Int32)~Mtconnect.AdapterSdk.DataItemValues.DeactivationCount.ALL">
+        <member name="M:Mtconnect.AdapterSdk.DataItemValues.DeactivationCount.ALL.op_Implicit(System.Nullable{System.Int32})~Mtconnect.AdapterSdk.DataItemValues.DeactivationCount.ALL">
             <summary>
             Implicitly converts the specified Int32 to an <see cref="T:Mtconnect.AdapterSdk.DataItemValues.DeactivationCount.ALL"/> value.
             The Int32 is converted to uppercase and used to initialize the <see cref="T:Mtconnect.AdapterSdk.DataItemValues.DeactivationCount.ALL"/> value.
@@ -15560,12 +15560,12 @@
         <member name="P:Mtconnect.AdapterSdk.DataItemValues.DeactivationCount.GOOD.ObservationalSubType">
             <inheritdoc />
         </member>
-        <member name="M:Mtconnect.AdapterSdk.DataItemValues.DeactivationCount.GOOD.#ctor(System.Int32)">
+        <member name="M:Mtconnect.AdapterSdk.DataItemValues.DeactivationCount.GOOD.#ctor(System.Nullable{System.Int32})">
             <summary>
             Constructs a new value type for GOOD.
             </summary>
         </member>
-        <member name="M:Mtconnect.AdapterSdk.DataItemValues.DeactivationCount.GOOD.op_Implicit(System.Int32)~Mtconnect.AdapterSdk.DataItemValues.DeactivationCount.GOOD">
+        <member name="M:Mtconnect.AdapterSdk.DataItemValues.DeactivationCount.GOOD.op_Implicit(System.Nullable{System.Int32})~Mtconnect.AdapterSdk.DataItemValues.DeactivationCount.GOOD">
             <summary>
             Implicitly converts the specified Int32 to an <see cref="T:Mtconnect.AdapterSdk.DataItemValues.DeactivationCount.GOOD"/> value.
             The Int32 is converted to uppercase and used to initialize the <see cref="T:Mtconnect.AdapterSdk.DataItemValues.DeactivationCount.GOOD"/> value.
@@ -15581,12 +15581,12 @@
         <member name="P:Mtconnect.AdapterSdk.DataItemValues.DeactivationCount.ABORTED.ObservationalSubType">
             <inheritdoc />
         </member>
-        <member name="M:Mtconnect.AdapterSdk.DataItemValues.DeactivationCount.ABORTED.#ctor(System.Int32)">
+        <member name="M:Mtconnect.AdapterSdk.DataItemValues.DeactivationCount.ABORTED.#ctor(System.Nullable{System.Int32})">
             <summary>
             Constructs a new value type for ABORTED.
             </summary>
         </member>
-        <member name="M:Mtconnect.AdapterSdk.DataItemValues.DeactivationCount.ABORTED.op_Implicit(System.Int32)~Mtconnect.AdapterSdk.DataItemValues.DeactivationCount.ABORTED">
+        <member name="M:Mtconnect.AdapterSdk.DataItemValues.DeactivationCount.ABORTED.op_Implicit(System.Nullable{System.Int32})~Mtconnect.AdapterSdk.DataItemValues.DeactivationCount.ABORTED">
             <summary>
             Implicitly converts the specified Int32 to an <see cref="T:Mtconnect.AdapterSdk.DataItemValues.DeactivationCount.ABORTED"/> value.
             The Int32 is converted to uppercase and used to initialize the <see cref="T:Mtconnect.AdapterSdk.DataItemValues.DeactivationCount.ABORTED"/> value.
@@ -17735,12 +17735,12 @@
         <member name="P:Mtconnect.AdapterSdk.DataItemValues.Hardness.ObservationalSubType">
             <inheritdoc />
         </member>
-        <member name="M:Mtconnect.AdapterSdk.DataItemValues.Hardness.#ctor(System.Single)">
+        <member name="M:Mtconnect.AdapterSdk.DataItemValues.Hardness.#ctor(System.Nullable{System.Single})">
             <summary>
             Constructs a new value type for the Hardness EVENT Data Item.
             </summary>
         </member>
-        <member name="M:Mtconnect.AdapterSdk.DataItemValues.Hardness.op_Implicit(System.Single)~Mtconnect.AdapterSdk.DataItemValues.Hardness">
+        <member name="M:Mtconnect.AdapterSdk.DataItemValues.Hardness.op_Implicit(System.Nullable{System.Single})~Mtconnect.AdapterSdk.DataItemValues.Hardness">
             <summary>
             Implicitly converts the specified Single to an <see cref="T:Mtconnect.AdapterSdk.DataItemValues.Hardness"/> value.
             The Single is converted to uppercase and used to initialize the <see cref="T:Mtconnect.AdapterSdk.DataItemValues.Hardness"/> value.
@@ -17756,12 +17756,12 @@
         <member name="P:Mtconnect.AdapterSdk.DataItemValues.Hardness.ROCKWELL.ObservationalSubType">
             <inheritdoc />
         </member>
-        <member name="M:Mtconnect.AdapterSdk.DataItemValues.Hardness.ROCKWELL.#ctor(System.Single)">
+        <member name="M:Mtconnect.AdapterSdk.DataItemValues.Hardness.ROCKWELL.#ctor(System.Nullable{System.Single})">
             <summary>
             Constructs a new value type for ROCKWELL.
             </summary>
         </member>
-        <member name="M:Mtconnect.AdapterSdk.DataItemValues.Hardness.ROCKWELL.op_Implicit(System.Single)~Mtconnect.AdapterSdk.DataItemValues.Hardness.ROCKWELL">
+        <member name="M:Mtconnect.AdapterSdk.DataItemValues.Hardness.ROCKWELL.op_Implicit(System.Nullable{System.Single})~Mtconnect.AdapterSdk.DataItemValues.Hardness.ROCKWELL">
             <summary>
             Implicitly converts the specified Single to an <see cref="T:Mtconnect.AdapterSdk.DataItemValues.Hardness.ROCKWELL"/> value.
             The Single is converted to uppercase and used to initialize the <see cref="T:Mtconnect.AdapterSdk.DataItemValues.Hardness.ROCKWELL"/> value.
@@ -17777,12 +17777,12 @@
         <member name="P:Mtconnect.AdapterSdk.DataItemValues.Hardness.VICKERS.ObservationalSubType">
             <inheritdoc />
         </member>
-        <member name="M:Mtconnect.AdapterSdk.DataItemValues.Hardness.VICKERS.#ctor(System.Single)">
+        <member name="M:Mtconnect.AdapterSdk.DataItemValues.Hardness.VICKERS.#ctor(System.Nullable{System.Single})">
             <summary>
             Constructs a new value type for VICKERS.
             </summary>
         </member>
-        <member name="M:Mtconnect.AdapterSdk.DataItemValues.Hardness.VICKERS.op_Implicit(System.Single)~Mtconnect.AdapterSdk.DataItemValues.Hardness.VICKERS">
+        <member name="M:Mtconnect.AdapterSdk.DataItemValues.Hardness.VICKERS.op_Implicit(System.Nullable{System.Single})~Mtconnect.AdapterSdk.DataItemValues.Hardness.VICKERS">
             <summary>
             Implicitly converts the specified Single to an <see cref="T:Mtconnect.AdapterSdk.DataItemValues.Hardness.VICKERS"/> value.
             The Single is converted to uppercase and used to initialize the <see cref="T:Mtconnect.AdapterSdk.DataItemValues.Hardness.VICKERS"/> value.
@@ -17798,12 +17798,12 @@
         <member name="P:Mtconnect.AdapterSdk.DataItemValues.Hardness.SHORE.ObservationalSubType">
             <inheritdoc />
         </member>
-        <member name="M:Mtconnect.AdapterSdk.DataItemValues.Hardness.SHORE.#ctor(System.Single)">
+        <member name="M:Mtconnect.AdapterSdk.DataItemValues.Hardness.SHORE.#ctor(System.Nullable{System.Single})">
             <summary>
             Constructs a new value type for SHORE.
             </summary>
         </member>
-        <member name="M:Mtconnect.AdapterSdk.DataItemValues.Hardness.SHORE.op_Implicit(System.Single)~Mtconnect.AdapterSdk.DataItemValues.Hardness.SHORE">
+        <member name="M:Mtconnect.AdapterSdk.DataItemValues.Hardness.SHORE.op_Implicit(System.Nullable{System.Single})~Mtconnect.AdapterSdk.DataItemValues.Hardness.SHORE">
             <summary>
             Implicitly converts the specified Single to an <see cref="T:Mtconnect.AdapterSdk.DataItemValues.Hardness.SHORE"/> value.
             The Single is converted to uppercase and used to initialize the <see cref="T:Mtconnect.AdapterSdk.DataItemValues.Hardness.SHORE"/> value.
@@ -17819,12 +17819,12 @@
         <member name="P:Mtconnect.AdapterSdk.DataItemValues.Hardness.BRINELL.ObservationalSubType">
             <inheritdoc />
         </member>
-        <member name="M:Mtconnect.AdapterSdk.DataItemValues.Hardness.BRINELL.#ctor(System.Single)">
+        <member name="M:Mtconnect.AdapterSdk.DataItemValues.Hardness.BRINELL.#ctor(System.Nullable{System.Single})">
             <summary>
             Constructs a new value type for BRINELL.
             </summary>
         </member>
-        <member name="M:Mtconnect.AdapterSdk.DataItemValues.Hardness.BRINELL.op_Implicit(System.Single)~Mtconnect.AdapterSdk.DataItemValues.Hardness.BRINELL">
+        <member name="M:Mtconnect.AdapterSdk.DataItemValues.Hardness.BRINELL.op_Implicit(System.Nullable{System.Single})~Mtconnect.AdapterSdk.DataItemValues.Hardness.BRINELL">
             <summary>
             Implicitly converts the specified Single to an <see cref="T:Mtconnect.AdapterSdk.DataItemValues.Hardness.BRINELL"/> value.
             The Single is converted to uppercase and used to initialize the <see cref="T:Mtconnect.AdapterSdk.DataItemValues.Hardness.BRINELL"/> value.
@@ -17840,12 +17840,12 @@
         <member name="P:Mtconnect.AdapterSdk.DataItemValues.Hardness.LEEB.ObservationalSubType">
             <inheritdoc />
         </member>
-        <member name="M:Mtconnect.AdapterSdk.DataItemValues.Hardness.LEEB.#ctor(System.Single)">
+        <member name="M:Mtconnect.AdapterSdk.DataItemValues.Hardness.LEEB.#ctor(System.Nullable{System.Single})">
             <summary>
             Constructs a new value type for LEEB.
             </summary>
         </member>
-        <member name="M:Mtconnect.AdapterSdk.DataItemValues.Hardness.LEEB.op_Implicit(System.Single)~Mtconnect.AdapterSdk.DataItemValues.Hardness.LEEB">
+        <member name="M:Mtconnect.AdapterSdk.DataItemValues.Hardness.LEEB.op_Implicit(System.Nullable{System.Single})~Mtconnect.AdapterSdk.DataItemValues.Hardness.LEEB">
             <summary>
             Implicitly converts the specified Single to an <see cref="T:Mtconnect.AdapterSdk.DataItemValues.Hardness.LEEB"/> value.
             The Single is converted to uppercase and used to initialize the <see cref="T:Mtconnect.AdapterSdk.DataItemValues.Hardness.LEEB"/> value.
@@ -17861,12 +17861,12 @@
         <member name="P:Mtconnect.AdapterSdk.DataItemValues.Hardness.MOHS.ObservationalSubType">
             <inheritdoc />
         </member>
-        <member name="M:Mtconnect.AdapterSdk.DataItemValues.Hardness.MOHS.#ctor(System.Single)">
+        <member name="M:Mtconnect.AdapterSdk.DataItemValues.Hardness.MOHS.#ctor(System.Nullable{System.Single})">
             <summary>
             Constructs a new value type for MOHS.
             </summary>
         </member>
-        <member name="M:Mtconnect.AdapterSdk.DataItemValues.Hardness.MOHS.op_Implicit(System.Single)~Mtconnect.AdapterSdk.DataItemValues.Hardness.MOHS">
+        <member name="M:Mtconnect.AdapterSdk.DataItemValues.Hardness.MOHS.op_Implicit(System.Nullable{System.Single})~Mtconnect.AdapterSdk.DataItemValues.Hardness.MOHS">
             <summary>
             Implicitly converts the specified Single to an <see cref="T:Mtconnect.AdapterSdk.DataItemValues.Hardness.MOHS"/> value.
             The Single is converted to uppercase and used to initialize the <see cref="T:Mtconnect.AdapterSdk.DataItemValues.Hardness.MOHS"/> value.
@@ -18701,12 +18701,12 @@
         <member name="P:Mtconnect.AdapterSdk.DataItemValues.LineNumber.ObservationalSubType">
             <inheritdoc />
         </member>
-        <member name="M:Mtconnect.AdapterSdk.DataItemValues.LineNumber.#ctor(System.Int32)">
+        <member name="M:Mtconnect.AdapterSdk.DataItemValues.LineNumber.#ctor(System.Nullable{System.Int32})">
             <summary>
             Constructs a new value type for the LineNumber EVENT Data Item.
             </summary>
         </member>
-        <member name="M:Mtconnect.AdapterSdk.DataItemValues.LineNumber.op_Implicit(System.Int32)~Mtconnect.AdapterSdk.DataItemValues.LineNumber">
+        <member name="M:Mtconnect.AdapterSdk.DataItemValues.LineNumber.op_Implicit(System.Nullable{System.Int32})~Mtconnect.AdapterSdk.DataItemValues.LineNumber">
             <summary>
             Implicitly converts the specified Int32 to an <see cref="T:Mtconnect.AdapterSdk.DataItemValues.LineNumber"/> value.
             The Int32 is converted to uppercase and used to initialize the <see cref="T:Mtconnect.AdapterSdk.DataItemValues.LineNumber"/> value.
@@ -18722,12 +18722,12 @@
         <member name="P:Mtconnect.AdapterSdk.DataItemValues.LineNumber.ABSOLUTE.ObservationalSubType">
             <inheritdoc />
         </member>
-        <member name="M:Mtconnect.AdapterSdk.DataItemValues.LineNumber.ABSOLUTE.#ctor(System.Int32)">
+        <member name="M:Mtconnect.AdapterSdk.DataItemValues.LineNumber.ABSOLUTE.#ctor(System.Nullable{System.Int32})">
             <summary>
             Constructs a new value type for ABSOLUTE.
             </summary>
         </member>
-        <member name="M:Mtconnect.AdapterSdk.DataItemValues.LineNumber.ABSOLUTE.op_Implicit(System.Int32)~Mtconnect.AdapterSdk.DataItemValues.LineNumber.ABSOLUTE">
+        <member name="M:Mtconnect.AdapterSdk.DataItemValues.LineNumber.ABSOLUTE.op_Implicit(System.Nullable{System.Int32})~Mtconnect.AdapterSdk.DataItemValues.LineNumber.ABSOLUTE">
             <summary>
             Implicitly converts the specified Int32 to an <see cref="T:Mtconnect.AdapterSdk.DataItemValues.LineNumber.ABSOLUTE"/> value.
             The Int32 is converted to uppercase and used to initialize the <see cref="T:Mtconnect.AdapterSdk.DataItemValues.LineNumber.ABSOLUTE"/> value.
@@ -18743,12 +18743,12 @@
         <member name="P:Mtconnect.AdapterSdk.DataItemValues.LineNumber.INCREMENTAL.ObservationalSubType">
             <inheritdoc />
         </member>
-        <member name="M:Mtconnect.AdapterSdk.DataItemValues.LineNumber.INCREMENTAL.#ctor(System.Int32)">
+        <member name="M:Mtconnect.AdapterSdk.DataItemValues.LineNumber.INCREMENTAL.#ctor(System.Nullable{System.Int32})">
             <summary>
             Constructs a new value type for INCREMENTAL.
             </summary>
         </member>
-        <member name="M:Mtconnect.AdapterSdk.DataItemValues.LineNumber.INCREMENTAL.op_Implicit(System.Int32)~Mtconnect.AdapterSdk.DataItemValues.LineNumber.INCREMENTAL">
+        <member name="M:Mtconnect.AdapterSdk.DataItemValues.LineNumber.INCREMENTAL.op_Implicit(System.Nullable{System.Int32})~Mtconnect.AdapterSdk.DataItemValues.LineNumber.INCREMENTAL">
             <summary>
             Implicitly converts the specified Int32 to an <see cref="T:Mtconnect.AdapterSdk.DataItemValues.LineNumber.INCREMENTAL"/> value.
             The Int32 is converted to uppercase and used to initialize the <see cref="T:Mtconnect.AdapterSdk.DataItemValues.LineNumber.INCREMENTAL"/> value.
@@ -18802,12 +18802,12 @@
         <member name="P:Mtconnect.AdapterSdk.DataItemValues.LoadCount.ObservationalSubType">
             <inheritdoc />
         </member>
-        <member name="M:Mtconnect.AdapterSdk.DataItemValues.LoadCount.#ctor(System.Int32)">
+        <member name="M:Mtconnect.AdapterSdk.DataItemValues.LoadCount.#ctor(System.Nullable{System.Int32})">
             <summary>
             Constructs a new value type for the LoadCount EVENT Data Item.
             </summary>
         </member>
-        <member name="M:Mtconnect.AdapterSdk.DataItemValues.LoadCount.op_Implicit(System.Int32)~Mtconnect.AdapterSdk.DataItemValues.LoadCount">
+        <member name="M:Mtconnect.AdapterSdk.DataItemValues.LoadCount.op_Implicit(System.Nullable{System.Int32})~Mtconnect.AdapterSdk.DataItemValues.LoadCount">
             <summary>
             Implicitly converts the specified Int32 to an <see cref="T:Mtconnect.AdapterSdk.DataItemValues.LoadCount"/> value.
             The Int32 is converted to uppercase and used to initialize the <see cref="T:Mtconnect.AdapterSdk.DataItemValues.LoadCount"/> value.
@@ -18823,12 +18823,12 @@
         <member name="P:Mtconnect.AdapterSdk.DataItemValues.LoadCount.REMAINING.ObservationalSubType">
             <inheritdoc />
         </member>
-        <member name="M:Mtconnect.AdapterSdk.DataItemValues.LoadCount.REMAINING.#ctor(System.Int32)">
+        <member name="M:Mtconnect.AdapterSdk.DataItemValues.LoadCount.REMAINING.#ctor(System.Nullable{System.Int32})">
             <summary>
             Constructs a new value type for REMAINING.
             </summary>
         </member>
-        <member name="M:Mtconnect.AdapterSdk.DataItemValues.LoadCount.REMAINING.op_Implicit(System.Int32)~Mtconnect.AdapterSdk.DataItemValues.LoadCount.REMAINING">
+        <member name="M:Mtconnect.AdapterSdk.DataItemValues.LoadCount.REMAINING.op_Implicit(System.Nullable{System.Int32})~Mtconnect.AdapterSdk.DataItemValues.LoadCount.REMAINING">
             <summary>
             Implicitly converts the specified Int32 to an <see cref="T:Mtconnect.AdapterSdk.DataItemValues.LoadCount.REMAINING"/> value.
             The Int32 is converted to uppercase and used to initialize the <see cref="T:Mtconnect.AdapterSdk.DataItemValues.LoadCount.REMAINING"/> value.
@@ -18844,12 +18844,12 @@
         <member name="P:Mtconnect.AdapterSdk.DataItemValues.LoadCount.BAD.ObservationalSubType">
             <inheritdoc />
         </member>
-        <member name="M:Mtconnect.AdapterSdk.DataItemValues.LoadCount.BAD.#ctor(System.Int32)">
+        <member name="M:Mtconnect.AdapterSdk.DataItemValues.LoadCount.BAD.#ctor(System.Nullable{System.Int32})">
             <summary>
             Constructs a new value type for BAD.
             </summary>
         </member>
-        <member name="M:Mtconnect.AdapterSdk.DataItemValues.LoadCount.BAD.op_Implicit(System.Int32)~Mtconnect.AdapterSdk.DataItemValues.LoadCount.BAD">
+        <member name="M:Mtconnect.AdapterSdk.DataItemValues.LoadCount.BAD.op_Implicit(System.Nullable{System.Int32})~Mtconnect.AdapterSdk.DataItemValues.LoadCount.BAD">
             <summary>
             Implicitly converts the specified Int32 to an <see cref="T:Mtconnect.AdapterSdk.DataItemValues.LoadCount.BAD"/> value.
             The Int32 is converted to uppercase and used to initialize the <see cref="T:Mtconnect.AdapterSdk.DataItemValues.LoadCount.BAD"/> value.
@@ -18865,12 +18865,12 @@
         <member name="P:Mtconnect.AdapterSdk.DataItemValues.LoadCount.FAILED.ObservationalSubType">
             <inheritdoc />
         </member>
-        <member name="M:Mtconnect.AdapterSdk.DataItemValues.LoadCount.FAILED.#ctor(System.Int32)">
+        <member name="M:Mtconnect.AdapterSdk.DataItemValues.LoadCount.FAILED.#ctor(System.Nullable{System.Int32})">
             <summary>
             Constructs a new value type for FAILED.
             </summary>
         </member>
-        <member name="M:Mtconnect.AdapterSdk.DataItemValues.LoadCount.FAILED.op_Implicit(System.Int32)~Mtconnect.AdapterSdk.DataItemValues.LoadCount.FAILED">
+        <member name="M:Mtconnect.AdapterSdk.DataItemValues.LoadCount.FAILED.op_Implicit(System.Nullable{System.Int32})~Mtconnect.AdapterSdk.DataItemValues.LoadCount.FAILED">
             <summary>
             Implicitly converts the specified Int32 to an <see cref="T:Mtconnect.AdapterSdk.DataItemValues.LoadCount.FAILED"/> value.
             The Int32 is converted to uppercase and used to initialize the <see cref="T:Mtconnect.AdapterSdk.DataItemValues.LoadCount.FAILED"/> value.
@@ -18886,12 +18886,12 @@
         <member name="P:Mtconnect.AdapterSdk.DataItemValues.LoadCount.ABORTED.ObservationalSubType">
             <inheritdoc />
         </member>
-        <member name="M:Mtconnect.AdapterSdk.DataItemValues.LoadCount.ABORTED.#ctor(System.Int32)">
+        <member name="M:Mtconnect.AdapterSdk.DataItemValues.LoadCount.ABORTED.#ctor(System.Nullable{System.Int32})">
             <summary>
             Constructs a new value type for ABORTED.
             </summary>
         </member>
-        <member name="M:Mtconnect.AdapterSdk.DataItemValues.LoadCount.ABORTED.op_Implicit(System.Int32)~Mtconnect.AdapterSdk.DataItemValues.LoadCount.ABORTED">
+        <member name="M:Mtconnect.AdapterSdk.DataItemValues.LoadCount.ABORTED.op_Implicit(System.Nullable{System.Int32})~Mtconnect.AdapterSdk.DataItemValues.LoadCount.ABORTED">
             <summary>
             Implicitly converts the specified Int32 to an <see cref="T:Mtconnect.AdapterSdk.DataItemValues.LoadCount.ABORTED"/> value.
             The Int32 is converted to uppercase and used to initialize the <see cref="T:Mtconnect.AdapterSdk.DataItemValues.LoadCount.ABORTED"/> value.
@@ -18907,12 +18907,12 @@
         <member name="P:Mtconnect.AdapterSdk.DataItemValues.LoadCount.ALL.ObservationalSubType">
             <inheritdoc />
         </member>
-        <member name="M:Mtconnect.AdapterSdk.DataItemValues.LoadCount.ALL.#ctor(System.Int32)">
+        <member name="M:Mtconnect.AdapterSdk.DataItemValues.LoadCount.ALL.#ctor(System.Nullable{System.Int32})">
             <summary>
             Constructs a new value type for ALL.
             </summary>
         </member>
-        <member name="M:Mtconnect.AdapterSdk.DataItemValues.LoadCount.ALL.op_Implicit(System.Int32)~Mtconnect.AdapterSdk.DataItemValues.LoadCount.ALL">
+        <member name="M:Mtconnect.AdapterSdk.DataItemValues.LoadCount.ALL.op_Implicit(System.Nullable{System.Int32})~Mtconnect.AdapterSdk.DataItemValues.LoadCount.ALL">
             <summary>
             Implicitly converts the specified Int32 to an <see cref="T:Mtconnect.AdapterSdk.DataItemValues.LoadCount.ALL"/> value.
             The Int32 is converted to uppercase and used to initialize the <see cref="T:Mtconnect.AdapterSdk.DataItemValues.LoadCount.ALL"/> value.
@@ -18928,12 +18928,12 @@
         <member name="P:Mtconnect.AdapterSdk.DataItemValues.LoadCount.GOOD.ObservationalSubType">
             <inheritdoc />
         </member>
-        <member name="M:Mtconnect.AdapterSdk.DataItemValues.LoadCount.GOOD.#ctor(System.Int32)">
+        <member name="M:Mtconnect.AdapterSdk.DataItemValues.LoadCount.GOOD.#ctor(System.Nullable{System.Int32})">
             <summary>
             Constructs a new value type for GOOD.
             </summary>
         </member>
-        <member name="M:Mtconnect.AdapterSdk.DataItemValues.LoadCount.GOOD.op_Implicit(System.Int32)~Mtconnect.AdapterSdk.DataItemValues.LoadCount.GOOD">
+        <member name="M:Mtconnect.AdapterSdk.DataItemValues.LoadCount.GOOD.op_Implicit(System.Nullable{System.Int32})~Mtconnect.AdapterSdk.DataItemValues.LoadCount.GOOD">
             <summary>
             Implicitly converts the specified Int32 to an <see cref="T:Mtconnect.AdapterSdk.DataItemValues.LoadCount.GOOD"/> value.
             The Int32 is converted to uppercase and used to initialize the <see cref="T:Mtconnect.AdapterSdk.DataItemValues.LoadCount.GOOD"/> value.
@@ -18949,12 +18949,12 @@
         <member name="P:Mtconnect.AdapterSdk.DataItemValues.LoadCount.COMPLETE.ObservationalSubType">
             <inheritdoc />
         </member>
-        <member name="M:Mtconnect.AdapterSdk.DataItemValues.LoadCount.COMPLETE.#ctor(System.Int32)">
+        <member name="M:Mtconnect.AdapterSdk.DataItemValues.LoadCount.COMPLETE.#ctor(System.Nullable{System.Int32})">
             <summary>
             Constructs a new value type for COMPLETE.
             </summary>
         </member>
-        <member name="M:Mtconnect.AdapterSdk.DataItemValues.LoadCount.COMPLETE.op_Implicit(System.Int32)~Mtconnect.AdapterSdk.DataItemValues.LoadCount.COMPLETE">
+        <member name="M:Mtconnect.AdapterSdk.DataItemValues.LoadCount.COMPLETE.op_Implicit(System.Nullable{System.Int32})~Mtconnect.AdapterSdk.DataItemValues.LoadCount.COMPLETE">
             <summary>
             Implicitly converts the specified Int32 to an <see cref="T:Mtconnect.AdapterSdk.DataItemValues.LoadCount.COMPLETE"/> value.
             The Int32 is converted to uppercase and used to initialize the <see cref="T:Mtconnect.AdapterSdk.DataItemValues.LoadCount.COMPLETE"/> value.
@@ -18970,12 +18970,12 @@
         <member name="P:Mtconnect.AdapterSdk.DataItemValues.LoadCount.TARGET.ObservationalSubType">
             <inheritdoc />
         </member>
-        <member name="M:Mtconnect.AdapterSdk.DataItemValues.LoadCount.TARGET.#ctor(System.Int32)">
+        <member name="M:Mtconnect.AdapterSdk.DataItemValues.LoadCount.TARGET.#ctor(System.Nullable{System.Int32})">
             <summary>
             Constructs a new value type for TARGET.
             </summary>
         </member>
-        <member name="M:Mtconnect.AdapterSdk.DataItemValues.LoadCount.TARGET.op_Implicit(System.Int32)~Mtconnect.AdapterSdk.DataItemValues.LoadCount.TARGET">
+        <member name="M:Mtconnect.AdapterSdk.DataItemValues.LoadCount.TARGET.op_Implicit(System.Nullable{System.Int32})~Mtconnect.AdapterSdk.DataItemValues.LoadCount.TARGET">
             <summary>
             Implicitly converts the specified Int32 to an <see cref="T:Mtconnect.AdapterSdk.DataItemValues.LoadCount.TARGET"/> value.
             The Int32 is converted to uppercase and used to initialize the <see cref="T:Mtconnect.AdapterSdk.DataItemValues.LoadCount.TARGET"/> value.
@@ -19159,12 +19159,12 @@
         <member name="P:Mtconnect.AdapterSdk.DataItemValues.MaterialLayer.ObservationalSubType">
             <inheritdoc />
         </member>
-        <member name="M:Mtconnect.AdapterSdk.DataItemValues.MaterialLayer.#ctor(System.Int32)">
+        <member name="M:Mtconnect.AdapterSdk.DataItemValues.MaterialLayer.#ctor(System.Nullable{System.Int32})">
             <summary>
             Constructs a new value type for the MaterialLayer EVENT Data Item.
             </summary>
         </member>
-        <member name="M:Mtconnect.AdapterSdk.DataItemValues.MaterialLayer.op_Implicit(System.Int32)~Mtconnect.AdapterSdk.DataItemValues.MaterialLayer">
+        <member name="M:Mtconnect.AdapterSdk.DataItemValues.MaterialLayer.op_Implicit(System.Nullable{System.Int32})~Mtconnect.AdapterSdk.DataItemValues.MaterialLayer">
             <summary>
             Implicitly converts the specified Int32 to an <see cref="T:Mtconnect.AdapterSdk.DataItemValues.MaterialLayer"/> value.
             The Int32 is converted to uppercase and used to initialize the <see cref="T:Mtconnect.AdapterSdk.DataItemValues.MaterialLayer"/> value.
@@ -19180,12 +19180,12 @@
         <member name="P:Mtconnect.AdapterSdk.DataItemValues.MaterialLayer.ACTUAL.ObservationalSubType">
             <inheritdoc />
         </member>
-        <member name="M:Mtconnect.AdapterSdk.DataItemValues.MaterialLayer.ACTUAL.#ctor(System.Int32)">
+        <member name="M:Mtconnect.AdapterSdk.DataItemValues.MaterialLayer.ACTUAL.#ctor(System.Nullable{System.Int32})">
             <summary>
             Constructs a new value type for ACTUAL.
             </summary>
         </member>
-        <member name="M:Mtconnect.AdapterSdk.DataItemValues.MaterialLayer.ACTUAL.op_Implicit(System.Int32)~Mtconnect.AdapterSdk.DataItemValues.MaterialLayer.ACTUAL">
+        <member name="M:Mtconnect.AdapterSdk.DataItemValues.MaterialLayer.ACTUAL.op_Implicit(System.Nullable{System.Int32})~Mtconnect.AdapterSdk.DataItemValues.MaterialLayer.ACTUAL">
             <summary>
             Implicitly converts the specified Int32 to an <see cref="T:Mtconnect.AdapterSdk.DataItemValues.MaterialLayer.ACTUAL"/> value.
             The Int32 is converted to uppercase and used to initialize the <see cref="T:Mtconnect.AdapterSdk.DataItemValues.MaterialLayer.ACTUAL"/> value.
@@ -19201,12 +19201,12 @@
         <member name="P:Mtconnect.AdapterSdk.DataItemValues.MaterialLayer.TARGET.ObservationalSubType">
             <inheritdoc />
         </member>
-        <member name="M:Mtconnect.AdapterSdk.DataItemValues.MaterialLayer.TARGET.#ctor(System.Int32)">
+        <member name="M:Mtconnect.AdapterSdk.DataItemValues.MaterialLayer.TARGET.#ctor(System.Nullable{System.Int32})">
             <summary>
             Constructs a new value type for TARGET.
             </summary>
         </member>
-        <member name="M:Mtconnect.AdapterSdk.DataItemValues.MaterialLayer.TARGET.op_Implicit(System.Int32)~Mtconnect.AdapterSdk.DataItemValues.MaterialLayer.TARGET">
+        <member name="M:Mtconnect.AdapterSdk.DataItemValues.MaterialLayer.TARGET.op_Implicit(System.Nullable{System.Int32})~Mtconnect.AdapterSdk.DataItemValues.MaterialLayer.TARGET">
             <summary>
             Implicitly converts the specified Int32 to an <see cref="T:Mtconnect.AdapterSdk.DataItemValues.MaterialLayer.TARGET"/> value.
             The Int32 is converted to uppercase and used to initialize the <see cref="T:Mtconnect.AdapterSdk.DataItemValues.MaterialLayer.TARGET"/> value.
@@ -19493,12 +19493,12 @@
         <member name="P:Mtconnect.AdapterSdk.DataItemValues.NetworkPort.ObservationalSubType">
             <inheritdoc />
         </member>
-        <member name="M:Mtconnect.AdapterSdk.DataItemValues.NetworkPort.#ctor(System.Int32)">
+        <member name="M:Mtconnect.AdapterSdk.DataItemValues.NetworkPort.#ctor(System.Nullable{System.Int32})">
             <summary>
             Constructs a new value type for the NetworkPort EVENT Data Item.
             </summary>
         </member>
-        <member name="M:Mtconnect.AdapterSdk.DataItemValues.NetworkPort.op_Implicit(System.Int32)~Mtconnect.AdapterSdk.DataItemValues.NetworkPort">
+        <member name="M:Mtconnect.AdapterSdk.DataItemValues.NetworkPort.op_Implicit(System.Nullable{System.Int32})~Mtconnect.AdapterSdk.DataItemValues.NetworkPort">
             <summary>
             Implicitly converts the specified Int32 to an <see cref="T:Mtconnect.AdapterSdk.DataItemValues.NetworkPort"/> value.
             The Int32 is converted to uppercase and used to initialize the <see cref="T:Mtconnect.AdapterSdk.DataItemValues.NetworkPort"/> value.
@@ -19892,12 +19892,12 @@
         <member name="P:Mtconnect.AdapterSdk.DataItemValues.PartCount.ObservationalSubType">
             <inheritdoc />
         </member>
-        <member name="M:Mtconnect.AdapterSdk.DataItemValues.PartCount.#ctor(System.Int32)">
+        <member name="M:Mtconnect.AdapterSdk.DataItemValues.PartCount.#ctor(System.Nullable{System.Int32})">
             <summary>
             Constructs a new value type for the PartCount EVENT Data Item.
             </summary>
         </member>
-        <member name="M:Mtconnect.AdapterSdk.DataItemValues.PartCount.op_Implicit(System.Int32)~Mtconnect.AdapterSdk.DataItemValues.PartCount">
+        <member name="M:Mtconnect.AdapterSdk.DataItemValues.PartCount.op_Implicit(System.Nullable{System.Int32})~Mtconnect.AdapterSdk.DataItemValues.PartCount">
             <summary>
             Implicitly converts the specified Int32 to an <see cref="T:Mtconnect.AdapterSdk.DataItemValues.PartCount"/> value.
             The Int32 is converted to uppercase and used to initialize the <see cref="T:Mtconnect.AdapterSdk.DataItemValues.PartCount"/> value.
@@ -19913,12 +19913,12 @@
         <member name="P:Mtconnect.AdapterSdk.DataItemValues.PartCount.ALL.ObservationalSubType">
             <inheritdoc />
         </member>
-        <member name="M:Mtconnect.AdapterSdk.DataItemValues.PartCount.ALL.#ctor(System.Int32)">
+        <member name="M:Mtconnect.AdapterSdk.DataItemValues.PartCount.ALL.#ctor(System.Nullable{System.Int32})">
             <summary>
             Constructs a new value type for ALL.
             </summary>
         </member>
-        <member name="M:Mtconnect.AdapterSdk.DataItemValues.PartCount.ALL.op_Implicit(System.Int32)~Mtconnect.AdapterSdk.DataItemValues.PartCount.ALL">
+        <member name="M:Mtconnect.AdapterSdk.DataItemValues.PartCount.ALL.op_Implicit(System.Nullable{System.Int32})~Mtconnect.AdapterSdk.DataItemValues.PartCount.ALL">
             <summary>
             Implicitly converts the specified Int32 to an <see cref="T:Mtconnect.AdapterSdk.DataItemValues.PartCount.ALL"/> value.
             The Int32 is converted to uppercase and used to initialize the <see cref="T:Mtconnect.AdapterSdk.DataItemValues.PartCount.ALL"/> value.
@@ -19934,12 +19934,12 @@
         <member name="P:Mtconnect.AdapterSdk.DataItemValues.PartCount.GOOD.ObservationalSubType">
             <inheritdoc />
         </member>
-        <member name="M:Mtconnect.AdapterSdk.DataItemValues.PartCount.GOOD.#ctor(System.Int32)">
+        <member name="M:Mtconnect.AdapterSdk.DataItemValues.PartCount.GOOD.#ctor(System.Nullable{System.Int32})">
             <summary>
             Constructs a new value type for GOOD.
             </summary>
         </member>
-        <member name="M:Mtconnect.AdapterSdk.DataItemValues.PartCount.GOOD.op_Implicit(System.Int32)~Mtconnect.AdapterSdk.DataItemValues.PartCount.GOOD">
+        <member name="M:Mtconnect.AdapterSdk.DataItemValues.PartCount.GOOD.op_Implicit(System.Nullable{System.Int32})~Mtconnect.AdapterSdk.DataItemValues.PartCount.GOOD">
             <summary>
             Implicitly converts the specified Int32 to an <see cref="T:Mtconnect.AdapterSdk.DataItemValues.PartCount.GOOD"/> value.
             The Int32 is converted to uppercase and used to initialize the <see cref="T:Mtconnect.AdapterSdk.DataItemValues.PartCount.GOOD"/> value.
@@ -19955,12 +19955,12 @@
         <member name="P:Mtconnect.AdapterSdk.DataItemValues.PartCount.BAD.ObservationalSubType">
             <inheritdoc />
         </member>
-        <member name="M:Mtconnect.AdapterSdk.DataItemValues.PartCount.BAD.#ctor(System.Int32)">
+        <member name="M:Mtconnect.AdapterSdk.DataItemValues.PartCount.BAD.#ctor(System.Nullable{System.Int32})">
             <summary>
             Constructs a new value type for BAD.
             </summary>
         </member>
-        <member name="M:Mtconnect.AdapterSdk.DataItemValues.PartCount.BAD.op_Implicit(System.Int32)~Mtconnect.AdapterSdk.DataItemValues.PartCount.BAD">
+        <member name="M:Mtconnect.AdapterSdk.DataItemValues.PartCount.BAD.op_Implicit(System.Nullable{System.Int32})~Mtconnect.AdapterSdk.DataItemValues.PartCount.BAD">
             <summary>
             Implicitly converts the specified Int32 to an <see cref="T:Mtconnect.AdapterSdk.DataItemValues.PartCount.BAD"/> value.
             The Int32 is converted to uppercase and used to initialize the <see cref="T:Mtconnect.AdapterSdk.DataItemValues.PartCount.BAD"/> value.
@@ -19976,12 +19976,12 @@
         <member name="P:Mtconnect.AdapterSdk.DataItemValues.PartCount.TARGET.ObservationalSubType">
             <inheritdoc />
         </member>
-        <member name="M:Mtconnect.AdapterSdk.DataItemValues.PartCount.TARGET.#ctor(System.Int32)">
+        <member name="M:Mtconnect.AdapterSdk.DataItemValues.PartCount.TARGET.#ctor(System.Nullable{System.Int32})">
             <summary>
             Constructs a new value type for TARGET.
             </summary>
         </member>
-        <member name="M:Mtconnect.AdapterSdk.DataItemValues.PartCount.TARGET.op_Implicit(System.Int32)~Mtconnect.AdapterSdk.DataItemValues.PartCount.TARGET">
+        <member name="M:Mtconnect.AdapterSdk.DataItemValues.PartCount.TARGET.op_Implicit(System.Nullable{System.Int32})~Mtconnect.AdapterSdk.DataItemValues.PartCount.TARGET">
             <summary>
             Implicitly converts the specified Int32 to an <see cref="T:Mtconnect.AdapterSdk.DataItemValues.PartCount.TARGET"/> value.
             The Int32 is converted to uppercase and used to initialize the <see cref="T:Mtconnect.AdapterSdk.DataItemValues.PartCount.TARGET"/> value.
@@ -19997,12 +19997,12 @@
         <member name="P:Mtconnect.AdapterSdk.DataItemValues.PartCount.REMAINING.ObservationalSubType">
             <inheritdoc />
         </member>
-        <member name="M:Mtconnect.AdapterSdk.DataItemValues.PartCount.REMAINING.#ctor(System.Int32)">
+        <member name="M:Mtconnect.AdapterSdk.DataItemValues.PartCount.REMAINING.#ctor(System.Nullable{System.Int32})">
             <summary>
             Constructs a new value type for REMAINING.
             </summary>
         </member>
-        <member name="M:Mtconnect.AdapterSdk.DataItemValues.PartCount.REMAINING.op_Implicit(System.Int32)~Mtconnect.AdapterSdk.DataItemValues.PartCount.REMAINING">
+        <member name="M:Mtconnect.AdapterSdk.DataItemValues.PartCount.REMAINING.op_Implicit(System.Nullable{System.Int32})~Mtconnect.AdapterSdk.DataItemValues.PartCount.REMAINING">
             <summary>
             Implicitly converts the specified Int32 to an <see cref="T:Mtconnect.AdapterSdk.DataItemValues.PartCount.REMAINING"/> value.
             The Int32 is converted to uppercase and used to initialize the <see cref="T:Mtconnect.AdapterSdk.DataItemValues.PartCount.REMAINING"/> value.
@@ -20018,12 +20018,12 @@
         <member name="P:Mtconnect.AdapterSdk.DataItemValues.PartCount.COMPLETE.ObservationalSubType">
             <inheritdoc />
         </member>
-        <member name="M:Mtconnect.AdapterSdk.DataItemValues.PartCount.COMPLETE.#ctor(System.Int32)">
+        <member name="M:Mtconnect.AdapterSdk.DataItemValues.PartCount.COMPLETE.#ctor(System.Nullable{System.Int32})">
             <summary>
             Constructs a new value type for COMPLETE.
             </summary>
         </member>
-        <member name="M:Mtconnect.AdapterSdk.DataItemValues.PartCount.COMPLETE.op_Implicit(System.Int32)~Mtconnect.AdapterSdk.DataItemValues.PartCount.COMPLETE">
+        <member name="M:Mtconnect.AdapterSdk.DataItemValues.PartCount.COMPLETE.op_Implicit(System.Nullable{System.Int32})~Mtconnect.AdapterSdk.DataItemValues.PartCount.COMPLETE">
             <summary>
             Implicitly converts the specified Int32 to an <see cref="T:Mtconnect.AdapterSdk.DataItemValues.PartCount.COMPLETE"/> value.
             The Int32 is converted to uppercase and used to initialize the <see cref="T:Mtconnect.AdapterSdk.DataItemValues.PartCount.COMPLETE"/> value.
@@ -20039,12 +20039,12 @@
         <member name="P:Mtconnect.AdapterSdk.DataItemValues.PartCount.ABORTED.ObservationalSubType">
             <inheritdoc />
         </member>
-        <member name="M:Mtconnect.AdapterSdk.DataItemValues.PartCount.ABORTED.#ctor(System.Int32)">
+        <member name="M:Mtconnect.AdapterSdk.DataItemValues.PartCount.ABORTED.#ctor(System.Nullable{System.Int32})">
             <summary>
             Constructs a new value type for ABORTED.
             </summary>
         </member>
-        <member name="M:Mtconnect.AdapterSdk.DataItemValues.PartCount.ABORTED.op_Implicit(System.Int32)~Mtconnect.AdapterSdk.DataItemValues.PartCount.ABORTED">
+        <member name="M:Mtconnect.AdapterSdk.DataItemValues.PartCount.ABORTED.op_Implicit(System.Nullable{System.Int32})~Mtconnect.AdapterSdk.DataItemValues.PartCount.ABORTED">
             <summary>
             Implicitly converts the specified Int32 to an <see cref="T:Mtconnect.AdapterSdk.DataItemValues.PartCount.ABORTED"/> value.
             The Int32 is converted to uppercase and used to initialize the <see cref="T:Mtconnect.AdapterSdk.DataItemValues.PartCount.ABORTED"/> value.
@@ -20060,12 +20060,12 @@
         <member name="P:Mtconnect.AdapterSdk.DataItemValues.PartCount.FAILED.ObservationalSubType">
             <inheritdoc />
         </member>
-        <member name="M:Mtconnect.AdapterSdk.DataItemValues.PartCount.FAILED.#ctor(System.Int32)">
+        <member name="M:Mtconnect.AdapterSdk.DataItemValues.PartCount.FAILED.#ctor(System.Nullable{System.Int32})">
             <summary>
             Constructs a new value type for FAILED.
             </summary>
         </member>
-        <member name="M:Mtconnect.AdapterSdk.DataItemValues.PartCount.FAILED.op_Implicit(System.Int32)~Mtconnect.AdapterSdk.DataItemValues.PartCount.FAILED">
+        <member name="M:Mtconnect.AdapterSdk.DataItemValues.PartCount.FAILED.op_Implicit(System.Nullable{System.Int32})~Mtconnect.AdapterSdk.DataItemValues.PartCount.FAILED">
             <summary>
             Implicitly converts the specified Int32 to an <see cref="T:Mtconnect.AdapterSdk.DataItemValues.PartCount.FAILED"/> value.
             The Int32 is converted to uppercase and used to initialize the <see cref="T:Mtconnect.AdapterSdk.DataItemValues.PartCount.FAILED"/> value.
@@ -20845,12 +20845,12 @@
         <member name="P:Mtconnect.AdapterSdk.DataItemValues.PathFeedrateOverride.ObservationalSubType">
             <inheritdoc />
         </member>
-        <member name="M:Mtconnect.AdapterSdk.DataItemValues.PathFeedrateOverride.#ctor(System.Single)">
+        <member name="M:Mtconnect.AdapterSdk.DataItemValues.PathFeedrateOverride.#ctor(System.Nullable{System.Single})">
             <summary>
             Constructs a new value type for the PathFeedrateOverride EVENT Data Item.
             </summary>
         </member>
-        <member name="M:Mtconnect.AdapterSdk.DataItemValues.PathFeedrateOverride.op_Implicit(System.Single)~Mtconnect.AdapterSdk.DataItemValues.PathFeedrateOverride">
+        <member name="M:Mtconnect.AdapterSdk.DataItemValues.PathFeedrateOverride.op_Implicit(System.Nullable{System.Single})~Mtconnect.AdapterSdk.DataItemValues.PathFeedrateOverride">
             <summary>
             Implicitly converts the specified Single to an <see cref="T:Mtconnect.AdapterSdk.DataItemValues.PathFeedrateOverride"/> value.
             The Single is converted to uppercase and used to initialize the <see cref="T:Mtconnect.AdapterSdk.DataItemValues.PathFeedrateOverride"/> value.
@@ -20866,12 +20866,12 @@
         <member name="P:Mtconnect.AdapterSdk.DataItemValues.PathFeedrateOverride.JOG.ObservationalSubType">
             <inheritdoc />
         </member>
-        <member name="M:Mtconnect.AdapterSdk.DataItemValues.PathFeedrateOverride.JOG.#ctor(System.Single)">
+        <member name="M:Mtconnect.AdapterSdk.DataItemValues.PathFeedrateOverride.JOG.#ctor(System.Nullable{System.Single})">
             <summary>
             Constructs a new value type for JOG.
             </summary>
         </member>
-        <member name="M:Mtconnect.AdapterSdk.DataItemValues.PathFeedrateOverride.JOG.op_Implicit(System.Single)~Mtconnect.AdapterSdk.DataItemValues.PathFeedrateOverride.JOG">
+        <member name="M:Mtconnect.AdapterSdk.DataItemValues.PathFeedrateOverride.JOG.op_Implicit(System.Nullable{System.Single})~Mtconnect.AdapterSdk.DataItemValues.PathFeedrateOverride.JOG">
             <summary>
             Implicitly converts the specified Single to an <see cref="T:Mtconnect.AdapterSdk.DataItemValues.PathFeedrateOverride.JOG"/> value.
             The Single is converted to uppercase and used to initialize the <see cref="T:Mtconnect.AdapterSdk.DataItemValues.PathFeedrateOverride.JOG"/> value.
@@ -20887,12 +20887,12 @@
         <member name="P:Mtconnect.AdapterSdk.DataItemValues.PathFeedrateOverride.PROGRAMMED.ObservationalSubType">
             <inheritdoc />
         </member>
-        <member name="M:Mtconnect.AdapterSdk.DataItemValues.PathFeedrateOverride.PROGRAMMED.#ctor(System.Single)">
+        <member name="M:Mtconnect.AdapterSdk.DataItemValues.PathFeedrateOverride.PROGRAMMED.#ctor(System.Nullable{System.Single})">
             <summary>
             Constructs a new value type for PROGRAMMED.
             </summary>
         </member>
-        <member name="M:Mtconnect.AdapterSdk.DataItemValues.PathFeedrateOverride.PROGRAMMED.op_Implicit(System.Single)~Mtconnect.AdapterSdk.DataItemValues.PathFeedrateOverride.PROGRAMMED">
+        <member name="M:Mtconnect.AdapterSdk.DataItemValues.PathFeedrateOverride.PROGRAMMED.op_Implicit(System.Nullable{System.Single})~Mtconnect.AdapterSdk.DataItemValues.PathFeedrateOverride.PROGRAMMED">
             <summary>
             Implicitly converts the specified Single to an <see cref="T:Mtconnect.AdapterSdk.DataItemValues.PathFeedrateOverride.PROGRAMMED"/> value.
             The Single is converted to uppercase and used to initialize the <see cref="T:Mtconnect.AdapterSdk.DataItemValues.PathFeedrateOverride.PROGRAMMED"/> value.
@@ -20908,12 +20908,12 @@
         <member name="P:Mtconnect.AdapterSdk.DataItemValues.PathFeedrateOverride.RAPID.ObservationalSubType">
             <inheritdoc />
         </member>
-        <member name="M:Mtconnect.AdapterSdk.DataItemValues.PathFeedrateOverride.RAPID.#ctor(System.Single)">
+        <member name="M:Mtconnect.AdapterSdk.DataItemValues.PathFeedrateOverride.RAPID.#ctor(System.Nullable{System.Single})">
             <summary>
             Constructs a new value type for RAPID.
             </summary>
         </member>
-        <member name="M:Mtconnect.AdapterSdk.DataItemValues.PathFeedrateOverride.RAPID.op_Implicit(System.Single)~Mtconnect.AdapterSdk.DataItemValues.PathFeedrateOverride.RAPID">
+        <member name="M:Mtconnect.AdapterSdk.DataItemValues.PathFeedrateOverride.RAPID.op_Implicit(System.Nullable{System.Single})~Mtconnect.AdapterSdk.DataItemValues.PathFeedrateOverride.RAPID">
             <summary>
             Implicitly converts the specified Single to an <see cref="T:Mtconnect.AdapterSdk.DataItemValues.PathFeedrateOverride.RAPID"/> value.
             The Single is converted to uppercase and used to initialize the <see cref="T:Mtconnect.AdapterSdk.DataItemValues.PathFeedrateOverride.RAPID"/> value.
@@ -22868,12 +22868,12 @@
         <member name="P:Mtconnect.AdapterSdk.DataItemValues.ProgramNestLevel.ObservationalSubType">
             <inheritdoc />
         </member>
-        <member name="M:Mtconnect.AdapterSdk.DataItemValues.ProgramNestLevel.#ctor(System.Int32)">
+        <member name="M:Mtconnect.AdapterSdk.DataItemValues.ProgramNestLevel.#ctor(System.Nullable{System.Int32})">
             <summary>
             Constructs a new value type for the ProgramNestLevel EVENT Data Item.
             </summary>
         </member>
-        <member name="M:Mtconnect.AdapterSdk.DataItemValues.ProgramNestLevel.op_Implicit(System.Int32)~Mtconnect.AdapterSdk.DataItemValues.ProgramNestLevel">
+        <member name="M:Mtconnect.AdapterSdk.DataItemValues.ProgramNestLevel.op_Implicit(System.Nullable{System.Int32})~Mtconnect.AdapterSdk.DataItemValues.ProgramNestLevel">
             <summary>
             Implicitly converts the specified Int32 to an <see cref="T:Mtconnect.AdapterSdk.DataItemValues.ProgramNestLevel"/> value.
             The Int32 is converted to uppercase and used to initialize the <see cref="T:Mtconnect.AdapterSdk.DataItemValues.ProgramNestLevel"/> value.
@@ -23087,12 +23087,12 @@
         <member name="P:Mtconnect.AdapterSdk.DataItemValues.RotaryVelocityOverride.ObservationalSubType">
             <inheritdoc />
         </member>
-        <member name="M:Mtconnect.AdapterSdk.DataItemValues.RotaryVelocityOverride.#ctor(System.Single)">
+        <member name="M:Mtconnect.AdapterSdk.DataItemValues.RotaryVelocityOverride.#ctor(System.Nullable{System.Single})">
             <summary>
             Constructs a new value type for the RotaryVelocityOverride EVENT Data Item.
             </summary>
         </member>
-        <member name="M:Mtconnect.AdapterSdk.DataItemValues.RotaryVelocityOverride.op_Implicit(System.Single)~Mtconnect.AdapterSdk.DataItemValues.RotaryVelocityOverride">
+        <member name="M:Mtconnect.AdapterSdk.DataItemValues.RotaryVelocityOverride.op_Implicit(System.Nullable{System.Single})~Mtconnect.AdapterSdk.DataItemValues.RotaryVelocityOverride">
             <summary>
             Implicitly converts the specified Single to an <see cref="T:Mtconnect.AdapterSdk.DataItemValues.RotaryVelocityOverride"/> value.
             The Single is converted to uppercase and used to initialize the <see cref="T:Mtconnect.AdapterSdk.DataItemValues.RotaryVelocityOverride"/> value.
@@ -23117,12 +23117,12 @@
         <member name="P:Mtconnect.AdapterSdk.DataItemValues.Rotation.ObservationalSubType">
             <inheritdoc />
         </member>
-        <member name="M:Mtconnect.AdapterSdk.DataItemValues.Rotation.#ctor(System.Single)">
+        <member name="M:Mtconnect.AdapterSdk.DataItemValues.Rotation.#ctor(System.Nullable{System.Single})">
             <summary>
             Constructs a new value type for the Rotation EVENT Data Item.
             </summary>
         </member>
-        <member name="M:Mtconnect.AdapterSdk.DataItemValues.Rotation.op_Implicit(System.Single)~Mtconnect.AdapterSdk.DataItemValues.Rotation">
+        <member name="M:Mtconnect.AdapterSdk.DataItemValues.Rotation.op_Implicit(System.Nullable{System.Single})~Mtconnect.AdapterSdk.DataItemValues.Rotation">
             <summary>
             Implicitly converts the specified Single to an <see cref="T:Mtconnect.AdapterSdk.DataItemValues.Rotation"/> value.
             The Single is converted to uppercase and used to initialize the <see cref="T:Mtconnect.AdapterSdk.DataItemValues.Rotation"/> value.
@@ -23924,12 +23924,12 @@
         <member name="P:Mtconnect.AdapterSdk.DataItemValues.ToolOffset.ObservationalSubType">
             <inheritdoc />
         </member>
-        <member name="M:Mtconnect.AdapterSdk.DataItemValues.ToolOffset.#ctor(System.Single)">
+        <member name="M:Mtconnect.AdapterSdk.DataItemValues.ToolOffset.#ctor(System.Nullable{System.Single})">
             <summary>
             Constructs a new value type for the ToolOffset EVENT Data Item.
             </summary>
         </member>
-        <member name="M:Mtconnect.AdapterSdk.DataItemValues.ToolOffset.op_Implicit(System.Single)~Mtconnect.AdapterSdk.DataItemValues.ToolOffset">
+        <member name="M:Mtconnect.AdapterSdk.DataItemValues.ToolOffset.op_Implicit(System.Nullable{System.Single})~Mtconnect.AdapterSdk.DataItemValues.ToolOffset">
             <summary>
             Implicitly converts the specified Single to an <see cref="T:Mtconnect.AdapterSdk.DataItemValues.ToolOffset"/> value.
             The Single is converted to uppercase and used to initialize the <see cref="T:Mtconnect.AdapterSdk.DataItemValues.ToolOffset"/> value.
@@ -23945,12 +23945,12 @@
         <member name="P:Mtconnect.AdapterSdk.DataItemValues.ToolOffset.RADIAL.ObservationalSubType">
             <inheritdoc />
         </member>
-        <member name="M:Mtconnect.AdapterSdk.DataItemValues.ToolOffset.RADIAL.#ctor(System.Single)">
+        <member name="M:Mtconnect.AdapterSdk.DataItemValues.ToolOffset.RADIAL.#ctor(System.Nullable{System.Single})">
             <summary>
             Constructs a new value type for RADIAL.
             </summary>
         </member>
-        <member name="M:Mtconnect.AdapterSdk.DataItemValues.ToolOffset.RADIAL.op_Implicit(System.Single)~Mtconnect.AdapterSdk.DataItemValues.ToolOffset.RADIAL">
+        <member name="M:Mtconnect.AdapterSdk.DataItemValues.ToolOffset.RADIAL.op_Implicit(System.Nullable{System.Single})~Mtconnect.AdapterSdk.DataItemValues.ToolOffset.RADIAL">
             <summary>
             Implicitly converts the specified Single to an <see cref="T:Mtconnect.AdapterSdk.DataItemValues.ToolOffset.RADIAL"/> value.
             The Single is converted to uppercase and used to initialize the <see cref="T:Mtconnect.AdapterSdk.DataItemValues.ToolOffset.RADIAL"/> value.
@@ -23966,12 +23966,12 @@
         <member name="P:Mtconnect.AdapterSdk.DataItemValues.ToolOffset.LENGTH.ObservationalSubType">
             <inheritdoc />
         </member>
-        <member name="M:Mtconnect.AdapterSdk.DataItemValues.ToolOffset.LENGTH.#ctor(System.Single)">
+        <member name="M:Mtconnect.AdapterSdk.DataItemValues.ToolOffset.LENGTH.#ctor(System.Nullable{System.Single})">
             <summary>
             Constructs a new value type for LENGTH.
             </summary>
         </member>
-        <member name="M:Mtconnect.AdapterSdk.DataItemValues.ToolOffset.LENGTH.op_Implicit(System.Single)~Mtconnect.AdapterSdk.DataItemValues.ToolOffset.LENGTH">
+        <member name="M:Mtconnect.AdapterSdk.DataItemValues.ToolOffset.LENGTH.op_Implicit(System.Nullable{System.Single})~Mtconnect.AdapterSdk.DataItemValues.ToolOffset.LENGTH">
             <summary>
             Implicitly converts the specified Single to an <see cref="T:Mtconnect.AdapterSdk.DataItemValues.ToolOffset.LENGTH"/> value.
             The Single is converted to uppercase and used to initialize the <see cref="T:Mtconnect.AdapterSdk.DataItemValues.ToolOffset.LENGTH"/> value.
@@ -24025,12 +24025,12 @@
         <member name="P:Mtconnect.AdapterSdk.DataItemValues.TransferCount.ObservationalSubType">
             <inheritdoc />
         </member>
-        <member name="M:Mtconnect.AdapterSdk.DataItemValues.TransferCount.#ctor(System.Int32)">
+        <member name="M:Mtconnect.AdapterSdk.DataItemValues.TransferCount.#ctor(System.Nullable{System.Int32})">
             <summary>
             Constructs a new value type for the TransferCount EVENT Data Item.
             </summary>
         </member>
-        <member name="M:Mtconnect.AdapterSdk.DataItemValues.TransferCount.op_Implicit(System.Int32)~Mtconnect.AdapterSdk.DataItemValues.TransferCount">
+        <member name="M:Mtconnect.AdapterSdk.DataItemValues.TransferCount.op_Implicit(System.Nullable{System.Int32})~Mtconnect.AdapterSdk.DataItemValues.TransferCount">
             <summary>
             Implicitly converts the specified Int32 to an <see cref="T:Mtconnect.AdapterSdk.DataItemValues.TransferCount"/> value.
             The Int32 is converted to uppercase and used to initialize the <see cref="T:Mtconnect.AdapterSdk.DataItemValues.TransferCount"/> value.
@@ -24046,12 +24046,12 @@
         <member name="P:Mtconnect.AdapterSdk.DataItemValues.TransferCount.GOOD.ObservationalSubType">
             <inheritdoc />
         </member>
-        <member name="M:Mtconnect.AdapterSdk.DataItemValues.TransferCount.GOOD.#ctor(System.Int32)">
+        <member name="M:Mtconnect.AdapterSdk.DataItemValues.TransferCount.GOOD.#ctor(System.Nullable{System.Int32})">
             <summary>
             Constructs a new value type for GOOD.
             </summary>
         </member>
-        <member name="M:Mtconnect.AdapterSdk.DataItemValues.TransferCount.GOOD.op_Implicit(System.Int32)~Mtconnect.AdapterSdk.DataItemValues.TransferCount.GOOD">
+        <member name="M:Mtconnect.AdapterSdk.DataItemValues.TransferCount.GOOD.op_Implicit(System.Nullable{System.Int32})~Mtconnect.AdapterSdk.DataItemValues.TransferCount.GOOD">
             <summary>
             Implicitly converts the specified Int32 to an <see cref="T:Mtconnect.AdapterSdk.DataItemValues.TransferCount.GOOD"/> value.
             The Int32 is converted to uppercase and used to initialize the <see cref="T:Mtconnect.AdapterSdk.DataItemValues.TransferCount.GOOD"/> value.
@@ -24067,12 +24067,12 @@
         <member name="P:Mtconnect.AdapterSdk.DataItemValues.TransferCount.ABORTED.ObservationalSubType">
             <inheritdoc />
         </member>
-        <member name="M:Mtconnect.AdapterSdk.DataItemValues.TransferCount.ABORTED.#ctor(System.Int32)">
+        <member name="M:Mtconnect.AdapterSdk.DataItemValues.TransferCount.ABORTED.#ctor(System.Nullable{System.Int32})">
             <summary>
             Constructs a new value type for ABORTED.
             </summary>
         </member>
-        <member name="M:Mtconnect.AdapterSdk.DataItemValues.TransferCount.ABORTED.op_Implicit(System.Int32)~Mtconnect.AdapterSdk.DataItemValues.TransferCount.ABORTED">
+        <member name="M:Mtconnect.AdapterSdk.DataItemValues.TransferCount.ABORTED.op_Implicit(System.Nullable{System.Int32})~Mtconnect.AdapterSdk.DataItemValues.TransferCount.ABORTED">
             <summary>
             Implicitly converts the specified Int32 to an <see cref="T:Mtconnect.AdapterSdk.DataItemValues.TransferCount.ABORTED"/> value.
             The Int32 is converted to uppercase and used to initialize the <see cref="T:Mtconnect.AdapterSdk.DataItemValues.TransferCount.ABORTED"/> value.
@@ -24088,12 +24088,12 @@
         <member name="P:Mtconnect.AdapterSdk.DataItemValues.TransferCount.FAILED.ObservationalSubType">
             <inheritdoc />
         </member>
-        <member name="M:Mtconnect.AdapterSdk.DataItemValues.TransferCount.FAILED.#ctor(System.Int32)">
+        <member name="M:Mtconnect.AdapterSdk.DataItemValues.TransferCount.FAILED.#ctor(System.Nullable{System.Int32})">
             <summary>
             Constructs a new value type for FAILED.
             </summary>
         </member>
-        <member name="M:Mtconnect.AdapterSdk.DataItemValues.TransferCount.FAILED.op_Implicit(System.Int32)~Mtconnect.AdapterSdk.DataItemValues.TransferCount.FAILED">
+        <member name="M:Mtconnect.AdapterSdk.DataItemValues.TransferCount.FAILED.op_Implicit(System.Nullable{System.Int32})~Mtconnect.AdapterSdk.DataItemValues.TransferCount.FAILED">
             <summary>
             Implicitly converts the specified Int32 to an <see cref="T:Mtconnect.AdapterSdk.DataItemValues.TransferCount.FAILED"/> value.
             The Int32 is converted to uppercase and used to initialize the <see cref="T:Mtconnect.AdapterSdk.DataItemValues.TransferCount.FAILED"/> value.
@@ -24109,12 +24109,12 @@
         <member name="P:Mtconnect.AdapterSdk.DataItemValues.TransferCount.ALL.ObservationalSubType">
             <inheritdoc />
         </member>
-        <member name="M:Mtconnect.AdapterSdk.DataItemValues.TransferCount.ALL.#ctor(System.Int32)">
+        <member name="M:Mtconnect.AdapterSdk.DataItemValues.TransferCount.ALL.#ctor(System.Nullable{System.Int32})">
             <summary>
             Constructs a new value type for ALL.
             </summary>
         </member>
-        <member name="M:Mtconnect.AdapterSdk.DataItemValues.TransferCount.ALL.op_Implicit(System.Int32)~Mtconnect.AdapterSdk.DataItemValues.TransferCount.ALL">
+        <member name="M:Mtconnect.AdapterSdk.DataItemValues.TransferCount.ALL.op_Implicit(System.Nullable{System.Int32})~Mtconnect.AdapterSdk.DataItemValues.TransferCount.ALL">
             <summary>
             Implicitly converts the specified Int32 to an <see cref="T:Mtconnect.AdapterSdk.DataItemValues.TransferCount.ALL"/> value.
             The Int32 is converted to uppercase and used to initialize the <see cref="T:Mtconnect.AdapterSdk.DataItemValues.TransferCount.ALL"/> value.
@@ -24130,12 +24130,12 @@
         <member name="P:Mtconnect.AdapterSdk.DataItemValues.TransferCount.BAD.ObservationalSubType">
             <inheritdoc />
         </member>
-        <member name="M:Mtconnect.AdapterSdk.DataItemValues.TransferCount.BAD.#ctor(System.Int32)">
+        <member name="M:Mtconnect.AdapterSdk.DataItemValues.TransferCount.BAD.#ctor(System.Nullable{System.Int32})">
             <summary>
             Constructs a new value type for BAD.
             </summary>
         </member>
-        <member name="M:Mtconnect.AdapterSdk.DataItemValues.TransferCount.BAD.op_Implicit(System.Int32)~Mtconnect.AdapterSdk.DataItemValues.TransferCount.BAD">
+        <member name="M:Mtconnect.AdapterSdk.DataItemValues.TransferCount.BAD.op_Implicit(System.Nullable{System.Int32})~Mtconnect.AdapterSdk.DataItemValues.TransferCount.BAD">
             <summary>
             Implicitly converts the specified Int32 to an <see cref="T:Mtconnect.AdapterSdk.DataItemValues.TransferCount.BAD"/> value.
             The Int32 is converted to uppercase and used to initialize the <see cref="T:Mtconnect.AdapterSdk.DataItemValues.TransferCount.BAD"/> value.
@@ -24151,12 +24151,12 @@
         <member name="P:Mtconnect.AdapterSdk.DataItemValues.TransferCount.REMAINING.ObservationalSubType">
             <inheritdoc />
         </member>
-        <member name="M:Mtconnect.AdapterSdk.DataItemValues.TransferCount.REMAINING.#ctor(System.Int32)">
+        <member name="M:Mtconnect.AdapterSdk.DataItemValues.TransferCount.REMAINING.#ctor(System.Nullable{System.Int32})">
             <summary>
             Constructs a new value type for REMAINING.
             </summary>
         </member>
-        <member name="M:Mtconnect.AdapterSdk.DataItemValues.TransferCount.REMAINING.op_Implicit(System.Int32)~Mtconnect.AdapterSdk.DataItemValues.TransferCount.REMAINING">
+        <member name="M:Mtconnect.AdapterSdk.DataItemValues.TransferCount.REMAINING.op_Implicit(System.Nullable{System.Int32})~Mtconnect.AdapterSdk.DataItemValues.TransferCount.REMAINING">
             <summary>
             Implicitly converts the specified Int32 to an <see cref="T:Mtconnect.AdapterSdk.DataItemValues.TransferCount.REMAINING"/> value.
             The Int32 is converted to uppercase and used to initialize the <see cref="T:Mtconnect.AdapterSdk.DataItemValues.TransferCount.REMAINING"/> value.
@@ -24172,12 +24172,12 @@
         <member name="P:Mtconnect.AdapterSdk.DataItemValues.TransferCount.COMPLETE.ObservationalSubType">
             <inheritdoc />
         </member>
-        <member name="M:Mtconnect.AdapterSdk.DataItemValues.TransferCount.COMPLETE.#ctor(System.Int32)">
+        <member name="M:Mtconnect.AdapterSdk.DataItemValues.TransferCount.COMPLETE.#ctor(System.Nullable{System.Int32})">
             <summary>
             Constructs a new value type for COMPLETE.
             </summary>
         </member>
-        <member name="M:Mtconnect.AdapterSdk.DataItemValues.TransferCount.COMPLETE.op_Implicit(System.Int32)~Mtconnect.AdapterSdk.DataItemValues.TransferCount.COMPLETE">
+        <member name="M:Mtconnect.AdapterSdk.DataItemValues.TransferCount.COMPLETE.op_Implicit(System.Nullable{System.Int32})~Mtconnect.AdapterSdk.DataItemValues.TransferCount.COMPLETE">
             <summary>
             Implicitly converts the specified Int32 to an <see cref="T:Mtconnect.AdapterSdk.DataItemValues.TransferCount.COMPLETE"/> value.
             The Int32 is converted to uppercase and used to initialize the <see cref="T:Mtconnect.AdapterSdk.DataItemValues.TransferCount.COMPLETE"/> value.
@@ -24193,12 +24193,12 @@
         <member name="P:Mtconnect.AdapterSdk.DataItemValues.TransferCount.TARGET.ObservationalSubType">
             <inheritdoc />
         </member>
-        <member name="M:Mtconnect.AdapterSdk.DataItemValues.TransferCount.TARGET.#ctor(System.Int32)">
+        <member name="M:Mtconnect.AdapterSdk.DataItemValues.TransferCount.TARGET.#ctor(System.Nullable{System.Int32})">
             <summary>
             Constructs a new value type for TARGET.
             </summary>
         </member>
-        <member name="M:Mtconnect.AdapterSdk.DataItemValues.TransferCount.TARGET.op_Implicit(System.Int32)~Mtconnect.AdapterSdk.DataItemValues.TransferCount.TARGET">
+        <member name="M:Mtconnect.AdapterSdk.DataItemValues.TransferCount.TARGET.op_Implicit(System.Nullable{System.Int32})~Mtconnect.AdapterSdk.DataItemValues.TransferCount.TARGET">
             <summary>
             Implicitly converts the specified Int32 to an <see cref="T:Mtconnect.AdapterSdk.DataItemValues.TransferCount.TARGET"/> value.
             The Int32 is converted to uppercase and used to initialize the <see cref="T:Mtconnect.AdapterSdk.DataItemValues.TransferCount.TARGET"/> value.
@@ -24223,12 +24223,12 @@
         <member name="P:Mtconnect.AdapterSdk.DataItemValues.Translation.ObservationalSubType">
             <inheritdoc />
         </member>
-        <member name="M:Mtconnect.AdapterSdk.DataItemValues.Translation.#ctor(System.Single)">
+        <member name="M:Mtconnect.AdapterSdk.DataItemValues.Translation.#ctor(System.Nullable{System.Single})">
             <summary>
             Constructs a new value type for the Translation EVENT Data Item.
             </summary>
         </member>
-        <member name="M:Mtconnect.AdapterSdk.DataItemValues.Translation.op_Implicit(System.Single)~Mtconnect.AdapterSdk.DataItemValues.Translation">
+        <member name="M:Mtconnect.AdapterSdk.DataItemValues.Translation.op_Implicit(System.Nullable{System.Single})~Mtconnect.AdapterSdk.DataItemValues.Translation">
             <summary>
             Implicitly converts the specified Single to an <see cref="T:Mtconnect.AdapterSdk.DataItemValues.Translation"/> value.
             The Single is converted to uppercase and used to initialize the <see cref="T:Mtconnect.AdapterSdk.DataItemValues.Translation"/> value.
@@ -24252,12 +24252,12 @@
         <member name="P:Mtconnect.AdapterSdk.DataItemValues.UnloadCount.ObservationalSubType">
             <inheritdoc />
         </member>
-        <member name="M:Mtconnect.AdapterSdk.DataItemValues.UnloadCount.#ctor(System.Int32)">
+        <member name="M:Mtconnect.AdapterSdk.DataItemValues.UnloadCount.#ctor(System.Nullable{System.Int32})">
             <summary>
             Constructs a new value type for the UnloadCount EVENT Data Item.
             </summary>
         </member>
-        <member name="M:Mtconnect.AdapterSdk.DataItemValues.UnloadCount.op_Implicit(System.Int32)~Mtconnect.AdapterSdk.DataItemValues.UnloadCount">
+        <member name="M:Mtconnect.AdapterSdk.DataItemValues.UnloadCount.op_Implicit(System.Nullable{System.Int32})~Mtconnect.AdapterSdk.DataItemValues.UnloadCount">
             <summary>
             Implicitly converts the specified Int32 to an <see cref="T:Mtconnect.AdapterSdk.DataItemValues.UnloadCount"/> value.
             The Int32 is converted to uppercase and used to initialize the <see cref="T:Mtconnect.AdapterSdk.DataItemValues.UnloadCount"/> value.
@@ -24273,12 +24273,12 @@
         <member name="P:Mtconnect.AdapterSdk.DataItemValues.UnloadCount.ABORTED.ObservationalSubType">
             <inheritdoc />
         </member>
-        <member name="M:Mtconnect.AdapterSdk.DataItemValues.UnloadCount.ABORTED.#ctor(System.Int32)">
+        <member name="M:Mtconnect.AdapterSdk.DataItemValues.UnloadCount.ABORTED.#ctor(System.Nullable{System.Int32})">
             <summary>
             Constructs a new value type for ABORTED.
             </summary>
         </member>
-        <member name="M:Mtconnect.AdapterSdk.DataItemValues.UnloadCount.ABORTED.op_Implicit(System.Int32)~Mtconnect.AdapterSdk.DataItemValues.UnloadCount.ABORTED">
+        <member name="M:Mtconnect.AdapterSdk.DataItemValues.UnloadCount.ABORTED.op_Implicit(System.Nullable{System.Int32})~Mtconnect.AdapterSdk.DataItemValues.UnloadCount.ABORTED">
             <summary>
             Implicitly converts the specified Int32 to an <see cref="T:Mtconnect.AdapterSdk.DataItemValues.UnloadCount.ABORTED"/> value.
             The Int32 is converted to uppercase and used to initialize the <see cref="T:Mtconnect.AdapterSdk.DataItemValues.UnloadCount.ABORTED"/> value.
@@ -24294,12 +24294,12 @@
         <member name="P:Mtconnect.AdapterSdk.DataItemValues.UnloadCount.BAD.ObservationalSubType">
             <inheritdoc />
         </member>
-        <member name="M:Mtconnect.AdapterSdk.DataItemValues.UnloadCount.BAD.#ctor(System.Int32)">
+        <member name="M:Mtconnect.AdapterSdk.DataItemValues.UnloadCount.BAD.#ctor(System.Nullable{System.Int32})">
             <summary>
             Constructs a new value type for BAD.
             </summary>
         </member>
-        <member name="M:Mtconnect.AdapterSdk.DataItemValues.UnloadCount.BAD.op_Implicit(System.Int32)~Mtconnect.AdapterSdk.DataItemValues.UnloadCount.BAD">
+        <member name="M:Mtconnect.AdapterSdk.DataItemValues.UnloadCount.BAD.op_Implicit(System.Nullable{System.Int32})~Mtconnect.AdapterSdk.DataItemValues.UnloadCount.BAD">
             <summary>
             Implicitly converts the specified Int32 to an <see cref="T:Mtconnect.AdapterSdk.DataItemValues.UnloadCount.BAD"/> value.
             The Int32 is converted to uppercase and used to initialize the <see cref="T:Mtconnect.AdapterSdk.DataItemValues.UnloadCount.BAD"/> value.
@@ -24315,12 +24315,12 @@
         <member name="P:Mtconnect.AdapterSdk.DataItemValues.UnloadCount.FAILED.ObservationalSubType">
             <inheritdoc />
         </member>
-        <member name="M:Mtconnect.AdapterSdk.DataItemValues.UnloadCount.FAILED.#ctor(System.Int32)">
+        <member name="M:Mtconnect.AdapterSdk.DataItemValues.UnloadCount.FAILED.#ctor(System.Nullable{System.Int32})">
             <summary>
             Constructs a new value type for FAILED.
             </summary>
         </member>
-        <member name="M:Mtconnect.AdapterSdk.DataItemValues.UnloadCount.FAILED.op_Implicit(System.Int32)~Mtconnect.AdapterSdk.DataItemValues.UnloadCount.FAILED">
+        <member name="M:Mtconnect.AdapterSdk.DataItemValues.UnloadCount.FAILED.op_Implicit(System.Nullable{System.Int32})~Mtconnect.AdapterSdk.DataItemValues.UnloadCount.FAILED">
             <summary>
             Implicitly converts the specified Int32 to an <see cref="T:Mtconnect.AdapterSdk.DataItemValues.UnloadCount.FAILED"/> value.
             The Int32 is converted to uppercase and used to initialize the <see cref="T:Mtconnect.AdapterSdk.DataItemValues.UnloadCount.FAILED"/> value.
@@ -24336,12 +24336,12 @@
         <member name="P:Mtconnect.AdapterSdk.DataItemValues.UnloadCount.GOOD.ObservationalSubType">
             <inheritdoc />
         </member>
-        <member name="M:Mtconnect.AdapterSdk.DataItemValues.UnloadCount.GOOD.#ctor(System.Int32)">
+        <member name="M:Mtconnect.AdapterSdk.DataItemValues.UnloadCount.GOOD.#ctor(System.Nullable{System.Int32})">
             <summary>
             Constructs a new value type for GOOD.
             </summary>
         </member>
-        <member name="M:Mtconnect.AdapterSdk.DataItemValues.UnloadCount.GOOD.op_Implicit(System.Int32)~Mtconnect.AdapterSdk.DataItemValues.UnloadCount.GOOD">
+        <member name="M:Mtconnect.AdapterSdk.DataItemValues.UnloadCount.GOOD.op_Implicit(System.Nullable{System.Int32})~Mtconnect.AdapterSdk.DataItemValues.UnloadCount.GOOD">
             <summary>
             Implicitly converts the specified Int32 to an <see cref="T:Mtconnect.AdapterSdk.DataItemValues.UnloadCount.GOOD"/> value.
             The Int32 is converted to uppercase and used to initialize the <see cref="T:Mtconnect.AdapterSdk.DataItemValues.UnloadCount.GOOD"/> value.
@@ -24357,12 +24357,12 @@
         <member name="P:Mtconnect.AdapterSdk.DataItemValues.UnloadCount.COMPLETE.ObservationalSubType">
             <inheritdoc />
         </member>
-        <member name="M:Mtconnect.AdapterSdk.DataItemValues.UnloadCount.COMPLETE.#ctor(System.Int32)">
+        <member name="M:Mtconnect.AdapterSdk.DataItemValues.UnloadCount.COMPLETE.#ctor(System.Nullable{System.Int32})">
             <summary>
             Constructs a new value type for COMPLETE.
             </summary>
         </member>
-        <member name="M:Mtconnect.AdapterSdk.DataItemValues.UnloadCount.COMPLETE.op_Implicit(System.Int32)~Mtconnect.AdapterSdk.DataItemValues.UnloadCount.COMPLETE">
+        <member name="M:Mtconnect.AdapterSdk.DataItemValues.UnloadCount.COMPLETE.op_Implicit(System.Nullable{System.Int32})~Mtconnect.AdapterSdk.DataItemValues.UnloadCount.COMPLETE">
             <summary>
             Implicitly converts the specified Int32 to an <see cref="T:Mtconnect.AdapterSdk.DataItemValues.UnloadCount.COMPLETE"/> value.
             The Int32 is converted to uppercase and used to initialize the <see cref="T:Mtconnect.AdapterSdk.DataItemValues.UnloadCount.COMPLETE"/> value.
@@ -24378,12 +24378,12 @@
         <member name="P:Mtconnect.AdapterSdk.DataItemValues.UnloadCount.ALL.ObservationalSubType">
             <inheritdoc />
         </member>
-        <member name="M:Mtconnect.AdapterSdk.DataItemValues.UnloadCount.ALL.#ctor(System.Int32)">
+        <member name="M:Mtconnect.AdapterSdk.DataItemValues.UnloadCount.ALL.#ctor(System.Nullable{System.Int32})">
             <summary>
             Constructs a new value type for ALL.
             </summary>
         </member>
-        <member name="M:Mtconnect.AdapterSdk.DataItemValues.UnloadCount.ALL.op_Implicit(System.Int32)~Mtconnect.AdapterSdk.DataItemValues.UnloadCount.ALL">
+        <member name="M:Mtconnect.AdapterSdk.DataItemValues.UnloadCount.ALL.op_Implicit(System.Nullable{System.Int32})~Mtconnect.AdapterSdk.DataItemValues.UnloadCount.ALL">
             <summary>
             Implicitly converts the specified Int32 to an <see cref="T:Mtconnect.AdapterSdk.DataItemValues.UnloadCount.ALL"/> value.
             The Int32 is converted to uppercase and used to initialize the <see cref="T:Mtconnect.AdapterSdk.DataItemValues.UnloadCount.ALL"/> value.
@@ -24399,12 +24399,12 @@
         <member name="P:Mtconnect.AdapterSdk.DataItemValues.UnloadCount.TARGET.ObservationalSubType">
             <inheritdoc />
         </member>
-        <member name="M:Mtconnect.AdapterSdk.DataItemValues.UnloadCount.TARGET.#ctor(System.Int32)">
+        <member name="M:Mtconnect.AdapterSdk.DataItemValues.UnloadCount.TARGET.#ctor(System.Nullable{System.Int32})">
             <summary>
             Constructs a new value type for TARGET.
             </summary>
         </member>
-        <member name="M:Mtconnect.AdapterSdk.DataItemValues.UnloadCount.TARGET.op_Implicit(System.Int32)~Mtconnect.AdapterSdk.DataItemValues.UnloadCount.TARGET">
+        <member name="M:Mtconnect.AdapterSdk.DataItemValues.UnloadCount.TARGET.op_Implicit(System.Nullable{System.Int32})~Mtconnect.AdapterSdk.DataItemValues.UnloadCount.TARGET">
             <summary>
             Implicitly converts the specified Int32 to an <see cref="T:Mtconnect.AdapterSdk.DataItemValues.UnloadCount.TARGET"/> value.
             The Int32 is converted to uppercase and used to initialize the <see cref="T:Mtconnect.AdapterSdk.DataItemValues.UnloadCount.TARGET"/> value.
@@ -24420,12 +24420,12 @@
         <member name="P:Mtconnect.AdapterSdk.DataItemValues.UnloadCount.REMAINING.ObservationalSubType">
             <inheritdoc />
         </member>
-        <member name="M:Mtconnect.AdapterSdk.DataItemValues.UnloadCount.REMAINING.#ctor(System.Int32)">
+        <member name="M:Mtconnect.AdapterSdk.DataItemValues.UnloadCount.REMAINING.#ctor(System.Nullable{System.Int32})">
             <summary>
             Constructs a new value type for REMAINING.
             </summary>
         </member>
-        <member name="M:Mtconnect.AdapterSdk.DataItemValues.UnloadCount.REMAINING.op_Implicit(System.Int32)~Mtconnect.AdapterSdk.DataItemValues.UnloadCount.REMAINING">
+        <member name="M:Mtconnect.AdapterSdk.DataItemValues.UnloadCount.REMAINING.op_Implicit(System.Nullable{System.Int32})~Mtconnect.AdapterSdk.DataItemValues.UnloadCount.REMAINING">
             <summary>
             Implicitly converts the specified Int32 to an <see cref="T:Mtconnect.AdapterSdk.DataItemValues.UnloadCount.REMAINING"/> value.
             The Int32 is converted to uppercase and used to initialize the <see cref="T:Mtconnect.AdapterSdk.DataItemValues.UnloadCount.REMAINING"/> value.

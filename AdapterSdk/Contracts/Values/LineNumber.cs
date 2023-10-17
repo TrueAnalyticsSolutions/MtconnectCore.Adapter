@@ -30,7 +30,7 @@ namespace Mtconnect.AdapterSdk.DataItemValues
 		/// <summary>
 		/// Constructs a new value type for the LineNumber EVENT Data Item.
 		/// </summary>
-        public LineNumber(Int32 value) : base(value) { }
+        public LineNumber(Int32? value) : base(value) { }
 
 		
         /// <summary>
@@ -39,7 +39,7 @@ namespace Mtconnect.AdapterSdk.DataItemValues
         /// </summary>
         /// <param name="value">The Int32 to convert.</param>
         /// <returns>An <see cref="LineNumber"/> value initialized with the specified string in uppercase.</returns>
-        public static implicit operator LineNumber(Int32 value)
+        public static implicit operator LineNumber(Int32? value)
             => new LineNumber(value);
 		
 		/// <summary>
@@ -53,7 +53,7 @@ namespace Mtconnect.AdapterSdk.DataItemValues
 			/// <summary>
 			/// Constructs a new value type for ABSOLUTE.
 			/// </summary>
-            public ABSOLUTE(Int32 value) : base(value) { }
+            public ABSOLUTE(Int32? value) : base(value) { }
 			
 			/// <summary>
 			/// Implicitly converts the specified Int32 to an <see cref="ABSOLUTE"/> value.
@@ -61,7 +61,7 @@ namespace Mtconnect.AdapterSdk.DataItemValues
 			/// </summary>
 			/// <param name="value">The Int32 to convert.</param>
 			/// <returns>An <see cref="ABSOLUTE"/> value initialized with the specified string in uppercase.</returns>
-			public static implicit operator ABSOLUTE(Int32 value)
+			public static implicit operator ABSOLUTE(Int32? value)
 				=> new ABSOLUTE(value);
 		}
 		/// <summary>
@@ -75,7 +75,7 @@ namespace Mtconnect.AdapterSdk.DataItemValues
 			/// <summary>
 			/// Constructs a new value type for INCREMENTAL.
 			/// </summary>
-            public INCREMENTAL(Int32 value) : base(value) { }
+            public INCREMENTAL(Int32? value) : base(value) { }
 			
 			/// <summary>
 			/// Implicitly converts the specified Int32 to an <see cref="INCREMENTAL"/> value.
@@ -83,7 +83,7 @@ namespace Mtconnect.AdapterSdk.DataItemValues
 			/// </summary>
 			/// <param name="value">The Int32 to convert.</param>
 			/// <returns>An <see cref="INCREMENTAL"/> value initialized with the specified string in uppercase.</returns>
-			public static implicit operator INCREMENTAL(Int32 value)
+			public static implicit operator INCREMENTAL(Int32? value)
 				=> new INCREMENTAL(value);
 		}
     }

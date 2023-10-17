@@ -31,7 +31,7 @@ namespace Mtconnect.AdapterSdk.DataItemValues
 		/// <summary>
 		/// Constructs a new value type for the Rotation EVENT Data Item.
 		/// </summary>
-        public Rotation(Single value) : base(value) { }
+        public Rotation(Single? value) : base(value) { }
 
 		
         /// <summary>
@@ -40,7 +40,7 @@ namespace Mtconnect.AdapterSdk.DataItemValues
         /// </summary>
         /// <param name="value">The Single to convert.</param>
         /// <returns>An <see cref="Rotation"/> value initialized with the specified string in uppercase.</returns>
-        public static implicit operator Rotation(Single value)
+        public static implicit operator Rotation(Single? value)
             => new Rotation(value);
 		
     }

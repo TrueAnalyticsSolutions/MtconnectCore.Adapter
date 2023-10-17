@@ -30,7 +30,7 @@ namespace Mtconnect.AdapterSdk.DataItemValues
 		/// <summary>
 		/// Constructs a new value type for the ProgramNestLevel EVENT Data Item.
 		/// </summary>
-        public ProgramNestLevel(Int32 value) : base(value) { }
+        public ProgramNestLevel(Int32? value) : base(value) { }
 
 		
         /// <summary>
@@ -39,7 +39,7 @@ namespace Mtconnect.AdapterSdk.DataItemValues
         /// </summary>
         /// <param name="value">The Int32 to convert.</param>
         /// <returns>An <see cref="ProgramNestLevel"/> value initialized with the specified string in uppercase.</returns>
-        public static implicit operator ProgramNestLevel(Int32 value)
+        public static implicit operator ProgramNestLevel(Int32? value)
             => new ProgramNestLevel(value);
 		
     }

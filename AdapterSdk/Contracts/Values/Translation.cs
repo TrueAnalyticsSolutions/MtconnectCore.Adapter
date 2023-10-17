@@ -31,7 +31,7 @@ namespace Mtconnect.AdapterSdk.DataItemValues
 		/// <summary>
 		/// Constructs a new value type for the Translation EVENT Data Item.
 		/// </summary>
-        public Translation(Single value) : base(value) { }
+        public Translation(Single? value) : base(value) { }
 
 		
         /// <summary>
@@ -40,7 +40,7 @@ namespace Mtconnect.AdapterSdk.DataItemValues
         /// </summary>
         /// <param name="value">The Single to convert.</param>
         /// <returns>An <see cref="Translation"/> value initialized with the specified string in uppercase.</returns>
-        public static implicit operator Translation(Single value)
+        public static implicit operator Translation(Single? value)
             => new Translation(value);
 		
     }

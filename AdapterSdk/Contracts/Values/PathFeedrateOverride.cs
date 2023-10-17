@@ -30,7 +30,7 @@ namespace Mtconnect.AdapterSdk.DataItemValues
 		/// <summary>
 		/// Constructs a new value type for the PathFeedrateOverride EVENT Data Item.
 		/// </summary>
-        public PathFeedrateOverride(Single value) : base(value) { }
+        public PathFeedrateOverride(Single? value) : base(value) { }
 
 		
         /// <summary>
@@ -39,7 +39,7 @@ namespace Mtconnect.AdapterSdk.DataItemValues
         /// </summary>
         /// <param name="value">The Single to convert.</param>
         /// <returns>An <see cref="PathFeedrateOverride"/> value initialized with the specified string in uppercase.</returns>
-        public static implicit operator PathFeedrateOverride(Single value)
+        public static implicit operator PathFeedrateOverride(Single? value)
             => new PathFeedrateOverride(value);
 		
 		/// <summary>
@@ -53,7 +53,7 @@ namespace Mtconnect.AdapterSdk.DataItemValues
 			/// <summary>
 			/// Constructs a new value type for JOG.
 			/// </summary>
-            public JOG(Single value) : base(value) { }
+            public JOG(Single? value) : base(value) { }
 			
 			/// <summary>
 			/// Implicitly converts the specified Single to an <see cref="JOG"/> value.
@@ -61,7 +61,7 @@ namespace Mtconnect.AdapterSdk.DataItemValues
 			/// </summary>
 			/// <param name="value">The Single to convert.</param>
 			/// <returns>An <see cref="JOG"/> value initialized with the specified string in uppercase.</returns>
-			public static implicit operator JOG(Single value)
+			public static implicit operator JOG(Single? value)
 				=> new JOG(value);
 		}
 		/// <summary>
@@ -75,7 +75,7 @@ namespace Mtconnect.AdapterSdk.DataItemValues
 			/// <summary>
 			/// Constructs a new value type for PROGRAMMED.
 			/// </summary>
-            public PROGRAMMED(Single value) : base(value) { }
+            public PROGRAMMED(Single? value) : base(value) { }
 			
 			/// <summary>
 			/// Implicitly converts the specified Single to an <see cref="PROGRAMMED"/> value.
@@ -83,7 +83,7 @@ namespace Mtconnect.AdapterSdk.DataItemValues
 			/// </summary>
 			/// <param name="value">The Single to convert.</param>
 			/// <returns>An <see cref="PROGRAMMED"/> value initialized with the specified string in uppercase.</returns>
-			public static implicit operator PROGRAMMED(Single value)
+			public static implicit operator PROGRAMMED(Single? value)
 				=> new PROGRAMMED(value);
 		}
 		/// <summary>
@@ -97,7 +97,7 @@ namespace Mtconnect.AdapterSdk.DataItemValues
 			/// <summary>
 			/// Constructs a new value type for RAPID.
 			/// </summary>
-            public RAPID(Single value) : base(value) { }
+            public RAPID(Single? value) : base(value) { }
 			
 			/// <summary>
 			/// Implicitly converts the specified Single to an <see cref="RAPID"/> value.
@@ -105,7 +105,7 @@ namespace Mtconnect.AdapterSdk.DataItemValues
 			/// </summary>
 			/// <param name="value">The Single to convert.</param>
 			/// <returns>An <see cref="RAPID"/> value initialized with the specified string in uppercase.</returns>
-			public static implicit operator RAPID(Single value)
+			public static implicit operator RAPID(Single? value)
 				=> new RAPID(value);
 		}
     }

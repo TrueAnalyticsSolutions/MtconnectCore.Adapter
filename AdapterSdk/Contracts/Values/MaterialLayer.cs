@@ -30,7 +30,7 @@ namespace Mtconnect.AdapterSdk.DataItemValues
 		/// <summary>
 		/// Constructs a new value type for the MaterialLayer EVENT Data Item.
 		/// </summary>
-        public MaterialLayer(Int32 value) : base(value) { }
+        public MaterialLayer(Int32? value) : base(value) { }
 
 		
         /// <summary>
@@ -39,7 +39,7 @@ namespace Mtconnect.AdapterSdk.DataItemValues
         /// </summary>
         /// <param name="value">The Int32 to convert.</param>
         /// <returns>An <see cref="MaterialLayer"/> value initialized with the specified string in uppercase.</returns>
-        public static implicit operator MaterialLayer(Int32 value)
+        public static implicit operator MaterialLayer(Int32? value)
             => new MaterialLayer(value);
 		
 		/// <summary>
@@ -53,7 +53,7 @@ namespace Mtconnect.AdapterSdk.DataItemValues
 			/// <summary>
 			/// Constructs a new value type for ACTUAL.
 			/// </summary>
-            public ACTUAL(Int32 value) : base(value) { }
+            public ACTUAL(Int32? value) : base(value) { }
 			
 			/// <summary>
 			/// Implicitly converts the specified Int32 to an <see cref="ACTUAL"/> value.
@@ -61,7 +61,7 @@ namespace Mtconnect.AdapterSdk.DataItemValues
 			/// </summary>
 			/// <param name="value">The Int32 to convert.</param>
 			/// <returns>An <see cref="ACTUAL"/> value initialized with the specified string in uppercase.</returns>
-			public static implicit operator ACTUAL(Int32 value)
+			public static implicit operator ACTUAL(Int32? value)
 				=> new ACTUAL(value);
 		}
 		/// <summary>
@@ -75,7 +75,7 @@ namespace Mtconnect.AdapterSdk.DataItemValues
 			/// <summary>
 			/// Constructs a new value type for TARGET.
 			/// </summary>
-            public TARGET(Int32 value) : base(value) { }
+            public TARGET(Int32? value) : base(value) { }
 			
 			/// <summary>
 			/// Implicitly converts the specified Int32 to an <see cref="TARGET"/> value.
@@ -83,7 +83,7 @@ namespace Mtconnect.AdapterSdk.DataItemValues
 			/// </summary>
 			/// <param name="value">The Int32 to convert.</param>
 			/// <returns>An <see cref="TARGET"/> value initialized with the specified string in uppercase.</returns>
-			public static implicit operator TARGET(Int32 value)
+			public static implicit operator TARGET(Int32? value)
 				=> new TARGET(value);
 		}
     }
