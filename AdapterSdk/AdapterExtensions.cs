@@ -79,6 +79,8 @@ namespace Mtconnect
         };
         private static bool TryAddDataItems(this Adapter adapter, object model, string modelPath = "", string dataItemNamePrefix = "", string dataItemDescriptionPrefix = "")
         {
+            if (model == null)
+                return false;
             bool isCached = true;
             bool allDataItemsAdded = true;
             lock (_dataItemProperties)
