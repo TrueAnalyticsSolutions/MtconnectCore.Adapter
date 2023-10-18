@@ -13,12 +13,12 @@ namespace Mtconnect.AdapterSourceTemplate.Models
         [Event("avail")]
         public Availability Availability { get; set; }
 
-        [DataItemPartial("path")]
+        [DataItemPartial("path_")]
         public Dictionary<string, Path> Paths { get; set; } = new Dictionary<string, Path>();
     }
-    public sealed class Path : IAdapterDataModel
+    public sealed class Path : Mtconnect.AdapterSdk.DataItemTypes.Path
     {
         [Event("exec")]
-        public Execution Execution { get; set; }
+        public override Execution Execution { get; set; }
     }
 }

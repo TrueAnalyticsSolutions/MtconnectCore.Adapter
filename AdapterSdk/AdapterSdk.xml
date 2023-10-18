@@ -27587,6 +27587,29 @@
             </summary>
             <param name="ex">Reference to a possible exception that led to the stop of the Adapter Source.</param>
         </member>
+        <member name="M:Mtconnect.ReflectionHelper.IsComponentType(System.Type)">
+            <summary>
+            Determines if the provided type is an implementation of the <see cref="T:Mtconnect.AdapterSdk.Contracts.IComponentModel"/> interface.
+            </summary>
+            <param name="type">The <see cref="T:System.Type"/> to be evaluated</param>
+            <returns>Flag for whether or not the provided type is an implementation of the <see cref="T:Mtconnect.AdapterSdk.Contracts.IComponentModel"/> interface</returns>
+        </member>
+        <member name="M:Mtconnect.ReflectionHelper.IsDictionaryOfModel``1(System.Type)">
+            <summary>
+            Determines if the provided type is a <see cref="T:System.Collections.Generic.Dictionary`2"/> containing values of the provided <typeparamref name="T"/>
+            </summary>
+            <typeparam name="T">Generic type expected to be in the values of a <see cref="T:System.Collections.Generic.Dictionary`2"/></typeparam>
+            <param name="type">The <see cref="T:System.Type"/> to be evaluated</param>
+            <returns>Flag for whether or not the provided type is an implementation of <see cref="T:System.Collections.Generic.Dictionary`2"/> where TValue is of type <typeparamref name="T"/></returns>
+        </member>
+        <member name="M:Mtconnect.ReflectionHelper.IsListOfModel``1(System.Type)">
+            <summary>
+            Determines if the provided type is a <see cref="T:System.Collections.Generic.List`1"/> containing values of the provided <typeparamref name="T"/>
+            </summary>
+            <typeparam name="T">Generic type expected to be in the values of a <see cref="T:System.Collections.Generic.List`1"/></typeparam>
+            <param name="type">The <see cref="T:System.Type"/> to be evaluated</param>
+            <returns>Flag for whether or not the provided type is an implementation of <see cref="T:System.Collections.Generic.List`1"/> where T is of type <typeparamref name="T"/></returns>
+        </member>
         <member name="T:Mtconnect.UPnP.IUPnPService">
             <summary>
             A generic implementation to represent a UDP broadcaster service.

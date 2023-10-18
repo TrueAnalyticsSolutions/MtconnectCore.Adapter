@@ -133,17 +133,15 @@ namespace Mtconnect.AdapterSdk.DeviceConfiguration
                 var dataItemAttribute = property.GetCustomAttribute<DataItemAttribute>();
                 
                 // NOTE: IComponentModel is first because IComponentModel implements IAdapterDataModel
-                if (typeof(IComponentModel).IsAssignableFrom(property.PropertyType))
+                if (property.PropertyType.IsComponentType())
                 {
                     hasComponents = ProcessComponentModel(parentElement, adapter, $"{modelPath}[{property.Name}]", componentPrefix, componentsElement, property, dataItemAttribute);
                 }
-                else if (typeof(IAdapterDataModel).IsAssignableFrom(property.PropertyType))
+                else if (property.PropertyType.IsDataModelType())
                 {
                     AddComponents(parentElement, property.PropertyType, adapter, $"{modelPath}[{property.Name}]", dataItemAttribute?.Name ?? $"{componentPrefix}{property.Name}_");
                 }
-                else if (typeof(DataItem).IsAssignableFrom(property.PropertyType) ||
-                    dataItemAttribute != null ||
-                    typeof(IDataItemValue).IsAssignableFrom(property.PropertyType))
+                else if (property.PropertyType.IsDataItemType() || dataItemAttribute != null)
                 {
                     hasDataItems = ProcessDataItem(parentElement, adapter, $"{modelPath}[{property.Name}]", dataItemsElement, property, dataItemAttribute);
                 }
@@ -247,7 +245,6 @@ namespace Mtconnect.AdapterSdk.DeviceConfiguration
         {
             bool hasComponents = true;
             var componentModelType = GetNearestComponentModelType(property.PropertyType);
-            var componentElement = parentElement.OwnerDocument.CreateElement(componentModelType?.Name ?? property.PropertyType.Name);
             string id = property.Name.ToLower();
             if (dataItemAttribute != null)
             {
@@ -255,18 +252,70 @@ namespace Mtconnect.AdapterSdk.DeviceConfiguration
                 if (id.EndsWith("_"))
                     id = id.Replace("_", string.Empty);
             }
-            componentElement.SetAttribute("id", id.ToLower());
-            componentElement.SetAttribute("name", property.Name);
+            if (property.PropertyType.IsDictionaryOfModel<IComponentModel>())
+            {
+                var dataItemNames = adapter.DataItems.Where(o => o.ModelPath.StartsWith(modelPath)).Select(o => o.ModelPath).ToArray();
+                foreach (var dataItemName in dataItemNames)
+                {
+                    string searchString = $"[{property.Name}]";
+                    string componentName = dataItemName.Substring(dataItemName.IndexOf(searchString) + searchString.Length);
+                    componentName = componentName.Remove(componentName.IndexOf("]")).Remove(0, 1); // Extract contents of first square braces
 
-            componentsElement.AppendChild(componentElement);
+                    id = (dataItemAttribute?.Name ?? componentModelType.Name) + componentName;
 
-            AddComponents(componentElement, property.PropertyType, adapter, modelPath, dataItemAttribute?.Name ?? $"{componentPath}{property.Name}_");
+                    var componentElement = parentElement.OwnerDocument.CreateElement(componentModelType?.Name ?? property.PropertyType.Name);
+                    componentElement.SetAttribute("id", id.ToLower());
+                    componentElement.SetAttribute("name", id);
+
+                    componentsElement.AppendChild(componentElement);
+
+                    AddComponents(componentElement, componentModelType, adapter, $"{modelPath}[{componentName}]", dataItemAttribute?.Name ?? $"{componentPath}{property.Name}_{componentName}");
+                }
+                hasComponents = true;
+            } else if (property.PropertyType.IsListOfModel<IComponentModel>())
+            {
+                var dataItemNames = adapter.DataItems.Where(o => o.ModelPath.StartsWith(modelPath)).Select(o => o.ModelPath).ToArray();
+                foreach (var dataItemName in dataItemNames)
+                {
+                    string searchString = $"[{property.Name}]";
+                    string componentIndex = dataItemName.Substring(dataItemName.IndexOf(searchString) + searchString.Length);
+                    componentIndex = componentIndex.Remove(componentIndex.IndexOf("]")).Remove(0, 1); // Extract contents of first square braces
+
+                    var componentElement = parentElement.OwnerDocument.CreateElement(componentModelType?.Name ?? property.PropertyType.Name);
+                    componentElement.SetAttribute("id", id.ToLower() + componentIndex);
+                    componentElement.SetAttribute("name", componentIndex);
+
+                    componentsElement.AppendChild(componentElement);
+
+                    AddComponents(componentElement, componentModelType, adapter, $"{modelPath}[{componentIndex}]", dataItemAttribute?.Name ?? $"{componentPath}{property.Name}_{componentIndex}");
+                }
+                hasComponents = true;
+            }
+            else
+            {
+                var componentElement = parentElement.OwnerDocument.CreateElement(componentModelType?.Name ?? property.PropertyType.Name);
+                componentElement.SetAttribute("id", id.ToLower());
+                componentElement.SetAttribute("name", property.Name);
+
+                componentsElement.AppendChild(componentElement);
+
+                AddComponents(componentElement, componentModelType, adapter, modelPath, dataItemAttribute?.Name ?? $"{componentPath}{property.Name}_");
+            }
             return hasComponents;
         }
 
         public Type GetNearestComponentModelType(Type type)
         {
-            Type currentType = type.BaseType;
+            Type currentType = type;
+            if (type.IsDictionaryOfModel<IComponentModel>())
+            {
+                currentType = type.GetGenericArguments()[1];
+            } else if (type.IsListOfModel<IComponentModel>())
+            {
+                currentType = type.GetGenericArguments()[0];
+            }
+            return currentType;
+            currentType = currentType.BaseType;
             while (currentType != null)
             {
                 if (typeof(IComponentModel).IsAssignableFrom(currentType))
