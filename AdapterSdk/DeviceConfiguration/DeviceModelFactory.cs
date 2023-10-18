@@ -244,7 +244,9 @@ namespace Mtconnect.AdapterSdk.DeviceConfiguration
         private bool ProcessComponentModel(XmlElement parentElement, Adapter adapter, string modelPath, string componentPath, XmlElement componentsElement, PropertyInfo property, DataItemAttribute dataItemAttribute)
         {
             bool hasComponents = true;
-            var componentModelType = GetNearestComponentModelType(property.PropertyType);
+            var componentModelImplementationType = GetComponentModelImplementationType(property.PropertyType);
+            var componentModelType = GetComponentModelType(property.PropertyType);
+            string propertySearchString = $"[{property.Name}]";
             string id = property.Name.ToLower();
             if (dataItemAttribute != null)
             {
@@ -254,67 +256,65 @@ namespace Mtconnect.AdapterSdk.DeviceConfiguration
             }
             if (property.PropertyType.IsDictionaryOfModel<IComponentModel>())
             {
-                var dataItemNames = adapter.DataItems.Where(o => o.ModelPath.StartsWith(modelPath)).Select(o => o.ModelPath).ToArray();
-                foreach (var dataItemName in dataItemNames)
+                var componentNames = adapter.DataItems
+                    .Where(o => o.ModelPath.StartsWith(modelPath))
+                    .Select(o => o.ModelPath)
+                    .Select(o => o.Substring(o.IndexOf(propertySearchString) + propertySearchString.Length))
+                    .Select(o => o.Remove(o.IndexOf("]")).Remove(0, 1))
+                    .Distinct()
+                    .ToArray();
+                foreach (var componentName in componentNames)
                 {
-                    string searchString = $"[{property.Name}]";
-                    string componentName = dataItemName.Substring(dataItemName.IndexOf(searchString) + searchString.Length);
-                    componentName = componentName.Remove(componentName.IndexOf("]")).Remove(0, 1); // Extract contents of first square braces
-
-                    id = (dataItemAttribute?.Name ?? componentModelType.Name) + componentName;
+                    id = (dataItemAttribute?.Name ?? componentModelImplementationType.Name) + componentName;
 
                     var componentElement = parentElement.OwnerDocument.CreateElement(componentModelType?.Name ?? property.PropertyType.Name);
-                    componentElement.SetAttribute("id", id.ToLower());
-                    componentElement.SetAttribute("name", id);
+                    componentElement.SetAttribute("id", $"{componentPath}{id.ToLower()}");
+                    componentElement.SetAttribute("name", $"{componentPath}{id}");
 
                     componentsElement.AppendChild(componentElement);
-
-                    AddComponents(componentElement, componentModelType, adapter, $"{modelPath}[{componentName}]", dataItemAttribute?.Name ?? $"{componentPath}{property.Name}_{componentName}");
+                    // TODO: Ensure sub-components get parent component(s) name as prefix
+                    AddComponents(componentElement, componentModelImplementationType, adapter, $"{modelPath}[{componentName}]", dataItemAttribute?.Name ?? $"{componentPath}{property.Name}_{componentName}");
                 }
                 hasComponents = true;
             } else if (property.PropertyType.IsListOfModel<IComponentModel>())
             {
-                var dataItemNames = adapter.DataItems.Where(o => o.ModelPath.StartsWith(modelPath)).Select(o => o.ModelPath).ToArray();
-                foreach (var dataItemName in dataItemNames)
+                var componentNames = adapter.DataItems
+                    .Where(o => o.ModelPath.StartsWith(modelPath))
+                    .Select(o => o.ModelPath)
+                    .Select(o => o.Substring(o.IndexOf(propertySearchString) + propertySearchString.Length))
+                    .Select(o => o.Remove(o.IndexOf("]")).Remove(0, 1))
+                    .Distinct()
+                    .ToArray();
+                foreach (var componentName in componentNames)
                 {
-                    string searchString = $"[{property.Name}]";
-                    string componentIndex = dataItemName.Substring(dataItemName.IndexOf(searchString) + searchString.Length);
-                    componentIndex = componentIndex.Remove(componentIndex.IndexOf("]")).Remove(0, 1); // Extract contents of first square braces
+                    id = (dataItemAttribute?.Name ?? componentModelImplementationType.Name) + componentName;
 
                     var componentElement = parentElement.OwnerDocument.CreateElement(componentModelType?.Name ?? property.PropertyType.Name);
-                    componentElement.SetAttribute("id", id.ToLower() + componentIndex);
-                    componentElement.SetAttribute("name", componentIndex);
+                    componentElement.SetAttribute("id", $"{componentPath}{id.ToLower()}");
+                    componentElement.SetAttribute("name", $"{componentPath}{id}");
 
                     componentsElement.AppendChild(componentElement);
 
-                    AddComponents(componentElement, componentModelType, adapter, $"{modelPath}[{componentIndex}]", dataItemAttribute?.Name ?? $"{componentPath}{property.Name}_{componentIndex}");
+                    AddComponents(componentElement, componentModelImplementationType, adapter, $"{modelPath}[{componentName}]", dataItemAttribute?.Name ?? $"{componentPath}{property.Name}_{componentName}");
                 }
                 hasComponents = true;
             }
             else
             {
                 var componentElement = parentElement.OwnerDocument.CreateElement(componentModelType?.Name ?? property.PropertyType.Name);
-                componentElement.SetAttribute("id", id.ToLower());
-                componentElement.SetAttribute("name", property.Name);
+                componentElement.SetAttribute("id", $"{componentPath}{id.ToLower()}");
+                componentElement.SetAttribute("name", $"{componentPath}{id}");
 
                 componentsElement.AppendChild(componentElement);
 
-                AddComponents(componentElement, componentModelType, adapter, modelPath, dataItemAttribute?.Name ?? $"{componentPath}{property.Name}_");
+                AddComponents(componentElement, componentModelImplementationType, adapter, modelPath, dataItemAttribute?.Name ?? $"{componentPath}{property.Name}_");
             }
             return hasComponents;
         }
 
-        public Type GetNearestComponentModelType(Type type)
+        public Type GetComponentModelType(Type type)
         {
-            Type currentType = type;
-            if (type.IsDictionaryOfModel<IComponentModel>())
-            {
-                currentType = type.GetGenericArguments()[1];
-            } else if (type.IsListOfModel<IComponentModel>())
-            {
-                currentType = type.GetGenericArguments()[0];
-            }
-            return currentType;
+            Type currentType = GetComponentModelImplementationType(type);
             currentType = currentType.BaseType;
             while (currentType != null)
             {
@@ -325,6 +325,19 @@ namespace Mtconnect.AdapterSdk.DeviceConfiguration
                 currentType = currentType.BaseType;
             }
             return null;
+        }
+        public Type GetComponentModelImplementationType(Type type)
+        {
+            Type currentType = type;
+            if (type.IsDictionaryOfModel<IComponentModel>())
+            {
+                currentType = type.GetGenericArguments()[1];
+            }
+            else if (type.IsListOfModel<IComponentModel>())
+            {
+                currentType = type.GetGenericArguments()[0];
+            }
+            return currentType;
         }
 
         private void AddDataItems(XmlNode xDataItems, IEnumerable<DataItem> dataItems)

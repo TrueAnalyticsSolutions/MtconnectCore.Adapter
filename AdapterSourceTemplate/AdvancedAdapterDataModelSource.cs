@@ -51,13 +51,15 @@ namespace Mtconnect.AdapterSourceTemplate
             Model.Availability = Availability.AVAILABLE;
 
             // TODO: Continue updating the Model with information.
-            if (!Model.Paths.ContainsKey("primary"))
-                Model.Paths.Add("primary", new Path());
-            Model.Paths["primary"].Execution = Execution.READY;
-            if (!Model.Paths.ContainsKey("secondary"))
-                Model.Paths.Add("secondary", new Path());
-            Model.Paths["secondary"].Execution = Execution.READY;
+            if (!Model.Controller.Paths.ContainsKey("primary"))
+                Model.Controller.Paths.Add("primary", new MyPath());
+            Model.Controller.Paths["primary"].Execution = Execution.READY;
+            Model.Controller.Paths["primary"].ActiveProgram = "#1";
 
+            if (!Model.Controller.Paths.ContainsKey("secondary"))
+                Model.Controller.Paths.Add("secondary", new MyPath());
+            Model.Controller.Paths["secondary"].Execution = Execution.READY;
+            Model.Controller.Paths["secondary"].ActiveProgram = "#2";
             // NOTE: The underlying Adapter will determine whether a value has changed, so no need to check for updated information.
 
             OnDataReceived?.Invoke(this, new DataReceivedEventArgs(Model));
