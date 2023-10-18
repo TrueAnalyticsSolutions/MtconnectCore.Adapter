@@ -363,6 +363,9 @@ namespace Mtconnect
         }
         private static bool TryUpdateValues(this Adapter adapter, object model, string dataItemPrefix)
         {
+            if (model == null)
+                return false;
+
             bool allDataItemsUpdated = true;
 
             Type sourceType = model.GetType();
