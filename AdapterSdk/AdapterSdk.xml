@@ -29,7 +29,7 @@
             Reference to the expected format for DateTime strings
             </summary>
         </member>
-        <member name="F:Mtconnect.Adapter._logger">
+        <member name="P:Mtconnect.Adapter._logger">
             <summary>
             Reference to a logging service.
             </summary>
@@ -258,7 +258,7 @@
             A collection of methods that return formatted responses to commands issued from a MTConnect Agent.
             </summary>
         </member>
-        <member name="M:Mtconnect.AdapterCommands.GetResponse(Mtconnect.Adapter,System.String)">
+        <member name="M:Mtconnect.AdapterCommands.GetResponse(Mtconnect.AdapterSdk.Contracts.IAdapter,System.String)">
             <summary>
             Determines the appropriate response to the provided <paramref name="message"/>.
             </summary>
@@ -266,31 +266,31 @@
             <param name="message">Reference to the command issued from the MTConnect Agent.</param>
             <returns>Formatted response to the command issued by the MTConnect Agent. If the command was not recognized, then the response string is empty.</returns>
         </member>
-        <member name="M:Mtconnect.AdapterCommands.Ping(Mtconnect.Adapter)">
+        <member name="M:Mtconnect.AdapterCommands.Ping(Mtconnect.AdapterSdk.Contracts.IAdapter)">
             <summary>
             Handles the "<c>* PONG &lt;heartbeat&gt;</c>" command to the MTConnect Agent
             </summary>
             <returns>Informs the agent of all dataItems that can be published by the adapter</returns>
         </member>
-        <member name="M:Mtconnect.AdapterCommands.DataItems(Mtconnect.Adapter)">
+        <member name="M:Mtconnect.AdapterCommands.DataItems(Mtconnect.AdapterSdk.Contracts.IAdapter)">
             <summary>
             Handles the "<c>* dataItems: XXX</c>" command to the MTConnect Agent
             </summary>
             <returns>Informs the agent of all dataItems that can be published by the adapter</returns>
         </member>
-        <member name="M:Mtconnect.AdapterCommands.DataItemDescription(Mtconnect.Adapter,System.String)">
+        <member name="M:Mtconnect.AdapterCommands.DataItemDescription(Mtconnect.AdapterSdk.Contracts.IAdapter,System.String)">
             <summary>
             Handles the "<c>* dataItemDescription: XXX</c>" command to the MTConnect Agent
             </summary>
             <returns>Informs the agent of the DataItem description, if any, for the provided DataItem name</returns>
         </member>
-        <member name="M:Mtconnect.AdapterCommands.DataItem(Mtconnect.Adapter,System.String)">
+        <member name="M:Mtconnect.AdapterCommands.DataItem(Mtconnect.AdapterSdk.Contracts.IAdapter,System.String)">
             <summary>
             Handles the "<c>* dataItem: XXX</c>" command to the MTConnect Agent
             </summary>
             <returns>Informs the agent of the current value for the provided DataItem</returns>
         </member>
-        <member name="M:Mtconnect.AdapterCommands.DeviceModel(Mtconnect.Adapter,System.String)">
+        <member name="M:Mtconnect.AdapterCommands.DeviceModel(Mtconnect.AdapterSdk.Contracts.IAdapter,System.String)">
             <summary>
             Handles the "<c>* configuration: XXX</c>" command from the MTConnect Agent
             </summary>
@@ -298,7 +298,7 @@
             <param name="message">Optional name of the device to scope the configuration to.</param>
             <returns>Provides the Agent with a <c>MTConnectDevices</c> Response Document for the DataItem defined in the Adapter.</returns>
         </member>
-        <member name="M:Mtconnect.AdapterExtensions.TryAddDataItem(Mtconnect.Adapter,Mtconnect.AdapterSdk.Contracts.IDataItem,System.Boolean)">
+        <member name="M:Mtconnect.AdapterExtensions.TryAddDataItem(Mtconnect.AdapterSdk.Contracts.IAdapter,Mtconnect.AdapterSdk.Contracts.IDataItem,System.Boolean)">
             <summary>
             Attempts to add a <paramref name="dataItem"/> to the <paramref name="adapter"/> if the adapter does not already contain such a <see cref="T:Mtconnect.AdapterSdk.DataItems.DataItem"/>.
             </summary>
@@ -306,7 +306,7 @@
             <param name="dataItem">Reference to the data item to be added.</param>
             <returns>Flag for whether or not the data item has been added. Returns true if the data item has already been added.</returns>
         </member>
-        <member name="M:Mtconnect.AdapterExtensions.TryAddDataItems(Mtconnect.Adapter,Mtconnect.IAdapterDataModel)">
+        <member name="M:Mtconnect.AdapterExtensions.TryAddDataItems(Mtconnect.AdapterSdk.Contracts.IAdapter,Mtconnect.IAdapterDataModel)">
             <summary>
             Adds Data Items from properties in the <paramref name="model"/> that are decorated with the <see cref="T:Mtconnect.AdapterSdk.Contracts.Attributes.DataItemAttribute"/>.
             </summary>
@@ -328,13 +328,13 @@
             <param name="type">Reference to the model type to reflect upon.</param>
             <returns>Collection of properties that represent the value for <see cref="P:Mtconnect.AdapterSdk.Contracts.IDataItem.LastChanged"/></returns>
         </member>
-        <member name="M:Mtconnect.AdapterExtensions.TryUpdateValues(Mtconnect.Adapter,Mtconnect.IAdapterDataModel)">
+        <member name="M:Mtconnect.AdapterExtensions.TryUpdateValues(Mtconnect.AdapterSdk.Contracts.IAdapter,Mtconnect.IAdapterDataModel)">
             <summary>
-            Attempts to update the <see cref="T:Mtconnect.AdapterSdk.DataItems.DataItem"/>s of the <paramref name="adapter"/>.
+            Attempts to update the <see cref="T:Mtconnect.AdapterSdk.Contracts.IDataItem"/>s of the <paramref name="adapter"/>.
             </summary>
-            <param name="adapter">Reference to the MTConnect <see cref="T:Mtconnect.Adapter"/> to update the data items from.</param>
-            <param name="model">Reference to the data model to update the <paramref name="adapter"/>s <see cref="T:Mtconnect.AdapterSdk.DataItems.DataItem"/>s from.</param>
-            <returns>Flag for whether or not all <see cref="T:Mtconnect.AdapterSdk.DataItems.DataItem"/> values were updated from the <paramref name="model"/>.</returns>
+            <param name="adapter">Reference to the MTConnect <see cref="T:Mtconnect.AdapterSdk.Contracts.IAdapter"/> to update the data items from.</param>
+            <param name="model">Reference to the data model to update the <paramref name="adapter"/>s <see cref="T:Mtconnect.AdapterSdk.Contracts.IDataItem"/>s from.</param>
+            <returns>Flag for whether or not all <see cref="T:Mtconnect.AdapterSdk.Contracts.IDataItem"/> values were updated from the <paramref name="model"/>.</returns>
         </member>
         <member name="T:Mtconnect.AdapterSdk.AdapterOptions">
             <summary>
@@ -1247,31 +1247,6 @@
         </member>
         <member name="M:Mtconnect.AdapterSdk.Contracts.EventValue.#ctor(System.Object)">
             <inheritdoc />
-        </member>
-        <member name="T:Mtconnect.AdapterSdk.Contracts.IComponentModel">
-            <summary>
-            Represents the generic type for a Component data model. Used to breakdown <see cref="T:Mtconnect.IAdapterDataModel"/> implementations into device-component structures.
-            </summary>
-        </member>
-        <member name="T:Mtconnect.AdapterSdk.Contracts.IDataItemValue">
-            <summary>
-            Represents the abstract type for a DataItem value model. Used to implement defined types/subtypes from the MTConnect standard into <see cref="T:Mtconnect.AdapterSdk.Contracts.IComponentModel"/> implementations.
-            </summary>
-        </member>
-        <member name="P:Mtconnect.AdapterSdk.Contracts.IDataItemValue.Category">
-            <summary>
-            Represents the <c>category</c> attribute
-            </summary>
-        </member>
-        <member name="P:Mtconnect.AdapterSdk.Contracts.IDataItemValue.ObservationalType">
-            <summary>
-            Represents the <c>type</c> attribute
-            </summary>
-        </member>
-        <member name="P:Mtconnect.AdapterSdk.Contracts.IDataItemValue.ObservationalSubType">
-            <summary>
-            Represents the <c>subType</c> attribute
-            </summary>
         </member>
         <member name="T:Mtconnect.AdapterSdk.Contracts.Sample3DValue">
             <summary>
@@ -26720,7 +26695,7 @@
             A factory for generating <c>Devices.xml</c> configuration files for MTConnect Agent(s).
             </summary>
         </member>
-        <member name="M:Mtconnect.AdapterSdk.DeviceConfiguration.DeviceModelFactory.Create(Mtconnect.Adapter,System.String)">
+        <member name="M:Mtconnect.AdapterSdk.DeviceConfiguration.DeviceModelFactory.Create(Mtconnect.AdapterSdk.Contracts.IAdapter,System.String)">
             <summary>
             Creates a valid MTConnect <c>MTConnectDevices</c> Response Document based on the configuration of the Adapter.
             </summary>
@@ -26728,7 +26703,7 @@
             <param name="devicePrefix">Optional scope for a specific device.</param>
             <returns>Valid <c>MTConnectDevices</c> Response Document, aka <c>Devices.xml</c> or Device Configuration file.</returns>
         </member>
-        <member name="M:Mtconnect.AdapterSdk.DeviceConfiguration.DeviceModelFactory.ToString(Mtconnect.Adapter,System.String,System.String)">
+        <member name="M:Mtconnect.AdapterSdk.DeviceConfiguration.DeviceModelFactory.ToString(Mtconnect.AdapterSdk.Contracts.IAdapter,System.String,System.String)">
             <summary>
             Writes generated XML into a string. Optionally, you can specify a XPath of which part of the generated document you want stringified.
             </summary>
@@ -27002,10 +26977,10 @@
             <param name="adapter">Reference to the adapter expected to send the command</param>
             <returns>(<c>string</c>) MTConnect Agent Command</returns>
         </member>
-        <member name="M:Mtconnect.AgentCommands.DeviceName(Mtconnect.Adapter,System.String)">
-            <inheritdoc cref="M:Mtconnect.AgentCommands.DeviceUuid(Mtconnect.Adapter)"/>
+        <member name="M:Mtconnect.AgentCommands.DeviceName(Mtconnect.AdapterSdk.Contracts.IAdapter,System.String)">
+            <inheritdoc cref="!:DeviceUuid(IAdapter)"/>
         </member>
-        <member name="M:Mtconnect.AgentCommands.DeviceModel(Mtconnect.Adapter,System.String)">
+        <member name="M:Mtconnect.AgentCommands.DeviceModel(Mtconnect.AdapterSdk.Contracts.IAdapter,System.String)">
             <summary>
             Creates the "<c>* deviceModel: &lt;Multiline XML&gt;</c>" MTConnect Agent command
             </summary>
@@ -27014,7 +26989,7 @@
             See <seealso href="https://mtcup.org/en/Protocol#commands">MTCup</seealso> site.
             </remarks>
             <param name="adapter">Reference to the adapter expected to send the command</param>
-            <param name="devicePrefix">Optional scope for a specific device prefix, if different than <see cref="P:Mtconnect.Adapter.DeviceUUID"/></param>
+            <param name="devicePrefix">Optional scope for a specific device prefix, if different than <see cref="P:Mtconnect.AdapterSdk.Contracts.IAdapter.DeviceUUID"/></param>
             <returns>(<c>string</c>) MTConnect Agent Command</returns>
         </member>
         <member name="M:Mtconnect.AgentCommands.Description">
@@ -27028,7 +27003,7 @@
             <returns>(<c>string</c>) MTConnect Agent Command</returns>
             <exception cref="T:System.NotImplementedException"></exception>
         </member>
-        <member name="M:Mtconnect.AgentCommands.Manufacturer(Mtconnect.Adapter)">
+        <member name="M:Mtconnect.AgentCommands.Manufacturer(Mtconnect.AdapterSdk.Contracts.IAdapter)">
             <summary>
             Creates the "<c>* manufacturer: XXX</c>" MTConnect Agent command
             </summary>
@@ -27039,7 +27014,7 @@
             <param name="adapter">Reference to the adapter expected to send the command</param>
             <returns>(<c>string</c>) MTConnect Agent Command</returns>
         </member>
-        <member name="M:Mtconnect.AgentCommands.MtconnectVersion(Mtconnect.Adapter,System.String)">
+        <member name="M:Mtconnect.AgentCommands.MtconnectVersion(Mtconnect.AdapterSdk.Contracts.IAdapter,System.String)">
             <summary>
             Creates the "<c>* mtconnectVersion: &lt;version&gt;</c>" MTConnect Agent command
             </summary>
@@ -27083,7 +27058,7 @@
             </remarks>
             <returns>(<c>string</c>) MTConnect Agent Command</returns>
         </member>
-        <member name="M:Mtconnect.AgentCommands.SerialNumber(Mtconnect.Adapter)">
+        <member name="M:Mtconnect.AgentCommands.SerialNumber(Mtconnect.AdapterSdk.Contracts.IAdapter)">
             <summary>
             Creates the "<c>* serialNumber: XXX</c>" MTConnect Agent command
             </summary>
@@ -27105,7 +27080,7 @@
             <returns>(<c>string</c>) MTConnect Agent Command</returns>
             <exception cref="T:System.NotImplementedException"></exception>
         </member>
-        <member name="M:Mtconnect.AgentCommands.Station(Mtconnect.Adapter)">
+        <member name="M:Mtconnect.AgentCommands.Station(Mtconnect.AdapterSdk.Contracts.IAdapter)">
             <summary>
             Creates the "<c>* station: XXX</c>" MTConnect Agent command
             </summary>

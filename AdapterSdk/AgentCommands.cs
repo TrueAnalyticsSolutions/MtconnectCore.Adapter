@@ -1,4 +1,5 @@
 ﻿using Microsoft.Extensions.Logging;
+using Mtconnect.AdapterSdk.Contracts;
 using Mtconnect.AdapterSdk.DeviceConfiguration;
 using System;
 using System.IO;
@@ -71,8 +72,8 @@ namespace Mtconnect
             return "* device: " + adapter?.DeviceUUID ?? Guid.NewGuid().ToString();
         }
 
-        /// <inheritdoc cref="DeviceUuid(Adapter)"/>
-        public static string DeviceName(Adapter adapter, string devicePrefix = null)
+        /// <inheritdoc cref="DeviceUuid(IAdapter)"/>
+        public static string DeviceName(IAdapter adapter, string devicePrefix = null)
         {
             return "* device: " + devicePrefix ?? adapter?.DeviceName;
         }
@@ -85,9 +86,9 @@ namespace Mtconnect
         /// See <seealso href="https://mtcup.org/en/Protocol#commands">MTCup</seealso> site.
         /// </remarks>
         /// <param name="adapter">Reference to the adapter expected to send the command</param>
-        /// <param name="devicePrefix">Optional scope for a specific device prefix, if different than <see cref="Adapter.DeviceUUID"/></param>
+        /// <param name="devicePrefix">Optional scope for a specific device prefix, if different than <see cref="IAdapter.DeviceUUID"/></param>
         /// <returns>(<c>string</c>) MTConnect Agent Command</returns>
-        public static string DeviceModel(Adapter adapter, string devicePrefix = null)
+        public static string DeviceModel(IAdapter adapter, string devicePrefix = null)
         {
             if (adapter == null)
             {
@@ -126,7 +127,7 @@ namespace Mtconnect
         /// </remarks>
         /// <param name="adapter">Reference to the adapter expected to send the command</param>
         /// <returns>(<c>string</c>) MTConnect Agent Command</returns>
-        public static string Manufacturer(Adapter adapter)
+        public static string Manufacturer(IAdapter adapter)
             => !string.IsNullOrEmpty(adapter?.Manufacturer)
                 ? "* manufacturer: " + adapter.Manufacturer
                 : null;
@@ -141,7 +142,7 @@ namespace Mtconnect
         /// <param name="adapter">Reference to the adapter expected to send the command</param>
         /// <param name="devicePrefix">Optional scope for a specific device prefix, if different than <see cref="Adapter.DeviceUUID"/></param>
         /// <returns>(<c>string</c>) MTConnect Agent Command</returns>
-        public static string MtconnectVersion(Adapter adapter, string devicePrefix = null)
+        public static string MtconnectVersion(IAdapter adapter, string devicePrefix = null)
         {
             if (adapter == null)
             {
@@ -202,7 +203,7 @@ namespace Mtconnect
         /// </remarks>
         /// <param name="adapter">Reference to the adapter expected to send the command</param>
         /// <returns>(<c>string</c>) MTConnect Agent Command</returns>
-        public static string SerialNumber(Adapter adapter)
+        public static string SerialNumber(IAdapter adapter)
             => !string.IsNullOrEmpty(adapter?.SerialNumber)
                 ? "* serialNumber: " + adapter.SerialNumber
                 : null;
@@ -228,7 +229,7 @@ namespace Mtconnect
         /// </remarks>
         /// <param name="adapter">Reference to the adapter expected to send the command</param>
         /// <returns>(<c>string</c>) MTConnect Agent Command</returns>
-        public static string Station(Adapter adapter)
+        public static string Station(IAdapter adapter)
             => !string.IsNullOrEmpty(adapter?.StationId)
                 ? "* station: " + adapter.StationId
                 : null;

@@ -39,7 +39,7 @@ namespace Mtconnect.AdapterSdk.DeviceConfiguration
         /// <param name="adapter">Reference to the adapter to build the XML from.</param>
         /// <param name="devicePrefix">Optional scope for a specific device.</param>
         /// <returns>Valid <c>MTConnectDevices</c> Response Document, aka <c>Devices.xml</c> or Device Configuration file.</returns>
-        public XmlDocument Create(Adapter adapter, string devicePrefix = null)
+        public XmlDocument Create(IAdapter adapter, string devicePrefix = null)
         {
             // Get the Adapter Version, used to set namespaces
             //string adapterVersion = GetMaximumMtconnectVersion(adapter);
@@ -70,7 +70,7 @@ namespace Mtconnect.AdapterSdk.DeviceConfiguration
 
             // Build Header element
             var xHeader = xRoot.AppendChild(xDoc.CreateElement("Header"));
-            xHeader.Attributes.Append(xDoc.CreateAttribute("creationTime")).Value = DateTime.UtcNow.ToString(adapter.DATE_TIME_FORMAT);// TODO: Ensure this is in the proper format
+            xHeader.Attributes.Append(xDoc.CreateAttribute("creationTime")).Value = DateTime.UtcNow.ToString(Constants.DATE_TIME_FORMAT);// TODO: Ensure this is in the proper format
             xHeader.Attributes.Append(xDoc.CreateAttribute("sender")).Value = AppDomain.CurrentDomain.FriendlyName;
             xHeader.Attributes.Append(xDoc.CreateAttribute("instanceId")).Value = "1";
             xHeader.Attributes.Append(xDoc.CreateAttribute("bufferSize")).Value = "1";
@@ -122,7 +122,7 @@ namespace Mtconnect.AdapterSdk.DeviceConfiguration
             xDoc.InnerXml = xDoc.InnerXml.Replace("{{ version }}", GetMaximumMtconnectVersion());
             return xDoc;
         }
-        private void AddComponents(XmlElement parentElement, Type type, Adapter adapter, string modelPath, string componentPrefix = null)
+        private void AddComponents(XmlElement parentElement, Type type, IAdapter adapter, string modelPath, string componentPrefix = null)
         {
             var dataItemsElement = parentElement.OwnerDocument.CreateElement("DataItems");
             var componentsElement = parentElement.OwnerDocument.CreateElement("Components");
@@ -153,7 +153,7 @@ namespace Mtconnect.AdapterSdk.DeviceConfiguration
                 parentElement.AppendChild(componentsElement);
         }
 
-        private bool ProcessDataItem(XmlElement parentElement, Adapter adapter, string modelPath, XmlElement dataItemsElement, PropertyInfo property, DataItemAttribute dataItemAttribute)
+        private bool ProcessDataItem(XmlElement parentElement, IAdapter adapter, string modelPath, XmlElement dataItemsElement, PropertyInfo property, DataItemAttribute dataItemAttribute)
         {
             if (parentElement == null)
                 return false;
@@ -241,7 +241,7 @@ namespace Mtconnect.AdapterSdk.DeviceConfiguration
             return hasDataItems;
         }
 
-        private bool ProcessComponentModel(XmlElement parentElement, Adapter adapter, string modelPath, string componentPath, XmlElement componentsElement, PropertyInfo property, DataItemAttribute dataItemAttribute)
+        private bool ProcessComponentModel(XmlElement parentElement, IAdapter adapter, string modelPath, string componentPath, XmlElement componentsElement, PropertyInfo property, DataItemAttribute dataItemAttribute)
         {
             bool hasComponents = true;
             var componentModelImplementationType = GetComponentModelImplementationType(property.PropertyType);
@@ -433,7 +433,7 @@ namespace Mtconnect.AdapterSdk.DeviceConfiguration
 
         // TODO: Update DataItem to yield the enum of Type and SubType.
         // TODO: Update DataItem to internally manage the "Introduced" and "Deprecated" properties according to the Type/SubType
-        public static string GetMaximumMtconnectVersion(Adapter adapter, string devicePrefix = null)
+        public static string GetMaximumMtconnectVersion(IAdapter adapter, string devicePrefix = null)
         {
             var factory = new DeviceModelFactory();
             // Need to generate XML in order to navigate through data items and update the MaximumVersion
@@ -456,7 +456,7 @@ namespace Mtconnect.AdapterSdk.DeviceConfiguration
         /// <param name="devicePrefix">Reference to the specific device data item(s) you want represented in the generated XML.</param>
         /// <param name="xpath">Optional XPath for the stringified XML</param>
         /// <returns>Stringified XML. Returns <c>null</c> when there is no <see cref="XmlNode"/> result from generation or from XPath.</returns>
-        public static string ToString(Adapter adapter, string devicePrefix = null, string xpath = null)
+        public static string ToString(IAdapter adapter, string devicePrefix = null, string xpath = null)
         {
             if (adapter == null)
             {

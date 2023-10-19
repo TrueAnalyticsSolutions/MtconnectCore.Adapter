@@ -28,6 +28,11 @@ namespace Mtconnect.AdapterSdk.Contracts
         event AdapterStoppedHandler OnStopped;
 
         /// <summary>
+        /// Reference to a logging service.
+        /// </summary>
+        ILogger<IAdapter> _logger { get; }
+
+        /// <summary>
         /// A unique identifier for the device this Adapter is monitoring. <b>NOTE</b>: The same uuid can be referenced in multiple Adapter instances.
         /// </summary>
         string DeviceUUID { get; set; }
@@ -93,6 +98,14 @@ namespace Mtconnect.AdapterSdk.Contracts
         /// Reference to the options provided in the constructor.
         /// </summary>
         IAdapterOptions Options { get; }
+
+        /// <summary>
+        /// Provides a reference to a <see cref="IDataItem"/> from the internal collection based on the provided <paramref name="name"/>.
+        /// </summary>
+        /// <param name="name"><inheritdoc cref="IDataItem.Name" path="/summary"/></param>
+        /// <param name="devicePrefix"><inheritdoc cref="IDataItem.DevicePrefix" path="/summary"/></param>
+        /// <returns>Reference to the <see cref="IDataItem"/> with the matching <paramref name="name"/>.</returns>
+        IDataItem this[string name, string devicePrefix = null] { get; set; }
 
         /// <summary>
         /// Determines whether or not a DataItem with the same <see cref="IDataItem.Name"/> (and possibly <see cref="IDataItem.DevicePrefix"/> exists in this adapter.

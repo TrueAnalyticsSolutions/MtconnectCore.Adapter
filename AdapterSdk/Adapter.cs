@@ -43,7 +43,7 @@ namespace Mtconnect
         /// <summary>
         /// Reference to a logging service.
         /// </summary>
-        public readonly ILogger<Adapter> _logger;
+        public ILogger<IAdapter> _logger { get; internal set; }
 
         /// <summary>
         /// A unique identifier for the device this Adapter is monitoring. <b>NOTE</b>: The same uuid can be referenced in multiple Adapter instances.

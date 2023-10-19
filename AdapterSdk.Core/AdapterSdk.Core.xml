@@ -127,6 +127,11 @@
             Occurs when the Adapter stops.
             </summary>
         </member>
+        <member name="P:Mtconnect.AdapterSdk.Contracts.IAdapter._logger">
+            <summary>
+            Reference to a logging service.
+            </summary>
+        </member>
         <member name="P:Mtconnect.AdapterSdk.Contracts.IAdapter.DeviceUUID">
             <summary>
             A unique identifier for the device this Adapter is monitoring. <b>NOTE</b>: The same uuid can be referenced in multiple Adapter instances.
@@ -193,6 +198,14 @@
             <summary>
             Reference to the options provided in the constructor.
             </summary>
+        </member>
+        <member name="P:Mtconnect.AdapterSdk.Contracts.IAdapter.Item(System.String,System.String)">
+            <summary>
+            Provides a reference to a <see cref="T:Mtconnect.AdapterSdk.Contracts.IDataItem"/> from the internal collection based on the provided <paramref name="name"/>.
+            </summary>
+            <param name="name"><inheritdoc cref="P:Mtconnect.AdapterSdk.Contracts.IDataItem.Name" path="/summary"/></param>
+            <param name="devicePrefix"><inheritdoc cref="P:Mtconnect.AdapterSdk.Contracts.IDataItem.DevicePrefix" path="/summary"/></param>
+            <returns>Reference to the <see cref="T:Mtconnect.AdapterSdk.Contracts.IDataItem"/> with the matching <paramref name="name"/>.</returns>
         </member>
         <member name="M:Mtconnect.AdapterSdk.Contracts.IAdapter.Contains(System.String,System.String)">
             <summary>

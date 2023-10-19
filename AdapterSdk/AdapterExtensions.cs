@@ -19,7 +19,7 @@ namespace Mtconnect
         /// <param name="adapter">Reference to the adapter to add the data item onto.</param>
         /// <param name="dataItem">Reference to the data item to be added.</param>
         /// <returns>Flag for whether or not the data item has been added. Returns true if the data item has already been added.</returns>
-        public static bool TryAddDataItem(this Adapter adapter, IDataItem dataItem, bool logDuplicationMessage = true)
+        public static bool TryAddDataItem(this IAdapter adapter, IDataItem dataItem, bool logDuplicationMessage = true)
         {
             if (adapter.Contains(dataItem))
             {
@@ -38,7 +38,7 @@ namespace Mtconnect
         /// <param name="adapter">Reference to the MTConnect <see cref="Adapter"/> to add the data items onto.</param>
         /// <param name="model">Reference to a data model containing <see cref="DataItemAttribute"/>s.</param>
         /// <returns>Flag for whether or not all decorated <see cref="DataItemAttribute"/>s were added to the adapter.</returns>
-        public static bool TryAddDataItems(this Adapter adapter, IAdapterDataModel model)
+        public static bool TryAddDataItems(this IAdapter adapter, IAdapterDataModel model)
         {
             return adapter.TryAddDataItems(model, string.Empty, string.Empty);
         }
@@ -77,7 +77,7 @@ namespace Mtconnect
                 typeof(Message),
                 typeof(TimeSeries)
         };
-        private static bool TryAddDataItems(this Adapter adapter, object model, string modelPath = "", string dataItemNamePrefix = "", string dataItemDescriptionPrefix = "")
+        private static bool TryAddDataItems(this IAdapter adapter, object model, string modelPath = "", string dataItemNamePrefix = "", string dataItemDescriptionPrefix = "")
         {
             if (model == null)
                 return false;
@@ -352,16 +352,16 @@ namespace Mtconnect
         }
 
         /// <summary>
-        /// Attempts to update the <see cref="DataItem"/>s of the <paramref name="adapter"/>.
+        /// Attempts to update the <see cref="IDataItem"/>s of the <paramref name="adapter"/>.
         /// </summary>
-        /// <param name="adapter">Reference to the MTConnect <see cref="Adapter"/> to update the data items from.</param>
-        /// <param name="model">Reference to the data model to update the <paramref name="adapter"/>s <see cref="DataItem"/>s from.</param>
-        /// <returns>Flag for whether or not all <see cref="DataItem"/> values were updated from the <paramref name="model"/>.</returns>
-        public static bool TryUpdateValues(this Adapter adapter, IAdapterDataModel model)
+        /// <param name="adapter">Reference to the MTConnect <see cref="IAdapter"/> to update the data items from.</param>
+        /// <param name="model">Reference to the data model to update the <paramref name="adapter"/>s <see cref="IDataItem"/>s from.</param>
+        /// <returns>Flag for whether or not all <see cref="IDataItem"/> values were updated from the <paramref name="model"/>.</returns>
+        public static bool TryUpdateValues(this IAdapter adapter, IAdapterDataModel model)
         {
             return TryUpdateValues(adapter, model, string.Empty);
         }
-        private static bool TryUpdateValues(this Adapter adapter, object model, string dataItemPrefix)
+        private static bool TryUpdateValues(this IAdapter adapter, object model, string dataItemPrefix)
         {
             if (model == null)
                 return false;
