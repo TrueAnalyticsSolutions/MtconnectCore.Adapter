@@ -1,4 +1,4 @@
-name: Publish to Package Registries
+name: Publish Mtconnect.AdapterSdk.Core to NuGet
 
 on: 
   release:
