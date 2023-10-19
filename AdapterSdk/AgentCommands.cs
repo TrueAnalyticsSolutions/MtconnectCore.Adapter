@@ -67,7 +67,7 @@ namespace Mtconnect
         /// </remarks>
         /// <param name="adapter">Reference to the adapter expected to send the command</param>
         /// <returns>(<c>string</c>) MTConnect Agent Command</returns>
-        public static string DeviceUuid(Adapter adapter)
+        public static string DeviceUuid(IAdapter adapter)
         {
             return "* device: " + adapter?.DeviceUUID ?? Guid.NewGuid().ToString();
         }
