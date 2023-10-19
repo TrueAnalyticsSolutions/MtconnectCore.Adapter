@@ -55,9 +55,9 @@ namespace Mtconnect.AdapterSdk.UPnP
         public virtual TimeSpan MaxAge { get; set; } = TimeSpan.FromSeconds(1800);
 
         /// <inheritdoc />
-        public UPnPDeviceServiceModel Model { get; set; }
+        public IUPnPDeviceServiceModel Model { get; set; }
 
-        public UPnPNotifyMessage(IUPnPService broadcaster, UPnPDeviceServiceModel model)
+        public UPnPNotifyMessage(IUPnPService broadcaster, IUPnPDeviceServiceModel model)
         {
             Model = model;
             Host = broadcaster.BroadcastEndpoint.ToString();

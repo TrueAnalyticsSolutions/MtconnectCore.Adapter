@@ -85,7 +85,7 @@ namespace Mtconnect.AdapterSdk.UPnP
 
         private UPnPDeviceServiceModel _model = null;
         /// <inheritdoc />
-        public UPnPDeviceServiceModel Model => _model ?? (_model = ConstructDescription());
+        public IUPnPDeviceServiceModel Model => _model ?? (_model = ConstructDescription());
 
         /// <summary>
         /// A timestamp (UTC) referencing the Adapter was started. Returns null if the Adapter is not currently running.
@@ -176,7 +176,7 @@ namespace Mtconnect.AdapterSdk.UPnP
         /// <returns>Reference to the <see cref="Model"/></returns>
         /// <exception cref="FileNotFoundException"></exception>
         /// <exception cref="InvalidOperationException"></exception>
-        private UPnPDeviceServiceModel LoadUPnPDescription()
+        private IUPnPDeviceServiceModel LoadUPnPDescription()
         {
             string faviconPath = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "MTConnect_8-bit.png");
             if (!File.Exists(faviconPath))

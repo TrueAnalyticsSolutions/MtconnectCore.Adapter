@@ -26762,43 +26762,6 @@
             Helper class for handling scripting of the Adapter.
             </summary>
         </member>
-        <member name="T:Mtconnect.AdapterSdk.UPnP.IUPnPMessage">
-            <summary>
-            A generic, base definition for a UPnP Message. 
-            </summary>
-        </member>
-        <member name="P:Mtconnect.AdapterSdk.UPnP.IUPnPMessage.Host">
-            <summary>
-            Reference to the SSDP <c>HOST</c>
-            <br/>
-            Example: <example><c>239.255.255.250:1900</c></example>
-            </summary>
-        </member>
-        <member name="P:Mtconnect.AdapterSdk.UPnP.IUPnPMessage.NotificationSubType">
-            <summary>
-            Reference to tthe SSDP <c>NTS</c>
-            </summary>
-        </member>
-        <member name="P:Mtconnect.AdapterSdk.UPnP.IUPnPMessage.ServiceLocation">
-            <summary>
-            Reference to the SSDP <c>LOCATION</c>
-            </summary>
-        </member>
-        <member name="P:Mtconnect.AdapterSdk.UPnP.IUPnPMessage.BootId">
-            <summary>
-            Reference to the SSDP <c>BOOTID.UPNP.ORG</c>
-            </summary>
-        </member>
-        <member name="P:Mtconnect.AdapterSdk.UPnP.IUPnPMessage.NextBootId">
-            <summary>
-            Reference to the SSDP <c>NEXTBOOTID.UPNP.ORG</c>
-            </summary>
-        </member>
-        <member name="P:Mtconnect.AdapterSdk.UPnP.IUPnPMessage.Model">
-            <summary>
-            Reference to the static model that describes the device and service for UPnP.
-            </summary>
-        </member>
         <member name="T:Mtconnect.AdapterSdk.UPnP.UPnPNotifyMessage">
             <summary>
             A payload to be published to the SSDP multicast group for UPnP. This message produces the <c>NOTIFY *</c> message for NTS options: <c>ssdp:alive</c>, <c>ssdp:update</c>, and <c>ssdp:byebye</c>.
@@ -27379,95 +27342,6 @@
             <typeparam name="T">Generic type expected to be in the values of a <see cref="T:System.Collections.Generic.List`1"/></typeparam>
             <param name="type">The <see cref="T:System.Type"/> to be evaluated</param>
             <returns>Flag for whether or not the provided type is an implementation of <see cref="T:System.Collections.Generic.List`1"/> where T is of type <typeparamref name="T"/></returns>
-        </member>
-        <member name="T:Mtconnect.UPnP.IUPnPService">
-            <summary>
-            A generic implementation to represent a UDP broadcaster service.
-            </summary>
-        </member>
-        <member name="P:Mtconnect.UPnP.IUPnPService.UPnP_DescriptionEndpoint">
-            <summary>
-            UPnP Device Description Address. Example: <example>http://10.0.0.2:7878/upnp/description.xml</example>
-            </summary>
-        </member>
-        <member name="P:Mtconnect.UPnP.IUPnPService.BroadcastAddress">
-            <summary>
-            UPnP Notification Address. Example: <example><c>239.255.255.250</c></example>
-            </summary>
-        </member>
-        <member name="P:Mtconnect.UPnP.IUPnPService.BroadcastEndpoint">
-            <summary>
-            UPnP Notification Endpoint. Example: <example><c>239.255.255.250:1900</c></example>
-            </summary>
-        </member>
-        <member name="P:Mtconnect.UPnP.IUPnPService.IsBusy">
-            <summary>
-            A flag indicating whether or not the service is busy constructing and sending a message.
-            </summary>
-        </member>
-        <member name="P:Mtconnect.UPnP.IUPnPService.LastSent">
-            <summary>
-            A timestamp (UTC) referencing the last time a broadcast message was sent.
-            </summary>
-        </member>
-        <member name="P:Mtconnect.UPnP.IUPnPService.UpdateRate">
-            <summary>
-            A reference to how frequently the broadcaster transmits the discovery advertisement.
-            </summary>
-        </member>
-        <member name="P:Mtconnect.UPnP.IUPnPService.Model">
-            <summary>
-            Reference to the static model that describes the device and service for UPnP.
-            </summary>
-        </member>
-        <member name="M:Mtconnect.UPnP.IUPnPService.Start(System.Threading.CancellationToken)">
-            <summary>
-            Begins periodically broadcasting connection information for the Adapter. This method immediately sends a message too.
-            </summary>
-            <param name="cancellationToken">An optional cancellation token to automatically stop broadcasting</param>
-        </member>
-        <member name="M:Mtconnect.UPnP.IUPnPService.Stop">
-            <summary>
-            Stops the periodic broadcasting of connection information for the Adapter.
-            </summary>
-        </member>
-        <member name="M:Mtconnect.UPnP.IUPnPService.ConvertLocalhost(System.String)">
-            <summary>
-            
-            </summary>
-            <param name="localhostAddress"></param>
-            <returns></returns>
-            <exception cref="T:System.InvalidOperationException"></exception>
-        </member>
-        <member name="T:Mtconnect.UPnP.SSDP_NTS">
-            <summary>
-            Represents available values for SSDP Notification Sub Type header field
-            </summary>
-        </member>
-        <member name="F:Mtconnect.UPnP.SSDP_NTS.Alive">
-            <summary>
-            Represents SSDP Notification Sub Type <c>ssdp:alive</c>
-            </summary>
-        </member>
-        <member name="F:Mtconnect.UPnP.SSDP_NTS.ByeBye">
-            <summary>
-            Represents SSDP Notification Sub Type <c>ssdp:byebye</c>
-            </summary>
-        </member>
-        <member name="F:Mtconnect.UPnP.SSDP_NTS.Update">
-            <summary>
-            Represents SSDP Notification Sub Type <c>ssdp:update</c>
-            </summary>
-        </member>
-        <member name="F:Mtconnect.UPnP.SSDP_NTS.Propchange">
-            <summary>
-            Represents SSDP Notification Sub Type <c>ssdp:propchange</c>
-            </summary>
-        </member>
-        <member name="F:Mtconnect.UPnP.SSDP_NTS.Unknown">
-            <summary>
-            Represents SSDP Notification Sub Type <c>ssdp:uknown</c>
-            </summary>
         </member>
         <member name="T:Mtconnect.UPnP.UPnPDeviceServiceModel">
             <summary>
