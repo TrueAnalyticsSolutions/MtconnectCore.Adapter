@@ -1,60 +1,35 @@
 ﻿using Mtconnect.AdapterSdk.Contracts;
-using Mtconnect.AdapterSdk.Contracts.Attributes;
 using Mtconnect.AdapterSdk.DataItemTypes;
 using System;
 using System.Collections.Generic;
-using System.Data;
-using System.Reflection;
 
 namespace Mtconnect.AdapterSdk.DataItems
 {
-    ///// <summary>
-    ///// Triggered when the value of a DataItem has changed.
-    ///// </summary>
-    ///// <param name="sender">Reference to the <see cref="DataItem"/>.</param>
-    ///// <param name="e">Reference to the event arguments for the data changed event.</param>
-    //public delegate void DataItemChangedHandler(DataItem sender, DataItemChangedEventArgs e);
-
-    /// <summary>
-    /// Simple base data item class. Has an abstract value and a name. It keeps track if it has changed since the last time it was reset.
-    /// </summary>
+    /// <inheritdoc />
     public abstract class DataItem : IDataItem
     {
-        /// <summary>
-        /// Occurrs when the value of a DataItem has changed.
-        /// </summary>
+        /// <inheritdoc />
         public event DataItemChangedHandler OnDataItemChanged;
 
-        /// <summary>
-        /// Reference to the type of source model (see <see cref="IAdapterDataModel"/>) this DataItem was constructed from.
-        /// </summary>
+        /// <inheritdoc />
         public string ModelPath { get; set; } = null;
 
-        /// <summary>
-        /// Refers to the category for the MTConnect observational type.
-        /// </summary>
+        /// <inheritdoc />
         public virtual string Category { get; }
 
-        /// <summary>
-        /// A <see cref="System.Type"/> reference to the <see cref="Enum"/> according the MTConnect Standard. See <see cref="EventTypes"/>, <see cref="SampleTypes"/>, and <see cref="ConditionTypes"/> for examples.
-        /// </summary>
+        /// <inheritdoc />
         public Enum TypeEnum { get; protected set; }
-        /// <summary>
-        /// A <see cref="System.Type"/> reference to the <see cref="Enum"/> according to the MTConnect Standard and the provided <see cref="TypeEnum"/> if it is decorated with <see cref="ObservationalSubTypeAttribute"/>.
-        /// </summary>
+
+        /// <inheritdoc />
         public Enum SubTypeEnum { get; protected set; }
 
-        /// <summary>
-        /// A flag for whether or not the <see cref="ObservationalType"/> has been validated against the MTConnect Standard.
-        /// </summary>
+        /// <inheritdoc />
         public bool TypeValidated { get; protected set; } = false;
         /// <summary>
         /// The protected value for <see cref="ObservationalType"/>.
         /// </summary>
         protected string Type { get; set; }
-        /// <summary>
-        /// The intended <c>type</c> for the Data Item. See <see cref="EventTypes">Events</see>, <see cref="SampleTypes">Samples</see>, and <see cref="ConditionTypes">Conditions</see>. The <c>type</c> can also be extended according to the standard be adding the prefix <c>x:</c> to indicate an extended type.
-        /// </summary>
+        /// <inheritdoc />
         public virtual string ObservationalType
         {
             get => Type;
@@ -96,9 +71,7 @@ namespace Mtconnect.AdapterSdk.DataItems
         /// The protected value for <see cref="ObservationalSubType"/>.
         /// </summary>
         private string SubType { get; set; }
-        /// <summary>
-        /// The intended <c>subType</c> for the Data Item. Refer to the appropriate <see cref="EventTypes">Events</see>, <see cref="SampleTypes">Samples</see>, and <see cref="ConditionTypes">Conditions</see>. The <c>subType</c> can also be extended according to the standard be adding the prefix <c>x:</c> to indicate an extended type.
-        /// </summary>
+        /// <inheritdoc />
         public virtual string ObservationalSubType
         {
             get => SubType;
@@ -119,24 +92,16 @@ namespace Mtconnect.AdapterSdk.DataItems
             }
         }
 
-        /// <summary>
-        /// Reference to the <c>nativeUnits</c> of the DataItem
-        /// </summary>
+        /// <inheritdoc />
         public virtual string Units { get; set; }
 
-        /// <summary>
-        /// The name of the data item.
-        /// </summary>
+        /// <inheritdoc />
         public string Name { get; set; }
 
-        /// <summary>
-        /// A description of the DataItem such as a trace of its source or the methodology for a composite data type.
-        /// </summary>
+        /// <inheritdoc />
         public string Description { get; internal set; }
 
-        /// <summary>
-        /// Optional device prefix.
-        /// </summary>
+        /// <inheritdoc />
         public string DevicePrefix { get; set; } = string.Empty;
 
         /// <summary>
@@ -147,9 +112,7 @@ namespace Mtconnect.AdapterSdk.DataItems
         /// A falg for whether or not the <see cref="Value"/> has been validated against the MTConnect Standard.
         /// </summary>
         protected bool ValueValidated { get; set; } = false;
-        /// <summary>
-        /// Get and set the Value property. This will check if the value has changed and set the changed flag appropriately. Automatically boxes types so will work for any data.
-        /// </summary>
+        /// <inheritdoc />
         public object Value
         {
             set
@@ -195,32 +158,19 @@ namespace Mtconnect.AdapterSdk.DataItems
             ? (value is string ? !string.IsNullOrEmpty(value as string) : value != null)
             : value != null;
 
-        /// <summary>
-        /// Timestamp of when the <see cref="Value"/> was last Changed.
-        /// </summary>
+        /// <inheritdoc />
         public DateTime? LastChanged { get; set; }
 
-        /// <summary>
-        /// A flag to indicate if the data item's value has changed since it 
-        /// has last been set.
-        /// </summary>
+        /// <inheritdoc />
         public bool HasChanged { get; protected set; }
 
-        /// <summary>
-        /// An indicator that this data item must be sent on a separate line.
-        /// This is done for all data items that are more complex than simple 
-        /// Key|Value pairs.
-        /// </summary>
+        /// <inheritdoc />
         public virtual bool HasNewLine { get; protected set; }
 
-        /// <summary>
-        /// Flag for whether or not this DataItem has a different source for the expected output Timestamp.
-        /// </summary>
+        /// <inheritdoc />
         public bool HasTimestampOverride { get; set; }
 
-        /// <summary>
-        /// An expression that can be used to apply additional formatting or transformations to the DataItem value.
-        /// </summary>
+        /// <inheritdoc />
         public Func<object, object> FormatValue { get; set; }
 
         /// <summary>
@@ -242,20 +192,13 @@ namespace Mtconnect.AdapterSdk.DataItems
             ObservationalSubType = subtype;
         }
 
-        /// <summary>
-        /// Make this data item <c>UNAVAILABLE</c>.
-        /// </summary>
+        /// <inheritdoc />
         public virtual void Unavailable() { Value = Constants.UNAVAILABLE; }
 
-        /// <summary>
-        /// Checks if the data item is unavailable.
-        /// </summary>
-        /// <returns>true if Unavailable</returns>
+        /// <inheritdoc />
         public bool IsUnavailable() => Value?.Equals(Constants.UNAVAILABLE) == true;
 
-        /// <summary>
-        /// Forces this <see cref="DataItem"/> to indicate that the <see cref="Value"/> has changed.
-        /// </summary>
+        /// <inheritdoc />
         public void ForceChanged()
         {
             HasChanged = true;
@@ -289,29 +232,16 @@ namespace Mtconnect.AdapterSdk.DataItems
                 return $"{DevicePrefix}:{Name}|{Value}";
         }
 
-        /// <summary>
-        /// These methods are mainly for conditions. They allow for
-        /// mark and sweep of the condition activations.
-        /// </summary>
+        /// <inheritdoc />
         public virtual void Begin() { }
 
-        /// <summary>
-        /// This is called before we send the actual changed data. It does the diff from the previous state and finds all the activations that need to be removed. This also check to see if all the activations have been removed because we only need to do a single normal with no native code to clear all. This is not required for simple conditions.
-        /// </summary>
+        /// <inheritdoc />
         public virtual void Prepare() { }
 
-        /// <summary>
-        /// Reset the Changed flag.
-        /// </summary>
+        /// <inheritdoc />
         public virtual void Cleanup() { HasChanged = false; }
 
-        /// <summary>
-        /// Get a list of all the changed data items. Since this is a 
-        /// single value, just return a list with one item if it has 
-        /// changed
-        /// </summary>
-        /// <param name="all">true means to return this data item regardless of the 
-        /// changed flag. This is used to send initial data back to a new client.</param>
+        /// <inheritdoc />
         /// <returns>The changed data item</returns>
         public virtual List<IDataItem> ItemList(bool all = false)
         {
@@ -330,10 +260,7 @@ namespace Mtconnect.AdapterSdk.DataItems
             OnDataItemChanged?.Invoke(this, e);
         }
 
-        /// <summary>
-        /// Performs validation against the DataItem value based on the <see cref="ObservationalType"/> and <see cref="ObservationalSubType"/>.
-        /// </summary>
-        /// <returns>Flag of whether or not the result yields anything other than <see cref="ValidationLevel.VALID"/>.</returns>
+        /// <inheritdoc />
         public virtual bool Validate(out ValidationResult result)
         {
 
@@ -427,11 +354,7 @@ namespace Mtconnect.AdapterSdk.DataItems
             return hashCode;
         }
 
-        /// <summary>
-        /// Copies the current DataItem into a new object.
-        /// </summary>
-        /// <typeparam name="T"></typeparam>
-        /// <returns></returns>
+        /// <inheritdoc />
         public abstract IDataItem Copy();
     }
 }

@@ -273,7 +273,13 @@ namespace Mtconnect.AdapterSdk.DeviceConfiguration
 
                     componentsElement.AppendChild(componentElement);
                     // TODO: Ensure sub-components get parent component(s) name as prefix
-                    AddComponents(componentElement, componentModelImplementationType, adapter, $"{modelPath}[{componentName}]", dataItemAttribute?.Name ?? $"{componentPath}{property.Name}_{componentName}");
+                    AddComponents(
+                        parentElement: componentElement,
+                        type: componentModelImplementationType,
+                        adapter: adapter,
+                        modelPath: $"{modelPath}[{componentName}]",
+                        componentPrefix: $"{componentPath}{dataItemAttribute?.Name ?? property.Name + "_"}{componentName}_"
+                    );
                 }
                 hasComponents = true;
             } else if (property.PropertyType.IsListOfModel<IComponentModel>())
@@ -295,7 +301,12 @@ namespace Mtconnect.AdapterSdk.DeviceConfiguration
 
                     componentsElement.AppendChild(componentElement);
 
-                    AddComponents(componentElement, componentModelImplementationType, adapter, $"{modelPath}[{componentName}]", dataItemAttribute?.Name ?? $"{componentPath}{property.Name}_{componentName}");
+                    AddComponents(
+                        parentElement: componentElement,
+                        type: componentModelImplementationType,
+                        adapter: adapter,
+                        modelPath: $"{modelPath}[{componentName}]",
+                        componentPrefix: $"{componentPath}{dataItemAttribute?.Name ?? property.Name + "_"}{componentName}_");
                 }
                 hasComponents = true;
             }
@@ -307,7 +318,7 @@ namespace Mtconnect.AdapterSdk.DeviceConfiguration
 
                 componentsElement.AppendChild(componentElement);
 
-                AddComponents(componentElement, componentModelImplementationType, adapter, modelPath, dataItemAttribute?.Name ?? $"{componentPath}{property.Name}_");
+                AddComponents(componentElement, componentModelImplementationType, adapter, modelPath, $"{componentPath}{dataItemAttribute?.Name ?? property.Name + "_"}");
             }
             return hasComponents;
         }

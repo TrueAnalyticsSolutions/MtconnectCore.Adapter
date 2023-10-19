@@ -23,5 +23,8 @@ namespace Mtconnect.AdapterSourceTemplate.Models
         /// </summary>
         [Sample("load")]
         public Load Load { get; set; }
+
+        [DataItemPartial("drive_")]
+        public AdvancedMotor Motor { get; set; } = new AdvancedMotor();
     }
 }

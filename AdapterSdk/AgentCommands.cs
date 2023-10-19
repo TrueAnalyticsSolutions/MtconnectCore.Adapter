@@ -2,9 +2,7 @@
 using Mtconnect.AdapterSdk.Contracts;
 using Mtconnect.AdapterSdk.DeviceConfiguration;
 using System;
-using System.IO;
 using System.Reflection;
-using System.Xml;
 
 namespace Mtconnect
 {

@@ -1,6 +1,7 @@
 ﻿using Mtconnect.AdapterSdk.DataItemValues;
 using Mtconnect.AdapterSourceTemplate.Models;
 using System;
+using System.Security.Cryptography;
 using System.Threading;
 
 namespace Mtconnect.AdapterSourceTemplate
@@ -49,6 +50,20 @@ namespace Mtconnect.AdapterSourceTemplate
         private void Timer_Elapsed(object sender, System.Timers.ElapsedEventArgs e)
         {
             Model.Availability = Availability.AVAILABLE;
+            var rnd = new Random();
+            string[] axes = new string[] { "x", "y", "z" };
+            foreach (var axis in axes)
+            {
+                if (!Model.Axes.LinearAxes.ContainsKey(axis))
+                    Model.Axes.LinearAxes.Add(axis, new AdvancedLinearAxis());
+                Model.Axes.LinearAxes[axis].Load = rnd.Next(100);
+                float pos = rnd.Next(1000);
+                Model.Axes.LinearAxes[axis].ActualPosition = new float?[] { pos, pos, pos };
+                Model.Axes.LinearAxes[axis].CommandedPosition = new float?[] { pos, pos, pos };
+                Model.Axes.LinearAxes[axis].Motor.Load = rnd.Next(100);
+                Model.Axes.LinearAxes[axis].Motor.Amperage = rnd.Next(120);
+                Model.Axes.LinearAxes[axis].Motor.Torque = rnd.Next(120);
+            }
 
             // TODO: Continue updating the Model with information.
             if (!Model.Controller.Paths.ContainsKey("primary"))

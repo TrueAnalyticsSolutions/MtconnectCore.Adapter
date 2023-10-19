@@ -15,6 +15,9 @@ namespace Mtconnect.AdapterSourceTemplate.Models
 
         [DataItemPartial("ctrl_")]
         public MyController Controller { get; set; } = new MyController();
+
+        [DataItemPartial("ax_")]
+        public AdvancedAxes Axes { get; set; } = new AdvancedAxes();
     }
     public class MyController : Mtconnect.AdapterSdk.DataItemTypes.Controller
     {

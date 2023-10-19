@@ -5,24 +5,16 @@
     </assembly>
     <members>
         <member name="T:Mtconnect.Adapter">
-            <summary>
-            An abstract implementation for a MTConnect adapter
-            </summary>
+            <inheritdoc/>
         </member>
         <member name="E:Mtconnect.Adapter.OnDataModelRecieved">
-            <summary>
-            Occurs when the Adapter receives a new <see cref="T:Mtconnect.IAdapterDataModel"/>.
-            </summary>
+            <inheritdoc/>
         </member>
         <member name="E:Mtconnect.Adapter.OnStarted">
-            <summary>
-            Occurs when the Adapter starts.
-            </summary>
+            <inheritdoc/>
         </member>
         <member name="E:Mtconnect.Adapter.OnStopped">
-            <summary>
-            Occurs when the Adapter stops.
-            </summary>
+            <inheritdoc/>
         </member>
         <member name="P:Mtconnect.Adapter.DATE_TIME_FORMAT">
             <summary>
@@ -30,34 +22,22 @@
             </summary>
         </member>
         <member name="P:Mtconnect.Adapter._logger">
-            <summary>
-            Reference to a logging service.
-            </summary>
+            <inheritdoc/>
         </member>
         <member name="P:Mtconnect.Adapter.DeviceUUID">
-            <summary>
-            A unique identifier for the device this Adapter is monitoring. <b>NOTE</b>: The same uuid can be referenced in multiple Adapter instances.
-            </summary>
+            <inheritdoc/>
         </member>
         <member name="P:Mtconnect.Adapter.DeviceName">
-            <summary>
-            The name of the deivce.
-            </summary>
+            <inheritdoc/>
         </member>
         <member name="P:Mtconnect.Adapter.StationId">
-            <summary>
-            An identifier for known location of the device. For example, this could be a reference to the workstation. The default options set this to the computer name where the adapter is deployed.
-            </summary>
+            <inheritdoc/>
         </member>
         <member name="P:Mtconnect.Adapter.SerialNumber">
-            <summary>
-            A reference to the device's serial number, if applicable.
-            </summary>
+            <inheritdoc/>
         </member>
         <member name="P:Mtconnect.Adapter.Manufacturer">
-            <summary>
-            A reference to the manufacturer of the device.
-            </summary>
+            <inheritdoc/>
         </member>
         <member name="F:Mtconnect.Adapter._dataItems">
             <summary>
@@ -65,9 +45,7 @@
             </summary>
         </member>
         <member name="P:Mtconnect.Adapter.DataItems">
-            <summary>
-            Reference to the collection of <see cref="T:Mtconnect.AdapterSdk.DataItems.DataItem"/>s being tracked.
-            </summary>
+            <inheritdoc/>
         </member>
         <member name="F:Mtconnect.Adapter._values">
             <summary>
@@ -75,49 +53,28 @@
             </summary>
         </member>
         <member name="P:Mtconnect.Adapter.Item(System.String,System.String)">
-            <summary>
-            Provides a reference to a <see cref="T:Mtconnect.AdapterSdk.DataItems.DataItem"/> from the internal collection based on the provided <paramref name="name"/>.
-            </summary>
-            <param name="name"><inheritdoc cref="P:Mtconnect.AdapterSdk.DataItems.DataItem.Name" path="/summary"/></param>
-            <param name="devicePrefix"><inheritdoc cref="P:Mtconnect.AdapterSdk.DataItems.DataItem.DevicePrefix" path="/summary"/></param>
-            <returns>Reference to the <see cref="T:Mtconnect.AdapterSdk.DataItems.DataItem"/> with the matching <paramref name="name"/>.</returns>
+            <inheritdoc/>
         </member>
         <member name="P:Mtconnect.Adapter.HasBegun">
-            <summary>
-            The send changed has begun and we are tracking conditions.
-            </summary>
+            <inheritdoc/>
         </member>
         <member name="P:Mtconnect.Adapter.CanEnqueueDataItems">
-            <summary>
-            Flags whether or not the Adapter can store reported DataItem value from its source. The internal queue can ensure that all values reported from the data source are pushed thru the implemented stream.
-            <br/><br/>
-            Setting this to false will automatically send the entire queue thru the stream.
-            </summary>
+            <inheritdoc/>
         </member>
         <member name="P:Mtconnect.Adapter.CanValidateDataItems">
-            <summary>
-            Flags whether or not the Adapter should validate all DataItems before publishing them.
-            </summary>
+            <inheritdoc/>
         </member>
         <member name="P:Mtconnect.Adapter.Heartbeat">
-            <summary>
-            The heartbeat interval (in milliseconds).
-            </summary>
+            <inheritdoc/>
         </member>
         <member name="P:Mtconnect.Adapter.State">
-            <summary>
-            Indicates what state the MTConnect Adapter is currently in.
-            </summary>
+            <inheritdoc/>
         </member>
         <member name="P:Mtconnect.Adapter.Sources">
-            <summary>
-            An optional reference to an Adapter source. If the Adapter is started with a reference to a source, this is where the reference is maintained.
-            </summary>
+            <inheritdoc/>
         </member>
         <member name="P:Mtconnect.Adapter.Options">
-            <summary>
-            Reference to the options provided in the constructor.
-            </summary>
+            <inheritdoc/>
         </member>
         <member name="M:Mtconnect.Adapter.#ctor(Mtconnect.AdapterSdk.AdapterOptions,Microsoft.Extensions.Logging.ILoggerFactory)">
             <summary>
@@ -127,26 +84,13 @@
             <param name="logFactory">Reference to the logger factory to handle logging.</param>
         </member>
         <member name="M:Mtconnect.Adapter.Contains(System.String,System.String)">
-            <summary>
-            Determines whether or not a DataItem with the same <see cref="P:Mtconnect.AdapterSdk.DataItems.DataItem.Name"/> (and possibly <see cref="P:Mtconnect.AdapterSdk.DataItems.DataItem.DevicePrefix"/> exists in this adapter.
-            </summary>
-            <param name="name"><inheritdoc cref="P:Mtconnect.AdapterSdk.DataItems.DataItem.Name" path="/summary"/></param>
-            <param name="devicePrefix"><inheritdoc cref="P:Mtconnect.AdapterSdk.DataItems.DataItem.DevicePrefix" path="/summary"/></param>
-            <returns>Flag for whether or not a <see cref="T:Mtconnect.AdapterSdk.DataItems.DataItem"/> was found.</returns>
+            <inheritdoc/>
         </member>
         <member name="M:Mtconnect.Adapter.Contains(Mtconnect.AdapterSdk.Contracts.IDataItem)">
-            <summary>
-            <inheritdoc cref="M:Mtconnect.Adapter.Contains(System.String,System.String)" path="/summary"/>
-            </summary>
-            <param name="dataItem"></param>
-            <returns><inheritdoc cref="M:Mtconnect.Adapter.Contains(System.String,System.String)" path="/returns"/></returns>
+            <inheritdoc/>
         </member>
         <member name="M:Mtconnect.Adapter.AddDataItem(Mtconnect.AdapterSdk.Contracts.IDataItem)">
-            <summary>
-            Add a data item to the adapter.
-            </summary>
-            <param name="dataItem">The data item.</param>
-            <exception cref="T:System.Data.DuplicateNameException"></exception>
+            <inheritdoc/>
         </member>
         <member name="M:Mtconnect.Adapter.RemoveAllDataItems">
             <summary>
@@ -154,23 +98,19 @@
             </summary>
         </member>
         <member name="M:Mtconnect.Adapter.RemoveDataItem(Mtconnect.AdapterSdk.Contracts.IDataItem)">
-            <summary>
-            Remove a data item from the adapter.
-            </summary>
-            <param name="dataItem"></param>
+            <inheritdoc/>
         </member>
         <member name="M:Mtconnect.Adapter.Unavailable(System.String)">
-            <summary>
-            Make all data items unavailable
-            </summary>
+            <inheritdoc/>
+        </member>
+        <member name="M:Mtconnect.Adapter.Cleanup">
+            <inheritdoc/>
+        </member>
+        <member name="M:Mtconnect.Adapter.Prepare">
+            <inheritdoc/>
         </member>
         <member name="M:Mtconnect.Adapter.Begin">
-            <summary>
-            The asks all data items to begin themselves for collection. Only 
-            required for conditions and should not be called if you are not 
-            planning on adding all the conditions before you send. If you skip this
-            the adapter will not perform the mark and sweep.
-            </summary>
+            <inheritdoc/>
         </member>
         <member name="M:Mtconnect.Adapter.Write(System.String,System.String)">
             <summary>
@@ -180,11 +120,7 @@
             <param name="message">The message to send to any listeners to the adapter.</param>
         </member>
         <member name="M:Mtconnect.Adapter.Send(Mtconnect.AdapterSdk.Contracts.DataItemSendTypes,System.String)">
-            <summary>
-            Issues a <see cref="M:Mtconnect.Adapter.Write(System.String,System.String)"/> command to the implementing Adapter for each appropriate <see cref="T:Mtconnect.AdapterSdk.DataItems.ReportedValue"/> depending on the provided <paramref name="sendType"/>.
-            </summary>
-            <param name="clientId">Reference to the id of the client to send the <see cref="T:Mtconnect.AdapterSdk.DataItems.ReportedValue"/>s to.</param>
-            <param name="sendType">Flag for identifying which <see cref="T:Mtconnect.AdapterSdk.DataItems.ReportedValue"/>s to send.</param>
+            <inheritdoc/>
         </member>
         <member name="M:Mtconnect.Adapter.Send(System.Collections.Generic.IEnumerable{Mtconnect.AdapterSdk.DataItems.ReportedValue},System.String)">
             <summary>
@@ -194,10 +130,7 @@
             <param name="values">Collection of <see cref="T:Mtconnect.AdapterSdk.DataItems.ReportedValue"/>s to send values.</param>
         </member>
         <member name="M:Mtconnect.Adapter.AddAsset(Mtconnect.AdapterSdk.Assets.IAsset)">
-            <summary>
-            Send a new asset to the Agent
-            </summary>
-            <param name="asset">The asset</param>
+            <inheritdoc/>
         </member>
         <member name="M:Mtconnect.Adapter.Start(System.Boolean,System.Threading.CancellationToken)">
             <summary>
@@ -215,31 +148,19 @@
             <param name="token">Reference to a cancellation token that is capable of cancelling the Adapter operation</param>
         </member>
         <member name="M:Mtconnect.Adapter.Start(System.Collections.Generic.IEnumerable{Mtconnect.IAdapterSource},System.Boolean,System.Threading.CancellationToken)">
-            <summary>
-            Starts the listener thread and the provided <see cref="T:Mtconnect.IAdapterSource"/>s.
-            </summary>
-            <param name="sources">Reference to the sources of the Adapter.</param>
-            <param name="begin"><inheritdoc cref="!:Start&lt;T&gt;(T, bool)" path="/param[@name='begin']"/></param>
-            <param name="token">Reference to a cancellation token that is capable of cancelling the Adapter operation</param>
+            <inheritdoc/>
         </member>
         <member name="M:Mtconnect.Adapter.Stop(System.Exception)">
-            <summary>
-            Stop the listener thread and shutdown all client connections. Make sure to call this base method when overriding to ensure any internal properties are properly stopped.
-            </summary>
+            <inheritdoc/>
         </member>
         <member name="M:Mtconnect.Adapter.GetDataItemNames">
-            <summary>
-            Gets a list of the <see cref="P:Mtconnect.AdapterSdk.DataItems.DataItem.Name"/>s.
-            </summary>
-            <returns>Array of <see cref="P:Mtconnect.AdapterSdk.DataItems.DataItem.Name"/>s that are registered in this <see cref="T:Mtconnect.Adapter"/>.</returns>
+            <inheritdoc/>
+        </member>
+        <member name="M:Mtconnect.Adapter.GetDataModelTypes">
+            <inheritdoc/>
         </member>
         <member name="M:Mtconnect.Adapter.HandleCommand(System.String,System.String)">
-            <summary>
-            Handle an incoming command from a client.
-            </summary>
-            <param name="command">Reference to the incoming message command.</param>
-            <param name="clientId">Reference to the client that sent the command</param>
-            <returns>Flag for whether or not the command was handled with a response</returns>
+            <inheritdoc/>
         </member>
         <member name="M:Mtconnect.Adapter.TriggerOnStartedEvent">
             <summary>
@@ -26329,39 +26250,25 @@
             </summary>
         </member>
         <member name="T:Mtconnect.AdapterSdk.DataItems.DataItem">
-            <summary>
-            Simple base data item class. Has an abstract value and a name. It keeps track if it has changed since the last time it was reset.
-            </summary>
+            <inheritdoc />
         </member>
         <member name="E:Mtconnect.AdapterSdk.DataItems.DataItem.OnDataItemChanged">
-            <summary>
-            Occurrs when the value of a DataItem has changed.
-            </summary>
+            <inheritdoc />
         </member>
         <member name="P:Mtconnect.AdapterSdk.DataItems.DataItem.ModelPath">
-            <summary>
-            Reference to the type of source model (see <see cref="T:Mtconnect.IAdapterDataModel"/>) this DataItem was constructed from.
-            </summary>
+            <inheritdoc />
         </member>
         <member name="P:Mtconnect.AdapterSdk.DataItems.DataItem.Category">
-            <summary>
-            Refers to the category for the MTConnect observational type.
-            </summary>
+            <inheritdoc />
         </member>
         <member name="P:Mtconnect.AdapterSdk.DataItems.DataItem.TypeEnum">
-            <summary>
-            A <see cref="T:System.Type"/> reference to the <see cref="T:System.Enum"/> according the MTConnect Standard. See <see cref="T:Mtconnect.AdapterSdk.DataItemTypes.EventTypes"/>, <see cref="T:Mtconnect.AdapterSdk.DataItemTypes.SampleTypes"/>, and <see cref="T:Mtconnect.AdapterSdk.DataItemTypes.ConditionTypes"/> for examples.
-            </summary>
+            <inheritdoc />
         </member>
         <member name="P:Mtconnect.AdapterSdk.DataItems.DataItem.SubTypeEnum">
-            <summary>
-            A <see cref="T:System.Type"/> reference to the <see cref="T:System.Enum"/> according to the MTConnect Standard and the provided <see cref="P:Mtconnect.AdapterSdk.DataItems.DataItem.TypeEnum"/> if it is decorated with <see cref="T:Mtconnect.AdapterSdk.Contracts.Attributes.ObservationalSubTypeAttribute"/>.
-            </summary>
+            <inheritdoc />
         </member>
         <member name="P:Mtconnect.AdapterSdk.DataItems.DataItem.TypeValidated">
-            <summary>
-            A flag for whether or not the <see cref="P:Mtconnect.AdapterSdk.DataItems.DataItem.ObservationalType"/> has been validated against the MTConnect Standard.
-            </summary>
+            <inheritdoc />
         </member>
         <member name="P:Mtconnect.AdapterSdk.DataItems.DataItem.Type">
             <summary>
@@ -26369,9 +26276,7 @@
             </summary>
         </member>
         <member name="P:Mtconnect.AdapterSdk.DataItems.DataItem.ObservationalType">
-            <summary>
-            The intended <c>type</c> for the Data Item. See <see cref="T:Mtconnect.AdapterSdk.DataItemTypes.EventTypes">Events</see>, <see cref="T:Mtconnect.AdapterSdk.DataItemTypes.SampleTypes">Samples</see>, and <see cref="T:Mtconnect.AdapterSdk.DataItemTypes.ConditionTypes">Conditions</see>. The <c>type</c> can also be extended according to the standard be adding the prefix <c>x:</c> to indicate an extended type.
-            </summary>
+            <inheritdoc />
         </member>
         <member name="P:Mtconnect.AdapterSdk.DataItems.DataItem.SubTypeValidated">
             <summary>
@@ -26384,29 +26289,19 @@
             </summary>
         </member>
         <member name="P:Mtconnect.AdapterSdk.DataItems.DataItem.ObservationalSubType">
-            <summary>
-            The intended <c>subType</c> for the Data Item. Refer to the appropriate <see cref="T:Mtconnect.AdapterSdk.DataItemTypes.EventTypes">Events</see>, <see cref="T:Mtconnect.AdapterSdk.DataItemTypes.SampleTypes">Samples</see>, and <see cref="T:Mtconnect.AdapterSdk.DataItemTypes.ConditionTypes">Conditions</see>. The <c>subType</c> can also be extended according to the standard be adding the prefix <c>x:</c> to indicate an extended type.
-            </summary>
+            <inheritdoc />
         </member>
         <member name="P:Mtconnect.AdapterSdk.DataItems.DataItem.Units">
-            <summary>
-            Reference to the <c>nativeUnits</c> of the DataItem
-            </summary>
+            <inheritdoc />
         </member>
         <member name="P:Mtconnect.AdapterSdk.DataItems.DataItem.Name">
-            <summary>
-            The name of the data item.
-            </summary>
+            <inheritdoc />
         </member>
         <member name="P:Mtconnect.AdapterSdk.DataItems.DataItem.Description">
-            <summary>
-            A description of the DataItem such as a trace of its source or the methodology for a composite data type.
-            </summary>
+            <inheritdoc />
         </member>
         <member name="P:Mtconnect.AdapterSdk.DataItems.DataItem.DevicePrefix">
-            <summary>
-            Optional device prefix.
-            </summary>
+            <inheritdoc />
         </member>
         <member name="F:Mtconnect.AdapterSdk.DataItems.DataItem._value">
             <summary>
@@ -26419,9 +26314,7 @@
             </summary>
         </member>
         <member name="P:Mtconnect.AdapterSdk.DataItems.DataItem.Value">
-            <summary>
-            Get and set the Value property. This will check if the value has changed and set the changed flag appropriately. Automatically boxes types so will work for any data.
-            </summary>
+            <inheritdoc />
         </member>
         <member name="M:Mtconnect.AdapterSdk.DataItems.DataItem.IsReadyToUpdate(System.Object)">
             <summary>
@@ -26431,32 +26324,19 @@
             <returns>Flag for whether or not the new value is different enough compared to the current value.</returns>
         </member>
         <member name="P:Mtconnect.AdapterSdk.DataItems.DataItem.LastChanged">
-            <summary>
-            Timestamp of when the <see cref="P:Mtconnect.AdapterSdk.DataItems.DataItem.Value"/> was last Changed.
-            </summary>
+            <inheritdoc />
         </member>
         <member name="P:Mtconnect.AdapterSdk.DataItems.DataItem.HasChanged">
-            <summary>
-            A flag to indicate if the data item's value has changed since it 
-            has last been set.
-            </summary>
+            <inheritdoc />
         </member>
         <member name="P:Mtconnect.AdapterSdk.DataItems.DataItem.HasNewLine">
-            <summary>
-            An indicator that this data item must be sent on a separate line.
-            This is done for all data items that are more complex than simple 
-            Key|Value pairs.
-            </summary>
+            <inheritdoc />
         </member>
         <member name="P:Mtconnect.AdapterSdk.DataItems.DataItem.HasTimestampOverride">
-            <summary>
-            Flag for whether or not this DataItem has a different source for the expected output Timestamp.
-            </summary>
+            <inheritdoc />
         </member>
         <member name="P:Mtconnect.AdapterSdk.DataItems.DataItem.FormatValue">
-            <summary>
-            An expression that can be used to apply additional formatting or transformations to the DataItem value.
-            </summary>
+            <inheritdoc />
         </member>
         <member name="M:Mtconnect.AdapterSdk.DataItems.DataItem.#ctor(System.String,System.String)">
             <summary>
@@ -26466,20 +26346,13 @@
             <param name="description"><inheritdoc cref="P:Mtconnect.AdapterSdk.DataItems.DataItem.Description" path="/summary"/></param>
         </member>
         <member name="M:Mtconnect.AdapterSdk.DataItems.DataItem.Unavailable">
-            <summary>
-            Make this data item <c>UNAVAILABLE</c>.
-            </summary>
+            <inheritdoc />
         </member>
         <member name="M:Mtconnect.AdapterSdk.DataItems.DataItem.IsUnavailable">
-            <summary>
-            Checks if the data item is unavailable.
-            </summary>
-            <returns>true if Unavailable</returns>
+            <inheritdoc />
         </member>
         <member name="M:Mtconnect.AdapterSdk.DataItems.DataItem.ForceChanged">
-            <summary>
-            Forces this <see cref="T:Mtconnect.AdapterSdk.DataItems.DataItem"/> to indicate that the <see cref="P:Mtconnect.AdapterSdk.DataItems.DataItem.Value"/> has changed.
-            </summary>
+            <inheritdoc />
         </member>
         <member name="M:Mtconnect.AdapterSdk.DataItems.DataItem.Equals(System.Object)">
             <inheritdoc />
@@ -26491,29 +26364,16 @@
             <returns>A text representation</returns>
         </member>
         <member name="M:Mtconnect.AdapterSdk.DataItems.DataItem.Begin">
-            <summary>
-            These methods are mainly for conditions. They allow for
-            mark and sweep of the condition activations.
-            </summary>
+            <inheritdoc />
         </member>
         <member name="M:Mtconnect.AdapterSdk.DataItems.DataItem.Prepare">
-            <summary>
-            This is called before we send the actual changed data. It does the diff from the previous state and finds all the activations that need to be removed. This also check to see if all the activations have been removed because we only need to do a single normal with no native code to clear all. This is not required for simple conditions.
-            </summary>
+            <inheritdoc />
         </member>
         <member name="M:Mtconnect.AdapterSdk.DataItems.DataItem.Cleanup">
-            <summary>
-            Reset the Changed flag.
-            </summary>
+            <inheritdoc />
         </member>
         <member name="M:Mtconnect.AdapterSdk.DataItems.DataItem.ItemList(System.Boolean)">
-            <summary>
-            Get a list of all the changed data items. Since this is a 
-            single value, just return a list with one item if it has 
-            changed
-            </summary>
-            <param name="all">true means to return this data item regardless of the 
-            changed flag. This is used to send initial data back to a new client.</param>
+            <inheritdoc />
             <returns>The changed data item</returns>
         </member>
         <member name="M:Mtconnect.AdapterSdk.DataItems.DataItem.TriggerDataChangedEvent(Mtconnect.AdapterSdk.DataItems.DataItemChangedEventArgs)">
@@ -26523,20 +26383,13 @@
             <param name="e">Reference to the event arguments.</param>
         </member>
         <member name="M:Mtconnect.AdapterSdk.DataItems.DataItem.Validate(Mtconnect.AdapterSdk.Contracts.ValidationResult@)">
-            <summary>
-            Performs validation against the DataItem value based on the <see cref="P:Mtconnect.AdapterSdk.DataItems.DataItem.ObservationalType"/> and <see cref="P:Mtconnect.AdapterSdk.DataItems.DataItem.ObservationalSubType"/>.
-            </summary>
-            <returns>Flag of whether or not the result yields anything other than <see cref="F:Mtconnect.AdapterSdk.Contracts.ValidationLevel.VALID"/>.</returns>
+            <inheritdoc />
         </member>
         <member name="M:Mtconnect.AdapterSdk.DataItems.DataItem.GetHashCode">
             <inheritdoc />
         </member>
         <member name="M:Mtconnect.AdapterSdk.DataItems.DataItem.Copy">
-            <summary>
-            Copies the current DataItem into a new object.
-            </summary>
-            <typeparam name="T"></typeparam>
-            <returns></returns>
+            <inheritdoc />
         </member>
         <member name="T:Mtconnect.AdapterSdk.DataItems.Event">
             <summary>
@@ -26966,7 +26819,7 @@
             <returns>(<c>string</c>) MTConnect Agent Command</returns>
             <exception cref="T:System.NotImplementedException"></exception>
         </member>
-        <member name="M:Mtconnect.AgentCommands.DeviceUuid(Mtconnect.Adapter)">
+        <member name="M:Mtconnect.AgentCommands.DeviceUuid(Mtconnect.AdapterSdk.Contracts.IAdapter)">
             <summary>
             Creates the "<c>* device: &lt;uuid|name&gt;</c>" MTConnect Agent command
             </summary>
@@ -26978,7 +26831,7 @@
             <returns>(<c>string</c>) MTConnect Agent Command</returns>
         </member>
         <member name="M:Mtconnect.AgentCommands.DeviceName(Mtconnect.AdapterSdk.Contracts.IAdapter,System.String)">
-            <inheritdoc cref="!:DeviceUuid(IAdapter)"/>
+            <inheritdoc cref="M:Mtconnect.AgentCommands.DeviceUuid(Mtconnect.AdapterSdk.Contracts.IAdapter)"/>
         </member>
         <member name="M:Mtconnect.AgentCommands.DeviceModel(Mtconnect.AdapterSdk.Contracts.IAdapter,System.String)">
             <summary>
