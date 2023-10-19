@@ -10,7 +10,8 @@ env:
   GH_NUGET_REGISTRY: https://nuget.pkg.github.com/
   GH_NUGET_NAMESPACE: trueanalyticssolutions
   GH_NUGET_API_KEY: ${{ secrets.GITHUB_TOKEN }}
-  VS_PROJECT: AdapterSdk
+  VS_PROJECT_FOLDER: AdapterSdk
+  VS_PROJECT: AdapterSdk.csproj
   
 jobs:
   build:
@@ -24,10 +25,10 @@ jobs:
       with:
         dotnet-version: '3.1'
     - name: Build Mtconnect.Adapter with dotnet
-      run: dotnet build "${{ env.VS_PROJECT }}\AdapterSdk.csproj" --configuration Release
+      run: dotnet build "${{ env.VS_PROJECT_FOLDER }}\${{ env.VS_PROJECT }}" --configuration Release
       
     - name: Pack Mtconnect.Adapter
-      run: dotnet pack "${{ env.VS_PROJECT }}\AdapterSdk.csproj" --configuration Release -o finalpackage --no-build --include-symbols
+      run: dotnet pack "${{ env.VS_PROJECT_FOLDER }}\${{ env.VS_PROJECT }}" --configuration Release -o finalpackage --no-build --include-symbols
       
     - name: Publish Artifact
       uses: actions/upload-artifact@master
