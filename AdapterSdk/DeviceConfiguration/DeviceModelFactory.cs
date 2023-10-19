@@ -340,7 +340,7 @@ namespace Mtconnect.AdapterSdk.DeviceConfiguration
             return currentType;
         }
 
-        private void AddDataItems(XmlNode xDataItems, IEnumerable<DataItem> dataItems)
+        private void AddDataItems(XmlNode xDataItems, IEnumerable<IDataItem> dataItems)
         {
             foreach (var deviceDataItem in dataItems)
             {

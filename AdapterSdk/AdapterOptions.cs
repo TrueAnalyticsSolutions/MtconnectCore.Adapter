@@ -1,4 +1,5 @@
 ﻿using Microsoft.Extensions.Logging;
+using Mtconnect.AdapterSdk.Contracts;
 using System;
 using System.Collections;
 using System.Collections.Generic;
@@ -11,7 +12,7 @@ namespace Mtconnect.AdapterSdk
     /// A DTO for serialized MTConnect Adapter configuration options.
     /// </summary>
     [Serializable]
-    public partial class AdapterOptions
+    public partial class AdapterOptions : IAdapterOptions
     {
         /// <inheritdoc cref="Adapter.DeviceUUID"/>
         public string DeviceUUID { get; protected set; } = Guid.NewGuid().ToString();
@@ -37,14 +38,14 @@ namespace Mtconnect.AdapterSdk
         /// <inheritdoc cref="Adapter.CanValidateDataItems"/>
         public bool CanValidateDataItems { get; protected set; }
 
-        private readonly Dictionary<string, DataItemOptions> dataItems = new Dictionary<string, DataItemOptions>();
+        private readonly Dictionary<string, IDataItemOptions> dataItems = new Dictionary<string, IDataItemOptions>();
 
         /// <summary>
         /// Gets a <see cref="DataItemOptions"/> by the name of the data item as defined internally within the Adapter implementation.
         /// </summary>
         /// <param name="internalName">Reference to the internal name of the DataItem within the context of the Adapter implementation.</param>
         /// <returns>Reference to the <see cref="DataItemOptions"/>.</returns>
-        public DataItemOptions this[string internalName]
+        public IDataItemOptions this[string internalName]
         {
             get {
                 if (dataItems.ContainsKey(internalName))

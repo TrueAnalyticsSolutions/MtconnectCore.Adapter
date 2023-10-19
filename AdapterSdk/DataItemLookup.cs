@@ -4,18 +4,19 @@ using System.Linq;
 using Mtconnect.AdapterSdk.DataItems;
 using System.Data;
 using System.Collections;
+using Mtconnect.AdapterSdk.Contracts;
 
 namespace Mtconnect
 {
     /// <summary>
-    /// A performant collection that manages <see cref="DataItem"/>s by both <see cref="DataItem.Name"/> and <see cref="DataItem.DevicePrefix"/>.
+    /// A performant collection that manages <see cref="IDataItem"/>s by both <see cref="IDataItem.Name"/> and <see cref="IDataItem.DevicePrefix"/>.
     /// </summary>
     /// <remarks>
-    /// <br/><br/><b>NOTE</b>: Comparisons of <see cref="DataItem.Name"/> are based on a cache of the value when the <see cref="DataItem"/> was added to this collection. This cache is known as the <c>internalName</c> within the <see cref="Adapter"/>.
+    /// <br/><br/><b>NOTE</b>: Comparisons of <see cref="IDataItem.Name"/> are based on a cache of the value when the <see cref="IDataItem"/> was added to this collection. This cache is known as the <c>internalName</c> within the <see cref="IAdapter"/>.
     /// </remarks>
-    public class DataItemLookup : IList<DataItem>
+    public class DataItemLookup : IList<IDataItem>
     {
-        private readonly List<DataItem> _dataItems = new List<DataItem>();
+        private readonly List<IDataItem> _dataItems = new List<IDataItem>();
         private readonly Dictionary<string, List<int>> _byName = new Dictionary<string, List<int>>();
         private readonly Dictionary<string, List<int>> _byDevicePrefix = new Dictionary<string, List<int>>();
         private readonly Dictionary<(string, string), int> _byNameAndDevicePrefix = new Dictionary<(string, string), int>();
@@ -27,27 +28,27 @@ namespace Mtconnect
         public bool IsReadOnly => false;
 
         /// <inheritdoc />
-        public DataItem this[int index] { get => _dataItems[index]; set => _dataItems[index] = value; }
+        public IDataItem this[int index] { get => _dataItems[index]; set => _dataItems[index] = value; }
 
         /// <summary>
-        /// Gets a collection of <see cref="DataItem"/> that share the same <see cref="DataItem.Name"/>.
+        /// Gets a collection of <see cref="IDataItem"/> that share the same <see cref="IDataItem.Name"/>.
         /// </summary>
-        /// <param name="internalName">Lookup key for the <see cref="DataItem.Name"/>.</param>
-        /// <returns>Collection of <see cref="DataItem"/> or <c>null</c>. <b>NOTE</b> that duplicate <see cref="DataItem.Name"/> cannot exist with the same <see cref="DataItem.DevicePrefix"/>.</returns>
-        public IEnumerable<DataItem> this[string internalName]
+        /// <param name="internalName">Lookup key for the <see cref="IDataItem.Name"/>.</param>
+        /// <returns>Collection of <see cref="IDataItem"/> or <c>null</c>. <b>NOTE</b> that duplicate <see cref="IDataItem.Name"/> cannot exist with the same <see cref="IDataItem.DevicePrefix"/>.</returns>
+        public IEnumerable<IDataItem> this[string internalName]
         {
-            get => TryGetByName(internalName, out IEnumerable<DataItem> dataItems) ? dataItems : null;
+            get => TryGetByName(internalName, out IEnumerable<IDataItem> dataItems) ? dataItems : null;
         }
 
         /// <summary>
-        /// Gets a <see cref="DataItem"/> with the specific <paramref name="devicePrefix"/> and <paramref name="internalName"/>.
+        /// Gets a <see cref="IDataItem"/> with the specific <paramref name="devicePrefix"/> and <paramref name="internalName"/>.
         /// </summary>
-        /// <param name="devicePrefix">Lookup key for the <see cref="DataItem.DevicePrefix"/>.</param>
-        /// <param name="internalName">Lookup key for the <see cref="DataItem.Name"/>.</param>
-        /// <returns><see cref="DataItem"/> or <c>null</c>.</returns>
-        public DataItem this[string internalName, string devicePrefix]
+        /// <param name="devicePrefix">Lookup key for the <see cref="IDataItem.DevicePrefix"/>.</param>
+        /// <param name="internalName">Lookup key for the <see cref="IDataItem.Name"/>.</param>
+        /// <returns><see cref="IDataItem"/> or <c>null</c>.</returns>
+        public IDataItem this[string internalName, string devicePrefix]
         {
-            get => TryGetByNameAndDevicePrefix(internalName, devicePrefix, out DataItem dataItem) ? dataItem : null;
+            get => TryGetByNameAndDevicePrefix(internalName, devicePrefix, out IDataItem dataItem) ? dataItem : null;
             set {
                 if (_byNameAndDevicePrefix.ContainsKey((internalName, devicePrefix)))
                 {
@@ -61,11 +62,11 @@ namespace Mtconnect
         }
 
         /// <summary>
-        /// Adds a <see cref="DataItem"/> if one with the same <see cref="DataItem.Name"/> and <see cref="DataItem.DevicePrefix"/> has not already been added.
+        /// Adds a <see cref="IDataItem"/> if one with the same <see cref="IDataItem.Name"/> and <see cref="IDataItem.DevicePrefix"/> has not already been added.
         /// </summary>
-        /// <param name="dataItem">A <see cref="DataItem"/> to be added to the collection.</param>
+        /// <param name="dataItem">A <see cref="IDataItem"/> to be added to the collection.</param>
         /// <exception cref="DuplicateNameException"></exception>
-        public void Add(DataItem dataItem)
+        public void Add(IDataItem dataItem)
         {
             if (_byNameAndDevicePrefix.ContainsKey((dataItem.Name, dataItem.DevicePrefix)))
                 throw new DuplicateNameException();
@@ -95,13 +96,13 @@ namespace Mtconnect
         }
 
         /// <summary>
-        /// Attempts to get any <see cref="DataItem"/>s where the <see cref="DataItem.Name"/> matches the provided <paramref name="internalName"/>.
+        /// Attempts to get any <see cref="IDataItem"/>s where the <see cref="IDataItem.Name"/> matches the provided <paramref name="internalName"/>.
         /// <inheritdoc cref="DataItemLookup" path="/remarks"/>
         /// </summary>
-        /// <param name="internalName">Lookup key for the <see cref="DataItem.Name"/>.</param>
-        /// <param name="dataItems">Output collection of <see cref="DataItem"/>s where the <see cref="DataItem.Name"/> matches the provided <paramref name="internalName"/>.</param>
-        /// <returns>Flag of whether or not any <see cref="DataItem"/>s were found with the provided <paramref name="internalName"/>.</returns>
-        public bool TryGetByName(string internalName, out IEnumerable<DataItem> dataItems)
+        /// <param name="internalName">Lookup key for the <see cref="IDataItem.Name"/>.</param>
+        /// <param name="dataItems">Output collection of <see cref="IDataItem"/>s where the <see cref="IDataItem.Name"/> matches the provided <paramref name="internalName"/>.</param>
+        /// <returns>Flag of whether or not any <see cref="IDataItem"/>s were found with the provided <paramref name="internalName"/>.</returns>
+        public bool TryGetByName(string internalName, out IEnumerable<IDataItem> dataItems)
         {
             dataItems = null;
 
@@ -115,12 +116,12 @@ namespace Mtconnect
         }
 
         /// <summary>
-        /// Attempts to get any <see cref="DataItem"/>s where the <see cref="DataItem.DevicePrefix"/> matches the provided <paramref name="devicePrefix"/>.
+        /// Attempts to get any <see cref="IDataItem"/>s where the <see cref="IDataItem.DevicePrefix"/> matches the provided <paramref name="devicePrefix"/>.
         /// </summary>
-        /// <param name="devicePrefix">Lookup key for the <see cref="DataItem.DevicePrefix"/>.</param>
-        /// <param name="dataItems">Output collection of <see cref="DataItem"/>s where the <see cref="DataItem.DevicePrefix"/> matches the provided <paramref name="devicePrefix"/>.</param>
-        /// <returns>Flag of whether or not any <see cref="DataItem"/>s were found with the provided <paramref name="devicePrefix"/>.</returns>
-        public bool TryGetByDevicePrefix(string devicePrefix, out IEnumerable<DataItem> dataItems)
+        /// <param name="devicePrefix">Lookup key for the <see cref="IDataItem.DevicePrefix"/>.</param>
+        /// <param name="dataItems">Output collection of <see cref="IDataItem"/>s where the <see cref="DataItem.DevicePrefix"/> matches the provided <paramref name="devicePrefix"/>.</param>
+        /// <returns>Flag of whether or not any <see cref="IDataItem"/>s were found with the provided <paramref name="devicePrefix"/>.</returns>
+        public bool TryGetByDevicePrefix(string devicePrefix, out IEnumerable<IDataItem> dataItems)
         {
             dataItems = null;
 
@@ -134,14 +135,14 @@ namespace Mtconnect
         }
 
         /// <summary>
-        /// Attempts to get any <see cref="DataItem"/>s where both the cached <see cref="DataItem.Name"/> and <see cref="DataItem.DevicePrefix"/> matches the provided <paramref name="internalName"/> and <paramref name="devicePrefix"/>.
+        /// Attempts to get any <see cref="IDataItem"/>s where both the cached <see cref="IDataItem.Name"/> and <see cref="IDataItem.DevicePrefix"/> matches the provided <paramref name="internalName"/> and <paramref name="devicePrefix"/>.
         /// <inheritdoc cref="DataItemLookup" path="/remarks"/>
         /// </summary>
-        /// <param name="internalName">Lookup key for the <see cref="DataItem.Name"/>.</param>
-        /// <param name="devicePrefix">Lookup key for the <see cref="DataItem.DevicePrefix"/>.</param>
-        /// <param name="dataItem">Output result of the <see cref="DataItem"/> sharing the <see cref="DataItem.Name"/> and <see cref="DataItem.DevicePrefix"/>.</param>
-        /// <returns>Flag of whether or not the <see cref="DataItem"/> was found.</returns>
-        public bool TryGetByNameAndDevicePrefix(string internalName, string devicePrefix, out DataItem dataItem)
+        /// <param name="internalName">Lookup key for the <see cref="IDataItem.Name"/>.</param>
+        /// <param name="devicePrefix">Lookup key for the <see cref="IDataItem.DevicePrefix"/>.</param>
+        /// <param name="dataItem">Output result of the <see cref="IDataItem"/> sharing the <see cref="IDataItem.Name"/> and <see cref="IDataItem.DevicePrefix"/>.</param>
+        /// <returns>Flag of whether or not the <see cref="IDataItem"/> was found.</returns>
+        public bool TryGetByNameAndDevicePrefix(string internalName, string devicePrefix, out IDataItem dataItem)
         {
             dataItem = null;
 
@@ -161,9 +162,9 @@ namespace Mtconnect
         /// <exception cref="Exception"></exception>
         public void Unavailable(string devicePrefix = null)
         {
-            IEnumerable<DataItem> items = devicePrefix == null
+            IEnumerable<IDataItem> items = devicePrefix == null
                 ? _dataItems
-                : TryGetByDevicePrefix(devicePrefix, out IEnumerable<DataItem> deviceItems)
+                : TryGetByDevicePrefix(devicePrefix, out IEnumerable<IDataItem> deviceItems)
                     ? deviceItems
                     : throw new Exception("Could not get DataItems from device prefix");
             foreach (var dataItem in items)
@@ -175,13 +176,13 @@ namespace Mtconnect
         /// </summary>
         /// <param name="indices"></param>
         /// <returns></returns>
-        private IEnumerable<DataItem> GetByIndices(IEnumerable<int> indices) => indices.Select(i => _dataItems[i]);
+        private IEnumerable<IDataItem> GetByIndices(IEnumerable<int> indices) => indices.Select(i => _dataItems[i]);
 
         /// <inheritdoc />
-        public int IndexOf(DataItem item) => _dataItems.IndexOf(item);
+        public int IndexOf(IDataItem item) => _dataItems.IndexOf(item);
 
         /// <inheritdoc />
-        public void Insert(int index, DataItem item) => _dataItems.Insert(index, item);
+        public void Insert(int index, IDataItem item) => _dataItems.Insert(index, item);
 
         /// <inheritdoc />
         public void RemoveAt(int index)
@@ -229,7 +230,7 @@ namespace Mtconnect
         }
 
         /// <inheritdoc />
-        public bool Contains(DataItem item)
+        public bool Contains(IDataItem item)
             => _byNameAndDevicePrefix.ContainsKey((item.Name, item.DevicePrefix));
 
         /// <inheritdoc />
@@ -242,10 +243,10 @@ namespace Mtconnect
         public bool Contains(string internalName, string devicePrefix) => _byNameAndDevicePrefix.ContainsKey((internalName, devicePrefix));
 
         /// <inheritdoc />
-        public void CopyTo(DataItem[] array, int arrayIndex) => _dataItems.CopyTo(array, arrayIndex);
+        public void CopyTo(IDataItem[] array, int arrayIndex) => _dataItems.CopyTo(array, arrayIndex);
 
         /// <inheritdoc />
-        public bool Remove(DataItem item)
+        public bool Remove(IDataItem item)
         {
             try
             {
@@ -259,7 +260,7 @@ namespace Mtconnect
         }
 
         /// <inheritdoc />
-        public IEnumerator<DataItem> GetEnumerator() => _dataItems.GetEnumerator();
+        public IEnumerator<IDataItem> GetEnumerator() => _dataItems.GetEnumerator();
 
         /// <inheritdoc />
         IEnumerator IEnumerable.GetEnumerator() => _dataItems.GetEnumerator();

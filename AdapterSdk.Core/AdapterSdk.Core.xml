@@ -1,0 +1,601 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>AdapterSdk.Core</name>
+    </assembly>
+    <members>
+        <member name="T:Mtconnect.AdapterSdk.Contracts.AdapterStates">
+            <summary>
+            Represents the various states of the MTConnect Adapter.
+            </summary>
+        </member>
+        <member name="F:Mtconnect.AdapterSdk.Contracts.AdapterStates.Stopped">
+            <summary>
+            Indicates that the MTConnect Adapter has stopped.
+            </summary>
+        </member>
+        <member name="F:Mtconnect.AdapterSdk.Contracts.AdapterStates.Stopping">
+            <summary>
+            Indicates a transitionary state for the MTConnect Adapter that it is attempting to stop.
+            </summary>
+        </member>
+        <member name="F:Mtconnect.AdapterSdk.Contracts.AdapterStates.NotStarted">
+            <summary>
+            Indicates that the MTConnect Adapter has not initially started.
+            </summary>
+        </member>
+        <member name="F:Mtconnect.AdapterSdk.Contracts.AdapterStates.Starting">
+            <summary>
+            Indicates a transitionary state for the MTConnect Adapter that it is attempting to start.
+            </summary>
+        </member>
+        <member name="F:Mtconnect.AdapterSdk.Contracts.AdapterStates.Started">
+            <summary>
+            Indicates that the MTConnect Adapter has started.
+            </summary>
+        </member>
+        <member name="F:Mtconnect.AdapterSdk.Contracts.AdapterStates.Busy">
+            <summary>
+            Indicates that the MTConnect Adapter is busy with a client.
+            </summary>
+        </member>
+        <member name="T:Mtconnect.AdapterSdk.Contracts.ValidationLevel">
+            <summary>
+            Varying levels of validation message criticalities.
+            </summary>
+        </member>
+        <member name="F:Mtconnect.AdapterSdk.Contracts.ValidationLevel.ERROR">
+            <summary>
+            There is a clear violation against the standard.
+            </summary>
+        </member>
+        <member name="F:Mtconnect.AdapterSdk.Contracts.ValidationLevel.WARNING">
+            <summary>
+            There is a slight violation against the standard that perhaps goes against recommendation.
+            </summary>
+        </member>
+        <member name="F:Mtconnect.AdapterSdk.Contracts.ValidationLevel.MESSAGE">
+            <summary>
+            There is no violation against the standard.
+            </summary>
+        </member>
+        <member name="F:Mtconnect.AdapterSdk.Contracts.ValidationLevel.VALID">
+            <summary>
+            The implementation is indicated as valid.
+            </summary>
+        </member>
+        <member name="T:Mtconnect.AdapterSdk.Contracts.IAdapter">
+            <summary>
+            An abstract implementation for a MTConnect adapter
+            </summary>
+        </member>
+        <member name="E:Mtconnect.AdapterSdk.Contracts.IAdapter.OnDataModelRecieved">
+            <summary>
+            Occurs when the Adapter receives a new <see cref="T:Mtconnect.IAdapterDataModel"/>.
+            </summary>
+        </member>
+        <member name="E:Mtconnect.AdapterSdk.Contracts.IAdapter.OnStarted">
+            <summary>
+            Occurs when the Adapter starts.
+            </summary>
+        </member>
+        <member name="E:Mtconnect.AdapterSdk.Contracts.IAdapter.OnStopped">
+            <summary>
+            Occurs when the Adapter stops.
+            </summary>
+        </member>
+        <member name="P:Mtconnect.AdapterSdk.Contracts.IAdapter.DeviceUUID">
+            <summary>
+            A unique identifier for the device this Adapter is monitoring. <b>NOTE</b>: The same uuid can be referenced in multiple Adapter instances.
+            </summary>
+        </member>
+        <member name="P:Mtconnect.AdapterSdk.Contracts.IAdapter.DeviceName">
+            <summary>
+            The name of the deivce.
+            </summary>
+        </member>
+        <member name="P:Mtconnect.AdapterSdk.Contracts.IAdapter.StationId">
+            <summary>
+            An identifier for known location of the device. For example, this could be a reference to the workstation. The default options set this to the computer name where the adapter is deployed.
+            </summary>
+        </member>
+        <member name="P:Mtconnect.AdapterSdk.Contracts.IAdapter.SerialNumber">
+            <summary>
+            A reference to the device's serial number, if applicable.
+            </summary>
+        </member>
+        <member name="P:Mtconnect.AdapterSdk.Contracts.IAdapter.Manufacturer">
+            <summary>
+            A reference to the manufacturer of the device.
+            </summary>
+        </member>
+        <member name="P:Mtconnect.AdapterSdk.Contracts.IAdapter.DataItems">
+            <summary>
+            Reference to the collection of <see cref="T:Mtconnect.AdapterSdk.Contracts.IDataItem"/>s being tracked.
+            </summary>
+        </member>
+        <member name="P:Mtconnect.AdapterSdk.Contracts.IAdapter.HasBegun">
+            <summary>
+            The send changed has begun and we are tracking conditions.
+            </summary>
+        </member>
+        <member name="P:Mtconnect.AdapterSdk.Contracts.IAdapter.CanEnqueueDataItems">
+            <summary>
+            Flags whether or not the Adapter can store reported DataItem value from its source. The internal queue can ensure that all values reported from the data source are pushed thru the implemented stream.
+            <br/><br/>
+            Setting this to false will automatically send the entire queue thru the stream.
+            </summary>
+        </member>
+        <member name="P:Mtconnect.AdapterSdk.Contracts.IAdapter.CanValidateDataItems">
+            <summary>
+            Flags whether or not the Adapter should validate all DataItems before publishing them.
+            </summary>
+        </member>
+        <member name="P:Mtconnect.AdapterSdk.Contracts.IAdapter.Heartbeat">
+            <summary>
+            The heartbeat interval (in milliseconds).
+            </summary>
+        </member>
+        <member name="P:Mtconnect.AdapterSdk.Contracts.IAdapter.State">
+            <summary>
+            Indicates what state the MTConnect Adapter is currently in.
+            </summary>
+        </member>
+        <member name="P:Mtconnect.AdapterSdk.Contracts.IAdapter.Sources">
+            <summary>
+            An optional reference to an Adapter source. If the Adapter is started with a reference to a source, this is where the reference is maintained.
+            </summary>
+        </member>
+        <member name="P:Mtconnect.AdapterSdk.Contracts.IAdapter.Options">
+            <summary>
+            Reference to the options provided in the constructor.
+            </summary>
+        </member>
+        <member name="M:Mtconnect.AdapterSdk.Contracts.IAdapter.Contains(System.String,System.String)">
+            <summary>
+            Determines whether or not a DataItem with the same <see cref="P:Mtconnect.AdapterSdk.Contracts.IDataItem.Name"/> (and possibly <see cref="P:Mtconnect.AdapterSdk.Contracts.IDataItem.DevicePrefix"/> exists in this adapter.
+            </summary>
+            <param name="name"><inheritdoc cref="P:Mtconnect.AdapterSdk.Contracts.IDataItem.Name" path="/summary"/></param>
+            <param name="devicePrefix"><inheritdoc cref="P:Mtconnect.AdapterSdk.Contracts.IDataItem.DevicePrefix" path="/summary"/></param>
+            <returns>Flag for whether or not a <see cref="T:Mtconnect.AdapterSdk.Contracts.IDataItem"/> was found.</returns>
+        </member>
+        <member name="M:Mtconnect.AdapterSdk.Contracts.IAdapter.Contains(Mtconnect.AdapterSdk.Contracts.IDataItem)">
+            <summary>
+            <inheritdoc cref="M:Mtconnect.AdapterSdk.Contracts.IAdapter.Contains(System.String,System.String)" path="/summary"/>
+            </summary>
+            <param name="dataItem"></param>
+            <returns><inheritdoc cref="M:Mtconnect.AdapterSdk.Contracts.IAdapter.Contains(System.String,System.String)" path="/returns"/></returns>
+        </member>
+        <member name="M:Mtconnect.AdapterSdk.Contracts.IAdapter.AddDataItem(Mtconnect.AdapterSdk.Contracts.IDataItem)">
+            <summary>
+            Add a data item to the adapter.
+            </summary>
+            <param name="dataItem">The data item.</param>
+            <exception cref="T:System.Data.DuplicateNameException"></exception>
+        </member>
+        <member name="M:Mtconnect.AdapterSdk.Contracts.IAdapter.RemoveAllDataItems">
+            <summary>
+            Remove all data items.
+            </summary>
+        </member>
+        <member name="M:Mtconnect.AdapterSdk.Contracts.IAdapter.RemoveDataItem(Mtconnect.AdapterSdk.Contracts.IDataItem)">
+            <summary>
+            Remove a data item from the adapter.
+            </summary>
+            <param name="dataItem"></param>
+        </member>
+        <member name="M:Mtconnect.AdapterSdk.Contracts.IAdapter.Unavailable(System.String)">
+            <summary>
+            Make all data items unavailable
+            </summary>
+        </member>
+        <member name="T:Mtconnect.AdapterSdk.Contracts.IAdapterOptions">
+            <summary>
+            A DTO for serialized MTConnect Adapter configuration options.
+            </summary>
+        </member>
+        <member name="P:Mtconnect.AdapterSdk.Contracts.IAdapterOptions.DeviceUUID">
+            <inheritdoc cref="P:Mtconnect.AdapterSdk.Contracts.IAdapter.DeviceUUID"/>
+        </member>
+        <member name="P:Mtconnect.AdapterSdk.Contracts.IAdapterOptions.DeviceName">
+            <inheritdoc cref="P:Mtconnect.AdapterSdk.Contracts.IAdapter.DeviceName"/>
+        </member>
+        <member name="P:Mtconnect.AdapterSdk.Contracts.IAdapterOptions.StationId">
+            <inheritdoc cref="P:Mtconnect.AdapterSdk.Contracts.IAdapter.StationId"/>
+        </member>
+        <member name="P:Mtconnect.AdapterSdk.Contracts.IAdapterOptions.SerialNumber">
+            <inheritdoc cref="P:Mtconnect.AdapterSdk.Contracts.IAdapter.SerialNumber"/>
+        </member>
+        <member name="P:Mtconnect.AdapterSdk.Contracts.IAdapterOptions.Manufacturer">
+            <inheritdoc cref="P:Mtconnect.AdapterSdk.Contracts.IAdapter.Manufacturer"/>
+        </member>
+        <member name="P:Mtconnect.AdapterSdk.Contracts.IAdapterOptions.Heartbeat">
+            <inheritdoc cref="P:Mtconnect.AdapterSdk.Contracts.IAdapter.Heartbeat"/>
+        </member>
+        <member name="P:Mtconnect.AdapterSdk.Contracts.IAdapterOptions.CanEnqueueDataItems">
+            <inheritdoc cref="P:Mtconnect.AdapterSdk.Contracts.IAdapter.CanEnqueueDataItems"/>
+        </member>
+        <member name="P:Mtconnect.AdapterSdk.Contracts.IAdapterOptions.CanValidateDataItems">
+            <inheritdoc cref="P:Mtconnect.AdapterSdk.Contracts.IAdapter.CanValidateDataItems"/>
+        </member>
+        <member name="P:Mtconnect.AdapterSdk.Contracts.IAdapterOptions.Item(System.String)">
+            <summary>
+            Gets a <see cref="T:Mtconnect.AdapterSdk.Contracts.IDataItemOptions"/> by the name of the data item as defined internally within the Adapter implementation.
+            </summary>
+            <param name="internalName">Reference to the internal name of the DataItem within the context of the Adapter implementation.</param>
+            <returns>Reference to the <see cref="T:Mtconnect.AdapterSdk.Contracts.IDataItemOptions"/>.</returns>
+        </member>
+        <member name="M:Mtconnect.AdapterSdk.Contracts.IAdapterOptions.UpdateFromConfig(Microsoft.Extensions.Logging.ILogger)">
+            <summary>
+            Updates the properties of the <see cref="T:Mtconnect.AdapterSdk.Contracts.IAdapterOptions"/> from the <see cref="!:ConfigurationManager"/> section 'adapter'.
+            </summary>
+        </member>
+        <member name="T:Mtconnect.AdapterSdk.Contracts.IComponentModel">
+            <summary>
+            Represents the generic type for a Component data model. Used to breakdown <see cref="T:Mtconnect.IAdapterDataModel"/> implementations into device-component structures.
+            </summary>
+        </member>
+        <member name="E:Mtconnect.AdapterSdk.Contracts.IDataItem.OnDataItemChanged">
+            <summary>
+            Occurrs when the value of a DataItem has changed.
+            </summary>
+        </member>
+        <member name="P:Mtconnect.AdapterSdk.Contracts.IDataItem.ModelPath">
+            <summary>
+            Reference to the type of source model (see <see cref="T:Mtconnect.IAdapterDataModel"/>) this DataItem was constructed from.
+            </summary>
+        </member>
+        <member name="P:Mtconnect.AdapterSdk.Contracts.IDataItem.Category">
+            <summary>
+            Refers to the category for the MTConnect observational type.
+            </summary>
+        </member>
+        <member name="P:Mtconnect.AdapterSdk.Contracts.IDataItem.TypeEnum">
+            <summary>
+            A <see cref="T:System.Type"/> reference to the <see cref="T:System.Enum"/> according the MTConnect Standard. See <see cref="!:EventTypes"/>, <see cref="!:SampleTypes"/>, and <see cref="!:ConditionTypes"/> for examples.
+            </summary>
+        </member>
+        <member name="P:Mtconnect.AdapterSdk.Contracts.IDataItem.SubTypeEnum">
+            <summary>
+            A <see cref="T:System.Type"/> reference to the <see cref="T:System.Enum"/> according to the MTConnect Standard and the provided <see cref="P:Mtconnect.AdapterSdk.Contracts.IDataItem.TypeEnum"/> if it is decorated with <see cref="!:ObservationalSubTypeAttribute"/>.
+            </summary>
+        </member>
+        <member name="P:Mtconnect.AdapterSdk.Contracts.IDataItem.TypeValidated">
+            <summary>
+            A flag for whether or not the <see cref="P:Mtconnect.AdapterSdk.Contracts.IDataItem.ObservationalType"/> has been validated against the MTConnect Standard.
+            </summary>
+        </member>
+        <member name="P:Mtconnect.AdapterSdk.Contracts.IDataItem.ObservationalType">
+            <summary>
+            The intended <c>type</c> for the Data Item. See <see cref="!:EventTypes">Events</see>, <see cref="!:SampleTypes">Samples</see>, and <see cref="!:ConditionTypes">Conditions</see>. The <c>type</c> can also be extended according to the standard be adding the prefix <c>x:</c> to indicate an extended type.
+            </summary>
+        </member>
+        <member name="P:Mtconnect.AdapterSdk.Contracts.IDataItem.ObservationalSubType">
+            <summary>
+            The intended <c>subType</c> for the Data Item. Refer to the appropriate <see cref="!:EventTypes">Events</see>, <see cref="!:SampleTypes">Samples</see>, and <see cref="!:ConditionTypes">Conditions</see>. The <c>subType</c> can also be extended according to the standard be adding the prefix <c>x:</c> to indicate an extended type.
+            </summary>
+        </member>
+        <member name="P:Mtconnect.AdapterSdk.Contracts.IDataItem.Units">
+            <summary>
+            Reference to the <c>nativeUnits</c> of the DataItem
+            </summary>
+        </member>
+        <member name="P:Mtconnect.AdapterSdk.Contracts.IDataItem.Name">
+            <summary>
+            The name of the data item.
+            </summary>
+        </member>
+        <member name="P:Mtconnect.AdapterSdk.Contracts.IDataItem.Description">
+            <summary>
+            A description of the DataItem such as a trace of its source or the methodology for a composite data type.
+            </summary>
+        </member>
+        <member name="P:Mtconnect.AdapterSdk.Contracts.IDataItem.DevicePrefix">
+            <summary>
+            Optional device prefix.
+            </summary>
+        </member>
+        <member name="P:Mtconnect.AdapterSdk.Contracts.IDataItem.Value">
+            <summary>
+            Get and set the Value property. This will check if the value has changed and set the changed flag appropriately. Automatically boxes types so will work for any data.
+            </summary>
+        </member>
+        <member name="P:Mtconnect.AdapterSdk.Contracts.IDataItem.LastChanged">
+            <summary>
+            Timestamp of when the <see cref="P:Mtconnect.AdapterSdk.Contracts.IDataItem.Value"/> was last Changed.
+            </summary>
+        </member>
+        <member name="P:Mtconnect.AdapterSdk.Contracts.IDataItem.HasChanged">
+            <summary>
+            A flag to indicate if the data item's value has changed since it 
+            has last been set.
+            </summary>
+        </member>
+        <member name="P:Mtconnect.AdapterSdk.Contracts.IDataItem.HasNewLine">
+            <summary>
+            An indicator that this data item must be sent on a separate line.
+            This is done for all data items that are more complex than simple 
+            Key|Value pairs.
+            </summary>
+        </member>
+        <member name="P:Mtconnect.AdapterSdk.Contracts.IDataItem.HasTimestampOverride">
+            <summary>
+            Flag for whether or not this DataItem has a different source for the expected output Timestamp.
+            </summary>
+        </member>
+        <member name="P:Mtconnect.AdapterSdk.Contracts.IDataItem.FormatValue">
+            <summary>
+            An expression that can be used to apply additional formatting or transformations to the DataItem value.
+            </summary>
+        </member>
+        <member name="M:Mtconnect.AdapterSdk.Contracts.IDataItem.Unavailable">
+            <summary>
+            Make this data item <c>UNAVAILABLE</c>.
+            </summary>
+        </member>
+        <member name="M:Mtconnect.AdapterSdk.Contracts.IDataItem.IsUnavailable">
+            <summary>
+            Checks if the data item is unavailable.
+            </summary>
+            <returns>true if Unavailable</returns>
+        </member>
+        <member name="M:Mtconnect.AdapterSdk.Contracts.IDataItem.ForceChanged">
+            <summary>
+            Forces this <see cref="T:Mtconnect.AdapterSdk.Contracts.IDataItem"/> to indicate that the <see cref="P:Mtconnect.AdapterSdk.Contracts.IDataItem.Value"/> has changed.
+            </summary>
+        </member>
+        <member name="M:Mtconnect.AdapterSdk.Contracts.IDataItem.Begin">
+            <summary>
+            These methods are mainly for conditions. They allow for
+            mark and sweep of the condition activations.
+            </summary>
+        </member>
+        <member name="M:Mtconnect.AdapterSdk.Contracts.IDataItem.Prepare">
+            <summary>
+            This is called before we send the actual changed data. It does the diff from the previous state and finds all the activations that need to be removed. This also check to see if all the activations have been removed because we only need to do a single normal with no native code to clear all. This is not required for simple conditions.
+            </summary>
+        </member>
+        <member name="M:Mtconnect.AdapterSdk.Contracts.IDataItem.Cleanup">
+            <summary>
+            Reset the Changed flag.
+            </summary>
+        </member>
+        <member name="M:Mtconnect.AdapterSdk.Contracts.IDataItem.ItemList(System.Boolean)">
+            <summary>
+            Get a list of all the changed data items. Since this is a 
+            single value, just return a list with one item if it has 
+            changed
+            </summary>
+            <param name="all">true means to return this data item regardless of the 
+            changed flag. This is used to send initial data back to a new client.</param>
+            <returns>The changed data item</returns>
+        </member>
+        <member name="M:Mtconnect.AdapterSdk.Contracts.IDataItem.Validate(Mtconnect.AdapterSdk.Contracts.ValidationResult@)">
+            <summary>
+            Performs validation against the DataItem value based on the <see cref="P:Mtconnect.AdapterSdk.Contracts.IDataItem.ObservationalType"/> and <see cref="P:Mtconnect.AdapterSdk.Contracts.IDataItem.ObservationalSubType"/>.
+            </summary>
+            <returns>Flag of whether or not the result yields anything other than <see cref="F:Mtconnect.AdapterSdk.Contracts.ValidationLevel.VALID"/>.</returns>
+        </member>
+        <member name="M:Mtconnect.AdapterSdk.Contracts.IDataItem.Copy">
+            <summary>
+            Copies the current DataItem into a new object.
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="T:Mtconnect.AdapterSdk.Contracts.IDataItemOptions">
+            <summary>
+            A DTO for serialized MTConnect DataItem configuration options.
+            </summary>
+        </member>
+        <member name="P:Mtconnect.AdapterSdk.Contracts.IDataItemOptions.InternalName">
+            <summary>
+            Reference to the internal name for the DataItem.
+            </summary>
+        </member>
+        <member name="P:Mtconnect.AdapterSdk.Contracts.IDataItemOptions.DataItemName">
+            <summary>
+            Override of the DataItem name.
+            </summary>
+        </member>
+        <member name="P:Mtconnect.AdapterSdk.Contracts.IDataItemOptions.Formatter">
+            <summary>
+            Override of the DataItem Value. Useful for creating switches between data values.
+            </summary>
+        </member>
+        <member name="P:Mtconnect.AdapterSdk.Contracts.IDataItemOptions.Ignore">
+            <summary>
+            Flag for whether or not the DataItem should be published by the Adapter.
+            </summary>
+        </member>
+        <member name="T:Mtconnect.AdapterSdk.Contracts.IDataItemValue">
+            <summary>
+            Represents the abstract type for a DataItem value model. Used to implement defined types/subtypes from the MTConnect standard into <see cref="T:Mtconnect.AdapterSdk.Contracts.IComponentModel"/> implementations.
+            </summary>
+        </member>
+        <member name="P:Mtconnect.AdapterSdk.Contracts.IDataItemValue.Category">
+            <summary>
+            Represents the <c>category</c> attribute
+            </summary>
+        </member>
+        <member name="P:Mtconnect.AdapterSdk.Contracts.IDataItemValue.ObservationalType">
+            <summary>
+            Represents the <c>type</c> attribute
+            </summary>
+        </member>
+        <member name="P:Mtconnect.AdapterSdk.Contracts.IDataItemValue.ObservationalSubType">
+            <summary>
+            Represents the <c>subType</c> attribute
+            </summary>
+        </member>
+        <member name="T:Mtconnect.AdapterSdk.Contracts.ValidationResult">
+            <summary>
+            A structure for containing a message when validation DataItems.
+            </summary>
+        </member>
+        <member name="P:Mtconnect.AdapterSdk.Contracts.ValidationResult.Level">
+            <summary>
+            The criticality of the message.
+            </summary>
+        </member>
+        <member name="P:Mtconnect.AdapterSdk.Contracts.ValidationResult.Message">
+            <summary>
+            The details of the message.
+            </summary>
+        </member>
+        <member name="P:Mtconnect.AdapterSdk.Contracts.ValidationResult.Exception">
+            <summary>
+            An exception that may have triggered the validation message.
+            </summary>
+        </member>
+        <member name="T:Mtconnect.AdapterSdk.DataItems.DataItemChangedHandler">
+            <summary>
+            Triggered when the value of a DataItem has changed.
+            </summary>
+            <param name="sender">Reference to the <see cref="T:Mtconnect.AdapterSdk.Contracts.IDataItem"/>.</param>
+            <param name="e">Reference to the event arguments for the data changed event.</param>
+        </member>
+        <member name="T:Mtconnect.AdapterSdk.DataItems.DataItemChangedEventArgs">
+            <summary>
+            Contains information on when a <see cref="T:Mtconnect.AdapterSdk.Contracts.IDataItem"/> was changed.
+            </summary>
+        </member>
+        <member name="P:Mtconnect.AdapterSdk.DataItems.DataItemChangedEventArgs.PreviousValue">
+            <summary>
+            Reference to the previous value for the sending <see cref="T:Mtconnect.AdapterSdk.Contracts.IDataItem"/>.
+            </summary>
+        </member>
+        <member name="P:Mtconnect.AdapterSdk.DataItems.DataItemChangedEventArgs.NewValue">
+            <summary>
+            Reference to the new value for the sending <see cref="T:Mtconnect.AdapterSdk.Contracts.IDataItem"/>.
+            </summary>
+        </member>
+        <member name="P:Mtconnect.AdapterSdk.DataItems.DataItemChangedEventArgs.PreviousChangeTime">
+            <summary>
+            Reference to the timestamp that the previous value was registered.
+            </summary>
+        </member>
+        <member name="P:Mtconnect.AdapterSdk.DataItems.DataItemChangedEventArgs.ChangeTime">
+            <summary>
+            Reference to the timestamp that the current value was initialized.
+            </summary>
+        </member>
+        <member name="M:Mtconnect.AdapterSdk.DataItems.DataItemChangedEventArgs.#ctor(System.Object,System.Object,System.Nullable{System.DateTime},System.DateTime)">
+            <summary>
+            Constructs a new reference EventArgs for the DataItemChanged event.
+            </summary>
+            <param name="previousValue">The <see cref="T:Mtconnect.AdapterSdk.Contracts.IDataItem"/>s value before the change.</param>
+            <param name="newValue">The <see cref="T:Mtconnect.AdapterSdk.Contracts.IDataItem"/>s value after the change.</param>
+            <param name="previousChangeTime">Reference to the <see cref="T:System.DateTime"/> the <see cref="T:Mtconnect.AdapterSdk.Contracts.IDataItem"/>s value previously changed.</param>
+            <param name="changeTime">Reference tot he <see cref="T:System.DateTime"/> the <see cref="T:Mtconnect.AdapterSdk.Contracts.IDataItem"/>s value currently changed.</param>
+        </member>
+        <member name="T:Mtconnect.AdapterDataModelReceivedHandler">
+            <summary>
+            Triggered when an Adapter instance starts
+            </summary>
+            <param name="sender">Reference to the Adapter that started</param>
+            <param name="e">Reference to the event arguments</param>
+        </member>
+        <member name="T:Mtconnect.AdapterSourceStartedHandler">
+            <summary>
+            Triggered when the <see cref="T:Mtconnect.IAdapterSource"/> has started.
+            </summary>
+            <param name="sender">Reference to the <see cref="T:Mtconnect.IAdapterSource"/> that has started.</param>
+            <param name="e">Reference to event arguments</param>
+        </member>
+        <member name="T:Mtconnect.AdapterSourceStoppedHandler">
+            <summary>
+            Triggered when the <see cref="T:Mtconnect.IAdapterSource"/> has stopped.
+            </summary>
+            <param name="sender">Reference to the <see cref="T:Mtconnect.IAdapterSource"/> that has stopped.</param>
+            <param name="e">Reference to event arguments</param>
+        </member>
+        <member name="T:Mtconnect.AdapterStartedHandler">
+            <summary>
+            Triggered when an Adapter instance starts
+            </summary>
+            <param name="sender">Reference to the Adapter that started</param>
+            <param name="e">Reference to the event arguments</param>
+        </member>
+        <member name="T:Mtconnect.AdapterStoppedHandler">
+            <summary>
+            Triggered when an Adapter instance stops
+            </summary>
+            <param name="sender">Reference to the Adapter that stopped</param>
+            <param name="e">Reference to the event arguments</param>
+        </member>
+        <member name="P:Mtconnect.AdapterStoppedEventArgs.WasCancelled">
+            <summary>
+            Flag for whether or not the Adapter was stopped due to a <see cref="T:System.Threading.CancellationToken"/>.
+            </summary>
+        </member>
+        <member name="T:Mtconnect.DataReceivedHandler">
+            <summary>
+            Handler for ingesting data from a MTConnect Adapter source.
+            </summary>
+            <param name="data">Reference to the data model.</param>
+            <param name="e">Event arguments containing data received from the MTConnect Adapter source.</param>
+        </member>
+        <member name="T:Mtconnect.DataReceivedEventArgs">
+            <summary>
+            Generic construct for storing received and processed data from an Adapter source.
+            </summary>
+        </member>
+        <member name="P:Mtconnect.DataReceivedEventArgs.Timestamp">
+            <summary>
+            Reference to the the data was received.
+            </summary>
+        </member>
+        <member name="T:Mtconnect.IAdapterDataModel">
+            <summary>
+            A generic interface for instantiating a source for a MTConnect Adapter.
+            </summary>
+        </member>
+        <member name="T:Mtconnect.IAdapterSource">
+            <summary>
+            A generic interface for classes used to derive <see cref="!:Mtconnect.AdapterSdk.Contracts.Attributes.DataItemAttribute"/>s from use.
+            </summary>
+        </member>
+        <member name="P:Mtconnect.IAdapterSource.DeviceUuid">
+            <inheritdoc cref="!:Adapter.DeviceUUID"/>
+        </member>
+        <member name="P:Mtconnect.IAdapterSource.DeviceName">
+            <inheritdoc cref="!:Adapter.DeviceName"/>
+        </member>
+        <member name="P:Mtconnect.IAdapterSource.StationId">
+            <inheritdoc cref="!:Adapter.StationId"/>
+        </member>
+        <member name="P:Mtconnect.IAdapterSource.SerialNumber">
+            <inheritdoc cref="!:Adapter.SerialNumber"/>
+        </member>
+        <member name="P:Mtconnect.IAdapterSource.Manufacturer">
+            <inheritdoc cref="!:Adapter.Manufacturer"/>
+        </member>
+        <member name="E:Mtconnect.IAdapterSource.OnDataReceived">
+            <summary>
+            Handles the event when an Adapter source has finished receiving and processing data.
+            </summary>
+        </member>
+        <member name="E:Mtconnect.IAdapterSource.OnAdapterSourceStarted">
+            <summary>
+            Handles the event when an Adapter source has started processing data.
+            </summary>
+        </member>
+        <member name="E:Mtconnect.IAdapterSource.OnAdapterSourceStopped">
+            <summary>
+            Handles the event when an Adapter source has stopped processing data.
+            </summary>
+        </member>
+        <member name="M:Mtconnect.IAdapterSource.Start(System.Threading.CancellationToken)">
+            <summary>
+            Instructs the Adapter source to begin collecting data.
+            </summary>
+            <param name="token">Token for cancelling the startup method.</param>
+        </member>
+        <member name="M:Mtconnect.IAdapterSource.Stop(System.Exception)">
+            <summary>
+            Instructs the Adapter source to stop collecting and/or processing data.
+            </summary>
+            <param name="ex">Reference to a possible exception that led to the stop of the Adapter Source.</param>
+        </member>
+    </members>
+</doc>

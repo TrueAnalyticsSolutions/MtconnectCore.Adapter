@@ -126,7 +126,7 @@ namespace Mtconnect.AdapterSdk.DataItems
             }
 
             /// <inheritdoc />
-            public override DataItem Copy()
+            public override IDataItem Copy()
             {
                 var copy = new Active(this.Name, this.Level, this.Description, this.Text, this.NativeCode, this.Qualifier, this.NativeSeverity);
                 copy.FormatValue = this.FormatValue;

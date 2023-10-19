@@ -68,7 +68,7 @@ namespace Mtconnect.AdapterSdk.DataItems
         }
 
         /// <inheritdoc />
-        public override DataItem Copy()
+        public override IDataItem Copy()
         {
             var copy = new Message(this.Name, this.Description, this.ObservationalType, this.ObservationalSubType);
             copy.FormatValue = this.FormatValue;

@@ -112,7 +112,7 @@ namespace Mtconnect.AdapterSdk.DataItems
         }
 
         /// <inheritdoc />
-        public override DataItem Copy()
+        public override IDataItem Copy()
         {
             var copy = new TimeSeries(this.Name, this.Description, this.Rate, this.ObservationalType, this.ObservationalSubType);
             copy.FormatValue = this.FormatValue;

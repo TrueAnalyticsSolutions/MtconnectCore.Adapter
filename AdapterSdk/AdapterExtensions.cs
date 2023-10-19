@@ -19,7 +19,7 @@ namespace Mtconnect
         /// <param name="adapter">Reference to the adapter to add the data item onto.</param>
         /// <param name="dataItem">Reference to the data item to be added.</param>
         /// <returns>Flag for whether or not the data item has been added. Returns true if the data item has already been added.</returns>
-        public static bool TryAddDataItem(this Adapter adapter, DataItem dataItem, bool logDuplicationMessage = true)
+        public static bool TryAddDataItem(this Adapter adapter, IDataItem dataItem, bool logDuplicationMessage = true)
         {
             if (adapter.Contains(dataItem))
             {
@@ -46,7 +46,7 @@ namespace Mtconnect
         /// Gets a list of <see cref="PropertyInfo"/> that is either decorated with the <see cref="DataItemAttribute"/> or an implementation of the type <see cref="DataItem"/>.
         /// </summary>
         /// <param name="type">Reference to the model type to reflect upon.</param>
-        /// <returns>Collection of properties that represent <see cref="DataItem"/>s</returns>
+        /// <returns>Collection of properties that represent <see cref="IDataItem"/>s</returns>
         private static PropertyInfo[] GetDataItemProperties(Type type)
         {
             return type.GetProperties(BindingFlags.Instance | BindingFlags.Public)
@@ -60,7 +60,7 @@ namespace Mtconnect
         /// Gets a list of <see cref="PropertyInfo"/> that is decorated with the <see cref="TimestampAttribute"/>.
         /// </summary>
         /// <param name="type">Reference to the model type to reflect upon.</param>
-        /// <returns>Collection of properties that represent the value for <see cref="DataItem.LastChanged"/></returns>
+        /// <returns>Collection of properties that represent the value for <see cref="IDataItem.LastChanged"/></returns>
         private static PropertyInfo[] GetDataItemTimestampProperties(Type type)
         {
             return type.GetProperties(BindingFlags.Instance | BindingFlags.Public)
@@ -268,7 +268,7 @@ namespace Mtconnect
                         // Now add the DataItem if it was constructed
                         if (dataItem != null)
                         {
-                            Func<DataItem, string, bool> addDataItem = (DataItem di, string mp) =>
+                            Func<IDataItem, string, bool> addDataItem = (IDataItem di, string mp) =>
                             {
                                 di.ModelPath += mp;// $"{modelPath}[{property.Name}]";
                                 if (timestampProperty != null)

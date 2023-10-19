@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Mtconnect.AdapterSdk.Contracts;
+using System;
 using System.Xml.Linq;
 
 namespace Mtconnect.AdapterSdk.DataItems
@@ -29,7 +30,7 @@ namespace Mtconnect.AdapterSdk.DataItems
         /// Constructs a new instance of a reported <see cref="DataItem"/> value.
         /// </summary>
         /// <param name="dataItem">Reference to the source DataItem</param>
-        public ReportedValue(DataItem dataItem)
+        public ReportedValue(IDataItem dataItem)
         {
             DevicePrefix = dataItem.DevicePrefix;
             DataItemName = dataItem.Name;

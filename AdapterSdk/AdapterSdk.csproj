@@ -76,10 +76,10 @@
   </ItemGroup>
 
   <ItemGroup>
-    <PackageReference Include="Microsoft.CodeAnalysis.CSharp.Scripting" Version="4.5.0" />
-    <PackageReference Include="Microsoft.Extensions.Logging.Abstractions" Version="7.0.0" />
+    <PackageReference Include="Microsoft.CodeAnalysis.CSharp.Scripting" Version="4.7.0" />
+    <PackageReference Include="Microsoft.Extensions.Logging.Abstractions" Version="7.0.1" />
     <PackageReference Include="System.Configuration.ConfigurationManager" Version="7.0.0" />
-    <PackageReference Include="System.Text.Json" Version="7.0.2" />
+    <PackageReference Include="System.Text.Json" Version="7.0.3" />
   </ItemGroup>
 
   <ItemGroup>
@@ -92,6 +92,10 @@
   <ItemGroup>
     <Folder Include="Contracts\Components\" />
     <Folder Include="Contracts\Units\" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\AdapterSdk.Core\AdapterSdk.Core.csproj" />
   </ItemGroup>
 
 </Project>

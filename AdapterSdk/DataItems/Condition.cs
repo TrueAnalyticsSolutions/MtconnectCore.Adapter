@@ -246,10 +246,10 @@ namespace Mtconnect.AdapterSdk.DataItems
         /// <param name="all">This flag is used to get all activations, regardless 
         /// of their changed state. This is used to deliver initial state to the client</param>
         /// <returns>A list of activations (also DataItems)</returns>
-        public override List<DataItem> ItemList(bool all = false)
+        public override List<IDataItem> ItemList(bool all = false)
         {
             // Just grab all the activations.
-            List<DataItem> list = _activeList.Values.ToList<DataItem>();// new List<DataItem>();
+            var list = _activeList.Values.ToList<IDataItem>();
             if (IsSimple || (HasBegun && HasPrepared && HasChanged))
             {
                 // For a simple condition, we are only looking for the changed set.
@@ -285,7 +285,7 @@ namespace Mtconnect.AdapterSdk.DataItems
         }
 
         /// <inheritdoc />
-        public override DataItem Copy()
+        public override IDataItem Copy()
         {
             var copy = new Condition(this.Name, this.ObservationalType, this.ObservationalSubType, this.Description, this.IsSimple);
             copy.FormatValue = this.FormatValue;

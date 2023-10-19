@@ -8,17 +8,17 @@ using System.Reflection;
 
 namespace Mtconnect.AdapterSdk.DataItems
 {
-    /// <summary>
-    /// Triggered when the value of a DataItem has changed.
-    /// </summary>
-    /// <param name="sender">Reference to the <see cref="DataItem"/>.</param>
-    /// <param name="e">Reference to the event arguments for the data changed event.</param>
-    public delegate void DataItemChangedHandler(DataItem sender, DataItemChangedEventArgs e);
+    ///// <summary>
+    ///// Triggered when the value of a DataItem has changed.
+    ///// </summary>
+    ///// <param name="sender">Reference to the <see cref="DataItem"/>.</param>
+    ///// <param name="e">Reference to the event arguments for the data changed event.</param>
+    //public delegate void DataItemChangedHandler(DataItem sender, DataItemChangedEventArgs e);
 
     /// <summary>
     /// Simple base data item class. Has an abstract value and a name. It keeps track if it has changed since the last time it was reset.
     /// </summary>
-    public abstract class DataItem
+    public abstract class DataItem : IDataItem
     {
         /// <summary>
         /// Occurrs when the value of a DataItem has changed.
@@ -28,7 +28,7 @@ namespace Mtconnect.AdapterSdk.DataItems
         /// <summary>
         /// Reference to the type of source model (see <see cref="IAdapterDataModel"/>) this DataItem was constructed from.
         /// </summary>
-        public string ModelPath { get; internal set; } = null;
+        public string ModelPath { get; set; } = null;
 
         /// <summary>
         /// Refers to the category for the MTConnect observational type.
@@ -127,7 +127,7 @@ namespace Mtconnect.AdapterSdk.DataItems
         /// <summary>
         /// The name of the data item.
         /// </summary>
-        public string Name { get; internal set; }
+        public string Name { get; set; }
 
         /// <summary>
         /// A description of the DataItem such as a trace of its source or the methodology for a composite data type.
@@ -137,7 +137,7 @@ namespace Mtconnect.AdapterSdk.DataItems
         /// <summary>
         /// Optional device prefix.
         /// </summary>
-        public string DevicePrefix = string.Empty;
+        public string DevicePrefix { get; set; } = string.Empty;
 
         /// <summary>
         /// The value of the data item, can be any type.
@@ -216,7 +216,7 @@ namespace Mtconnect.AdapterSdk.DataItems
         /// <summary>
         /// Flag for whether or not this DataItem has a different source for the expected output Timestamp.
         /// </summary>
-        public bool HasTimestampOverride { get; internal set; }
+        public bool HasTimestampOverride { get; set; }
 
         /// <summary>
         /// An expression that can be used to apply additional formatting or transformations to the DataItem value.
@@ -265,9 +265,9 @@ namespace Mtconnect.AdapterSdk.DataItems
         /// <inheritdoc />
         public override bool Equals(object obj)
         {
-            if (obj is DataItem)
+            if (obj is IDataItem)
             {
-                return (obj as DataItem).Value?.Equals(Value) == true;
+                return (obj as IDataItem).Value?.Equals(Value) == true;
             } else if (obj is string)
             {
                 if (!(Value is string)) return false;
@@ -313,9 +313,9 @@ namespace Mtconnect.AdapterSdk.DataItems
         /// <param name="all">true means to return this data item regardless of the 
         /// changed flag. This is used to send initial data back to a new client.</param>
         /// <returns>The changed data item</returns>
-        public virtual List<DataItem> ItemList(bool all = false)
+        public virtual List<IDataItem> ItemList(bool all = false)
         {
-            List<DataItem> list = new List<DataItem>();
+            List<IDataItem> list = new List<IDataItem>();
             if (all || HasChanged)
                 list.Add(this);
             return list;
@@ -432,6 +432,6 @@ namespace Mtconnect.AdapterSdk.DataItems
         /// </summary>
         /// <typeparam name="T"></typeparam>
         /// <returns></returns>
-        public abstract DataItem Copy();
+        public abstract IDataItem Copy();
     }
 }

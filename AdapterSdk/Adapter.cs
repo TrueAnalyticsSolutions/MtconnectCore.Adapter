@@ -15,12 +15,10 @@ using System.Collections;
 
 namespace Mtconnect
 {
-
-
     /// <summary>
     /// An abstract implementation for a MTConnect adapter
     /// </summary>
-    public abstract class Adapter
+    public abstract class Adapter : IAdapter
     {
         /// <summary>
         /// Occurs when the Adapter receives a new <see cref="IAdapterDataModel"/>.
@@ -80,7 +78,7 @@ namespace Mtconnect
         /// <summary>
         /// Reference to the collection of <see cref="DataItem"/>s being tracked.
         /// </summary>
-        public IEnumerable<DataItem> DataItems => _dataItems;
+        public IEnumerable<IDataItem> DataItems => _dataItems;
 
         /// <summary>
         /// A queue of <see cref="DataItem"/> changed values that have not been sent to clients.
@@ -93,7 +91,7 @@ namespace Mtconnect
         /// <param name="name"><inheritdoc cref="DataItem.Name" path="/summary"/></param>
         /// <param name="devicePrefix"><inheritdoc cref="DataItem.DevicePrefix" path="/summary"/></param>
         /// <returns>Reference to the <see cref="DataItem"/> with the matching <paramref name="name"/>.</returns>
-        public DataItem this[string name, string devicePrefix = null]
+        public IDataItem this[string name, string devicePrefix = null]
         {
             get { return _dataItems[name, devicePrefix ?? string.Empty]; }
             set
@@ -144,14 +142,14 @@ namespace Mtconnect
         /// <summary>
         /// An optional reference to an Adapter source. If the Adapter is started with a reference to a source, this is where the reference is maintained.
         /// </summary>
-        protected List<IAdapterSource> Sources { get; set; } = new List<IAdapterSource>();
+        public List<IAdapterSource> Sources { get; protected set; } = new List<IAdapterSource>();
 
         private HashSet<Type> DataModelTypes { get; set; } = new HashSet<Type>();
 
         /// <summary>
         /// Reference to the options provided in the constructor.
         /// </summary>
-        protected AdapterOptions Options { get; set; }
+        public IAdapterOptions Options { get; protected set; }
 
         /// <summary>
         /// Generic constructor of a new Adapter instance with basic AdapterOptions.
@@ -184,18 +182,18 @@ namespace Mtconnect
         /// </summary>
         /// <param name="dataItem"></param>
         /// <returns><inheritdoc cref="Contains(string, string)" path="/returns"/></returns>
-        public bool Contains(DataItem dataItem) => _dataItems.Contains(dataItem);
+        public bool Contains(IDataItem dataItem) => _dataItems.Contains(dataItem);
 
         /// <summary>
         /// Add a data item to the adapter.
         /// </summary>
         /// <param name="dataItem">The data item.</param>
         /// <exception cref="DuplicateNameException"></exception>
-        public void AddDataItem(DataItem dataItem)
+        public void AddDataItem(IDataItem dataItem)
         {
             string internalName = dataItem.Name;
             string devicePrefix = dataItem.DevicePrefix;
-            DataItemOptions options = Options[internalName];
+            IDataItemOptions options = Options[internalName];
 
             if (options?.Ignore == true)
             {
@@ -226,7 +224,7 @@ namespace Mtconnect
             _logger?.LogTrace("Added DataItem {DataItemName}", _dataItems[index].Name);
         }
 
-        private void Adapter_OnDataItemChanged(DataItem sender, DataItemChangedEventArgs e)
+        private void Adapter_OnDataItemChanged(IDataItem sender, DataItemChangedEventArgs e)
         {
             _logger?.LogTrace("DataItem '{DataItemName}' changed from '{PreviousValue}' to '{CurrentValue}' at {LastChangedTime}", sender.Name, e.PreviousValue, e.NewValue, e.ChangeTime);
             if (CanEnqueueDataItems) _values.Enqueue(new ReportedValue(sender));
@@ -245,7 +243,7 @@ namespace Mtconnect
         /// Remove a data item from the adapter.
         /// </summary>
         /// <param name="dataItem"></param>
-        public void RemoveDataItem(DataItem dataItem)
+        public void RemoveDataItem(IDataItem dataItem)
         {
             if (!_dataItems.Contains(dataItem))
             {
