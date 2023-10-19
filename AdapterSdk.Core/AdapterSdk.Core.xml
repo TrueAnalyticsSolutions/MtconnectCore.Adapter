@@ -4,6 +4,29 @@
         <name>AdapterSdk.Core</name>
     </assembly>
     <members>
+        <member name="T:Mtconnect.AdapterSdk.Assets.IAsset">
+            <summary>
+            Abstract Asset class.
+            </summary>
+        </member>
+        <member name="P:Mtconnect.AdapterSdk.Assets.IAsset.AssetId">
+            <summary>
+            Unique identifier of an MTConnect Asset.
+            </summary>
+        </member>
+        <member name="M:Mtconnect.AdapterSdk.Assets.IAsset.ToXml(System.Xml.XmlWriter)">
+            <summary>
+            Writes XML to the provided <paramref name="writer"/>.
+            </summary>
+            <param name="writer">Method uses this to write XML.</param>
+            <returns>Pass-thru reference to <paramref name="writer"/>.</returns>
+        </member>
+        <member name="M:Mtconnect.AdapterSdk.Assets.IAsset.GetMTCType">
+            <summary>
+            Generic method for getting the type of Asset.
+            </summary>
+            <returns>Reference to the type of MTConnect Asset type.</returns>
+        </member>
         <member name="T:Mtconnect.AdapterSdk.Contracts.AdapterStates">
             <summary>
             Represents the various states of the MTConnect Adapter.
@@ -37,6 +60,26 @@
         <member name="F:Mtconnect.AdapterSdk.Contracts.AdapterStates.Busy">
             <summary>
             Indicates that the MTConnect Adapter is busy with a client.
+            </summary>
+        </member>
+        <member name="T:Mtconnect.AdapterSdk.Contracts.DataItemSendTypes">
+            <summary>
+            Represents methods for sending <see cref="T:Mtconnect.AdapterSdk.Contracts.IDataItem"/>s.
+            </summary>
+        </member>
+        <member name="F:Mtconnect.AdapterSdk.Contracts.DataItemSendTypes.All">
+            <summary>
+            Instructs the Adapter to send all <see cref="T:Mtconnect.AdapterSdk.Contracts.IDataItem"/>s.
+            </summary>
+        </member>
+        <member name="F:Mtconnect.AdapterSdk.Contracts.DataItemSendTypes.Changed">
+            <summary>
+            Instructs the Adapter to send only the <see cref="T:Mtconnect.AdapterSdk.Contracts.IDataItem"/>s which values have changed.
+            </summary>
+        </member>
+        <member name="F:Mtconnect.AdapterSdk.Contracts.DataItemSendTypes.Queued">
+            <summary>
+            Instructs the Adapter to send all of the changed <see cref="T:Mtconnect.AdapterSdk.Contracts.IDataItem"/> values that have been queued up.
             </summary>
         </member>
         <member name="T:Mtconnect.AdapterSdk.Contracts.ValidationLevel">
@@ -188,6 +231,54 @@
             <summary>
             Make all data items unavailable
             </summary>
+        </member>
+        <member name="M:Mtconnect.AdapterSdk.Contracts.IAdapter.Begin">
+            <summary>
+            The asks all data items to begin themselves for collection. Only 
+            required for conditions and should not be called if you are not 
+            planning on adding all the conditions before you send. If you skip this
+            the adapter will not perform the mark and sweep.
+            </summary>
+        </member>
+        <member name="M:Mtconnect.AdapterSdk.Contracts.IAdapter.Send(Mtconnect.AdapterSdk.Contracts.DataItemSendTypes,System.String)">
+            <summary>
+            Issues a <see cref="!:Write"/> command to the implementing Adapter for each appropriate <see cref="!:ReportedValue"/> depending on the provided <paramref name="sendType"/>.
+            </summary>
+            <param name="clientId">Reference to the id of the client to send the <see cref="!:ReportedValue"/>s to.</param>
+            <param name="sendType">Flag for identifying which <see cref="!:ReportedValue"/>s to send.</param>
+        </member>
+        <member name="M:Mtconnect.AdapterSdk.Contracts.IAdapter.AddAsset(Mtconnect.AdapterSdk.Assets.IAsset)">
+            <summary>
+            Send a new asset to the Agent
+            </summary>
+            <param name="asset">The asset</param>
+        </member>
+        <member name="M:Mtconnect.AdapterSdk.Contracts.IAdapter.Start(System.Collections.Generic.IEnumerable{Mtconnect.IAdapterSource},System.Boolean,System.Threading.CancellationToken)">
+            <summary>
+            Starts the listener thread and the provided <see cref="T:Mtconnect.IAdapterSource"/>s.
+            </summary>
+            <param name="sources">Reference to the sources of the Adapter.</param>
+            <param name="begin"><inheritdoc cref="!:Start&lt;T&gt;(T, bool)" path="/param[@name='begin']"/></param>
+            <param name="token">Reference to a cancellation token that is capable of cancelling the Adapter operation</param>
+        </member>
+        <member name="M:Mtconnect.AdapterSdk.Contracts.IAdapter.Stop(System.Exception)">
+            <summary>
+            Stop the listener thread and shutdown all client connections. Make sure to call this base method when overriding to ensure any internal properties are properly stopped.
+            </summary>
+        </member>
+        <member name="M:Mtconnect.AdapterSdk.Contracts.IAdapter.GetDataItemNames">
+            <summary>
+            Gets a list of the <see cref="P:Mtconnect.AdapterSdk.Contracts.IDataItem.Name"/>s.
+            </summary>
+            <returns>Array of <see cref="P:Mtconnect.AdapterSdk.Contracts.IDataItem.Name"/>s that are registered in this <see cref="T:Mtconnect.AdapterSdk.Contracts.IAdapter"/>.</returns>
+        </member>
+        <member name="M:Mtconnect.AdapterSdk.Contracts.IAdapter.HandleCommand(System.String,System.String)">
+            <summary>
+            Handle an incoming command from a client.
+            </summary>
+            <param name="command">Reference to the incoming message command.</param>
+            <param name="clientId">Reference to the client that sent the command</param>
+            <returns>Flag for whether or not the command was handled with a response</returns>
         </member>
         <member name="T:Mtconnect.AdapterSdk.Contracts.IAdapterOptions">
             <summary>

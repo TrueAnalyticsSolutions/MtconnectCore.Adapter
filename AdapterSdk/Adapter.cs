@@ -387,7 +387,7 @@ namespace Mtconnect
         /// Send a new asset to the Agent
         /// </summary>
         /// <param name="asset">The asset</param>
-        public virtual void AddAsset(Asset asset)
+        public virtual void AddAsset(IAsset asset)
         {
             StringBuilder sb = new StringBuilder();
 

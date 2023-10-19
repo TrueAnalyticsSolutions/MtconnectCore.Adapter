@@ -1,7 +1,9 @@
 ﻿using Microsoft.Extensions.Logging;
+using Mtconnect.AdapterSdk.Assets;
 using System;
 using System.Collections.Generic;
 using System.Data;
+using System.Threading;
 
 namespace Mtconnect.AdapterSdk.Contracts
 {
@@ -132,5 +134,56 @@ namespace Mtconnect.AdapterSdk.Contracts
 
         void Cleanup();
         void Prepare();
+
+
+        /// <summary>
+        /// The asks all data items to begin themselves for collection. Only 
+        /// required for conditions and should not be called if you are not 
+        /// planning on adding all the conditions before you send. If you skip this
+        /// the adapter will not perform the mark and sweep.
+        /// </summary>
+        void Begin();
+
+        /// <summary>
+        /// Issues a <see cref="Write"/> command to the implementing Adapter for each appropriate <see cref="ReportedValue"/> depending on the provided <paramref name="sendType"/>.
+        /// </summary>
+        /// <param name="clientId">Reference to the id of the client to send the <see cref="ReportedValue"/>s to.</param>
+        /// <param name="sendType">Flag for identifying which <see cref="ReportedValue"/>s to send.</param>
+        void Send(DataItemSendTypes sendType = DataItemSendTypes.Changed, string clientId = null);
+
+        /// <summary>
+        /// Send a new asset to the Agent
+        /// </summary>
+        /// <param name="asset">The asset</param>
+        void AddAsset(IAsset asset);
+
+        /// <summary>
+        /// Starts the listener thread and the provided <see cref="IAdapterSource"/>s.
+        /// </summary>
+        /// <param name="sources">Reference to the sources of the Adapter.</param>
+        /// <param name="begin"><inheritdoc cref="Start{T}(T, bool)" path="/param[@name='begin']"/></param>
+        /// <param name="token">Reference to a cancellation token that is capable of cancelling the Adapter operation</param>
+        void Start(IEnumerable<IAdapterSource> sources, bool begin = true, CancellationToken token = default);
+
+        /// <summary>
+        /// Stop the listener thread and shutdown all client connections. Make sure to call this base method when overriding to ensure any internal properties are properly stopped.
+        /// </summary>
+        void Stop(Exception ex = null);
+
+        /// <summary>
+        /// Gets a list of the <see cref="IDataItem.Name"/>s.
+        /// </summary>
+        /// <returns>Array of <see cref="IDataItem.Name"/>s that are registered in this <see cref="IAdapter"/>.</returns>
+        string[] GetDataItemNames();
+
+        Type[] GetDataModelTypes();
+
+        /// <summary>
+        /// Handle an incoming command from a client.
+        /// </summary>
+        /// <param name="command">Reference to the incoming message command.</param>
+        /// <param name="clientId">Reference to the client that sent the command</param>
+        /// <returns>Flag for whether or not the command was handled with a response</returns>
+        bool HandleCommand(string command, string clientId = null);
     }
 }

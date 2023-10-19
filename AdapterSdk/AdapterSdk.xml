@@ -193,7 +193,7 @@
             <param name="clientId">Reference to the id of the client to send the <see cref="T:Mtconnect.AdapterSdk.DataItems.ReportedValue"/>s to.</param>
             <param name="values">Collection of <see cref="T:Mtconnect.AdapterSdk.DataItems.ReportedValue"/>s to send values.</param>
         </member>
-        <member name="M:Mtconnect.Adapter.AddAsset(Mtconnect.AdapterSdk.Assets.Asset)">
+        <member name="M:Mtconnect.Adapter.AddAsset(Mtconnect.AdapterSdk.Assets.IAsset)">
             <summary>
             Send a new asset to the Agent
             </summary>
@@ -1033,26 +1033,6 @@
         </member>
         <member name="M:Mtconnect.AdapterSdk.Contracts.DataItemValue`1.op_Implicit(Mtconnect.AdapterSdk.Contracts.DataItemValue{`0})~`0">
             <inheritdoc />
-        </member>
-        <member name="T:Mtconnect.AdapterSdk.Contracts.DataItemSendTypes">
-            <summary>
-            Represents methods for sending <see cref="T:Mtconnect.AdapterSdk.DataItems.DataItem"/>s.
-            </summary>
-        </member>
-        <member name="F:Mtconnect.AdapterSdk.Contracts.DataItemSendTypes.All">
-            <summary>
-            Instructs the Adapter to send all <see cref="T:Mtconnect.AdapterSdk.DataItems.DataItem"/>s.
-            </summary>
-        </member>
-        <member name="F:Mtconnect.AdapterSdk.Contracts.DataItemSendTypes.Changed">
-            <summary>
-            Instructs the Adapter to send only the <see cref="T:Mtconnect.AdapterSdk.DataItems.DataItem"/>s which values have changed.
-            </summary>
-        </member>
-        <member name="F:Mtconnect.AdapterSdk.Contracts.DataItemSendTypes.Queued">
-            <summary>
-            Instructs the Adapter to send all of the changed <see cref="T:Mtconnect.AdapterSdk.DataItems.DataItem"/> values that have been queued up.
-            </summary>
         </member>
         <member name="T:Mtconnect.AdapterSdk.Contracts.MtconnectVersions">
             <summary>
