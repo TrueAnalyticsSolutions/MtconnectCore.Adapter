@@ -551,6 +551,46 @@
             An exception that may have triggered the validation message.
             </summary>
         </member>
+        <member name="T:Mtconnect.AdapterSdk.AdapterDataModelReceivedHandler">
+            <summary>
+            Triggered when an Adapter instance starts
+            </summary>
+            <param name="sender">Reference to the Adapter that started</param>
+            <param name="e">Reference to the event arguments</param>
+        </member>
+        <member name="T:Mtconnect.AdapterSdk.AdapterSourceStartedHandler">
+            <summary>
+            Triggered when the <see cref="T:Mtconnect.IAdapterSource"/> has started.
+            </summary>
+            <param name="sender">Reference to the <see cref="T:Mtconnect.IAdapterSource"/> that has started.</param>
+            <param name="e">Reference to event arguments</param>
+        </member>
+        <member name="T:Mtconnect.AdapterSdk.AdapterSourceStoppedHandler">
+            <summary>
+            Triggered when the <see cref="T:Mtconnect.IAdapterSource"/> has stopped.
+            </summary>
+            <param name="sender">Reference to the <see cref="T:Mtconnect.IAdapterSource"/> that has stopped.</param>
+            <param name="e">Reference to event arguments</param>
+        </member>
+        <member name="T:Mtconnect.AdapterSdk.AdapterStartedHandler">
+            <summary>
+            Triggered when an Adapter instance starts
+            </summary>
+            <param name="sender">Reference to the Adapter that started</param>
+            <param name="e">Reference to the event arguments</param>
+        </member>
+        <member name="T:Mtconnect.AdapterSdk.AdapterStoppedHandler">
+            <summary>
+            Triggered when an Adapter instance stops
+            </summary>
+            <param name="sender">Reference to the Adapter that stopped</param>
+            <param name="e">Reference to the event arguments</param>
+        </member>
+        <member name="P:Mtconnect.AdapterSdk.AdapterStoppedEventArgs.WasCancelled">
+            <summary>
+            Flag for whether or not the Adapter was stopped due to a <see cref="T:System.Threading.CancellationToken"/>.
+            </summary>
+        </member>
         <member name="T:Mtconnect.AdapterSdk.DataItems.DataItemChangedHandler">
             <summary>
             Triggered when the value of a DataItem has changed.
@@ -591,6 +631,23 @@
             <param name="newValue">The <see cref="T:Mtconnect.AdapterSdk.Contracts.IDataItem"/>s value after the change.</param>
             <param name="previousChangeTime">Reference to the <see cref="T:System.DateTime"/> the <see cref="T:Mtconnect.AdapterSdk.Contracts.IDataItem"/>s value previously changed.</param>
             <param name="changeTime">Reference tot he <see cref="T:System.DateTime"/> the <see cref="T:Mtconnect.AdapterSdk.Contracts.IDataItem"/>s value currently changed.</param>
+        </member>
+        <member name="T:Mtconnect.AdapterSdk.DataReceivedHandler">
+            <summary>
+            Handler for ingesting data from a MTConnect Adapter source.
+            </summary>
+            <param name="sender">Reference to the data model.</param>
+            <param name="e">Event arguments containing data received from the MTConnect Adapter source.</param>
+        </member>
+        <member name="T:Mtconnect.AdapterSdk.DataReceivedEventArgs">
+            <summary>
+            Generic construct for storing received and processed data from an Adapter source.
+            </summary>
+        </member>
+        <member name="P:Mtconnect.AdapterSdk.DataReceivedEventArgs.Timestamp">
+            <summary>
+            Reference to the the data was received.
+            </summary>
         </member>
         <member name="T:Mtconnect.AdapterSdk.UPnP.IUPnPDeviceServiceModel">
             <summary>
@@ -657,63 +714,6 @@
         <member name="P:Mtconnect.AdapterSdk.UPnP.IUPnPMessage.Model">
             <summary>
             Reference to the static model that describes the device and service for UPnP.
-            </summary>
-        </member>
-        <member name="T:Mtconnect.AdapterDataModelReceivedHandler">
-            <summary>
-            Triggered when an Adapter instance starts
-            </summary>
-            <param name="sender">Reference to the Adapter that started</param>
-            <param name="e">Reference to the event arguments</param>
-        </member>
-        <member name="T:Mtconnect.AdapterSourceStartedHandler">
-            <summary>
-            Triggered when the <see cref="T:Mtconnect.IAdapterSource"/> has started.
-            </summary>
-            <param name="sender">Reference to the <see cref="T:Mtconnect.IAdapterSource"/> that has started.</param>
-            <param name="e">Reference to event arguments</param>
-        </member>
-        <member name="T:Mtconnect.AdapterSourceStoppedHandler">
-            <summary>
-            Triggered when the <see cref="T:Mtconnect.IAdapterSource"/> has stopped.
-            </summary>
-            <param name="sender">Reference to the <see cref="T:Mtconnect.IAdapterSource"/> that has stopped.</param>
-            <param name="e">Reference to event arguments</param>
-        </member>
-        <member name="T:Mtconnect.AdapterStartedHandler">
-            <summary>
-            Triggered when an Adapter instance starts
-            </summary>
-            <param name="sender">Reference to the Adapter that started</param>
-            <param name="e">Reference to the event arguments</param>
-        </member>
-        <member name="T:Mtconnect.AdapterStoppedHandler">
-            <summary>
-            Triggered when an Adapter instance stops
-            </summary>
-            <param name="sender">Reference to the Adapter that stopped</param>
-            <param name="e">Reference to the event arguments</param>
-        </member>
-        <member name="P:Mtconnect.AdapterStoppedEventArgs.WasCancelled">
-            <summary>
-            Flag for whether or not the Adapter was stopped due to a <see cref="T:System.Threading.CancellationToken"/>.
-            </summary>
-        </member>
-        <member name="T:Mtconnect.DataReceivedHandler">
-            <summary>
-            Handler for ingesting data from a MTConnect Adapter source.
-            </summary>
-            <param name="data">Reference to the data model.</param>
-            <param name="e">Event arguments containing data received from the MTConnect Adapter source.</param>
-        </member>
-        <member name="T:Mtconnect.DataReceivedEventArgs">
-            <summary>
-            Generic construct for storing received and processed data from an Adapter source.
-            </summary>
-        </member>
-        <member name="P:Mtconnect.DataReceivedEventArgs.Timestamp">
-            <summary>
-            Reference to the the data was received.
             </summary>
         </member>
         <member name="T:Mtconnect.IAdapterDataModel">

@@ -949,10 +949,37 @@
             </summary>
             <param name="value">Underlying value</param>
         </member>
+        <member name="M:Mtconnect.AdapterSdk.Contracts.DataItemValue`1.Equals(System.Object)">
+            <inheritdoc />
+        </member>
+        <member name="M:Mtconnect.AdapterSdk.Contracts.DataItemValue`1.GetHashCode">
+            <inheritdoc />
+        </member>
         <member name="M:Mtconnect.AdapterSdk.Contracts.DataItemValue`1.ToString">
             <inheritdoc />
         </member>
         <member name="M:Mtconnect.AdapterSdk.Contracts.DataItemValue`1.op_Implicit(Mtconnect.AdapterSdk.Contracts.DataItemValue{`0})~`0">
+            <inheritdoc />
+        </member>
+        <member name="M:Mtconnect.AdapterSdk.Contracts.DataItemValue`1.op_Equality(Mtconnect.AdapterSdk.Contracts.DataItemValue{`0},Mtconnect.AdapterSdk.Contracts.DataItemValue{`0})">
+            <inheritdoc />
+        </member>
+        <member name="M:Mtconnect.AdapterSdk.Contracts.DataItemValue`1.op_Inequality(Mtconnect.AdapterSdk.Contracts.DataItemValue{`0},Mtconnect.AdapterSdk.Contracts.DataItemValue{`0})">
+            <inheritdoc />
+        </member>
+        <member name="M:Mtconnect.AdapterSdk.Contracts.DataItemValue`1.op_Equality(Mtconnect.AdapterSdk.Contracts.DataItemValue{`0},System.Object)">
+            <inheritdoc />
+        </member>
+        <member name="M:Mtconnect.AdapterSdk.Contracts.DataItemValue`1.op_Inequality(Mtconnect.AdapterSdk.Contracts.DataItemValue{`0},System.Object)">
+            <inheritdoc />
+        </member>
+        <member name="M:Mtconnect.AdapterSdk.Contracts.DataItemValue`1.op_Equality(System.Object,Mtconnect.AdapterSdk.Contracts.DataItemValue{`0})">
+            <inheritdoc />
+        </member>
+        <member name="M:Mtconnect.AdapterSdk.Contracts.DataItemValue`1.op_Inequality(System.Object,Mtconnect.AdapterSdk.Contracts.DataItemValue{`0})">
+            <inheritdoc />
+        </member>
+        <member name="M:Mtconnect.AdapterSdk.Contracts.DataItemValue`1.Unavailable">
             <inheritdoc />
         </member>
         <member name="T:Mtconnect.AdapterSdk.Contracts.MtconnectVersions">

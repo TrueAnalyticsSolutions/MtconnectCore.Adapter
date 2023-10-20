@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace Mtconnect
+namespace Mtconnect.AdapterSdk
 {
     /// <summary>
     /// Triggered when the <see cref="IAdapterSource"/> has started.

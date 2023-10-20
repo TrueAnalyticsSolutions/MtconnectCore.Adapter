@@ -1,11 +1,11 @@
 ﻿using System;
 
-namespace Mtconnect
+namespace Mtconnect.AdapterSdk
 {
     /// <summary>
     /// Handler for ingesting data from a MTConnect Adapter source.
     /// </summary>
-    /// <param name="data">Reference to the data model.</param>
+    /// <param name="sender">Reference to the data model.</param>
     /// <param name="e">Event arguments containing data received from the MTConnect Adapter source.</param>
     public delegate void DataReceivedHandler(IAdapterSource sender, DataReceivedEventArgs e);
 

@@ -1,7 +1,7 @@
 ﻿using Mtconnect.AdapterSdk.Contracts;
 using System;
 
-namespace Mtconnect
+namespace Mtconnect.AdapterSdk
 {
     /// <summary>
     /// Triggered when an Adapter instance starts

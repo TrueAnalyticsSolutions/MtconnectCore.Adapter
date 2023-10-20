@@ -1,4 +1,5 @@
-﻿using Mtconnect.AdapterSdk.DataItemValues;
+﻿using Mtconnect.AdapterSdk;
+using Mtconnect.AdapterSdk.DataItemValues;
 using Mtconnect.AdapterSourceTemplate.Models;
 using System;
 using System.Security.Cryptography;

@@ -2,7 +2,7 @@
 using System;
 using System.Threading;
 
-namespace Mtconnect
+namespace Mtconnect.AdapterSdk
 {
     /// <summary>
     /// Triggered when an Adapter instance stops

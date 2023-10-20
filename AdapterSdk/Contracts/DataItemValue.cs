@@ -28,50 +28,49 @@ namespace Mtconnect.AdapterSdk.Contracts
             _value = value;
         }
 
+        /// <inheritdoc />
         public override bool Equals(object obj)
         {
-            if (obj == null || GetType() != obj.GetType() || !(obj is string)) return false;
+            if (ReferenceEquals(_value, null))
+                return ReferenceEquals(obj, null);
 
-            return ToString().Equals(obj.ToString());
+            return _value.Equals(obj);
         }
 
+        /// <inheritdoc />
         public override int GetHashCode()
-        {
-            return _value.GetHashCode();
-        }
+            => _value.GetHashCode();
 
         /// <inheritdoc />
         public override string ToString()
-        {
-            return _value?.ToString();
-        }
+            => _value?.ToString();
 
         /// <inheritdoc />
         public static implicit operator T(DataItemValue<T> eventObj)
-        {
-            return eventObj._value;
-        }
+            => eventObj._value;
 
+        /// <inheritdoc />
         public static bool operator ==(DataItemValue<T> left, DataItemValue<T> right)
-        {
-            if (ReferenceEquals(left, right))
-            {
-                return true;
-            }
-
-            if (left is null || right is null)
-            {
-                return false;
-            }
-
-            return left.Equals(right);
-        }
-
+            => left.Equals(right._value);
+        /// <inheritdoc />
         public static bool operator !=(DataItemValue<T> left, DataItemValue<T> right)
-        {
-            return !(left == right);
-        }
+            => !(left == right);
 
+        /// <inheritdoc />
+        public static bool operator ==(DataItemValue<T> left, object right)
+            => left.Equals(right);
+        /// <inheritdoc />
+        public static bool operator !=(DataItemValue<T> left, object right)
+            => !(left == right);
+
+        /// <inheritdoc />
+        public static bool operator ==(object left, DataItemValue<T> right)
+            => right.Equals(left);
+        /// <inheritdoc />
+        public static bool operator !=(object left, DataItemValue<T> right)
+            => !(left == right);
+
+        /// <inheritdoc />
         public virtual void Unavailable()
         {
             _value = default(T);

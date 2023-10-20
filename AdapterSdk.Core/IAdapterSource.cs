@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Mtconnect.AdapterSdk;
+using System;
 using System.Threading;
 
 namespace Mtconnect
