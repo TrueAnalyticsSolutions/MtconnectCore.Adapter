@@ -21,13 +21,14 @@
 	  <ApplicationIcon>icon.ico</ApplicationIcon>
 	  <PackageProjectUrl>https://github.com/TrueAnalyticsSolutions/Mtconnect.Adapter</PackageProjectUrl>
 	  <RepositoryUrl>$(ProjectUrl)</RepositoryUrl>
-	  <Version>1.0.0.5-alpha</Version>
+	  <Version>1.0.0.6-alpha</Version>
 	  <IncludeSymbols>True</IncludeSymbols>
 	  <SymbolPackageFormat>snupkg</SymbolPackageFormat>
 	  <DebugSymbols>true</DebugSymbols>
 	  <EmbedAllSources>true</EmbedAllSources>
 	  <DebugType>portable</DebugType>
 	  <DocumentationFile>$(AssemblyName).xml</DocumentationFile>
+	  <EnableDynamicLoading>true</EnableDynamicLoading>
   </PropertyGroup>
 
   <ItemGroup>
