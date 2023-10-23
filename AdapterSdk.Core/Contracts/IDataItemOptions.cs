@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace Mtconnect.AdapterSdk.Contracts
+namespace Mtconnect.AdapterSdk
 {
     /// <summary>
     /// A DTO for serialized MTConnect DataItem configuration options.

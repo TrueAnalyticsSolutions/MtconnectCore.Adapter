@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace Mtconnect.AdapterSdk.Contracts
+namespace Mtconnect.AdapterSdk
 {
     /// <summary>
     /// Indicators for what may contribute to timestamp drift

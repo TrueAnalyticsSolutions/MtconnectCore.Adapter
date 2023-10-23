@@ -1,4 +1,8 @@
-using Mtconnect.AdapterSdk.Contracts;
+#pragma warning disable CS0618
+#pragma warning disable CS1574
+#pragma warning disable CS1570
+#pragma warning disable CS1584
+using Mtconnect.AdapterSdk;
 using Mtconnect.AdapterSdk.DataItemValues;
 using System;
 using System.CodeDom.Compiler;
@@ -10,7 +14,7 @@ namespace Mtconnect.AdapterSdk.DataItemTypes {
 	/// <see cref="System">System</see> that delivers compressed gas or fluid and controls the pressure and rate of pressure change to a desired target set-point./// Description
 	/// </summary>
 	/// <remarks>Introduced in <see href="https://model.mtconnect.org/#_Version_1.1">v1.1</see>.</remarks>
-	[GeneratedCode("MtconnectTranspiler.Sinks.CSharp.Adapter", "1.0.12.0")]
+	[GeneratedCode("MtconnectTranspiler.Sinks.CSharp.Adapter; Adapter.ComponentInterface.scriban", "1.0.12.0")]
 	public class Pressure : Environmental, IAdapterDataModel, IComponentModel {
 	}
 }

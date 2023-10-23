@@ -57,6 +57,11 @@ namespace Mtconnect.AdapterSdk.UPnP
         /// <inheritdoc />
         public IUPnPDeviceServiceModel Model { get; set; }
 
+        /// <summary>
+        /// Constructs a new instance of a Universal Plug-n-Play notification message.
+        /// </summary>
+        /// <param name="broadcaster">Reference to the Universal Plug-n-Play broadcast service</param>
+        /// <param name="model">Reference to the Device Service model to construct the message from</param>
         public UPnPNotifyMessage(IUPnPService broadcaster, IUPnPDeviceServiceModel model)
         {
             Model = model;
@@ -65,6 +70,7 @@ namespace Mtconnect.AdapterSdk.UPnP
             ServiceLocation = $"http://{model.UPnPEndpoint}/upnp/description.xml";
         }
 
+        /// <inheritdoc />
         public override string ToString()
         {
             StringBuilder sb = new StringBuilder();

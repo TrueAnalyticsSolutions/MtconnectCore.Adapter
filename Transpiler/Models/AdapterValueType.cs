@@ -12,7 +12,7 @@ namespace AdapterTranspiler.Models
 
         public virtual string ValueType { get; set; }
 
-        public virtual string ExpectedUnits { get; set; }
+        public virtual string ExpectedUnits { get; set; } = string.Empty;
 
         public List<string> SubTypes { get; set; } = new List<string>();
 

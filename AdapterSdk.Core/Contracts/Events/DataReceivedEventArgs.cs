@@ -19,8 +19,15 @@ namespace Mtconnect.AdapterSdk
         /// </summary>
         public DateTime Timestamp { get; set; } = TimeHelper.GetNow();
 
+        /// <summary>
+        /// Reference to the <see cref="IAdapterDataModel"/> that received the data update.
+        /// </summary>
         public IAdapterDataModel Data { get; }
 
+        /// <summary>
+        /// Constructs a new instance of the event arguments for <see cref="DataReceivedHandler"/>
+        /// </summary>
+        /// <param name="data"><inheritdoc cref="Data" path="/summary"/></param>
         public DataReceivedEventArgs(IAdapterDataModel data)
         {
             Data = data;

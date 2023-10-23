@@ -1,11 +1,14 @@
-﻿using Mtconnect.AdapterSdk.Contracts.Attributes;
+﻿using Mtconnect.AdapterSdk.Attributes;
 using System;
 using System.Linq;
 using System.Reflection;
 using System.Text;
 
-namespace Mtconnect
+namespace Mtconnect.AdapterSdk
 {
+    /// <summary>
+    /// Helper class with methods for accessing Enums and other DataItem-related tasks
+    /// </summary>
     public static class DataItemHelper
     {
         internal static string RemoveControlCharacters(this string input)
@@ -69,7 +72,7 @@ namespace Mtconnect
         public static Enum GetSubType(Type enumType, string dataItemType, string dataItemSubType)
         {
             Type subTypeEnum = GetSubTypes(enumType, dataItemType);
-#if NET461_OR_GREATER
+#if NET461_OR_GREATER || NETSTANDARD2_0_OR_GREATER
             if (subTypeEnum != null)
             {
                 var enumValue = Enum.Parse(subTypeEnum, dataItemSubType);
@@ -123,7 +126,7 @@ namespace Mtconnect
         public static Enum GetValue(Type enumType, string dataItemType, string dataItemValue)
         {
             Type valueTypeEnum = GetValues(enumType, dataItemType);
-#if NET461_OR_GREATER
+#if NET461_OR_GREATER || NETSTANDARD2_0_OR_GREATER
             if (valueTypeEnum != null)
             {
                 var enumValue = Enum.Parse(valueTypeEnum, dataItemValue);

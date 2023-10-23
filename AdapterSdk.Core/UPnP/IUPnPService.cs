@@ -1,9 +1,8 @@
-﻿using Mtconnect.AdapterSdk.UPnP;
-using System;
+﻿using System;
 using System.Net;
 using System.Threading;
 
-namespace Mtconnect.UPnP
+namespace Mtconnect.AdapterSdk.UPnP
 {
     /// <summary>
     /// A generic implementation to represent a UDP broadcaster service.

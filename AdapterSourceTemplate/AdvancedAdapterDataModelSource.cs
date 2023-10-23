@@ -2,7 +2,6 @@
 using Mtconnect.AdapterSdk.DataItemValues;
 using Mtconnect.AdapterSourceTemplate.Models;
 using System;
-using System.Security.Cryptography;
 using System.Threading;
 
 namespace Mtconnect.AdapterSourceTemplate

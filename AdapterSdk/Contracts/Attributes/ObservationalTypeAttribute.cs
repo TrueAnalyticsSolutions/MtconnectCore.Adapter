@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace Mtconnect.AdapterSdk.Contracts.Attributes
+namespace Mtconnect.AdapterSdk.Attributes
 {
     /// <summary>
     /// An attribute used to indicate that an enum value that represents an observational type also has relevant type(s).

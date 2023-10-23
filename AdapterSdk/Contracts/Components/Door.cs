@@ -1,4 +1,8 @@
-using Mtconnect.AdapterSdk.Contracts;
+#pragma warning disable CS0618
+#pragma warning disable CS1574
+#pragma warning disable CS1570
+#pragma warning disable CS1584
+using Mtconnect.AdapterSdk;
 using Mtconnect.AdapterSdk.DataItemValues;
 using System;
 using System.CodeDom.Compiler;
@@ -10,7 +14,7 @@ namespace Mtconnect.AdapterSdk.DataItemTypes {
 	/// <see cref="Component">Component</see> composed of a mechanical mechanism or closure that can cover a physical access portal into a piece of equipment allowing or restricting access to other parts of the equipment./// Description
 	/// </summary>
 	/// <remarks>Introduced in <see href="https://model.mtconnect.org/#_Version_1.1">v1.1</see>.</remarks>
-	[GeneratedCode("MtconnectTranspiler.Sinks.CSharp.Adapter", "1.0.12.0")]
+	[GeneratedCode("MtconnectTranspiler.Sinks.CSharp.Adapter; Adapter.ComponentInterface.scriban", "1.0.12.0")]
 	public class Door : IAdapterDataModel, IComponentModel {
 
 		/// <inheritdoc cref="Mtconnect.AdapterSdk.DataItemValues.DoorState" />

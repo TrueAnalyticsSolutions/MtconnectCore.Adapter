@@ -1,5 +1,4 @@
-﻿using Microsoft.Extensions.Logging;
-using Mtconnect.AdapterSdk.Contracts;
+﻿using Mtconnect.AdapterSdk.Cryptography;
 using System;
 using System.Collections;
 using System.Collections.Generic;
@@ -75,7 +74,7 @@ namespace Mtconnect.AdapterSdk
         /// <summary>
         /// Updates the properties of the <see cref="AdapterOptions"/> from the <see cref="ConfigurationManager"/> section 'adapter'.
         /// </summary>
-        public virtual Dictionary<string, object> UpdateFromConfig(ILogger logger = default)
+        public virtual Dictionary<string, object> UpdateFromConfig(IAdapterLogger logger = default)
         {
             var adapterSettings = (ConfigurationManager.GetSection("adapter") as Hashtable)
                 .Cast<System.Collections.DictionaryEntry>()

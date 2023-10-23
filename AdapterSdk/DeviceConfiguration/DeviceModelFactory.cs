@@ -1,19 +1,14 @@
-﻿using Microsoft.Extensions.Logging;
-using Mtconnect.AdapterSdk.Contracts;
-using Mtconnect.AdapterSdk.Contracts.Attributes;
+﻿using Mtconnect.AdapterSdk.Attributes;
 using Mtconnect.AdapterSdk.DataItems;
 using Mtconnect.AdapterSdk.DataItemTypes;
 using Mtconnect.AdapterSdk.Units;
 using System;
-using System.Collections;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.IO;
 using System.Linq;
 using System.Reflection;
-using System.Reflection.Emit;
 using System.Runtime.Serialization;
-using System.Security.AccessControl;
 using System.Text;
 using System.Xml;
 using System.Xml.Linq;
@@ -323,6 +318,11 @@ namespace Mtconnect.AdapterSdk.DeviceConfiguration
             return hasComponents;
         }
 
+        /// <summary>
+        /// Gets the <see cref="IComponentModel"/> from the provided <paramref name="type"/>.
+        /// </summary>
+        /// <param name="type">Reference to a <see cref="System.Type"/> that may implement <see cref="IComponentModel"/></param>
+        /// <returns>The base type that may implement <see cref="IComponentModel"/></returns>
         public Type GetComponentModelType(Type type)
         {
             Type currentType = GetComponentModelImplementationType(type);
@@ -337,6 +337,11 @@ namespace Mtconnect.AdapterSdk.DeviceConfiguration
             }
             return null;
         }
+        /// <summary>
+        /// Gets the specific type of component (ie. Controller, Path, etc.) from the provided <paramref name="type"/>.
+        /// </summary>
+        /// <param name="type">Type for which to search for a direct implementation type.</param>
+        /// <returns>The direct implementation of <see cref="IComponentModel"/></returns>
         public Type GetComponentModelImplementationType(Type type)
         {
             Type currentType = type;
@@ -444,6 +449,12 @@ namespace Mtconnect.AdapterSdk.DeviceConfiguration
 
         // TODO: Update DataItem to yield the enum of Type and SubType.
         // TODO: Update DataItem to internally manage the "Introduced" and "Deprecated" properties according to the Type/SubType
+        /// <summary>
+        /// Gets the maximum implementation of MTConnect required for the <paramref name="adapter"/>
+        /// </summary>
+        /// <param name="adapter">Reference to the <see cref="IAdapter"/> implementation.</param>
+        /// <param name="devicePrefix">Optional reference to the Device Prefix, used to generate the <see cref="DeviceModelFactory"/></param>
+        /// <returns>String representation of the MTConnect version (ie. 1.0.1)</returns>
         public static string GetMaximumMtconnectVersion(IAdapter adapter, string devicePrefix = null)
         {
             var factory = new DeviceModelFactory();
@@ -452,6 +463,7 @@ namespace Mtconnect.AdapterSdk.DeviceConfiguration
 
             return factory.GetMaximumMtconnectVersion();
         }
+        /// <inheritdoc cref="GetMaximumMtconnectVersion(IAdapter, string)" path="/summary"/>
         protected string GetMaximumMtconnectVersion()
         {
             string result = MaximumVersion.ToString();

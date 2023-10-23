@@ -1,9 +1,10 @@
 #pragma warning disable 0618
 #pragma warning disable 1574
+#pragma warning disable CS1574
 using System;
 using System.CodeDom.Compiler;
-using Mtconnect.AdapterSdk.Contracts.Attributes;
-using Mtconnect.AdapterSdk.Contracts;
+using Mtconnect.AdapterSdk;
+using Mtconnect.AdapterSdk.Attributes;
 using Mtconnect.AdapterSdk.DataItems;
 using Mtconnect.AdapterSdk.DataItemValues;
 using Mtconnect.AdapterSdk.Units;
@@ -18,7 +19,7 @@ namespace Mtconnect.AdapterSdk.DataItemValues
 	/// <item><b>Introduced</b>: <see href="https://model.mtconnect.org/#_Version_1.1">v1.1</see></item>
 	/// </list>
 	/// </remarks>
-	[GeneratedCode("MtconnectTranspiler.Sinks.CSharp.Adapter", "1.0.12.0")]
+	[GeneratedCode("MtconnectTranspiler.Sinks.CSharp.Adapter; Adapter.ValueType.scriban", "1.0.12.0")]
 	public partial class PowerState : EventValue
     {
         /// <inheritdoc />
@@ -32,6 +33,9 @@ namespace Mtconnect.AdapterSdk.DataItemValues
 		/// </summary>
         public PowerState(string value) : base(value) { }
 
+		/// <summary>
+		/// Constructs a new value type for the PowerState EVENT Data Item.
+		/// </summary>
 		public PowerState(PowerStateValues value) : this(value.ToString()) { }
 
 		/// <inheritdoc cref="PowerStateValues.ON" />
@@ -71,6 +75,9 @@ namespace Mtconnect.AdapterSdk.DataItemValues
 			/// Constructs a new value type for LINE.
 			/// </summary>
             public LINE(string value) : base(value) { }
+			/// <summary>
+			/// Constructs a new value type for LINE using the strict <see cref="Enum" /> value.
+			/// </summary>
 			public LINE(PowerStateValues value) : base(value) { }
 			
 			/// <summary>
@@ -103,6 +110,9 @@ namespace Mtconnect.AdapterSdk.DataItemValues
 			/// Constructs a new value type for CONTROL.
 			/// </summary>
             public CONTROL(string value) : base(value) { }
+			/// <summary>
+			/// Constructs a new value type for CONTROL using the strict <see cref="Enum" /> value.
+			/// </summary>
 			public CONTROL(PowerStateValues value) : base(value) { }
 			
 			/// <summary>

@@ -1,6 +1,4 @@
-﻿using System;
-
-namespace Mtconnect.AdapterSdk.Contracts
+﻿namespace Mtconnect.AdapterSdk
 {
     /// <summary>
     /// Indicates the methodology used for ensuring the DateTime is accurate to standards.

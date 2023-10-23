@@ -1,10 +1,8 @@
-﻿using Microsoft.Extensions.Logging;
-using Mtconnect.AdapterSdk.Contracts;
-using Mtconnect.AdapterSdk.DeviceConfiguration;
+﻿using Mtconnect.AdapterSdk.DeviceConfiguration;
 using System;
 using System.Reflection;
 
-namespace Mtconnect
+namespace Mtconnect.AdapterSdk
 {
     /// <summary>
     /// A collection of methods that return formatted commands to be issued to a MTConnect Agent. See <see href="https://github.com/mtconnect/cppagent#commands">C++ Reference Agent</see> on GitHub.

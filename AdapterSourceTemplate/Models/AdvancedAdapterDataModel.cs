@@ -1,5 +1,5 @@
-﻿using Mtconnect.AdapterSdk.Contracts.Attributes;
-using Mtconnect.AdapterSdk.DataItemTypes;
+﻿using Mtconnect.AdapterSdk;
+using Mtconnect.AdapterSdk.Attributes;
 using Mtconnect.AdapterSdk.DataItemValues;
 using System.Collections.Generic;
 

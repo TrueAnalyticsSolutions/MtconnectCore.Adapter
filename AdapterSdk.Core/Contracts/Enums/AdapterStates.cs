@@ -1,4 +1,4 @@
-﻿namespace Mtconnect.AdapterSdk.Contracts
+﻿namespace Mtconnect.AdapterSdk
 {
     /// <summary>
     /// Represents the various states of the MTConnect Adapter.

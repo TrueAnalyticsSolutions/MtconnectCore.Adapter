@@ -1,7 +1,7 @@
 ﻿using Mtconnect.AdapterSdk.DataItems;
 using System;
 
-namespace Mtconnect.AdapterSdk.Contracts.Attributes
+namespace Mtconnect.AdapterSdk.Attributes
 {
     /// <summary>
     /// Indicates that a <see cref="DateTime"/> property can be the source for <see cref="DataItem.LastChanged"/>.

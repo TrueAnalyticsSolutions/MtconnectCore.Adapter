@@ -1,8 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
-
-namespace Mtconnect.AdapterSdk.Cryptography
+﻿namespace Mtconnect.AdapterSdk.Cryptography
 {
     using System;
     using System.Diagnostics;
@@ -12,11 +8,16 @@ namespace Mtconnect.AdapterSdk.Cryptography
     using System.Security.Cryptography.X509Certificates;
 
 
-    /*
-     * Please see ConfigurationEncrypter for a summary of how encryption works
-     */
+    /// <summary>
+    /// Please see <see cref="ConfigurationEncrypter"/> for a summary of how encryption works
+    /// </summary>
     public class ConfigurationDecrypter
     {
+        /// <summary>
+        /// Decrypts the incoming cyphertext
+        /// </summary>
+        /// <param name="ciphertext">Content to be decrypted</param>
+        /// <returns>Decrypted version of the provided text</returns>
         public static string Decrypt(string ciphertext)
         {
             // Convert the Base64 string into an encryption result
@@ -26,11 +27,15 @@ namespace Mtconnect.AdapterSdk.Cryptography
             X509Certificate2 cert = LocateCertificate(encryptionResult.CertificateThumbprint);
 
             // Create an RSA cryptography provider class using the certificate provided
+#pragma warning disable SYSLIB0028 // Type or member is obsolete
             var rsaCryptoProvider = (RSA)cert.PrivateKey;
+#pragma warning restore SYSLIB0028 // Type or member is obsolete
             Trace.WriteLine("PrivateKey retrieved");
 
             // Create a Rijndael encryption class with the same details as the encryption
+#pragma warning disable SYSLIB0022 // Type or member is obsolete
             var rjndl = new RijndaelManaged { KeySize = 256, BlockSize = 128, Mode = CipherMode.CBC };
+#pragma warning restore SYSLIB0022 // Type or member is obsolete
 
             // Decrypt the Rijndael key using the certificate
 
@@ -124,36 +129,48 @@ namespace Mtconnect.AdapterSdk.Cryptography
             using (var ms = new MemoryStream(Convert.FromBase64String(base64String)))
             {
                 ms.Seek(0, SeekOrigin.Begin);
+#pragma warning disable SYSLIB0011 // Type or member is obsolete
                 result = (EncryptionResult)new BinaryFormatter().Deserialize(ms);
+#pragma warning restore SYSLIB0011 // Type or member is obsolete
             }
 
             return result;
         }
     }
 
-    /*         
-     * A QUICK OVERVIEW OF ENCRYPTION
-     * 
-     * RSA can only encrypt strings up to a certain length "Messages must not be longer than the N of the public key."
-     * To get around this, we instead use two step encryption. Rijndael is a symmetric encryption method that can encrypt
-     * a string of any length. We will use Rijndael to encrypt the input string. We then encrypt the single use Rijndael key with RSA.
-     * We store this key, Rijndael Initialization Vector, the certificate we used to encrypt with's thumbprint and the Rijndael
-     * encrypted data in a Base64 string. This string can then be used in the place of the original data.
-     * 
-     * Using this method, we can encrypt a string of any length asymmetrically.
-     */
+    /// <summary>
+    /// A QUICK OVERVIEW OF ENCRYPTION
+    /// RSA can only encrypt strings up to a certain length "Messages must not be longer than the N of the public key."
+    /// To get around this, we instead use two step encryption. Rijndael is a symmetric encryption method that can encrypt
+    /// a string of any length. We will use Rijndael to encrypt the input string. We then encrypt the single use Rijndael key with RSA.
+    /// We store this key, Rijndael Initialization Vector, the certificate we used to encrypt with's thumbprint and the Rijndael
+    /// encrypted data in a Base64 string. This string can then be used in the place of the original data.
+    /// 
+    /// Using this method, we can encrypt a string of any length asymmetrically.
+    /// </summary>
     public class ConfigurationEncrypter
     {
+        /// <summary>
+        /// Encrypts the provided <paramref name="plaintext"/>
+        /// </summary>
+        /// <param name="certificateLocation">Location of the secret certificate</param>
+        /// <param name="plaintext">Content to be encrypted</param>
+        /// <returns>Encrypted version of the provided text</returns>
+        /// <exception cref="Exception"></exception>
         public static string Encrypt(string certificateLocation, string plaintext)
         {
             // Create a Rijndael encryption class with a fixed keysize so that it can be encrypted with RSA
+#pragma warning disable SYSLIB0022 // Type or member is obsolete
             var rjndl = new RijndaelManaged { KeySize = 256, BlockSize = 128, Mode = CipherMode.CBC };
+#pragma warning restore SYSLIB0022 // Type or member is obsolete
             var transform = rjndl.CreateEncryptor();
 
             // Create an RSA cryptography provider class using the certificate provided
             var cert = new X509Certificate2(certificateLocation);
 
+#pragma warning disable SYSLIB0027 // Type or member is obsolete
             var rsaEncryptor = (RSA)cert.PublicKey.Key;
+#pragma warning restore SYSLIB0027 // Type or member is obsolete
 
             // Take the Rijndael key and encrypt it with RSA
             var keyEncrypted = rsaEncryptor.Encrypt(rjndl.Key, RSAEncryptionPadding.OaepSHA256);
@@ -202,7 +219,9 @@ namespace Mtconnect.AdapterSdk.Cryptography
             // Convert the EncryptionResult object into a base64 string
             using (var ms = new MemoryStream())
             {
+#pragma warning disable SYSLIB0011 // Type or member is obsolete
                 new BinaryFormatter().Serialize(ms, encryptionResult);
+#pragma warning restore SYSLIB0011 // Type or member is obsolete
                 ms.Seek(0, SeekOrigin.Begin);
                 var base64String = Convert.ToBase64String(ms.ToArray());
                 return base64String;

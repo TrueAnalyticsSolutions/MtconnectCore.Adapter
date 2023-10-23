@@ -1,4 +1,4 @@
-﻿namespace Mtconnect.AdapterSdk.Contracts.Attributes
+﻿namespace Mtconnect.AdapterSdk.Attributes
 {
     /// <summary>
     /// A decorative attribute for indicating a complex object with properties that are decorated as DataItems.

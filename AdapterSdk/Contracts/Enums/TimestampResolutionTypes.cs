@@ -1,4 +1,4 @@
-﻿namespace Mtconnect.AdapterSdk.Contracts
+﻿namespace Mtconnect.AdapterSdk
 {
     /// <summary>
     /// Indicators for how accurate the timestamp may be to the true occurance of an event.

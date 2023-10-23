@@ -230,10 +230,10 @@ namespace AdapterTranspiler
                             ReferenceId = modelType.Id
                         };
 
-                        List<UmlClass?>? typeSubTypes = subTypes[modelType.Name!];
+                        List<UmlClass?>? typeSubTypes = subTypes![modelType.Name!]!;
                         foreach (var typeSubType in typeSubTypes)
                         {
-                            var modelSubTypeEnumId = (typeSubType.Properties?.FirstOrDefault(o => o.Name == "subType")?.DefaultValue as UmlInstanceValue)
+                            var modelSubTypeEnumId = (typeSubType?.Properties?.FirstOrDefault(o => o.Name == "subType")?.DefaultValue as UmlInstanceValue)
                                 ?.Instance;
                             var modelSubTypeEnum = modelEnumSubTypes
                                 ?.Items
@@ -273,8 +273,8 @@ namespace AdapterTranspiler
             _logger?.LogInformation($"Processing {dataItemTypeEnums.Count} DataItem types/subTypes");
 
             // Process the template into enum files
-            ProcessTemplate(dataItemTypeEnums, Path.Combine(ProjectPath, "Enums"), true);
-            ProcessTemplate(valueEnums, Path.Combine(ProjectPath, "Enums"), true);
+            ProcessTemplate(dataItemTypeEnums, Path.Combine(ProjectPath, "Enums", "Types"), true);
+            ProcessTemplate(valueEnums, Path.Combine(ProjectPath, "Enums", "Values"), true);
             // Process the template into value type files
             ProcessTemplate(valueTypes, Path.Combine(ProjectPath, "Values"), true);
             // Process the unit files
@@ -285,7 +285,7 @@ namespace AdapterTranspiler
             var componentTypes = MTConnectHelper
                 .JumpToPackage(model!, MTConnectHelper.PackageNavigationTree.DeviceInformationModel.Components.ComponentTypes);
             var componentInterfaces = new List<AdapterComponentInterface>();
-            foreach (var componentType in componentTypes.Classes)
+            foreach (var componentType in componentTypes?.Classes!)
             {
                 var component = new AdapterComponentInterface(model!, componentType)
                 {
@@ -297,7 +297,7 @@ namespace AdapterTranspiler
             // Add Organizer Types
             var organizerTypes = MTConnectHelper
                 .JumpToPackage(model!, MTConnectHelper.PackageNavigationTree.DeviceInformationModel.Components.ComponentTypes.ComponentOrganizerTypes);
-            foreach (var organizerType in organizerTypes.AssociationClasses)
+            foreach (var organizerType in organizerTypes?.AssociationClasses!)
             {
                 var component = new AdapterComponentInterface(model!, organizerType)
                 {

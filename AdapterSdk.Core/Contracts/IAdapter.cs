@@ -1,11 +1,10 @@
-﻿using Microsoft.Extensions.Logging;
-using Mtconnect.AdapterSdk.Assets;
+﻿using Mtconnect.AdapterSdk.Assets;
 using System;
 using System.Collections.Generic;
 using System.Data;
 using System.Threading;
 
-namespace Mtconnect.AdapterSdk.Contracts
+namespace Mtconnect.AdapterSdk
 {
     /// <summary>
     /// An abstract implementation for a MTConnect adapter
@@ -30,7 +29,7 @@ namespace Mtconnect.AdapterSdk.Contracts
         /// <summary>
         /// Reference to a logging service.
         /// </summary>
-        ILogger<IAdapter> _logger { get; }
+        IAdapterLogger _logger { get; }
 
         /// <summary>
         /// A unique identifier for the device this Adapter is monitoring. <b>NOTE</b>: The same uuid can be referenced in multiple Adapter instances.
@@ -145,7 +144,13 @@ namespace Mtconnect.AdapterSdk.Contracts
         /// </summary>
         void Unavailable(string devicePrefix = null);
 
+        /// <summary>
+        /// Cleans up the DataItems
+        /// </summary>
         void Cleanup();
+        /// <summary>
+        /// Prepares the DataItems
+        /// </summary>
         void Prepare();
 
 
@@ -158,10 +163,10 @@ namespace Mtconnect.AdapterSdk.Contracts
         void Begin();
 
         /// <summary>
-        /// Issues a <see cref="Write"/> command to the implementing Adapter for each appropriate <see cref="ReportedValue"/> depending on the provided <paramref name="sendType"/>.
+        /// Issues a Write command to the implementing Adapter for each appropriate ReportedValue depending on the provided <paramref name="sendType"/>.
         /// </summary>
-        /// <param name="clientId">Reference to the id of the client to send the <see cref="ReportedValue"/>s to.</param>
-        /// <param name="sendType">Flag for identifying which <see cref="ReportedValue"/>s to send.</param>
+        /// <param name="clientId">Reference to the id of the client to send the ReportedValues to.</param>
+        /// <param name="sendType">Flag for identifying which ReportedValues to send.</param>
         void Send(DataItemSendTypes sendType = DataItemSendTypes.Changed, string clientId = null);
 
         /// <summary>
@@ -174,7 +179,7 @@ namespace Mtconnect.AdapterSdk.Contracts
         /// Starts the listener thread and the provided <see cref="IAdapterSource"/>s.
         /// </summary>
         /// <param name="sources">Reference to the sources of the Adapter.</param>
-        /// <param name="begin"><inheritdoc cref="Start{T}(T, bool)" path="/param[@name='begin']"/></param>
+        /// <param name="begin"></param>
         /// <param name="token">Reference to a cancellation token that is capable of cancelling the Adapter operation</param>
         void Start(IEnumerable<IAdapterSource> sources, bool begin = true, CancellationToken token = default);
 
@@ -189,6 +194,10 @@ namespace Mtconnect.AdapterSdk.Contracts
         /// <returns>Array of <see cref="IDataItem.Name"/>s that are registered in this <see cref="IAdapter"/>.</returns>
         string[] GetDataItemNames();
 
+        /// <summary>
+        /// Gets the <see cref="IAdapterDataModel"/> types that have gone through the <see cref="IAdapter"/> so far.
+        /// </summary>
+        /// <returns>Collection of <see cref="System.Type"/></returns>
         Type[] GetDataModelTypes();
 
         /// <summary>

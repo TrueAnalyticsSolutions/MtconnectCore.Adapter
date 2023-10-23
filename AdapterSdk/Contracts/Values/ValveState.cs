@@ -1,9 +1,10 @@
 #pragma warning disable 0618
 #pragma warning disable 1574
+#pragma warning disable CS1574
 using System;
 using System.CodeDom.Compiler;
-using Mtconnect.AdapterSdk.Contracts.Attributes;
-using Mtconnect.AdapterSdk.Contracts;
+using Mtconnect.AdapterSdk;
+using Mtconnect.AdapterSdk.Attributes;
 using Mtconnect.AdapterSdk.DataItems;
 using Mtconnect.AdapterSdk.DataItemValues;
 using Mtconnect.AdapterSdk.Units;
@@ -18,7 +19,7 @@ namespace Mtconnect.AdapterSdk.DataItemValues
 	/// <item><b>Introduced</b>: <see href="https://model.mtconnect.org/#_Version_1.8">v1.8</see></item>
 	/// </list>
 	/// </remarks>
-	[GeneratedCode("MtconnectTranspiler.Sinks.CSharp.Adapter", "1.0.12.0")]
+	[GeneratedCode("MtconnectTranspiler.Sinks.CSharp.Adapter; Adapter.ValueType.scriban", "1.0.12.0")]
 	public partial class ValveState : EventValue
     {
         /// <inheritdoc />
@@ -32,6 +33,9 @@ namespace Mtconnect.AdapterSdk.DataItemValues
 		/// </summary>
         public ValveState(string value) : base(value) { }
 
+		/// <summary>
+		/// Constructs a new value type for the ValveState EVENT Data Item.
+		/// </summary>
 		public ValveState(ValveStateValues value) : this(value.ToString()) { }
 
 		/// <inheritdoc cref="ValveStateValues.OPEN" />
@@ -77,6 +81,9 @@ namespace Mtconnect.AdapterSdk.DataItemValues
 			/// Constructs a new value type for ACTUAL.
 			/// </summary>
             public ACTUAL(string value) : base(value) { }
+			/// <summary>
+			/// Constructs a new value type for ACTUAL using the strict <see cref="Enum" /> value.
+			/// </summary>
 			public ACTUAL(ValveStateValues value) : base(value) { }
 			
 			/// <summary>
@@ -109,6 +116,9 @@ namespace Mtconnect.AdapterSdk.DataItemValues
 			/// Constructs a new value type for PROGRAMMED.
 			/// </summary>
             public PROGRAMMED(string value) : base(value) { }
+			/// <summary>
+			/// Constructs a new value type for PROGRAMMED using the strict <see cref="Enum" /> value.
+			/// </summary>
 			public PROGRAMMED(ValveStateValues value) : base(value) { }
 			
 			/// <summary>

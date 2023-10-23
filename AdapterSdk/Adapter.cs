@@ -3,17 +3,13 @@ using System.Text;
 using System.Collections.Generic;
 using System.Xml;
 using System.Linq;
-using Microsoft.Extensions.Logging;
 using Mtconnect.AdapterSdk.DataItems;
-using Mtconnect.AdapterSdk.Contracts;
-using Mtconnect.AdapterSdk;
 using Mtconnect.AdapterSdk.Assets;
 using System.Data;
 using System.Collections.Concurrent;
 using System.Threading;
-using System.Collections;
 
-namespace Mtconnect
+namespace Mtconnect.AdapterSdk
 {
     /// <inheritdoc/>
     public abstract class Adapter : IAdapter
@@ -33,7 +29,7 @@ namespace Mtconnect
         protected internal string DATE_TIME_FORMAT => Constants.DATE_TIME_FORMAT;
 
         /// <inheritdoc/>
-        public ILogger<IAdapter> _logger { get; internal set; }
+        public IAdapterLogger _logger { get; internal set; }
 
         /// <inheritdoc/>
         public string DeviceUUID { get; set; }
@@ -112,8 +108,8 @@ namespace Mtconnect
         /// Generic constructor of a new Adapter instance with basic AdapterOptions.
         /// </summary>
         /// <param name="options"><inheritdoc cref="AdapterOptions" path="/summary"/></param>
-        /// <param name="logFactory">Reference to the logger factory to handle logging.</param>
-        public Adapter(AdapterOptions options, ILoggerFactory logFactory = default)
+        /// <param name="logger">Reference to the logger factory to handle logging.</param>
+        public Adapter(AdapterOptions options, IAdapterLogger logger = default)
         {
             Options = options;
             DeviceUUID = options.DeviceUUID;
@@ -124,7 +120,7 @@ namespace Mtconnect
             CanEnqueueDataItems = options.CanEnqueueDataItems;
             CanValidateDataItems = options.CanValidateDataItems;
 
-            _logger = logFactory?.CreateLogger<Adapter>();
+            _logger = logger;
         }
 
         /// <inheritdoc/>

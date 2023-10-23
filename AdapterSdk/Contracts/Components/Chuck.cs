@@ -1,4 +1,8 @@
-using Mtconnect.AdapterSdk.Contracts;
+#pragma warning disable CS0618
+#pragma warning disable CS1574
+#pragma warning disable CS1570
+#pragma warning disable CS1584
+using Mtconnect.AdapterSdk;
 using Mtconnect.AdapterSdk.DataItemValues;
 using System;
 using System.CodeDom.Compiler;
@@ -10,7 +14,7 @@ namespace Mtconnect.AdapterSdk.DataItemTypes {
 	/// leaf <see cref="Component">Component</see> composed of a mechanism that holds a part or stock material in place.
 	/// </summary>
 	/// <remarks>Introduced in <see href="https://model.mtconnect.org/#_Version_1.3">v1.3</see>.</remarks>
-	[GeneratedCode("MtconnectTranspiler.Sinks.CSharp.Adapter", "1.0.12.0")]
+	[GeneratedCode("MtconnectTranspiler.Sinks.CSharp.Adapter; Adapter.ComponentInterface.scriban", "1.0.12.0")]
 	public class Chuck : IAdapterDataModel, IComponentModel {
 		/// <summary>
 		/// Sets all data items to <c>UNAVAILABLE</c> by setting the properties to <c>default</c>.

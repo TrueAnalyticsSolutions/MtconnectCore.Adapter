@@ -1,6 +1,4 @@
-﻿using Mtconnect.AdapterSdk.Contracts;
-using System;
-using System.Xml.Linq;
+﻿using System;
 
 namespace Mtconnect.AdapterSdk.DataItems
 {

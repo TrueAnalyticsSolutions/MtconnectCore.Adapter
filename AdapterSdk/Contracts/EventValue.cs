@@ -1,4 +1,4 @@
-﻿namespace Mtconnect.AdapterSdk.Contracts
+﻿namespace Mtconnect.AdapterSdk
 {
     /// <summary>
     /// A generic implementation of an Event DataItem value type.

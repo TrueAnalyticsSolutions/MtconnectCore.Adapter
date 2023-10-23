@@ -1,7 +1,6 @@
-﻿using Microsoft.Extensions.Logging;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 
-namespace Mtconnect.AdapterSdk.Contracts
+namespace Mtconnect.AdapterSdk
 {
     /// <summary>
     /// A DTO for serialized MTConnect Adapter configuration options.
@@ -40,8 +39,8 @@ namespace Mtconnect.AdapterSdk.Contracts
         IDataItemOptions this[string internalName] { get; }
 
         /// <summary>
-        /// Updates the properties of the <see cref="IAdapterOptions"/> from the <see cref="ConfigurationManager"/> section 'adapter'.
+        /// Updates the properties of the <see cref="IAdapterOptions"/> from the ConfigurationManager section 'adapter'.
         /// </summary>
-        Dictionary<string, object> UpdateFromConfig(ILogger logger = default);
+        Dictionary<string, object> UpdateFromConfig(IAdapterLogger logger = default);
     }
 }

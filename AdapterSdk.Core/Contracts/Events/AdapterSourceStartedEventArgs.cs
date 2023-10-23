@@ -9,11 +9,14 @@ namespace Mtconnect.AdapterSdk
     /// <param name="e">Reference to event arguments</param>
     public delegate void AdapterSourceStartedHandler(IAdapterSource sender, AdapterSourceStartedEventArgs e);
 
+    /// <summary>
+    /// Custom event arguments when an <see cref="IAdapterSource"/> has successfully started.
+    /// </summary>
     public class AdapterSourceStartedEventArgs : EventArgs
     {
-        public AdapterSourceStartedEventArgs()
-        {
-
-        }
+        /// <summary>
+        /// Constructs a new instance of the event arguments for the <see cref="AdapterSourceStartedHandler"/>
+        /// </summary>
+        public AdapterSourceStartedEventArgs() { }
     }
 }

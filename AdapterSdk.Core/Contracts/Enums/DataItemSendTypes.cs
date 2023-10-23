@@ -1,4 +1,4 @@
-﻿namespace Mtconnect.AdapterSdk.Contracts
+﻿namespace Mtconnect.AdapterSdk
 {
     /// <summary>
     /// Represents methods for sending <see cref="IDataItem"/>s.

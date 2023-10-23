@@ -4,9 +4,8 @@ using System.Linq;
 using Mtconnect.AdapterSdk.DataItems;
 using System.Data;
 using System.Collections;
-using Mtconnect.AdapterSdk.Contracts;
 
-namespace Mtconnect
+namespace Mtconnect.AdapterSdk
 {
     /// <summary>
     /// A performant collection that manages <see cref="IDataItem"/>s by both <see cref="IDataItem.Name"/> and <see cref="IDataItem.DevicePrefix"/>.

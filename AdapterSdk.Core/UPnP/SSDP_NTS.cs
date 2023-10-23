@@ -1,4 +1,4 @@
-﻿namespace Mtconnect.UPnP
+﻿namespace Mtconnect.AdapterSdk.UPnP
 {
     /// <summary>
     /// Represents available values for SSDP Notification Sub Type header field

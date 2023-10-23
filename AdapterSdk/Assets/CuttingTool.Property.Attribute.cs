@@ -1,6 +1,5 @@
 ﻿namespace Mtconnect.AdapterSdk.Assets
 {
-
     public partial class CuttingTool
     {
         public partial class Property

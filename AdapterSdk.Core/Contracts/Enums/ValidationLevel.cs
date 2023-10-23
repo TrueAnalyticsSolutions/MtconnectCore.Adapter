@@ -1,4 +1,4 @@
-﻿namespace Mtconnect.AdapterSdk.Contracts
+﻿namespace Mtconnect.AdapterSdk
 {
     /// <summary>
     /// Varying levels of validation message criticalities.

@@ -2,8 +2,8 @@
 #pragma warning disable 1574
 using System;
 using System.CodeDom.Compiler;
-using Mtconnect.AdapterSdk.Contracts;
-using Mtconnect.AdapterSdk.Contracts.Attributes;
+using Mtconnect.AdapterSdk;
+using Mtconnect.AdapterSdk.Attributes;
 
 namespace Mtconnect.AdapterSdk.Units
 {
@@ -16,7 +16,7 @@ namespace Mtconnect.AdapterSdk.Units
 	/// </list>
 	/// </remarks>
 	[MtconnectVersion(MtconnectVersions.V_1_0_1, "https://model.mtconnect.org/#_Version_1.0")]
-	[GeneratedCode("MtconnectTranspiler.Sinks.CSharp.Adapter", "1.0.12.0")]
+	[GeneratedCode("MtconnectTranspiler.Sinks.CSharp.Adapter; Adapter.Enum.scriban", "1.0.12.0")]
 	public enum MtconnectUnit
 	{
 		/// <summary>

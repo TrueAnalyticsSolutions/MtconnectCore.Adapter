@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace Mtconnect.AdapterSdk.Contracts
+namespace Mtconnect.AdapterSdk
 {
     /// <summary>
     /// A generic implementation of a DataItem value type.
@@ -8,6 +8,9 @@ namespace Mtconnect.AdapterSdk.Contracts
     /// <typeparam name="T">Generic reference type to the underlying value type.</typeparam>
     public abstract class DataItemValue<T> : IDataItemValue
     {
+        /// <summary>
+        /// Internal value for the DataItem
+        /// </summary>
         protected T _value;
 
         /// <inheritdoc />

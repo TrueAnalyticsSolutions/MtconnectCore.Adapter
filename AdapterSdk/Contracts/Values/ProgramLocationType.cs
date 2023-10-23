@@ -1,9 +1,10 @@
 #pragma warning disable 0618
 #pragma warning disable 1574
+#pragma warning disable CS1574
 using System;
 using System.CodeDom.Compiler;
-using Mtconnect.AdapterSdk.Contracts.Attributes;
-using Mtconnect.AdapterSdk.Contracts;
+using Mtconnect.AdapterSdk;
+using Mtconnect.AdapterSdk.Attributes;
 using Mtconnect.AdapterSdk.DataItems;
 using Mtconnect.AdapterSdk.DataItemValues;
 using Mtconnect.AdapterSdk.Units;
@@ -18,7 +19,7 @@ namespace Mtconnect.AdapterSdk.DataItemValues
 	/// <item><b>Introduced</b>: <see href="https://model.mtconnect.org/#_Version_1.5">v1.5</see></item>
 	/// </list>
 	/// </remarks>
-	[GeneratedCode("MtconnectTranspiler.Sinks.CSharp.Adapter", "1.0.12.0")]
+	[GeneratedCode("MtconnectTranspiler.Sinks.CSharp.Adapter; Adapter.ValueType.scriban", "1.0.12.0")]
 	public partial class ProgramLocationType : EventValue
     {
         /// <inheritdoc />
@@ -32,6 +33,9 @@ namespace Mtconnect.AdapterSdk.DataItemValues
 		/// </summary>
         public ProgramLocationType(string value) : base(value) { }
 
+		/// <summary>
+		/// Constructs a new value type for the ProgramLocationType EVENT Data Item.
+		/// </summary>
 		public ProgramLocationType(ProgramLocationTypeValues value) : this(value.ToString()) { }
 
 		/// <inheritdoc cref="ProgramLocationTypeValues.LOCAL" />
@@ -71,6 +75,9 @@ namespace Mtconnect.AdapterSdk.DataItemValues
 			/// Constructs a new value type for SCHEDULE.
 			/// </summary>
             public SCHEDULE(string value) : base(value) { }
+			/// <summary>
+			/// Constructs a new value type for SCHEDULE using the strict <see cref="Enum" /> value.
+			/// </summary>
 			public SCHEDULE(ProgramLocationTypeValues value) : base(value) { }
 			
 			/// <summary>
@@ -103,6 +110,9 @@ namespace Mtconnect.AdapterSdk.DataItemValues
 			/// Constructs a new value type for MAIN.
 			/// </summary>
             public MAIN(string value) : base(value) { }
+			/// <summary>
+			/// Constructs a new value type for MAIN using the strict <see cref="Enum" /> value.
+			/// </summary>
 			public MAIN(ProgramLocationTypeValues value) : base(value) { }
 			
 			/// <summary>
@@ -135,6 +145,9 @@ namespace Mtconnect.AdapterSdk.DataItemValues
 			/// Constructs a new value type for ACTIVE.
 			/// </summary>
             public ACTIVE(string value) : base(value) { }
+			/// <summary>
+			/// Constructs a new value type for ACTIVE using the strict <see cref="Enum" /> value.
+			/// </summary>
 			public ACTIVE(ProgramLocationTypeValues value) : base(value) { }
 			
 			/// <summary>

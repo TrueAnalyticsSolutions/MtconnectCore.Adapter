@@ -1,5 +1,4 @@
-﻿using Mtconnect.AdapterSdk.Contracts;
-using Mtconnect.AdapterSdk.DataItemTypes;
+﻿using Mtconnect.AdapterSdk.DataItemTypes;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -20,6 +19,9 @@ namespace Mtconnect.AdapterSdk.DataItems
         /// </summary>
         public bool HasBegun { get; private set; } = false;
 
+        /// <summary>
+        /// Indicates whether or not this Condition will be reported with NL characters.
+        /// </summary>
         public override bool HasNewLine { get; protected set; } = true;
 
         /// <summary>
@@ -40,22 +42,51 @@ namespace Mtconnect.AdapterSdk.DataItems
         /// <param name="name"><inheritdoc cref="DataItem.DataItem(string, string, string, string)" path="/param[@name='name']"/></param>
         /// <param name="description"><inheritdoc cref="DataItem.DataItem(string, string, string, string)" path="/param[@name='description']"/></param>
         /// <param name="simple">If this is a simple condition or if it uses mark and sweep</param>
-        /// <param name="type"><inheritdoc cref="DataItem.DataItem(string, string, string, string)" path="/param[@name='type']"/></param>
-        /// <param name="subType"><inheritdoc cref="DataItem.DataItem(string, string, string, string)" path="/param[@name='subType']"/></param>
         public Condition(string name, string description = null, bool simple = false) : base(name, description)
         {
             IsSimple = simple;
         }
 
+        /// <summary>
+        /// <inheritdoc cref="Condition(string, string, bool)" path="/summary"/>
+        /// </summary>
+        /// <param name="name"><inheritdoc cref="Condition(string, string, bool)" path="/param[@name='name']"/></param>
+        /// <param name="type"><inheritdoc cref="DataItem.DataItem(string, string, string, string)" path="/param[@name='type']"/></param>
+        /// <param name="subtype"><inheritdoc cref="DataItem.DataItem(string, string, string, string)" path="/param[@name='subtype']"/></param>
+        /// <param name="description"><inheritdoc cref="Condition(string, string, bool)" path="/param[@name='description']"/></param>
+        /// <param name="simple"><inheritdoc cref="Condition(string, string, bool)" path="/param[@name='simple']"/></param>
         public Condition(string name, string type, string subtype = null, string description = null, bool simple = false) : base(name, type, subtype, description)
         {
             IsSimple = simple;
         }
-
+        /// <summary>
+        /// <inheritdoc cref="Condition(string, string, bool)" path="/summary"/>
+        /// </summary>
+        /// <param name="name"><inheritdoc cref="Condition(string, string, bool)" path="/param[@name='name']"/></param>
+        /// <param name="type"><inheritdoc cref="DataItem.DataItem(string, string, string, string)" path="/param[@name='type']"/></param>
+        /// <param name="subtype"><inheritdoc cref="DataItem.DataItem(string, string, string, string)" path="/param[@name='subtype']"/></param>
+        /// <param name="description"><inheritdoc cref="Condition(string, string, bool)" path="/param[@name='description']"/></param>
+        /// <param name="simple"><inheritdoc cref="Condition(string, string, bool)" path="/param[@name='simple']"/></param>
         public Condition(string name, EventTypes type, string subtype = null, string description = null, bool simple = false) : this(name, type.ToString(), subtype, description, simple) { }
 
+        /// <summary>
+        /// <inheritdoc cref="Condition(string, string, bool)" path="/summary"/>
+        /// </summary>
+        /// <param name="name"><inheritdoc cref="Condition(string, string, bool)" path="/param[@name='name']"/></param>
+        /// <param name="type"><inheritdoc cref="DataItem.DataItem(string, string, string, string)" path="/param[@name='type']"/></param>
+        /// <param name="subtype"><inheritdoc cref="DataItem.DataItem(string, string, string, string)" path="/param[@name='subtype']"/></param>
+        /// <param name="description"><inheritdoc cref="Condition(string, string, bool)" path="/param[@name='description']"/></param>
+        /// <param name="simple"><inheritdoc cref="Condition(string, string, bool)" path="/param[@name='simple']"/></param>
         public Condition(string name, SampleTypes type, string subtype = null, string description = null, bool simple = false) : this(name, type.ToString(), subtype, description, simple) { }
 
+        /// <summary>
+        /// <inheritdoc cref="Condition(string, string, bool)" path="/summary"/>
+        /// </summary>
+        /// <param name="name"><inheritdoc cref="Condition(string, string, bool)" path="/param[@name='name']"/></param>
+        /// <param name="type"><inheritdoc cref="DataItem.DataItem(string, string, string, string)" path="/param[@name='type']"/></param>
+        /// <param name="subtype"><inheritdoc cref="DataItem.DataItem(string, string, string, string)" path="/param[@name='subtype']"/></param>
+        /// <param name="description"><inheritdoc cref="Condition(string, string, bool)" path="/param[@name='description']"/></param>
+        /// <param name="simple"><inheritdoc cref="Condition(string, string, bool)" path="/param[@name='simple']"/></param>
         public Condition(string name, ConditionTypes type, string subtype = null, string description = null, bool simple = false) : this(name, type.ToString(), subtype, description, simple) { }
 
         /// <inheritdoc />

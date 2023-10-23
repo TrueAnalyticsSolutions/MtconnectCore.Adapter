@@ -9,7 +9,7 @@ namespace AdapterTranspiler.Models
     [ScribanTemplate("Adapter.ComponentInterface.scriban")]
     public class AdapterComponentInterface : CSharpModels.Class
     {
-        public UmlClass ParentComponent { get; set; }
+        public UmlClass? ParentComponent { get; set; } = null;
 
         public List<UmlClass> SubComponents { get; set; } = new List<UmlClass>();
 

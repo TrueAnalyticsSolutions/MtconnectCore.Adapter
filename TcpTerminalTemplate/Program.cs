@@ -1,6 +1,7 @@
 ﻿using ConsoulLibrary;
 using Microsoft.Extensions.Logging;
 using Mtconnect;
+using Mtconnect.AdapterSdk;
 using Mtconnect.AdapterSdk.DeviceConfiguration;
 using Mtconnect.AdapterSourceTemplate;
 
@@ -31,7 +32,35 @@ namespace TcpTerminal
                 adapter.Stop();
             }
         }
-        private static async void SaveDevices(TcpAdapter adapter)
+        private class AdapterLogger : IAdapterLogger
+        {
+            private readonly ILogger _logger;
+            public AdapterLogger(ILoggerFactory loggerFactory)
+            {
+                _logger = loggerFactory.CreateLogger<AdapterLogger>();
+            }
+            public void LogDebug(string message, params object[] args)
+                => _logger.LogDebug(message, args);
+
+            public void LogError(string message, params object[] args)
+                => _logger.LogError(message, args);
+
+            public void LogError(Exception exception, string message, params object[] args)
+                => _logger.LogError(exception, message, args);
+
+            public void LogInformation(string message, params object[] args)
+                => _logger.LogInformation(message, args);
+
+            public void LogTrace(string message, params object[] args)
+                => _logger.LogTrace(message, args);
+
+            public void LogWarning(string message, params object[] args)
+                => _logger.LogWarning(message, args);
+
+            public void LogWarning(Exception exception, string message, params object[] args)
+                => _logger.LogWarning(message, args);
+        }
+        private static void SaveDevices(TcpAdapter adapter)
         {
             System.Threading.Thread.Sleep(5_000);
             var dcf = new DeviceModelFactory();

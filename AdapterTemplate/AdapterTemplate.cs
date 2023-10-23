@@ -1,7 +1,6 @@
 ﻿using System;
 using System.Threading;
-using Microsoft.Extensions.Logging;
-using Mtconnect.AdapterSdk.Contracts;
+using Mtconnect.AdapterSdk;
 using Mtconnect.AdapterSdk.DataItems;
 
 namespace Mtconnect.AdapterTemplate
@@ -9,15 +8,14 @@ namespace Mtconnect.AdapterTemplate
     /// <summary>
     /// TODO: Explain the method or protocol for which MTConnect data is published.
     /// </summary>
-    public sealed class AdapterTemplate
-        : Adapter
+    public sealed class AdapterTemplate : Adapter
     {
         /// <summary>
         /// Constructs a new <see cref="AdapterTemplate"/>.
         /// </summary>
         /// <param name="options"><inheritdoc cref="AdapterOptionsTemplate" path="/summary"/></param>
-        /// <param name="logFactory"><inheritdoc cref="ILoggerFactory" path="/summary"/></param>
-        public AdapterTemplate(AdapterOptionsTemplate options, ILoggerFactory logFactory = default) : base(options, logFactory) { }
+        /// <param name="logger"><inheritdoc cref="IAdapterLogger" path="/summary"/></param>
+        public AdapterTemplate(AdapterOptionsTemplate options, IAdapterLogger logger = default) : base(options, logger) { }
 
         /// <inheritdoc />
         protected override void Start(bool begin = true, CancellationToken token = default)

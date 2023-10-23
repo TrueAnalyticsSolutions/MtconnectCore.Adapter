@@ -1,9 +1,10 @@
 #pragma warning disable 0618
 #pragma warning disable 1574
+#pragma warning disable CS1574
 using System;
 using System.CodeDom.Compiler;
-using Mtconnect.AdapterSdk.Contracts.Attributes;
-using Mtconnect.AdapterSdk.Contracts;
+using Mtconnect.AdapterSdk;
+using Mtconnect.AdapterSdk.Attributes;
 using Mtconnect.AdapterSdk.DataItems;
 using Mtconnect.AdapterSdk.DataItemValues;
 using Mtconnect.AdapterSdk.Units;
@@ -19,7 +20,7 @@ namespace Mtconnect.AdapterSdk.DataItemValues
 	/// <item><b>Units</b>: <see cref="MtconnectUnit.PASCAL" /></item>
 	/// </list>
 	/// </remarks>
-	[GeneratedCode("MtconnectTranspiler.Sinks.CSharp.Adapter", "1.0.12.0")]
+	[GeneratedCode("MtconnectTranspiler.Sinks.CSharp.Adapter; Adapter.ValueType.scriban", "1.0.12.0")]
 	public partial class PressureAbsolute : SampleValue
     {
         /// <inheritdoc />

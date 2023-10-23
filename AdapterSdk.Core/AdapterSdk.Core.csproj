@@ -1,7 +1,7 @@
-<Project Sdk="Microsoft.NET.Sdk">
+﻿<Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
-	  <TargetFrameworks>netcoreapp3.1;netstandard2.1;net461;</TargetFrameworks>
+	  <TargetFramework>netstandard2.0</TargetFramework>
 	  <BaseOutputPath>bin\</BaseOutputPath>
 	  <GenerateDocumentationFile>True</GenerateDocumentationFile>
 	  <NeutralLanguage>en-US</NeutralLanguage>
@@ -21,14 +21,13 @@
 	  <ApplicationIcon>icon.ico</ApplicationIcon>
 	  <PackageProjectUrl>https://github.com/TrueAnalyticsSolutions/Mtconnect.Adapter</PackageProjectUrl>
 	  <RepositoryUrl>$(ProjectUrl)</RepositoryUrl>
-	  <Version>1.0.0.6-alpha</Version>
+	  <Version>1.0.0.8-alpha</Version>
 	  <IncludeSymbols>True</IncludeSymbols>
 	  <SymbolPackageFormat>snupkg</SymbolPackageFormat>
 	  <DebugSymbols>true</DebugSymbols>
 	  <EmbedAllSources>true</EmbedAllSources>
 	  <DebugType>portable</DebugType>
 	  <DocumentationFile>$(AssemblyName).xml</DocumentationFile>
-	  <EnableDynamicLoading>true</EnableDynamicLoading>
   </PropertyGroup>
 
   <ItemGroup>
@@ -42,10 +41,6 @@
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
       <Pack>True</Pack>
     </Content>
-  </ItemGroup>
-
-  <ItemGroup>
-    <PackageReference Include="Microsoft.Extensions.Logging.Abstractions" Version="7.0.1" />
   </ItemGroup>
 
 </Project>

@@ -1,4 +1,5 @@
-﻿using Mtconnect.AdapterSdk.Contracts.Attributes;
+﻿#pragma warning disable CS0618
+using Mtconnect.AdapterSdk.Attributes;
 using Mtconnect.AdapterSdk.DataItemTypes;
 using Mtconnect.AdapterSdk.DataItemValues;
 

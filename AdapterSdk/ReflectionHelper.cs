@@ -1,9 +1,8 @@
-﻿using Mtconnect.AdapterSdk.Contracts;
-using Mtconnect.AdapterSdk.DataItems;
+﻿using Mtconnect.AdapterSdk.DataItems;
 using System;
 using System.Collections.Generic;
 
-namespace Mtconnect
+namespace Mtconnect.AdapterSdk
 {
     internal static class ReflectionHelper
     {

@@ -1,6 +1,4 @@
-﻿using Mtconnect.UPnP;
-
-namespace Mtconnect.AdapterSdk.UPnP
+﻿namespace Mtconnect.AdapterSdk.UPnP
 {
     /// <summary>
     /// A generic, base definition for a UPnP Message. 

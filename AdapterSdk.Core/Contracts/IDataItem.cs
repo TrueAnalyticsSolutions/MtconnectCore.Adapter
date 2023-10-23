@@ -2,8 +2,11 @@
 using System;
 using System.Collections.Generic;
 
-namespace Mtconnect.AdapterSdk.Contracts
+namespace Mtconnect.AdapterSdk
 {
+    /// <summary>
+    /// Abstract definition for a DataItem type.
+    /// </summary>
     public interface IDataItem
     {
         /// <summary>
@@ -22,11 +25,11 @@ namespace Mtconnect.AdapterSdk.Contracts
         string Category { get; }
 
         /// <summary>
-        /// A <see cref="System.Type"/> reference to the <see cref="Enum"/> according the MTConnect Standard. See <see cref="EventTypes"/>, <see cref="SampleTypes"/>, and <see cref="ConditionTypes"/> for examples.
+        /// A <see cref="System.Type"/> reference to the <see cref="Enum"/> according the MTConnect Standard. See EventTypes, SampleTypes, and ConditionTypes for examples.
         /// </summary>
         Enum TypeEnum { get; }
         /// <summary>
-        /// A <see cref="System.Type"/> reference to the <see cref="Enum"/> according to the MTConnect Standard and the provided <see cref="TypeEnum"/> if it is decorated with <see cref="ObservationalSubTypeAttribute"/>.
+        /// A <see cref="System.Type"/> reference to the <see cref="Enum"/> according to the MTConnect Standard and the provided TypeEnum if it is decorated with ObservationalSubTypeAttribute.
         /// </summary>
         Enum SubTypeEnum { get; }
 
@@ -36,12 +39,12 @@ namespace Mtconnect.AdapterSdk.Contracts
         bool TypeValidated { get; }
 
         /// <summary>
-        /// The intended <c>type</c> for the Data Item. See <see cref="EventTypes">Events</see>, <see cref="SampleTypes">Samples</see>, and <see cref="ConditionTypes">Conditions</see>. The <c>type</c> can also be extended according to the standard be adding the prefix <c>x:</c> to indicate an extended type.
+        /// The intended <c>type</c> for the Data Item. See Events, Samples, and Conditions. The <c>type</c> can also be extended according to the standard be adding the prefix <c>x:</c> to indicate an extended type.
         /// </summary>
         string ObservationalType { get; set; }
 
         /// <summary>
-        /// The intended <c>subType</c> for the Data Item. Refer to the appropriate <see cref="EventTypes">Events</see>, <see cref="SampleTypes">Samples</see>, and <see cref="ConditionTypes">Conditions</see>. The <c>subType</c> can also be extended according to the standard be adding the prefix <c>x:</c> to indicate an extended type.
+        /// The intended <c>subType</c> for the Data Item. Refer to the appropriate Events, Samples, and Conditions. The <c>subType</c> can also be extended according to the standard be adding the prefix <c>x:</c> to indicate an extended type.
         /// </summary>
         string ObservationalSubType { get; set; }
 

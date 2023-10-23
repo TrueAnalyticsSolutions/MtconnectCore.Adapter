@@ -1,5 +1,4 @@
-﻿using Mtconnect.AdapterSdk.Contracts;
-using System;
+﻿using System;
 
 namespace Mtconnect.AdapterSdk
 {

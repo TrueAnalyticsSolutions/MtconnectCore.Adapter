@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace Mtconnect.AdapterSdk.Contracts.Attributes
+namespace Mtconnect.AdapterSdk.Attributes
 {
     /// <summary>
     /// An attribute used to flag the applicability of an object based on the version of the standard the MTConnect Response Document should be compared against.
@@ -13,6 +13,9 @@ namespace Mtconnect.AdapterSdk.Contracts.Attributes
         /// </summary>
         public MtconnectVersions MinimumVersion { get; set; }
 
+        /// <summary>
+        /// Reference to the version of the MTConnect Standard that this object applies to.
+        /// </summary>
         public MtconnectVersions? MaximumVersion { get; set; }
 
         /// <summary>
@@ -45,7 +48,7 @@ namespace Mtconnect.AdapterSdk.Contracts.Attributes
         /// Compares the Response Document version against the version specified in the attribute based on the comparison method provided.
         /// </summary>
         /// <param name="documentVersion">Reference to the version of MTConnect implemented in the Response Document.</param>
-        /// <returns>Flag for whether the MTConnect Response Document version matches with the specified <see cref="MinimumVersion"/> according to the <see cref="ComparisonType"/>.</returns>
+        /// <returns>Flag for whether the MTConnect Response Document version matches with the specified <see cref="MinimumVersion"/> according to the ComparisonType.</returns>
         public bool Compare(MtconnectVersions documentVersion)
         {
             return documentVersion >= MinimumVersion && (MaximumVersion.HasValue ? documentVersion <= MaximumVersion.Value : true);

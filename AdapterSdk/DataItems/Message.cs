@@ -1,5 +1,4 @@
-﻿using Mtconnect.AdapterSdk.Contracts;
-using Mtconnect.AdapterSdk.DataItemTypes;
+﻿using Mtconnect.AdapterSdk.DataItemTypes;
 using System;
 
 namespace Mtconnect.AdapterSdk.DataItems
@@ -36,12 +35,19 @@ namespace Mtconnect.AdapterSdk.DataItems
         /// <param name="name"><inheritdoc cref="DataItem.DataItem(string, string, string, string)" path="/param[@name='name']"/></param>
         /// <param name="description"><inheritdoc cref="DataItem.DataItem(string, string, string, string)" path="/param[@name='description']"/></param>
         /// <param name="type"><inheritdoc cref="DataItem.DataItem(string, string, string, string)" path="/param[@name='type']"/></param>
-        /// <param name="subType"><inheritdoc cref="DataItem.DataItem(string, string, string, string)" path="/param[@name='subType']"/></param>
+        /// <param name="subType"><inheritdoc cref="DataItem.DataItem(string, string, string, string)" path="/param[@name='subtype']"/></param>
         public Message(string name, string description = null, string type = null, string subType = null) : base(name, type, subType, description)
         {
             HasNewLine = true;
         }
 
+        /// <summary>
+        /// <inheritdoc cref="Message(string,string,string,string)" path="/summary"/>
+        /// </summary>
+        /// <param name="name"><inheritdoc cref="Message(string,string,string,string)" path="/param[@name='name']"/></param>
+        /// <param name="description"><inheritdoc cref="Message(string,string,string,string)" path="/param[@name='description']"/></param>
+        /// <param name="type"><inheritdoc cref="Message(string,string,string,string)" path="/param[@name='type']"/></param>
+        /// <param name="subType"><inheritdoc cref="Message(string,string,string,string)" path="/param[@name='subType']"/></param>
         public Message(string name, string description = null, EventTypes? type = null, Enum subType = null) : this(name, description, type?.ToString(), subType?.ToString()) { }
 
         /// <summary>

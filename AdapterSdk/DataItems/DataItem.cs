@@ -1,5 +1,4 @@
-﻿using Mtconnect.AdapterSdk.Contracts;
-using Mtconnect.AdapterSdk.DataItemTypes;
+﻿using Mtconnect.AdapterSdk.DataItemTypes;
 using System;
 using System.Collections.Generic;
 
@@ -186,6 +185,13 @@ namespace Mtconnect.AdapterSdk.DataItems
             Unavailable();
         }
 
+        /// <summary>
+        /// <inheritdoc cref="DataItem(string,string)" path="/summary"/>
+        /// </summary>
+        /// <param name="name"><inheritdoc cref="DataItem(string,string)" path="/param[@name='name']"/></param>
+        /// <param name="type"><inheritdoc cref="DataItem.ObservationalType" path="/summary"/></param>
+        /// <param name="subtype"><inheritdoc cref="DataItem.ObservationalSubType" path="/summary"/></param>
+        /// <param name="description"><inheritdoc cref="DataItem(string,string)" path="/param[@name='description']"/></param>
         public DataItem(string name, string type, string subtype = null, string description = null) : this(name, description)
         {
             ObservationalType = type;

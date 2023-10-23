@@ -1,5 +1,4 @@
 ﻿using System;
-using Mtconnect.AdapterSdk.Contracts;
 using Mtconnect.AdapterSdk.DataItemTypes;
 
 namespace Mtconnect.AdapterSdk.DataItems
@@ -17,12 +16,24 @@ namespace Mtconnect.AdapterSdk.DataItems
         /// </summary>
         /// <param name="name"><inheritdoc cref="DataItem.DataItem(string, string, string, string)" path="/param[@name='name']"/></param>
         /// <param name="description"><inheritdoc cref="DataItem.DataItem(string, string, string, string)" path="/param[@name='description']"/></param>
-        /// <param name="type"><inheritdoc cref="DataItem.DataItem(string, string, string, string)" path="/param[@name='type']"/></param>
-        /// <param name="subType"><inheritdoc cref="DataItem.DataItem(string, string, string, string)" path="/param[@name='subType']"/></param>
         public Event(string name, string description = null) : base(name, description) { }
 
+        /// <summary>
+        /// <inheritdoc cref="Event(string,string)" path="/summary" />
+        /// </summary>
+        /// <param name="name"><inheritdoc cref="Event(string,string)" path="/param[@name='name']" /></param>
+        /// <param name="type"><inheritdoc cref="DataItem.DataItem(string, string, string, string)" path="/param[@name='type']"/></param>
+        /// <param name="subtype"><inheritdoc cref="DataItem.DataItem(string, string, string, string)" path="/param[@name='subtype']"/></param>
+        /// <param name="description"><inheritdoc cref="Event(string,string)" path="/param[@name='description']" /></param>
         public Event(string name, string type, string subtype = null, string description = null) : base(name, type, subtype, description) { }
 
+        /// <summary>
+        /// <inheritdoc cref="Event(string,string)" path="/summary" />
+        /// </summary>
+        /// <param name="name"><inheritdoc cref="Event(string,string)" path="/param[@name='name']" /></param>
+        /// <param name="type"><inheritdoc cref="DataItem.DataItem(string, string, string, string)" path="/param[@name='type']"/></param>
+        /// <param name="subtype"><inheritdoc cref="DataItem.DataItem(string, string, string, string)" path="/param[@name='subtype']"/></param>
+        /// <param name="description"><inheritdoc cref="Event(string,string)" path="/param[@name='name']" /></param>
         public Event(string name, EventTypes type, Enum subtype = null, string description = null) : this(name, type.ToString(), subtype?.ToString(), description) { }
 
         // TODO: Verify other constraints required against Event values.

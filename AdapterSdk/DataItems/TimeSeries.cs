@@ -1,5 +1,4 @@
-﻿using Mtconnect.AdapterSdk.Contracts;
-using Mtconnect.AdapterSdk.DataItemTypes;
+﻿using Mtconnect.AdapterSdk.DataItemTypes;
 using System;
 using System.Linq;
 
@@ -50,15 +49,24 @@ namespace Mtconnect.AdapterSdk.DataItems
         /// <param name="description"><inheritdoc cref="DataItem.DataItem(string, string, string, string)" path="/param[@name='description']"/></param>
         /// <param name="rate"><inheritdoc cref="Rate" path="/summary"/></param>
         /// <param name="type"><inheritdoc cref="DataItem.DataItem(string, string, string, string)" path="/param[@name='type']"/></param>
-        /// <param name="subType"><inheritdoc cref="DataItem.DataItem(string, string, string, string)" path="/param[@name='subType']"/></param>
+        /// <param name="subType"><inheritdoc cref="DataItem.DataItem(string, string, string, string)" path="/param[@name='subtype']"/></param>
         public TimeSeries(string name, string description = null, double rate = 0.0, string type = null, string subType = null) : base(name, type, subType, description)
         {
             HasNewLine = true;
             Rate = rate;
         }
 
+        /// <summary>
+        /// <inheritdoc cref="TimeSeries(string,string,double,string,string)" path="/summary"/>
+        /// </summary>
+        /// <param name="name"><inheritdoc cref="TimeSeries(string,string,double,string,string)" path="/param[@name='name']"/></param>
+        /// <param name="description"><inheritdoc cref="TimeSeries(string,string,double,string,string)" path="/param[@name='description']"/></param>
+        /// <param name="rate"><inheritdoc cref="TimeSeries(string,string,double,string,string)" path="/param[@name='rate']"/></param>
+        /// <param name="type"><inheritdoc cref="TimeSeries(string,string,double,string,string)" path="/param[@name='type']"/></param>
+        /// <param name="subType"><inheritdoc cref="TimeSeries(string,string,double,string,string)" path="/param[@name='subType']"/></param>
         public TimeSeries(string name, string description = null, double rate = 0.0, SampleTypes? type = null, string subType = null) : this(name, description, rate, type.ToString(), subType) { }
 
+        /// <inheritdoc />
         public override bool Equals(object obj)
         {
             double[] doubles = null;
@@ -83,6 +91,12 @@ namespace Mtconnect.AdapterSdk.DataItems
             }
 
             return true;
+        }
+
+        /// <inheritdoc />
+        public override int GetHashCode()
+        {
+            return base.GetHashCode();
         }
 
         /// <summary>

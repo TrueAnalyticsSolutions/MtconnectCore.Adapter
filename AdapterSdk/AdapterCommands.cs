@@ -1,10 +1,6 @@
-﻿using Mtconnect.AdapterSdk.Contracts;
-using Mtconnect.AdapterSdk.DeviceConfiguration;
-using System;
-using System.Net.NetworkInformation;
-using System.Reflection;
+﻿using System;
 
-namespace Mtconnect
+namespace Mtconnect.AdapterSdk
 {
     /// <summary>
     /// A collection of methods that return formatted responses to commands issued from a MTConnect Agent.

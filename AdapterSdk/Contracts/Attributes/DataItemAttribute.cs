@@ -1,7 +1,7 @@
 ﻿using Mtconnect.AdapterSdk.DataItems;
 using System;
 
-namespace Mtconnect.AdapterSdk.Contracts.Attributes
+namespace Mtconnect.AdapterSdk.Attributes
 {
     /// <summary>
     /// A decorative attribute for indicating a property intended to go thru an Adapter stream.
