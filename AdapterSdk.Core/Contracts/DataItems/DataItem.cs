@@ -98,7 +98,7 @@ namespace Mtconnect.AdapterSdk.DataItems
         public string Name { get; set; }
 
         /// <inheritdoc />
-        public string Description { get; internal set; }
+        public string Description { get; set; }
 
         /// <inheritdoc />
         public string DevicePrefix { get; set; } = string.Empty;

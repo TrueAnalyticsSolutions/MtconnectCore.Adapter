@@ -2,7 +2,7 @@
   "profiles": {
     "Transpiler": {
       "commandName": "Project",
-      "commandLineArgs": "\"../../../../AdapterSdk/Contracts\""
+      "commandLineArgs": "\"../../../../AdapterSdk.Core/Contracts\""
     },
     "WSL": {
       "commandName": "WSL2",

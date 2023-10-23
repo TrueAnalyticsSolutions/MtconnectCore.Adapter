@@ -21,7 +21,7 @@
     <ApplicationIcon>icon.ico</ApplicationIcon>
     <PackageProjectUrl>https://github.com/TrueAnalyticsSolutions/MtconnectCore.Adapter</PackageProjectUrl>
     <RepositoryUrl>$(ProjectUrl)</RepositoryUrl>
-    <Version>3.0.0.3-beta</Version>
+    <Version>3.0.0.4-beta</Version>
     <IncludeSymbols>True</IncludeSymbols>
     <SymbolPackageFormat>snupkg</SymbolPackageFormat>
 	<DebugSymbols>true</DebugSymbols>
@@ -87,13 +87,6 @@
       <Pack>True</Pack>
       <PackagePath>\</PackagePath>
     </None>
-  </ItemGroup>
-
-  <ItemGroup>
-    <Folder Include="Contracts\Components\" />
-    <Folder Include="Contracts\Enums\Values\" />
-    <Folder Include="Contracts\Enums\Types\" />
-    <Folder Include="Contracts\Units\" />
   </ItemGroup>
 
   <ItemGroup>
