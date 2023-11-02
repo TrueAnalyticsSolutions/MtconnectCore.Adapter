@@ -1,6 +1,4 @@
-﻿using Microsoft.Extensions.Logging;
-using Mtconnect.AdapterSdk.Contracts;
-using Mtconnect.AdapterSdk.Contracts.Attributes;
+﻿using Mtconnect.AdapterSdk.Attributes;
 using Mtconnect.AdapterSdk.DataItems;
 using System;
 using System.Collections;
@@ -9,8 +7,11 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Reflection;
 
-namespace Mtconnect
+namespace Mtconnect.AdapterSdk
 {
+    /// <summary>
+    /// Helper methods for Adapter management
+    /// </summary>
     public static class AdapterExtensions
     {
         /// <summary>
@@ -18,8 +19,9 @@ namespace Mtconnect
         /// </summary>
         /// <param name="adapter">Reference to the adapter to add the data item onto.</param>
         /// <param name="dataItem">Reference to the data item to be added.</param>
+        /// <param name="logDuplicationMessage">Flag for whether or not to log when duplicate data items are added.</param>
         /// <returns>Flag for whether or not the data item has been added. Returns true if the data item has already been added.</returns>
-        public static bool TryAddDataItem(this Adapter adapter, DataItem dataItem, bool logDuplicationMessage = true)
+        public static bool TryAddDataItem(this IAdapter adapter, IDataItem dataItem, bool logDuplicationMessage = true)
         {
             if (adapter.Contains(dataItem))
             {
@@ -38,7 +40,7 @@ namespace Mtconnect
         /// <param name="adapter">Reference to the MTConnect <see cref="Adapter"/> to add the data items onto.</param>
         /// <param name="model">Reference to a data model containing <see cref="DataItemAttribute"/>s.</param>
         /// <returns>Flag for whether or not all decorated <see cref="DataItemAttribute"/>s were added to the adapter.</returns>
-        public static bool TryAddDataItems(this Adapter adapter, IAdapterDataModel model)
+        public static bool TryAddDataItems(this IAdapter adapter, IAdapterDataModel model)
         {
             return adapter.TryAddDataItems(model, string.Empty, string.Empty);
         }
@@ -46,7 +48,7 @@ namespace Mtconnect
         /// Gets a list of <see cref="PropertyInfo"/> that is either decorated with the <see cref="DataItemAttribute"/> or an implementation of the type <see cref="DataItem"/>.
         /// </summary>
         /// <param name="type">Reference to the model type to reflect upon.</param>
-        /// <returns>Collection of properties that represent <see cref="DataItem"/>s</returns>
+        /// <returns>Collection of properties that represent <see cref="IDataItem"/>s</returns>
         private static PropertyInfo[] GetDataItemProperties(Type type)
         {
             return type.GetProperties(BindingFlags.Instance | BindingFlags.Public)
@@ -60,7 +62,7 @@ namespace Mtconnect
         /// Gets a list of <see cref="PropertyInfo"/> that is decorated with the <see cref="TimestampAttribute"/>.
         /// </summary>
         /// <param name="type">Reference to the model type to reflect upon.</param>
-        /// <returns>Collection of properties that represent the value for <see cref="DataItem.LastChanged"/></returns>
+        /// <returns>Collection of properties that represent the value for <see cref="IDataItem.LastChanged"/></returns>
         private static PropertyInfo[] GetDataItemTimestampProperties(Type type)
         {
             return type.GetProperties(BindingFlags.Instance | BindingFlags.Public)
@@ -77,8 +79,10 @@ namespace Mtconnect
                 typeof(Message),
                 typeof(TimeSeries)
         };
-        private static bool TryAddDataItems(this Adapter adapter, object model, string modelPath = "", string dataItemNamePrefix = "", string dataItemDescriptionPrefix = "")
+        private static bool TryAddDataItems(this IAdapter adapter, object model, string modelPath = "", string dataItemNamePrefix = "", string dataItemDescriptionPrefix = "")
         {
+            if (model == null)
+                return false;
             bool isCached = true;
             bool allDataItemsAdded = true;
             lock (_dataItemProperties)
@@ -143,6 +147,12 @@ namespace Mtconnect
                         // Process IDataItemValue
                         if (typeof(IDataItemValue).IsAssignableFrom(property.PropertyType))
                         {
+                            if (propertyValue == null)
+                            {
+                                adapter._logger?.LogError("Data model property {PropertyName} is null and cannot be added until instantiated", property.Name);
+                                continue;
+                            }
+
                             if (string.IsNullOrEmpty(dataItemType))
                             {
                                 dataItemType = (propertyValue as IDataItemValue).ObservationalType;
@@ -165,6 +175,11 @@ namespace Mtconnect
                             switch (dataItemAttribute)
                             {
                                 case DataItemPartialAttribute _:
+                                    if (propertyValue == null)
+                                    {
+                                        adapter._logger?.LogError("Data model property {PropertyName} is null and cannot be added until instantiated", property.Name);
+                                        continue;
+                                    }
                                     dataItemAdded = adapter.TryAddDataItems(propertyValue, $"{modelPath}[{property.Name}]", dataItemName, dataItemDescription);
 
                                     // Process property for collections
@@ -225,19 +240,18 @@ namespace Mtconnect
                         } else if (_dataItemTypes.Contains(property.PropertyType))
                         {
                             // Since the property is "DataItem" type already, just add it directly as a reference without creating a new DataItem instance
-                            var dataItemProperty = propertyValue;
-                            if (dataItemProperty == null)
+                            if (propertyValue == null)
                             {
-                                adapter._logger?.LogError("Data model property {PropertyName} is null and cannot be added until instantiated", property.Name, property.PropertyType);
+                                adapter._logger?.LogError("Data model property {PropertyName} is null and cannot be added until instantiated", property.Name);
                                 continue;
-                            } else if ((dataItemProperty as DataItem) == null)
+                            } else if ((propertyValue as DataItem) == null)
                             {
                                 var castException = new InvalidCastException("Could not cast data model property to DataItem");
                                 adapter._logger?.LogError(castException, "Could not cast data model property {PropertyName} to DataItem", property.Name);
                                 continue;
                             }
 
-                            dataItem = dataItemProperty as DataItem;
+                            dataItem = propertyValue as DataItem;
 
                             if (dataItemAttribute != null)
                             {
@@ -256,7 +270,7 @@ namespace Mtconnect
                         // Now add the DataItem if it was constructed
                         if (dataItem != null)
                         {
-                            Func<DataItem, string, bool> addDataItem = (DataItem di, string mp) =>
+                            Func<IDataItem, string, bool> addDataItem = (IDataItem di, string mp) =>
                             {
                                 di.ModelPath += mp;// $"{modelPath}[{property.Name}]";
                                 if (timestampProperty != null)
@@ -276,6 +290,11 @@ namespace Mtconnect
                                 var genericType = property.PropertyType.GetGenericTypeDefinition();
                                 if (genericType == typeof(Dictionary<,>) && property.PropertyType.GetGenericArguments()[0] == typeof(string))
                                 {
+                                    if (propertyValue == null)
+                                    {
+                                        adapter._logger?.LogError("Data model property {PropertyName} is null and cannot be added until instantiated", property.Name);
+                                        continue;
+                                    }
                                     // Dictionary<string, T>
                                     var dictionary = propertyValue as IDictionary;
                                     foreach (DictionaryEntry entry in dictionary)
@@ -290,6 +309,11 @@ namespace Mtconnect
                                 }
                                 else if (genericType == typeof(List<>))
                                 {
+                                    if (propertyValue == null)
+                                    {
+                                        adapter._logger?.LogError("Data model property {PropertyName} is null and cannot be added until instantiated", property.Name);
+                                        continue;
+                                    }
                                     // List<T>
                                     var list = propertyValue as IList;
                                     for (int i = 0; i < list.Count; i++)
@@ -330,17 +354,20 @@ namespace Mtconnect
         }
 
         /// <summary>
-        /// Attempts to update the <see cref="DataItem"/>s of the <paramref name="adapter"/>.
+        /// Attempts to update the <see cref="IDataItem"/>s of the <paramref name="adapter"/>.
         /// </summary>
-        /// <param name="adapter">Reference to the MTConnect <see cref="Adapter"/> to update the data items from.</param>
-        /// <param name="model">Reference to the data model to update the <paramref name="adapter"/>s <see cref="DataItem"/>s from.</param>
-        /// <returns>Flag for whether or not all <see cref="DataItem"/> values were updated from the <paramref name="model"/>.</returns>
-        public static bool TryUpdateValues(this Adapter adapter, IAdapterDataModel model)
+        /// <param name="adapter">Reference to the MTConnect <see cref="IAdapter"/> to update the data items from.</param>
+        /// <param name="model">Reference to the data model to update the <paramref name="adapter"/>s <see cref="IDataItem"/>s from.</param>
+        /// <returns>Flag for whether or not all <see cref="IDataItem"/> values were updated from the <paramref name="model"/>.</returns>
+        public static bool TryUpdateValues(this IAdapter adapter, IAdapterDataModel model)
         {
             return TryUpdateValues(adapter, model, string.Empty);
         }
-        private static bool TryUpdateValues(this Adapter adapter, object model, string dataItemPrefix)
+        private static bool TryUpdateValues(this IAdapter adapter, object model, string dataItemPrefix)
         {
+            if (model == null)
+                return false;
+
             bool allDataItemsUpdated = true;
 
             Type sourceType = model.GetType();

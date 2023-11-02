@@ -4,8 +4,8 @@ dversion_slim = (source?.deprecated_version | string.slice 20 3) | string.replac
 #pragma warning disable 1574
 using System;
 using System.CodeDom.Compiler;
-using Mtconnect.AdapterSdk.Contracts;
-using Mtconnect.AdapterSdk.Contracts.Attributes;
+using Mtconnect.AdapterSdk;
+using Mtconnect.AdapterSdk.Attributes;
 {{~ if enum_has_values source ~}}
 using Mtconnect.AdapterSdk.DataItemValues;
 {{ end ~}}
@@ -32,7 +32,7 @@ namespace {{ to_pascal_code source.namespace }}
 	[Obsolete("Deprecated in v{{ dversion_slim }} according to https://model.mtconnect.org/#_Version_{{ dversion_slim }}")]
 	{{~ end ~}}
 	{{ include 'MtconnectVersion.scriban' source }}
-	[GeneratedCode("MtconnectTranspiler.Sinks.CSharp.Adapter", "{{ version }}")]
+	[GeneratedCode("MtconnectTranspiler.Sinks.CSharp.Adapter; Adapter.Enum.scriban", "{{ version }}")]
 	public enum {{ to_pascal_case source.name }}
 	{
 		/// <summary>

@@ -1,9 +1,11 @@
-﻿namespace Mtconnect.UPnP
+﻿using Mtconnect.AdapterSdk.UPnP;
+
+namespace Mtconnect.UPnP
 {
     /// <summary>
     /// A model used to update the UPnP Device Description template document. See <see href="/UPnP-Description.xml"/>.
     /// </summary>
-    public class UPnPDeviceServiceModel
+    public class UPnPDeviceServiceModel : IUPnPDeviceServiceModel
     {
         /// <summary>
         /// Unique identifier for the device.

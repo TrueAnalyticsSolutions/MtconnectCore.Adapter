@@ -14,7 +14,7 @@ namespace AdapterTranspiler.Models
         /// <summary>
         /// Internal reference to the class filename.
         /// </summary>
-        protected string _filename { get; set; }
+        protected string _filename { get; set; } = string.Empty;
         public string Filename
         {
             get

@@ -1,7 +1,6 @@
 ﻿using System.Xml;
 using System.Collections.Generic;
 
-
 namespace Mtconnect.AdapterSdk.Assets
 {
 

@@ -1,5 +1,5 @@
-﻿using Mtconnect.AdapterSdk.Contracts.Attributes;
-using Mtconnect.AdapterSdk.DataItemTypes;
+﻿using Mtconnect.AdapterSdk;
+using Mtconnect.AdapterSdk.Attributes;
 using Mtconnect.AdapterSdk.DataItemValues;
 using System.Collections.Generic;
 
@@ -13,12 +13,40 @@ namespace Mtconnect.AdapterSourceTemplate.Models
         [Event("avail")]
         public Availability Availability { get; set; }
 
-        [DataItemPartial("path")]
-        public Dictionary<string, Path> Paths { get; set; } = new Dictionary<string, Path>();
+        [DataItemPartial("ctrl_")]
+        public MyController Controller { get; set; } = new MyController();
+
+        [DataItemPartial("ax_")]
+        public AdvancedAxes Axes { get; set; } = new AdvancedAxes();
     }
-    public sealed class Path : IAdapterDataModel
+    public class MyController : Mtconnect.AdapterSdk.DataItemTypes.Controller
+    {
+        [DataItemPartial("path_")]
+        public Dictionary<string, MyPath> Paths { get; set; } = new Dictionary<string, MyPath>();
+
+        public override void Unavailable()
+        {
+            base.Unavailable();
+            foreach (var path in Paths)
+            {
+                path.Value.Unavailable();
+            }
+        }
+    }
+    public sealed class MyPath : Mtconnect.AdapterSdk.DataItemTypes.Path
     {
         [Event("exec")]
-        public Execution Execution { get; set; }
+        public override Execution Execution { get; set; }
+
+        [Event("prgm")]
+        public Program.ACTIVE ActiveProgram { get; set; }
+
+        public override void Unavailable()
+        {
+            base.Unavailable();
+
+            Execution?.Unavailable();
+            ActiveProgram?.Unavailable();
+        }
     }
 }

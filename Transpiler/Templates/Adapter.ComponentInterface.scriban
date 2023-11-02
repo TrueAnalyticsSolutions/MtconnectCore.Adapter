@@ -1,6 +1,10 @@
+#pragma warning disable CS0618
+#pragma warning disable CS1574
+#pragma warning disable CS1570
+#pragma warning disable CS1584
 {{~ nversion_slim = (source?.normative_version | string.slice 20 3) | string.replace "_" "."
 dversion_slim = (source?.deprecated_version | string.slice 20 3) | string.replace "_" "." ~}}
-using Mtconnect.AdapterSdk.Contracts;
+using Mtconnect.AdapterSdk;
 using Mtconnect.AdapterSdk.DataItemValues;
 using System;
 using System.CodeDom.Compiler;
@@ -18,7 +22,7 @@ namespace {{ to_pascal_code source.namespace }} {
 	/// <remarks>Deprecated in <see href="https://model.mtconnect.org/#_Version_{{ dversion_slim }}">v{{ dversion_slim }}</see>.</remarks>
 	[Obsolete("Deprecated in v{{ dversion_slim }} according to https://model.mtconnect.org/#_Version_{{ dversion_slim }}")]
 	{{~ end ~}}
-	[GeneratedCode("MtconnectTranspiler.Sinks.CSharp.Adapter", "{{ version }}")]
+	[GeneratedCode("MtconnectTranspiler.Sinks.CSharp.Adapter; Adapter.ComponentInterface.scriban", "{{ version }}")]
 	public class {{ source.name }} :{{ if source.parent_component != null }} {{ source.parent_component.name }},{{ end }} IAdapterDataModel, IComponentModel {
 	{{~ for sub_component in source.sub_components ~}}
 

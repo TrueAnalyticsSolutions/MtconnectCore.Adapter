@@ -1,5 +1,4 @@
-﻿using Microsoft.Extensions.Logging;
-using Mtconnect.AdapterSdk;
+﻿using Mtconnect.AdapterSdk;
 using System.Collections.Generic;
 
 namespace Mtconnect.AdapterTemplate
@@ -15,7 +14,8 @@ namespace Mtconnect.AdapterTemplate
         /// <param name="heartbeat"><inheritdoc cref="AdapterOptions.AdapterOptions" path="/param[@name='heartbeat']"/></param>
         public AdapterOptionsTemplate(double heartbeat = 10_000) : base(heartbeat) { }
 
-        public override Dictionary<string, object> UpdateFromConfig(ILogger logger = default)
+        /// <inheritdoc />
+        public override Dictionary<string, object> UpdateFromConfig(IAdapterLogger logger = default)
         {
             var adapterSettings = base.UpdateFromConfig(logger);
 

@@ -5,7 +5,7 @@ namespace Mtconnect.AdapterSdk
     /// <summary>
     /// A DTO for serialized MTConnect DataItem configuration options.
     /// </summary>
-    public class DataItemOptions
+    public class DataItemOptions : IDataItemOptions
     {
         /// <summary>
         /// Reference to the internal name for the DataItem.

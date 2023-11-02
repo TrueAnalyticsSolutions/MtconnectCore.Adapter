@@ -1,4 +1,4 @@
-﻿using Mtconnect.AdapterSdk.Contracts.Attributes;
+﻿using Mtconnect.AdapterSdk.Attributes;
 using Mtconnect.AdapterSdk.DataItems;
 using Mtconnect.AdapterSdk.DataItemTypes;
 using Mtconnect.AdapterSdk.DataItemValues;

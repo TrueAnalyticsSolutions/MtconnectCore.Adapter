@@ -55,9 +55,14 @@ namespace Mtconnect.AdapterSdk.UPnP
         public virtual TimeSpan MaxAge { get; set; } = TimeSpan.FromSeconds(1800);
 
         /// <inheritdoc />
-        public UPnPDeviceServiceModel Model { get; set; }
+        public IUPnPDeviceServiceModel Model { get; set; }
 
-        public UPnPNotifyMessage(IUPnPService broadcaster, UPnPDeviceServiceModel model)
+        /// <summary>
+        /// Constructs a new instance of a Universal Plug-n-Play notification message.
+        /// </summary>
+        /// <param name="broadcaster">Reference to the Universal Plug-n-Play broadcast service</param>
+        /// <param name="model">Reference to the Device Service model to construct the message from</param>
+        public UPnPNotifyMessage(IUPnPService broadcaster, IUPnPDeviceServiceModel model)
         {
             Model = model;
             Host = broadcaster.BroadcastEndpoint.ToString();
@@ -65,6 +70,7 @@ namespace Mtconnect.AdapterSdk.UPnP
             ServiceLocation = $"http://{model.UPnPEndpoint}/upnp/description.xml";
         }
 
+        /// <inheritdoc />
         public override string ToString()
         {
             StringBuilder sb = new StringBuilder();

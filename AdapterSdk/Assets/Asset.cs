@@ -1,12 +1,11 @@
-﻿using System;
-using System.Xml;
+﻿using System.Xml;
 
 namespace Mtconnect.AdapterSdk.Assets
 {
     /// <summary>
     /// Abstract Asset class.
     /// </summary>
-    public abstract class Asset
+    public abstract class Asset : IAsset
     {
         /// <summary>
         /// Unique identifier of an MTConnect Asset.

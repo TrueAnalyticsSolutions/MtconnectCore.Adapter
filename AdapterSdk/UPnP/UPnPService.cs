@@ -1,5 +1,4 @@
-﻿using Microsoft.Extensions.Logging;
-using Mtconnect.UPnP;
+﻿using Mtconnect.UPnP;
 using System;
 using System.IO;
 using System.Linq;
@@ -40,7 +39,7 @@ namespace Mtconnect.AdapterSdk.UPnP
         /// </summary>
         public const int DEFAULT_UPnP_PORT = 7879;
 
-        private ILogger<UPnPService<T>> _logger;
+        private IAdapterLogger _logger;
 
         /// <summary>
         /// Internal UDP client that publishes SSDP messages to the network multicast group.
@@ -85,7 +84,7 @@ namespace Mtconnect.AdapterSdk.UPnP
 
         private UPnPDeviceServiceModel _model = null;
         /// <inheritdoc />
-        public UPnPDeviceServiceModel Model => _model ?? (_model = ConstructDescription());
+        public IUPnPDeviceServiceModel Model => _model ?? (_model = ConstructDescription());
 
         /// <summary>
         /// A timestamp (UTC) referencing the Adapter was started. Returns null if the Adapter is not currently running.
@@ -109,8 +108,8 @@ namespace Mtconnect.AdapterSdk.UPnP
         /// <param name="broadcastRate">Rate (in milliseconds) for which the Adapter is advertised as a UPnP service.</param>
         /// <param name="address">Address for hosting the UPnP Device Description file.</param>
         /// <param name="port">Port for hosting the UPnP Device Description file.</param>
-        /// <param name="logFactory">Reference to the log factory so an internal logger can be created.</param>
-        public UPnPService(T adapter, double broadcastRate = DEFAULT_BROADCAST_RATE, string address = DEFAULT_UPnP_ADDRESS, int port = DEFAULT_UPnP_PORT, ILoggerFactory logFactory = default)
+        /// <param name="logger">Reference to the log factory so an internal logger can be created.</param>
+        public UPnPService(T adapter, double broadcastRate = DEFAULT_BROADCAST_RATE, string address = DEFAULT_UPnP_ADDRESS, int port = DEFAULT_UPnP_PORT, IAdapterLogger logger = default)
         {
             Adapter = adapter;
             Adapter.OnStarted += (sender, e) =>
@@ -130,7 +129,7 @@ namespace Mtconnect.AdapterSdk.UPnP
             _timer.Interval = broadcastRate;
             _timer.Elapsed += (sender, e) => _broadcast(SSDP_NTS.Update);
 
-            _logger = logFactory?.CreateLogger<UPnPService<T>>();
+            _logger = logger;
         }
 
         /// <summary>
@@ -176,7 +175,7 @@ namespace Mtconnect.AdapterSdk.UPnP
         /// <returns>Reference to the <see cref="Model"/></returns>
         /// <exception cref="FileNotFoundException"></exception>
         /// <exception cref="InvalidOperationException"></exception>
-        private UPnPDeviceServiceModel LoadUPnPDescription()
+        private IUPnPDeviceServiceModel LoadUPnPDescription()
         {
             string faviconPath = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "MTConnect_8-bit.png");
             if (!File.Exists(faviconPath))
@@ -283,6 +282,10 @@ namespace Mtconnect.AdapterSdk.UPnP
             return advertisement;
         }
 
+        /// <summary>
+        /// Constructs a Universal Plug-n-Play Description from the Adapter and the current assembly
+        /// </summary>
+        /// <returns><see cref="UPnPDeviceServiceModel"/></returns>
         protected virtual UPnPDeviceServiceModel ConstructDescription()
         {
             var version = Assembly.GetEntryAssembly()?.GetName()?.Version;
@@ -318,7 +321,7 @@ namespace Mtconnect.AdapterSdk.UPnP
             catch (Exception ex)
             {
                 _logger?.LogError(ex, "Failed to start UPnP Device Description server");
-                throw ex;
+                throw;
             }
 
             _logger?.LogInformation("Started UDP broadcaster");
@@ -337,6 +340,7 @@ namespace Mtconnect.AdapterSdk.UPnP
             _logger?.LogInformation("Stopped UDP broadcaster");
         }
 
+        /// <inheritdoc/>
         public void Dispose()
         {
             Stop();

@@ -1,6 +1,9 @@
 ﻿
 namespace Mtconnect.AdapterSdk
 {
+    /// <summary>
+    /// Helper class containing constant definitions
+    /// </summary>
     public static class Constants
     {
         /// <summary>

@@ -1,7 +1,7 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
-	<TargetFrameworks>netcoreapp3.1;netstandard2.1;net461;</TargetFrameworks>
+	<TargetFrameworks>netcoreapp3.1;netstandard2.0;net461;</TargetFrameworks>
     <BaseOutputPath>bin\</BaseOutputPath>
     <GenerateDocumentationFile>True</GenerateDocumentationFile>
     <NeutralLanguage>en-US</NeutralLanguage>
@@ -21,16 +21,17 @@
     <ApplicationIcon>icon.ico</ApplicationIcon>
     <PackageProjectUrl>https://github.com/TrueAnalyticsSolutions/MtconnectCore.Adapter</PackageProjectUrl>
     <RepositoryUrl>$(ProjectUrl)</RepositoryUrl>
-    <Version>2.0.3</Version>
+    <Version>3.0.1.0</Version>
     <IncludeSymbols>True</IncludeSymbols>
     <SymbolPackageFormat>snupkg</SymbolPackageFormat>
 	<DebugSymbols>true</DebugSymbols>
 	<EmbedAllSources>true</EmbedAllSources>
 	<DebugType>portable</DebugType>
 	<DocumentationFile>$(AssemblyName).xml</DocumentationFile>
+	<EnableDynamicLoading>true</EnableDynamicLoading>
   </PropertyGroup>
 
-  <ItemGroup>
+	<ItemGroup>
     <None Remove="AdapterSdk.xml" />
     <None Remove="icon.jpg" />
     <None Remove="logo_v2.0.jpg" />
@@ -76,10 +77,9 @@
   </ItemGroup>
 
   <ItemGroup>
-    <PackageReference Include="Microsoft.CodeAnalysis.CSharp.Scripting" Version="4.5.0" />
-    <PackageReference Include="Microsoft.Extensions.Logging.Abstractions" Version="7.0.0" />
+    <PackageReference Include="Microsoft.CodeAnalysis.CSharp.Scripting" Version="4.7.0" />
     <PackageReference Include="System.Configuration.ConfigurationManager" Version="7.0.0" />
-    <PackageReference Include="System.Text.Json" Version="7.0.2" />
+    <PackageReference Include="System.Text.Json" Version="7.0.3" />
   </ItemGroup>
 
   <ItemGroup>
@@ -90,8 +90,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Folder Include="Contracts\Components\" />
-    <Folder Include="Contracts\Units\" />
+    <ProjectReference Include="..\AdapterSdk.Core\AdapterSdk.Core.csproj" />
   </ItemGroup>
 
 </Project>

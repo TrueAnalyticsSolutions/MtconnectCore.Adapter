@@ -1,4 +1,4 @@
-﻿using Mtconnect.AdapterSdk.Contracts.Attributes;
+﻿using Mtconnect.AdapterSdk.Attributes;
 using Mtconnect.AdapterSdk.DataItemTypes;
 using Mtconnect.AdapterSdk.DataItemValues;
 
@@ -23,5 +23,8 @@ namespace Mtconnect.AdapterSourceTemplate.Models
         /// </summary>
         [Sample("load")]
         public Load Load { get; set; }
+
+        [DataItemPartial("drive_")]
+        public AdvancedMotor Motor { get; set; } = new AdvancedMotor();
     }
 }

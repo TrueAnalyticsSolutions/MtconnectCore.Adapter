@@ -22,7 +22,7 @@ namespace {{ to_pascal_code source.namespace }} {
 	{{~ if dversion_slim != "" ~}}
 	[Obsolete("Deprecated in v{{ dversion_slim }} according to https://model.mtconnect.org/#_Version_{{ dversion_slim }}")]
 	{{~ end ~}}
-	[GeneratedCode("MtconnectTranspiler.Sinks.CSharp.Adapter", "{{ version }}")]
+	[GeneratedCode("MtconnectTranspiler.Sinks.CSharp.Adapter; Adapter.Class.scriban", "{{ version }}")]
 	public {{ source.modifier }} class {{ source.name }} {
 	{{~ for item in source.items ~}}
 		/// <summary>

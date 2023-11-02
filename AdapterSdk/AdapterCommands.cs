@@ -1,9 +1,6 @@
-﻿using Mtconnect.AdapterSdk.DeviceConfiguration;
-using System;
-using System.Net.NetworkInformation;
-using System.Reflection;
+﻿using System;
 
-namespace Mtconnect
+namespace Mtconnect.AdapterSdk
 {
     /// <summary>
     /// A collection of methods that return formatted responses to commands issued from a MTConnect Agent.
@@ -16,7 +13,7 @@ namespace Mtconnect
         /// <param name="adapter">Reference to the Adapter implementation.</param>
         /// <param name="message">Reference to the command issued from the MTConnect Agent.</param>
         /// <returns>Formatted response to the command issued by the MTConnect Agent. If the command was not recognized, then the response string is empty.</returns>
-        public static string GetResponse(this Adapter adapter, string message)
+        public static string GetResponse(this IAdapter adapter, string message)
         {
             const string PING = "* PING";
             const string GET_DATAITEMS = "* dataItems";
@@ -52,21 +49,21 @@ namespace Mtconnect
         /// Handles the "<c>* PONG &lt;heartbeat&gt;</c>" command to the MTConnect Agent
         /// </summary>
         /// <returns>Informs the agent of all dataItems that can be published by the adapter</returns>
-        public static string Ping(Adapter adapter)
+        public static string Ping(IAdapter adapter)
             => AgentCommands.Pong(adapter.Heartbeat);
 
         /// <summary>
         /// Handles the "<c>* dataItems: XXX</c>" command to the MTConnect Agent
         /// </summary>
         /// <returns>Informs the agent of all dataItems that can be published by the adapter</returns>
-        public static string DataItems(Adapter adapter)
+        public static string DataItems(IAdapter adapter)
             => $"* dataItems: {string.Join("|", adapter.GetDataItemNames())}";
 
         /// <summary>
         /// Handles the "<c>* dataItemDescription: XXX</c>" command to the MTConnect Agent
         /// </summary>
         /// <returns>Informs the agent of the DataItem description, if any, for the provided DataItem name</returns>
-        public static string DataItemDescription(Adapter adapter, string message)
+        public static string DataItemDescription(IAdapter adapter, string message)
         {
             string dataItemName = message.Remove(0, message.LastIndexOf(' ') + 1);
             if (!adapter.Contains(dataItemName))
@@ -86,7 +83,7 @@ namespace Mtconnect
         /// Handles the "<c>* dataItem: XXX</c>" command to the MTConnect Agent
         /// </summary>
         /// <returns>Informs the agent of the current value for the provided DataItem</returns>
-        public static string DataItem(Adapter adapter, string message)
+        public static string DataItem(IAdapter adapter, string message)
         {
             string dataItemName = message.Remove(0, message.LastIndexOf(' ') + 1);
             if (!adapter.Contains(dataItemName))
@@ -102,7 +99,7 @@ namespace Mtconnect
         /// <param name="adapter">Reference to the Adapter</param>
         /// <param name="message">Optional name of the device to scope the configuration to.</param>
         /// <returns>Provides the Agent with a <c>MTConnectDevices</c> Response Document for the DataItem defined in the Adapter.</returns>
-        public static string DeviceModel(Adapter adapter, string message)
+        public static string DeviceModel(IAdapter adapter, string message)
         {
             string deviceName = null;
             if (message.Contains(":"))

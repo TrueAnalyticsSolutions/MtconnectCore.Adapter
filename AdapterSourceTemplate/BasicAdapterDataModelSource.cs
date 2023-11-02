@@ -1,4 +1,5 @@
-﻿using Mtconnect.AdapterSourceTemplate.Models;
+﻿using Mtconnect.AdapterSdk;
+using Mtconnect.AdapterSourceTemplate.Models;
 using System;
 using System.Threading;
 

@@ -9,7 +9,7 @@ namespace AdapterTranspiler.Models
     [ScribanTemplate("Adapter.ComponentInterface.scriban")]
     public class AdapterComponentInterface : CSharpModels.Class
     {
-        public UmlClass ParentComponent { get; set; }
+        public UmlClass? ParentComponent { get; set; } = null;
 
         public List<UmlClass> SubComponents { get; set; } = new List<UmlClass>();
 
@@ -28,7 +28,7 @@ namespace AdapterTranspiler.Models
             {
                 foreach (var property in source.Properties)
                 {
-                    var dataItem = dataItems
+                    var dataItem = dataItems?
                         .Where(o => o.Id == property.PropertyType)
                         .FirstOrDefault();
                     if (dataItem != null)
@@ -37,7 +37,7 @@ namespace AdapterTranspiler.Models
                     }
                     else
                     {
-                        var subComponent = componentTypes.Classes.FirstOrDefault(o => o.Id == property.PropertyType);
+                        var subComponent = componentTypes?.Classes.FirstOrDefault(o => o.Id == property.PropertyType);
                         if (subComponent != null)
                         {
                             SubComponents.Add(subComponent);
@@ -47,13 +47,13 @@ namespace AdapterTranspiler.Models
             }
 
             // Check for parent
-            var parentComponent = componentTypes.Classes.FirstOrDefault(o => o.Id == source.Generalization?.General);
+            var parentComponent = componentTypes?.Classes.FirstOrDefault(o => o.Id == source.Generalization?.General);
             if (parentComponent != null)
                 ParentComponent = parentComponent;
 
             // Check generalization
-            var generalizations = componentTypes.Classes.Where(o => o.Generalization?.General == source.Id).ToList();
-            if (generalizations.Count > 0)
+            var generalizations = componentTypes?.Classes.Where(o => o.Generalization?.General == source.Id).ToList();
+            if (generalizations?.Count > 0)
             {
                 foreach (var generalization in generalizations)
                 {

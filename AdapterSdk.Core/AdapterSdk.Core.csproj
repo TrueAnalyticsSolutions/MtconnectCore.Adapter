@@ -1,0 +1,57 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+	  <TargetFrameworks>netcoreapp3.1;netstandard2.0;net461;</TargetFrameworks>
+	  <BaseOutputPath>bin\</BaseOutputPath>
+	  <GenerateDocumentationFile>True</GenerateDocumentationFile>
+	  <NeutralLanguage>en-US</NeutralLanguage>
+	  <RootNamespace>Mtconnect.AdapterSdk</RootNamespace>
+	  <GeneratePackageOnBuild>True</GeneratePackageOnBuild>
+	  <PackageId>Mtconnect.AdapterSdk.Core</PackageId>
+	  <Title>MTConnect Adapter SDK Core</Title>
+	  <Authors>tbm0115</Authors>
+	  <Company>True Analytics Manufacturing Solutions</Company>
+	  <Product>MTConnect</Product>
+	  <Description>An interface library for connecting other libraries into the Mtconnect.AdapterSdk.</Description>
+	  <Copyright>True Analytics Manufacturing Solutions, LLC 2023</Copyright>
+	  <PackageIcon>icon.jpg</PackageIcon>
+	  <RepositoryType>git</RepositoryType>
+	  <PackageTags>MTConnect;Adapter;Interface</PackageTags>
+	  <PackageReleaseNotes>Added support for device model configuration with a MTConnect Agent.</PackageReleaseNotes>
+	  <ApplicationIcon>icon.ico</ApplicationIcon>
+	  <PackageProjectUrl>https://github.com/TrueAnalyticsSolutions/Mtconnect.Adapter</PackageProjectUrl>
+	  <RepositoryUrl>$(ProjectUrl)</RepositoryUrl>
+	  <Version>1.0.1.0</Version>
+	  <IncludeSymbols>True</IncludeSymbols>
+	  <SymbolPackageFormat>snupkg</SymbolPackageFormat>
+	  <DebugSymbols>true</DebugSymbols>
+	  <EmbedAllSources>true</EmbedAllSources>
+	  <DebugType>portable</DebugType>
+	  <DocumentationFile>$(AssemblyName).xml</DocumentationFile>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <None Remove="icon.jpg" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Compile Include="..\Constants.cs" Link="Constants.cs" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Content Include="icon.ico" />
+    <Content Include="icon.jpg">
+      <PackagePath>\</PackagePath>
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+      <Pack>True</Pack>
+    </Content>
+  </ItemGroup>
+
+  <ItemGroup>
+    <Folder Include="Contracts\Enums\Values\" />
+    <Folder Include="Contracts\Enums\Types\" />
+    <Folder Include="Contracts\Components\" />
+    <Folder Include="Contracts\Values\" />
+  </ItemGroup>
+
+</Project>

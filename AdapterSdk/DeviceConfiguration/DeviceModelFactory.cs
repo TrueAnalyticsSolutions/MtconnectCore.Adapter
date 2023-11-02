@@ -1,19 +1,14 @@
-﻿using Microsoft.Extensions.Logging;
-using Mtconnect.AdapterSdk.Contracts;
-using Mtconnect.AdapterSdk.Contracts.Attributes;
+﻿using Mtconnect.AdapterSdk.Attributes;
 using Mtconnect.AdapterSdk.DataItems;
 using Mtconnect.AdapterSdk.DataItemTypes;
 using Mtconnect.AdapterSdk.Units;
 using System;
-using System.Collections;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.IO;
 using System.Linq;
 using System.Reflection;
-using System.Reflection.Emit;
 using System.Runtime.Serialization;
-using System.Security.AccessControl;
 using System.Text;
 using System.Xml;
 using System.Xml.Linq;
@@ -39,7 +34,7 @@ namespace Mtconnect.AdapterSdk.DeviceConfiguration
         /// <param name="adapter">Reference to the adapter to build the XML from.</param>
         /// <param name="devicePrefix">Optional scope for a specific device.</param>
         /// <returns>Valid <c>MTConnectDevices</c> Response Document, aka <c>Devices.xml</c> or Device Configuration file.</returns>
-        public XmlDocument Create(Adapter adapter, string devicePrefix = null)
+        public XmlDocument Create(IAdapter adapter, string devicePrefix = null)
         {
             // Get the Adapter Version, used to set namespaces
             //string adapterVersion = GetMaximumMtconnectVersion(adapter);
@@ -70,7 +65,7 @@ namespace Mtconnect.AdapterSdk.DeviceConfiguration
 
             // Build Header element
             var xHeader = xRoot.AppendChild(xDoc.CreateElement("Header"));
-            xHeader.Attributes.Append(xDoc.CreateAttribute("creationTime")).Value = DateTime.UtcNow.ToString(adapter.DATE_TIME_FORMAT);// TODO: Ensure this is in the proper format
+            xHeader.Attributes.Append(xDoc.CreateAttribute("creationTime")).Value = DateTime.UtcNow.ToString(Constants.DATE_TIME_FORMAT);// TODO: Ensure this is in the proper format
             xHeader.Attributes.Append(xDoc.CreateAttribute("sender")).Value = AppDomain.CurrentDomain.FriendlyName;
             xHeader.Attributes.Append(xDoc.CreateAttribute("instanceId")).Value = "1";
             xHeader.Attributes.Append(xDoc.CreateAttribute("bufferSize")).Value = "1";
@@ -122,7 +117,7 @@ namespace Mtconnect.AdapterSdk.DeviceConfiguration
             xDoc.InnerXml = xDoc.InnerXml.Replace("{{ version }}", GetMaximumMtconnectVersion());
             return xDoc;
         }
-        private void AddComponents(XmlElement parentElement, Type type, Adapter adapter, string modelPath, string componentPrefix = null)
+        private void AddComponents(XmlElement parentElement, Type type, IAdapter adapter, string modelPath, string componentPrefix = null)
         {
             var dataItemsElement = parentElement.OwnerDocument.CreateElement("DataItems");
             var componentsElement = parentElement.OwnerDocument.CreateElement("Components");
@@ -133,17 +128,15 @@ namespace Mtconnect.AdapterSdk.DeviceConfiguration
                 var dataItemAttribute = property.GetCustomAttribute<DataItemAttribute>();
                 
                 // NOTE: IComponentModel is first because IComponentModel implements IAdapterDataModel
-                if (typeof(IComponentModel).IsAssignableFrom(property.PropertyType))
+                if (property.PropertyType.IsComponentType())
                 {
                     hasComponents = ProcessComponentModel(parentElement, adapter, $"{modelPath}[{property.Name}]", componentPrefix, componentsElement, property, dataItemAttribute);
                 }
-                else if (typeof(IAdapterDataModel).IsAssignableFrom(property.PropertyType))
+                else if (property.PropertyType.IsDataModelType())
                 {
                     AddComponents(parentElement, property.PropertyType, adapter, $"{modelPath}[{property.Name}]", dataItemAttribute?.Name ?? $"{componentPrefix}{property.Name}_");
                 }
-                else if (typeof(DataItem).IsAssignableFrom(property.PropertyType) ||
-                    dataItemAttribute != null ||
-                    typeof(IDataItemValue).IsAssignableFrom(property.PropertyType))
+                else if (property.PropertyType.IsDataItemType() || dataItemAttribute != null)
                 {
                     hasDataItems = ProcessDataItem(parentElement, adapter, $"{modelPath}[{property.Name}]", dataItemsElement, property, dataItemAttribute);
                 }
@@ -155,7 +148,7 @@ namespace Mtconnect.AdapterSdk.DeviceConfiguration
                 parentElement.AppendChild(componentsElement);
         }
 
-        private bool ProcessDataItem(XmlElement parentElement, Adapter adapter, string modelPath, XmlElement dataItemsElement, PropertyInfo property, DataItemAttribute dataItemAttribute)
+        private bool ProcessDataItem(XmlElement parentElement, IAdapter adapter, string modelPath, XmlElement dataItemsElement, PropertyInfo property, DataItemAttribute dataItemAttribute)
         {
             if (parentElement == null)
                 return false;
@@ -243,11 +236,12 @@ namespace Mtconnect.AdapterSdk.DeviceConfiguration
             return hasDataItems;
         }
 
-        private bool ProcessComponentModel(XmlElement parentElement, Adapter adapter, string modelPath, string componentPath, XmlElement componentsElement, PropertyInfo property, DataItemAttribute dataItemAttribute)
+        private bool ProcessComponentModel(XmlElement parentElement, IAdapter adapter, string modelPath, string componentPath, XmlElement componentsElement, PropertyInfo property, DataItemAttribute dataItemAttribute)
         {
             bool hasComponents = true;
-            var componentModelType = GetNearestComponentModelType(property.PropertyType);
-            var componentElement = parentElement.OwnerDocument.CreateElement(componentModelType?.Name ?? property.PropertyType.Name);
+            var componentModelImplementationType = GetComponentModelImplementationType(property.PropertyType);
+            var componentModelType = GetComponentModelType(property.PropertyType);
+            string propertySearchString = $"[{property.Name}]";
             string id = property.Name.ToLower();
             if (dataItemAttribute != null)
             {
@@ -255,18 +249,84 @@ namespace Mtconnect.AdapterSdk.DeviceConfiguration
                 if (id.EndsWith("_"))
                     id = id.Replace("_", string.Empty);
             }
-            componentElement.SetAttribute("id", id.ToLower());
-            componentElement.SetAttribute("name", property.Name);
+            if (property.PropertyType.IsDictionaryOfModel<IComponentModel>())
+            {
+                var componentNames = adapter.DataItems
+                    .Where(o => o.ModelPath.StartsWith(modelPath))
+                    .Select(o => o.ModelPath)
+                    .Select(o => o.Substring(o.IndexOf(propertySearchString) + propertySearchString.Length))
+                    .Select(o => o.Remove(o.IndexOf("]")).Remove(0, 1))
+                    .Distinct()
+                    .ToArray();
+                foreach (var componentName in componentNames)
+                {
+                    id = (dataItemAttribute?.Name ?? componentModelImplementationType.Name) + componentName;
 
-            componentsElement.AppendChild(componentElement);
+                    var componentElement = parentElement.OwnerDocument.CreateElement(componentModelType?.Name ?? property.PropertyType.Name);
+                    componentElement.SetAttribute("id", $"{componentPath}{id.ToLower()}");
+                    componentElement.SetAttribute("name", $"{componentPath}{id}");
 
-            AddComponents(componentElement, property.PropertyType, adapter, modelPath, dataItemAttribute?.Name ?? $"{componentPath}{property.Name}_");
+                    componentsElement.AppendChild(componentElement);
+                    // TODO: Ensure sub-components get parent component(s) name as prefix
+                    AddComponents(
+                        parentElement: componentElement,
+                        type: componentModelImplementationType,
+                        adapter: adapter,
+                        modelPath: $"{modelPath}[{componentName}]",
+                        componentPrefix: $"{componentPath}{dataItemAttribute?.Name ?? property.Name + "_"}{componentName}_"
+                    );
+                }
+                hasComponents = true;
+            } else if (property.PropertyType.IsListOfModel<IComponentModel>())
+            {
+                var componentNames = adapter.DataItems
+                    .Where(o => o.ModelPath.StartsWith(modelPath))
+                    .Select(o => o.ModelPath)
+                    .Select(o => o.Substring(o.IndexOf(propertySearchString) + propertySearchString.Length))
+                    .Select(o => o.Remove(o.IndexOf("]")).Remove(0, 1))
+                    .Distinct()
+                    .ToArray();
+                foreach (var componentName in componentNames)
+                {
+                    id = (dataItemAttribute?.Name ?? componentModelImplementationType.Name) + componentName;
+
+                    var componentElement = parentElement.OwnerDocument.CreateElement(componentModelType?.Name ?? property.PropertyType.Name);
+                    componentElement.SetAttribute("id", $"{componentPath}{id.ToLower()}");
+                    componentElement.SetAttribute("name", $"{componentPath}{id}");
+
+                    componentsElement.AppendChild(componentElement);
+
+                    AddComponents(
+                        parentElement: componentElement,
+                        type: componentModelImplementationType,
+                        adapter: adapter,
+                        modelPath: $"{modelPath}[{componentName}]",
+                        componentPrefix: $"{componentPath}{dataItemAttribute?.Name ?? property.Name + "_"}{componentName}_");
+                }
+                hasComponents = true;
+            }
+            else
+            {
+                var componentElement = parentElement.OwnerDocument.CreateElement(componentModelType?.Name ?? property.PropertyType.Name);
+                componentElement.SetAttribute("id", $"{componentPath}{id.ToLower()}");
+                componentElement.SetAttribute("name", $"{componentPath}{id}");
+
+                componentsElement.AppendChild(componentElement);
+
+                AddComponents(componentElement, componentModelImplementationType, adapter, modelPath, $"{componentPath}{dataItemAttribute?.Name ?? property.Name + "_"}");
+            }
             return hasComponents;
         }
 
-        public Type GetNearestComponentModelType(Type type)
+        /// <summary>
+        /// Gets the <see cref="IComponentModel"/> from the provided <paramref name="type"/>.
+        /// </summary>
+        /// <param name="type">Reference to a <see cref="System.Type"/> that may implement <see cref="IComponentModel"/></param>
+        /// <returns>The base type that may implement <see cref="IComponentModel"/></returns>
+        public Type GetComponentModelType(Type type)
         {
-            Type currentType = type.BaseType;
+            Type currentType = GetComponentModelImplementationType(type);
+            currentType = currentType.BaseType;
             while (currentType != null)
             {
                 if (typeof(IComponentModel).IsAssignableFrom(currentType))
@@ -277,8 +337,26 @@ namespace Mtconnect.AdapterSdk.DeviceConfiguration
             }
             return null;
         }
+        /// <summary>
+        /// Gets the specific type of component (ie. Controller, Path, etc.) from the provided <paramref name="type"/>.
+        /// </summary>
+        /// <param name="type">Type for which to search for a direct implementation type.</param>
+        /// <returns>The direct implementation of <see cref="IComponentModel"/></returns>
+        public Type GetComponentModelImplementationType(Type type)
+        {
+            Type currentType = type;
+            if (type.IsDictionaryOfModel<IComponentModel>())
+            {
+                currentType = type.GetGenericArguments()[1];
+            }
+            else if (type.IsListOfModel<IComponentModel>())
+            {
+                currentType = type.GetGenericArguments()[0];
+            }
+            return currentType;
+        }
 
-        private void AddDataItems(XmlNode xDataItems, IEnumerable<DataItem> dataItems)
+        private void AddDataItems(XmlNode xDataItems, IEnumerable<IDataItem> dataItems)
         {
             foreach (var deviceDataItem in dataItems)
             {
@@ -371,7 +449,13 @@ namespace Mtconnect.AdapterSdk.DeviceConfiguration
 
         // TODO: Update DataItem to yield the enum of Type and SubType.
         // TODO: Update DataItem to internally manage the "Introduced" and "Deprecated" properties according to the Type/SubType
-        public static string GetMaximumMtconnectVersion(Adapter adapter, string devicePrefix = null)
+        /// <summary>
+        /// Gets the maximum implementation of MTConnect required for the <paramref name="adapter"/>
+        /// </summary>
+        /// <param name="adapter">Reference to the <see cref="IAdapter"/> implementation.</param>
+        /// <param name="devicePrefix">Optional reference to the Device Prefix, used to generate the <see cref="DeviceModelFactory"/></param>
+        /// <returns>String representation of the MTConnect version (ie. 1.0.1)</returns>
+        public static string GetMaximumMtconnectVersion(IAdapter adapter, string devicePrefix = null)
         {
             var factory = new DeviceModelFactory();
             // Need to generate XML in order to navigate through data items and update the MaximumVersion
@@ -379,6 +463,7 @@ namespace Mtconnect.AdapterSdk.DeviceConfiguration
 
             return factory.GetMaximumMtconnectVersion();
         }
+        /// <inheritdoc cref="GetMaximumMtconnectVersion(IAdapter, string)" path="/summary"/>
         protected string GetMaximumMtconnectVersion()
         {
             string result = MaximumVersion.ToString();
@@ -394,7 +479,7 @@ namespace Mtconnect.AdapterSdk.DeviceConfiguration
         /// <param name="devicePrefix">Reference to the specific device data item(s) you want represented in the generated XML.</param>
         /// <param name="xpath">Optional XPath for the stringified XML</param>
         /// <returns>Stringified XML. Returns <c>null</c> when there is no <see cref="XmlNode"/> result from generation or from XPath.</returns>
-        public static string ToString(Adapter adapter, string devicePrefix = null, string xpath = null)
+        public static string ToString(IAdapter adapter, string devicePrefix = null, string xpath = null)
         {
             if (adapter == null)
             {

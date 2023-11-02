@@ -3,38 +3,24 @@ using System.Text;
 using System.Collections.Generic;
 using System.Xml;
 using System.Linq;
-using Microsoft.Extensions.Logging;
 using Mtconnect.AdapterSdk.DataItems;
-using Mtconnect.AdapterSdk.Contracts;
-using Mtconnect.AdapterSdk;
 using Mtconnect.AdapterSdk.Assets;
 using System.Data;
 using System.Collections.Concurrent;
 using System.Threading;
-using System.Collections;
 
-namespace Mtconnect
+namespace Mtconnect.AdapterSdk
 {
-
-
-    /// <summary>
-    /// An abstract implementation for a MTConnect adapter
-    /// </summary>
-    public abstract class Adapter
+    /// <inheritdoc/>
+    public abstract class Adapter : IAdapter
     {
-        /// <summary>
-        /// Occurs when the Adapter receives a new <see cref="IAdapterDataModel"/>.
-        /// </summary>
+        /// <inheritdoc/>
         public event AdapterDataModelReceivedHandler OnDataModelRecieved;
 
-        /// <summary>
-        /// Occurs when the Adapter starts.
-        /// </summary>
+        /// <inheritdoc/>
         public event AdapterStartedHandler OnStarted;
 
-        /// <summary>
-        /// Occurs when the Adapter stops.
-        /// </summary>
+        /// <inheritdoc/>
         public event AdapterStoppedHandler OnStopped;
 
         /// <summary>
@@ -42,34 +28,22 @@ namespace Mtconnect
         /// </summary>
         protected internal string DATE_TIME_FORMAT => Constants.DATE_TIME_FORMAT;
 
-        /// <summary>
-        /// Reference to a logging service.
-        /// </summary>
-        public readonly ILogger<Adapter> _logger;
+        /// <inheritdoc/>
+        public IAdapterLogger _logger { get; internal set; }
 
-        /// <summary>
-        /// A unique identifier for the device this Adapter is monitoring. <b>NOTE</b>: The same uuid can be referenced in multiple Adapter instances.
-        /// </summary>
+        /// <inheritdoc/>
         public string DeviceUUID { get; set; }
 
-        /// <summary>
-        /// The name of the deivce.
-        /// </summary>
+        /// <inheritdoc/>
         public string DeviceName { get; set; }
 
-        /// <summary>
-        /// An identifier for known location of the device. For example, this could be a reference to the workstation. The default options set this to the computer name where the adapter is deployed.
-        /// </summary>
+        /// <inheritdoc/>
         public string StationId { get; set; }
 
-        /// <summary>
-        /// A reference to the device's serial number, if applicable.
-        /// </summary>
+        /// <inheritdoc/>
         public string SerialNumber { get; set; } = null;
 
-        /// <summary>
-        /// A reference to the manufacturer of the device.
-        /// </summary>
+        /// <inheritdoc/>
         public string Manufacturer { get; set; } = null;
 
         /// <summary>
@@ -77,23 +51,16 @@ namespace Mtconnect
         /// </summary>
         protected DataItemLookup _dataItems = new DataItemLookup();
 
-        /// <summary>
-        /// Reference to the collection of <see cref="DataItem"/>s being tracked.
-        /// </summary>
-        public IEnumerable<DataItem> DataItems => _dataItems;
+        /// <inheritdoc/>
+        public IEnumerable<IDataItem> DataItems => _dataItems;
 
         /// <summary>
         /// A queue of <see cref="DataItem"/> changed values that have not been sent to clients.
         /// </summary>
         private readonly ConcurrentQueue<ReportedValue> _values = new ConcurrentQueue<ReportedValue>();
 
-        /// <summary>
-        /// Provides a reference to a <see cref="DataItem"/> from the internal collection based on the provided <paramref name="name"/>.
-        /// </summary>
-        /// <param name="name"><inheritdoc cref="DataItem.Name" path="/summary"/></param>
-        /// <param name="devicePrefix"><inheritdoc cref="DataItem.DevicePrefix" path="/summary"/></param>
-        /// <returns>Reference to the <see cref="DataItem"/> with the matching <paramref name="name"/>.</returns>
-        public DataItem this[string name, string devicePrefix = null]
+        /// <inheritdoc/>
+        public IDataItem this[string name, string devicePrefix = null]
         {
             get { return _dataItems[name, devicePrefix ?? string.Empty]; }
             set
@@ -102,17 +69,11 @@ namespace Mtconnect
             }
         }
 
-        /// <summary>
-        /// The send changed has begun and we are tracking conditions.
-        /// </summary>
+        /// <inheritdoc/>
         public bool HasBegun { get; protected set; } = false;
 
         private bool _canEnqueueDataItems = false;
-        /// <summary>
-        /// Flags whether or not the Adapter can store reported DataItem value from its source. The internal queue can ensure that all values reported from the data source are pushed thru the implemented stream.
-        /// <br/><br/>
-        /// Setting this to false will automatically send the entire queue thru the stream.
-        /// </summary>
+        /// <inheritdoc/>
         public bool CanEnqueueDataItems
         {
             get { return _canEnqueueDataItems; }
@@ -126,39 +87,29 @@ namespace Mtconnect
             }
         }
 
-        /// <summary>
-        /// Flags whether or not the Adapter should validate all DataItems before publishing them.
-        /// </summary>
+        /// <inheritdoc/>
         public bool CanValidateDataItems { get; set; } = false;
 
-        /// <summary>
-        /// The heartbeat interval (in milliseconds).
-        /// </summary>
+        /// <inheritdoc/>
         public virtual double Heartbeat { get; protected set; }
 
-        /// <summary>
-        /// Indicates what state the MTConnect Adapter is currently in.
-        /// </summary>
+        /// <inheritdoc/>
         public AdapterStates State { get; protected set; } = AdapterStates.NotStarted;
 
-        /// <summary>
-        /// An optional reference to an Adapter source. If the Adapter is started with a reference to a source, this is where the reference is maintained.
-        /// </summary>
-        protected List<IAdapterSource> Sources { get; set; } = new List<IAdapterSource>();
+        /// <inheritdoc/>
+        public List<IAdapterSource> Sources { get; protected set; } = new List<IAdapterSource>();
 
         private HashSet<Type> DataModelTypes { get; set; } = new HashSet<Type>();
 
-        /// <summary>
-        /// Reference to the options provided in the constructor.
-        /// </summary>
-        protected AdapterOptions Options { get; set; }
+        /// <inheritdoc/>
+        public IAdapterOptions Options { get; protected set; }
 
         /// <summary>
         /// Generic constructor of a new Adapter instance with basic AdapterOptions.
         /// </summary>
         /// <param name="options"><inheritdoc cref="AdapterOptions" path="/summary"/></param>
-        /// <param name="logFactory">Reference to the logger factory to handle logging.</param>
-        public Adapter(AdapterOptions options, ILoggerFactory logFactory = default)
+        /// <param name="logger">Reference to the logger factory to handle logging.</param>
+        public Adapter(AdapterOptions options, IAdapterLogger logger = default)
         {
             Options = options;
             DeviceUUID = options.DeviceUUID;
@@ -169,33 +120,20 @@ namespace Mtconnect
             CanEnqueueDataItems = options.CanEnqueueDataItems;
             CanValidateDataItems = options.CanValidateDataItems;
 
-            _logger = logFactory?.CreateLogger<Adapter>();
+            _logger = logger;
         }
 
-        /// <summary>
-        /// Determines whether or not a DataItem with the same <see cref="DataItem.Name"/> (and possibly <see cref="DataItem.DevicePrefix"/> exists in this adapter.
-        /// </summary>
-        /// <param name="name"><inheritdoc cref="DataItem.Name" path="/summary"/></param>
-        /// <param name="devicePrefix"><inheritdoc cref="DataItem.DevicePrefix" path="/summary"/></param>
-        /// <returns>Flag for whether or not a <see cref="DataItem"/> was found.</returns>
+        /// <inheritdoc/>
         public bool Contains(string name, string devicePrefix = null) => _dataItems.Contains(name, devicePrefix);
-        /// <summary>
-        /// <inheritdoc cref="Contains(string, string)" path="/summary"/>
-        /// </summary>
-        /// <param name="dataItem"></param>
-        /// <returns><inheritdoc cref="Contains(string, string)" path="/returns"/></returns>
-        public bool Contains(DataItem dataItem) => _dataItems.Contains(dataItem);
+        /// <inheritdoc/>
+        public bool Contains(IDataItem dataItem) => _dataItems.Contains(dataItem);
 
-        /// <summary>
-        /// Add a data item to the adapter.
-        /// </summary>
-        /// <param name="dataItem">The data item.</param>
-        /// <exception cref="DuplicateNameException"></exception>
-        public void AddDataItem(DataItem dataItem)
+        /// <inheritdoc/>
+        public void AddDataItem(IDataItem dataItem)
         {
             string internalName = dataItem.Name;
             string devicePrefix = dataItem.DevicePrefix;
-            DataItemOptions options = Options[internalName];
+            IDataItemOptions options = Options[internalName];
 
             if (options?.Ignore == true)
             {
@@ -226,7 +164,7 @@ namespace Mtconnect
             _logger?.LogTrace("Added DataItem {DataItemName}", _dataItems[index].Name);
         }
 
-        private void Adapter_OnDataItemChanged(DataItem sender, DataItemChangedEventArgs e)
+        private void Adapter_OnDataItemChanged(IDataItem sender, DataItemChangedEventArgs e)
         {
             _logger?.LogTrace("DataItem '{DataItemName}' changed from '{PreviousValue}' to '{CurrentValue}' at {LastChangedTime}", sender.Name, e.PreviousValue, e.NewValue, e.ChangeTime);
             if (CanEnqueueDataItems) _values.Enqueue(new ReportedValue(sender));
@@ -241,11 +179,8 @@ namespace Mtconnect
                 RemoveDataItem(item);
         }
 
-        /// <summary>
-        /// Remove a data item from the adapter.
-        /// </summary>
-        /// <param name="dataItem"></param>
-        public void RemoveDataItem(DataItem dataItem)
+        /// <inheritdoc/>
+        public void RemoveDataItem(IDataItem dataItem)
         {
             if (!_dataItems.Contains(dataItem))
             {
@@ -265,31 +200,27 @@ namespace Mtconnect
                 _values.Enqueue(item);
         }
 
-        /// <summary>
-        /// Make all data items unavailable
-        /// </summary>
+        /// <inheritdoc/>
         public void Unavailable(string devicePrefix = null)
         {
             _logger?.LogTrace("Setting all DataItem values to UNAVAILABLE" + (devicePrefix != null ? " for {DevicePrefix}" : ""), devicePrefix);
             _dataItems.Unavailable(devicePrefix);
         }
 
+        /// <inheritdoc/>
         public void Cleanup()
         {
             // Cleanup
             foreach (DataItem di in _dataItems) di.Cleanup();
         }
+
+        /// <inheritdoc/>
         public void Prepare()
         {
             foreach (var item in _dataItems) item.Prepare();
         }
 
-        /// <summary>
-        /// The asks all data items to begin themselves for collection. Only 
-        /// required for conditions and should not be called if you are not 
-        /// planning on adding all the conditions before you send. If you skip this
-        /// the adapter will not perform the mark and sweep.
-        /// </summary>
+        /// <inheritdoc/>
         public void Begin()
         {
             HasBegun = true;
@@ -304,11 +235,7 @@ namespace Mtconnect
         /// <param name="message">The message to send to any listeners to the adapter.</param>
         protected abstract void Write(string message, string clientId = null);
 
-        /// <summary>
-        /// Issues a <see cref="Write"/> command to the implementing Adapter for each appropriate <see cref="ReportedValue"/> depending on the provided <paramref name="sendType"/>.
-        /// </summary>
-        /// <param name="clientId">Reference to the id of the client to send the <see cref="ReportedValue"/>s to.</param>
-        /// <param name="sendType">Flag for identifying which <see cref="ReportedValue"/>s to send.</param>
+        /// <inheritdoc/>
         public virtual void Send(DataItemSendTypes sendType = DataItemSendTypes.Changed, string clientId = null)
         {
             if (HasBegun) Prepare();
@@ -385,11 +312,8 @@ namespace Mtconnect
             foreach (string message in messages) Write(message, clientId);
         }
 
-        /// <summary>
-        /// Send a new asset to the Agent
-        /// </summary>
-        /// <param name="asset">The asset</param>
-        public virtual void AddAsset(Asset asset)
+        /// <inheritdoc/>
+        public virtual void AddAsset(IAsset asset)
         {
             StringBuilder sb = new StringBuilder();
 
@@ -430,12 +354,7 @@ namespace Mtconnect
         public void Start<T>(T source, bool begin = true, CancellationToken token = default) where T : class, IAdapterSource
             => Start(new IAdapterSource[] { source }, begin, token);
 
-        /// <summary>
-        /// Starts the listener thread and the provided <see cref="IAdapterSource"/>s.
-        /// </summary>
-        /// <param name="sources">Reference to the sources of the Adapter.</param>
-        /// <param name="begin"><inheritdoc cref="Start{T}(T, bool)" path="/param[@name='begin']"/></param>
-        /// <param name="token">Reference to a cancellation token that is capable of cancelling the Adapter operation</param>
+        /// <inheritdoc/>
         public void Start(IEnumerable<IAdapterSource> sources, bool begin = true, CancellationToken token = default)
         {
             Start(begin, token);
@@ -550,9 +469,7 @@ namespace Mtconnect
         }
         #endregion
 
-        /// <summary>
-        /// Stop the listener thread and shutdown all client connections. Make sure to call this base method when overriding to ensure any internal properties are properly stopped.
-        /// </summary>
+        /// <inheritdoc/>
         public virtual void Stop(Exception ex = null)
         {
             foreach (var source in Sources)
@@ -565,20 +482,13 @@ namespace Mtconnect
             TriggerOnStoppedEvent(ex);
         }
 
-        /// <summary>
-        /// Gets a list of the <see cref="DataItem.Name"/>s.
-        /// </summary>
-        /// <returns>Array of <see cref="DataItem.Name"/>s that are registered in this <see cref="Adapter"/>.</returns>
+        /// <inheritdoc/>
         public string[] GetDataItemNames() => DataItems?.Select(o => o.Name)?.DefaultIfEmpty().ToArray();
 
+        /// <inheritdoc/>
         public Type[] GetDataModelTypes() => DataModelTypes.ToArray();
 
-        /// <summary>
-        /// Handle an incoming command from a client.
-        /// </summary>
-        /// <param name="command">Reference to the incoming message command.</param>
-        /// <param name="clientId">Reference to the client that sent the command</param>
-        /// <returns>Flag for whether or not the command was handled with a response</returns>
+        /// <inheritdoc/>
         public virtual bool HandleCommand(string command, string clientId = null)
         {
             var response = AdapterCommands.GetResponse(this, command);

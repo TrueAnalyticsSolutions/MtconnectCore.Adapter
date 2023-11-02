@@ -2,10 +2,11 @@
 dversion_slim = (source?.deprecated_version | string.slice 20 3) | string.replace "_" "." ~}}
 #pragma warning disable 0618
 #pragma warning disable 1574
+#pragma warning disable CS1574
 using System;
 using System.CodeDom.Compiler;
-using Mtconnect.AdapterSdk.Contracts.Attributes;
-using Mtconnect.AdapterSdk.Contracts;
+using Mtconnect.AdapterSdk;
+using Mtconnect.AdapterSdk.Attributes;
 using Mtconnect.AdapterSdk.DataItems;
 using Mtconnect.AdapterSdk.DataItemValues;
 using Mtconnect.AdapterSdk.Units;
@@ -34,7 +35,7 @@ namespace {{ to_pascal_code source.namespace }}
 	{{~ if dversion_slim != "" ~}}
 	[Obsolete("Deprecated in v{{ dversion_slim }} according to https://model.mtconnect.org/#_Version_{{ dversion_slim }}")]
 	{{~ end ~}}
-	[GeneratedCode("MtconnectTranspiler.Sinks.CSharp.Adapter", "{{ version }}")]
+	[GeneratedCode("MtconnectTranspiler.Sinks.CSharp.Adapter; Adapter.ValueType.scriban", "{{ version }}")]
 	public partial class {{ to_pascal_case source.name }} : {{ source.category }}Value
     {
         /// <inheritdoc />
@@ -46,9 +47,12 @@ namespace {{ to_pascal_code source.namespace }}
 		/// <summary>
 		/// Constructs a new value type for the {{ to_pascal_case source.name }} EVENT Data Item.
 		/// </summary>
-        public {{ to_pascal_case source.name }}({{ source.value_type }} value) : base(value) { }
+        public {{ to_pascal_case source.name }}({{ source.value_type }}{{~ if (string.downcase source.value_type) != "string" && (string.downcase source.value_type) != "condition" && !string.contains(source.value_type, "?") ~}}?{{~ end }} value) : base(value) { }
 
 		{{~ if source.items.size > 0 ~}}
+		/// <summary>
+		/// Constructs a new value type for the {{ to_pascal_case source.name }} EVENT Data Item.
+		/// </summary>
 		public {{ to_pascal_case source.name }}({{ source.name }}Values value) : this(value.ToString()) { }
 
 		{{~ for item in source.items ~}}
@@ -78,7 +82,7 @@ d_item_version_slim = (item?.deprecated_version | string.slice 20 3) | string.re
         /// </summary>
         /// <param name="value">The {{ source.value_type }} to convert.</param>
         /// <returns>An <see cref="{{ to_pascal_case source.name }}"/> value initialized with the specified string in uppercase.</returns>
-        public static implicit operator {{ to_pascal_case source.name }}({{ source.value_type }} value)
+        public static implicit operator {{ to_pascal_case source.name }}({{ source.value_type }}{{~ if (string.downcase source.value_type) != "string" && (string.downcase source.value_type) != "condition" && !string.contains(source.value_type, "?") ~}}?{{~ end }} value)
 			{{~ if source.value_type == "string" ~}}
             => new {{ to_pascal_case source.name }}(value.ToUpperInvariant());
 			{{~ else ~}}
@@ -97,8 +101,11 @@ d_item_version_slim = (item?.deprecated_version | string.slice 20 3) | string.re
 			/// <summary>
 			/// Constructs a new value type for {{ subtype }}.
 			/// </summary>
-            public {{ to_pascal_case subtype }}({{ source.value_type }} value) : base(value) { }
+            public {{ to_pascal_case subtype }}({{ source.value_type }}{{~ if (string.downcase source.value_type) != "string" && (string.downcase source.value_type) != "condition" && !string.contains(source.value_type, "?") ~}}?{{~ end }} value) : base(value) { }
 			{{~ if source.items.size > 0 ~}}
+			/// <summary>
+			/// Constructs a new value type for {{ subtype }} using the strict <see cref="Enum" /> value.
+			/// </summary>
 			public {{ to_pascal_case subtype }}({{ to_pascal_case source.name }}Values value) : base(value) { }
 			
 			/// <summary>
@@ -117,7 +124,7 @@ d_item_version_slim = (item?.deprecated_version | string.slice 20 3) | string.re
 			/// </summary>
 			/// <param name="value">The {{ source.value_type }} to convert.</param>
 			/// <returns>An <see cref="{{ to_pascal_case subtype }}"/> value initialized with the specified string in uppercase.</returns>
-			public static implicit operator {{ to_pascal_case subtype }}({{ source.value_type }} value)
+			public static implicit operator {{ to_pascal_case subtype }}({{ source.value_type }}{{~ if (string.downcase source.value_type) != "string" && (string.downcase source.value_type) != "condition" && !string.contains(source.value_type, "?") ~}}?{{~ end }} value)
 				{{~ if source.value_type == "string" ~}}
 				=> new {{ to_pascal_case subtype }}(value.ToUpperInvariant());
 				{{~ else ~}}

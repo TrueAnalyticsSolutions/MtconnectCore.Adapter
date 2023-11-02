@@ -1,10 +1,8 @@
 ﻿using System.Xml;
 using System.Collections.Generic;
 
-
 namespace Mtconnect.AdapterSdk.Assets
 {
-
     public partial class CuttingTool
     {
         /// <summary>

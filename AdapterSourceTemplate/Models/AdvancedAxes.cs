@@ -1,17 +1,12 @@
-﻿using Mtconnect.AdapterSdk.Contracts.Attributes;
+﻿using Mtconnect.AdapterSdk.Attributes;
 using Mtconnect.AdapterSdk.DataItemTypes;
+using System.Collections.Generic;
 
 namespace Mtconnect.AdapterSourceTemplate.Models
 {
     public sealed class AdvancedAxes : Axes
     {
-        [DataItemPartial("x_")]
-        public AdvancedLinearAxis X => GetOrAddAxis<AdvancedLinearAxis>(nameof(X));
-
-        [DataItemPartial("y_")]
-        public AdvancedLinearAxis Y => GetOrAddAxis<AdvancedLinearAxis>(nameof(Y));
-
-        [DataItemPartial("z_")]
-        public AdvancedLinearAxis Z => GetOrAddAxis<AdvancedLinearAxis>(nameof(Z));
+        [DataItemPartial("linear_")]
+        public Dictionary<string, AdvancedLinearAxis> LinearAxes { get; set; } = new Dictionary<string, AdvancedLinearAxis>();
     }
 }

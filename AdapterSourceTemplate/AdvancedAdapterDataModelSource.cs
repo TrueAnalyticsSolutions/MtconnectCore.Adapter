@@ -1,4 +1,5 @@
-﻿using Mtconnect.AdapterSdk.DataItemValues;
+﻿using Mtconnect.AdapterSdk;
+using Mtconnect.AdapterSdk.DataItemValues;
 using Mtconnect.AdapterSourceTemplate.Models;
 using System;
 using System.Threading;
@@ -49,15 +50,31 @@ namespace Mtconnect.AdapterSourceTemplate
         private void Timer_Elapsed(object sender, System.Timers.ElapsedEventArgs e)
         {
             Model.Availability = Availability.AVAILABLE;
+            var rnd = new Random();
+            string[] axes = new string[] { "x", "y", "z" };
+            foreach (var axis in axes)
+            {
+                if (!Model.Axes.LinearAxes.ContainsKey(axis))
+                    Model.Axes.LinearAxes.Add(axis, new AdvancedLinearAxis());
+                Model.Axes.LinearAxes[axis].Load = rnd.Next(100);
+                float pos = rnd.Next(1000);
+                Model.Axes.LinearAxes[axis].ActualPosition = new float?[] { pos, pos, pos };
+                Model.Axes.LinearAxes[axis].CommandedPosition = new float?[] { pos, pos, pos };
+                Model.Axes.LinearAxes[axis].Motor.Load = rnd.Next(100);
+                Model.Axes.LinearAxes[axis].Motor.Amperage = rnd.Next(120);
+                Model.Axes.LinearAxes[axis].Motor.Torque = rnd.Next(120);
+            }
 
             // TODO: Continue updating the Model with information.
-            if (!Model.Paths.ContainsKey("primary"))
-                Model.Paths.Add("primary", new Path());
-            Model.Paths["primary"].Execution = Execution.READY;
-            if (!Model.Paths.ContainsKey("secondary"))
-                Model.Paths.Add("secondary", new Path());
-            Model.Paths["secondary"].Execution = Execution.READY;
+            if (!Model.Controller.Paths.ContainsKey("primary"))
+                Model.Controller.Paths.Add("primary", new MyPath());
+            Model.Controller.Paths["primary"].Execution = Execution.READY;
+            Model.Controller.Paths["primary"].ActiveProgram = "#1";
 
+            if (!Model.Controller.Paths.ContainsKey("secondary"))
+                Model.Controller.Paths.Add("secondary", new MyPath());
+            Model.Controller.Paths["secondary"].Execution = Execution.READY;
+            Model.Controller.Paths["secondary"].ActiveProgram = "#2";
             // NOTE: The underlying Adapter will determine whether a value has changed, so no need to check for updated information.
 
             OnDataReceived?.Invoke(this, new DataReceivedEventArgs(Model));
