@@ -149,7 +149,7 @@ namespace Mtconnect.AdapterSdk
                         {
                             if (propertyValue == null)
                             {
-                                adapter._logger?.LogError("Data model property {PropertyName} is null and cannot be added until instantiated", property.Name);
+                                adapter._logger?.LogTrace("Data model property {PropertyName} is null and cannot be added until instantiated", property.Name);
                                 continue;
                             }
 
@@ -177,7 +177,7 @@ namespace Mtconnect.AdapterSdk
                                 case DataItemPartialAttribute _:
                                     if (propertyValue == null)
                                     {
-                                        adapter._logger?.LogError("Data model property {PropertyName} is null and cannot be added until instantiated", property.Name);
+                                        adapter._logger?.LogTrace("Data model property {PropertyName} is null and cannot be added until instantiated", property.Name);
                                         continue;
                                     }
                                     dataItemAdded = adapter.TryAddDataItems(propertyValue, $"{modelPath}[{property.Name}]", dataItemName, dataItemDescription);
@@ -242,7 +242,7 @@ namespace Mtconnect.AdapterSdk
                             // Since the property is "DataItem" type already, just add it directly as a reference without creating a new DataItem instance
                             if (propertyValue == null)
                             {
-                                adapter._logger?.LogError("Data model property {PropertyName} is null and cannot be added until instantiated", property.Name);
+                                adapter._logger?.LogTrace("Data model property {PropertyName} is null and cannot be added until instantiated", property.Name);
                                 continue;
                             } else if ((propertyValue as DataItem) == null)
                             {
@@ -292,7 +292,7 @@ namespace Mtconnect.AdapterSdk
                                 {
                                     if (propertyValue == null)
                                     {
-                                        adapter._logger?.LogError("Data model property {PropertyName} is null and cannot be added until instantiated", property.Name);
+                                        adapter._logger?.LogTrace("Data model property {PropertyName} is null and cannot be added until instantiated", property.Name);
                                         continue;
                                     }
                                     // Dictionary<string, T>
@@ -311,7 +311,7 @@ namespace Mtconnect.AdapterSdk
                                 {
                                     if (propertyValue == null)
                                     {
-                                        adapter._logger?.LogError("Data model property {PropertyName} is null and cannot be added until instantiated", property.Name);
+                                        adapter._logger?.LogTrace("Data model property {PropertyName} is null and cannot be added until instantiated", property.Name);
                                         continue;
                                     }
                                     // List<T>
