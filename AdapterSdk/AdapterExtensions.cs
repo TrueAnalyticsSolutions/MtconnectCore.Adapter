@@ -390,10 +390,15 @@ namespace Mtconnect.AdapterSdk
                         if (property.PropertyType.IsGenericType)
                         {
                             var genericType = property.PropertyType.GetGenericTypeDefinition();
-                            if (genericType == typeof(Dictionary<,>) && property.PropertyType.GetGenericArguments()[0] == typeof(string))
+                            if (genericType == typeof(Dictionary<,>) && property.PropertyType.GetGenericArguments().FirstOrDefault() == typeof(string))
                             {
                                 // Dictionary<string, T>
                                 var dictionary = property.GetValue(model) as IDictionary;
+                                if (dictionary == null)
+                                {
+                                    dataItemUpdated = false;
+                                    continue;
+                                }
                                 foreach (DictionaryEntry entry in dictionary)
                                 {
                                     string dataItemSuffix = (string)entry.Key;
@@ -405,6 +410,11 @@ namespace Mtconnect.AdapterSdk
                             {
                                 // List<T>
                                 var list = property.GetValue(model) as IList;
+                                if (list == null)
+                                {
+                                    dataItemUpdated = false;
+                                    continue;
+                                }
                                 for (int i = 0; i < list.Count; i++)
                                 {
                                     dataItemUpdated = adapter.TryUpdateValues(list[i], dataItemName + i.ToString());
@@ -431,7 +441,7 @@ namespace Mtconnect.AdapterSdk
                         if (property.PropertyType.IsGenericType)
                         {
                             var genericType = property.PropertyType.GetGenericTypeDefinition();
-                            if (genericType == typeof(Dictionary<,>) && property.PropertyType.GetGenericArguments()[0] == typeof(string))
+                            if (genericType == typeof(Dictionary<,>) && property.PropertyType.GetGenericArguments().FirstOrDefault() == typeof(string))
                             {
                                 // Dictionary<string, T>
                                 var dictionary = property.GetValue(model) as IDictionary;
