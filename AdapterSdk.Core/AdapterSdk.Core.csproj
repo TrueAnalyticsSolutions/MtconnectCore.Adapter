@@ -31,6 +31,7 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <None Remove="AdapterSdk.Core.xml" />
     <None Remove="icon.jpg" />
   </ItemGroup>
 
@@ -45,6 +46,10 @@
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
       <Pack>True</Pack>
     </Content>
+  </ItemGroup>
+
+  <ItemGroup>
+    <EmbeddedResource Include="AdapterSdk.Core.xml" />
   </ItemGroup>
 
   <ItemGroup>
