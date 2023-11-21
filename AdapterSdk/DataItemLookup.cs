@@ -91,7 +91,7 @@ namespace Mtconnect.AdapterSdk
             deviceItems.Add(index);
 
             // Add to byNameAndDevicePrefix dictionary
-            _byNameAndDevicePrefix[(dataItem.Name, dataItem.DevicePrefix)] = index;
+            _byNameAndDevicePrefix[(dataItem.Name, dataItem.DevicePrefix ?? string.Empty)] = index;
         }
 
         /// <summary>
@@ -145,7 +145,7 @@ namespace Mtconnect.AdapterSdk
         {
             dataItem = null;
 
-            if (_byNameAndDevicePrefix.TryGetValue((internalName, devicePrefix), out int index))
+            if (_byNameAndDevicePrefix.TryGetValue((internalName, devicePrefix ?? string.Empty), out int index))
             {
                 dataItem = _dataItems[index];
                 return true;
@@ -207,7 +207,7 @@ namespace Mtconnect.AdapterSdk
                 if (dataItem != null)
                 {
                     // Update index in _byDeviceAndName dictionary
-                    _byNameAndDevicePrefix[(dataItem.Name, dataItem.DevicePrefix)] = i;
+                    _byNameAndDevicePrefix[(dataItem.Name, dataItem.DevicePrefix ?? string.Empty)] = i;
 
                     // Update indices in _byName dictionary
                     if (_byName.TryGetValue(dataItem.Name, out var list))
@@ -230,7 +230,7 @@ namespace Mtconnect.AdapterSdk
 
         /// <inheritdoc />
         public bool Contains(IDataItem item)
-            => _byNameAndDevicePrefix.ContainsKey((item.Name, item.DevicePrefix));
+            => _byNameAndDevicePrefix.ContainsKey((item.Name, item.DevicePrefix ?? string.Empty));
 
         /// <inheritdoc />
         public bool ContainsName(string internalName) => _byName.ContainsKey(internalName);
@@ -239,7 +239,7 @@ namespace Mtconnect.AdapterSdk
         public bool ContainsDevicePrefix(string devicePrefix) => _byDevicePrefix.ContainsKey(devicePrefix);
 
         /// <inheritdoc />
-        public bool Contains(string internalName, string devicePrefix) => _byNameAndDevicePrefix.ContainsKey((internalName, devicePrefix));
+        public bool Contains(string internalName, string devicePrefix) => _byNameAndDevicePrefix.ContainsKey((internalName, devicePrefix ?? string.Empty));
 
         /// <inheritdoc />
         public void CopyTo(IDataItem[] array, int arrayIndex) => _dataItems.CopyTo(array, arrayIndex);

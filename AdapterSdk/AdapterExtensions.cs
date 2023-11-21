@@ -435,6 +435,11 @@ namespace Mtconnect.AdapterSdk
                             {
                                 // Dictionary<string, T>
                                 var dictionary = property.GetValue(model) as IDictionary;
+                                if (dictionary == null)
+                                {
+                                    dataItemUpdated = false;
+                                    continue;
+                                }
                                 foreach (DictionaryEntry entry in dictionary)
                                 {
                                     string dataItemSuffix = (string)entry.Key;
@@ -445,6 +450,11 @@ namespace Mtconnect.AdapterSdk
                             {
                                 // List<T>
                                 var list = property.GetValue(model) as IList;
+                                if (list == null)
+                                {
+                                    dataItemUpdated = false;
+                                    continue;
+                                }
                                 for (int i = 0; i < list.Count; i++)
                                 {
                                     adapter[dataItemName + i.ToString()].Value = list[i];
