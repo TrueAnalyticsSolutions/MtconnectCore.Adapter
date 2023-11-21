@@ -373,12 +373,12 @@ namespace Mtconnect.AdapterSdk
             Type sourceType = model.GetType();
 
             if (!_dataItemProperties.TryGetValue(sourceType, out PropertyInfo[] dataItemProperties))
-            {
                 dataItemProperties = GetDataItemProperties(sourceType);
-            }
+
             foreach (var property in dataItemProperties)
             {
-                if (_dataItemTypes.Contains(property.PropertyType)) continue; // No need to update DataItem properties since the reference is already there
+                if (_dataItemTypes.Contains(property.PropertyType))
+                    continue; // No need to update DataItem properties since the reference is already there
                 bool dataItemUpdated = true;
 
                 var dataItemAttribute = property.GetCustomAttribute<DataItemAttribute>();
@@ -394,42 +394,39 @@ namespace Mtconnect.AdapterSdk
                             {
                                 // Dictionary<string, T>
                                 var dictionary = property.GetValue(model) as IDictionary;
-                                if (dictionary == null)
+                                if (dictionary != null)
+                                {
+                                    foreach (DictionaryEntry entry in dictionary)
+                                    {
+                                        string dataItemSuffix = (string)entry.Key;
+                                        var dataItemValue = entry.Value;
+                                        dataItemUpdated = adapter.TryUpdateValues(dataItemValue, dataItemName + dataItemSuffix) || dataItemUpdated;
+                                    }
+                                } else
                                 {
                                     dataItemUpdated = false;
-                                    continue;
-                                }
-                                foreach (DictionaryEntry entry in dictionary)
-                                {
-                                    string dataItemSuffix = (string)entry.Key;
-                                    var dataItemValue = entry.Value;
-                                    dataItemUpdated = adapter.TryUpdateValues(dataItemValue, dataItemName + dataItemSuffix);
                                 }
                             }
                             else if (genericType == typeof(List<>))
                             {
                                 // List<T>
                                 var list = property.GetValue(model) as IList;
-                                if (list == null)
-                                {
+                                if (list != null)
+                                    for (int i = 0; i < list.Count; i++)
+                                        dataItemUpdated = adapter.TryUpdateValues(list[i], dataItemName + i.ToString()) || dataItemUpdated;
+                                else
                                     dataItemUpdated = false;
-                                    continue;
-                                }
-                                for (int i = 0; i < list.Count; i++)
-                                {
-                                    dataItemUpdated = adapter.TryUpdateValues(list[i], dataItemName + i.ToString());
-                                }
                             }
                             else
                             {
                                 // Unknown generic type
-                                dataItemUpdated = adapter.TryUpdateValues(property.GetValue(model), dataItemName);
+                                dataItemUpdated = adapter.TryUpdateValues(property.GetValue(model), dataItemName) || dataItemUpdated;
                             }
                         }
                         else
                         {
                             // Non-generic type
-                            dataItemUpdated = adapter.TryUpdateValues(property.GetValue(model), dataItemName);
+                            dataItemUpdated = adapter.TryUpdateValues(property.GetValue(model), dataItemName) || dataItemUpdated;
                         }
                         break;
                     case EventAttribute _:
@@ -445,39 +442,74 @@ namespace Mtconnect.AdapterSdk
                             {
                                 // Dictionary<string, T>
                                 var dictionary = property.GetValue(model) as IDictionary;
-                                if (dictionary == null)
+                                if (dictionary != null)
+                                {
+                                    bool anyEntriesUpdated = false;
+                                    foreach (DictionaryEntry entry in dictionary)
+                                    {
+                                        string dataItemSuffix = (string)entry.Key;
+                                        var dataItemValue = entry.Value;
+
+                                        var observation = adapter[dataItemName + dataItemSuffix];
+                                        if (observation != null && observation.Value != dataItemValue)
+                                        {
+                                            anyEntriesUpdated = true;
+                                            observation.Value = dataItemValue;
+                                        }
+                                    }
+                                    if (!anyEntriesUpdated)
+                                        dataItemUpdated = false;
+                                } else
                                 {
                                     dataItemUpdated = false;
-                                    continue;
-                                }
-                                foreach (DictionaryEntry entry in dictionary)
-                                {
-                                    string dataItemSuffix = (string)entry.Key;
-                                    var dataItemValue = entry.Value;
-                                    adapter[dataItemName + dataItemSuffix].Value = dataItemValue;
                                 }
                             } else if (genericType == typeof(List<>))
                             {
                                 // List<T>
                                 var list = property.GetValue(model) as IList;
-                                if (list == null)
+                                if (list != null)
+                                {
+                                    bool anyEntriesUpdated = false;
+                                    for (int i = 0; i < list.Count; i++)
+                                    {
+                                        string dataItemSuffix = i.ToString();
+                                        var dataItemValue = list[i];
+
+                                        var observation = adapter[dataItemName + dataItemSuffix];
+                                        if (observation != null && observation?.Value != dataItemValue)
+                                        {
+                                            anyEntriesUpdated = true;
+                                            observation.Value = dataItemValue;
+                                        }
+                                    }
+                                    if (!anyEntriesUpdated)
+                                        dataItemUpdated = false;
+                                }
+                                else
                                 {
                                     dataItemUpdated = false;
-                                    continue;
-                                }
-                                for (int i = 0; i < list.Count; i++)
-                                {
-                                    adapter[dataItemName + i.ToString()].Value = list[i];
                                 }
                             } else
                             {
                                 // Unknown generic type
-                                adapter[dataItemName].Value = property.GetValue(model);
+                                var dataItemValue = property.GetValue(model);
+
+                                var observation = adapter[dataItemName];
+                                if (observation != null && observation?.Value != dataItemValue)
+                                    observation.Value = dataItemValue;
+                                else
+                                    dataItemUpdated = false;
                             }
                         } else
                         {
                             // Non-generic type
-                            adapter[dataItemName].Value = property.GetValue(model);
+                            var dataItemValue = property.GetValue(model);
+
+                            var observation = adapter[dataItemName];
+                            if (observation != null && observation?.Value != dataItemValue)
+                                observation.Value = dataItemValue;
+                            else
+                                dataItemUpdated = false;
                         }
                         break;
                     default:
