@@ -517,7 +517,11 @@ namespace Mtconnect.AdapterSdk
                         break;
                 }
 
-                if (!dataItemUpdated) allDataItemsUpdated = false;
+                if (!dataItemUpdated)
+                {
+                    allDataItemsUpdated = false;
+                    adapter._logger?.LogWarning("Property {TypeName}.{PropertyName} was not updated", sourceType.FullName, property.Name);
+                }
             }
 
             if (_dataItemTimestampProperties.TryGetValue(sourceType, out Dictionary<string, PropertyInfo> timestampProperties))
