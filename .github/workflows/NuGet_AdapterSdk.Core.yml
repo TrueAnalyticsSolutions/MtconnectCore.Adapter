@@ -53,7 +53,7 @@ jobs:
           name: nupkg
           
       - name: List Download
-        run: ls nupkg
+        run: ls
         
       - name: Setup NuGet
         uses: NuGet/setup-nuget@main
