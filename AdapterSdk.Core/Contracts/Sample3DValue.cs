@@ -1,4 +1,6 @@
-﻿namespace Mtconnect.AdapterSdk
+﻿using System.Linq;
+
+namespace Mtconnect.AdapterSdk
 {
     /// <summary>
     /// A generic implementation of an Sample DataItem value type with 3D data format.
@@ -10,5 +12,10 @@
 
         /// <inheritdoc />
         protected Sample3DValue(float?[] value) : base(value) { }
+
+        public new string ToString()
+        {
+            return string.Join(", ", _value.Select(o => o.ToString()));
+        }
     }
 }
