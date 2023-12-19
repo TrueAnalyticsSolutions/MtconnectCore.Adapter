@@ -13,8 +13,12 @@ namespace Mtconnect.AdapterSdk
         /// <inheritdoc />
         protected Sample3DValue(float?[] value) : base(value) { }
 
-        public new string ToString()
+        public override string ToString()
         {
+            if (_value == null || _value.Length == 0)
+            {
+                return Constants.UNAVAILABLE;
+            }
             return string.Join(", ", _value.Select(o => o.ToString()));
         }
     }
