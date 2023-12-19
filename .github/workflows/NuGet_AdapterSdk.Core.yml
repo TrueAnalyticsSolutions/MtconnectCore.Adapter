@@ -59,7 +59,7 @@ jobs:
           nuget-version: latest
           
       - name: Push NuGet package to NuGet.org
-        run: dotnet nuget push nupkg\*.nupkg -k ${{ secrets.NUGETORG_API_KEY }} -s https://nuget.org --skip-duplicate
+        run: dotnet nuget push *\nupkg\*.nupkg -k ${{ secrets.NUGETORG_API_KEY }} -s https://nuget.org --skip-duplicate
 
       - name: Push NuGet package to GitHub Packages
-        run: dotnet nuget push nupkg\*.nupkg --source ${{ env.GH_NUGET_REGISTRY }}${{ env.GH_NUGET_NAMESPACE }} --api-key ${{ env.GH_NUGET_API_KEY }}
+        run: dotnet nuget push *\nupkg\*.nupkg --source ${{ env.GH_NUGET_REGISTRY }}${{ env.GH_NUGET_NAMESPACE }} --api-key ${{ env.GH_NUGET_API_KEY }}
