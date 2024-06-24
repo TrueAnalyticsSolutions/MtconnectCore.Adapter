@@ -9689,6 +9689,15 @@
             Collection of recorded values.
             </summary>
         </member>
+        <member name="P:Mtconnect.AdapterSdk.DataItems.TimeSeries.Value">
+            <inheritdoc />
+        </member>
+        <member name="M:Mtconnect.AdapterSdk.DataItems.TimeSeries.#ctor(System.Double)">
+            <summary>
+            Constructs a new TimeSeries entity, relying on the attributes to define the name, description, type, and subtype fields.
+            </summary>
+            <param name="rate"><inheritdoc cref="P:Mtconnect.AdapterSdk.DataItems.TimeSeries.Rate" path="/summary"/></param>
+        </member>
         <member name="M:Mtconnect.AdapterSdk.DataItems.TimeSeries.#ctor(System.String,System.String,System.Double,System.String,System.String)">
             <summary>
             Constructs a new SAMPLE DataItem with TimeSeries formatting.

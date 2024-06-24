@@ -1,7 +1,7 @@
 ﻿using CSharpModels = MtconnectTranspiler.Sinks.CSharp.Models;
-using MtconnectTranspiler.Sinks.CSharp.Attributes;
 using MtconnectTranspiler.Xmi;
 using MtconnectTranspiler.Xmi.UML;
+using MtconnectTranspiler.Sinks.ScribanTemplates;
 
 namespace AdapterTranspiler.Models
 {

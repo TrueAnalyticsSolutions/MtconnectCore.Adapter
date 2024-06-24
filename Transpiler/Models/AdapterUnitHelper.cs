@@ -2,7 +2,8 @@
 using MtconnectTranspiler.Xmi;
 using MtconnectTranspiler.Contracts;
 using MtconnectTranspiler.Sinks.CSharp.Models;
-using MtconnectTranspiler.Sinks.CSharp.Attributes;
+using MtconnectTranspiler.Sinks.ScribanTemplates;
+using ScribanHelperMethods = MtconnectTranspiler.Sinks.CSharp.Models.ScribanHelperMethods;
 
 namespace AdapterTranspiler.Models
 {
