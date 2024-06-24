@@ -228,7 +228,7 @@ namespace Mtconnect.AdapterSdk
                                     dataItem = new Condition(dataItemName, dataItemType, dataItemSubType, dataItemDescription);
                                     break;
                                 case TimeSeriesAttribute _:
-                                    dataItem = new TimeSeries(dataItemName, dataItemDescription, type: dataItemType, subType: dataItemSubType);
+                                    dataItem = new TimeSeries(dataItemName, dataItemDescription, rate: (propertyValue as TimeSeries)?.Rate ?? 0.0, type: dataItemType, subType: dataItemSubType);
                                     break;
                                 case MessageAttribute _:
                                     dataItem = new Message(dataItemName, dataItemDescription, dataItemType, dataItemSubType);
