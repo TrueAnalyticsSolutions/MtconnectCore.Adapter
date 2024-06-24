@@ -31,7 +31,7 @@ jobs:
       run: dotnet pack "${{ env.VS_PROJECT_FOLDER }}\${{ env.VS_PROJECT }}" --configuration Release -o finalpackage --no-build --include-symbols
       
     - name: Publish Artifact
-      uses: actions/upload-artifact@main
+      uses: actions/upload-artifact@v4
       with:
         name: nupkg
         path: finalpackage
@@ -48,7 +48,7 @@ jobs:
           dotnet-version: '3.1'
 
       - name: Download Artifact
-        uses: actions/download-artifact@main
+        uses: actions/download-artifact@v4
         with:
           name: nupkg
       
