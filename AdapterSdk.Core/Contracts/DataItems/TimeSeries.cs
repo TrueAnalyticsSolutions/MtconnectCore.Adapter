@@ -30,14 +30,20 @@ namespace Mtconnect.AdapterSdk.DataItems
                     var formattedValue = FormatValue(updatedValue);
                     if (formattedValue != null && (formattedValue as double[]) == null)
                     {
-                        throw new InvalidCastException("Cannot cast object to double[]");
+                        throw new InvalidCastException($"Cannot cast {formattedValue.GetType().FullName} to double[]");
                     }
                     updatedValue = formattedValue as double[];
                 }
 
                 _values = value;
 
-                base.Value = String.Join(" ", Values.Select(p => p.ToString()).ToArray());
+                if (Values == null || !Values.Any())
+                {
+                    base.Unavailable();
+                } else
+                {
+                    base.Value = String.Join(" ", Values.Select(p => p.ToString()).ToArray());
+                }
             }
             get { return _values; } 
         }
@@ -46,7 +52,11 @@ namespace Mtconnect.AdapterSdk.DataItems
         public override object Value {
             get { return _values; }
             set {
-                if (value is double[])
+                if (value == null)
+                {
+                    this.Values = null;
+                }
+                else if (value is double[])
                 {
                     this.Values = value as double[];
                 } else if (value is TimeSeries)
@@ -54,7 +64,7 @@ namespace Mtconnect.AdapterSdk.DataItems
                     this.Values = (value as TimeSeries).Values;
                 } else
                 {
-                    throw new InvalidCastException("Cannot cast object to double[] or TimeSeries");
+                    throw new InvalidCastException($"Cannot cast {value.GetType().FullName} to double[] or TimeSeries");
                 }
             }
         }
