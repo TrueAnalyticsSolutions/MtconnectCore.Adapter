@@ -48,33 +48,6 @@ namespace Mtconnect.AdapterSdk.DataItems
             get { return _values; } 
         }
 
-        /// <inheritdoc />
-        public override object Value {
-            get { return _values; }
-            set {
-                if (value == null)
-                {
-                    this.Values = null;
-                }
-                else if (value is double[])
-                {
-                    this.Values = value as double[];
-                } else if (value is TimeSeries)
-                {
-                    this.Values = (value as TimeSeries).Values;
-                } else if (value is string)
-                {
-                    this.Values = (value as string)
-                        .Split(new char[] { ' ' }, StringSplitOptions.RemoveEmptyEntries)
-                        .Where(s => double.TryParse(s, out _))
-                        .Select(s => double.Parse(s)).ToArray();
-                } else
-                {
-                    throw new InvalidCastException($"Cannot cast {value.GetType().FullName} to double[] or TimeSeries");
-                }
-            }
-        }
-
         /// <summary>
         /// Constructs a new TimeSeries entity, relying on the attributes to define the name, description, type, and subtype fields.
         /// </summary>

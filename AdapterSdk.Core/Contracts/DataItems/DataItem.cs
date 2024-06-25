@@ -112,7 +112,7 @@ namespace Mtconnect.AdapterSdk.DataItems
         /// </summary>
         protected bool ValueValidated { get; set; } = false;
         /// <inheritdoc />
-        public virtual object Value
+        public object Value
         {
             set
             {

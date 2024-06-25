@@ -9689,9 +9689,6 @@
             Collection of recorded values.
             </summary>
         </member>
-        <member name="P:Mtconnect.AdapterSdk.DataItems.TimeSeries.Value">
-            <inheritdoc />
-        </member>
         <member name="M:Mtconnect.AdapterSdk.DataItems.TimeSeries.#ctor(System.Double)">
             <summary>
             Constructs a new TimeSeries entity, relying on the attributes to define the name, description, type, and subtype fields.

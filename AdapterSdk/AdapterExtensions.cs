@@ -4,6 +4,7 @@ using System;
 using System.Collections;
 using System.Collections.Concurrent;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.Linq;
 using System.Reflection;
 
@@ -507,9 +508,32 @@ namespace Mtconnect.AdapterSdk
 
                             var observation = adapter[dataItemName];
                             if (observation != null && observation?.Value != dataItemValue)
-                                observation.Value = dataItemValue;
+                            {
+                                if (observation is TimeSeries timeSeriesObservation)
+                                {
+                                    if (dataItemValue is double[] dataItemValues)
+                                    {
+                                        if (timeSeriesObservation.Values != dataItemValues)
+                                        {
+                                            timeSeriesObservation.Values = dataItemValues;
+                                        } else
+                                        {
+                                            dataItemUpdated = false;
+                                        }
+                                    } else
+                                    {
+                                        adapter._logger.LogWarning("Cannot set Values for TimeSeries from type {Type}", dataItemValue.GetType());
+                                        dataItemUpdated = false;
+                                    }
+                                } else
+                                {
+                                    observation.Value = dataItemValue;
+                                }
+                            }
                             else
+                            {
                                 dataItemUpdated = false;
+                            }
                         }
                         break;
                     default:
