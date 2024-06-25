@@ -452,11 +452,7 @@ namespace Mtconnect.AdapterSdk
                                         var dataItemValue = entry.Value;
 
                                         var observation = adapter[dataItemName + dataItemSuffix];
-                                        if (observation != null && observation.Value != dataItemValue)
-                                        {
-                                            anyEntriesUpdated = true;
-                                            observation.Value = dataItemValue;
-                                        }
+                                        anyEntriesUpdated = UpdateObservationValue(adapter, dataItemUpdated | anyEntriesUpdated, dataItemValue, observation);
                                     }
                                     if (!anyEntriesUpdated)
                                         dataItemUpdated = false;
@@ -477,11 +473,7 @@ namespace Mtconnect.AdapterSdk
                                         var dataItemValue = list[i];
 
                                         var observation = adapter[dataItemName + dataItemSuffix];
-                                        if (observation != null && observation?.Value != dataItemValue)
-                                        {
-                                            anyEntriesUpdated = true;
-                                            observation.Value = dataItemValue;
-                                        }
+                                        anyEntriesUpdated = UpdateObservationValue(adapter, dataItemUpdated | anyEntriesUpdated, dataItemValue, observation);
                                     }
                                     if (!anyEntriesUpdated)
                                         dataItemUpdated = false;
@@ -496,10 +488,7 @@ namespace Mtconnect.AdapterSdk
                                 var dataItemValue = property.GetValue(model);
 
                                 var observation = adapter[dataItemName];
-                                if (observation != null && observation?.Value != dataItemValue)
-                                    observation.Value = dataItemValue;
-                                else
-                                    dataItemUpdated = false;
+                                dataItemUpdated = UpdateObservationValue(adapter, dataItemUpdated, dataItemValue, observation);
                             }
                         } else
                         {
@@ -507,33 +496,7 @@ namespace Mtconnect.AdapterSdk
                             var dataItemValue = property.GetValue(model);
 
                             var observation = adapter[dataItemName];
-                            if (observation != null && observation?.Value != dataItemValue)
-                            {
-                                if (observation is TimeSeries timeSeriesObservation)
-                                {
-                                    if (dataItemValue is double[] dataItemValues)
-                                    {
-                                        if (timeSeriesObservation.Values != dataItemValues)
-                                        {
-                                            timeSeriesObservation.Values = dataItemValues;
-                                        } else
-                                        {
-                                            dataItemUpdated = false;
-                                        }
-                                    } else
-                                    {
-                                        adapter._logger.LogWarning("Cannot set Values for TimeSeries from type {Type}", dataItemValue.GetType());
-                                        dataItemUpdated = false;
-                                    }
-                                } else
-                                {
-                                    observation.Value = dataItemValue;
-                                }
-                            }
-                            else
-                            {
-                                dataItemUpdated = false;
-                            }
+                            dataItemUpdated = UpdateObservationValue(adapter, dataItemUpdated, dataItemValue, observation);
                         }
                         break;
                     default:
@@ -571,6 +534,42 @@ namespace Mtconnect.AdapterSdk
             }
 
             return allDataItemsUpdated;
+        }
+
+        private static bool UpdateObservationValue(IAdapter adapter, bool dataItemUpdated, object dataItemValue, IDataItem observation)
+        {
+            if (observation != null && observation?.Value != dataItemValue)
+            {
+                if (observation is TimeSeries timeSeriesObservation)
+                {
+                    if (dataItemValue is double[] dataItemValues)
+                    {
+                        if (timeSeriesObservation.Values != dataItemValues)
+                        {
+                            timeSeriesObservation.Values = dataItemValues;
+                        }
+                        else
+                        {
+                            dataItemUpdated = false;
+                        }
+                    }
+                    else
+                    {
+                        adapter._logger.LogWarning("Cannot set Values for TimeSeries from type {Type}", dataItemValue.GetType());
+                        dataItemUpdated = false;
+                    }
+                }
+                else
+                {
+                    observation.Value = dataItemValue;
+                }
+            }
+            else
+            {
+                dataItemUpdated = false;
+            }
+
+            return dataItemUpdated;
         }
     }
 }
