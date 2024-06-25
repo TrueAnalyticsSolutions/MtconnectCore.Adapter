@@ -552,6 +552,15 @@ namespace Mtconnect.AdapterSdk
                         {
                             dataItemUpdated = false;
                         }
+                    } else if (dataItemValue is TimeSeries timeSeriesValue)
+                    {
+                        if (timeSeriesObservation.Values != timeSeriesValue.Values)
+                        {
+                            timeSeriesObservation.Values = timeSeriesValue.Values;
+                        } else
+                        {
+                            dataItemUpdated = false;
+                        }
                     }
                     else
                     {
@@ -561,7 +570,13 @@ namespace Mtconnect.AdapterSdk
                 }
                 else
                 {
-                    observation.Value = dataItemValue;
+                    if (dataItemValue is double[] dataItemValues)
+                    {
+                        observation.Value = string.Join(" ", (dataItemValue as double[]));
+                    } else
+                    {
+                        observation.Value = dataItemValue;
+                    }
                 }
             }
             else
