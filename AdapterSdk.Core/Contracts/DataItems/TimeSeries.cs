@@ -64,7 +64,10 @@ namespace Mtconnect.AdapterSdk.DataItems
                     this.Values = (value as TimeSeries).Values;
                 } else if (value is string)
                 {
-                    this.Values = (value as string).Split(new char[] { ' ' }, StringSplitOptions.RemoveEmptyEntries).Select(s => double.Parse(s)).ToArray();
+                    this.Values = (value as string)
+                        .Split(new char[] { ' ' }, StringSplitOptions.RemoveEmptyEntries)
+                        .Where(s => double.TryParse(s, out _))
+                        .Select(s => double.Parse(s)).ToArray();
                 } else
                 {
                     throw new InvalidCastException($"Cannot cast {value.GetType().FullName} to double[] or TimeSeries");
