@@ -228,8 +228,8 @@ namespace Mtconnect.AdapterSdk
                                 case ConditionAttribute _:
                                     dataItem = new Condition(dataItemName, dataItemType, dataItemSubType, dataItemDescription);
                                     break;
-                                case TimeSeriesAttribute _:
-                                    dataItem = new TimeSeries(dataItemName, dataItemDescription, rate: (propertyValue as TimeSeries)?.Rate ?? 0.0, type: dataItemType, subType: dataItemSubType);
+                                case TimeSeriesAttribute timeSeriesAttribute:
+                                    dataItem = new TimeSeries(dataItemName, dataItemDescription, rate: timeSeriesAttribute?.Rate ?? (propertyValue as TimeSeries)?.Rate ?? 0.0, type: dataItemType, subType: dataItemSubType);
                                     break;
                                 case MessageAttribute _:
                                     dataItem = new Message(dataItemName, dataItemDescription, dataItemType, dataItemSubType);
@@ -538,7 +538,7 @@ namespace Mtconnect.AdapterSdk
 
         private static bool UpdateObservationValue(IAdapter adapter, bool dataItemUpdated, object dataItemValue, IDataItem observation)
         {
-            if (observation != null && observation?.Value != dataItemValue)
+            if (observation != null)
             {
                 if (observation is TimeSeries timeSeriesObservation)
                 {
@@ -572,8 +572,12 @@ namespace Mtconnect.AdapterSdk
                 {
                     if (dataItemValue is double[] dataItemValues)
                     {
-                        observation.Value = string.Join(" ", (dataItemValue as double[]));
-                    } else
+                        string dataItemResult = string.Join(" ", (dataItemValue as double[]));
+                        if (observation?.Value != dataItemResult)
+                        {
+                            observation.Value = dataItemResult;
+                        }
+                    } else if (observation?.Value != dataItemValue)
                     {
                         observation.Value = dataItemValue;
                     }
