@@ -12,7 +12,7 @@ namespace Mtconnect.AdapterSdk.Attributes
         /// <summary>
         /// <inheritdoc cref="TimeSeries.Rate" path="/summary"/>
         /// </summary>
-        public double Rate { get; }
+        public double Rate { get; set; }
 
         /// <inheritdoc />
         public TimeSeriesAttribute(string name, string description = null) : base(name, description) { }
