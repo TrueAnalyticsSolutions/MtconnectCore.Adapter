@@ -1,6 +1,8 @@
-![NuGet: Mtconnect.AdapterSdk](https://img.shields.io/nuget/v/Mtconnect.AdapterSdk)
-![NuGet: Mtconnect.AdapterSdk.Core](https://img.shields.io/nuget/dt/Mtconnect.AdapterSdk.Core)
-![GitHub](https://img.shields.io/github/license/TrueAnalyticsSolutions/TAMS.EfBulk)
+![NuGet Version: Mtconnect.AdapterSdk](https://img.shields.io/nuget/v/Mtconnect.AdapterSdk)
+![NuGet Downloads: Mtconnect.AdapterSdk](https://img.shields.io/nuget/dt/Mtconnect.AdapterSdk)
+![NuGet Version: Mtconnect.AdapterSdk.Core](https://img.shields.io/nuget/v/Mtconnect.AdapterSdk.Core)
+![NuGet Downloads: Mtconnect.AdapterSdk.Core](https://img.shields.io/nuget/dt/Mtconnect.AdapterSdk.Core)
+![GitHub](https://img.shields.io/github/license/TrueAnalyticsSolutions/Mtconnect.Adapter)
 [![Publish State: AdapterSdk](https://github.com/TrueAnalyticsSolutions/Mtconnect.Adapter/actions/workflows/NuGet_AdapterSdk.yml/badge.svg?branch=tbm0115%2FConfigOptionEncryption)](https://github.com/TrueAnalyticsSolutions/Mtconnect.Adapter/actions/workflows/NuGet_AdapterSdk.yml)
 [![Publish State: AdapterSdk.Core](https://github.com/TrueAnalyticsSolutions/Mtconnect.Adapter/actions/workflows/NuGet_AdapterSdk.yml/badge.svg?branch=tbm0115%2FConfigOptionEncryption)](https://github.com/TrueAnalyticsSolutions/Mtconnect.Adapter/actions/workflows/NuGet_AdapterSdk.yml)
 
