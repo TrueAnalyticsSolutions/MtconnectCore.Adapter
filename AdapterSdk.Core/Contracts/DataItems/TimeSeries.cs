@@ -30,16 +30,32 @@ namespace Mtconnect.AdapterSdk.DataItems
                     var formattedValue = FormatValue(updatedValue);
                     if (formattedValue != null && (formattedValue as double[]) == null)
                     {
-                        throw new InvalidCastException("Cannot cast object to double[]");
+                        throw new InvalidCastException($"Cannot cast {formattedValue.GetType().FullName} to double[]");
                     }
                     updatedValue = formattedValue as double[];
                 }
 
                 _values = value;
 
-                Value = String.Join(" ", Values.Select(p => p.ToString()).ToArray());
+                if (Values == null || !Values.Any())
+                {
+                    base.Unavailable();
+                } else
+                {
+                    base.Value = String.Join(" ", Values.Select(p => p.ToString()).ToArray());
+                }
             }
             get { return _values; } 
+        }
+
+        /// <summary>
+        /// Constructs a new TimeSeries entity, relying on the attributes to define the name, description, type, and subtype fields.
+        /// </summary>
+        /// <param name="rate"><inheritdoc cref="Rate" path="/summary"/></param>
+        public TimeSeries(double rate) : base()
+        {
+            HasNewLine = true;
+            Rate = rate;
         }
 
         /// <summary>

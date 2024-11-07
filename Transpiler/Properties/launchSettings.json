@@ -2,7 +2,7 @@
   "profiles": {
     "Transpiler": {
       "commandName": "Project",
-      "commandLineArgs": "\"../../../../AdapterSdk.Core/Contracts\""
+      "commandLineArgs": "\"../../../../AdapterSdk.Core/Contracts\" \"\\\\lightworksnas\\work\\True Analytics Solutions\\MTConnect Standard\\2.5.0\\MTConnectSysMLModel.xml\""
     },
     "WSL": {
       "commandName": "WSL2",

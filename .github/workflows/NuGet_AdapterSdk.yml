@@ -31,7 +31,7 @@ jobs:
       run: dotnet pack "${{ env.VS_PROJECT_FOLDER }}\${{ env.VS_PROJECT }}" --configuration Release -o finalpackage --no-build --include-symbols
       
     - name: Publish Artifact
-      uses: actions/upload-artifact@main
+      uses: actions/upload-artifact@v4
       with:
         name: nupkg
         path: finalpackage
@@ -48,7 +48,7 @@ jobs:
           dotnet-version: '3.1'
 
       - name: Download Artifact
-        uses: actions/download-artifact@main
+        uses: actions/download-artifact@v4
         with:
           name: nupkg
       
@@ -59,7 +59,7 @@ jobs:
           nuget-version: latest
           
       - name: Push NuGet package to NuGet.org
-        run: dotnet nuget push nupkg\*.nupkg -k ${{ secrets.NUGETORG_API_KEY }} -s https://nuget.org --skip-duplicate
+        run: dotnet nuget push **\*.nupkg -k ${{ secrets.NUGETORG_API_KEY }} -s https://nuget.org --skip-duplicate
 
       - name: Push NuGet package to GitHub Packages
-        run: dotnet nuget push nupkg\*.nupkg --source ${{ env.GH_NUGET_REGISTRY }}${{ env.GH_NUGET_NAMESPACE }} --api-key ${{ env.GH_NUGET_API_KEY }}
+        run: dotnet nuget push **\*.nupkg --source ${{ env.GH_NUGET_REGISTRY }}${{ env.GH_NUGET_NAMESPACE }} --api-key ${{ env.GH_NUGET_API_KEY }}

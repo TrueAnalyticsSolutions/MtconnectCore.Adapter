@@ -13,15 +13,15 @@
     <Company>True Analytics Manufacturing Solutions</Company>
     <Product>MTConnect</Product>
     <Description>An interface library for connecting other libraries into the MtconnectCore.Adapter.</Description>
-    <Copyright>True Analytics Manufacturing Solutions, LLC 2023</Copyright>
+    <Copyright>True Analytics Manufacturing Solutions, LLC 2024</Copyright>
     <PackageIcon>icon.jpg</PackageIcon>
     <RepositoryType>git</RepositoryType>
     <PackageTags>MTConnect;Adapter;Interface</PackageTags>
-    <PackageReleaseNotes>Added support for device model configuration with a MTConnect Agent.</PackageReleaseNotes>
+    <PackageReleaseNotes>Bug fix for TimeSeries data items</PackageReleaseNotes>
     <ApplicationIcon>icon.ico</ApplicationIcon>
     <PackageProjectUrl>https://github.com/TrueAnalyticsSolutions/MtconnectCore.Adapter</PackageProjectUrl>
     <RepositoryUrl>$(ProjectUrl)</RepositoryUrl>
-    <Version>3.0.1.1</Version>
+    <Version>3.0.1.5-alpha-6</Version>
     <IncludeSymbols>True</IncludeSymbols>
     <SymbolPackageFormat>snupkg</SymbolPackageFormat>
 	<DebugSymbols>true</DebugSymbols>
@@ -77,9 +77,9 @@
   </ItemGroup>
 
   <ItemGroup>
-    <PackageReference Include="Microsoft.CodeAnalysis.CSharp.Scripting" Version="4.7.0" />
-    <PackageReference Include="System.Configuration.ConfigurationManager" Version="7.0.0" />
-    <PackageReference Include="System.Text.Json" Version="7.0.3" />
+    <PackageReference Include="Microsoft.CodeAnalysis.CSharp.Scripting" Version="4.10.0" />
+    <PackageReference Include="System.Configuration.ConfigurationManager" Version="8.0.0" />
+    <PackageReference Include="System.Text.Json" Version="8.0.3" />
   </ItemGroup>
 
   <ItemGroup>

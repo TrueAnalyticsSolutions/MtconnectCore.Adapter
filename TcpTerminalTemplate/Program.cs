@@ -16,7 +16,7 @@ namespace TcpTerminal
             var options = new TcpAdapterOptions();
             options.UpdateFromConfig();
 
-            using(var adapter = new TcpAdapter(options, loggerFactory))
+            using(var adapter = new TcpAdapter(options, new AdapterLogger(loggerFactory)))
             {
                 adapter.Start(new AdvancedAdapterDataModelSource());
 

@@ -1,4 +1,4 @@
-﻿using MtconnectTranspiler.Sinks.CSharp.Attributes;
+﻿using MtconnectTranspiler.Sinks.ScribanTemplates;
 using MtconnectTranspiler.Xmi;
 using MtconnectTranspiler.Xmi.UML;
 

@@ -212,6 +212,11 @@
             A decorative attribute for indicating a property intended to go thru an Adapter stream as an Time Series.
             </summary>
         </member>
+        <member name="P:Mtconnect.AdapterSdk.Attributes.TimeSeriesAttribute.Rate">
+            <summary>
+            <inheritdoc cref="P:Mtconnect.AdapterSdk.DataItems.TimeSeries.Rate" path="/summary"/>
+            </summary>
+        </member>
         <member name="M:Mtconnect.AdapterSdk.Attributes.TimeSeriesAttribute.#ctor(System.String,System.String)">
             <inheritdoc />
         </member>
@@ -9688,6 +9693,12 @@
             <summary>
             Collection of recorded values.
             </summary>
+        </member>
+        <member name="M:Mtconnect.AdapterSdk.DataItems.TimeSeries.#ctor(System.Double)">
+            <summary>
+            Constructs a new TimeSeries entity, relying on the attributes to define the name, description, type, and subtype fields.
+            </summary>
+            <param name="rate"><inheritdoc cref="P:Mtconnect.AdapterSdk.DataItems.TimeSeries.Rate" path="/summary"/></param>
         </member>
         <member name="M:Mtconnect.AdapterSdk.DataItems.TimeSeries.#ctor(System.String,System.String,System.Double,System.String,System.String)">
             <summary>

@@ -1,4 +1,5 @@
-﻿using Mtconnect.AdapterSdk.DataItemTypes;
+﻿using Mtconnect.AdapterSdk.DataItems;
+using Mtconnect.AdapterSdk.DataItemTypes;
 using System;
 
 namespace Mtconnect.AdapterSdk.Attributes
@@ -8,6 +9,11 @@ namespace Mtconnect.AdapterSdk.Attributes
     /// </summary>
     public class TimeSeriesAttribute : DataItemAttribute
     {
+        /// <summary>
+        /// <inheritdoc cref="TimeSeries.Rate" path="/summary"/>
+        /// </summary>
+        public double Rate { get; set; }
+
         /// <inheritdoc />
         public TimeSeriesAttribute(string name, string description = null) : base(name, description) { }
     }

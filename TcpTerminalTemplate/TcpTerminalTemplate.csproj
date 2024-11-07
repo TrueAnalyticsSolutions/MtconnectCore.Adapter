@@ -18,8 +18,8 @@
   </ItemGroup>
 
   <ItemGroup>
-    <PackageReference Include="Consoul" Version="1.6.3" />
-    <PackageReference Include="Mtconnect.TcpAdapter" Version="2.0.6.9-beta" />
+    <PackageReference Include="Consoul" Version="1.6.5" />
+    <PackageReference Include="Mtconnect.TcpAdapter" Version="3.0.2.5-bugfix.5" />
   </ItemGroup>
 
   <ItemGroup>

@@ -172,17 +172,20 @@ namespace Mtconnect.AdapterSdk.DataItems
         /// <inheritdoc />
         public Func<object, object> FormatValue { get; set; }
 
+        protected DataItem()
+        {
+            Unavailable();
+        }
+
         /// <summary>
         /// Create a new data item
         /// </summary>
         /// <param name="name"><inheritdoc cref="DataItem.Name" path="/summary"/></param>
         /// <param name="description"><inheritdoc cref="DataItem.Description" path="/summary"/></param>
-        public DataItem(string name, string description = null)
+        public DataItem(string name, string description = null) : this()
         {
             Name = name;
             Description = description;
-
-            Unavailable();
         }
 
         /// <summary>
